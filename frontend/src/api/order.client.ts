@@ -150,6 +150,29 @@ export const orderClientPublic = {
         return response.data;
     },
 
+    createNeemPaymentIntent: async (eventId: number, orderShortId: string) => {
+        const response = await publicApi.post<{
+            redirect_url: string,
+        }>(`events/${eventId}/order/${orderShortId}/neem/generate_token`);
+        return response.data;
+    },
+
+    createNeemConfirmPayment: async (eventId: number, orderShortId: string,status: string,transactionId: string,basketId: string
+    ) => {
+        const response = await publicApi.post<{
+            redirect_url: string,
+        }>(
+            `events/${eventId}/order/${orderShortId}/neem/confirm_payment`,
+            {
+                status,
+                transactionId,
+                basketId,
+            }
+        );
+
+        return response.data;
+    },
+
     finaliseOrder: async (
         eventId: number,
         orderShortId: string,

@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {useNavigate, useParams} from "react-router";
 import {useGetEventPublic} from "../../../../queries/useGetEventPublic.ts";
 import {CheckoutContent} from "../../../layouts/Checkout/CheckoutContent";
-import {StripePaymentMethod} from "./PaymentMethods/Stripe";
 import {OfflinePaymentMethod} from "./PaymentMethods/Offline";
 import {Event, Order} from "../../../../types.ts";
 import {CheckoutFooter} from "../../../layouts/Checkout/CheckoutFooter";
@@ -15,6 +14,7 @@ import {
 } from "../../../../mutations/useTransitionOrderToOfflinePaymentPublic.ts";
 import {Card} from "../../../common/Card";
 import {showError} from "../../../../utilites/notifications.tsx";
+import {NeemPaymentMethod} from "./PaymentMethods/Neem";
 
 const Payment = () => {
     const navigate = useNavigate();
@@ -23,23 +23,24 @@ const Payment = () => {
     const {data: order, isFetched: isOrderFetched} = useGetOrderPublic(eventId, orderShortId, ['event']);
     const isLoading = !isOrderFetched;
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
-    const [activePaymentMethod, setActivePaymentMethod] = useState<'STRIPE' | 'OFFLINE' | null>(null);
+    const [activePaymentMethod, setActivePaymentMethod] = useState<'NEEM' | 'OFFLINE' | null>(null);
     const [submitHandler, setSubmitHandler] = useState<(() => Promise<void>) | null>(null);
     const transitionOrderToOfflinePaymentMutation = useTransitionOrderToOfflinePaymentPublic();
 
-    const isStripeEnabled = event?.settings?.payment_providers?.includes('STRIPE');
-    const isOfflineEnabled = event?.settings?.payment_providers?.includes('OFFLINE');
+    const isNeemEnabled = event?.settings?.payment_providers?.includes('NEEM');
+    // const isOfflineEnabled = event?.settings?.payment_providers?.includes('OFFLINE');
+    const isOfflineEnabled = false;
 
     React.useEffect(() => {
         // Automatically set the first available payment method
-        if (isStripeEnabled) {
-            setActivePaymentMethod('STRIPE');
+        if (isNeemEnabled) {
+            setActivePaymentMethod('NEEM');
         } else if (isOfflineEnabled) {
             setActivePaymentMethod('OFFLINE');
         } else {
             setActivePaymentMethod(null); // No methods available
         }
-    }, [isStripeEnabled, isOfflineEnabled]);
+    }, [isNeemEnabled, isOfflineEnabled]);
 
     const handleParentSubmit = () => {
         if (submitHandler) {
@@ -49,7 +50,7 @@ const Payment = () => {
     };
 
     const handleSubmit = async () => {
-        if (activePaymentMethod === 'STRIPE') {
+        if (activePaymentMethod === 'NEEM') {
             handleParentSubmit();
         } else if (activePaymentMethod === 'OFFLINE') {
             setIsPaymentLoading(true);
@@ -69,7 +70,7 @@ const Payment = () => {
         }
     };
 
-    if (!isStripeEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
+    if (!isNeemEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
         return (
             <CheckoutContent>
                 <Card>
@@ -82,9 +83,9 @@ const Payment = () => {
     return (
         <>
             <CheckoutContent>
-                {isStripeEnabled && (
-                    <div style={{display: activePaymentMethod === 'STRIPE' ? 'block' : 'none'}}>
-                        <StripePaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
+                {isNeemEnabled && (
+                    <div style={{display: activePaymentMethod === 'NEEM' ? 'block' : 'none'}}>
+                        <NeemPaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
                     </div>
                 )}
 
@@ -94,15 +95,15 @@ const Payment = () => {
                     </div>
                 )}
 
-                {(isStripeEnabled && isOfflineEnabled) && (
+                {(isNeemEnabled && isOfflineEnabled) && (
                     <div style={{marginTop: '20px'}}>
                         <a
                             onClick={() => setActivePaymentMethod(
-                                activePaymentMethod === 'STRIPE' ? 'OFFLINE' : 'STRIPE'
+                                activePaymentMethod === 'NEEM' ? 'OFFLINE' : 'NEEM'
                             )}
                             style={{cursor: 'pointer'}}
                         >
-                            {activePaymentMethod === 'STRIPE'
+                            {activePaymentMethod === 'NEEM'
                                 ? t`I would like to pay using an offline method`
                                 : t`I would like to pay using an online method (credit card etc.)`
                             }

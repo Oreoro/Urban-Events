@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Stripe\StripeClient;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         $this->bindDoctrineConnection();
         $this->bindStripeClient();
         $this->bindCurrencyConversionClient();
+        $this->app->bind(HttpClientInterface::class, function () {
+            return HttpClient::create();
+        });
     }
 
     /**
