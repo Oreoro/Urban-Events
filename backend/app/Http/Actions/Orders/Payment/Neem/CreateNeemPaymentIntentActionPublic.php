@@ -59,7 +59,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 "Data" => [
                     "PODBill" => [
                         "BasketId" => $orderShortId,
-                        "MobileNumber" => "",
+                        "MobileNumber" => "03114455788",
                         "Email" => $order->getEmail(),
                         "FullName" => $order->getFullName(),
                         "InstructedAmount" => [
