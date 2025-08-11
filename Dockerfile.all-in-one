@@ -9,7 +9,6 @@ RUN apk add --no-cache yarn
 
 # Copy only the dependency files first.
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-# RUN yarn cache clean # This is often unnecessary and can be removed unless you face caching issues.
 
 # Install project dependencies.
 RUN yarn install
@@ -19,7 +18,6 @@ COPY ./frontend .
 
 # Build the final static assets.
 RUN yarn build
-
 
 # Stage 2: Build the backend application and serve it with Nginx.
 FROM serversideup/php:beta-8.3.2-fpm-alpine
@@ -36,12 +34,16 @@ RUN apk add --no-cache nodejs yarn nginx supervisor \
 COPY --from=node-frontend /app/frontend /app/frontend
 
 # --- OPTIMIZATION: Install Composer dependencies BEFORE copying app code ---
+
+# Set the working directory for the backend.
 WORKDIR /app/backend
 
-# 1. Copy only Composer files first.
-COPY ./backend/composer.json ./backend/composer.lock ./
+# Copy Composer files from the backend directory in the build context
+# to the current working directory (/app/backend) inside the container.
+COPY ./backend/composer.json ./
+COPY ./backend/composer.lock ./
 
-# 2. Install dependencies. This layer will be cached unless composer files change.
+# Install dependencies. This layer will be cached unless composer files change.
 RUN composer install \
         --ignore-platform-reqs \
         --no-interaction \
@@ -49,7 +51,8 @@ RUN composer install \
         --optimize-autoloader \
         --prefer-dist
 
-# 3. Now copy the rest of the backend application code.
+# Now copy the rest of the backend application code.
+# This includes the 'artisan' file, which is necessary for the next steps.
 COPY ./backend .
 
 # Set up permissions for the application.
