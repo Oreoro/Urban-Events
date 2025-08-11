@@ -1,3 +1,4 @@
+
 # .github/workflows/azure-deploy.yml
 name: Build and Deploy to Azure Web App
 
@@ -34,9 +35,14 @@ jobs:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
           echo "Building and pushing Docker image..."
-          # The image name below must be the same as the one in the deployment step.
+          # Build the Docker image, giving it a local name.
           docker compose -f ./docker/all-in-one/docker-compose.yml build
-          docker tag ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
+          
+          # Tag the locally built image with the full ACR registry path.
+          # We assume the image name from the docker compose build is 'urban-events:v1'.
+          docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
+          
+          # Push the newly tagged image to ACR.
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
           echo "✅ Docker image built and pushed."
 
@@ -54,7 +60,7 @@ jobs:
               --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
               --name ${{ secrets.AZURE_WEBAPP_NAME }} \
               --settings $SETTINGS
-              
+            
             echo "✅ Application settings configured."
 
       # Deploy the new Docker image to the Azure Web App.
