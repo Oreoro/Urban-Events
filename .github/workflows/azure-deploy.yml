@@ -37,8 +37,8 @@ jobs:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
           # Use the correct path to the docker-compose.yml file and the modern 'docker compose' command
-          docker compose -f urbanevents/docker/all-in-one/docker-compose.yml build all-in-one
-          docker compose -f urbanevents/docker/all-in-one/docker-compose.yml push all-in-one
+          docker compose -f urbanevents/docker-compose.yml build all-in-one
+          docker compose -f urbanevents/docker-compose.yml push all-in-one
 
       # Upload application secrets to Azure Web App
       - name: 'Set App Service Settings'
