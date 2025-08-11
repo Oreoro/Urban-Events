@@ -36,8 +36,8 @@ jobs:
           echo "Building and pushing Docker image..."
           # The image name below must be the same as the one in the deployment step.
           docker compose -f ./docker/all-in-one/docker-compose.yml build
-          docker tag urbanevents:latest ${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0
+          docker tag urbanevents:latest ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
           echo "✅ Docker image built and pushed."
 
       # Upload application settings to the Azure Web App.
@@ -63,7 +63,7 @@ jobs:
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
           # This image name MUST match the one pushed in the previous step.
-          images: '${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0'
+          images: '${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1'
 
       # Log out of Azure as a security best practice.
       - name: 'Log out of Azure'
