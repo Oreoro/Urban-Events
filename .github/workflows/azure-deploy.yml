@@ -36,7 +36,7 @@ jobs:
           echo "Building and pushing Docker image..."
           # The image name below must be the same as the one in the deployment step.
           docker compose -f ./docker/all-in-one/docker-compose.yml build
-          docker tag urbanevents:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
+          docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
           echo "✅ Docker image built and pushed."
 
