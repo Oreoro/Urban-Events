@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "Building and pushing Docker image..."
           # Build the Docker image, giving it a local name.
-          docker compose -f ./docker/all-in-one/docker-compose.yml build
+          docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
           
           # Tag the locally built image with the full ACR registry path.
           # We assume the image name from the docker compose build is 'urban-events:v1'.
@@ -52,20 +52,11 @@ jobs:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
             
-            # Use a while loop to correctly process each line of the multiline secret.
-            SETTINGS=""
-            echo "${{ secrets.AZURE_APP_SECRETS }}" | while read -r line; do
-              if [[ -n "$line" ]]; then
-                # Wrap each key-value pair in quotes for safe parsing by the az cli.
-                SETTINGS="$SETTINGS \"$line\""
-              fi
-            done
-            
-            # Use a dedicated secret for the resource group to avoid runtime errors.
+            # The az command correctly handles multiline secrets, so we can pass the secret directly.
             az webapp config appsettings set \
               --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
               --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-              --settings $SETTINGS
+              --settings ${{ secrets.AZURE_APP_SECRETS }}
             
             echo "✅ Application settings configured."
 
