@@ -30,15 +30,30 @@ jobs:
       - name: 'Log in to Azure Container Registry'
         run: az acr login --name ${{ secrets.ACR_LOGIN_SERVER }}
 
-      # Use docker-compose to build and then push the image.
-      # The 'image' tag in your docker-compose.yml file tells it where to push.
+      # Build and then push the Docker image in a single step.
       - name: 'Build and Push Docker image with Compose'
         env:
           # This variable is used inside the docker-compose.yml file
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
-          # Assumes your docker-compose.yml is at the root of the repository.
-          docker compose -f docker-compose.yml push all-in-one
+          # Use the correct path to the docker-compose.yml file and the modern 'docker compose' command
+          docker compose -f urbanevents/docker/all-in-one/docker-compose.yml build all-in-one
+          docker compose -f urbanevents/docker/all-in-one/docker-compose.yml push all-in-one
+
+      # Upload application secrets to Azure Web App
+      - name: 'Set App Service Settings'
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            echo "Setting Azure App Service application settings..."
+            # Create an array of settings from the multiline secret
+            SETTINGS=$(echo "${{ secrets.AZURE_APP_SECRETS }}" | sed 's/\r$//' | sed -e 's/=/ /' -e 's/^/"/' -e 's/$/"/' | tr '\n' ' ')
+            # Get the resource group for the web app
+            RESOURCE_GROUP=$(az webapp show --name ${{ secrets.AZURE_WEBAPP_NAME }} --query resourceGroup --output tsv)
+            # Set the application settings
+            az webapp config appsettings set --resource-group $RESOURCE_GROUP --name ${{ secrets.AZURE_WEBAPP_NAME }} --settings $SETTINGS
+            echo "✅ Application settings configured."
+
 
       # Deploy the newly pushed image to your Azure Web App.
       - name: 'Deploy to Azure Web App'
