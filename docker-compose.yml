@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.all-in-one
-    image: urbanevents.azurecr.io/urban-events:v1 # Use the image from your Azure Container Registry
+    image: ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1 # Use the image from your Azure Container Registry
     container_name: all-in-one
     ports:
       - "80:80" # Map the public port to the container's internal port
