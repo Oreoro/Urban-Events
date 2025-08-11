@@ -38,7 +38,7 @@ jobs:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
           # Assumes your docker-compose.yml is at the root of the repository.
-          docker-compose -f docker-compose.yml push all-in-one
+          docker compose -f docker-compose.yml push all-in-one
 
       # Deploy the newly pushed image to your Azure Web App.
       - name: 'Deploy to Azure Web App'
