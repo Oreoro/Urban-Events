@@ -1,4 +1,3 @@
-
 # .github/workflows/azure-deploy.yml
 name: Build and Deploy to Azure Web App
 
@@ -53,7 +52,7 @@ jobs:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
             # Format the multiline secret for the Azure CLI.
-            SETTINGS=$(echo "${{ secrets.AZURE_APP_SECRETS }}" | sed 's/\r$//' | sed -e 's/=/ /' -e 's/^/"/' -e 's/$/"/' | tr '\n' ' ')
+            SETTINGS=$(echo "${{ secrets.AZURE_APP_SECRETS }}" | sed 's/\r$//' | sed 's/^/"/' | sed 's/$/"/' | tr '\n' ' ')
             
             # Use a dedicated secret for the resource group to avoid runtime errors.
             az webapp config appsettings set \
