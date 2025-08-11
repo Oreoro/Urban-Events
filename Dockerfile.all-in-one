@@ -33,15 +33,14 @@ RUN apk add --no-cache nodejs yarn nginx supervisor \
 # Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
 
-# --- OPTIMIZATION: Install Composer dependencies BEFORE copying app code ---
+# --- OPTIMIZATION: Install Composer dependencies AFTER copying app code ---
 
 # Set the working directory for the backend.
 WORKDIR /app/backend
 
-# Copy Composer files from the backend directory in the build context
-# to the current working directory (/app/backend) inside the container.
-COPY ./backend/composer.json ./
-COPY ./backend/composer.lock ./
+# Now copy the rest of the backend application code.
+# This ensures the 'artisan' file is available when composer install runs.
+COPY ./backend .
 
 # Install dependencies. This layer will be cached unless composer files change.
 RUN composer install \
@@ -50,10 +49,6 @@ RUN composer install \
         --no-dev \
         --optimize-autoloader \
         --prefer-dist
-
-# Now copy the rest of the backend application code.
-# This includes the 'artisan' file, which is necessary for the next steps.
-COPY ./backend .
 
 # Set up permissions for the application.
 RUN mkdir -p /app/backend/bootstrap/cache \
