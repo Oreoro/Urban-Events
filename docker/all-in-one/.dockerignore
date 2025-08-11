@@ -1,0 +1,26 @@
+# Git and OS specific files
+.git
+.gitignore
+*.DS_Store
+
+# Docker specific files
+Dockerfile.all-in-one
+.dockerignore
+docker-compose.yml
+
+# Local environment files (should be passed at runtime, not built into the image)
+.env
+.env.*
+!.env.example
+
+# Frontend dependencies and build output (handled inside the container)
+frontend/node_modules
+frontend/dist
+frontend/build
+
+# Backend dependencies (handled inside the container)
+backend/vendor
+
+# Log files
+*.log
+logs/

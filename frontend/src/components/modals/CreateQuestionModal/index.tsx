@@ -43,7 +43,7 @@ export const CreateQuestionModal = ({onClose, onCompleted}: CreateQuestionModalP
         onSuccess: ({data: question}) => {
             notifications.show({
                 message: t`Successfully Created Question`,
-                color: 'green',
+                color: '#0d9488',
                 position: 'top-center',
             });
             queryClient.invalidateQueries({queryKey: [GET_EVENT_QUESTIONS_QUERY_KEY]}).then(() => {

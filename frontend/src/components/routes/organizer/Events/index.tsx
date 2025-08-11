@@ -52,7 +52,7 @@ const Events = () => {
             )}>
                 <>
                     <Button
-                        color={'green'}
+                        color={'#0d9488'}
                         rightSection={
                             <IconCalendarPlus stroke={1.5}/>
                         }

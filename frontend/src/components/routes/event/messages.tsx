@@ -37,7 +37,7 @@ export const Messages = () => {
                         pagination={pagination}
                     />
                 )}>
-                    <Button color={'green'} size={'sm'} onClick={openSendModal} rightSection={<IconSend/>}>
+                    <Button color={'#0d9488'} size={'sm'} onClick={openSendModal} rightSection={<IconSend/>}>
                         {t`Send Message`}
                     </Button>
                 </ToolBar>

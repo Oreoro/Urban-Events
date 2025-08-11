@@ -147,7 +147,7 @@ export const ManageProfile = () => {
                                     )}
 
                                     {emailConfirmationResent && (
-                                        <Alert variant="light" mb={10} color="green"
+                                        <Alert variant="light" mb={10} color=""
                                                title={t`Email confirmation resent`} icon={<IconInfoCircle/>}>
                                             <p>{t`Please check your email to confirm your email address`}</p>
                                         </Alert>

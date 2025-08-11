@@ -141,20 +141,7 @@ const GettingStarted = () => {
                         </Button>
                     </Card>
 
-                    <Card className={account?.stripe_connect_setup_complete ? classes.completedCard : ''}>
-                        {account?.stripe_connect_setup_complete && <CompletedBadge/>}
-                        <h2>
-                            {t`💳 Connect with Stripe`}
-                        </h2>
-                        <p>
-                            {t`Connect your Stripe account to start receiving payments.`}
-                        </p>
-                        {!account?.stripe_connect_setup_complete && (
-                            <Button variant={'light'} component={NavLink} to={'/account/payment'}>
-                                {t`Connect with Stripe`}
-                            </Button>)
-                        }
-                    </Card>
+                 
 
                     <Card className={hasImages ? classes.completedCard : ''}>
                         {hasImages && <CompletedBadge/>}

@@ -67,11 +67,11 @@ const Attendees = () => {
                         pagination={pagination}
                     />
                 )}>
-                    <Button color={'green'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
+                    <Button color={'#0d9488'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
                         {t`Create`}
                     </Button>
 
-                    <Button color={'green'}
+                    <Button color={'#0d9488'}
                             size={'sm'}
                             loading={downloadPending}
                             onClick={() => handleExport(eventId)}

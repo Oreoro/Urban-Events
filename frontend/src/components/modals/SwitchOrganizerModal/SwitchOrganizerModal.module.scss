@@ -23,7 +23,7 @@
 
     &:hover {
         background: var(--mantine-color-gray-0);
-        border-color: var(--mantine-color-primary-5);
+        border-color: var(--mantine-color-primary-9);
         transform: translateY(-1px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
@@ -78,7 +78,7 @@
 }
 
 .selectIcon {
-    color: var(--mantine-color-primary-6);
+    color: var(--mantine-color-primary-9);
     opacity: 0;
     transition: opacity 0.2s ease;
 }

@@ -222,7 +222,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                             <div className={classes.heading}>{t`Status`}</div>
                             <Popover>
                                 <Popover.Target>
-                                    <Badge className={classes.status} color={product.is_available ? 'green' : 'orange'}
+                                    <Badge className={classes.status} color={product.is_available ? '#0d9488' : 'orange'}
                                            variant="outline">
                                         {product.is_available ? t`On Sale` : t`Not On Sale`}
                                     </Badge>

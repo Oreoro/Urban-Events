@@ -182,7 +182,7 @@ export const QRScannerComponent = (props: QRScannerComponentProps) => {
                     </Trans>
 
                     <div>
-                        <Button color={'green'} mt={20} onClick={handleClose} variant={'filled'}>
+                        <Button color={'#0d9488'} mt={20} onClick={handleClose} variant={'filled'}>
                             {t`Close`}
                         </Button>
                     </div>

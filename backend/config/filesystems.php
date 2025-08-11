@@ -15,9 +15,9 @@ return [
 
     'default' => env('FILESYSTEM_DISK', 'local'),
 
-    'public' => env('FILESYSTEM_PUBLIC_DISK', 's3-public'),
+    'public' => env('FILESYSTEM_PUBLIC_DISK', 'azure'),
 
-    'private' => env('FILESYSTEM_PRIVATE_DISK', 's3-private'),
+    'private' => env('FILESYSTEM_PRIVATE_DISK', 'azure'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,6 +67,16 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
+        ],
+
+        'azure' => [
+          'driver' => 'azure-storage-blob',
+          'connection_string' => env('AZURE_STORAGE_CONNECTION_STRING'),
+           'container' => env('AZURE_STORAGE_CONTAINER'),
+           'url' => env('AZURE_STORAGE_URL'),
+           'visibility' => 'public',
+           'throw' => false,
+
         ],
     ],
 

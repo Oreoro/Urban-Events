@@ -1,48 +1,79 @@
+# Stage 1: Build the frontend assets. This stage is dedicated to Node.js.
 FROM node:alpine AS node-frontend
 
+# Set the working directory for the frontend application.
 WORKDIR /app/frontend
 
+# Install yarn as it is not included in the base Node image.
 RUN apk add --no-cache yarn
 
+# Copy only the dependency files first.
 COPY ./frontend/package.json ./frontend/yarn.lock ./
+# RUN yarn cache clean # This is often unnecessary and can be removed unless you face caching issues.
 
+# Install project dependencies.
+RUN yarn install
+
+# Now, copy the rest of the frontend application code.
 COPY ./frontend .
 
-RUN yarn install && yarn build
+# Build the final static assets.
+RUN yarn build
 
+
+# Stage 2: Build the backend application and serve it with Nginx.
 FROM serversideup/php:beta-8.3.2-fpm-alpine
 
+# Set PHP OpCache to be enabled for performance.
 ENV PHP_OPCACHE_ENABLE=1
 
-RUN install-php-extensions intl
+# --- OPTIMIZATION: Combine RUN layers ---
+# Install all system dependencies in a single layer.
+RUN apk add --no-cache nodejs yarn nginx supervisor \
+    && install-php-extensions intl
 
-RUN apk add --no-cache nodejs yarn nginx supervisor
-
+# Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
 
-COPY ./backend /app/backend
+# --- OPTIMIZATION: Install Composer dependencies BEFORE copying app code ---
+WORKDIR /app/backend
+
+# 1. Copy only Composer files first.
+COPY ./backend/composer.json ./backend/composer.lock ./
+
+# 2. Install dependencies. This layer will be cached unless composer files change.
+RUN composer install \
+        --ignore-platform-reqs \
+        --no-interaction \
+        --no-dev \
+        --optimize-autoloader \
+        --prefer-dist
+
+# 3. Now copy the rest of the backend application code.
+COPY ./backend .
+
+# Set up permissions for the application.
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
     && chown -R www-data:www-data /app/backend \
     && find /app/backend -type d -exec chmod 755 {} \; \
     && find /app/backend -type f -exec chmod 644 {} \; \
     && chmod -R 755 /app/backend/storage /app/backend/bootstrap/cache \
-    && composer install --working-dir=/app/backend \
-        --ignore-platform-reqs \
-        --no-interaction \
-        --no-dev \
-        --optimize-autoloader \
-        --prefer-dist \
     && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
+# Copy Nginx and Supervisor configuration files.
 COPY ./docker/all-in-one/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
 
+# Copy the startup script, convert its line endings, and make it executable.
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh
 
+# Expose port 80 for Nginx.
 EXPOSE 80
 
+# Set the final working directory.
 WORKDIR /app
 
+# Set the default command to run the startup script.
 CMD ["/startup.sh"]

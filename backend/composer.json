@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "ext-intl": "*",
+        "azure-oss/storage-blob-laravel": "^1.3",
         "barryvdh/laravel-dompdf": "^3.0",
         "brick/money": "^0.10.1",
         "doctrine/dbal": "^3.6",
@@ -19,6 +20,7 @@
         "laravel/vapor-core": "^2.37",
         "league/flysystem-aws-s3-v3": "^3.0",
         "maatwebsite/excel": "^3.1",
+        "matthewbdaly/laravel-azure-storage": "^2.0",
         "nette/php-generator": "^4.0",
         "php-open-source-saver/jwt-auth": "^2.1",
         "sentry/sentry-laravel": "^4.13",

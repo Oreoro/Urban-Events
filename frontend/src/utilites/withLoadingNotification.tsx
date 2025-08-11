@@ -38,7 +38,7 @@ export const withLoadingNotification = async <T, >(
             id: notificationId,
             title: messages.success.title,
             message: messages.success.message,
-            color: 'green',
+            color: '#0d9488', // Changed to teal color
             icon: <IconCheck size="1rem"/>,
             autoClose: 2000,
             loading: false,

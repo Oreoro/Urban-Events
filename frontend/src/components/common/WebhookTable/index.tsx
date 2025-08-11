@@ -145,7 +145,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
         }
 
         const isSuccess = (webhook.last_response_code >= 200 && webhook.last_response_code < 300) && webhook.last_response_code !== 0;
-        const statusColor = isSuccess ? 'green' : 'red';
+        const statusColor = isSuccess ? '#0d9488' : 'red';
         const statusText = isSuccess ? 'Success' : 'Error';
 
         return (
@@ -219,7 +219,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'green'}
+                            color={'#0d9488'}
                             onClick={() => openCreateModal()}>{t`Add Webhook`}
                         </Button>
                     </>

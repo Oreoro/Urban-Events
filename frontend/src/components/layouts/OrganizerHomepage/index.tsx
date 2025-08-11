@@ -84,9 +84,9 @@ export const OrganizerHomepage = ({
     const themeStyles = themeSettings ? {
         '--organizer-bg-color': themeSettings.homepage_background_color || '#f5f5f5',
         '--organizer-content-bg-color': themeSettings.homepage_content_background_color || '#ffffff',
-        '--organizer-primary-color': themeSettings.homepage_primary_color || '#8b5cf6',
+        '--organizer-primary-color': themeSettings.homepage_primary_color || '#d3abf9',
         '--organizer-primary-text-color': themeSettings.homepage_primary_text_color || '#1a1a1a',
-        '--organizer-secondary-color': themeSettings.homepage_secondary_color || '#6366f1',
+        '--organizer-secondary-color': themeSettings.homepage_secondary_color || '#F7F7EB',
         '--organizer-secondary-text-color': themeSettings.homepage_secondary_text_color || '#6b7280',
     } as React.CSSProperties : {};
 

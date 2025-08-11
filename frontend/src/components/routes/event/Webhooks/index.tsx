@@ -31,7 +31,7 @@ const Webhooks = () => {
             </PageTitle>
             <Card>
                 <Group justify="space-between">
-                    <Button color={'green'} rightSection={<IconPlus/>} onClick={openCreateModal}>
+                    <Button color={'#0d9488'} rightSection={<IconPlus/>} onClick={openCreateModal}>
                         {t`Add Webhook`}
                     </Button>
                     <Badge

@@ -260,7 +260,7 @@ export const QuestionsTable = ({questions}: QuestionsTableProp) => {
         return (
             <Button
                 loading={isExporting}
-                color="green"
+                color="#0d9488"
                 rightSection={<IconTableExport size={20}/>}
                 onClick={() => startExport()}
             >
@@ -277,7 +277,7 @@ export const QuestionsTable = ({questions}: QuestionsTableProp) => {
             <Card>
                 <div className={classes.actions}>
                     <>
-                        <Button color={'green'} rightSection={<IconPlus/>} onClick={openCreateModal}>
+                        <Button color={'#0d9488'} rightSection={<IconPlus/>} onClick={openCreateModal}>
                             {t`Add question`}
                         </Button>
                         <ExportAnswersButton/>

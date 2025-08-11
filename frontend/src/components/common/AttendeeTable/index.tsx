@@ -63,7 +63,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     <Button
                         size={'xs'}
                         leftSection={<IconPlus/>}
-                        color={'green'}
+                        color={'#0d9488'}
                         onClick={() => openCreateModal()}>{t`Manually add an Attendee`}
                     </Button>
                 </>
@@ -183,7 +183,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                     label: attendee.status === 'CANCELLED' ? t`Activate` : t`Cancel` + ` ` + t`ticket`,
                                                     icon: <IconTrash size={14}/>,
                                                     onClick: () => handleCancel(attendee),
-                                                    color: attendee.status === 'CANCELLED' ? 'green' : 'red',
+                                                    color: attendee.status === 'CANCELLED' ? '#0d9488' : 'red',
                                                 },
                                             ],
                                         },

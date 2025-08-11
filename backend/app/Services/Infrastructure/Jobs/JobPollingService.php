@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class JobPollingService
 {
-    private const STORAGE_DISK = 's3-private';
+    private const STORAGE_DISK = 'azure';
 
     public function startJob(string $jobName, array $jobs): JobPollingResultDTO
     {
