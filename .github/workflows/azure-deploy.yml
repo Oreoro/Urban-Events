@@ -1,69 +1,71 @@
 # .github/workflows/azure-deploy.yml
-
 name: Build and Deploy to Azure Web App
 
-# This workflow runs on pushes to the main branch.
+# This workflow runs on pushes to the main branch or can be triggered manually.
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    # Use a GitHub-hosted runner
     runs-on: ubuntu-latest
 
     steps:
-      # Get your repository code
+      # Checkout the repository code
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
 
-      # Authenticate to your Azure account using the service principal secret.
+      # Authenticate to your Azure account using a service principal.
       - name: 'Log in to Azure'
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Authenticate to your Azure Container Registry.
+      # Authenticate to the Azure Container Registry.
       - name: 'Log in to Azure Container Registry'
         run: az acr login --name ${{ secrets.ACR_LOGIN_SERVER }}
 
-      # Build and then push the Docker image in a single step.
-      - name: 'Build and Push Docker image with Compose'
+      # Build and push the Docker image to ACR.
+      - name: 'Build and Push Docker image'
         env:
-          # This variable is used inside the docker-compose.yml file
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
-          # Use the correct path to the docker-compose.yml file and the modern 'docker compose' command
-          docker compose -f ./docker/all-in-one/docker-compose.yml build all-in-one
-          docker compose -f ./docker/all-in-one/docker-compose.yml push all-in-one
+          echo "Building and pushing Docker image..."
+          # The image name below must be the same as the one in the deployment step.
+          docker compose -f ./docker/all-in-one/docker-compose.yml build
+          docker tag urbanevents:latest ${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0
+          echo "✅ Docker image built and pushed."
 
-      # Upload application secrets to Azure Web App
+      # Upload application settings to the Azure Web App.
       - name: 'Set App Service Settings'
         uses: azure/CLI@v1
         with:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
-            # Create an array of settings from the multiline secret
+            # Format the multiline secret for the Azure CLI.
             SETTINGS=$(echo "${{ secrets.AZURE_APP_SECRETS }}" | sed 's/\r$//' | sed -e 's/=/ /' -e 's/^/"/' -e 's/$/"/' | tr '\n' ' ')
-            # Get the resource group for the web app
-            RESOURCE_GROUP=$(az webapp show --name ${{ secrets.AZURE_WEBAPP_NAME }} --query resourceGroup --output tsv)
-            # Set the application settings
-            az webapp config appsettings set --resource-group $RESOURCE_GROUP --name ${{ secrets.AZURE_WEBAPP_NAME }} --settings $SETTINGS
+            
+            # Use a dedicated secret for the resource group to avoid runtime errors.
+            az webapp config appsettings set \
+              --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+              --name ${{ secrets.AZURE_WEBAPP_NAME }} \
+              --settings $SETTINGS
+              
             echo "✅ Application settings configured."
 
-
-      # Deploy the newly pushed image to your Azure Web App.
+      # Deploy the new Docker image to the Azure Web App.
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          # This image name MUST exactly match the one in your docker-compose.yml
+          # This image name MUST match the one pushed in the previous step.
           images: '${{ secrets.ACR_LOGIN_SERVER }}/urbanevents:v0'
 
-      # Clean up the session.
+      # Log out of Azure as a security best practice.
       - name: 'Log out of Azure'
         if: always()
         run: |
