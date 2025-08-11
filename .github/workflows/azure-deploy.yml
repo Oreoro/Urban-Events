@@ -51,12 +51,17 @@ jobs:
         with:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
-            
-            # The az command correctly handles multiline secrets, so we can pass the secret directly.
-            az webapp config appsettings set \
-              --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-              --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-              --settings ${{ secrets.AZURE_APP_SECRETS }}
+
+            # Check if the secret is not empty before attempting to set app settings.
+            if [ -n "${{ secrets.AZURE_APP_SECRETS }}" ]; then
+              # The az command correctly handles multiline secrets, so we pass the secret directly.
+              az webapp config appsettings set \
+                --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+                --name ${{ secrets.AZURE_WEBAPP_NAME }} \
+                --settings ${{ secrets.AZURE_APP_SECRETS }}
+            else
+              echo "⚠️ AZURE_APP_SECRETS is empty. Skipping application settings update."
+            fi
             
             echo "✅ Application settings configured."
 
