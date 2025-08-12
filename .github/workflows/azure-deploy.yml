@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "Building and pushing Docker image..."
           # Build the Docker image, giving it a local name.
-          docker compose -f ${{ github.workspace }}/docker/development/docker-compose.dev.yml build
+          docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
           
           # Tag the locally built image with the full ACR registry path.
           # We assume the image name from the docker compose build is 'urban-events:v1'.
