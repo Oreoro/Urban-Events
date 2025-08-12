@@ -6,65 +6,73 @@ services:
     image: urban-events:v1
     container_name: all-in-one
     ports:
-      - "80:80" # Maps the host's port 80 to the container's port 80 for Nginx.
-      - "5432:5432" # Exposes the internal PostgreSQL port.
-      - "6379:6379" # Exposes the internal Redis port.
+      - "80:80"
     environment:
-      # Azure Storage Configuration
-      - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
-      - AZURE_STORAGE_CONTAINER=${AZURE_STORAGE_CONTAINER}
-      - AZURE_STORAGE_URL=${AZURE_STORAGE_URL}
-
-      # Application-specific environment variables
-      - VITE_FRONTEND_URL=${VITE_FRONTEND_URL}
-      - VITE_API_URL_CLIENT=${VITE_API_URL_CLIENT}
-      - VITE_API_URL_SERVER=${VITE_API_URL_SERVER}
-      - VITE_STRIPE_PUBLISHABLE_KEY=${VITE_STRIPE_PUBLISHABLE_KEY}
-      - VITE_APP_NAME=${VITE_APP_NAME}
-      - LOG_CHANNEL=${LOG_CHANNEL}
-      - QUEUE_CONNECTION=${QUEUE_CONNECTION}
-      - APP_KEY=${APP_KEY}
-      - APP_CDN_URL=${APP_CDN_URL}
-      - APP_FRONTEND_URL=${APP_FRONTEND_URL}
-      - JWT_SECRET=${JWT_SECRET}
-      - APP_DISABLE_REGISTRATION=${APP_DISABLE_REGISTRATION}
-      - APP_SAAS_MODE_ENABLED=${APP_SAAS_MODE_ENABLED}
-      - APP_SAAS_STRIPE_APPLICATION_FEE_PERCENT=${APP_SAAS_STRIPE_APPLICATION_FEE_PERCENT}
-      - APP_SAAS_STRIPE_APPLICATION_FEE_FIXED=${APP_SAAS_STRIPE_APPLICATION_FEE_FIXED}
-      - MAIL_MAILER=${MAIL_MAILER}
-      - MAIL_DRIVER=${MAIL_DRIVER}
-      - MAIL_HOST=${MAIL_HOST}
-      - MAIL_PORT=${MAIL_PORT}
-      - MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
-      - MAIL_ENCRYPTION=${MAIL_ENCRYPTION}
-      - MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
-      - MAIL_FROM_NAME=${MAIL_FROM_NAME}
+      # Application Keys and Secrets
+      - APP_KEY=base64:9ac47V+qTkG3N75U7IUeHDwToN0zs3S171qauz9IHnc=
+      - JWT_SECRET=2hoccgHb9r1fqW1lU16C6khSHVa7O0eai6FxkWK95UtQ0LqNDTO5mq1RzDwcq18I
+      
+      # Frontend Variables
+      - VITE_FRONTEND_URL=https://localhost:8443
+      - VITE_API_URL_CLIENT=https://localhost:8443/api
+      - VITE_API_URL_SERVER=http://localhost:8124/api
+      - VITE_STRIPE_PUBLISHABLE_KEY=
+      - VITE_APP_NAME=Urban Events
+      
+      # Backend and Application Settings
+      - LOG_CHANNEL=stderr
+      - QUEUE_CONNECTION=redis
+      - APP_CDN_URL=https://urbanevents.blob.core.windows.net
+      - APP_FRONTEND_URL=https://localhost:8443
+      - APP_DISABLE_REGISTRATION=false
+      - APP_SAAS_MODE_ENABLED=false
+      - APP_SAAS_STRIPE_APPLICATION_FEE_PERCENT=0
+      - APP_SAAS_STRIPE_APPLICATION_FEE_FIXED=0
+      - APP_NAME=Urban Events
+      - APP_ENV=production
+      - APP_DEBUG=true
+      - APP_LOG_QUERIES=false
+      - APP_URL=http://localhost
+      - APP_PORT=80
+      - APP_HOMEPAGE_VIEWS_UPDATE_BATCH_SIZE=8
+      - APP_STRIPE_CONNECT_ACCOUNT_TYPE=express
+      - APP_PLATFORM_SUPPORT_EMAIL=support@urbanevents.pk
+      - CORS_ALLOWED_ORIGINS=*
+      
+      # Email Settings
+      - MAIL_MAILER=smtp
+      - MAIL_DRIVER=smtp
+      - MAIL_HOST=mail.smtp2go.com
+      - MAIL_PORT=2525
+      - MAIL_USERNAME=bilalparvaaz
+      - MAIL_PASSWORD=Bilal@2002b
+      - MAIL_ENCRYPTION=tls
+      - MAIL_FROM_ADDRESS=noreply.urbanevents.pk
+      - MAIL_FROM_NAME="Urban Events"
+      
+      # File Storage Settings
       - FILESYSTEM_PUBLIC_DISK=azure
       - FILESYSTEM_PRIVATE_DISK=azure
-      - STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY}
-      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
-      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-      - WEBHOOK_QUEUE_NAME=webhook-queue
-      - APP_NAME=${APP_NAME}
-      - APP_ENV=${APP_ENV}
-      - APP_DEBUG=${APP_DEBUG}
-      - APP_LOG_QUERIES=${APP_LOG_QUERIES}
-      - APP_URL=${APP_URL}
-      - APP_PORT=${APP_PORT}
-      - APP_HOMEPAGE_VIEWS_UPDATE_BATCH_SIZE=${APP_HOMEPAGE_VIEWS_UPDATE_BATCH_SIZE}
-      - APP_STRIPE_CONNECT_ACCOUNT_TYPE=${APP_STRIPE_CONNECT_ACCOUNT_TYPE}
-      - APP_PLATFORM_SUPPORT_EMAIL=${APP_PLATFORM_SUPPORT_EMAIL}
-      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
+      - AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=urbanevents;AccountKey=+ewwZnty1vodP38V5qmHrMrqg52vHG1+iSYZRwfHpWj6GSFr3TKg9ei/R822iB72IOmh1Ea3Ql5r+ASt6tlBxA==;EndpointSuffix=core.windows.net
+      - AZURE_STORAGE_CONTAINER=urbanevents
+      - AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net
       
-      # Database and Cache configuration for internal services
+      # Database Settings (Azure PostgreSQL)
+      - DATABASE_URL=pgsql://urbanevents:Pakistan@2025@urban-events-db.postgres.database.azure.com:5432/postgres
       - DB_CONNECTION=pgsql
-      - DB_HOST=localhost # Services are in the same container
+      - DB_HOST=urban-events-db.postgres.database.azure.com
       - DB_PORT=5432
-      - DB_DATABASE=hi-events
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=secret
-      - REDIS_HOST=localhost # Services are in the same container
-      - REDIS_PASSWORD=
-      - REDIS_PORT=6379
-      - REDIS_URL=redis://localhost:6379
+      - DB_DATABASE=postgres
+      - DB_USERNAME=urbanevents
+      - DB_PASSWORD=Pakistan@2025
+      
+      # Stripe Settings
+      - STRIPE_PUBLIC_KEY=
+      - STRIPE_SECRET_KEY=
+      - STRIPE_WEBHOOK_SECRET=
+      
+      # Redis Settings (Azure Redis Cache)
+      - REDIS_HOST=urbanevents.redis.cache.windows.net
+      - REDIS_PASSWORD=oNO47ipAuGf9amZtaFBrqVhZllvCpNR1zAzCaFWiFRw=
+      - REDIS_PORT=6380
+      - REDIS_URL=redis://:oNO47ipAuGf9amZtaFBrqVhZllvCpNR1zAzCaFWiFRw=@urbanevents.redis.cache.windows.net:6380/0?ssl=true
