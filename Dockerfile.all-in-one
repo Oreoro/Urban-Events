@@ -1,3 +1,4 @@
+# Stage 1: Build the frontend assets.
 FROM node:alpine AS node-frontend
 
 WORKDIR /app/frontend
@@ -18,6 +19,7 @@ FROM serversideup/php:beta-8.3.2-fpm-alpine
 ENV PHP_OPCACHE_ENABLE=1
 
 # Install all system dependencies, including PostgreSQL and Redis.
+# This is a key step for a monolithic container.
 RUN apk add --no-cache nodejs yarn nginx supervisor postgresql postgresql-client redis \
     && install-php-extensions intl pdo_pgsql redis
 
@@ -39,10 +41,12 @@ RUN composer install \
     --prefer-dist
 
 # Configure PostgreSQL: Initialize the database and set permissions.
-RUN /usr/bin/initdb -D /var/lib/postgresql/data \
+# This block is now executed as the 'postgres' user, which is essential for initdb.
+RUN mkdir -p /var/lib/postgresql/data \
+    && chown -R postgres:postgres /var/lib/postgresql/data \
+    && su postgres -c "/usr/bin/initdb -D /var/lib/postgresql/data" \
     && echo "host all all 0.0.0.0/0 trust" >> /var/lib/postgresql/data/pg_hba.conf \
     && echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf \
-    && chown -R postgres:postgres /var/lib/postgresql/data \
     && chmod -R 700 /var/lib/postgresql/data
 
 # Set up permissions for the application.
