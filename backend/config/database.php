@@ -127,6 +127,7 @@ $db =  [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'ssl' => true,  // Ensure SSL is set to true
             'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
         ],
 
