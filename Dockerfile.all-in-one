@@ -20,8 +20,8 @@ ENV PHP_OPCACHE_ENABLE=1
 
 # Install all system dependencies, including PostgreSQL and Redis.
 # This is a key step for a monolithic container.
-RUN apk add --no-cache nodejs yarn nginx supervisor postgresql postgresql-client redis \
-    && install-php-extensions intl pdo_pgsql redis
+RUN apk add --no-cache nodejs yarn nginx supervisor postgresql postgresql-client \
+    && install-php-extensions intl pdo_pgsql
 
 # Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
