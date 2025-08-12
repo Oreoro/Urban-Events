@@ -1,54 +1,49 @@
-# Stage 1: Build the frontend assets. This stage is dedicated to Node.js.
 FROM node:alpine AS node-frontend
 
-# Set the working directory for the frontend application.
 WORKDIR /app/frontend
 
-# Install yarn as it is not included in the base Node image.
 RUN apk add --no-cache yarn
 
-# Copy only the dependency files first.
 COPY ./frontend/package.json ./frontend/yarn.lock ./
 
-# Install project dependencies.
 RUN yarn install
 
-# Now, copy the rest of the frontend application code.
 COPY ./frontend .
 
-# Build the final static assets.
 RUN yarn build
 
-# Stage 2: Build the backend application and serve it with Nginx.
+# Stage 2: Build the monolithic backend application.
 FROM serversideup/php:beta-8.3.2-fpm-alpine
 
-# Set PHP OpCache to be enabled for performance.
 ENV PHP_OPCACHE_ENABLE=1
 
-# --- OPTIMIZATION: Combine RUN layers ---
-# Install all system dependencies in a single layer.
-RUN apk add --no-cache nodejs yarn nginx supervisor \
-    && install-php-extensions intl
+# Install all system dependencies, including PostgreSQL and Redis.
+RUN apk add --no-cache nodejs yarn nginx supervisor postgresql postgresql-client redis \
+    && install-php-extensions intl pdo_pgsql redis
 
 # Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
 
-# --- OPTIMIZATION: Install Composer dependencies AFTER copying app code ---
-
 # Set the working directory for the backend.
 WORKDIR /app/backend
 
-# Now copy the rest of the backend application code.
-# This ensures the 'artisan' file is available when composer install runs.
+# Copy the rest of the backend application code.
 COPY ./backend .
 
-# Install dependencies. This layer will be cached unless composer files change.
+# Install dependencies.
 RUN composer install \
-        --ignore-platform-reqs \
-        --no-interaction \
-        --no-dev \
-        --optimize-autoloader \
-        --prefer-dist
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-dev \
+    --optimize-autoloader \
+    --prefer-dist
+
+# Configure PostgreSQL: Initialize the database and set permissions.
+RUN /usr/bin/initdb -D /var/lib/postgresql/data \
+    && echo "host all all 0.0.0.0/0 trust" >> /var/lib/postgresql/data/pg_hba.conf \
+    && echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf \
+    && chown -R postgres:postgres /var/lib/postgresql/data \
+    && chmod -R 700 /var/lib/postgresql/data
 
 # Set up permissions for the application.
 RUN mkdir -p /app/backend/bootstrap/cache \
@@ -67,11 +62,11 @@ COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh
 
-# Expose port 80 for Nginx.
-EXPOSE 80
+# Expose ports for Nginx, PostgreSQL, and Redis.
+EXPOSE 80 5432 6379
 
 # Set the final working directory.
 WORKDIR /app
 
-# Set the default command to run the startup script.
+# Set the default command to run the startup script, which starts Supervisor.
 CMD ["/startup.sh"]
