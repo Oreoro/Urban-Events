@@ -35,7 +35,7 @@ services:
 
         command: yarn dev:csr
         environment:
-            VITE_API_URL_CLIENT: 'http://localhost:${API_PORT:-1234}'
+            VITE_API_URL_CLIENT: 'http://xyz-h7eqdsfwhrhjfyh6.uaenorth-01.azurewebsites.net/:${API_PORT:-1234}'
         networks:
             - app
     frontend:
