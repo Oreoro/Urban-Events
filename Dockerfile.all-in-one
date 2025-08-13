@@ -1,12 +1,15 @@
+# ===============================================
 # Stage 1: Build the frontend assets
-FROM node:alpine AS node-frontend
+# ===============================================
+FROM node:18-alpine AS node-frontend
 
 WORKDIR /app/frontend
 
-# Install dependencies first to leverage Docker cache
-# This layer is only rebuilt if package.json or yarn.lock change
+# Copy package.json and yarn.lock first to leverage Docker cache
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN apk add --no-cache yarn && yarn install
+
+# Use a separate RUN command for yarn install
+RUN yarn install
 
 # Copy the rest of the frontend source code
 COPY ./frontend .
@@ -14,51 +17,44 @@ COPY ./frontend .
 # Build the frontend
 RUN yarn build
 
+# ===============================================
+# Stage 2: Build the PHP Backend and Final Production Image
+# ===============================================
+FROM serversideup/php:beta-8.3.2-fpm-alpine AS final
 
-# Stage 2: Create the final production image
-FROM serversideup/php:beta-8.3.2-fpm-alpine
+# Create a non-root user and switch to it for security
+RUN adduser -D -u 1000 myuser
+USER myuser
 
-# Set environment variables
-ENV PHP_OPCACHE_ENABLE=1
-
-# Install system dependencies and PHP extensions
-RUN apk add --no-cache nodejs yarn nginx supervisor redis \
+# Install only necessary runtime dependencies
+RUN apk add --no-cache nginx supervisor redis dos2unix \
     && install-php-extensions intl pdo_pgsql redis gd
 
-# Copy built frontend from the previous stage
-COPY --from=node-frontend /app/frontend /app/frontend
+# Set the working directory for the application
+WORKDIR /app
 
-# Set working directory for the backend
-WORKDIR /app/backend
+# Copy the static assets from the frontend build stage.
+COPY --from=node-frontend --chown=myuser:myuser /app/frontend/build /app/frontend
 
-# Copy composer files and install dependencies to leverage Docker cache
-# This layer is only rebuilt if composer.json or composer.lock change
-COPY ./backend/composer.json ./backend/composer.lock ./
-RUN composer install --ignore-platform-reqs \
-        --no-interaction \
-        --no-scripts \
-        --no-dev \
-        --optimize-autoloader \
-        --prefer-dist
+# Copy composer files for caching and install dependencies
+COPY --chown=myuser:myuser ./backend/composer.json ./backend/composer.lock ./backend/
+RUN composer install --working-dir=/app/backend \
+    --no-interaction \
+    --no-scripts \
+    --no-dev \
+    --optimize-autoloader \
+    --prefer-dist
 
 # Copy the rest of the backend application code
-COPY ./backend .
+COPY --chown=myuser:myuser ./backend /app/backend
 
-# Note: It's best practice to add required packages to your local composer.json
-# and commit the lock file, rather than running `composer require` in the Dockerfile.
-# This command is kept to match the original intent but is only run once.
-RUN composer require league/flysystem-azure-blob-storage
+# Run composer scripts AFTER all code is in place
+RUN composer --working-dir=/app/backend run-script post-install-cmd --no-dev
 
-# Run composer scripts after the application code is present
-RUN composer run-script post-install-cmd --no-dev
-
-# Create necessary directories and set correct permissions for all application files
-# This is done at the end to ensure all files, including vendor files, have correct ownership.
+# Set correct permissions
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
-    && chown -R www-data:www-data /app/backend /app/frontend \
-    && find /app/backend -type d -exec chmod 755 {} \; \
-    && find /app/backend -type f -exec chmod 644 {} \; \
+    && chown -R myuser:myuser /app/backend \
     && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache \
     && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
@@ -68,13 +64,13 @@ COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
 
 # Copy and prepare startup script
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
-RUN dos2unix /startup.sh && chmod +x /startup.sh
+RUN chmod +x /startup.sh
 
 # Expose the port
 EXPOSE 80
 
-# Set the final working directory
-WORKDIR /app
+# Define a health check for the container
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
 
 # Set the container's command
 CMD ["/startup.sh"]
