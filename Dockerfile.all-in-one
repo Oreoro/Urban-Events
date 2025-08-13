@@ -17,7 +17,7 @@ RUN apk add --no-cache nodejs yarn nginx supervisor redis \
     && install-php-extensions intl pdo_pgsql redis gd
 
 # Copy the built frontend assets from the previous stage
-COPY --from=node-frontend /app/frontend/build /app/frontend/build
+COPY --from=node-frontend /app/frontend /app/frontend
 
 # Set the working directory for the backend
 WORKDIR /app/backend
