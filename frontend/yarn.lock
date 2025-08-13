@@ -567,7 +567,7 @@
   resolved "https://registry.yarnpkg.com/@lingui/babel-plugin-extract-messages/-/babel-plugin-extract-messages-4.14.1.tgz#12f5a83bad1f9fef65fc22b8136ebd1052a31add"
   integrity sha512-X/2bKavX5HGaiLyGpGvw98XqrqKuTntD4IdLmwvCOh7c/pgM8u95brONixLFEBeLujba4IF+fvHo0RdlyOFKpg==
 
-"@lingui/cli@4.14.1":
+"@lingui/cli@4.14.1", "@lingui/cli@^4.0.0":
   version "4.14.1"
   resolved "https://registry.yarnpkg.com/@lingui/cli/-/cli-4.14.1.tgz#062acbb088b05d4728890d9beb707a2168d8259e"
   integrity sha512-4DUtjHg5fumZ+hX8bcGYGZw9A6F5JURTMrI8Z6MSkO26OeSHEtPcheGFiPYfNhFeON6fZWZmwgyV9kkb0+psug==
