@@ -21,7 +21,7 @@ ENV PHP_OPCACHE_ENABLE=1
 # Install system dependencies WITHOUT local database servers.
 # Added 'redis' extension for connecting to Azure Cache for Redis.
 RUN apk add --no-cache nodejs yarn nginx supervisor \
-    && install-php-extensions intl pdo_pgsql redis
+    && install-php-extensions intl pdo_pgsql redis gd
 
 # Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
