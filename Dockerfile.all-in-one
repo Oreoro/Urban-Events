@@ -1,48 +1,80 @@
 # Stage 1: Build the frontend assets
 FROM node:alpine AS node-frontend
+
 WORKDIR /app/frontend
-RUN apk add --no-cache yarn
+
+# Install dependencies first to leverage Docker cache
+# This layer is only rebuilt if package.json or yarn.lock change
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN yarn install
+RUN apk add --no-cache yarn && yarn install
+
+# Copy the rest of the frontend source code
 COPY ./frontend .
+
+# Build the frontend
 RUN yarn build
 
-# Stage 2: Build the final cloud-ready application image
+
+# Stage 2: Create the final production image
 FROM serversideup/php:beta-8.3.2-fpm-alpine
 
+# Set environment variables
 ENV PHP_OPCACHE_ENABLE=1
 
-# Install system dependencies and all required PHP extensions
+# Install system dependencies and PHP extensions
 RUN apk add --no-cache nodejs yarn nginx supervisor redis \
     && install-php-extensions intl pdo_pgsql redis gd
 
-# Copy the built frontend assets from the previous stage
+# Copy built frontend from the previous stage
 COPY --from=node-frontend /app/frontend /app/frontend
 
-# Set the working directory for the backend
+# Set working directory for the backend
 WORKDIR /app/backend
+
+# Copy composer files and install dependencies to leverage Docker cache
+# This layer is only rebuilt if composer.json or composer.lock change
+COPY ./backend/composer.json ./backend/composer.lock ./
+RUN composer install --ignore-platform-reqs \
+        --no-interaction \
+        --no-scripts \
+        --no-dev \
+        --optimize-autoloader \
+        --prefer-dist
 
 # Copy the rest of the backend application code
 COPY ./backend .
 
-# Install Composer dependencies and the Azure Storage driver
-RUN composer install --no-interaction --no-dev --optimize-autoloader --prefer-dist
+# Note: It's best practice to add required packages to your local composer.json
+# and commit the lock file, rather than running `composer require` in the Dockerfile.
+# This command is kept to match the original intent but is only run once.
 RUN composer require league/flysystem-azure-blob-storage
 
-# Set up application permissions
-RUN mkdir -p /app/backend/bootstrap/cache /app/backend/storage \
-    && chown -R www-data:www-data /app/backend \
+# Run composer scripts after the application code is present
+RUN composer run-script post-install-cmd --no-dev
+
+# Create necessary directories and set correct permissions for all application files
+# This is done at the end to ensure all files, including vendor files, have correct ownership.
+RUN mkdir -p /app/backend/bootstrap/cache \
+    && mkdir -p /app/backend/storage \
+    && chown -R www-data:www-data /app/backend /app/frontend \
     && find /app/backend -type d -exec chmod 755 {} \; \
     && find /app/backend -type f -exec chmod 644 {} \; \
-    && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache
+    && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache \
+    && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
-# Copy configuration and startup scripts
+# Copy configuration files
 COPY ./docker/all-in-one/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
+
+# Copy and prepare startup script
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh
 
-# Expose only the HTTP port
+# Expose the port
 EXPOSE 80
+
+# Set the final working directory
 WORKDIR /app
+
+# Set the container's command
 CMD ["/startup.sh"]
