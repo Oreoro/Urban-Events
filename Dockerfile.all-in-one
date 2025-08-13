@@ -18,15 +18,11 @@ COPY ./frontend .
 RUN yarn build
 
 # ===============================================
-# Stage 2: Build the PHP Backend and Final Production Image
+# Stage 2: Build the PHP Backend and Final Production Image (as root)
 # ===============================================
 FROM serversideup/php:beta-8.3.2-fpm-alpine AS final
 
-# Create a non-root user and switch to it for security
-RUN adduser -D -u 1000 myuser
-USER myuser
-
-# Install only necessary runtime dependencies
+# Install all necessary runtime dependencies while running as root.
 RUN apk add --no-cache nginx supervisor redis dos2unix \
     && install-php-extensions intl pdo_pgsql redis gd
 
@@ -34,10 +30,11 @@ RUN apk add --no-cache nginx supervisor redis dos2unix \
 WORKDIR /app
 
 # Copy the static assets from the frontend build stage.
-COPY --from=node-frontend --chown=myuser:myuser /app/frontend/build /app/frontend
+# Permissions are set for www-data as it's the user Nginx/FPM will use.
+COPY --from=node-frontend /app/frontend/build /app/frontend
 
 # Copy composer files for caching and install dependencies
-COPY --chown=myuser:myuser ./backend/composer.json ./backend/composer.lock ./backend/
+COPY ./backend/composer.json ./backend/composer.lock ./backend/
 RUN composer install --working-dir=/app/backend \
     --no-interaction \
     --no-scripts \
@@ -46,15 +43,16 @@ RUN composer install --working-dir=/app/backend \
     --prefer-dist
 
 # Copy the rest of the backend application code
-COPY --chown=myuser:myuser ./backend /app/backend
+COPY ./backend /app/backend
 
-# Run composer scripts AFTER all code is in place
+# Run composer scripts after all code is in place
 RUN composer --working-dir=/app/backend run-script post-install-cmd --no-dev
 
-# Set correct permissions
+# Set correct permissions for the web server user (www-data).
+# Even though the container runs as root, these permissions are crucial for the web server.
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
-    && chown -R myuser:myuser /app/backend \
+    && chown -R www-data:www-data /app/backend \
     && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache \
     && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
