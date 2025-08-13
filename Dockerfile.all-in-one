@@ -1,4 +1,4 @@
-# Stage 1: Build the frontend assets.
+# Stage 1: Build the frontend assets. (This stage is unchanged and correct)
 FROM node:alpine AS node-frontend
 
 WORKDIR /app/frontend
@@ -13,15 +13,15 @@ COPY ./frontend .
 
 RUN yarn build
 
-# Stage 2: Build the monolithic backend application.
+# Stage 2: Build the final cloud-ready application image.
 FROM serversideup/php:beta-8.3.2-fpm-alpine
 
 ENV PHP_OPCACHE_ENABLE=1
 
-# Install all system dependencies, including PostgreSQL and Redis.
-# This is a key step for a monolithic container.
-RUN apk add --no-cache nodejs yarn nginx supervisor  \
-    && install-php-extensions intl pdo_pgsql
+# Install system dependencies WITHOUT local database servers.
+# Added 'redis' extension for connecting to Azure Cache for Redis.
+RUN apk add --no-cache nodejs yarn nginx supervisor \
+    && install-php-extensions intl pdo_pgsql redis
 
 # Copy the built frontend assets from the previous stage.
 COPY --from=node-frontend /app/frontend /app/frontend
@@ -32,7 +32,7 @@ WORKDIR /app/backend
 # Copy the rest of the backend application code.
 COPY ./backend .
 
-# Install dependencies.
+# Install Composer dependencies.
 RUN composer install \
     --ignore-platform-reqs \
     --no-interaction \
@@ -40,15 +40,17 @@ RUN composer install \
     --optimize-autoloader \
     --prefer-dist
 
+# Install the driver for Azure Blob Storage.
+RUN composer require league/flysystem-azure-blob-storage
 
-# Set up permissions for the application.
+# Set up permissions for the application. (This block is unchanged and correct)
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
     && chown -R www-data:www-data /app/backend \
     && find /app/backend -type d -exec chmod 755 {} \; \
     && find /app/backend -type f -exec chmod 644 {} \; \
-    && chmod -R 755 /app/backend/storage /app/backend/bootstrap/cache \
-    && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
+    && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache \
+    && chmod -R 775 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
 
 # Copy Nginx and Supervisor configuration files.
 COPY ./docker/all-in-one/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -58,8 +60,8 @@ COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh
 
-# Expose ports for Nginx, PostgreSQL, and Redis.
-EXPOSE 80 
+# Expose only the HTTP port. All other services are external.
+EXPOSE 80
 
 # Set the final working directory.
 WORKDIR /app
