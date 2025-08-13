@@ -20,7 +20,7 @@ ENV PHP_OPCACHE_ENABLE=1
 
 # Install all system dependencies, including PostgreSQL and Redis.
 # This is a key step for a monolithic container.
-RUN apk add --no-cache nodejs yarn nginx supervisor postgresql postgresql-client \
+RUN apk add --no-cache nodejs yarn nginx supervisor  \
     && install-php-extensions intl pdo_pgsql
 
 # Copy the built frontend assets from the previous stage.
@@ -40,14 +40,6 @@ RUN composer install \
     --optimize-autoloader \
     --prefer-dist
 
-# Configure PostgreSQL: Initialize the database and set permissions.
-# This block is now executed as the 'postgres' user, which is essential for initdb.
-RUN mkdir -p /var/lib/postgresql/data \
-    && chown -R postgres:postgres /var/lib/postgresql/data \
-    && su postgres -c "/usr/bin/initdb -D /var/lib/postgresql/data" \
-    && echo "host all all 0.0.0.0/0 trust" >> /var/lib/postgresql/data/pg_hba.conf \
-    && echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf \
-    && chmod -R 700 /var/lib/postgresql/data
 
 # Set up permissions for the application.
 RUN mkdir -p /app/backend/bootstrap/cache \
@@ -67,7 +59,7 @@ COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh
 
 # Expose ports for Nginx, PostgreSQL, and Redis.
-EXPOSE 80 5432 6379 6380 1234 1025 5173 9000
+EXPOSE 80 
 
 # Set the final working directory.
 WORKDIR /app
