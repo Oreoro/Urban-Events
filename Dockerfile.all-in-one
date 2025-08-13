@@ -27,8 +27,7 @@ COPY ./backend .
 
 # Install Composer dependencies and the Azure Storage driver
 RUN composer install --no-interaction --no-dev --optimize-autoloader --prefer-dist
-RUN composer require league/flysystem-azure-blob-storage
-
+RUN composer require azure-oss/storage-blob-flysystem
 # Set up application permissions
 RUN mkdir -p /app/backend/bootstrap/cache /app/backend/storage \
     && chown -R www-data:www-data /app/backend \
