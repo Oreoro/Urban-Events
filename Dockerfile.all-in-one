@@ -1,74 +1,48 @@
-# ===============================================
 # Stage 1: Build the frontend assets
-# ===============================================
-FROM node:18-alpine AS node-frontend
-
+FROM node:alpine AS node-frontend
 WORKDIR /app/frontend
-
-# Copy package.json and yarn.lock first to leverage Docker cache
+RUN apk add --no-cache yarn
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-
-# Use a separate RUN command for yarn install
 RUN yarn install
-
-# Copy the rest of the frontend source code
 COPY ./frontend .
-
-# Build the frontend
 RUN yarn build
 
-# ===============================================
-# Stage 2: Build the PHP Backend and Final Production Image (as root)
-# ===============================================
-FROM serversideup/php:beta-8.3.2-fpm-alpine AS final
+# Stage 2: Build the final cloud-ready application image
+FROM serversideup/php:beta-8.3.2-fpm-alpine
 
-# Install all necessary runtime dependencies while running as root.
-RUN apk add --no-cache nginx supervisor redis dos2unix \
+ENV PHP_OPCACHE_ENABLE=1
+
+# Install system dependencies and all required PHP extensions
+RUN apk add --no-cache nodejs yarn nginx supervisor redis \
     && install-php-extensions intl pdo_pgsql redis gd
 
-# Set the working directory for the application
-WORKDIR /app
+# Copy the built frontend assets from the previous stage
+COPY --from=node-frontend /app/frontend/dist /app/frontend/dist
 
-# Copy the static assets from the frontend build stage.
-# Permissions are set for www-data as it's the user Nginx/FPM will use.
-COPY --from=node-frontend /app/frontend/build /app/frontend
-
-# Copy composer files for caching and install dependencies
-COPY ./backend/composer.json ./backend/composer.lock ./backend/
-RUN composer install --working-dir=/app/backend \
-    --no-interaction \
-    --no-scripts \
-    --no-dev \
-    --optimize-autoloader \
-    --prefer-dist
+# Set the working directory for the backend
+WORKDIR /app/backend
 
 # Copy the rest of the backend application code
-COPY ./backend /app/backend
+COPY ./backend .
 
-# Run composer scripts after all code is in place
-RUN composer --working-dir=/app/backend run-script post-install-cmd --no-dev
+# Install Composer dependencies and the Azure Storage driver
+RUN composer install --no-interaction --no-dev --optimize-autoloader --prefer-dist
+RUN composer require league/flysystem-azure-blob-storage
 
-# Set correct permissions for the web server user (www-data).
-# Even though the container runs as root, these permissions are crucial for the web server.
-RUN mkdir -p /app/backend/bootstrap/cache \
-    && mkdir -p /app/backend/storage \
+# Set up application permissions
+RUN mkdir -p /app/backend/bootstrap/cache /app/backend/storage \
     && chown -R www-data:www-data /app/backend \
-    && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache \
-    && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
+    && find /app/backend -type d -exec chmod 755 {} \; \
+    && find /app/backend -type f -exec chmod 644 {} \; \
+    && chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache
 
-# Copy configuration files
+# Copy configuration and startup scripts
 COPY ./docker/all-in-one/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf
-
-# Copy and prepare startup script
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
-RUN chmod +x /startup.sh
+RUN dos2unix /startup.sh && chmod +x /startup.sh
 
-# Expose the port
+# Expose only the HTTP port
 EXPOSE 80
-
-# Define a health check for the container
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
-
-# Set the container's command
+WORKDIR /app
 CMD ["/startup.sh"]
