@@ -1,5 +1,6 @@
 import {Event, IdParam, ImageType, Organizer, Image} from "../types.ts";
 import {getConfig} from "./config.ts";
+import {getAzureStorageUrl, getDefaultImageUrl} from "./azureStorage.ts";
 
 export const eventCheckoutPath = (eventId: IdParam, orderShortId: IdParam, subPage = '') => {
     return `/checkout/${eventId}/${orderShortId}/${subPage}`;
@@ -31,14 +32,19 @@ export const eventCoverImageUrl = (event: Event) => {
 
 export const imageUrl = (imageType: ImageType, images?: Image[], fallbackUrl?: string) => {
     if (!images || images.length === 0) {
-        return fallbackUrl || getConfig('VITE_DEFAULT_IMAGE_URL');
+        return fallbackUrl || getDefaultImageUrl();
     }
 
     const image = images.find((img) => img.type === imageType);
     if (image) {
-        return image.url;
+        // If the image URL is from Azure Storage, return as is
+        // Otherwise, construct the full Azure Storage URL
+        if (image.url && (image.url.startsWith('http://') || image.url.startsWith('https://'))) {
+            return image.url;
+        }
+        return getAzureStorageUrl(image.url || '');
     }
-    return fallbackUrl || getConfig('VITE_DEFAULT_IMAGE_URL');
+    return fallbackUrl || getDefaultImageUrl();
 }
 
 export const organizerPreviewPath = (organizerId: IdParam) => {
