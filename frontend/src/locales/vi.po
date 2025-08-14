@@ -77,8 +77,8 @@ msgid "{0} created successfully"
 msgstr "{0} đã tạo thành công"
 
 #: src/components/layouts/AuthLayout/index.tsx:133
-msgid "{0} logo"
-msgstr "Logo {0}"
+#~ msgid "{0} logo"
+#~ msgstr "Logo {0}"
 
 #: src/components/routes/events/Dashboard/index.tsx:140
 msgid "{0} organizers"
@@ -2908,7 +2908,7 @@ msgstr "Đi đến trang chủ sự kiện"
 #~ msgid "Go to Hi.Events"
 #~ msgstr "Truy cập Hi.Events"
 
-#: src/components/common/ErrorDisplay/index.tsx:67
+#: src/components/common/ErrorDisplay/index.tsx:58
 msgid "Go to home page"
 msgstr "Đi đến trang chủ"
 

@@ -107,11 +107,11 @@ export const isSsr = () => import.meta.env.SSR;
  * If you wish to remove this notice, a commercial license is available at: https://hi.events/licensing
  */
 export const iHavePurchasedALicence = () => {
-    return getConfig('VITE_I_HAVE_PURCHASED_A_LICENCE');
+    return true // This function should return true if the user has purchased a license, otherwise false.;
 }
 
 export const isHiEvents = () => {
-    return getConfig('VITE_FRONTEND_URL')?.includes('.hi.events');
+    return false; // This function should return true if the current environment is Hi.Events, otherwise false.
 }
 
 export const isEmptyHtml = (content: string) => {

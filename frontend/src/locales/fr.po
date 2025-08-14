@@ -73,8 +73,8 @@ msgid "{0} created successfully"
 msgstr "{0} créé avec succès"
 
 #: src/components/layouts/AuthLayout/index.tsx:133
-msgid "{0} logo"
-msgstr "Logo {0}"
+#~ msgid "{0} logo"
+#~ msgstr "Logo {0}"
 
 #: src/components/routes/events/Dashboard/index.tsx:140
 msgid "{0} organizers"
@@ -3121,7 +3121,7 @@ msgstr "Aller à la page d'accueil de l'événement"
 #~ msgid "Go to Hi.Events"
 #~ msgstr "Aller sur Hi.Events"
 
-#: src/components/common/ErrorDisplay/index.tsx:67
+#: src/components/common/ErrorDisplay/index.tsx:58
 msgid "Go to home page"
 msgstr "Aller à la page d'accueil"
 
