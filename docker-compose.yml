@@ -65,6 +65,10 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - REDIS_URL=${REDIS_URL}
+      - NEEM_BASE_URL=${NEEM_BASE_URL}
+      - NEEM_BASE_TOKEN=${NEEM_BASE_TOKEN}
+      - NEEM_DECRYPTION_KEY=${NEEM_DECRYPTION_KEY}
+      - APPLICATION_FEE= ${APPLICATION_FEE}
       
     depends_on: [] # No local dependencies
 
