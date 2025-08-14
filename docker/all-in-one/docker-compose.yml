@@ -18,7 +18,7 @@ services:
       - VITE_API_URL_CLIENT=https://xyz-h7eqdsfwhrhjfyh6.uaenorth-01.azurewebsites.net/api
       - VITE_API_URL_SERVER=https://xyz-h7eqdsfwhrhjfyh6.uaenorth-01.azurewebsites.net/api
       - VITE_STRIPE_PUBLISHABLE_KEY=
-      - VITE_APP_NAME=Urban Events
+      - VITE_APP_NAME=Urban-Events
 
       # Backend and Application Settings
       - LOG_CHANNEL=stderr
