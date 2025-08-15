@@ -20,12 +20,13 @@ export const getAzureStorageUrl = (imagePath: string): string => {
         return imagePath;
     }
     
-    // // If it's a relative path, construct the full Azure Storage URL
-    // if (imagePath.startsWith('/')) {
-    //     imagePath = imagePath.substring(1); // Remove leading slash
-    // }
+    // If it's a relative path, construct the full Azure Storage URL
+    if (imagePath.startsWith('/')) {
+        imagePath = imagePath.substring(1); // Remove leading slash
+    }
     
     let fullUrl = `${azureStorageUrl}/${azureStorageContainer}/${imagePath}`;
+    console.log("Constructed Blob URL:", fullUrl);
     
     // Add SAS token if provided
     if (sasToken) {
