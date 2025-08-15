@@ -10,7 +10,7 @@ import {getConfig} from "./config.ts";
  * @returns The full Azure Storage URL with authentication
  */
 export const getAzureStorageUrl = (imagePath: string): string => {
-    const azureStorageUrl = getConfig('VITE_AZURE_STORAGE_URL', 'https://urbanevents.blob.core.windows.net');
+    const azureStorageUrl = getConfig('VITE_AZURE_STORAGE_URL', 'https://urbanevents.blob.core.windows.net/urbanevents');
     const azureStorageContainer = getConfig('VITE_AZURE_STORAGE_CONTAINER', 'urbanevents');
     const sasToken = getConfig('VITE_AZURE_STORAGE_SAS_TOKEN');
     const isPublicAccess = getConfig('VITE_AZURE_STORAGE_PUBLIC_ACCESS') === 'true';
