@@ -59,7 +59,7 @@ services:
       - FILESYSTEM_PRIVATE_DISK=azure
       - AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=urbanevents;AccountKey=+ewwZnty1vodP38V5qmHrMrqg52vHG1+iSYZRwfHpWj6GSFr3TKg9ei/R822iB72IOmh1Ea3Ql5r+ASt6tlBxA==;EndpointSuffix=core.windows.net
       - AZURE_STORAGE_CONTAINER=urbanevents
-      - AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net/urbanevents
+      - AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net
 
       # Database Settings (Azure PostgreSQL)
       - DATABASE_URL=pgsql://urbanevents:Pakistan@2025@urban-events-db.postgres.database.azure.com:5432/postgres
@@ -81,6 +81,6 @@ services:
       - REDIS_PORT=6380
       - REDIS_URL=redis://:oNO47ipAuGf9amZtaFBrqVhZllvCpNR1zAzCaFWiFRw=@urbanevents.redis.cache.windows.net:6380/0?ssl=true
 
-      - VITE_AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net/urbanevents
+      - VITE_AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net
       - VITE_AZURE_STORAGE_CONTAINER=urbanevents
       - VITE_AZURE_STORAGE_PUBLIC_ACCESS=true
