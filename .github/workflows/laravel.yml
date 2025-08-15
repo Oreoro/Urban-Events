@@ -20,6 +20,16 @@ jobs:
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Install Composer
+      run: |
+        curl -sS https://getcomposer.org/installer | php
+        sudo mv composer.phar /usr/local/bin/composer
+
+    - name: Install PHP Dependencies
+      run: |
+        cd backend
+        composer install --prefer-dist --no-dev  # Install composer dependencies
+    
     - name: Generate key
       run: |
         cd backend
