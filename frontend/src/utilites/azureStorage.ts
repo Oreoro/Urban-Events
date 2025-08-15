@@ -15,12 +15,8 @@ export const getAzureStorageUrl = (imagePath: string): string => {
     const sasToken = getConfig('VITE_AZURE_STORAGE_SAS_TOKEN');
     const isPublicAccess = getConfig('VITE_AZURE_STORAGE_PUBLIC_ACCESS') === 'true';
     
-    // If it's already a full URL, return as is
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-        return imagePath;
-    }
-    
-    // If it's a relative path, construct the full Azure Storage URL
+  
+  // If it's a relative path, construct the full Azure Storage URL
     if (imagePath.startsWith('/')) {
         imagePath = imagePath.substring(1); // Remove leading slash
     }
