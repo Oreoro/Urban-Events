@@ -48,14 +48,6 @@ export const GlobalMenu = () => {
         })
     }
 
-    if (!getConfig("VITE_HIDE_ABOUT_LINK")) {
-        links.push({
-            label: `About & Support`,
-            icon: IconLifebuoy,
-            onClick: openAboutModal,
-        });
-    }
-
     links.push({
         label: t`Create Organizer`,
         icon: IconPlus,
