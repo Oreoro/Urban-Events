@@ -70,6 +70,8 @@ services:
       - NEEM_PARTNER_ID=${NEEM_PARTNER_ID}
       - NEEM_DECRYPTION_KEY=${NEEM_DECRYPTION_KEY}
       - APPLICATION_FEE= ${APPLICATION_FEE}
+      - VITE_TOS_URL=${VITE_TOS_URL}
+      - VITE_PRIVACY_URL=${VITE_PRIVACY_URL}
       
     depends_on: [] # No local dependencies
 
