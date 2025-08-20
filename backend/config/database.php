@@ -21,8 +21,8 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'verify-ca',
-            'sslrootcert' => env('DB_SSLCERT'),
+            'sslmode' => 'prefer',
+        
         ],
     ],
 
