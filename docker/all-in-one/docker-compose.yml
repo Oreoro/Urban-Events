@@ -62,13 +62,14 @@ services:
       - AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net
 
       # Database Settings (Azure PostgreSQL)
-      - DATABASE_URL=pgsql://urbanevents:Pakistan@2025@urban-events-db.postgres.database.azure.com:5432/postgres
+      - DATABASE_URL=postgresql://urbanevents:Pakistan%402025@urban-events-db.postgres.database.azure.com:5432/postgres
       - DB_CONNECTION=pgsql
       - DB_HOST=urban-events-db.postgres.database.azure.com
       - DB_PORT=5432
       - DB_DATABASE=postgres
       - DB_USERNAME=urbanevents
       - DB_PASSWORD=Pakistan@2025
+      - DB_SSLCERT=test
 
       # Stripe Settings
       - STRIPE_PUBLIC_KEY=testkey123
@@ -84,4 +85,4 @@ services:
       - VITE_AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net/urbanevents
       - VITE_AZURE_STORAGE_CONTAINER=urbanevents
       - VITE_AZURE_STORAGE_PUBLIC_ACCESS=true
-      - DB_SSLCERT=test
+
