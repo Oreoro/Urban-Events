@@ -85,4 +85,5 @@ services:
       - VITE_AZURE_STORAGE_URL=https://urbanevents.blob.core.windows.net/urbanevents
       - VITE_AZURE_STORAGE_CONTAINER=urbanevents
       - VITE_AZURE_STORAGE_PUBLIC_ACCESS=true
-
+      - DB_SSL_ROOT_CERT=/app/backend/certs/DigiCertGlobalRootG2.pem
+      - DB_SSLMODE=verify-full

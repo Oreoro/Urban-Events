@@ -1,4 +1,3 @@
-
 FROM node:alpine AS node-frontend
 
 WORKDIR /app/frontend
@@ -18,11 +17,16 @@ ENV PHP_OPCACHE_ENABLE=1
 RUN apk add --no-cache nodejs yarn nginx supervisor redis \
     && install-php-extensions intl pdo_pgsql redis gd
 
-
-
 COPY --from=node-frontend /app/frontend /app/frontend
 
 COPY ./backend /app/backend
+
+# --- MODIFIED LINES START ---
+# Explicitly copy the certificate from its new path and set ownership.
+COPY ./backend/certs /app/backend/certs
+RUN chown -R www-data:www-data /app/backend/certs
+# --- MODIFIED LINES END ---
+
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
     && chown -R www-data:www-data /app/backend \
