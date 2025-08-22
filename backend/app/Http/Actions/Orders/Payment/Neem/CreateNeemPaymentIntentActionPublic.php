@@ -31,8 +31,8 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
 
             $neem_base_url = env('NEEM_BASE_URL');
             $base_token = 'Basic '.env('NEEM_BASE_TOKEN');
-            $neen_partner_id = env('NEEM_PARTNER_ID');
-            $neen_redirect_url = env('APP_FRONTEND_URL').'/checkout/'.$eventId.'/'.$orderShortId.'/payment_return';
+            $neem_partner_id = env('NEEM_PARTNER_ID');
+            $neem_redirect_url = env('APP_FRONTEND_URL').'/checkout/'.$eventId.'/'.$orderShortId.'/payment_return';
 
             // 1. Get OAuth2 token
             $authResponse = $this->httpClient->request('POST', $neem_base_url.'/v1/oauth2/token', [
@@ -67,7 +67,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                             "Currency" => $order->getCurrency(),
                         ],
                         "Scheme" => "POD",
-                        "callBackUrl" => $neen_redirect_url
+                        "callBackUrl" => $neem_redirect_url
                     ]
                 ],
                 "ExtendedProperties" => []
@@ -77,7 +77,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
             $initiateResponse = $this->httpClient->request('POST', $neem_base_url.'/v2/pod/initiate', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $accessToken,
-                    'X-Neem-Partner-Id' => $neen_partner_id,
+                    'X-Neem-Partner-Id' => $neem_partner_id,
                     'Content-Type' => 'application/json',
                 ],
                 'json' => $requestData
