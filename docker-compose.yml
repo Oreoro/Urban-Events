@@ -72,8 +72,12 @@ services:
       - APPLICATION_FEE= ${APPLICATION_FEE}
       - VITE_TOS_URL=${VITE_TOS_URL}
       - VITE_PRIVACY_URL=${VITE_PRIVACY_URL}
-      
-    depends_on: [] # No local dependencies
+      - DB_SSL_ROOT_CERT=${DB_SSL_ROOT_CERT}
+      - DB_SSLMODE=${DB_SSLMODE}
+      - VITE_AZURE_STORAGE_URL=${VITE_AZURE_STORAGE_URL}
+      - VITE_AZURE_STORAGE_CONTAINER=${VITE_AZURE_STORAGE_CONTAINER}
+      - VITE_AZURE_STORAGE_PUBLIC_ACCESS=${VITE_AZURE_STORAGE_PUBLIC_ACCESS}
+      - VITE_AZURE_STORAGE_ACCOUNT_NAME=${VITE_AZURE_STORAGE_ACCOUNT_NAME}
 
 # You no longer need the local postgres, redis, networks, or volumes sections
 # as they will be managed as external Azure services.
