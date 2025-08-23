@@ -1713,7 +1713,7 @@ msgstr "Tạo sự kiện"
 msgid "Create new"
 msgstr "Tạo mới"
 
-#: src/components/common/GlobalMenu/index.tsx:60
+#: src/components/common/GlobalMenu/index.tsx:52
 #: src/components/modals/CreateEventModal/index.tsx:138
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -3439,7 +3439,7 @@ msgstr "Logo và ảnh bìa cho nhà tổ chức của bạn"
 msgid "Logo will be displayed in the header"
 msgstr "Logo sẽ được hiển thị trong phần đầu trang"
 
-#: src/components/common/GlobalMenu/index.tsx:69
+#: src/components/common/GlobalMenu/index.tsx:61
 msgid "Logout"
 msgstr "Đăng xuất"
 

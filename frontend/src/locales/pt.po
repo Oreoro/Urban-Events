@@ -1840,7 +1840,7 @@ msgstr "Criar Evento"
 msgid "Create new"
 msgstr "Crie um novo"
 
-#: src/components/common/GlobalMenu/index.tsx:60
+#: src/components/common/GlobalMenu/index.tsx:52
 #: src/components/modals/CreateEventModal/index.tsx:138
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -3715,7 +3715,7 @@ msgstr "Logo e imagem de capa para seu organizador"
 msgid "Logo will be displayed in the header"
 msgstr "O logo será exibido no cabeçalho"
 
-#: src/components/common/GlobalMenu/index.tsx:69
+#: src/components/common/GlobalMenu/index.tsx:61
 msgid "Logout"
 msgstr "Sair"
 

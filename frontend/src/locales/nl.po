@@ -1910,7 +1910,7 @@ msgstr "Evenement creëren"
 msgid "Create new"
 msgstr "Nieuw maken"
 
-#: src/components/common/GlobalMenu/index.tsx:60
+#: src/components/common/GlobalMenu/index.tsx:52
 #: src/components/modals/CreateEventModal/index.tsx:138
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -3854,7 +3854,7 @@ msgstr "Logo en omslagafbeelding voor je organisator"
 msgid "Logo will be displayed in the header"
 msgstr "Het logo wordt weergegeven in de koptekst"
 
-#: src/components/common/GlobalMenu/index.tsx:69
+#: src/components/common/GlobalMenu/index.tsx:61
 msgid "Logout"
 msgstr "Afmelden"
 

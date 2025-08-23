@@ -1838,7 +1838,7 @@ msgstr "創建活動"
 msgid "Create new"
 msgstr "創建新的"
 
-#: src/components/common/GlobalMenu/index.tsx:60
+#: src/components/common/GlobalMenu/index.tsx:52
 #: src/components/modals/CreateEventModal/index.tsx:138
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -3713,7 +3713,7 @@ msgstr "您主辦單位的標誌與封面圖片"
 msgid "Logo will be displayed in the header"
 msgstr "標誌將顯示於頁首"
 
-#: src/components/common/GlobalMenu/index.tsx:69
+#: src/components/common/GlobalMenu/index.tsx:61
 msgid "Logout"
 msgstr "註銷"
 

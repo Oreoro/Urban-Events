@@ -450,9 +450,6 @@ const Welcome = () => {
         <div className={classes.welcomeContainer}>
             <Container size="sm" className={classes.welcomeContent}>
                 <div className={classes.welcomeHeader}>
-                    <div className={classes.logo}>
-                        <img src="/logo-text-only-white-text.png" alt="hi.events"/>
-                    </div>
                     <h1 className={classes.welcomeTitle}>
                         <Trans>
                             Welcome to {getConfig("VITE_APP_NAME", "Hi.Events")}, {userData?.first_name} 👋
