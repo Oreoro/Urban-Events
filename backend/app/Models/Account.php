@@ -34,13 +34,4 @@ class Account extends BaseModel
             foreignKey: 'account_configuration_id',
         );
     }
-
-    protected function getFillableFields(): array
-    {
-        return [
-            'name',
-            'currency_code',
-            'timezone',
-        ];
-    }
 }
