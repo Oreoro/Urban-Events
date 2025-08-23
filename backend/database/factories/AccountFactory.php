@@ -19,13 +19,11 @@ class AccountFactory extends Factory
      */
     public function definition(): array
     {
-        $currencies = include base_path('data/currencies.php');
-
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'timezone' => fake()->timezone(),
-            'currency_code' => fake()->randomElement(array_values($currencies)),
+            'timezone' => 'Asia/Karachi',
+            'currency_code' => 'PKR',
             'short_id' => IdHelper::shortId(IdHelper::ACCOUNT_PREFIX),
             'account_configuration_id' => 1, // Default account configuration is first entry
         ];

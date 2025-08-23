@@ -61,7 +61,7 @@ create table if not exists failed_jobs
 create table if not exists accounts
 (
     id                            bigint generated always as identity,
-    currency_code                 varchar(3) default 'USD'::character varying not null,
+    currency_code                 varchar(3) default 'PKR'::character varying not null,
     timezone                      varchar(255),
     created_at                    timestamp,
     updated_at                    timestamp,
@@ -208,7 +208,7 @@ create table if not exists organizers
     created_at  timestamp                                   not null,
     updated_at  timestamp                                   not null,
     deleted_at  timestamp,
-    currency    varchar(3) default 'USD'::character varying not null,
+    currency    varchar(3) default 'PKR'::character varying not null,
     timezone    varchar(255)                                not null,
     primary key (id),
     foreign key (account_id) references accounts
@@ -225,7 +225,7 @@ create table if not exists events
     description               text,
     status                    varchar,
     location_details          jsonb,
-    currency                  varchar(3) default 'USD'::character varying not null,
+    currency                  varchar(3) default 'PKR'::character varying not null,
     timezone                  varchar,
     attributes                jsonb,
     created_at                timestamp                                   not null,
