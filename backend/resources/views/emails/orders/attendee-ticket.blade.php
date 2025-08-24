@@ -1,4 +1,4 @@
-@php use HiEvents\Helper\DateHelper; @endphp
+@php use HiEvents\Helper\DateHelper; use Carbon\Carbon; @endphp
 @php /** @uses \HiEvents\Mail\Order\OrderSummary */ @endphp
 @php /** @var \HiEvents\DomainObjects\EventDomainObject $event */ @endphp
 @php /** @var \HiEvents\DomainObjects\EventSettingDomainObject $eventSettings */ @endphp
@@ -23,6 +23,24 @@
 @endif
 
 {{ __('Please find your ticket details below.') }}
+
+# {{ __('Ticket Details') }}
+**{{ __('Ticket Holder:') }}** {{ $attendee->getFullName() }}
+<br>
+**{{ __('Email:') }}** {{ $attendee->getEmail() }}
+<br>
+**{{ __('Ticket Type:') }}** {{ $attendee->getProduct()?->getTitle() ?? __('N/A') }}
+<br>
+**{{ __('Ticket ID:') }}** {{ $attendee->getPublicId() }}
+
+# {{ __('Event Information') }}
+**{{ __('Event:') }}** {{ $event->getTitle() }}
+<br>
+**{{ __('Date & Time:') }}** {{ (new Carbon(DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone())))->format('F j, Y') }} at {{ (new Carbon(DateHelper::convertFromUTC($event->getStartDate(), $event->getTimezone())))->format('g:i A') }}
+@if($eventSettings->getLocationDetails())
+<br>
+**{{ __('Location:') }}** {{ $eventSettings->getAddressString() }}
+@endif
 
 <x-mail::button :url="$ticketUrl">
 {{ __('View Ticket') }}

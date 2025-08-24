@@ -9,6 +9,9 @@ use HiEvents\DomainObjects\InvoiceDomainObject;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrderItemDomainObject;
 use HiEvents\DomainObjects\OrganizerDomainObject;
+use HiEvents\DomainObjects\ProductDomainObject;
+use HiEvents\DomainObjects\ProductPriceDomainObject;
+use HiEvents\DomainObjects\Generated\ProductDomainObjectAbstract;
 use HiEvents\Mail\Order\OrderFailed;
 use HiEvents\Mail\Order\OrderSummary;
 use HiEvents\Mail\Organizer\OrderSummaryForOrganizer;
@@ -33,7 +36,20 @@ class SendOrderDetailsService
     {
         $order = $this->orderRepository
             ->loadRelation(OrderItemDomainObject::class)
-            ->loadRelation(AttendeeDomainObject::class)
+            ->loadRelation(new Relationship(
+                domainObject: AttendeeDomainObject::class,
+                nested: [
+                    new Relationship(
+                        domainObject: ProductDomainObject::class,
+                        nested: [
+                            new Relationship(
+                                domainObject: ProductPriceDomainObject::class,
+                            )
+                        ],
+                        name: ProductDomainObjectAbstract::SINGULAR_NAME,
+                    )
+                ],
+            ))
             ->loadRelation(InvoiceDomainObject::class)
             ->findById($order->getId());
 
