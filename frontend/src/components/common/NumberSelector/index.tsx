@@ -16,8 +16,9 @@ interface NumberSelectorProps extends TextInputProps {
 
 export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}: NumberSelectorProps) => {
     const handlers = useRef<NumberInputHandlers>(null);
-    // Start with 0, ensuring it's treated as number for consistency
-    const [value, setValue] = useState<number>(0);
+    // Get initial value from form, defaulting to 0 for consistency with existing behavior
+    const initialValue = _.get(formInstance.values, fieldName) || 0;
+    const [value, setValue] = useState<number>(initialValue);
 
     const minValue = min || 0;
     const maxValue = max || 100;
@@ -31,10 +32,10 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
     useEffect(() => {
         // to handle application promo code after updating the quantity
         const formValue = _.get(formInstance.values, fieldName)
-        if (formValue !== value) {
-            formInstance.setFieldValue(fieldName, value);
+        if (formValue !== undefined && formValue !== value) {
+            setValue(formValue);
         }
-    }, [formInstance.values]);
+    }, [formInstance.values, fieldName, value]);
 
     const increment = () => {
         // Adjust from 0 to minValue on the first increment, if minValue is greater than 0

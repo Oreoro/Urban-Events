@@ -56,7 +56,7 @@ const Login = () => {
                 <p>
                     <Trans>
                         Don't have an account? {'  '}
-                        <NavLink to={'/auth/register'}>
+                        <NavLink to={'/auth/register'} style={{ fontWeight: 'bold' }}>
                             Sign up
                         </NavLink>
                     </Trans>

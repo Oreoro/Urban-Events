@@ -235,10 +235,12 @@ const SelectProducts = (props: SelectProductsProps) => {
             const existingProduct = form.values.products?.find(p => p.product_id === product.id);
 
             product.prices?.forEach(priceQuantity => {
-                const existingQuantity = existingProduct?.quantities?.find(q => q.price_id === priceQuantity.id)?.quantity || 0;
+                const existingQuantity = existingProduct?.quantities?.find(q => q.price_id === priceQuantity.id)?.quantity;
+                // Default to 1 if no existing quantity, otherwise keep existing value
+                const defaultQuantity = existingQuantity !== undefined ? existingQuantity : 1;
 
                 quantitiesValues.push({
-                    quantity: existingQuantity,
+                    quantity: defaultQuantity,
                     price_id: Number(priceQuantity.id),
                     price: product.type === 'DONATION' ? Number(priceQuantity.price) : undefined,
                 });
@@ -246,7 +248,7 @@ const SelectProducts = (props: SelectProductsProps) => {
 
             if (quantitiesValues.length === 0) {
                 quantitiesValues.push({
-                    quantity: 0,
+                    quantity: 1,
                     price_id: 0,
                     price: 0,
                 });
