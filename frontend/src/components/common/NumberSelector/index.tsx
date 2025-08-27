@@ -1,5 +1,5 @@
 import {ActionIcon, NumberInput, NumberInputHandlers, Select, TextInputProps} from "@mantine/core";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {UseFormReturnType} from "@mantine/form";
 import {IconMinus, IconPlus} from "@tabler/icons-react";
 import classes from './NumberSelector.module.scss';
@@ -23,59 +23,78 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
     const minValue = min || 0;
     const maxValue = max || 100;
 
-    const [sharedVals] = useState<SharedValues>(sharedValues ?? new SharedValues(maxValue));
+    const [sharedVals] = useState<SharedValues>(() => {
+        const shared = sharedValues ?? new SharedValues(maxValue);
+        // Initialize shared values with the current value to prevent conflicts
+        if (!sharedValues && initialValue > 0) {
+            shared.currentValue = initialValue;
+        }
+        return shared;
+    });
+
+    // Debounce form updates to prevent rapid state changes
+    const updateForm = useCallback(
+        _.debounce((newValue: number) => {
+            formInstance.setFieldValue(fieldName, newValue);
+        }, 10),
+        [formInstance, fieldName]
+    );
 
     useEffect(() => {
-        formInstance.setFieldValue(fieldName, value);
-    }, [value]);
+        updateForm(value);
+    }, [value, updateForm]);
 
     useEffect(() => {
         // to handle application promo code after updating the quantity
-        const formValue = _.get(formInstance.values, fieldName)
+        const formValue = _.get(formInstance.values, fieldName);
         if (formValue !== undefined && formValue !== value) {
             setValue(formValue);
         }
-    }, [formInstance.values, fieldName, value]);
+    }, [formInstance.values, fieldName]);
 
-    const increment = () => {
-        // Adjust from 0 to minValue on the first increment, if minValue is greater than 0
-        if (value === 0 && minValue > 1) {
-            // If incrementing from 0, we have a few scenarios:
-            // 1. If there is sufficient quantity, increment to the minValue
-            // 2. If there is insufficient quantity to reach minValue, increment to the remaining quantity
-            // 3. If another NumberSelector is sharing this NumberSelector's SharedValues, and the amount
-            //    selected on that NumberSelector is less than minValue, increment to an amount where the
-            //    combined count across the NumberSelectors is minValue (or at least 1)
-            let adjustedMinimum = Math.max(1, minValue - sharedVals.currentValue)
-            setValue(sharedVals.changeValue(Math.min(adjustedMinimum, maxValue, sharedVals.quantityRemaining)))
-        } else if (sharedVals.currentValue < minValue) {
-            setValue(prevValue => prevValue + (sharedVals.changeValue(minValue - sharedVals.currentValue)))
-        } else if (value < maxValue) {
-            setValue(prevValue => prevValue + sharedVals.changeValue(1));
+    const increment = useCallback(() => {
+        // Prevent rapid clicking by checking if we're already at max
+        if (value >= maxValue || sharedVals.quantityRemaining <= 0) {
+            return;
         }
-    };
 
-    const decrement = () => {
-        // Ensure decrement does not bring the current shared value between 0 and minValue
-        if (sharedVals.currentValue > minValue) {
-            setValue(prevValue => prevValue + sharedVals.changeValue(-1));
-        } else {
-            sharedVals.changeValue(-value)
-            setValue(0);
+        // Always increment by 1 - remove complex logic that was causing issues
+        const actualChange = sharedVals.changeValue(1);
+        if (actualChange > 0) {
+            setValue(prevValue => prevValue + actualChange);
         }
-    };
+    }, [value, maxValue, sharedVals]);
 
-    const changeValue = (newValue: number) => {
-        let adjustedDifference = sharedVals.changeValue(newValue - value);
-        setValue(value + adjustedDifference);
-    };
+    const decrement = useCallback(() => {
+        // Prevent decrementing below minimum value
+        if (value <= minValue) {
+            return;
+        }
+
+        // Always decrement by 1 - simple logic
+        const actualChange = sharedVals.changeValue(-1);
+        if (actualChange < 0) {
+            setValue(prevValue => prevValue + actualChange);
+        }
+    }, [value, minValue, sharedVals]);
+
+    const changeValue = useCallback((newValue: number) => {
+        // Ensure newValue is within bounds
+        const clampedValue = Math.max(minValue, Math.min(maxValue, newValue || 0));
+        const difference = clampedValue - value;
+        
+        if (difference !== 0) {
+            const actualChange = sharedVals.changeValue(difference);
+            setValue(prevValue => prevValue + actualChange);
+        }
+    }, [value, minValue, maxValue, sharedVals]);
 
     return (
         <div className={classNames(classes.wrapper, 'button-input')}>
             <ActionIcon
                 size={28}
                 onClick={decrement}
-                disabled={value === 0}
+                disabled={value <= minValue}
                 onMouseDown={(event) => event.preventDefault()}
                 className={classes.control}
             >
@@ -97,7 +116,7 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
             <ActionIcon
                 size={28}
                 onClick={increment}
-                disabled={value >= maxValue || sharedVals.quantityRemaining == 0}
+                disabled={value >= maxValue || sharedVals.quantityRemaining <= 0}
                 onMouseDown={(event) => event.preventDefault()}
                 className={classes.control}
             >
