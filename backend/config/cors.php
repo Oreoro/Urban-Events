@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => explode(',', env('CORS_ALLOWED_ORIGINS', '*')),
+    'allowed_origins' => explode(',', env('CORS_ALLOWED_ORIGINS', 'https://urbanevents.pk,https://www.urbanevents.pk,https://app.urbanevents.pk')),
 
     'allowed_origins_patterns' => [],
 
