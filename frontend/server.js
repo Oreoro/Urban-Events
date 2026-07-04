@@ -52,18 +52,66 @@ async function main() {
         app.use(base, sirv(path.join(__dirname, "./dist/client"), { extensions: [] }));
     }
 
-    const getViteEnvironmentVariables = () => {
+    const firstHeaderValue = (value) => {
+        if (Array.isArray(value)) {
+            return value[0];
+        }
+
+        return value?.split(",")[0]?.trim();
+    };
+
+    const getPublicOrigin = (req) => {
+        const protocol = firstHeaderValue(req.get("x-forwarded-proto")) || req.protocol || "https";
+        const host = firstHeaderValue(req.get("x-forwarded-host")) || req.get("host");
+
+        return `${protocol}://${host}`;
+    };
+
+    const isPublicBrowserUrl = (value) => {
+        if (!value) {
+            return false;
+        }
+
+        if (value.startsWith("/")) {
+            return true;
+        }
+
+        try {
+            const url = new URL(value);
+            return !["localhost", "127.0.0.1", "0.0.0.0", "::1"].includes(url.hostname);
+        } catch {
+            return false;
+        }
+    };
+
+    const getViteEnvironmentVariables = (req) => {
+        const publicOrigin = getPublicOrigin(req);
         const envVars = {};
         for (const key in process.env) {
             if (key.startsWith('VITE_')) {
                 envVars[key] = process.env[key];
             }
         }
+
+        if (!isPublicBrowserUrl(envVars.VITE_FRONTEND_URL)) {
+            envVars.VITE_FRONTEND_URL = publicOrigin;
+        }
+
+        if (!isPublicBrowserUrl(envVars.VITE_API_URL_CLIENT)) {
+            envVars.VITE_API_URL_CLIENT = `${publicOrigin}/api`;
+        }
+
+        if (!isPublicBrowserUrl(envVars.VITE_API_URL_SERVER)) {
+            envVars.VITE_API_URL_SERVER = `${publicOrigin}/api`;
+        }
+
         return JSON.stringify(envVars);
     };
 
     app.get('/robots.txt', (req, res) => {
-        const frontendUrl = process.env.VITE_FRONTEND_URL || `${req.protocol}://${req.get('host')}`;
+        const frontendUrl = isPublicBrowserUrl(process.env.VITE_FRONTEND_URL)
+            ? process.env.VITE_FRONTEND_URL
+            : getPublicOrigin(req);
         const robotsTxt = `User-agent: *
 Allow: /
 
@@ -104,7 +152,7 @@ Sitemap: ${frontendUrl}/sitemap.xml
                 .map((value) => value.toString() || "")
                 .join(" ");
 
-            const envVariablesHtml = `<script>window.hievents = ${getViteEnvironmentVariables()};</script>`;
+            const envVariablesHtml = `<script>window.hievents = ${getViteEnvironmentVariables(req)};</script>`;
 
             const headSnippets = [];
             if (process.env.VITE_FATHOM_SITE_ID) {
