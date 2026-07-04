@@ -30,7 +30,9 @@
     padding: var(--hi-spacing-lg);
     padding-bottom: calc(var(--hi-spacing-lg) + 40px);
     overflow: auto;
-    background-color: #f9fafc;
+    background:
+      linear-gradient(180deg, rgba(184, 242, 230, 0.22), rgba(255, 249, 234, 0) 260px),
+      var(--ue-canvas);
 
     @include mixins.scrollbar;
 
@@ -42,7 +44,7 @@
   .sidebarOpen {
     width: 28px;
     height: 28px;
-    background: var(--hi-primary);
+    background: var(--hi-secondary-strong);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -52,13 +54,13 @@
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--hi-shadow-sm);
     z-index: 5;
     transition: all 0.2s ease;
 
     &:hover {
       transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--hi-shadow-md);
     }
 
     @media (max-width: 767px) {

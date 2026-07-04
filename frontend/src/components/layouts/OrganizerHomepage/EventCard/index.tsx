@@ -4,26 +4,23 @@ import {Event} from "../../../../types.ts";
 import classes from './EventCard.module.scss';
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {t} from "@lingui/macro";
-import {isLightColor} from "@mantine/core";
 import {formatCurrency} from "../../../../utilites/currency.ts";
 import {eventHomepagePath, eventHomepageUrl} from "../../../../utilites/urlHelper.ts";
 import {getProductsFromEvent} from "../../../../utilites/helpers.ts";
 import {ShareComponent} from "../../../common/ShareIcon";
 import dayjs from "dayjs";
-import {IconCalendar, IconClock, IconMapPin, IconTicket, IconWifi} from '@tabler/icons-react';
+import {IconCalendar, IconClock, IconMusic, IconPalette, IconSparkles, IconMapPin, IconTicket, IconWifi} from '@tabler/icons-react';
 
 interface EventCardProps {
     event: Event;
     primaryColor?: string;
 }
 
-const placeholderEmojis = ['🎉', '🎪', '🎸', '🎨', '🌟'];
+const placeholderIcons = [IconTicket, IconCalendar, IconMusic, IconPalette, IconSparkles];
 
-export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#8b5cf6'}) => {
-    const dateTextColor = isLightColor(primaryColor) ? '#000000' : '#ffffff';
-
-    const emojiIndex = event.id ? Number(event.id) % placeholderEmojis.length : 0;
-    const placeholderEmoji = placeholderEmojis[emojiIndex];
+export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#4A5262'}) => {
+    const iconIndex = event.id ? Number(event.id) % placeholderIcons.length : 0;
+    const PlaceholderIcon = placeholderIcons[iconIndex];
 
     // Format dates using the event's timezone
     const startMonth = formatDateWithLocale(event.start_date, "monthShort", event.timezone);
@@ -90,15 +87,12 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#8b5
                                 loading="lazy"
                             />
                         ) : (
-                            <div className={classes.placeholderImage}
-                                 style={{'--date-text-color': dateTextColor} as React.CSSProperties}>
+                            <div
+                                className={classes.placeholderImage}
+                                style={{'--placeholder-accent': primaryColor} as React.CSSProperties}
+                            >
                                 <div className={classes.placeholderContent}>
-                                    <span className={classes.placeholderIcon}>{placeholderEmoji}</span>
-                                    <div className={classes.sparkles}>
-                                        <span className={classes.sparkle}>✨</span>
-                                        <span className={classes.sparkle}>✨</span>
-                                        <span className={classes.sparkle}>✨</span>
-                                    </div>
+                                    <PlaceholderIcon className={classes.placeholderIcon} stroke={1.6}/>
                                 </div>
                             </div>
                         )}

@@ -1,29 +1,47 @@
 @use "mixins";
 
 :root {
-  --ue-canvas: #f7f7f2;
-  --ue-canvas-soft: #fffaf0;
-  --ue-plum: #20342f;
-  --ue-warm-grey: #53615c;
-  --ue-coral: #c86d4c;
-  --ue-marigold: #d8a64b;
-  --ue-mint: #dbeadf;
-  --ue-sky: #dcebf2;
+  --ue-powder-blush: #ffa69e;
+  --ue-eggshell: #faf3dd;
+  --ue-icy-aqua: #b8f2e6;
+  --ue-light-blue: #aed9e0;
+  --ue-blue-slate: #5e6472;
+  --ue-canvas: #fff9ea;
+  --ue-canvas-soft: #fffcf1;
+  --ue-slate: #4a5262;
+  --ue-slate-deep: #2f3440;
+  --ue-slate-soft: #eef1f4;
+  --ue-aqua: #8de4d8;
+  --ue-aqua-deep: #147c74;
+  --ue-blush: #ff8a80;
+  --ue-blush-deep: #b7524a;
+  --ue-border: #d8d1bc;
 
-  --hi-text: var(--ue-plum);
+  --hi-font-heading: 'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  --hi-font-body: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  --hi-text: var(--ue-slate-deep);
+  --hi-text-light: var(--ue-slate);
+  --hi-text-muted: #6b7280;
   --hi-primary: var(--mantine-color-primary-7);
-  --hi-secondary: var(--ue-mint);
-  --hi-secondary-text: var(--ue-plum);
+  --hi-primary-hover: var(--mantine-color-primary-8);
+  --hi-secondary: var(--ue-icy-aqua);
+  --hi-secondary-strong: var(--ue-aqua-deep);
+  --hi-secondary-text: var(--ue-slate-deep);
+  --hi-surface: #ffffff;
+  --hi-surface-raised: rgba(255, 255, 255, 0.92);
   --hi-color-gray: var(--ue-canvas);
-  --hi-color-gray-2: #d7ded9;
-  --hi-color-gray-dark: var(--ue-warm-grey);
+  --hi-color-gray-2: var(--ue-border);
+  --hi-color-gray-dark: var(--hi-text-muted);
+  --hi-border: rgba(74, 82, 98, 0.16);
+  --hi-border-strong: rgba(74, 82, 98, 0.28);
   --hi-color-money-green: #0f8a65;
-  --hi-color-blue: var(--ue-sky);
+  --hi-color-blue: var(--ue-light-blue);
   --hi-link-color: var(--hi-primary);
-  --hi-pink: var(--ue-coral);
-  --hi-primary-alt: var(--ue-coral);
-  --hi-gradient: linear-gradient(135deg, var(--hi-primary), var(--hi-primary-alt));
-  --hi-scrollbar-thumb: rgba(32, 52, 47, 0.22);
+  --hi-pink: var(--ue-blush-deep);
+  --hi-primary-alt: var(--ue-blush-deep);
+  --hi-gradient: linear-gradient(135deg, var(--hi-primary) 0%, var(--hi-secondary-strong) 48%, var(--hi-primary-alt) 100%);
+  --hi-shell-gradient: linear-gradient(145deg, #2f3440 0%, #4a5262 54%, #147c74 100%);
+  --hi-scrollbar-thumb: rgba(74, 82, 98, 0.28);
 
   --hi-color-white: #ffffff;
   --hi-color-black: #000000;
@@ -40,9 +58,9 @@
   --hi-radius-lg: 12px;
   --hi-radius-xl: 16px;
 
-  --hi-shadow-sm: 0 4px 12px rgba(32, 52, 47, 0.1);
-  --hi-shadow-md: 0 12px 28px rgba(32, 52, 47, 0.12);
-  --hi-shadow-lg: 0 18px 44px rgba(32, 52, 47, 0.14);
+  --hi-shadow-sm: 0 5px 16px rgba(47, 52, 64, 0.1);
+  --hi-shadow-md: 0 14px 34px rgba(47, 52, 64, 0.13);
+  --hi-shadow-lg: 0 22px 54px rgba(47, 52, 64, 0.16);
 }
 
 * {
@@ -56,11 +74,15 @@ html {
 body {
   font-family: var(--mantine-font-family);
   color: var(--hi-text);
-  background-color: var(--checkout-background, var(--hi-color-gray)) !important;
+  background:
+    linear-gradient(180deg, rgba(184, 242, 230, 0.22), rgba(255, 249, 234, 0) 280px),
+    var(--checkout-background, var(--hi-color-gray)) !important;
   height: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
 }
 
@@ -74,6 +96,16 @@ a {
   color: var(--hi-link-color);
 }
 
+::selection {
+  background: color-mix(in srgb, var(--ue-icy-aqua) 70%, white);
+  color: var(--hi-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hi-secondary-strong);
+  outline-offset: 2px;
+}
+
 // Mantine overrides
 .mantine-InputWrapper-root, .mantine-Switch-root {
   margin-bottom: var(--hi-spacing-lg);
@@ -85,6 +117,29 @@ a {
 
 .mantine-Modal-content {
   @include mixins.scrollbar();
+}
+
+.mantine-Button-root:hover:not([data-disabled]) {
+  transform: translateY(-1px);
+}
+
+.mantine-Button-root:active:not([data-disabled]) {
+  transform: translateY(0);
+}
+
+.mantine-Input-input:focus,
+.mantine-Input-input:focus-within {
+  border-color: var(--hi-secondary-strong);
+  box-shadow: 0 0 0 3px rgba(20, 124, 116, 0.12);
+}
+
+.mantine-Card-root,
+.mantine-Paper-root {
+  background-color: var(--hi-surface-raised);
+}
+
+.mantine-Table-table {
+  color: var(--hi-text);
 }
 
 .mantine-SimpleGrid-root {

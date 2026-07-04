@@ -16,9 +16,9 @@ import {
     IconUsers,
 } from '@tabler/icons-react';
 import {useCallback, useMemo, useRef} from "react";
-import {getConfig} from "../../../utilites/config.ts";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
+import {BrandWordmark} from "../../common/BrandWordmark";
 
 const allFeatures = [
     {
@@ -74,8 +74,6 @@ const FeaturePanel = () => {
             <div className={classes.backgroundImage} />
             <div className={classes.backgroundOverlay} />
             <div className={classes.gridPattern} />
-            <div className={`${classes.glowEffect} ${classes.glowTop}`} />
-            <div className={`${classes.glowEffect} ${classes.glowBottom}`} />
 
             <div className={classes.overlay}>
                 <div className={classes.content}>
@@ -132,10 +130,7 @@ const AuthLayout = () => {
                 <div className={classes.leftPanel}>
                     <main className={classes.container}>
                         <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
-                            <img
-                                src={getConfig("VITE_APP_LOGO_DARK", "/logos/urban-events-text-light.svg")}
-                                alt={t`${getConfig("VITE_APP_NAME", "Urban Events")} logo`}
-                            />
+                            <BrandWordmark tone="dark" size="lg"/>
                         </div>
                         <div className={classes.wrapper}>
                             <Outlet />

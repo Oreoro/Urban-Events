@@ -6,7 +6,9 @@
   }
 
   min-height: 100vh;
-  background: var(--hi-gradient);
+  background:
+    linear-gradient(135deg, rgba(47, 52, 64, 0.96), rgba(20, 124, 116, 0.92)),
+    var(--ue-blue-slate);
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -45,23 +47,19 @@
   margin-bottom: 1rem;
   opacity: 0.9;
 
-  img {
-    height: 55px;
-    width: auto;
-  }
-
   @media (max-width: 768px) {
     margin-bottom: 0.75rem;
-
-    img {
-      height: 36px;
-    }
   }
 }
 
 .welcomeTitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--hi-color-white);
   margin: 0;
   line-height: 1.2;
@@ -71,13 +69,18 @@
   }
 }
 
+.welcomeTitleIcon {
+  color: var(--ue-icy-aqua);
+  flex-shrink: 0;
+}
+
 // Clean Main Card
 .welcomeCard {
-  background: var(--hi-color-white);
+  background: var(--hi-surface-raised);
   border-radius: 16px !important;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
-  border: none !important;
+  box-shadow: var(--hi-shadow-lg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
 
   @media (max-width: 768px) {
     border-radius: 12px !important;
@@ -240,8 +243,8 @@
 }
 
 .categoryCard {
-  background: var(--hi-color-white);
-  border: 1px solid var(--hi-color-gray-2);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
   border-radius: 8px;
   padding: 1rem;
   display: flex;
@@ -255,7 +258,7 @@
   &:hover {
     border-color: var(--hi-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--hi-shadow-sm);
   }
 
   &:disabled {
@@ -272,7 +275,7 @@
 
 .categoryCardSelected {
   border-color: var(--hi-primary) !important;
-  background: var(--hi-secondary) !important;
+  background: color-mix(in srgb, var(--ue-icy-aqua) 56%, white) !important;
 }
 
 .categoryEmoji {
@@ -427,7 +430,7 @@
   margin-top: 1em;
 
   &:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--hi-primary) 85%, var(--hi-primary-alt) 15%) !important;
+    background: var(--hi-primary-hover) !important;
     transform: translateY(-1px) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   }
@@ -465,5 +468,4 @@
     margin-top: 1rem;
   }
 }
-
 

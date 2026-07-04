@@ -71,6 +71,18 @@
   }
 }
 
+.cardTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0;
+
+  svg {
+    color: var(--hi-secondary-strong);
+    flex-shrink: 0;
+  }
+}
+
 .confettiIcon {
   color: var(--mantine-color-secondary-5);
   animation: pulse 2s infinite ease-in-out;

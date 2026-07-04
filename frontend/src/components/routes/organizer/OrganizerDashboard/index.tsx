@@ -244,7 +244,7 @@ export const OrganizerDashboard = () => {
                     )}
                     {!isLoadingEvents && (!recentEvents || recentEvents.length === 0) && (
                         <div className={classes.emptyState}>
-                            <div className={classes.emptyStateIcon}>🎉</div>
+                            <IconTicket className={classes.emptyStateIcon} size={46} stroke={1.5}/>
                             <h4><Trans>No events yet</Trans></h4>
                             <p><Trans>Create your first event to start selling tickets and managing attendees.</Trans>
                             </p>

@@ -47,8 +47,8 @@ const HomepageDesigner = () => {
     const form = useForm<FormValues>({
         initialValues: {
             homepage_theme_settings: {
-                accent: '#8b5cf6',
-                background: '#f5f3ff',
+                accent: '#4A5262',
+                background: '#FFF9EA',
                 mode: 'light',
                 background_type: 'COLOR',
                 font_family: DEFAULT_HOMEPAGE_FONT,

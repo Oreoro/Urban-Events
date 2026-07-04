@@ -1,6 +1,5 @@
 @use "../../../styles/mixins.scss";
 
-// Modal overlay with magical backdrop
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -28,8 +27,7 @@
   }
 }
 
-// Floating background emojis
-.floatingEmojis {
+.floatingIcons {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,14 +37,17 @@
   z-index: -1;
 }
 
-.floatingEmoji {
+.floatingIcon {
   position: absolute;
-  font-size: 2rem;
-  opacity: 0.3;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ue-icy-aqua);
+  opacity: 0.34;
   animation: float 6s ease-in-out infinite;
   
   @include mixins.respond-below(sm) {
-    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
@@ -68,15 +69,15 @@
 
 // Main modal container
 .modalContainer {
-  background: white;
-  border-radius: 24px;
+  background: var(--hi-surface);
+  border-radius: var(--hi-radius-lg);
   max-width: 750px;
   width: 100%;
   max-height: 90vh;
   overflow: hidden;
   position: relative;
   z-index: 2;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--hi-shadow-lg);
   animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   flex-direction: column;
@@ -156,14 +157,12 @@
 }
 
 .magicWand {
-  font-size: 1.75rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 0.25rem;
+  color: var(--ue-icy-aqua);
   animation: sparkle 2s ease-in-out infinite;
-  
-  @include mixins.respond-below(sm) {
-    font-size: 1.25rem;
-  }
 }
 
 @keyframes sparkle {
@@ -186,7 +185,7 @@
   font-weight: 800;
   color: white;
   margin: 0 0 0.125rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   
   @include mixins.respond-below(sm) {
@@ -278,13 +277,13 @@
   font-size: 1.25rem;
   background: var(--hi-gradient);
   border: none;
-  border-radius: 16px;
+  border-radius: var(--hi-radius-lg);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   text-transform: uppercase;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 24px rgba(74, 82, 98, 0.22);
   padding: 0 2rem;
 
   @include mixins.respond-below(sm) {
@@ -306,7 +305,7 @@
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 16px 40px rgba(74, 82, 98, 0.28);
 
     &::before {
       left: 100%;
@@ -325,11 +324,11 @@
 
 // Organizer creation form
 .createOrganizerCard {
-  background: linear-gradient(135deg, #f8f9ff 0%, #f3f4f6 100%);
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(184, 242, 230, 0.28) 0%, rgba(250, 243, 221, 0.6) 100%);
+  border-radius: var(--hi-radius-lg);
   padding: 2rem;
   margin-bottom: 2rem;
-  border: 2px dashed rgba(102, 126, 234, 0.3);
+  border: 2px dashed var(--hi-border-strong);
   animation: slideIn 0.3s ease-out;
   
   @include mixins.respond-below(sm) {
@@ -346,7 +345,7 @@
   align-items: center;
   gap: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
 }
 
 @keyframes slideIn {

@@ -16,7 +16,7 @@
         margin-right: 5px;
     }
 
-    .poweredByText {
+.poweredByText {
         font-size: 0.9rem;
     }
 
@@ -29,4 +29,9 @@
         font-weight: 600;
         color: var(--checkout-accent, var(--mantine-primary-color-filled));
     }
+}
+
+.inlineIcon {
+    vertical-align: -2px;
+    color: var(--hi-secondary-strong);
 }

@@ -51,7 +51,7 @@
 
 .currencyText {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .currencyIcon {
@@ -201,7 +201,7 @@
   font-weight: 600;
   color: var(--mantine-color-gray-9);
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 // Orders list
@@ -314,7 +314,7 @@
   font-size: 11px;
   color: var(--mantine-color-gray-5);
   font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .orderArrow {
@@ -392,7 +392,7 @@
 }
 
 .emptyStateIcon {
-  font-size: 3rem;
+  color: var(--hi-secondary-strong);
   animation: float 3s ease-in-out infinite;
   position: relative;
   z-index: 1;

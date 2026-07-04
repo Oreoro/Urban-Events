@@ -8,9 +8,9 @@ import {Button, Checkbox, Modal as MantineModal, Text, TextInput} from "@mantine
 import {InputGroup} from "../../common/InputGroup";
 import {CheckoutThemeProvider} from "../../layouts/Checkout/CheckoutThemeProvider.tsx";
 import {detectMode} from "../../../utilites/themeUtils.ts";
-import {BouncingEmoji} from "../../common/BouncingEmoji";
+import {IconAlertTriangle, IconCircleCheck} from "@tabler/icons-react";
 
-const DEFAULT_ACCENT = '#8b5cf6';
+const DEFAULT_ACCENT = '#4A5262';
 
 interface JoinWaitlistModalProps extends GenericModalProps {
     product: Product;
@@ -92,7 +92,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                     withCloseButton={false}
                 >
                     <div style={{textAlign: 'center', padding: '30px 20px'}}>
-                        <BouncingEmoji emoji="🎉"/>
+                        <IconCircleCheck size={48} color="var(--checkout-accent)" stroke={1.6} style={{marginBottom: 16}}/>
                         <Text size="xl" fw={600} mb="xs">
                             {t`You're on the waitlist!`}
                         </Text>
@@ -119,7 +119,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                     withCloseButton={false}
                 >
                     <div style={{textAlign: 'center', padding: '30px 20px'}}>
-                        <BouncingEmoji emoji="😕"/>
+                        <IconAlertTriangle size={48} color="var(--mantine-color-red-6)" stroke={1.6} style={{marginBottom: 16}}/>
                         <Text size="xl" fw={600} mb="xs">
                             {t`Unable to join waitlist`}
                         </Text>

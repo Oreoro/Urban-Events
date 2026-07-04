@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {HomepageThemeSettings} from "../types.ts";
 import {buildHomepageFontStack, DEFAULT_HOMEPAGE_FONT} from "../constants/homepageFonts.ts";
 
@@ -100,26 +101,26 @@ export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColor
     if (mode === 'light') {
         return {
             surface: '#ffffff',
-            textPrimary: '#1a1a1a',
-            textSecondary: '#525252',
-            textTertiary: '#737373',
-            border: 'rgba(0, 0, 0, 0.1)',
+            textPrimary: '#2F3440',
+            textSecondary: '#4A5262',
+            textTertiary: '#6B7280',
+            border: 'rgba(74, 82, 98, 0.18)',
         };
     }
 
     return {
-        surface: '#1f1f1f',
+        surface: '#252B35',
         textPrimary: '#ffffff',
-        textSecondary: '#a3a3a3',
-        textTertiary: '#737373',
-        border: 'rgba(255, 255, 255, 0.1)',
+        textSecondary: '#D5DEE2',
+        textTertiary: '#A8B3BD',
+        border: 'rgba(255, 255, 255, 0.14)',
     };
 }
 
 export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(139, 92, 246, 0.15)';
+        return mode === 'light' ? 'rgba(74, 82, 98, 0.08)' : 'rgba(184, 242, 230, 0.15)';
     }
     const opacity = mode === 'light' ? 0.08 : 0.15;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -128,7 +129,7 @@ export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
 export function getAccentMuted(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(139, 92, 246, 0.6)' : 'rgba(139, 92, 246, 0.7)';
+        return mode === 'light' ? 'rgba(74, 82, 98, 0.6)' : 'rgba(184, 242, 230, 0.7)';
     }
     const opacity = mode === 'light' ? 0.6 : 0.7;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -160,8 +161,8 @@ export function computeThemeVariables(settings: HomepageThemeSettings): ThemeCSS
 
 export function getDefaultThemeSettings(): HomepageThemeSettings {
     return {
-        accent: '#8b5cf6',
-        background: '#f5f3ff',
+        accent: '#4A5262',
+        background: '#FFF9EA',
         mode: 'light',
         background_type: 'COLOR',
         font_family: DEFAULT_HOMEPAGE_FONT,

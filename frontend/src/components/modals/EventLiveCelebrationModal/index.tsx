@@ -41,7 +41,7 @@ export const EventLiveCelebrationModal = ({
             >
                 <div className={classes.content}>
                     <div className={classes.celebrationEmoji}>
-                        🎉
+                        <IconCheck size={46} stroke={1.8}/>
                     </div>
 
                     <Text className={classes.title}>

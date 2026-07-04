@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme} from "@mantine/core";
 import {PropsWithChildren, useMemo} from "react";
 import {getContrastColor, hexToRgb} from "../../../utilites/themeUtils";
@@ -13,20 +14,20 @@ interface CheckoutThemeProviderProps {
  */
 const LIGHT_PALETTE = {
     surface: '#ffffff',
-    background: '#f8f9fa',
-    textPrimary: '#1a1a1a',
-    textSecondary: '#525252',
-    textTertiary: '#737373',
-    border: '#e5e7eb',
+    background: '#FFF9EA',
+    textPrimary: '#2F3440',
+    textSecondary: '#4A5262',
+    textTertiary: '#6B7280',
+    border: 'rgba(74, 82, 98, 0.18)',
 };
 
 const DARK_PALETTE = {
-    surface: '#1f1f1f',
-    background: '#121212',
+    surface: '#252B35',
+    background: '#171B22',
     textPrimary: '#ffffff',
-    textSecondary: '#a3a3a3',
-    textTertiary: '#737373',
-    border: '#333333',
+    textSecondary: '#D5DEE2',
+    textTertiary: '#A8B3BD',
+    border: 'rgba(255, 255, 255, 0.14)',
 };
 
 /**
@@ -35,7 +36,7 @@ const DARK_PALETTE = {
 function createColorPalette(accentColor: string): MantineColorsTuple {
     const rgb = hexToRgb(accentColor);
     if (!rgb) {
-        return ['#f3e8ff', '#e9d5ff', '#d8b4fe', '#c084fc', '#a855f7', '#9333ea', '#7c3aed', '#6d28d9', '#5b21b6', '#4c1d95'];
+        return ['#EEF1F4', '#D9DEE5', '#B8C0CC', '#94A0B0', '#728092', '#5E6472', '#4A5262', '#3F4756', '#343B48', '#2F3440'];
     }
 
     const {r, g, b} = rgb;
@@ -80,11 +81,17 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
         colors: {
             primary: primaryColors,
         },
+        fontFamily: "'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
+        headings: {
+            fontFamily: "'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
+            fontWeight: '800',
+        },
         primaryShade: mode === 'dark' ? 6 : 7,
         components: {
             Button: {
                 defaultProps: {
                     color: 'primary',
+                    radius: 'md',
                 },
                 vars: (_theme: MantineTheme, props: ButtonProps) => {
                     if (props.variant === 'filled' || props.variant === undefined) {

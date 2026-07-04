@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: linear-gradient(90deg, var(--mantine-color-primary-9), var(--mantine-color-secondary-9));
+  background: var(--hi-shell-gradient);
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease;
@@ -24,14 +24,14 @@
   .breadcrumbsRow {
     padding: 10px 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     border-top-left-radius: var(--hi-radius-md);
-    box-shadow: 3px 0px 8px rgb(0 0 0 / 8%);
+    box-shadow: 3px 0 12px rgb(47 52 64 / 10%);
     position: relative;
     z-index: 5;
     min-height: 44px;
@@ -101,6 +101,7 @@
 
     a {
       color: var(--hi-text-light);
+      font-weight: 650;
       transition: color 0.2s ease;
       position: relative;
       @include mixins.ellipsis();
@@ -172,14 +173,6 @@
       display: flex;
     }
 
-    img {
-      max-width: 120px;
-
-      @include mixins.respond-below(sm) {
-        max-width: 100px;
-      }
-    }
-
     @include mixins.respond-above(md) {
       display: none;
     }
@@ -193,7 +186,7 @@
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: linear-gradient(90deg, var(--mantine-color-primary-9), var(--mantine-color-secondary-9));
+      background: var(--hi-shell-gradient);
     }
   }
 

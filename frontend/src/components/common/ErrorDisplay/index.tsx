@@ -1,11 +1,11 @@
 import {t} from '@lingui/macro';
-import {Box, Button, Container, Image, rem, Stack, Text, Title} from '@mantine/core';
+import {Box, Button, Container, Stack, Text, Title} from '@mantine/core';
 import {IconHome} from '@tabler/icons-react';
 import classes from './ErrorDisplay.module.scss';
 import {Helmet} from "react-helmet-async";
 import {NavLink, useRouteError} from "react-router";
 import {PoweredByFooter} from "../PoweredByFooter";
-import {getConfig} from '../../../utilites/config';
+import {BrandWordmark} from "../BrandWordmark";
 
 export const ErrorDisplay = () => {
     const error = useRouteError() as any;
@@ -32,21 +32,9 @@ export const ErrorDisplay = () => {
                 ]}
             />
             <Box className={classes.wrapper}>
-
-                {/* Animated background elements */}
-                <div className={classes.backgroundOrb1}/>
-                <div className={classes.backgroundOrb2}/>
-
                 <Container size="md" className={classes.root}>
                     <Stack gap="xl" align="center">
-                        <Image
-                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                            alt={getConfig("VITE_APP_NAME", "Urban Events") + " Logo"}
-                            w={rem(140)}
-                            h="auto"
-                            fit="contain"
-                            className={classes.logo}
-                        />
+                        <BrandWordmark tone="dark" size="md" className={classes.logo}/>
 
                         <Stack gap="lg" align="center" className={classes.content}>
                             <Title order={1} className={classes.title}>
@@ -60,8 +48,7 @@ export const ErrorDisplay = () => {
                                 component={NavLink}
                                 to="/"
                                 leftSection={<IconHome size={18}/>}
-                                variant="gradient"
-                                gradient={{from: 'primary', to: 'secondary'}}
+                                variant="filled"
                                 className={classes.button}
                             >
                                 {t`Go to home page`}

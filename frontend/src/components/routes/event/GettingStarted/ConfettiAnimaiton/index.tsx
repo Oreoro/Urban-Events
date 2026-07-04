@@ -4,7 +4,8 @@ interface ConfettiAnimationProps {
     duration?: number;
 }
 
-const EVENT_EMOJIS = ['🎸', '🎉', '🎊', '🎈', '🎆', '✨', '🎵', '🎶', '🎤', '🎭', '🎪', '🎯', '🏆'];
+const CONFETTI_COLORS = ['#B8F2E6', '#FFA69E', '#AED9E0', '#FAF3DD', '#5E6472'];
+const CONFETTI_SHAPES = ['circle', 'square', 'bar'] as const;
 
 const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -16,6 +17,7 @@ const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
+        const context = ctx;
 
         let animationFrameId: number;
         const particles: Particle[] = [];
@@ -26,7 +28,7 @@ const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
             const ratio = window.devicePixelRatio || 1;
             canvas.width = window.innerWidth * ratio;
             canvas.height = window.innerHeight * ratio;
-            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
         };
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -34,26 +36,33 @@ const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
         class Particle {
             x: number;
             y: number;
-            emoji: string;
+            shape: typeof CONFETTI_SHAPES[number];
+            color: string;
             size: number;
             velocityY: number;
             velocityX: number;
             opacity: number;
+            rotation: number;
+            rotationSpeed: number;
 
             constructor() {
                 this.x = Math.random() * window.innerWidth;
                 this.y = -30;
-                this.emoji = EVENT_EMOJIS[Math.floor(Math.random() * EVENT_EMOJIS.length)];
-                this.size = Math.random() * 15 + 20; // 20–35px
-                this.velocityY = Math.random() * 2 + 1; // slower: 1–3 px/frame
+                this.shape = CONFETTI_SHAPES[Math.floor(Math.random() * CONFETTI_SHAPES.length)];
+                this.color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+                this.size = Math.random() * 12 + 8; // 8-20px
+                this.velocityY = Math.random() * 2 + 1; // slower: 1-3 px/frame
                 this.velocityX = (Math.random() - 0.5) * 1.5; // gentle drift
                 this.opacity = 1;
+                this.rotation = Math.random() * Math.PI;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.12;
             }
 
             update(): boolean {
                 this.y += this.velocityY;
                 this.x += this.velocityX;
                 this.velocityY += 0.05; // gentle gravity
+                this.rotation += this.rotationSpeed;
 
                 if (this.y > window.innerHeight * 0.7) {
                     this.opacity -= 0.015;
@@ -63,13 +72,23 @@ const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
             }
 
             draw(): void {
-                ctx.save();
-                ctx.globalAlpha = this.opacity;
-                ctx.font = `${this.size}px sans-serif`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(this.emoji, this.x, this.y);
-                ctx.restore();
+                context.save();
+                context.globalAlpha = this.opacity;
+                context.translate(this.x, this.y);
+                context.rotate(this.rotation);
+                context.fillStyle = this.color;
+
+                if (this.shape === 'circle') {
+                    context.beginPath();
+                    context.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                    context.fill();
+                } else if (this.shape === 'bar') {
+                    context.fillRect(-this.size / 2, -2, this.size, 4);
+                } else {
+                    context.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                }
+
+                context.restore();
             }
         }
 
@@ -79,7 +98,7 @@ const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {
 
         const animate = (time: number) => {
             const elapsed = time - startTime;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height);
 
             if (elapsed < duration && Math.random() < 0.05 && particles.length < maxParticles) {
                 particles.push(new Particle());

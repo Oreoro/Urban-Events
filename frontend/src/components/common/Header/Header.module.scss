@@ -1,14 +1,12 @@
 .header {
   height: 56px;
-  background-color: var(--hi-primary);
-  border-bottom: 1px solid var(--mantine-color-gray-3);
+  background: var(--hi-shell-gradient);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 
 
   .logo {
     display: flex;
-    img {
-      max-width: 120px;
-    }
+    align-items: center;
   }
 }
 

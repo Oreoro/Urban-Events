@@ -25,11 +25,11 @@ return new class extends Migration
                 continue;
             }
 
-            $background = $existingThemeSettings['homepage_background_color'] ?? '#f5f3ff';
+            $background = $existingThemeSettings['homepage_background_color'] ?? '#FFF9EA';
             $mode = $this->detectMode($background);
 
             $newThemeSettings = [
-                'accent' => $existingThemeSettings['homepage_primary_color'] ?? '#8b5cf6',
+                'accent' => $existingThemeSettings['homepage_primary_color'] ?? '#4A5262',
                 'background' => $background,
                 'mode' => $mode,
                 'background_type' => $existingThemeSettings['homepage_background_type'] ?? 'COLOR',
@@ -92,9 +92,9 @@ return new class extends Migration
 
             // Convert from new format to old format
             $oldThemeSettings = [
-                'homepage_background_color' => $existingThemeSettings['background'] ?? '#f5f3ff',
+                'homepage_background_color' => $existingThemeSettings['background'] ?? '#FFF9EA',
                 'homepage_content_background_color' => $existingThemeSettings['mode'] === 'dark' ? '#1f1f1f' : '#ffffff',
-                'homepage_primary_color' => $existingThemeSettings['accent'] ?? '#8b5cf6',
+                'homepage_primary_color' => $existingThemeSettings['accent'] ?? '#4A5262',
                 'homepage_primary_text_color' => $existingThemeSettings['mode'] === 'dark' ? '#ffffff' : '#1a1a1a',
                 'homepage_secondary_color' => $existingThemeSettings['mode'] === 'dark' ? '#a3a3a3' : '#525252',
                 'homepage_secondary_text_color' => $existingThemeSettings['mode'] === 'dark' ? '#737373' : '#737373',

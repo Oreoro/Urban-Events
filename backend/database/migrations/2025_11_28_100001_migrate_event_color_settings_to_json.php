@@ -10,11 +10,11 @@ return new class extends Migration
         $eventSettings = DB::table('event_settings')->get();
 
         foreach ($eventSettings as $settings) {
-            $background = $settings->homepage_body_background_color ?? '#f5f3ff';
+            $background = $settings->homepage_body_background_color ?? '#FFF9EA';
             $mode = $this->detectMode($background);
 
             $themeSettings = [
-                'accent' => $settings->homepage_primary_color ?? '#8b5cf6',
+                'accent' => $settings->homepage_primary_color ?? '#4A5262',
                 'background' => $background,
                 'mode' => $mode,
                 'background_type' => $settings->homepage_background_type ?? 'COLOR',

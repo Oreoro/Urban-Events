@@ -13,7 +13,7 @@ import {formatCurrency} from "../../../../utilites/currency.ts";
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {Button, SegmentedControl, Skeleton, Tooltip} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {IconAlertCircle, IconX} from "@tabler/icons-react";
+import {IconAlertCircle, IconRocket, IconSparkles, IconX} from "@tabler/icons-react";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
@@ -112,15 +112,21 @@ export const EventDashboard = () => {
         <PageBody>
             <PageTitle style={{marginBottom: 0}}>
                 {!isMobile && (
-                    <Trans>
-                        Welcome back{me?.first_name && ', ' + me?.first_name} 👋
-                    </Trans>
+                    <>
+                        <Trans>
+                            Welcome back{me?.first_name && ', ' + me?.first_name}
+                        </Trans>
+                        <IconSparkles size={22} color="var(--hi-secondary-strong)" style={{marginLeft: 8, verticalAlign: -3}}/>
+                    </>
                 )}
 
                 {isMobile && (
-                    <Trans>
-                        Hi {me?.first_name && me?.first_name} 👋
-                    </Trans>
+                    <>
+                        <Trans>
+                            Hi {me?.first_name && me?.first_name}
+                        </Trans>
+                        <IconSparkles size={20} color="var(--hi-secondary-strong)" style={{marginLeft: 6, verticalAlign: -3}}/>
+                    </>
                 )}
             </PageTitle>
 
@@ -166,7 +172,10 @@ export const EventDashboard = () => {
 
                         <div className={classes.setupCardContent}>
                             <div className={classes.checklistContainer}>
-                                <h2>🚀 {t`Get your event ready`}</h2>
+                                <h2>
+                                    <IconRocket size={24} color="var(--hi-secondary-strong)" style={{marginRight: 8, verticalAlign: -4}}/>
+                                    {t`Get your event ready`}
+                                </h2>
                                 <p className={classes.setupDescription}>
                                     {t`Complete these steps to start selling tickets for your event.`}
                                 </p>
