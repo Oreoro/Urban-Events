@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: var(--hi-shell-gradient);
+  background: var(--hi-shell-bg);
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease;
@@ -186,7 +186,7 @@
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: var(--hi-shell-gradient);
+      background: var(--hi-shell-bg);
     }
   }
 

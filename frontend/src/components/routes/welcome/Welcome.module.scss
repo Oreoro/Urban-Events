@@ -6,9 +6,7 @@
   }
 
   min-height: 100vh;
-  background:
-    linear-gradient(135deg, rgba(47, 52, 64, 0.96), rgba(20, 124, 116, 0.92)),
-    var(--ue-blue-slate);
+  background: var(--ue-slate-deep);
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -124,7 +122,7 @@
 
 .progressFill {
   height: 100%;
-  background: var(--hi-gradient);
+  background: var(--hi-secondary-strong);
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -468,4 +466,3 @@
     margin-top: 1rem;
   }
 }
-

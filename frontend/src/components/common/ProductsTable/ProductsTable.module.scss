@@ -163,20 +163,6 @@ $color-money: #059669;
 
   &.soldOut {
     opacity: 0.7;
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-                      -45deg,
-                      transparent,
-                      transparent 10px,
-                      rgba(0, 0, 0, 0.02) 10px,
-                      rgba(0, 0, 0, 0.02) 20px
-      );
-      pointer-events: none;
-    }
   }
 }
 

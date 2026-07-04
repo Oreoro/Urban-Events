@@ -23,15 +23,11 @@ import {formatNumber} from "../../../utilites/helpers.ts";
 import {formatDateWithLocale, relativeDate} from "../../../utilites/dates.ts";
 import {Card} from "../Card";
 
-const placeholderGradients = [
-    'linear-gradient(135deg, var(--mantine-color-violet-5) 0%, var(--mantine-color-indigo-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-pink-5) 0%, var(--mantine-color-grape-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-blue-5) 0%, var(--mantine-color-cyan-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-teal-5) 0%, var(--mantine-color-green-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-orange-5) 0%, var(--mantine-color-yellow-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-indigo-5) 0%, var(--mantine-color-blue-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-grape-5) 0%, var(--mantine-color-violet-5) 100%)',
-    'linear-gradient(135deg, var(--mantine-color-cyan-5) 0%, var(--mantine-color-teal-5) 100%)',
+const placeholderColors = [
+    'var(--ue-slate)',
+    'var(--hi-secondary-strong)',
+    'var(--ue-blush-deep)',
+    'var(--ue-blue-slate)',
 ];
 
 interface EventCardProps {
@@ -45,8 +41,8 @@ export function EventCard({event}: EventCardProps) {
     const statusToggleMutation = useUpdateEventStatus();
 
     const coverImage = event.images?.find(img => img.type === 'EVENT_COVER');
-    const gradientIndex = event.id ? Number(event.id) % placeholderGradients.length : 0;
-    const placeholderGradient = placeholderGradients[gradientIndex];
+    const placeholderColorIndex = event.id ? Number(event.id) % placeholderColors.length : 0;
+    const placeholderColor = placeholderColors[placeholderColorIndex];
 
     const handleDuplicate = () => {
         setEventId(event.id);
@@ -175,7 +171,7 @@ export function EventCard({event}: EventCardProps) {
                             className={`${classes.image} ${!coverImage ? classes.placeholderImage : ''}`}
                             style={coverImage
                                 ? {backgroundImage: `url(${coverImage.url})`}
-                                : {background: placeholderGradient}
+                                : {background: placeholderColor}
                             }
                         />
                         <div className={`${classes.imageOverlay} ${!coverImage ? classes.placeholderOverlay : ''}`}/>

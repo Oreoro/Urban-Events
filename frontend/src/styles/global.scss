@@ -28,7 +28,7 @@
   --hi-secondary-strong: var(--ue-aqua-deep);
   --hi-secondary-text: var(--ue-slate-deep);
   --hi-surface: #ffffff;
-  --hi-surface-raised: rgba(255, 255, 255, 0.92);
+  --hi-surface-raised: #ffffff;
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
@@ -39,8 +39,8 @@
   --hi-link-color: var(--hi-primary);
   --hi-pink: var(--ue-blush-deep);
   --hi-primary-alt: var(--ue-blush-deep);
-  --hi-gradient: linear-gradient(135deg, var(--hi-primary) 0%, var(--hi-secondary-strong) 48%, var(--hi-primary-alt) 100%);
-  --hi-shell-gradient: linear-gradient(145deg, #2f3440 0%, #4a5262 54%, #147c74 100%);
+  --hi-action-fill: var(--hi-secondary-strong);
+  --hi-shell-bg: var(--ue-slate-deep);
   --hi-scrollbar-thumb: rgba(74, 82, 98, 0.28);
 
   --hi-color-white: #ffffff;
@@ -74,9 +74,7 @@ html {
 body {
   font-family: var(--mantine-font-family);
   color: var(--hi-text);
-  background:
-    linear-gradient(180deg, rgba(184, 242, 230, 0.22), rgba(255, 249, 234, 0) 280px),
-    var(--checkout-background, var(--hi-color-gray)) !important;
+  background: var(--checkout-background, var(--hi-color-gray)) !important;
   height: auto;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

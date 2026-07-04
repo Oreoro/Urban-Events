@@ -5,9 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-        linear-gradient(155deg, rgba(184, 242, 230, 0.28) 0%, rgba(255, 166, 158, 0.16) 54%, rgba(250, 243, 221, 0) 100%),
-        var(--ue-canvas);
+    background: var(--ue-canvas);
 }
 
 .root {
@@ -40,9 +38,7 @@
     font-weight: 800;
     margin-bottom: var(--mantine-spacing-md);
     font-size: 32px;
-    background: linear-gradient(to right, var(--hi-text), var(--hi-secondary-strong));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--hi-text);
 
     @media (max-width: 768px) {
         font-size: 28px
