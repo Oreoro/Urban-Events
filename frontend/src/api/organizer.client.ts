@@ -59,7 +59,7 @@ export const organizerClient = {
     },
 
     getOrganizerStats: async (organizerId: IdParam, currencyCode: string) => {
-        const response = await api.get<GenericDataResponse<OrganizerStats>>('organizers/' + organizerId + '/stats?currency_code=' + currencyCode);
+        const response = await api.get<GenericDataResponse<OrganizerStats>>('organizers/' + organizerId + '/stats?currency_code=' + encodeURIComponent(currencyCode));
         return response.data;
     },
 
