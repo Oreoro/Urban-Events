@@ -8,11 +8,7 @@ import {
     IconChartBar,
     IconCreditCard,
     IconDeviceMobile,
-    IconPalette,
-    IconQrcode,
-    IconShieldCheck,
     IconSparkles,
-    IconTicket,
     IconUsers,
 } from '@tabler/icons-react';
 import {useCallback, useRef} from "react";
@@ -20,57 +16,30 @@ import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 import {BrandWordmark} from "../../common/BrandWordmark";
 
-const allFeatures = [
-    {
-        icon: IconTicket,
-        title: t`Flexible Ticketing`,
-        description: t`Paid, free, tiered pricing, and donation-based tickets`
-    },
-    {
-        icon: IconQrcode,
-        title: t`QR Code Check-in`,
-        description: t`Mobile scanner with offline support and real-time tracking`
-    },
-    {
-        icon: IconCreditCard,
-        title: t`Instant Payouts`,
-        description: t`Get paid immediately via Stripe Connect`
-    },
-    {
-        icon: IconChartBar,
-        title: t`Real-Time Analytics`,
-        description: t`Track sales, revenue, and attendance with detailed reports`
-    },
-    {
-        icon: IconPalette,
-        title: t`Custom Branding`,
-        description: t`Your logo, colors, and style on every page`
-    },
-    {
-        icon: IconDeviceMobile,
-        title: t`Mobile Optimized`,
-        description: t`Beautiful checkout experience on any device`
-    },
-    {
-        icon: IconUsers,
-        title: t`Team Management`,
-        description: t`Invite unlimited team members with custom roles`
-    },
-    {
-        icon: IconShieldCheck,
-        title: t`Data Ownership`,
-        description: t`You own 100% of your attendee data, always`
-    },
-];
-
-const featuredAuthFeatures = [
-    allFeatures[2],
-    allFeatures[3],
-    allFeatures[6],
-    allFeatures[5],
-];
-
 const FeaturePanel = () => {
+    const featuredAuthFeatures = [
+        {
+            icon: IconCreditCard,
+            title: t`Instant Payouts`,
+            description: t`Get paid immediately via Stripe Connect`
+        },
+        {
+            icon: IconChartBar,
+            title: t`Real-Time Analytics`,
+            description: t`Track sales, revenue, and attendance with detailed reports`
+        },
+        {
+            icon: IconUsers,
+            title: t`Team Management`,
+            description: t`Invite unlimited team members with custom roles`
+        },
+        {
+            icon: IconDeviceMobile,
+            title: t`Mobile Optimized`,
+            description: t`Beautiful checkout experience on any device`
+        },
+    ];
+
     return (
         <div className={classes.rightPanel}>
             <div className={classes.backgroundImage} />
@@ -118,7 +87,7 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(`HiEvents v${__APP_VERSION__}`);
+            showInfo(t`HiEvents v${__APP_VERSION__}`);
         }
     }, []);
 
