@@ -15,7 +15,7 @@ import {
     IconTicket,
     IconUsers,
 } from '@tabler/icons-react';
-import {useCallback, useMemo, useRef} from "react";
+import {useCallback, useRef} from "react";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 import {BrandWordmark} from "../../common/BrandWordmark";
@@ -63,12 +63,14 @@ const allFeatures = [
     },
 ];
 
-const FeaturePanel = () => {
-    const selectedFeatures = useMemo(() => {
-        const shuffled = [...allFeatures].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, 4);
-    }, []);
+const featuredAuthFeatures = [
+    allFeatures[2],
+    allFeatures[3],
+    allFeatures[6],
+    allFeatures[5],
+];
 
+const FeaturePanel = () => {
     return (
         <div className={classes.rightPanel}>
             <div className={classes.backgroundImage} />
@@ -83,7 +85,7 @@ const FeaturePanel = () => {
                     </div>
 
                     <div className={classes.featureGrid}>
-                        {selectedFeatures.map((feature, index) => {
+                        {featuredAuthFeatures.map((feature, index) => {
                             const Icon = feature.icon;
                             return (
                                 <div key={index} className={classes.feature}>
