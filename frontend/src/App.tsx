@@ -6,7 +6,6 @@ import {I18nProvider} from "@lingui/react";
 import {ModalsProvider} from "@mantine/modals";
 import {HydrationBoundary, QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Helmet, HelmetProvider} from "react-helmet-async";
-import {generateColors} from '@mantine/colors-generator';
 
 import "@mantine/core/styles/global.css";
 import "@mantine/core/styles.css";
@@ -20,6 +19,7 @@ import {isSsr} from "./utilites/helpers.ts";
 import {StartupChecks} from "./StartupChecks.tsx";
 import {ThirdPartyScripts} from "./components/common/ThirdPartyScripts";
 import {getConfig} from "./utilites/config.ts";
+import {getUrbanEventsTheme} from "./theme.ts";
 
 declare global {
     interface Window {
@@ -61,15 +61,7 @@ export const App: FC<
                 }}
             />
             <MantineProvider
-                theme={{
-                    colors: {
-                        primary: generateColors(getConfig("VITE_APP_PRIMARY_COLOR", "#0D9488") as string),
-                        secondary: generateColors(getConfig("VITE_APP_SECONDARY_COLOR", "#F8FFFF") as string),
-                    },
-                    primaryColor: "primary",
-                    fontFamily: "'Figtree', sans-serif",
-                    primaryShade: 7
-                }}
+                theme={getUrbanEventsTheme()}
             >
                 <HelmetProvider context={props.helmetContext}>
                     <I18nProvider i18n={i18n}>
