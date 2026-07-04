@@ -34,11 +34,10 @@ jobs:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
         run: |
           echo "Building and pushing Docker image..."
-          # Build the Docker image, giving it a local name.
+          # Build the Docker image. The compose service tags it as urban-events:v1.
           docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
           
           # Tag the locally built image with the full ACR registry path.
-          # We assume the image name from the docker compose build is 'urban-events:v1'.
           docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
           
           # Push the newly tagged image to ACR.
@@ -58,7 +57,7 @@ jobs:
               az webapp config appsettings set \
                 --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
                 --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-                --settings ${{ secrets.AZURE_APP_SECREts }}
+                --settings ${{ secrets.AZURE_APP_SECRETS }}
             else
               echo "⚠️ AZURE_APP_SECRETS is empty. Skipping application settings update."
             fi
