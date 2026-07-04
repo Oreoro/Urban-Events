@@ -32,6 +32,8 @@ import {Card} from "../../../common/Card";
 import {CreateEventModal} from "../../../modals/CreateEventModal";
 import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
 
+const DEFAULT_CURRENCY = currenciesMap[0]?.value ?? 'PKR';
+
 interface OrganizerStatDisplayItem {
     value: string | number;
     description: string;
@@ -75,11 +77,11 @@ export const OrganizerDashboard = () => {
     const [showCreateEventModal, setShowCreateEventModal] = useState(false);
 
     const [selectedCurrency, setSelectedCurrency] = useState<string>(
-        organizer?.currency || 'USD'
+        organizer?.currency || DEFAULT_CURRENCY
     );
 
     useEffect(() => {
-        if (organizer?.currency && selectedCurrency !== organizer.currency) {
+        if (organizer?.currency) {
             setSelectedCurrency(organizer.currency);
         }
     }, [organizer?.currency]);
