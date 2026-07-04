@@ -19,19 +19,24 @@ use HiEvents\Repository\Interfaces\PromoCodeRepositoryInterface;
 use HiEvents\Services\Application\Handlers\Order\DTO\CreateOrderPublicDTO;
 use HiEvents\Services\Domain\Order\OrderItemProcessingService;
 use HiEvents\Services\Domain\Order\OrderManagementService;
+use HiEvents\Services\Domain\PromoCode\PromoCodeUsageValidationService;
+use HiEvents\Services\Domain\Product\AvailableProductQuantitiesFetchService;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Validation\UnauthorizedException;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class CreateOrderHandler
 {
     public function __construct(
-        private readonly EventRepositoryInterface     $eventRepository,
-        private readonly PromoCodeRepositoryInterface $promoCodeRepository,
-        private readonly AffiliateRepositoryInterface $affiliateRepository,
-        private readonly OrderManagementService       $orderManagementService,
-        private readonly OrderItemProcessingService   $orderItemProcessingService,
-        private readonly DatabaseManager              $databaseManager,
+        private readonly EventRepositoryInterface               $eventRepository,
+        private readonly PromoCodeRepositoryInterface           $promoCodeRepository,
+        private readonly PromoCodeUsageValidationService        $promoCodeUsageValidationService,
+        private readonly AffiliateRepositoryInterface           $affiliateRepository,
+        private readonly OrderManagementService                 $orderManagementService,
+        private readonly OrderItemProcessingService             $orderItemProcessingService,
+        private readonly AvailableProductQuantitiesFetchService $availableProductQuantitiesFetchService,
+        private readonly DatabaseManager                        $databaseManager,
     )
     {
     }
@@ -46,18 +51,23 @@ class CreateOrderHandler
     ): OrderDomainObject
     {
         return $this->databaseManager->transaction(function () use ($eventId, $createOrderPublicDTO, $deleteExistingOrdersForSession) {
+            $this->databaseManager->statement('SELECT pg_advisory_xact_lock(?)', [$eventId]);
+
             $event = $this->eventRepository
                 ->loadRelation(EventSettingDomainObject::class)
                 ->findById($eventId);
 
             $this->validateEventStatus($event, $createOrderPublicDTO);
 
-            $promoCode = $this->getPromoCode($createOrderPublicDTO, $eventId);
-            $affiliate = $this->getAffiliate($createOrderPublicDTO, $eventId);
-
+            // Remove the session's stale reservations before promo usage is counted in getPromoCode()
             if ($deleteExistingOrdersForSession) {
                 $this->orderManagementService->deleteExistingOrders($eventId, $createOrderPublicDTO->session_identifier);
             }
+
+            $promoCode = $this->getPromoCode($createOrderPublicDTO, $eventId);
+            $affiliate = $this->getAffiliate($createOrderPublicDTO, $eventId);
+
+            $this->validateProductAvailability($eventId, $createOrderPublicDTO);
 
             $order = $this->orderManagementService->createNewOrder(
                 eventId: $eventId,
@@ -91,11 +101,11 @@ class CreateOrderHandler
             PromoCodeDomainObjectAbstract::EVENT_ID => $eventId,
         ]);
 
-        if ($promoCode?->isValid()) {
-            return $promoCode;
+        if (!$this->promoCodeUsageValidationService->isPromoCodeUsable($promoCode)) {
+            return null;
         }
 
-        return null;
+        return $promoCode;
     }
 
     private function getAffiliate(CreateOrderPublicDTO $createOrderPublicDTO, int $eventId): ?AffiliateDomainObject
@@ -117,6 +127,34 @@ class CreateOrderHandler
             throw new UnauthorizedException(
                 __('This event is not live.')
             );
+        }
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    private function validateProductAvailability(int $eventId, CreateOrderPublicDTO $createOrderPublicDTO): void
+    {
+        $availability = $this->availableProductQuantitiesFetchService
+            ->getAvailableProductQuantities($eventId, ignoreCache: true);
+
+        foreach ($createOrderPublicDTO->products as $product) {
+            foreach ($product->quantities as $priceQuantity) {
+                if ($priceQuantity->quantity <= 0) {
+                    continue;
+                }
+
+                $available = $availability->productQuantities
+                    ->where('product_id', $product->product_id)
+                    ->where('price_id', $priceQuantity->price_id)
+                    ->first()?->quantity_available ?? 0;
+
+                if ($priceQuantity->quantity > $available) {
+                    throw ValidationException::withMessages([
+                        'products' => __('Not enough products available. Please try again.'),
+                    ]);
+                }
+            }
         }
     }
 }

@@ -1,12 +1,11 @@
 import {useParams} from "react-router";
 import {useCreateNeemPaymentIntent} from "../../../../../../queries/useCreateNeemPaymentIntent.ts";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useGetEventPublic} from "../../../../../../queries/useGetEventPublic.ts";
 import {CheckoutContent} from "../../../../../layouts/Checkout/CheckoutContent";
 import {HomepageInfoMessage} from "../../../../../common/HomepageInfoMessage";
 import {t} from "@lingui/macro";
 import {eventHomepagePath} from "../../../../../../utilites/urlHelper.ts";
-import {LoadingMask} from "../../../../../common/LoadingMask";
 import {Event} from "../../../../../../types.ts";
 
 interface NeemPaymentMethodProps {
@@ -17,37 +16,34 @@ interface NeemPaymentMethodProps {
 export const NeemPaymentMethod = ({enabled, setSubmitHandler}: NeemPaymentMethodProps) => {
     const {eventId, orderShortId} = useParams();
     const {
-        data: neemData,
-        isFetched: isNeemFetched,
-        error: neemPaymentIntentError
-    } = useCreateNeemPaymentIntent(eventId, orderShortId);
-    const [neemPromise, setNeemPromise] = useState(false);
+        error: neemPaymentIntentError,
+        isFetching: isNeemFetching,
+        refetch: createNeemPaymentIntent,
+    } = useCreateNeemPaymentIntent(eventId, orderShortId, false);
+    const [isRedirecting, setIsRedirecting] = useState(false);
     const {data: event} = useGetEventPublic(eventId);
 
-    useEffect(() => {
-        if (!neemData?.redirect_url) {
+    const handleNeemSubmit = useCallback(async () => {
+        const {data} = await createNeemPaymentIntent();
+        if (!data?.redirect_url) {
             return;
         }
 
-        const neemRedirectUrl = neemData?.redirect_url;
-        // const options = neemSecretToken ? {
-        //     neemSecretToken: neemSecretToken
-        // } : {};
-
-        setNeemPromise(neemRedirectUrl);
-    }, [neemData]);
+        setIsRedirecting(true);
+        window.location.href = data.redirect_url;
+    }, [createNeemPaymentIntent]);
 
     useEffect(() => {
-        if (isNeemFetched) {
-            // console.log(neemData.redirect_url);
-            window.location.href = neemData.redirect_url
+        if (enabled) {
+            setSubmitHandler(() => handleNeemSubmit);
         }
-    }, [isNeemFetched, neemData]);
+    }, [enabled, handleNeemSubmit, setSubmitHandler]);
 
     if (!enabled) {
         return (
             <CheckoutContent>
                 <HomepageInfoMessage
+                    status="warning"
                     message={t`Neem payments are not enabled for this event.`}
                     link={eventHomepagePath(event as Event)}
                     linkText={t`Return to event page`}
@@ -60,6 +56,7 @@ export const NeemPaymentMethod = ({enabled, setSubmitHandler}: NeemPaymentMethod
         return (
             <CheckoutContent>
                 <HomepageInfoMessage
+                    status="error"
                     /* @ts-ignore */
                     message={neemPaymentIntentError.response?.data?.message || t`Sorry, something has gone wrong. Please restart the checkout process.`}
                     link={eventHomepagePath(event)}
@@ -69,23 +66,20 @@ export const NeemPaymentMethod = ({enabled, setSubmitHandler}: NeemPaymentMethod
         );
     }
 
-    if (!isNeemFetched) {
-        return <LoadingMask/>;
+    if (isNeemFetching || isRedirecting) {
+        return (
+            <HomepageInfoMessage
+                status="processing"
+                message={t`Redirecting you to the payment page...`}
+            />
+        );
     }
 
     return (
-        <>
-            {(!neemPromise) && <LoadingMask/>}
-
-            {(isNeemFetched) && (
-                <CheckoutContent>
-                    <HomepageInfoMessage
-                        message={t`Redirecting you to the payment page...`}
-                        link={neemPromise}
-                        linkText={t`Click here if not redirected`}
-                    />
-                </CheckoutContent>
-            )}
-        </>
+        <HomepageInfoMessage
+            status="awaiting_payment"
+            message={t`Pay securely with Neem.`}
+            subtitle={t`You will be redirected to Neem to complete your payment.`}
+        />
     );
 }

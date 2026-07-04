@@ -82,7 +82,7 @@ return [
             'transport' => 'failover',
             'mailers' => [
                 'smtp',
-                'log',
+                'postmark',
             ],
         ],
     ],
@@ -100,7 +100,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@hi.events'),
-        'name' => env('MAIL_FROM_NAME', 'Hi.Events'),
+        'name' => env('MAIL_FROM_NAME', 'Urban Events'),
     ],
 
     /*

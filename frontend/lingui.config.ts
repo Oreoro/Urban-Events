@@ -7,14 +7,17 @@ const config: LinguiConfig = {
         "es", // Spanish
         "fr", // French
         "nl", // Dutch
+		"hu", // Hungarian
         "pt-br", // Portuguese (Brazil)
         "ru", // Russian
         "de", // German
         "pt", // Portuguese (Portugal)
         "vi", // Vietnamese
-
+        "tr", // Turkish
+        "se", // Swedish
         "it", // Italian
-        // "pl", // Polish
+        "pl", // Polish
+        "el", // Greek
         // "ja", // Japanese
         // "ko", // Korean
         // "id", // Indonesian

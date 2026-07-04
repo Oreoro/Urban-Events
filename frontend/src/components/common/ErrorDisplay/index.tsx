@@ -39,6 +39,15 @@ export const ErrorDisplay = () => {
 
                 <Container size="md" className={classes.root}>
                     <Stack gap="xl" align="center">
+                        <Image
+                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
+                            alt={getConfig("VITE_APP_NAME", "Urban Events") + " Logo"}
+                            w={rem(140)}
+                            h="auto"
+                            fit="contain"
+                            className={classes.logo}
+                        />
+
                         <Stack gap="lg" align="center" className={classes.content}>
                             <Title order={1} className={classes.title}>
                                 {title}

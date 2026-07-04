@@ -54,10 +54,14 @@ html {
 }
 
 body {
-  color: var(--hi-text);
-  background-color: var(--hi-color-gray) !important;
   font-family: var(--mantine-font-family);
+  color: var(--hi-text);
+  background-color: var(--checkout-background, var(--hi-color-gray)) !important;
   height: auto;
+}
+
+h1, h2, h3 {
+  letter-spacing: 0;
 }
 
 fieldset {

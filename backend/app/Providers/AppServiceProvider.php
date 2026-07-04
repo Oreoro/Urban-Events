@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Stripe\StripeClient;
+use HiEvents\Services\Infrastructure\Stripe\StripeConfigurationService;
+use HiEvents\Services\Infrastructure\Stripe\StripeClientFactory;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -27,11 +29,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->bindDoctrineConnection();
-        $this->bindStripeClient();
+        $this->bindStripeServices();
         $this->bindCurrencyConversionClient();
-        $this->app->bind(HttpClientInterface::class, function () {
-            return HttpClient::create();
-        });
+        $this->bindHttpClient();
     }
 
     /**
@@ -72,8 +72,11 @@ class AppServiceProvider extends ServiceProvider
         );
     }
 
-    private function bindStripeClient(): void
+    private function bindStripeServices(): void
     {
+        $this->app->singleton(StripeConfigurationService::class);
+        $this->app->singleton(StripeClientFactory::class);
+        
         if (!config('services.stripe.secret_key')) {
             logger()?->debug('Stripe secret key is not set in the configuration file. Payment processing will not work.');
             return;
@@ -82,6 +85,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             StripeClient::class,
             fn() => new StripeClient(config('services.stripe.secret_key'))
+        );
+    }
+
+    private function bindHttpClient(): void
+    {
+        $this->app->bind(
+            HttpClientInterface::class,
+            fn() => HttpClient::create()
         );
     }
 
