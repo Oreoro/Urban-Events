@@ -1,8 +1,8 @@
 @use "../../../../styles/mixins.scss";
 
 .headerCard {
-  background: linear-gradient(135deg, var(--mantine-color-primary-0) 0%, var(--mantine-color-secondary-0) 100%);
-  border-radius: 16px;
+  background: var(--ue-canvas-soft);
+  border-radius: var(--hi-radius-lg);
   box-shadow: 0 8px 24px rgba(149, 157, 165, 0.08) !important;
   padding: 32px;
   margin-bottom: 32px;
@@ -122,7 +122,7 @@
   background-color: var(--mantine-color-secondary-1);
 
   [role="progressbar"] {
-    background: linear-gradient(90deg, var(--mantine-color-secondary-5), var(--mantine-color-primary-5));
+    background: var(--hi-secondary-strong);
     box-shadow: 0 0 8px var(--mantine-color-secondary-3);
     transition: width 0.5s ease-in-out;
   }
@@ -137,11 +137,7 @@
   z-index: 9999;
   pointer-events: none;
   animation: confettiAnimation 4s ease-in-out forwards;
-  background-image: radial-gradient(circle at 25% 25%, #ff4a4a 2px, transparent 0),
-  radial-gradient(circle at 75% 75%, #4a4aff 2px, transparent 0),
-  radial-gradient(circle at 25% 75%, #4aff4a 3px, transparent 0),
-  radial-gradient(circle at 75% 25%, #ffff4a 3px, transparent 0),
-  radial-gradient(circle at 50% 50%, #ff4aff 4px, transparent 0);
+  background: transparent;
   background-size: 10% 10%;
 }
 

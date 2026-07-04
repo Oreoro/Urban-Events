@@ -16,15 +16,7 @@
   overflow: hidden;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none;
   }
 
   &:hover {
@@ -32,9 +24,6 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
     background: rgba(184, 242, 230, 0.18) !important;
 
-    &::before {
-      opacity: 1;
-    }
   }
 
   &:active {

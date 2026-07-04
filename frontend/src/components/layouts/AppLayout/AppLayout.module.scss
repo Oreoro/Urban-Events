@@ -30,9 +30,7 @@
     padding: var(--hi-spacing-lg);
     padding-bottom: calc(var(--hi-spacing-lg) + 40px);
     overflow: auto;
-    background:
-      linear-gradient(180deg, rgba(184, 242, 230, 0.22), rgba(255, 249, 234, 0) 260px),
-      var(--ue-canvas);
+    background: var(--ue-canvas);
 
     @include mixins.scrollbar;
 

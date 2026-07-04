@@ -65,11 +65,7 @@
     right: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(
-                    to right,
-                    rgba(255, 255, 255, 0.1),
-                    rgba(255, 255, 255, 0)
-    );
+    background: var(--hi-border);
     pointer-events: none;
   }
 }
@@ -87,11 +83,7 @@
     left: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(
-                    to left,
-                    rgba(255, 255, 255, 0.1),
-                    rgba(255, 255, 255, 0)
-    );
+    background: var(--hi-border);
     pointer-events: none;
   }
 }

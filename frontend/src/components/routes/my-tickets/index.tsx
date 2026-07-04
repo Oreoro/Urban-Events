@@ -102,8 +102,8 @@ const OrderCard = ({order}: { order: Order }) => {
                 <Button
                     component={NavLink}
                     to={orderUrl}
-                    variant="gradient"
-                    gradient={{ from: 'grape', to: 'pink', deg: 90 }}
+                    variant="filled"
+                    color="secondary"
                     size="sm"
                     leftSection={<IconExternalLink size={16}/>}
                 >

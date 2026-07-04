@@ -332,8 +332,8 @@
 
 // Empty states
 .emptyState {
-  background: linear-gradient(135deg, var(--mantine-color-primary-0) 0%, var(--mantine-color-secondary-0) 100%);
-  border-radius: 16px;
+  background: var(--ue-canvas-soft);
+  border-radius: var(--hi-radius-lg);
   padding: 3rem 2rem;
   text-align: center;
   border: 2px dashed var(--mantine-color-primary-2);
@@ -347,12 +347,7 @@
   //flex: 1;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-      background: radial-gradient(circle, var(--mantine-color-secondary-0) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
+    display: none;
   }
 
   @keyframes pulse {

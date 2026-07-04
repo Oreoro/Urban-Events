@@ -255,7 +255,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
                                             alt={event.title}
                                             className={classes.coverImage}
                                         />
-                                        <div className={classes.heroGradient}/>
+                                        <div className={classes.heroOverlay}/>
                                         {statusBadge && (
                                             <div className={classes.statusBadges}>
                                                 <span className={classes.statusBadge}>
