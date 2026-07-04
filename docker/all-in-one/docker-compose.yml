@@ -3,6 +3,7 @@ services:
     build:
       context: ./../../
       dockerfile: Dockerfile.all-in-one
+    image: urban-events:v1
     restart: unless-stopped
     ports:
       - "8123:80"
