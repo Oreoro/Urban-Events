@@ -336,7 +336,7 @@ export default App;
                         </div>
                     </div>
                     <div className={classes.websitePlaceholder}>
-                        <h1>{t`Your awesome website 🎉`}</h1>
+                        <h1>{t`Your awesome website`}</h1>
                         <p className={classes.lorem}>
                             {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat elementum...`}
                         </p>

@@ -169,8 +169,8 @@ class UpdateEventSettingsDTO extends BaseDTO
 
             // Homepage theme defaults (simplified 2-color + mode system)
             homepage_theme_settings: [
-                'accent' => '#8b5cf6',
-                'background' => '#f5f3ff',
+                'accent' => '#4A5262',
+                'background' => '#FFF9EA',
                 'mode' => 'light',
                 'background_type' => 'COLOR',
             ],
@@ -180,4 +180,3 @@ class UpdateEventSettingsDTO extends BaseDTO
         );
     }
 }
-

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import React, {useMemo} from "react";
 import {iHavePurchasedALicence, isHiEvents} from "../../../utilites/helpers.ts";
 import {getConfig} from "../../../utilites/config.ts";
+import {IconRocket} from "@tabler/icons-react";
 
 /**
  * (c) Hi.Events Ltd 2025
@@ -65,7 +66,7 @@ export const PoweredByFooter = (
             >
                 Hi.Events
             </a>{" "}
-            🚀
+            <IconRocket size={14} stroke={1.8} className={classes.inlineIcon}/>
         </>
     );
 

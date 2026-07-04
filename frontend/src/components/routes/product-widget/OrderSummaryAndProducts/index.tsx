@@ -17,7 +17,8 @@ import {
     IconPrinter,
     IconSend,
     IconTicket,
-    IconUser
+    IconUser,
+    IconX
 } from "@tabler/icons-react";
 import {useEffect, useState} from "react";
 import {useQueryClient} from "@tanstack/react-query";
@@ -175,20 +176,17 @@ const WelcomeHeader = ({order, event, allowSelfEdit}: { order: Order; event: Eve
         <div className={classes.welcomeHeader}>
             {isCompleted && (
                 <div className={classes.confettiIcon}>
-                    {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                    <span>🎉</span>
+                    <IconCheck size={34}/>
                 </div>
             )}
             {isAwaitingPayment && (
                 <div className={classes.confettiIcon}>
-                    {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                    <span>⏳</span>
+                    <IconClock size={34}/>
                 </div>
             )}
             {isCancelled && (
                 <div className={classes.confettiIcon}>
-                    {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
-                    <span>😔</span>
+                    <IconX size={34}/>
                 </div>
             )}
             <div className={classes.welcomeMessage}>{message}</div>

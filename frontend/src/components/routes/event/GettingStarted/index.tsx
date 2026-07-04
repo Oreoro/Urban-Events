@@ -4,7 +4,7 @@ import {t} from "@lingui/macro"
 import {Button, Group, Progress, Text} from "@mantine/core";
 import classes from "./GettingStarted.module.scss";
 import {NavLink, useLocation, useNavigate, useParams} from "react-router";
-import {IconCheck, IconConfetti} from "@tabler/icons-react";
+import {IconBolt, IconCheck, IconConfetti, IconPaint, IconRocket} from "@tabler/icons-react";
 import {useGetEvent} from "../../../../queries/useGetEvent.ts";
 import {useGetEventImages} from "../../../../queries/useGetEventImages.ts";
 import {Tooltip} from "../../../common/Tooltip";
@@ -135,8 +135,9 @@ const GettingStarted = () => {
 
                     <Card className={event?.description ? classes.completedCard : ''}>
                         {event?.description && <CompletedBadge/>}
-                        <h2>
-                            {t`⚡️ Set up your event`}
+                        <h2 className={classes.cardTitle}>
+                            <IconBolt size={22}/>
+                            {t`Set up your event`}
                         </h2>
                         <p>
                             {t`Add event details and manage event settings.`}
@@ -150,8 +151,9 @@ const GettingStarted = () => {
 
                     <Card className={hasImages ? classes.completedCard : ''}>
                         {hasImages && <CompletedBadge/>}
-                        <h2>
-                            {t`🎨 Customize your event page`}
+                        <h2 className={classes.cardTitle}>
+                            <IconPaint size={22}/>
+                            {t`Customize your event page`}
                         </h2>
                         <p>
                             {t`Customize your event page to match your brand and style.`}
@@ -164,8 +166,9 @@ const GettingStarted = () => {
 
                     <Card className={event?.status === 'LIVE' ? classes.completedCard : ''}>
                         {event?.status === 'LIVE' && <CompletedBadge/>}
-                        <h2>
-                            {t`🚀 Set your event live`}
+                        <h2 className={classes.cardTitle}>
+                            <IconRocket size={22}/>
+                            {t`Set your event live`}
                         </h2>
                         <p>
                             {t`Once you're ready, set your event live and start selling products.`}

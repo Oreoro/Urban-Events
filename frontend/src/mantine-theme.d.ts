@@ -6,6 +6,10 @@ import {
 type ExtendedCustomColors =
     | 'primary'
     | 'secondary'
+    | 'blush'
+    | 'aqua'
+    | 'eggshell'
+    | 'slate'
     | DefaultMantineColor;
 
 declare module '@mantine/core' {

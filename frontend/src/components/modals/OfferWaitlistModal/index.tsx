@@ -4,11 +4,10 @@ import {useOfferWaitlistEntry} from "../../../mutations/useOfferWaitlistEntry.ts
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {t} from "@lingui/macro";
 import {Anchor, Badge, NumberInput, Paper, Table, Text} from "@mantine/core";
-import {IconSend} from "@tabler/icons-react";
+import {IconBolt, IconSend} from "@tabler/icons-react";
 import {NavLink} from "react-router";
 import {Button} from "../../common/Button";
 import {useState} from "react";
-import {BouncingEmoji} from "../../common/BouncingEmoji";
 
 interface OfferWaitlistModalProps extends GenericModalProps {
     eventId: IdParam;
@@ -82,7 +81,7 @@ export const OfferWaitlistModal = ({onClose, eventId, eventSettings, stats}: Off
                 heading={t`Offer Tickets`}
             >
                 <div style={{textAlign: 'center', padding: '20px 0 10px'}}>
-                    <BouncingEmoji emoji="⚡"/>
+                    <IconBolt size={48} color="var(--hi-secondary-strong)" stroke={1.6} style={{marginBottom: 16}}/>
                     <Text size="lg" fw={600} mb="xs">
                         {t`Auto-offer is enabled`}
                     </Text>

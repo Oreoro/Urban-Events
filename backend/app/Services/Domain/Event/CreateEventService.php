@@ -182,8 +182,8 @@ class CreateEventService
 
         // Build the new homepage_theme_settings from organizer settings
         $homepageThemeSettings = [
-            'accent' => $organizerThemeSettings['accent'] ?? '#8b5cf6',
-            'background' => $organizerThemeSettings['background'] ?? '#f5f3ff',
+            'accent' => $organizerThemeSettings['accent'] ?? '#4A5262',
+            'background' => $organizerThemeSettings['background'] ?? '#FFF9EA',
             'mode' => $organizerThemeSettings['mode'] ?? 'light',
             'background_type' => $eventCoverCreated
                 ? HomepageBackgroundType::MIRROR_COVER_IMAGE->name

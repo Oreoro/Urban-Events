@@ -1,5 +1,15 @@
 import {Button} from "@mantine/core";
-import {IconArrowRight} from "@tabler/icons-react";
+import {
+    IconAlertTriangle,
+    IconArrowRight,
+    IconBuildingBank,
+    IconCircleCheck,
+    IconCircleX,
+    IconClock,
+    IconCreditCard,
+    IconMessageCircle,
+    IconSearch,
+} from "@tabler/icons-react";
 import classes from './HomepageInfoMessage.module.scss';
 import React from "react";
 
@@ -15,20 +25,20 @@ type StatusType =
     | 'awaiting_payment'
     | 'offline_payment';
 
-const getStatusEmoji = (status: StatusType): string => {
-    const emojis: Record<StatusType, string> = {
-        info: '💬',
-        processing: '⏳',
-        success: '🎉',
-        warning: '⚠️',
-        error: '❌',
-        expired: '⏰',
-        cancelled: '😔',
-        not_found: '🔍',
-        awaiting_payment: '💳',
-        offline_payment: '🏦',
+const getStatusIcon = (status: StatusType) => {
+    const icons: Record<StatusType, typeof IconMessageCircle> = {
+        info: IconMessageCircle,
+        processing: IconClock,
+        success: IconCircleCheck,
+        warning: IconAlertTriangle,
+        error: IconCircleX,
+        expired: IconClock,
+        cancelled: IconCircleX,
+        not_found: IconSearch,
+        awaiting_payment: IconCreditCard,
+        offline_payment: IconBuildingBank,
     };
-    return emojis[status] || emojis.info;
+    return icons[status] || icons.info;
 };
 
 interface HomepageInfoMessageProps {
@@ -44,15 +54,15 @@ export const HomepageInfoMessage = ({
                                         subtitle,
                                         link,
                                         linkText,
-                                        status = 'info',
+                                    status = 'info',
                                     }: HomepageInfoMessageProps) => {
-    const emoji = getStatusEmoji(status);
+    const StatusIcon = getStatusIcon(status);
 
     return (
         <div className={classes.container}>
             <div className={classes.card}>
-                <div className={classes.emojiContainer}>
-                    <span className={classes.emoji}>{emoji}</span>
+                <div className={classes.iconContainer}>
+                    <StatusIcon className={classes.icon} stroke={1.7}/>
                 </div>
 
                 <h2 className={classes.title}>{message}</h2>

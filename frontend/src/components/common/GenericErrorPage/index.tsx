@@ -1,10 +1,10 @@
 import React from 'react';
-import {Box, Button, Container, Image, rem, Stack, Text, Title} from '@mantine/core';
+import {Box, Button, Container, Stack, Text, Title} from '@mantine/core';
 import {IconHome} from '@tabler/icons-react';
 import classes from './GenericErrorPage.module.scss';
 import {PoweredByFooter} from "../PoweredByFooter";
 import {Helmet} from "react-helmet-async";
-import {getConfig} from "../../../utilites/config.ts";
+import {BrandWordmark} from "../BrandWordmark";
 
 interface GenericErrorPageProps {
     title: string;
@@ -39,21 +39,10 @@ export const GenericErrorPage: React.FC<GenericErrorPageProps> = ({
                 ]}
             />
             <Box className={classes.wrapper}>
-                {/* Animated background elements */}
-                <div className={classes.backgroundOrb1}/>
-                <div className={classes.backgroundOrb2}/>
-
                 <Container size="md" className={classes.root}>
                     <Stack gap="xl" align="center">
 
-                        <Image
-                            src={getConfig("VITE_APP_LOGO_DARK", "/logos/hi-events-stacked-light.svg")}
-                            alt={getConfig("VITE_APP_NAME", "Urban Events") + " Logo"}
-                            w={rem(140)}
-                            h="auto"
-                            fit="contain"
-                            className={classes.logo}
-                        />
+                        <BrandWordmark tone="dark" size="md" className={classes.logo}/>
 
                         <Stack gap="lg" align="center" className={classes.content}>
                             <Title order={1} className={classes.title}>
@@ -71,8 +60,7 @@ export const GenericErrorPage: React.FC<GenericErrorPageProps> = ({
                                     component="a"
                                     href={buttonUrl}
                                     leftSection={buttonIcon}
-                                    variant="gradient"
-                                    gradient={{from: 'purple', to: 'pink'}}
+                                    variant="filled"
                                     className={classes.button}
                                 >
                                     {buttonText}
