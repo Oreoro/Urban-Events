@@ -49,18 +49,19 @@ jobs:
         uses: azure/CLI@v1
         env:
           AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
+          PUBLIC_FRONTEND_URL: ${{ vars.PUBLIC_FRONTEND_URL || 'https://app.urbanevents.pk' }}
+          PUBLIC_API_URL_CLIENT: ${{ vars.PUBLIC_API_URL_CLIENT || 'https://app.urbanevents.pk/api' }}
         with:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
 
-            if [ -n "${AZURE_APP_SECRETS:-}" ]; then
-              python3 <<'PY'
+            python3 <<'PY'
             import json
             import os
 
             settings = []
 
-            for raw_line in os.environ["AZURE_APP_SECRETS"].splitlines():
+            for raw_line in os.environ.get("AZURE_APP_SECRETS", "").splitlines():
                 line = raw_line.strip()
 
                 if not line or line.startswith("#"):
@@ -88,20 +89,35 @@ jobs:
                     "slotSetting": False,
                 })
 
+            production_overrides = {
+                "VITE_API_URL_CLIENT": os.environ["PUBLIC_API_URL_CLIENT"],
+                "VITE_FRONTEND_URL": os.environ["PUBLIC_FRONTEND_URL"],
+                "ENV_VITE_API_URL_CLIENT": os.environ["PUBLIC_API_URL_CLIENT"],
+                "ENV_VITE_FRONTEND_URL": os.environ["PUBLIC_FRONTEND_URL"],
+            }
+
+            settings_by_name = {setting["name"]: setting for setting in settings}
+
+            for name, value in production_overrides.items():
+                settings_by_name[name] = {
+                    "name": name,
+                    "value": value,
+                    "slotSetting": False,
+                }
+
+            settings = list(settings_by_name.values())
+
             with open("appsettings.json", "w", encoding="utf-8") as handle:
                 json.dump(settings, handle)
 
             print(f"Prepared {len(settings)} app settings.")
             PY
 
-              az webapp config appsettings set \
-                --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-                --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-                --settings @appsettings.json \
-                --output none
-            else
-              echo "AZURE_APP_SECRETS is empty. Skipping application settings update."
-            fi
+            az webapp config appsettings set \
+              --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+              --name ${{ secrets.AZURE_WEBAPP_NAME }} \
+              --settings @appsettings.json \
+              --output none
             
             echo "✅ Application settings configured."
 

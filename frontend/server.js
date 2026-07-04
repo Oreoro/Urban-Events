@@ -60,9 +60,45 @@ async function main() {
         return value?.split(",")[0]?.trim();
     };
 
+    const localHostnames = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1"]);
+
+    const getHostname = (host = "") => {
+        const trimmedHost = host.trim();
+
+        if (!trimmedHost) {
+            return "";
+        }
+
+        if (trimmedHost.startsWith("[")) {
+            const closingBracketIndex = trimmedHost.indexOf("]");
+
+            return closingBracketIndex > 0
+                ? trimmedHost.slice(1, closingBracketIndex).toLowerCase()
+                : trimmedHost.toLowerCase();
+        }
+
+        return trimmedHost.split(":")[0].toLowerCase();
+    };
+
+    const isLocalHostname = (hostname = "") => (
+        localHostnames.has(hostname.replace(/^\[|\]$/g, "").toLowerCase())
+    );
+
+    const isLocalHost = (host) => isLocalHostname(getHostname(host));
+
+    const normalizeProtocol = (protocol) => {
+        const trimmedProtocol = protocol?.replace(":", "").toLowerCase();
+
+        return ["http", "https"].includes(trimmedProtocol)
+            ? trimmedProtocol
+            : undefined;
+    };
+
     const getPublicOrigin = (req) => {
-        const protocol = firstHeaderValue(req.get("x-forwarded-proto")) || req.protocol || "https";
         const host = firstHeaderValue(req.get("x-forwarded-host")) || req.get("host");
+        const protocol = isLocalHost(host)
+            ? normalizeProtocol(firstHeaderValue(req.get("x-forwarded-proto"))) || req.protocol || "http"
+            : "https";
 
         return `${protocol}://${host}`;
     };
@@ -78,7 +114,7 @@ async function main() {
 
         try {
             const url = new URL(value);
-            return !["localhost", "127.0.0.1", "0.0.0.0", "::1"].includes(url.hostname);
+            return url.protocol === "https:" && !isLocalHostname(url.hostname);
         } catch {
             return false;
         }
