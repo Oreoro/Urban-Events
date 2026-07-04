@@ -47,19 +47,60 @@ jobs:
       # Upload application settings to the Azure Web App.
       - name: 'Set App Service Settings'
         uses: azure/CLI@v1
+        env:
+          AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
         with:
           inlineScript: |
             echo "Setting Azure App Service application settings..."
 
-            # Check if the secret is not empty before attempting to set app settings.
-            if [ -n "${{ secrets.AZURE_APP_SECRETS }}" ]; then
-              # The az command correctly handles multiline secrets, so we pass the secret directly.
+            if [ -n "${AZURE_APP_SECRETS:-}" ]; then
+              python3 <<'PY'
+            import json
+            import os
+
+            settings = []
+
+            for raw_line in os.environ["AZURE_APP_SECRETS"].splitlines():
+                line = raw_line.strip()
+
+                if not line or line.startswith("#"):
+                    continue
+
+                if line.startswith("export "):
+                    line = line[len("export "):].strip()
+
+                if "=" not in line:
+                    continue
+
+                name, value = line.split("=", 1)
+                name = name.strip()
+                value = value.strip()
+
+                if not name:
+                    continue
+
+                if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+                    value = value[1:-1]
+
+                settings.append({
+                    "name": name,
+                    "value": value,
+                    "slotSetting": False,
+                })
+
+            with open("appsettings.json", "w", encoding="utf-8") as handle:
+                json.dump(settings, handle)
+
+            print(f"Prepared {len(settings)} app settings.")
+            PY
+
               az webapp config appsettings set \
                 --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
                 --name ${{ secrets.AZURE_WEBAPP_NAME }} \
-                --settings ${{ secrets.AZURE_APP_SECRETS }}
+                --settings @appsettings.json \
+                --output none
             else
-              echo "⚠️ AZURE_APP_SECRETS is empty. Skipping application settings update."
+              echo "AZURE_APP_SECRETS is empty. Skipping application settings update."
             fi
             
             echo "✅ Application settings configured."
