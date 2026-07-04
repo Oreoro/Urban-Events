@@ -24,9 +24,7 @@ export const Register = () => {
             email: '',
             password: '',
             password_confirmation: '',
-            timezone: typeof window !== 'undefined'
-                ? Intl.DateTimeFormat().resolvedOptions().timeZone
-                : 'UTC',
+            timezone: 'UTC',
             locale: getClientLocale(),
             invite_token: '',
             currency_code: getUserCurrency(),
@@ -58,6 +56,7 @@ export const Register = () => {
 
     useEffect(() => {
         captureUtmData();
+        form.setFieldValue('timezone', Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC');
 
         const searchParams = new URLSearchParams(location.search);
         const token = searchParams.get('invite_token');
