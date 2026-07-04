@@ -1,12 +1,14 @@
 import {usePollGetOrderPublic} from "../../../../queries/usePollGetOrderPublic.ts";
-import {useNavigate, useParams, useLocation} from "react-router";
-import {useEffect, useState} from "react";
+import {useLocation, useNavigate, useParams} from "react-router";
+import {useEffect, useRef, useState} from "react";
 import classes from './PaymentReturn.module.scss';
 import {t} from "@lingui/macro";
+import {useGetOrderStripePaymentIntentPublic} from "../../../../queries/useGetOrderStripePaymentIntentPublic.ts";
 import {CheckoutContent} from "../../../layouts/Checkout/CheckoutContent";
 import {eventCheckoutPath} from "../../../../utilites/urlHelper.ts";
 import {HomepageInfoMessage} from "../../../common/HomepageInfoMessage";
 import {isSsr} from "../../../../utilites/helpers.ts";
+import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 import {useConfirmNeemPayment} from "../../../../queries/useConfirmNeemPayment.ts";
 
 /**
@@ -17,41 +19,91 @@ import {useConfirmNeemPayment} from "../../../../queries/useConfirmNeemPayment.t
  * It will also make local development easier in times when the webhook is not configured correctly.
  **/
 export const PaymentReturn = () => {
-    const [shouldPoll, setShouldPoll] = useState(false);
-    let {eventId, orderShortId} = useParams();
-
-    const { search } = useLocation();
+    const {eventId, orderShortId} = useParams();
+    const {search} = useLocation();
     const queryParams = new URLSearchParams(search);
     const status = queryParams.get('status');
     const transactionId = queryParams.get('transactionId');
     const basketId = queryParams.get('basketId');
-
-    const {
-        data: neemData,
-        isFetched: isNeemFetched,
-        error: neemPaymentError
-    } = useConfirmNeemPayment(eventId, orderShortId, status, transactionId, basketId);
-
-    // Start polling only when payment is confirmed
-    useEffect(() => {
-        if (isNeemFetched && neemData?.success) {
-            setShouldPoll(true);
-        }
-    }, [isNeemFetched, neemData]);
-
-    const { data: order } = usePollGetOrderPublic(eventId, orderShortId, shouldPoll, ['event']);
+    const isNeemReturn = Boolean(status && transactionId && basketId);
+    const [shouldPoll, setShouldPoll] = useState(!isNeemReturn);
+    const {data: order} = usePollGetOrderPublic(eventId, orderShortId, shouldPoll, ['event']);
     const navigate = useNavigate();
+    const [attemptManualConfirmation, setAttemptManualConfirmation] = useState(false);
+    const paymentIntentQuery = useGetOrderStripePaymentIntentPublic(eventId, orderShortId, attemptManualConfirmation && !isNeemReturn);
+    const neemPaymentQuery = useConfirmNeemPayment(eventId, orderShortId, status, transactionId, basketId);
+    const [cannotConfirmPayment, setCannotConfirmPayment] = useState(false);
+    const hasTrackedPurchase = useRef(false);
 
-    // Redirect when polling gets the completed order
+    useEffect(
+        () => {
+            if (isNeemReturn) {
+                return;
+            }
+
+            const timeout = setTimeout(() => {
+                setShouldPoll(false);
+                setAttemptManualConfirmation(true);
+            }, 10000); //todo - this should be a env variable
+
+            return () => {
+                clearTimeout(timeout);
+            };
+        },
+        [isNeemReturn]
+    );
+
     useEffect(() => {
-        if (isSsr() || !order) return;
+        if (isNeemReturn || !paymentIntentQuery.isFetched) {
+            return;
+        }
+        if (paymentIntentQuery.data?.status === 'succeeded') {
+            if (!hasTrackedPurchase.current && order) {
+                hasTrackedPurchase.current = true;
+                const totalCents = Math.round((order.total_gross || 0) * 100);
+                trackEvent(AnalyticsEvents.PURCHASE_COMPLETED_PAID, { value: totalCents });
+            }
+            navigate(eventCheckoutPath(eventId, orderShortId, 'summary'));
+        } else {
+            // At this point we've tried multiple times to confirm the payment and failed.
+            // This could be due to a network error on our end, or a problem with the payment provider (Stripe).
+            // This should be a rare occurrence, but we should handle it gracefully.
+            setCannotConfirmPayment(true);
+        }
+    }, [isNeemReturn, paymentIntentQuery.isFetched]);
+
+    useEffect(() => {
+        if (!isNeemReturn || !neemPaymentQuery.isFetched) {
+            return;
+        }
+
+        if (neemPaymentQuery.data?.success) {
+            setShouldPoll(true);
+        } else {
+            setCannotConfirmPayment(true);
+        }
+    }, [isNeemReturn, neemPaymentQuery.isFetched, neemPaymentQuery.data?.success]);
+
+    useEffect(() => {
+        if (isNeemReturn && neemPaymentQuery.isError) {
+            setCannotConfirmPayment(true);
+        }
+    }, [isNeemReturn, neemPaymentQuery.isError]);
+
+    useEffect(() => {
+        if (isSsr() || !order) {
+            return;
+        }
 
         if (order?.status === 'COMPLETED') {
+            if (!hasTrackedPurchase.current) {
+                hasTrackedPurchase.current = true;
+                const totalCents = Math.round((order.total_gross || 0) * 100);
+                trackEvent(AnalyticsEvents.PURCHASE_COMPLETED_PAID, { value: totalCents });
+            }
             navigate(eventCheckoutPath(eventId, orderShortId, 'summary'));
         }
-
-        if (order?.payment_status === 'PAYMENT_FAILED' ||
-            (typeof window !== 'undefined' && window?.location.search.includes('failed'))) {
+        if (order?.payment_status === 'PAYMENT_FAILED' || (typeof window !== 'undefined' && window?.location.search.includes('failed'))) {
             navigate(eventCheckoutPath(eventId, orderShortId, 'payment') + '?payment_failed=true');
         }
     }, [order]);
@@ -59,28 +111,30 @@ export const PaymentReturn = () => {
     return (
         <CheckoutContent>
             <div className={classes.container}>
-                {!neemPaymentError && (
+                {!cannotConfirmPayment && (
                     <HomepageInfoMessage
-                        iconType={'processing'}
+                        status="processing"
                         message={(
                             <>
-                                {!shouldPoll && isNeemFetched && neemData?.payment !== 'CONFIRMED' && t`We could not confirm your payment. Please try again or contact support.`}
-                                {!shouldPoll && isNeemFetched && neemData?.payment === 'CONFIRMED' && t`Almost there! We're just waiting for your payment to be processed.`}
+                                {(isNeemReturn && !shouldPoll && !neemPaymentQuery.isFetched) && t`Confirming your payment with Neem. Please wait...`}
+                                {(isNeemReturn && !shouldPoll && neemPaymentQuery.isFetched && !neemPaymentQuery.data?.success) && t`We could not confirm your payment. Please try again or contact support.`}
+                                {(!isNeemReturn && !shouldPoll && paymentIntentQuery.isFetched) && t`We could not process your payment. Please try again or contact support.`}
+                                {(!isNeemReturn && !shouldPoll && !paymentIntentQuery.isFetched) && t`Almost there! We're just waiting for your payment to be processed. This should only take a few seconds.`}
                                 {shouldPoll && t`We're processing your order. Please wait...`}
                             </>
                         )}
                     />
                 )}
 
-                {neemPaymentError && (
+                {cannotConfirmPayment && (
                     <HomepageInfoMessage
-                        iconType={'error'}
+                        status="error"
                         message={t`We were unable to confirm your payment. Please try again or contact support.`}
                     />
                 )}
             </div>
         </CheckoutContent>
     );
-};
+}
 
 export default PaymentReturn;

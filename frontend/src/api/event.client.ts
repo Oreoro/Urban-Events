@@ -37,8 +37,9 @@ export const eventsClient = {
         return response.data;
     },
 
-    getEventStats: async (eventId: IdParam) => {
-        const response = await api.get<GenericDataResponse<EventStats>>('events/' + eventId + '/stats');
+    getEventStats: async (eventId: IdParam, dateRange?: string) => {
+        const params = dateRange ? `?date_range=${dateRange}` : '';
+        const response = await api.get<GenericDataResponse<EventStats>>('events/' + eventId + '/stats' + params);
         return response.data;
     },
 
@@ -70,7 +71,12 @@ export const eventsClient = {
     },
 
     delete: async (eventId: IdParam) => {
-        const response = await api.get('events/' + eventId);
+        const response = await api.delete('events/' + eventId);
+        return response.data;
+    },
+
+    getDeletionStatus: async (eventId: IdParam) => {
+        const response = await api.get<GenericDataResponse<{ can_delete: boolean; reason?: string }>>('events/' + eventId + '/deletion-status');
         return response.data;
     },
 

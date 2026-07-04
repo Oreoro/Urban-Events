@@ -9,7 +9,7 @@ import {useDebouncedValue, useMediaQuery} from "@mantine/hooks";
 import {Event} from "../../../types.ts";
 import {useCreateEvent} from "../../../mutations/useCreateEvent.ts";
 import {NavLink, useNavigate} from "react-router";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useGetEvents} from "../../../queries/useGetEvents.ts";
 import {LoadingContainer} from "../../common/LoadingContainer";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
@@ -21,6 +21,8 @@ import {DateTimePicker} from "@mantine/dates";
 import dayjs from "dayjs";
 import {EventCategories} from "../../../constants/eventCategories.ts";
 import {getConfig} from "../../../utilites/config.ts";
+import {trackEvent, AnalyticsEvents} from "../../../utilites/analytics.ts";
+import {getDateTimePickerFormat} from "../../../utilites/dates.ts";
 
 export const CreateOrganizer = ({progressInfo}: {
     progressInfo?: { currentStep: number, totalSteps: number, progressPercentage: number }
@@ -92,6 +94,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
                 code: values.pin,
             }, {
                 onSuccess: () => {
+                    trackEvent(AnalyticsEvents.SIGNUP_COMPLETED);
                     showSuccess(t`Email verified successfully!`);
                     form.reset();
                     setCompletedPin('');
@@ -254,6 +257,7 @@ export const CreateEvent = ({progressInfo}: {
             eventData: submitData,
         }, {
             onSuccess: (values) => {
+                trackEvent(AnalyticsEvents.FIRST_EVENT_CREATED);
                 navigate(`/manage/event/${values.data.id}/getting-started?new_event=true`)
             }
         });
@@ -360,7 +364,7 @@ export const CreateEvent = ({progressInfo}: {
                                     {...form.getInputProps('start_date')}
                                     label={t`Start date & time`}
                                     placeholder={t`Select start time`}
-                                    valueFormat="MMM DD, h:mm A"
+                                    valueFormat={getDateTimePickerFormat()}
                                     size="lg"
                                     required
                                     dropdownType="modal"
@@ -381,7 +385,7 @@ export const CreateEvent = ({progressInfo}: {
                                     {...form.getInputProps('end_date')}
                                     label={t`End time (optional)`}
                                     placeholder={t`Select end time`}
-                                    valueFormat="MMM DD, h:mm A"
+                                    valueFormat={getDateTimePickerFormat()}
                                     size="lg"
                                     dropdownType="modal"
                                     timePickerProps={{
@@ -441,18 +445,34 @@ const Welcome = () => {
     const organizersQuery = useGetOrganizers();
     const organizers = organizersQuery?.data?.data;
     const organizerExists = organizersQuery.isFetched && Number(organizers?.length) > 0;
+    const hasTrackedSignup = useRef(false);
 
     const requiresVerification = userData
         && userData.enforce_email_confirmation_during_registration
         && !userData.is_email_verified;
 
+    useEffect(() => {
+        if (!userData || hasTrackedSignup.current) {
+            return;
+        }
+        // Only track if email verification was NEVER required for this account
+        // Users who needed verification are tracked in ConfirmVerificationPin's onSuccess
+        if (!userData.enforce_email_confirmation_during_registration) {
+            hasTrackedSignup.current = true;
+            trackEvent(AnalyticsEvents.SIGNUP_COMPLETED);
+        }
+    }, [userData]);
+
     return (
         <div className={classes.welcomeContainer}>
             <Container size="sm" className={classes.welcomeContent}>
                 <div className={classes.welcomeHeader}>
+                    <div className={classes.logo}>
+                        <img src={getConfig("VITE_APP_LOGO_LIGHT", "/logos/urban-events-text-dark.svg")} alt={`${getConfig("VITE_APP_NAME", "Urban Events")} logo`} className={classes.logo}/>
+                    </div>
                     <h1 className={classes.welcomeTitle}>
                         <Trans>
-                            Welcome to {getConfig("VITE_APP_NAME", "Hi.Events")}, {userData?.first_name} 👋
+                            Welcome to {getConfig("VITE_APP_NAME", "Urban Events")}, {userData?.first_name} 👋
                         </Trans>
                     </h1>
                 </div>

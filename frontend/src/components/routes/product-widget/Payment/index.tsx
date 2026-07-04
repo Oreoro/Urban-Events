@@ -2,19 +2,24 @@ import React, {useState} from "react";
 import {useNavigate, useParams} from "react-router";
 import {useGetEventPublic} from "../../../../queries/useGetEventPublic.ts";
 import {CheckoutContent} from "../../../layouts/Checkout/CheckoutContent";
+import {StripePaymentMethod} from "./PaymentMethods/Stripe";
 import {OfflinePaymentMethod} from "./PaymentMethods/Offline";
-import {Event, Order} from "../../../../types.ts";
-import {CheckoutFooter} from "../../../layouts/Checkout/CheckoutFooter";
-import {Group} from "@mantine/core";
+import {NeemPaymentMethod} from "./PaymentMethods/Neem";
+import {Event} from "../../../../types.ts";
+import {Button, Group, Text} from "@mantine/core";
+import {IconBuildingBank, IconCreditCard, IconLock, IconWallet} from "@tabler/icons-react";
 import {formatCurrency} from "../../../../utilites/currency.ts";
-import {t} from "@lingui/macro";
+import {t, Trans} from "@lingui/macro";
 import {useGetOrderPublic} from "../../../../queries/useGetOrderPublic.ts";
 import {
     useTransitionOrderToOfflinePaymentPublic
 } from "../../../../mutations/useTransitionOrderToOfflinePaymentPublic.ts";
 import {Card} from "../../../common/Card";
+import {InlineOrderSummary} from "../../../common/InlineOrderSummary";
 import {showError} from "../../../../utilites/notifications.tsx";
-import {NeemPaymentMethod} from "./PaymentMethods/Neem";
+import {getConfig} from "../../../../utilites/config.ts";
+import classes from "./Payment.module.scss";
+import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 
 const Payment = () => {
     const navigate = useNavigate();
@@ -23,24 +28,32 @@ const Payment = () => {
     const {data: order, isFetched: isOrderFetched} = useGetOrderPublic(eventId, orderShortId, ['event']);
     const isLoading = !isOrderFetched;
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
-    const [activePaymentMethod, setActivePaymentMethod] = useState<'NEEM' | 'OFFLINE' | null>(null);
+    const [activePaymentMethod, setActivePaymentMethod] = useState<'NEEM' | 'STRIPE' | 'OFFLINE' | null>(null);
     const [submitHandler, setSubmitHandler] = useState<(() => Promise<void>) | null>(null);
     const transitionOrderToOfflinePaymentMutation = useTransitionOrderToOfflinePaymentPublic();
 
     const isNeemEnabled = event?.settings?.payment_providers?.includes('NEEM');
-    // const isOfflineEnabled = event?.settings?.payment_providers?.includes('OFFLINE');
-    const isOfflineEnabled = false;
+    const isStripeEnabled = event?.settings?.payment_providers?.includes('STRIPE');
+    const isOfflineEnabled = event?.settings?.payment_providers?.includes('OFFLINE');
+    const availablePaymentMethodCount = [isNeemEnabled, isStripeEnabled, isOfflineEnabled].filter(Boolean).length;
 
     React.useEffect(() => {
         // Automatically set the first available payment method
         if (isNeemEnabled) {
             setActivePaymentMethod('NEEM');
+        } else if (isStripeEnabled) {
+            setActivePaymentMethod('STRIPE');
         } else if (isOfflineEnabled) {
             setActivePaymentMethod('OFFLINE');
         } else {
             setActivePaymentMethod(null); // No methods available
         }
-    }, [isNeemEnabled, isOfflineEnabled]);
+    }, [isNeemEnabled, isStripeEnabled, isOfflineEnabled]);
+
+    React.useEffect(() => {
+        // Scroll to top when payment page loads
+        window?.scrollTo(0, 0);
+    }, []);
 
     const handleParentSubmit = () => {
         if (submitHandler) {
@@ -50,7 +63,7 @@ const Payment = () => {
     };
 
     const handleSubmit = async () => {
-        if (activePaymentMethod === 'NEEM') {
+        if (activePaymentMethod === 'NEEM' || activePaymentMethod === 'STRIPE') {
             handleParentSubmit();
         } else if (activePaymentMethod === 'OFFLINE') {
             setIsPaymentLoading(true);
@@ -60,6 +73,8 @@ const Payment = () => {
                 orderShortId
             }, {
                 onSuccess: () => {
+                    const totalCents = Math.round((order?.total_gross || 0) * 100);
+                    trackEvent(AnalyticsEvents.PURCHASE_COMPLETED_OFFLINE, { value: totalCents });
                     navigate(`/checkout/${eventId}/${orderShortId}/summary`);
                 },
                 onError: (error: any) => {
@@ -70,7 +85,7 @@ const Payment = () => {
         }
     };
 
-    if (!isNeemEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
+    if (!isNeemEnabled && !isStripeEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
         return (
             <CheckoutContent>
                 <Card>
@@ -83,9 +98,18 @@ const Payment = () => {
     return (
         <>
             <CheckoutContent>
+                {(event && order) && (
+                    <InlineOrderSummary event={event} order={order} defaultExpanded={false}/>
+                )}
                 {isNeemEnabled && (
                     <div style={{display: activePaymentMethod === 'NEEM' ? 'block' : 'none'}}>
                         <NeemPaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
+                    </div>
+                )}
+
+                {isStripeEnabled && (
+                    <div style={{display: activePaymentMethod === 'STRIPE' ? 'block' : 'none'}}>
+                        <StripePaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
                     </div>
                 )}
 
@@ -95,42 +119,75 @@ const Payment = () => {
                     </div>
                 )}
 
-                {(isNeemEnabled && isOfflineEnabled) && (
-                    <div style={{marginTop: '20px'}}>
-                        <a
-                            onClick={() => setActivePaymentMethod(
-                                activePaymentMethod === 'NEEM' ? 'OFFLINE' : 'NEEM'
+                {availablePaymentMethodCount > 1 && (
+                    <div className={classes.paymentMethodSelector}>
+                        <Text size="sm" c="dimmed" className={classes.paymentMethodLabel}>
+                            {t`Payment method`}
+                        </Text>
+                        <div className={classes.paymentMethodTabs}>
+                            {isNeemEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'NEEM' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('NEEM')}
+                                >
+                                    <IconWallet size={18}/>
+                                    <span>{t`Neem`}</span>
+                                </button>
                             )}
-                            style={{cursor: 'pointer'}}
-                        >
-                            {activePaymentMethod === 'NEEM'
-                                ? t`I would like to pay using an offline method`
-                                : t`I would like to pay using an online method (credit card etc.)`
-                            }
-                        </a>
+                            {isStripeEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'STRIPE' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('STRIPE')}
+                                >
+                                    <IconCreditCard size={18}/>
+                                    <span>{t`Card`}</span>
+                                </button>
+                            )}
+                            {isOfflineEnabled && (
+                                <button
+                                    type="button"
+                                    className={`${classes.paymentMethodTab} ${activePaymentMethod === 'OFFLINE' ? classes.active : ''}`}
+                                    onClick={() => setActivePaymentMethod('OFFLINE')}
+                                >
+                                    <IconBuildingBank size={18}/>
+                                    <span>{t`Offline`}</span>
+                                </button>
+                            )}
+                        </div>
                     </div>
                 )}
-            </CheckoutContent>
 
-            <CheckoutFooter
-                event={event as Event}
-                order={order as Order}
-                isLoading={isLoading || isPaymentLoading}
-                onClick={handleSubmit}
-                buttonContent={order?.is_payment_required ? (
-                    <Group gap={'10px'}>
-                        <div style={{fontWeight: "bold"}}>
-                            {t`Place Order`}
-                        </div>
-                        <div style={{fontSize: 14}}>
-                            {formatCurrency(order.total_gross, order.currency)}
-                        </div>
-                        <div style={{fontSize: 14, fontWeight: 500}}>
-                            {order.currency}
-                        </div>
-                    </Group>
-                ) : t`Complete Payment`}
-            />
+                <div className={classes.checkoutActions}>
+                    <Button
+                        className={classes.continueButton}
+                        loading={isLoading || isPaymentLoading}
+                        onClick={handleSubmit}
+                    >
+                        {order?.is_payment_required ? (
+                            <Group gap={8} wrap="nowrap">
+                                <IconLock size={16}/>
+                                <Text fw={600}>{t`Pay`} {formatCurrency(order.total_gross, order.currency)}</Text>
+                            </Group>
+                        ) : t`Complete Payment`}
+                    </Button>
+                    {getConfig('VITE_TOS_URL') && (
+                        <p className={classes.tosNotice}>
+                            <Trans>
+                                By continuing, you agree to the{' '}
+                                <a
+                                    href={getConfig('VITE_TOS_URL', 'https://hi.events/terms-of-service') as string}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {getConfig('VITE_APP_NAME', 'Urban Events')} Terms of Service
+                                </a>
+                            </Trans>
+                        </p>
+                    )}
+                </div>
+            </CheckoutContent>
         </>
     );
 }
