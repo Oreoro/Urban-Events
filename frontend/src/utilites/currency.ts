@@ -1,3 +1,5 @@
+import {currencies} from "../../data/currencies.ts";
+
 export const formatCurrency = (value: number | string, currency = 'PKR') => {
     const locale = typeof window !== 'undefined' ? navigator.language : 'en-PK';
     const formatter = new Intl.NumberFormat(locale, {
@@ -94,6 +96,15 @@ type CurrencyCode =
 
 type LocaleCurrencyMap = {
     [key: string]: CurrencyCode;
+};
+
+const DEFAULT_CURRENCY: CurrencyCode = 'PKR';
+const supportedCurrencyCodes = new Set<CurrencyCode>(Object.values(currencies) as CurrencyCode[]);
+
+const getSupportedCurrency = (currency?: CurrencyCode): CurrencyCode => {
+    return currency && supportedCurrencyCodes.has(currency)
+        ? currency
+        : DEFAULT_CURRENCY;
 };
 
 const currencyByLocale: LocaleCurrencyMap = {
@@ -272,7 +283,7 @@ const euroZoneCountries = [
 ] as const;
 
 export const getUserCurrency = (): CurrencyCode => {
-    if (typeof window === 'undefined') return 'PKR';
+    if (typeof window === 'undefined') return DEFAULT_CURRENCY;
 
     try {
         const userLocales = [
@@ -288,7 +299,7 @@ export const getUserCurrency = (): CurrencyCode => {
         for (const locale of userLocales) {
             const currency = currencyByLocale[locale];
             if (currency) {
-                return currency;
+                return getSupportedCurrency(currency);
             }
         }
 
@@ -296,18 +307,18 @@ export const getUserCurrency = (): CurrencyCode => {
         const languageOnly = navigator.language.split('-')[0];
         const languageCurrency = currencyByLocale[languageOnly];
         if (languageCurrency) {
-            return languageCurrency;
+            return getSupportedCurrency(languageCurrency);
         }
 
         // Check if it's a Euro country by region code
         const region = navigator.language.split('-')[1];
         if (region && euroZoneCountries.includes(region as typeof euroZoneCountries[number])) {
-            return 'EUR';
+            return getSupportedCurrency('EUR');
         }
 
         // UrbanEvents defaults to Pakistan when no locale-specific currency is available.
-        return 'PKR';
+        return DEFAULT_CURRENCY;
     } catch (error) {
-        return 'PKR';
+        return DEFAULT_CURRENCY;
     }
 };
