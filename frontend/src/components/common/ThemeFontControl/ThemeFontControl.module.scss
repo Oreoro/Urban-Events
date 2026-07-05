@@ -1,3 +1,8 @@
+.control {
+  display: grid;
+  gap: 12px;
+}
+
 .option {
   display: flex;
   align-items: baseline;
@@ -14,5 +19,26 @@
 .optionSample {
   font-size: 13px;
   color: var(--mantine-color-dimmed);
+  letter-spacing: 0;
+}
+
+.preview {
+  border: 1px solid var(--hi-border, #ded4bf);
+  border-radius: var(--mantine-radius-md);
+  background: #fffdf6;
+  padding: 12px;
+}
+
+.previewLabel {
+  color: var(--hi-text-muted, #6d7784);
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.previewSample {
+  color: var(--hi-text, #27313c);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.45;
   letter-spacing: 0;
 }

@@ -1,79 +1,249 @@
-import {ColorInput, SegmentedControl, Stack, Text, Group, Tooltip} from "@mantine/core";
+import {
+    ActionIcon,
+    ColorInput,
+    ColorSwatch,
+    Group,
+    SegmentedControl,
+    SimpleGrid,
+    Stack,
+    Text,
+    Tooltip,
+    UnstyledButton,
+} from "@mantine/core";
 import {t} from "@lingui/macro";
 import {HomepageThemeSettings} from "../../../types.ts";
-import {detectMode, validateThemeSettings, hasContrastIssues} from "../../../utilites/themeUtils.ts";
-import {IconSun, IconMoon, IconEyeCheck, IconEyeExclamation} from "@tabler/icons-react";
-import {useEffect, useMemo} from "react";
+import {
+    checkContrast,
+    computeThemeVariables,
+    detectMode,
+    getDefaultThemeSettings,
+    hasContrastIssues,
+    validateThemeSettings,
+} from "../../../utilites/themeUtils.ts";
+import {urbanEventsColors} from "../../../theme.ts";
+import {
+    IconCheck,
+    IconEyeCheck,
+    IconEyeExclamation,
+    IconMoon,
+    IconRefresh,
+    IconSun,
+} from "@tabler/icons-react";
+import {useMemo} from "react";
+import type {CSSProperties} from "react";
+import classes from "./ThemeColorControls.module.scss";
 
 interface ThemeColorControlsProps {
     values: Partial<HomepageThemeSettings>;
     onChange: (values: Partial<HomepageThemeSettings>) => void;
-    showBackgroundType?: boolean;
     disabled?: boolean;
 }
+
+type ThemePreset = Pick<HomepageThemeSettings, 'accent' | 'background' | 'mode'> & {
+    label: string;
+    description: string;
+};
 
 export const ThemeColorControls = ({
     values,
     onChange,
     disabled = false,
 }: ThemeColorControlsProps) => {
+    const defaults = useMemo(() => getDefaultThemeSettings(), []);
+    const currentTheme = useMemo(() => validateThemeSettings(values), [
+        values.accent,
+        values.background,
+        values.background_type,
+        values.font_family,
+        values.mode,
+    ]);
+
+    const themeVariables = useMemo(() => computeThemeVariables(currentTheme), [currentTheme]);
+    const hasIssues = useMemo(() => hasContrastIssues(currentTheme), [currentTheme]);
+    const buttonContrast = useMemo(
+        () => checkContrast(themeVariables['--theme-accent-contrast'], currentTheme.accent),
+        [currentTheme.accent, themeVariables],
+    );
+    const accentContrast = useMemo(
+        () => checkContrast(currentTheme.accent, themeVariables['--theme-surface']),
+        [currentTheme.accent, themeVariables],
+    );
+
+    const presets: ThemePreset[] = [
+        {
+            label: t`Urban`,
+            description: t`Deep green with eggshell canvas`,
+            accent: urbanEventsColors.forest,
+            background: urbanEventsColors.eggshell,
+            mode: 'light',
+        },
+        {
+            label: t`Plum`,
+            description: t`Muted plum with warm canvas`,
+            accent: urbanEventsColors.plum,
+            background: urbanEventsColors.canvasSoft,
+            mode: 'light',
+        },
+        {
+            label: t`Mint`,
+            description: t`Deep teal with mint surface`,
+            accent: urbanEventsColors.forestDeep,
+            background: urbanEventsColors.mint,
+            mode: 'light',
+        },
+        {
+            label: t`Coral`,
+            description: t`Coral accent with cream canvas`,
+            accent: urbanEventsColors.coralDeep,
+            background: urbanEventsColors.canvas,
+            mode: 'light',
+        },
+        {
+            label: t`Night`,
+            description: t`Aqua accent on deep plum`,
+            accent: urbanEventsColors.icyAqua,
+            background: urbanEventsColors.plumDeep,
+            mode: 'dark',
+        },
+    ];
+
+    const emitChange = (next: Partial<HomepageThemeSettings>) => {
+        onChange({
+            ...values,
+            ...next,
+        });
+    };
+
     const handleAccentChange = (accent: string) => {
-        onChange({...values, accent});
+        emitChange({accent});
     };
 
     const handleBackgroundChange = (background: string) => {
         const newMode = detectMode(background);
-        onChange({...values, background, mode: newMode});
+        emitChange({background, mode: newMode});
     };
 
     const handleModeChange = (mode: string) => {
-        onChange({...values, mode: mode as 'light' | 'dark'});
+        emitChange({mode: mode as 'light' | 'dark'});
     };
 
-    useEffect(() => {
-        if (values.background && !values.mode) {
-            const detectedMode = detectMode(values.background);
-            onChange({...values, mode: detectedMode});
-        }
-    }, [values.background]);
+    const handlePresetChange = (preset: ThemePreset) => {
+        emitChange({
+            accent: preset.accent,
+            background: preset.background,
+            mode: preset.mode,
+        });
+    };
 
-    const currentMode = values.mode || 'light';
+    const handleReset = () => {
+        emitChange({
+            accent: defaults.accent,
+            background: defaults.background,
+            mode: defaults.mode,
+        });
+    };
 
-    const hasIssues = useMemo(() => {
-        const validated = validateThemeSettings(values);
-        return hasContrastIssues(validated);
-    }, [values.accent, values.background, values.mode]);
+    const previewStyle = {
+        ...themeVariables,
+        backgroundColor: currentTheme.background,
+        color: themeVariables['--theme-text-primary'],
+        fontFamily: themeVariables['--theme-font-family'],
+    } as CSSProperties;
 
     return (
-        <Stack gap="md">
-            <ColorInput
-                format="hexa"
-                label={t`Accent Color`}
-                description={t`The primary brand color used for buttons and highlights`}
-                size="sm"
-                value={values.accent || '#4A5262'}
-                onChange={handleAccentChange}
-                disabled={disabled}
-            />
+        <Stack gap="md" className={classes.root}>
+            <div className={classes.section}>
+                <Group justify="space-between" align="center" mb="xs" wrap="nowrap">
+                    <div>
+                        <Text size="sm" fw={700}>{t`Palette`}</Text>
+                        <Text size="xs" c="dimmed">{t`Urban Events theme presets`}</Text>
+                    </div>
+                    <Tooltip label={t`Reset palette`}>
+                        <ActionIcon
+                            aria-label={t`Reset palette`}
+                            variant="subtle"
+                            color="gray"
+                            size="sm"
+                            onClick={handleReset}
+                            disabled={disabled}
+                        >
+                            <IconRefresh size={16}/>
+                        </ActionIcon>
+                    </Tooltip>
+                </Group>
 
-            <ColorInput
-                format="hexa"
-                label={t`Background Color`}
-                description={t`The background color of the page. When using cover image, this is applied as an overlay.`}
-                size="sm"
-                value={values.background || '#FFF9EA'}
-                onChange={handleBackgroundChange}
-                disabled={disabled}
-            />
+                <SimpleGrid cols={2} spacing="xs">
+                    {presets.map((preset) => {
+                        const isSelected = currentTheme.accent.toLowerCase() === preset.accent.toLowerCase()
+                            && currentTheme.background.toLowerCase() === preset.background.toLowerCase()
+                            && currentTheme.mode === preset.mode;
 
-            <div>
-                <Text size="sm" fw={500} mb={4}>{t`Color Mode`}</Text>
-                <Text size="xs" c="dimmed" mb={8}>
-                    {t`Automatically detected based on background color, but can be overridden`}
-                </Text>
+                        return (
+                            <Tooltip key={preset.label} label={preset.description}>
+                                <UnstyledButton
+                                    type="button"
+                                    className={classes.presetButton}
+                                    data-active={isSelected || undefined}
+                                    disabled={disabled}
+                                    onClick={() => handlePresetChange(preset)}
+                                >
+                                    <div className={classes.presetSwatches} aria-hidden="true">
+                                        <ColorSwatch
+                                            color={preset.background}
+                                            size={32}
+                                            withShadow={false}
+                                            className={classes.backgroundSwatch}
+                                        />
+                                        <ColorSwatch
+                                            color={preset.accent}
+                                            size={22}
+                                            withShadow={false}
+                                            className={classes.accentSwatch}
+                                        />
+                                    </div>
+                                    <Text size="xs" fw={700} truncate className={classes.presetLabel}>
+                                        {preset.label}
+                                    </Text>
+                                    {isSelected && (
+                                        <span className={classes.selectedIcon} aria-hidden="true">
+                                            <IconCheck size={12}/>
+                                        </span>
+                                    )}
+                                </UnstyledButton>
+                            </Tooltip>
+                        );
+                    })}
+                </SimpleGrid>
+            </div>
+
+            <div className={classes.section}>
+                <Text size="sm" fw={700} mb="xs">{t`Custom Colors`}</Text>
+                <Stack gap="sm">
+                    <ColorInput
+                        format="hexa"
+                        label={t`Accent`}
+                        size="sm"
+                        value={currentTheme.accent}
+                        onChange={handleAccentChange}
+                        disabled={disabled}
+                    />
+
+                    <ColorInput
+                        format="hexa"
+                        label={t`Background`}
+                        size="sm"
+                        value={currentTheme.background}
+                        onChange={handleBackgroundChange}
+                        disabled={disabled}
+                    />
+                </Stack>
+            </div>
+
+            <div className={classes.section}>
+                <Text size="sm" fw={700} mb="xs">{t`Mode`}</Text>
                 <SegmentedControl
                     fullWidth
-                    value={currentMode}
+                    value={currentTheme.mode}
                     onChange={handleModeChange}
                     disabled={disabled}
                     data={[
@@ -99,20 +269,90 @@ export const ThemeColorControls = ({
                 />
             </div>
 
-            <Group gap={6} style={{ minHeight: 20 }}>
+            <div className={classes.previewShell} style={previewStyle}>
+                <Group justify="space-between" align="center" wrap="nowrap">
+                    <Group gap="xs" wrap="nowrap">
+                        <span
+                            className={classes.previewMark}
+                            style={{backgroundColor: currentTheme.accent}}
+                            aria-hidden="true"
+                        />
+                        <div>
+                            <Text size="sm" fw={800} className={classes.previewTitle}>
+                                {t`Urban Events`}
+                            </Text>
+                            <Text size="xs" className={classes.previewMuted}>
+                                {currentTheme.mode === 'dark' ? t`Dark theme` : t`Light theme`}
+                            </Text>
+                        </div>
+                    </Group>
+                    <span
+                        className={classes.previewBadge}
+                        style={{
+                            backgroundColor: themeVariables['--theme-accent-soft'],
+                            color: currentTheme.accent,
+                        }}
+                    >
+                        {t`Live`}
+                    </span>
+                </Group>
+
+                <div
+                    className={classes.previewCard}
+                    style={{
+                        backgroundColor: themeVariables['--theme-surface'],
+                        borderColor: themeVariables['--theme-border'],
+                    }}
+                >
+                    <Text size="xs" fw={800} className={classes.previewMuted}>
+                        {t`Event card`}
+                    </Text>
+                    <Text size="sm" fw={800} className={classes.previewTitle}>
+                        {t`Focus Lab`}
+                    </Text>
+                    <Text size="xs" className={classes.previewMuted}>
+                        {t`12 Aug - Lahore`}
+                    </Text>
+                    <Group justify="space-between" mt="sm" wrap="nowrap">
+                        <span
+                            className={classes.previewPill}
+                            style={{
+                                backgroundColor: themeVariables['--theme-accent-soft'],
+                                color: currentTheme.accent,
+                            }}
+                        >
+                            {t`Featured`}
+                        </span>
+                        <span
+                            className={classes.previewButton}
+                            style={{
+                                backgroundColor: currentTheme.accent,
+                                color: themeVariables['--theme-accent-contrast'],
+                            }}
+                        >
+                            {t`Get Tickets`}
+                        </span>
+                    </Group>
+                </div>
+            </div>
+
+            <Group gap={8} className={classes.readability} wrap="nowrap">
                 {hasIssues ? (
-                    <Tooltip label={t`This color combination may be hard to read for some users`} multiline w={220}>
-                        <Group gap={6} style={{ cursor: 'help' }}>
-                            <IconEyeExclamation size={30} color="var(--mantine-color-yellow-6)" />
-                            <Text size="xs" c="yellow.7">{t`Text may be hard to read`}</Text>
+                    <Tooltip label={t`Use a stronger accent or calmer background for better readability`} multiline w={230}>
+                        <Group gap={6} style={{cursor: 'help'}} wrap="nowrap">
+                            <IconEyeExclamation size={22} color="var(--mantine-color-yellow-7)" />
+                            <Text size="xs" c="yellow.8">{t`Needs contrast review`}</Text>
                         </Group>
                     </Tooltip>
                 ) : (
-                    <Group gap={6}>
-                        <IconEyeCheck size={30} color="var(--mantine-color-teal-6)" />
-                        <Text size="xs" c="dimmed">{t`Good readability`}</Text>
+                    <Group gap={6} wrap="nowrap">
+                        <IconEyeCheck size={22} color="var(--mantine-color-secondary-7)" />
+                        <Text size="xs" c="dimmed">{t`Readable colors`}</Text>
                     </Group>
                 )}
+                <Text size="xs" c="dimmed" ml="auto" className={classes.ratioText}>
+                    {t`Button`} {buttonContrast.ratio}:1 / {t`Accent`} {accentContrast.ratio}:1
+                </Text>
             </Group>
         </Stack>
     );

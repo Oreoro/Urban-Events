@@ -20,8 +20,7 @@ import {queryClient} from "../../../../utilites/queryClient.ts";
 import {GET_ORGANIZER_PUBLIC_QUERY_KEY} from "../../../../queries/useGetOrganizerPublic.ts";
 import {ThemeColorControls} from "../../../common/ThemeColorControls";
 import {ThemeFontControl} from "../../../common/ThemeFontControl";
-import {computeThemeVariables, validateThemeSettings} from "../../../../utilites/themeUtils.ts";
-import {DEFAULT_HOMEPAGE_FONT} from "../../../../constants/homepageFonts.ts";
+import {computeThemeVariables, getDefaultThemeSettings, validateThemeSettings} from "../../../../utilites/themeUtils.ts";
 
 interface FormValues {
     homepage_theme_settings: Partial<HomepageThemeSettings>;
@@ -49,13 +48,7 @@ const OrganizerHomepageDesigner = () => {
 
     const form = useForm<FormValues>({
         initialValues: {
-            homepage_theme_settings: {
-                accent: '#4A5262',
-                background: '#FFF9EA',
-                mode: 'light',
-                background_type: 'COLOR',
-                font_family: DEFAULT_HOMEPAGE_FONT,
-            },
+            homepage_theme_settings: getDefaultThemeSettings(),
         }
     });
 

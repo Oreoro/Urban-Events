@@ -18,6 +18,7 @@ interface ThemeFontControlProps {
 
 export const ThemeFontControl = ({value, onChange, disabled = false}: ThemeFontControlProps) => {
     const selected = value || DEFAULT_HOMEPAGE_FONT;
+    const selectedFont = HOMEPAGE_FONTS.find(font => font.value === selected) || HOMEPAGE_FONTS[0];
 
     const data = useMemo(
         () => HOMEPAGE_FONTS.map(font => ({value: font.value, label: font.label})),
@@ -60,10 +61,9 @@ export const ThemeFontControl = ({value, onChange, disabled = false}: ThemeFontC
     );
 
     return (
-        <div>
+        <div className={classes.control}>
             <Select
-                label={t`Font Family`}
-                description={t`Choose a typeface that matches your brand. Fonts are self-hosted via Bunny Fonts.`}
+                label={t`Typeface`}
                 size="sm"
                 value={selected}
                 onChange={handleChange}
@@ -77,9 +77,14 @@ export const ThemeFontControl = ({value, onChange, disabled = false}: ThemeFontC
                     input: {fontFamily: buildHomepageFontStack(selected)},
                 }}
             />
-            <Text size="xs" c="dimmed" mt={6} style={{fontFamily: buildHomepageFontStack(selected)}}>
-                {t`The quick brown fox jumps over the lazy dog.`}
-            </Text>
+            <div className={classes.preview} style={{fontFamily: buildHomepageFontStack(selected)}}>
+                <Text size="xs" fw={800} className={classes.previewLabel}>
+                    {selectedFont.label}
+                </Text>
+                <Text className={classes.previewSample}>
+                    {t`The quick brown fox jumps over the lazy dog.`}
+                </Text>
+            </div>
         </div>
     );
 };
