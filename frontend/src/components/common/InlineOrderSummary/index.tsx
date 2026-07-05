@@ -6,6 +6,7 @@ import classNames from "classnames";
 import {Event, Order} from "../../../types.ts";
 import {formatCurrency} from "../../../utilites/currency.ts";
 import {prettyDate} from "../../../utilites/dates.ts";
+import {getImageUrl} from "../../../utilites/urlHelper.ts";
 import classes from './InlineOrderSummary.module.scss';
 
 interface InlineOrderSummaryProps {
@@ -28,6 +29,7 @@ export const InlineOrderSummary = ({
         : order.total_gross;
 
     const coverImage = event?.images?.find((image) => image.type === 'EVENT_COVER');
+    const coverImageUrl = getImageUrl(coverImage);
     const location = event?.settings?.location_details?.city ||
         event?.settings?.location_details?.venue_name ||
         null;
@@ -69,8 +71,8 @@ export const InlineOrderSummary = ({
                 <div className={classes.content}>
                     <div className={classes.eventInfo}>
                         <div className={classes.eventImage}>
-                            {coverImage ? (
-                                <img src={coverImage.url} alt={event.title}/>
+                            {coverImageUrl ? (
+                                <img src={coverImageUrl} alt={event.title}/>
                             ) : (
                                 <div className={classes.eventImagePlaceholder}>
                                     <IconCalendarEvent size={24}/>

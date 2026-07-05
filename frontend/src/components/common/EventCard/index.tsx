@@ -10,7 +10,7 @@ import {
     IconSettings,
 } from "@tabler/icons-react";
 import {t} from "@lingui/macro"
-import {eventHomepagePath} from "../../../utilites/urlHelper.ts";
+import {eventHomepagePath, getImageUrl} from "../../../utilites/urlHelper.ts";
 import {useDisclosure} from "@mantine/hooks";
 import {DuplicateEventModal} from "../../modals/DuplicateEventModal";
 import {useState} from "react";
@@ -41,6 +41,7 @@ export function EventCard({event}: EventCardProps) {
     const statusToggleMutation = useUpdateEventStatus();
 
     const coverImage = event.images?.find(img => img.type === 'EVENT_COVER');
+    const coverImageUrl = getImageUrl(coverImage);
     const placeholderColorIndex = event.id ? Number(event.id) % placeholderColors.length : 0;
     const placeholderColor = placeholderColors[placeholderColorIndex];
 
@@ -168,13 +169,13 @@ export function EventCard({event}: EventCardProps) {
                 <NavLink to={`/manage/event/${event.id}/dashboard`} className={classes.cardLink}>
                     <div className={classes.imageContainer}>
                         <div
-                            className={`${classes.image} ${!coverImage ? classes.placeholderImage : ''}`}
-                            style={coverImage
-                                ? {backgroundImage: `url(${coverImage.url})`}
+                            className={`${classes.image} ${!coverImageUrl ? classes.placeholderImage : ''}`}
+                            style={coverImageUrl
+                                ? {backgroundImage: `url(${coverImageUrl})`}
                                 : {background: placeholderColor}
                             }
                         />
-                        <div className={`${classes.imageOverlay} ${!coverImage ? classes.placeholderOverlay : ''}`}/>
+                        <div className={`${classes.imageOverlay} ${!coverImageUrl ? classes.placeholderOverlay : ''}`}/>
 
                         <div className={`${classes.statusBadge} ${classes[`status-${statusConfig.status}`]}`}>
                             {statusConfig.pulse && <span className={classes.pulseDot}/>}

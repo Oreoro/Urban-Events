@@ -4,32 +4,82 @@ import {getConfig} from "./config.ts";
  * Azure Storage utility functions for handling image URLs
  */
 
+const trimSlashes = (value: string): string => value.replace(/^\/+|\/+$/g, '');
+
+const appendSasToken = (url: string): string => {
+    const sasToken = getConfig('VITE_AZURE_STORAGE_SAS_TOKEN');
+    if (!sasToken) {
+        return url;
+    }
+
+    const token = sasToken.replace(/^\?/, '');
+    if (!token || url.includes(token)) {
+        return url;
+    }
+
+    return `${url}${url.includes('?') ? '&' : '?'}${token}`;
+};
+
+const getAzureStorageBaseUrl = (): string => {
+    const configuredUrl = getConfig('VITE_AZURE_STORAGE_URL', 'https://urbanevents.blob.core.windows.net') || 'https://urbanevents.blob.core.windows.net';
+    const container = trimSlashes(getConfig('VITE_AZURE_STORAGE_CONTAINER', 'urbanevents') || '');
+    const baseUrl = configuredUrl.replace(/\/+$/, '');
+
+    try {
+        const url = new URL(baseUrl);
+        const path = trimSlashes(url.pathname);
+
+        if (!path && container) {
+            url.pathname = `/${container}`;
+        }
+
+        return url.toString().replace(/\/+$/, '');
+    } catch {
+        return container ? `${baseUrl}/${container}` : baseUrl;
+    }
+};
+
+export const normalizeAzureStorageUrl = (imageUrl: string): string => {
+    if (!imageUrl || !isAzureStorageUrl(imageUrl)) {
+        return imageUrl;
+    }
+
+    try {
+        const source = new URL(imageUrl);
+        const base = new URL(getAzureStorageBaseUrl());
+
+        if (source.hostname !== base.hostname) {
+            return imageUrl;
+        }
+
+        const baseSegments = base.pathname.split('/').filter(Boolean);
+        const sourceSegments = source.pathname.split('/').filter(Boolean);
+
+        if (baseSegments.length > 0 && sourceSegments[0] !== baseSegments[0]) {
+            source.pathname = `/${[...baseSegments, ...sourceSegments].join('/')}`;
+        }
+
+        return appendSasToken(source.toString());
+    } catch {
+        return imageUrl;
+    }
+};
+
 /**
  * Constructs a full Azure Storage URL for an image with authentication
  * @param imagePath - The relative path or full URL of the image
  * @returns The full Azure Storage URL with authentication
  */
 export const getAzureStorageUrl = (imagePath: string): string => {
-    const azureStorageUrl = getConfig('VITE_AZURE_STORAGE_URL', 'https://urbanevents.blob.core.windows.net/urbanevents');
-    const azureStorageContainer = getConfig('VITE_AZURE_STORAGE_CONTAINER', 'urbanevents');
-    const sasToken = getConfig('VITE_AZURE_STORAGE_SAS_TOKEN');
-    const isPublicAccess = getConfig('VITE_AZURE_STORAGE_PUBLIC_ACCESS') === 'true';
-    
-  
-  // If it's a relative path, construct the full Azure Storage URL
-    if (imagePath.startsWith('/')) {
-        imagePath = imagePath.substring(1); // Remove leading slash
+    if (!imagePath) {
+        return imagePath;
     }
-    
-    let fullUrl = `${azureStorageUrl}/${azureStorageContainer}/${imagePath}`;
-    console.log("Constructed Blob URL:", fullUrl);
-    
-    // Add SAS token if provided
-    if (sasToken) {
-        fullUrl += sasToken;
+
+    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+        return normalizeAzureStorageUrl(imagePath);
     }
-    
-    return fullUrl;
+
+    return appendSasToken(`${getAzureStorageBaseUrl()}/${trimSlashes(imagePath)}`);
 };
 
 /**

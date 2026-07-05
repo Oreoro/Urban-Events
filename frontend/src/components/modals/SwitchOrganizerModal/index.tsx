@@ -7,6 +7,7 @@ import {useNavigate, useParams} from 'react-router';
 import classes from './SwitchOrganizerModal.module.scss';
 import {LoadingMask} from '../../common/LoadingMask';
 import {IdParam, OrganizerStatus} from "../../../types.ts";
+import {getImageUrl} from "../../../utilites/urlHelper.ts";
 
 interface SwitchOrganizerModalProps {
     opened: boolean;
@@ -58,30 +59,34 @@ export const SwitchOrganizerModal: React.FC<SwitchOrganizerModalProps> = ({
                             </div>
                         ) : (
                             <>
-                                {activeOrganizers.map((organizer) => (
-                                    <button
-                                        key={organizer.id}
-                                        className={classes.organizerItem}
-                                        onClick={() => handleOrganizerSelect(organizer.id)}
-                                    >
-                                        <div className={classes.organizerLogo}>
-                                            {organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO') ? (
-                                                <img
-                                                    src={organizer.images.find((image) => image.type === 'ORGANIZER_LOGO')?.url}
-                                                    alt={organizer.name}
-                                                />
-                                            ) : (
-                                                <div className={classes.logoPlaceholder}>
-                                                    <IconBuilding size={20} stroke={1.5}/>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className={classes.organizerInfo}>
-                                            <h4 className={classes.organizerName}>{organizer.name}</h4>
-                                        </div>
-                                        <IconArrowsHorizontal size={20} className={classes.selectIcon}/>
-                                    </button>
-                                ))}
+                                {activeOrganizers.map((organizer) => {
+                                    const logoUrl = getImageUrl(organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO'));
+
+                                    return (
+                                        <button
+                                            key={organizer.id}
+                                            className={classes.organizerItem}
+                                            onClick={() => handleOrganizerSelect(organizer.id)}
+                                        >
+                                            <div className={classes.organizerLogo}>
+                                                {logoUrl ? (
+                                                    <img
+                                                        src={logoUrl}
+                                                        alt={organizer.name}
+                                                    />
+                                                ) : (
+                                                    <div className={classes.logoPlaceholder}>
+                                                        <IconBuilding size={20} stroke={1.5}/>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className={classes.organizerInfo}>
+                                                <h4 className={classes.organizerName}>{organizer.name}</h4>
+                                            </div>
+                                            <IconArrowsHorizontal size={20} className={classes.selectIcon}/>
+                                        </button>
+                                    );
+                                })}
                             </>
                         )}
 
@@ -106,32 +111,36 @@ export const SwitchOrganizerModal: React.FC<SwitchOrganizerModalProps> = ({
                                     <Trans>Archived Organizers</Trans>
                                     <span className={classes.archivedCount}>({archivedOrganizers.length})</span>
                                 </button>
-                                {showArchived && archivedOrganizers.map((organizer) => (
-                                    <button
-                                        key={organizer.id}
-                                        className={classes.archivedItem}
-                                        onClick={() => handleOrganizerSelect(organizer.id)}
-                                    >
-                                        <div className={classes.organizerLogo}>
-                                            {organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO') ? (
-                                                <img
-                                                    src={organizer.images.find((image) => image.type === 'ORGANIZER_LOGO')?.url}
-                                                    alt={organizer.name}
-                                                />
-                                            ) : (
-                                                <div className={classes.logoPlaceholder}>
-                                                    <IconBuilding size={20} stroke={1.5}/>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className={classes.organizerInfo}>
-                                            <h4 className={classes.organizerName}>{organizer.name}</h4>
-                                        </div>
-                                        <span className={classes.archiveBadge}>
-                                            <IconArchive size={14}/>
-                                        </span>
-                                    </button>
-                                ))}
+                                {showArchived && archivedOrganizers.map((organizer) => {
+                                    const logoUrl = getImageUrl(organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO'));
+
+                                    return (
+                                        <button
+                                            key={organizer.id}
+                                            className={classes.archivedItem}
+                                            onClick={() => handleOrganizerSelect(organizer.id)}
+                                        >
+                                            <div className={classes.organizerLogo}>
+                                                {logoUrl ? (
+                                                    <img
+                                                        src={logoUrl}
+                                                        alt={organizer.name}
+                                                    />
+                                                ) : (
+                                                    <div className={classes.logoPlaceholder}>
+                                                        <IconBuilding size={20} stroke={1.5}/>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className={classes.organizerInfo}>
+                                                <h4 className={classes.organizerName}>{organizer.name}</h4>
+                                            </div>
+                                            <span className={classes.archiveBadge}>
+                                                <IconArchive size={14}/>
+                                            </span>
+                                        </button>
+                                    );
+                                })}
                             </>
                         )}
                     </div>

@@ -1,7 +1,7 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import {Helmet} from "react-helmet-async";
 import {Organizer} from "../../../types";
-import {organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
+import {getImageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
 
 interface OrganizerDocumentHeadProps {
     organizer: Organizer;
@@ -12,8 +12,8 @@ export const OrganizerDocumentHead = ({organizer}: OrganizerDocumentHeadProps) =
     const title = organizerSettings?.seo_title || `${organizer.name} - Events`;
     const description = organizerSettings?.seo_description || `Discover upcoming events by ${organizer.name}.`;
     const keywords = organizerSettings?.seo_keywords || `${organizer.name}, events, tickets, concerts, sell tickets online`;
-    const logoImage = organizer.images?.find(img => img.type === 'ORGANIZER_LOGO')?.url;
-    const coverImage = organizer.images?.find(img => img.type === 'ORGANIZER_COVER')?.url;
+    const logoImage = getImageUrl(organizer.images?.find(img => img.type === 'ORGANIZER_LOGO'));
+    const coverImage = getImageUrl(organizer.images?.find(img => img.type === 'ORGANIZER_COVER'));
     const image = coverImage || logoImage;
     const url = organizerHomepageUrl(organizer);
 

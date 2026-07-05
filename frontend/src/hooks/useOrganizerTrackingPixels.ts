@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState, useCallback, useRef} from 'react';
 import {TrackingPixelConfig} from '../types';
 import {initializeTrackingPixels, trackPageView, cleanup} from '../utilites/trackingPixels';
-import {getConsentState, setConsentState, isConsentPending, initGoogleConsentMode, updateGoogleConsentMode} from '../utilites/trackingPixels/consent';
+import {getConsentState, setConsentState, initGoogleConsentMode, updateGoogleConsentMode} from '../utilites/trackingPixels/consent';
 import {getConfig} from '../utilites/config';
 
 interface UseOrganizerTrackingPixelsReturn {
@@ -21,18 +21,22 @@ export function useOrganizerTrackingPixels(
 
     // Avoid SSR hydration mismatch by defaulting to false and reading cookie on mount
     const [consentGranted, setConsentGranted] = useState(false);
+    const [consentPending, setConsentPending] = useState(false);
     const consentModeInitialized = useRef(false);
+    const globalBannerEnabled = getConfig('VITE_COOKIE_CONSENT_ENABLED') === 'true';
 
     // On mount: read consent state and initialize Google Consent Mode synchronously
     useEffect(() => {
-        const currentConsent = getConsentState() === 'granted';
+        const consentState = getConsentState();
+        const currentConsent = consentState === 'granted';
         setConsentGranted(currentConsent);
+        setConsentPending(hasPixels && !globalBannerEnabled && consentState === 'pending');
 
         if (hasPixels && !consentModeInitialized.current) {
             initGoogleConsentMode(currentConsent);
             consentModeInitialized.current = true;
         }
-    }, [hasPixels]);
+    }, [globalBannerEnabled, hasPixels]);
 
     // Listen for consent changes from the global banner
     useEffect(() => {
@@ -68,14 +72,11 @@ export function useOrganizerTrackingPixels(
         setConsentState(granted ? 'granted' : 'denied');
         updateGoogleConsentMode(granted);
         setConsentGranted(granted);
+        setConsentPending(false);
     }, []);
 
-    // Don't show per-page banner if the global banner is already handling consent
-    const globalBannerEnabled = getConfig('VITE_COOKIE_CONSENT_ENABLED') === 'true';
-    const showBanner = hasPixels && !globalBannerEnabled && isConsentPending();
-
     return {
-        consentPending: showBanner,
+        consentPending,
         consentGranted,
         onConsent,
     };

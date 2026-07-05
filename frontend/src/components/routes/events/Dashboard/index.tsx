@@ -27,6 +27,7 @@ import {EventsDashboardStatusButtons} from "../../../common/EventsDashboardStatu
 import {NoEventsBlankSlate} from "../../../common/NoEventsBlankSlate";
 import {useState} from "react";
 import {getConfig} from "../../../../utilites/config.ts";
+import {getImageUrl} from "../../../../utilites/urlHelper.ts";
 
 const DashboardSkeleton = () => {
     return (
@@ -89,48 +90,60 @@ export function Dashboard() {
                 </div>
 
                 {/* Organizer Navigation */}
-                {organizers && organizers.length === 1 ? (
-                    <button
-                        className={classes.organizerButton}
-                        onClick={() => navigate(`/manage/organizer/${organizers[0].id}`)}
-                    >
-                        <div className={classes.organizerLogo}>
-                            {organizers[0].images?.find((image) => image.type === 'ORGANIZER_LOGO') ? (
-                                <img
-                                    src={organizers[0].images.find((image) => image.type === 'ORGANIZER_LOGO')?.url}
-                                    alt={organizers[0].name}
-                                />
-                            ) : (
-                                <div className={classes.logoPlaceholder}>
-                                    <IconBuilding size={20}/>
-                                </div>
-                            )}
-                        </div>
-                        <span className={classes.organizerName}>{organizers[0].name}</span>
-                        <IconArrowRight size={16} className={classes.arrowIcon}/>
-                    </button>
-                ) : organizers && organizers.length > 1 ? (
+                {organizers && organizers.length === 1 ? (() => {
+                    const organizer = organizers[0];
+                    if (!organizer) {
+                        return null;
+                    }
+                    const logoUrl = getImageUrl(organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO'));
+
+                    return (
+                        <button
+                            className={classes.organizerButton}
+                            onClick={() => navigate(`/manage/organizer/${organizer.id}`)}
+                        >
+                            <div className={classes.organizerLogo}>
+                                {logoUrl ? (
+                                    <img
+                                        src={logoUrl}
+                                        alt={organizer.name}
+                                    />
+                                ) : (
+                                    <div className={classes.logoPlaceholder}>
+                                        <IconBuilding size={20}/>
+                                    </div>
+                                )}
+                            </div>
+                            <span className={classes.organizerName}>{organizer.name}</span>
+                            <IconArrowRight size={16} className={classes.arrowIcon}/>
+                        </button>
+                    );
+                })() : organizers && organizers.length > 1 ? (
                     <button
                         className={classes.organizerButton}
                         onClick={() => setOrganizerModalOpen(true)}
                     >
                         <div className={classes.organizerLogos}>
-                            {organizers.slice(0, 3).map((organizer, index) => (
-                                <div
-                                    key={organizer.id}
-                                    className={classes.miniLogo}
-                                    style={{zIndex: 3 - index}}
-                                >
-                                    {organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO') ? (
-                                        <img
-                                            src={organizer.images.find((image) => image.type === 'ORGANIZER_LOGO')?.url}
-                                            alt={organizer.name}
-                                        />
-                                    ) : (
-                                        <IconBuilding size={12}/>
-                                    )}
-                                </div>
-                            ))}
+                            {organizers.slice(0, 3).map((organizer, index) => {
+                                const logoUrl = getImageUrl(organizer.images?.find((image) => image.type === 'ORGANIZER_LOGO'));
+
+                                return (
+                                    <div
+                                        key={organizer.id}
+                                        className={classes.miniLogo}
+                                        style={{zIndex: 3 - index}}
+                                    >
+                                        {logoUrl ? (
+                                            <img
+                                                src={logoUrl}
+                                                alt={organizer.name}
+                                            />
+                                        ) : (
+                                            <IconBuilding size={12}/>
+                                        )}
+                                    </div>
+                                );
+                            })}
                             {organizers.length > 3 && (
                                 <div className={classes.miniLogo} style={{zIndex: 0}}>
                                     <span>+{organizers.length - 3}</span>

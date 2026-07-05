@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router";
 import {Event} from "../../../../types.ts";
 import classes from './EventCard.module.scss';
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {t} from "@lingui/macro";
 import {formatCurrency} from "../../../../utilites/currency.ts";
-import {eventHomepagePath, eventHomepageUrl} from "../../../../utilites/urlHelper.ts";
+import {eventHomepagePath, eventHomepageUrl, getImageUrl} from "../../../../utilites/urlHelper.ts";
 import {getProductsFromEvent} from "../../../../utilites/helpers.ts";
 import {ShareComponent} from "../../../common/ShareIcon";
 import dayjs from "dayjs";
@@ -34,14 +34,19 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#4A5
     const endDay = event.end_date ? formatDateWithLocale(event.end_date, "dayOfMonth", event.timezone) : null;
 
     const coverImage = event.images?.find(img => img.type === 'EVENT_COVER');
+    const coverImageUrl = getImageUrl(coverImage);
     const location = event?.settings?.location_details?.city || event?.settings?.location_details?.venue_name;
     const isOnlineEvent = event.settings?.is_online_event;
 
     // Check if event is live
-    const now = dayjs();
-    const startDate = dayjs(event.start_date);
-    const endDate = event.end_date ? dayjs(event.end_date) : startDate.add(2, 'hour');
-    const isLive = now.isAfter(startDate) && now.isBefore(endDate);
+    const [isLive, setIsLive] = useState(false);
+
+    useEffect(() => {
+        const now = dayjs();
+        const startDate = dayjs(event.start_date);
+        const endDate = event.end_date ? dayjs(event.end_date) : startDate.add(2, 'hour');
+        setIsLive(now.isAfter(startDate) && now.isBefore(endDate));
+    }, [event.end_date, event.start_date]);
 
     // Get products from event categories
     const products = getProductsFromEvent(event) || [];
@@ -80,9 +85,9 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#4A5
                 {/* Image Section */}
                 <div className={classes.eventImage}>
                     <div className={classes.imageWrapper}>
-                        {coverImage ? (
+                        {coverImageUrl ? (
                             <img
-                                src={coverImage.url}
+                                src={coverImageUrl}
                                 alt={event.title}
                                 loading="lazy"
                             />

@@ -1,8 +1,8 @@
 @use "../../../../styles/mixins.scss";
 
 // Design tokens - matching OrganizerHomepage
-$font-display: var(--theme-font-family, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-$font-body:  var(--theme-font-family, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-display: var(--theme-font-family, 'Manrope', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-body:  var(--theme-font-family, 'Manrope', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
 $radius-lg: 12px;
 $radius-md: 8px;
@@ -20,6 +20,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     .eventCard {
       background: var(--accent-soft);
+      border-color: color-mix(in srgb, var(--primary-color) 28%, var(--border-color));
 
       .imageWrapper {
         img {
@@ -57,7 +58,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --accent-contrast: inherit;
 
   font-family: $font-body;
-  background: transparent;
+  background: var(--content-bg-color);
+  border: 1px solid transparent;
   border-radius: $radius-md;
   overflow: visible;
   transition: all $transition-fast;
@@ -99,6 +101,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: $radius-sm;
   overflow: hidden;
   background: var(--bg-color);
+  border: 1px solid var(--border-color);
 
   @include mixins.respond-below('sm') {
     max-height: 160px;
@@ -134,23 +137,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 3.25rem;
   color: var(--placeholder-accent, var(--primary-color));
   filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));
-  animation: float 4s ease-in-out infinite;
 
   @media (max-width: 640px) {
     width: 2.75rem;
     height: 2.75rem;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-6px) rotate(-2deg);
-  }
-  75% {
-    transform: translateY(3px) rotate(2deg);
   }
 }
 

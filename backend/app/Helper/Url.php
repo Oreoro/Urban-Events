@@ -47,10 +47,24 @@ class Url
 
         if ($envCDNUrl) {
             return  $envCDNUrl . '/' . $path;
-         }
+        }
 
         $disk = config('filesystems.public', 'public');
-        return app('filesystem')->disk($disk)->url($path);
+        $url = app('filesystem')->disk($disk)->url($path);
+
+        if ($disk === 'azure') {
+            $container = trim((string) config('filesystems.disks.azure.container'), '/');
+            $configuredUrl = rtrim((string) config('filesystems.disks.azure.url'), '/');
+            $configuredPath = trim((string) parse_url($configuredUrl, PHP_URL_PATH), '/');
+            $configuredIncludesContainer = $configuredPath === $container || str_ends_with($configuredPath, '/' . $container);
+            $containerBaseUrl = $configuredIncludesContainer ? $configuredUrl : $configuredUrl . '/' . $container;
+
+            if ($container !== '' && $configuredUrl !== '' && str_starts_with($url, $configuredUrl . '/') && !str_starts_with($url, $containerBaseUrl . '/')) {
+                return $containerBaseUrl . '/' . ltrim($path, '/');
+            }
+        }
+
+        return $url;
     }
 
     private static function addQueryParamsToUrl(array $queryParams, mixed $url): mixed

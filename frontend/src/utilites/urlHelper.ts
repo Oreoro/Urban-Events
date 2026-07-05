@@ -31,11 +31,27 @@ export const eventHomepageUrl = (event: Event) => {
 }
 
 export const eventCoverImageUrl = (event: Event) => {
-    return event?.images?.find((image) => image.type === 'EVENT_COVER')?.url;
+    return getImageUrl(event?.images?.find((image) => image.type === 'EVENT_COVER'));
 }
 
 export const eventCoverImage = (event: Event): Image | undefined => {
     return event?.images?.find((image) => image.type === 'EVENT_COVER');
+}
+
+export const getImageUrl = (image?: Pick<Image, 'url' | 'path'> | null, fallbackUrl?: string) => {
+    if (!image) {
+        return fallbackUrl;
+    }
+
+    if (image.path) {
+        return getAzureStorageUrl(image.path);
+    }
+
+    if (image.url) {
+        return getAzureStorageUrl(image.url);
+    }
+
+    return fallbackUrl;
 }
 
 export const imageUrl = (imageType: ImageType, images?: Image[], fallbackUrl?: string) => {
@@ -45,12 +61,7 @@ export const imageUrl = (imageType: ImageType, images?: Image[], fallbackUrl?: s
 
     const image = images.find((img) => img.type === imageType);
     if (image) {
-        // If the image URL is from Azure Storage, return as is
-        // Otherwise, construct the full Azure Storage URL
-        if (image.url && (image.url.startsWith('http://') || image.url.startsWith('https://'))) {
-            return image.url;
-        }
-        return getAzureStorageUrl(image.url || '');
+        return getImageUrl(image, fallbackUrl || getDefaultImageUrl());
     }
     return fallbackUrl || getDefaultImageUrl();
 }
