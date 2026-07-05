@@ -97,23 +97,29 @@ export function getContrastColor(backgroundColor: string): string {
     return isLightColor(backgroundColor) ? '#1a1a1a' : '#ffffff';
 }
 
+const URBAN_EVENTS_THEME = {
+    accent: '#14665F',
+    background: '#FAF3DD',
+    darkBackground: '#241F2A',
+};
+
 export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {
     if (mode === 'light') {
         return {
-            surface: '#ffffff',
-            textPrimary: '#2F3440',
-            textSecondary: '#4A5262',
-            textTertiary: '#6B7280',
-            border: 'rgba(74, 82, 98, 0.18)',
+            surface: '#FFFDF6',
+            textPrimary: '#27313C',
+            textSecondary: '#42505E',
+            textTertiary: '#6D7784',
+            border: 'rgba(88, 96, 111, 0.2)',
         };
     }
 
     return {
-        surface: '#252B35',
-        textPrimary: '#ffffff',
-        textSecondary: '#D5DEE2',
-        textTertiary: '#A8B3BD',
-        border: 'rgba(255, 255, 255, 0.14)',
+        surface: '#332936',
+        textPrimary: '#FFFAF0',
+        textSecondary: '#E7DDE4',
+        textTertiary: '#C7BBC5',
+        border: 'rgba(255, 250, 240, 0.16)',
     };
 }
 
@@ -161,13 +167,53 @@ export function computeThemeVariables(settings: HomepageThemeSettings): ThemeCSS
 
 export function getDefaultThemeSettings(): HomepageThemeSettings {
     return {
-        accent: '#4A5262',
-        background: '#FFF9EA',
+        accent: URBAN_EVENTS_THEME.accent,
+        background: URBAN_EVENTS_THEME.background,
         mode: 'light',
         background_type: 'COLOR',
         font_family: DEFAULT_HOMEPAGE_FONT,
     };
 }
+
+const isOverpoweringAccent = (accent: string): boolean => {
+    const rgb = hexToRgb(accent);
+    if (!rgb) {
+        return true;
+    }
+
+    const max = Math.max(rgb.r, rgb.g, rgb.b);
+    const min = Math.min(rgb.r, rgb.g, rgb.b);
+    const saturation = max === 0 ? 0 : (max - min) / max;
+    const luminance = calculateLuminance(accent);
+
+    return luminance > 210 || luminance < 32 || saturation > 0.82;
+};
+
+const getReadableAccent = (accent: string | undefined, mode: 'light' | 'dark'): string => {
+    if (!accent || isOverpoweringAccent(accent)) {
+        return mode === 'dark' ? '#C8F3EA' : URBAN_EVENTS_THEME.accent;
+    }
+
+    const derived = getDerivedColors(mode);
+    return checkContrast(accent, derived.surface).ratio >= 3 ? accent : URBAN_EVENTS_THEME.accent;
+};
+
+const getReadableBackground = (background: string | undefined, mode: 'light' | 'dark'): string => {
+    if (!background || !hexToRgb(background)) {
+        return mode === 'dark' ? URBAN_EVENTS_THEME.darkBackground : URBAN_EVENTS_THEME.background;
+    }
+
+    const luminance = calculateLuminance(background);
+    if (mode === 'dark' && luminance < 16) {
+        return URBAN_EVENTS_THEME.darkBackground;
+    }
+
+    if (mode === 'light' && luminance > 248) {
+        return URBAN_EVENTS_THEME.background;
+    }
+
+    return background;
+};
 
 export function validateThemeSettings(
     settings: Partial<HomepageThemeSettings> | null | undefined
@@ -178,10 +224,12 @@ export function validateThemeSettings(
         return defaults;
     }
 
+    const mode = settings.mode || detectMode(settings.background || defaults.background);
+
     return {
-        accent: settings.accent || defaults.accent,
-        background: settings.background || defaults.background,
-        mode: settings.mode || detectMode(settings.background || defaults.background),
+        accent: getReadableAccent(settings.accent || defaults.accent, mode),
+        background: getReadableBackground(settings.background || defaults.background, mode),
+        mode,
         background_type: settings.background_type || defaults.background_type,
         font_family: settings.font_family || defaults.font_family,
     };

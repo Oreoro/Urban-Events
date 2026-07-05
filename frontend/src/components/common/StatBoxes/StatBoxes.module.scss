@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  color: var(--hi-primary);
+  color: var(--hi-text);
   margin: 0.5rem 0;
 
   @include mixins.respond-below(lg) {
@@ -22,6 +22,7 @@
   padding: 1.25rem !important;
   margin-bottom: 0 !important;
   height: 100%;
+  border-color: var(--hi-border-strong) !important;
 
   .leftPanel {
     flex: 1;
@@ -32,10 +33,11 @@
 
     .number {
       font-size: 1.75rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0;
       line-height: 1.2;
       align-self: end;
+      color: var(--hi-text);
 
       @include mixins.respond-below(md) {
         font-size: 1.5rem;
@@ -45,7 +47,7 @@
     .description {
       font-size: 0.85rem;
       color: var(--hi-color-gray-dark);
-      font-weight: 400;
+      font-weight: 800;
       align-self: start;
       text-transform: uppercase;
       letter-spacing: 0;
@@ -59,11 +61,12 @@
     .icon {
       width: 40px;
       height: 40px;
-      border-radius: 10px;
+      border-radius: var(--hi-radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
+      box-shadow: 0 8px 16px color-mix(in srgb, var(--ue-ink) 12%, transparent);
 
       @include mixins.respond-below(md) {
         width: 36px;

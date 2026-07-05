@@ -1,12 +1,13 @@
 @use "../../../styles/mixins.scss";
 
 .viewHomepageButton {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  color: var(--hi-shell-text) !important;
+  font-weight: 800;
+  transition: color 0.2s ease, background-color 0.2s ease;
 
   &:hover {
-    color: #ffffff !important;
+    color: var(--hi-shell-accent) !important;
+    background: var(--hi-shell-surface) !important;
   }
 
   @include mixins.respond-below(md) {
@@ -49,18 +50,18 @@
 }
 
 .calloutButton {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  color: white !important;
-  font-weight: 600;
+  background: var(--hi-shell-accent) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-shell-accent) 65%, var(--ue-marigold)) !important;
+  color: var(--ue-plum-deep) !important;
+  font-weight: 800;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   z-index: 1;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25) !important;
+    background: var(--ue-sky) !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--hi-shadow-sm);
   }
 }
 

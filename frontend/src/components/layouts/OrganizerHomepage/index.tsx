@@ -11,7 +11,7 @@ import {PoweredByFooter} from "../../common/PoweredByFooter";
 import {socialMediaConfig} from "../../../constants/socialMediaConfig";
 import {ContactOrganizerModal} from "../../common/ContactOrganizerModal";
 import {formatAddress, getShortLocationDisplay} from "../../../utilites/addressUtilities.ts";
-import {organizerHomepagePath} from "../../../utilites/urlHelper.ts";
+import {getImageUrl, organizerHomepagePath} from "../../../utilites/urlHelper.ts";
 import {removeTransparency} from "../../../utilites/colorHelper.ts";
 import {StatusToggle} from "../../common/StatusToggle";
 import {getConfig} from "../../../utilites/config.ts";
@@ -83,6 +83,14 @@ export const OrganizerHomepage = ({
     // Images
     const organizerLogo = organizer.images?.find(img => img.type === 'ORGANIZER_LOGO');
     const organizerCover = organizer.images?.find(img => img.type === 'ORGANIZER_COVER');
+    const organizerLogoUrl = getImageUrl(organizerLogo);
+    const organizerCoverUrl = getImageUrl(organizerCover);
+    const organizerInitials = organizer.name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((word) => word[0]?.toUpperCase())
+        .join('');
 
     const events = eventsData?.data || [];
 
@@ -138,10 +146,10 @@ export const OrganizerHomepage = ({
                 </style>
 
                 {/* Background */}
-                {(organizerCover && backgroundType === 'MIRROR_COVER_IMAGE') ? (
+                {(organizerCoverUrl && backgroundType === 'MIRROR_COVER_IMAGE') ? (
                     <div
                         className={classes.background}
-                        style={{backgroundImage: `url(${organizerCover.url})`}}
+                        style={{backgroundImage: `url(${organizerCoverUrl})`}}
                     />
                 ) : (
                     <div
@@ -160,7 +168,7 @@ export const OrganizerHomepage = ({
                     <div className={classes.wrapper}>
                         {/* Hero Section */}
                         <div className={classes.heroSection}>
-                            {organizerCover && (
+                            {organizerCoverUrl && (
                                 <div
                                     className={classes.coverWrapper}
                                     style={organizerCover?.width && organizerCover?.height ? {
@@ -176,7 +184,7 @@ export const OrganizerHomepage = ({
                                         />
                                     )}
                                     <img
-                                        src={organizerCover.url}
+                                        src={organizerCoverUrl}
                                         alt="Cover"
                                         className={classes.coverImage}
                                     />
@@ -186,15 +194,17 @@ export const OrganizerHomepage = ({
                                 <div className={classes.organizerContent}>
                                     <div className={classes.organizerProfile}>
                                         <div className={classes.profileMain}>
-                                            {organizerLogo && (
-                                                <div className={classes.logoWrapper}>
+                                            <div className={classes.logoWrapper}>
+                                                {organizerLogoUrl ? (
                                                     <img
-                                                        src={organizerLogo.url}
-                                                        alt="Logo"
+                                                        src={organizerLogoUrl}
+                                                        alt={organizer.name}
                                                         className={classes.logo}
                                                     />
-                                                </div>
-                                            )}
+                                                ) : (
+                                                    <span className={classes.logoFallback}>{organizerInitials || 'UE'}</span>
+                                                )}
+                                            </div>
                                             <div className={classes.organizerInfo}>
                                                 <div className={classes.nameSection}>
                                                     <h1>{organizer?.name}</h1>
@@ -304,7 +314,7 @@ export const OrganizerHomepage = ({
                                             <EventCard
                                                 key={event.id}
                                                 event={event as Event}
-                                                primaryColor={themeSettings.accent}
+                                                primaryColor={cssVars['--theme-accent']}
                                             />
                                         ))}
                                     </div>
@@ -335,14 +345,14 @@ export const OrganizerHomepage = ({
                         <div className={classes.footerSection}>
                             <div className={classes.footerLinks}>
                                 <Anchor
-                                    href={getConfig('VITE_PRIVACY_URL', 'https://hi.events/privacy-policy?utm_source=app-organizer-footer')}
+                                    href={getConfig('VITE_PRIVACY_URL', 'https://urbanevents.pk/privacy-policy')}
                                     className={classes.footerLink}
                                 >
                                     {t`Privacy Policy`}
                                 </Anchor>
                                 <span className={classes.footerSeparator}>•</span>
                                 <Anchor
-                                    href={getConfig('VITE_TOS_URL', 'https://hi.events/terms-of-service?utm_source=app-organizer-footer')}
+                                    href={getConfig('VITE_TOS_URL', 'https://urbanevents.pk/terms-of-service')}
                                     className={classes.footerLink}
                                 >
                                     {t`Terms of Service`}

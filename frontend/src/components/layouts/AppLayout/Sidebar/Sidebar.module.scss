@@ -5,9 +5,9 @@
   flex-direction: column;
   grid-area: sidebar;
   background: var(--hi-shell-bg);
-  color: var(--hi-color-white);
+  color: var(--hi-shell-text);
   position: relative;
-  box-shadow: 12px 0 32px rgba(47, 52, 64, 0.16);
+  box-shadow: 10px 0 28px color-mix(in srgb, var(--ue-plum-deep) 24%, transparent);
   height: 100vh;
 
   &.closed {
@@ -22,10 +22,10 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 8px 0;
+    padding: 10px 0;
     min-height: 76px;
     margin-bottom: 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-shell-text) 12%, transparent);
     flex-shrink: 0;
 
     a {
@@ -45,7 +45,7 @@
     scrollbar-color: transparent transparent;
 
     &:hover {
-      scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+      scrollbar-color: color-mix(in srgb, var(--hi-shell-text) 24%, transparent) transparent;
     }
 
     &::-webkit-scrollbar {
@@ -60,7 +60,7 @@
     }
 
     &:hover::-webkit-scrollbar-thumb {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: color-mix(in srgb, var(--hi-shell-text) 24%, transparent);
     }
 
     &::-webkit-scrollbar-track {
@@ -73,7 +73,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0;
-      color: rgba(255, 255, 255, 0.64);
+      color: var(--hi-shell-muted);
     }
 
     a,
@@ -81,14 +81,14 @@
     .link {
       display: flex;
       align-items: center;
-      color: rgba(255, 255, 255, 0.86);
-      padding: 8px 12px;
+      color: var(--hi-shell-text);
+      padding: 9px 12px;
       text-decoration: none;
       margin: 4px 10px;
       border-radius: var(--hi-radius-md);
       font-size: 0.9rem;
       font-weight: 650;
-      transition: all 0.2s ease;
+      transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -98,8 +98,8 @@
       text-align: left;
 
       .navBadge {
-        background: var(--ue-icy-aqua);
-        color: var(--ue-slate-deep);
+        background: var(--hi-shell-accent);
+        color: var(--ue-plum-deep);
         padding: 2px 6px;
         border-radius: 12px;
         font-size: 0.75em;
@@ -112,7 +112,7 @@
       }
 
       &.loading {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: var(--hi-shell-surface);
         animation: pulse 1.5s infinite;
       }
 
@@ -126,26 +126,26 @@
       }
 
       &.linkActive {
-        background: rgba(255, 255, 255, 0.16);
-        color: white;
+        background: var(--hi-shell-accent);
+        color: var(--ue-plum-deep);
         font-weight: 800;
-        box-shadow: inset 3px 0 0 var(--ue-icy-aqua), 0 8px 18px rgba(0, 0, 0, 0.12);
+        box-shadow: inset 3px 0 0 var(--ue-marigold), 0 8px 18px color-mix(in srgb, var(--ue-plum-deep) 22%, transparent);
 
         .linkIcon {
-          color: rgba(255, 255, 255, 1);
+          color: var(--ue-forest-deep);
         }
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
+        background: var(--hi-shell-surface-hover);
+        color: var(--hi-shell-text);
         transform: translateY(-1px);
       }
 
       svg {
         margin-right: 12px;
         min-width: 20px;
-        color: var(--ue-icy-aqua);
+        color: var(--hi-shell-accent);
         transition: color 0.2s ease;
       }
     }
@@ -177,7 +177,7 @@
   .sidebarClose {
     width: 24px;
     height: 24px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--hi-shell-muted);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -191,7 +191,7 @@
 
     &:hover {
       transform: translateY(-50%) scale(1.4);
-      color: white;
+      color: var(--hi-shell-text);
     }
 
     @media (max-width: 767px) {

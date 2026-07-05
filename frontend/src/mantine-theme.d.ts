@@ -10,6 +10,10 @@ type ExtendedCustomColors =
     | 'aqua'
     | 'eggshell'
     | 'slate'
+    | 'coral'
+    | 'marigold'
+    | 'mint'
+    | 'sky'
     | DefaultMantineColor;
 
 declare module '@mantine/core' {

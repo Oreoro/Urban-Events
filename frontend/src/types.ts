@@ -175,6 +175,7 @@ export interface Image {
     id: IdParam;
     file_name: string;
     url: string;
+    path?: string | null;
     size: number;
     mime_type: string;
     type: ImageType;

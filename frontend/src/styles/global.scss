@@ -1,47 +1,68 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #ffa69e;
+  --ue-powder-blush: #f6a49b;
   --ue-eggshell: #faf3dd;
-  --ue-icy-aqua: #b8f2e6;
-  --ue-light-blue: #aed9e0;
-  --ue-blue-slate: #5e6472;
-  --ue-canvas: #fff9ea;
-  --ue-canvas-soft: #fffcf1;
-  --ue-slate: #4a5262;
-  --ue-slate-deep: #2f3440;
+  --ue-icy-aqua: #c8f3ea;
+  --ue-light-blue: #c8e3e8;
+  --ue-blue-slate: #58606f;
+  --ue-canvas: #fff8ea;
+  --ue-canvas-soft: #fffcf3;
+  --ue-surface: #ffffff;
+  --ue-ink: #27313c;
+  --ue-ink-soft: #42505e;
+  --ue-muted: #6d7784;
+  --ue-slate: var(--ue-ink-soft);
+  --ue-slate-deep: var(--ue-ink);
   --ue-slate-soft: #eef1f4;
-  --ue-aqua: #8de4d8;
-  --ue-aqua-deep: #147c74;
-  --ue-blush: #ff8a80;
-  --ue-blush-deep: #b7524a;
-  --ue-border: #d8d1bc;
+  --ue-aqua: var(--ue-icy-aqua);
+  --ue-aqua-deep: #14665f;
+  --ue-blush: var(--ue-powder-blush);
+  --ue-blush-deep: #d96b60;
+  --ue-coral: #d96b60;
+  --ue-coral-deep: #a94c45;
+  --ue-marigold: #d89b2b;
+  --ue-plum: #52334a;
+  --ue-plum-deep: #342333;
+  --ue-forest: #14665f;
+  --ue-forest-deep: #0e4f49;
+  --ue-mint: #dff8f1;
+  --ue-sky: #dceff3;
+  --ue-border: #ded4bf;
+  --ue-border-strong: #c7bba3;
 
-  --hi-font-heading: 'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  --hi-font-heading: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
   --hi-font-body: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
-  --hi-text: var(--ue-slate-deep);
-  --hi-text-light: var(--ue-slate);
-  --hi-text-muted: #6b7280;
+  --hi-text: var(--ue-ink);
+  --hi-text-light: var(--ue-ink-soft);
+  --hi-text-muted: var(--ue-muted);
   --hi-primary: var(--mantine-color-primary-7);
   --hi-primary-hover: var(--mantine-color-primary-8);
-  --hi-secondary: var(--ue-icy-aqua);
-  --hi-secondary-strong: var(--ue-aqua-deep);
-  --hi-secondary-text: var(--ue-slate-deep);
-  --hi-surface: #ffffff;
-  --hi-surface-raised: #ffffff;
+  --hi-secondary: var(--ue-mint);
+  --hi-secondary-strong: var(--ue-forest);
+  --hi-secondary-text: var(--ue-ink);
+  --hi-surface: var(--ue-surface);
+  --hi-surface-raised: var(--ue-surface);
+  --hi-surface-soft: var(--ue-canvas-soft);
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
-  --hi-border: rgba(74, 82, 98, 0.16);
-  --hi-border-strong: rgba(74, 82, 98, 0.28);
-  --hi-color-money-green: #0f8a65;
+  --hi-border: color-mix(in srgb, var(--ue-border) 82%, white);
+  --hi-border-strong: var(--ue-border-strong);
+  --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);
   --hi-link-color: var(--hi-primary);
-  --hi-pink: var(--ue-blush-deep);
-  --hi-primary-alt: var(--ue-blush-deep);
+  --hi-pink: var(--ue-coral-deep);
+  --hi-primary-alt: var(--ue-coral-deep);
   --hi-action-fill: var(--hi-secondary-strong);
-  --hi-shell-bg: var(--ue-slate-deep);
-  --hi-scrollbar-thumb: rgba(74, 82, 98, 0.28);
+  --hi-shell-bg: var(--ue-plum-deep);
+  --hi-shell-bg-strong: #2c1f2c;
+  --hi-shell-surface: #473342;
+  --hi-shell-surface-hover: #574053;
+  --hi-shell-text: #fffaf0;
+  --hi-shell-muted: #dacfd7;
+  --hi-shell-accent: var(--ue-mint);
+  --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
 
   --hi-color-white: #ffffff;
   --hi-color-black: #000000;
@@ -55,12 +76,12 @@
   --hi-radius-xs: 3px;
   --hi-radius-sm: 5px;
   --hi-radius-md: 8px;
-  --hi-radius-lg: 12px;
-  --hi-radius-xl: 16px;
+  --hi-radius-lg: 10px;
+  --hi-radius-xl: 14px;
 
-  --hi-shadow-sm: 0 5px 16px rgba(47, 52, 64, 0.1);
-  --hi-shadow-md: 0 14px 34px rgba(47, 52, 64, 0.13);
-  --hi-shadow-lg: 0 22px 54px rgba(47, 52, 64, 0.16);
+  --hi-shadow-sm: 0 4px 14px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+  --hi-shadow-md: 0 14px 30px color-mix(in srgb, var(--ue-ink) 14%, transparent);
+  --hi-shadow-lg: 0 22px 46px color-mix(in srgb, var(--ue-ink) 18%, transparent);
 }
 
 * {
@@ -73,15 +94,20 @@ html {
 
 body {
   font-family: var(--mantine-font-family);
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--hi-text);
-  background: var(--checkout-background, var(--hi-color-gray)) !important;
+  background: var(--checkout-background, var(--ue-canvas)) !important;
   height: auto;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--hi-font-heading);
+  color: var(--hi-text);
   letter-spacing: 0;
+  line-height: 1.18;
 }
 
 fieldset {
@@ -131,13 +157,61 @@ a {
   box-shadow: 0 0 0 3px rgba(20, 124, 116, 0.12);
 }
 
+.mantine-Input-input {
+  background-color: var(--hi-surface);
+}
+
+.mantine-Input-input::placeholder {
+  color: color-mix(in srgb, var(--hi-text-muted) 68%, white);
+}
+
 .mantine-Card-root,
 .mantine-Paper-root {
   background-color: var(--hi-surface-raised);
 }
 
+.mantine-Button-root[data-variant="filled"] {
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--hi-action-fill) 16%, transparent);
+}
+
+.mantine-Button-root[data-variant="light"] {
+  color: var(--hi-secondary-strong);
+  background-color: var(--ue-mint);
+}
+
+.mantine-Button-root[data-variant="subtle"],
+.mantine-ActionIcon-root[data-variant="subtle"] {
+  color: var(--hi-text-light);
+}
+
+.mantine-Menu-dropdown {
+  background: var(--hi-surface);
+  border-color: var(--hi-border);
+  box-shadow: var(--hi-shadow-md);
+}
+
+.mantine-Menu-item {
+  color: var(--hi-text);
+}
+
+.mantine-Menu-item:hover {
+  background: var(--ue-mint);
+  color: var(--ue-forest-deep);
+}
+
 .mantine-Table-table {
   color: var(--hi-text);
+}
+
+.mantine-Table-table th {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.mantine-Table-table td {
+  font-size: 0.91rem;
 }
 
 .mantine-SimpleGrid-root {

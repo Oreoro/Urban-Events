@@ -1,10 +1,10 @@
 import {currencies} from "../../data/currencies.ts";
 
 export const formatCurrency = (value: number | string, currency = 'PKR') => {
-    const locale = typeof window !== 'undefined' ? navigator.language : 'en-PK';
-    const formatter = new Intl.NumberFormat(locale, {
+    const formatter = new Intl.NumberFormat('en-PK', {
         style: 'currency',
         currency: currency,
+        currencyDisplay: 'code',
         minimumFractionDigits: 2,
     });
 

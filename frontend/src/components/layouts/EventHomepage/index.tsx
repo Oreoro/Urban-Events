@@ -3,7 +3,7 @@ import SelectProducts from "../../routes/product-widget/SelectProducts";
 import "../../../styles/widget/default.scss";
 import React, {useEffect, useRef, useState} from "react";
 import {EventDocumentHead} from "../../common/EventDocumentHead";
-import {eventCoverImage, eventHomepageUrl, imageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
+import {eventCoverImage, eventHomepageUrl, getImageUrl, imageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
 import {Event, OrganizerStatus} from "../../../types.ts";
 import {EventNotAvailable} from "./EventNotAvailable";
 import {
@@ -137,7 +137,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     } as React.CSSProperties;
 
     const coverImageData = eventCoverImage(event);
-    const coverImage = coverImageData?.url;
+    const coverImage = getImageUrl(coverImageData);
     const organizer = event.organizer!;
     const organizerSocials = organizer?.settings?.social_media_handles;
     const organizerLogo = imageUrl('ORGANIZER_LOGO', organizer?.images);
@@ -617,13 +617,13 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
                         <div className={classes.footerSection}>
                             <div className={classes.footerLinks}>
                                 <Anchor
-                                    href={getConfig('VITE_PRIVACY_URL', 'https://hi.events/privacy-policy?utm_source=app-event-footer')}
+                                    href={getConfig('VITE_PRIVACY_URL', 'https://urbanevents.pk/privacy-policy')}
                                     className={classes.footerLink}
                                 >
                                     {t`Privacy Policy`}
                                 </Anchor>
                                 <Anchor
-                                    href={getConfig('VITE_TOS_URL', 'https://hi.events/terms-of-service?utm_source=app-event-footer')}
+                                    href={getConfig('VITE_TOS_URL', 'https://urbanevents.pk/terms-of-service')}
                                     className={classes.footerLink}
                                 >
                                     {t`Terms of Service`}

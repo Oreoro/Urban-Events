@@ -3,22 +3,27 @@
   border-radius: var(--hi-radius-lg);
   padding: var(--hi-spacing-lg);
   margin-bottom: var(--hi-spacing-lg);
+  color: var(--hi-text);
 
   &.noStyle {
     //
   }
 
   &.lightGray {
-    // Use checkout variables if available, fallback to default colors
-    background-color: var(--checkout-accent-soft, color-mix(in srgb, var(--ue-icy-aqua) 28%, white));
+    background-color: var(--checkout-accent-soft, var(--ue-canvas-soft));
     border: 1px solid var(--checkout-border, var(--hi-border));
   }
 
   &.default {
-    // Use checkout variables if available, fallback to default colors
     background-color: var(--checkout-surface, var(--hi-surface-raised));
     border: 1px solid var(--checkout-border, var(--hi-border));
     box-shadow: var(--hi-shadow-sm);
-    transition: box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  &.lightAccent {
+    background-color: var(--ue-mint);
+    border: 1px solid color-mix(in srgb, var(--ue-forest) 18%, var(--ue-border));
+    box-shadow: none;
   }
 }

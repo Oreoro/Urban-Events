@@ -3,7 +3,7 @@
 .searchBarWrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 
   @include mixins.respond-below(sm, true) {
     flex-direction: column;
@@ -20,5 +20,15 @@
     @include mixins.respond-below(md) {
       max-width: 100%;
     }
+
+    :global(.mantine-Input-input) {
+      border-color: var(--hi-border);
+      background: var(--hi-surface);
+      box-shadow: inset 0 1px 0 color-mix(in srgb, var(--ue-ink) 3%, transparent);
+    }
   }
+}
+
+.clearIcon {
+  color: var(--hi-text-muted);
 }

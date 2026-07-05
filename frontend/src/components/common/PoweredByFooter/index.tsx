@@ -1,10 +1,10 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {t} from "@lingui/macro";
 import classes from "./FloatingPoweredBy.module.scss";
 import classNames from "classnames";
-import React, {useMemo} from "react";
-import {iHavePurchasedALicence, isHiEvents} from "../../../utilites/helpers.ts";
+import React from "react";
+import {iHavePurchasedALicence} from "../../../utilites/helpers.ts";
 import {getConfig} from "../../../utilites/config.ts";
-import {IconRocket} from "@tabler/icons-react";
 
 /**
  * (c) Hi.Events Ltd 2025
@@ -26,54 +26,20 @@ export const PoweredByFooter = (
         return <></>;
     }
 
-    const link = useMemo(() => {
-        let host = getConfig("VITE_FRONTEND_URL") ?? "unknown";
-        let medium = "app";
-
-        if (typeof window !== "undefined" && window.location) {
-            host = window.location.hostname;
-            medium = window.location.pathname.includes("/widget") ? "widget" : "app";
-        }
-
-        const url = new URL("https://hi.events");
-        url.searchParams.set("utm_source", "app-powered-by-footer");
-        url.searchParams.set("utm_medium", isHiEvents() ? medium : 'self-hosted-' + medium);
-        url.searchParams.set("utm_campaign", "powered-by");
-        url.searchParams.set("utm_content", isHiEvents() ? "hi.events" : host);
-
-        return url.toString();
-    }, []);
-
-    const footerContent = isHiEvents() ? (
-        <>
-            {t`Planning an event?`}{" "}
-            <a
-                href={`${link}`}
-                target="_blank"
-                className={classes.ctaLink}
-                title={"Effortlessly manage events and sell tickets online with Hi.Events"}
-            >
-                {t`Try Hi.Events Free`}
-            </a>
-        </>
-    ) : (
-        <>
-            {t`Powered by`}{" "}
-            <a
-                href={link}
-                target="_blank"
-                title={"Effortlessly manage events and sell tickets online with Hi.Events"}
-            >
-                Hi.Events
-            </a>{" "}
-            <IconRocket size={14} stroke={1.8} className={classes.inlineIcon}/>
-        </>
-    );
+    const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
+    const link = getConfig("VITE_FRONTEND_URL", "https://app.urbanevents.pk") || "https://app.urbanevents.pk";
 
     return (
         <div {...props} className={classNames(classes.poweredBy, props.className)}>
             <div className={classes.poweredByText}>
-                {footerContent}
+                {t`Powered by`}{" "}
+                <a
+                    href={link}
+                    target="_blank"
+                    title={appName}
+                >
+                    {appName}
+                </a>
             </div>
         </div>
     );

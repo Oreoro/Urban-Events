@@ -44,37 +44,37 @@ export const StatBoxes = () => {
             number: formatNumber(eventStats?.total_attendees_registered as number),
             description: t`Attendees`,
             icon: <IconUsers size={18}/>,
-            backgroundColor: '#E6677E'
+            backgroundColor: 'var(--ue-coral)'
         },
         {
             number: formatNumber(eventStats?.total_products_sold as number),
             description: t`Products sold`,
             icon: <IconShoppingCart size={18}/>,
-            backgroundColor: '#4B7BE5'
+            backgroundColor: 'var(--ue-plum)'
         },
         {
             number: formatCurrency(eventStats?.total_refunded as number || 0, event?.currency),
             description: t`Refunded`,
             icon: <IconCreditCardRefund size={18}/>,
-            backgroundColor: '#49A6B7'
+            backgroundColor: 'var(--ue-blue-slate)'
         },
         {
             number: formatCurrency(eventStats?.total_gross_sales || 0, event?.currency),
             description: t`Gross sales`,
             icon: <IconCash size={18}/>,
-            backgroundColor: '#7C63E6'
+            backgroundColor: 'var(--ue-forest)'
         },
         {
             number: formatNumber(eventStats?.total_views as number),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
-            backgroundColor: '#63B3A1'
+            backgroundColor: 'var(--ue-forest-deep)'
         },
         {
             number: formatNumber(eventStats?.total_orders as number),
             description: t`Completed orders`,
             icon: <IconReceipt size={18}/>,
-            backgroundColor: '#E67D49'
+            backgroundColor: 'var(--ue-marigold)'
         }
     ];
 

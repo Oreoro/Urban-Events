@@ -42,8 +42,8 @@
   .sidebarOpen {
     width: 28px;
     height: 28px;
-    background: var(--hi-secondary-strong);
-    color: white;
+    background: var(--ue-plum);
+    color: var(--hi-shell-text);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -76,7 +76,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: color-mix(in srgb, var(--ue-plum-deep) 68%, transparent);
     z-index: 150;
     display: none;
 

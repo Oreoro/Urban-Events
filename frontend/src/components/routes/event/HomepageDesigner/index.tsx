@@ -20,8 +20,7 @@ import {queryClient} from "../../../../utilites/queryClient.ts";
 import {GET_EVENT_PUBLIC_QUERY_KEY} from "../../../../queries/useGetEventPublic.ts";
 import {ThemeColorControls} from "../../../common/ThemeColorControls";
 import {ThemeFontControl} from "../../../common/ThemeFontControl";
-import {validateThemeSettings} from "../../../../utilites/themeUtils.ts";
-import {DEFAULT_HOMEPAGE_FONT} from "../../../../constants/homepageFonts.ts";
+import {getDefaultThemeSettings, validateThemeSettings} from "../../../../utilites/themeUtils.ts";
 
 interface FormValues {
     homepage_theme_settings: Partial<HomepageThemeSettings>;
@@ -46,13 +45,7 @@ const HomepageDesigner = () => {
 
     const form = useForm<FormValues>({
         initialValues: {
-            homepage_theme_settings: {
-                accent: '#4A5262',
-                background: '#FFF9EA',
-                mode: 'light',
-                background_type: 'COLOR',
-                font_family: DEFAULT_HOMEPAGE_FONT,
-            },
+            homepage_theme_settings: getDefaultThemeSettings(),
             continue_button_text: '',
         }
     });
