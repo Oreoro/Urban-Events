@@ -30,7 +30,7 @@ export const Topbar: React.FC<TopbarProps> = ({
             <div className={classes.topBarMain}>
                 <div className={classes.burger}>
                     <Burger
-                        color={'#fff'}
+                        color={'var(--hi-shell-text)'}
                         opened={sidebarOpen}
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                         size={'sm'}
@@ -54,7 +54,7 @@ export const Topbar: React.FC<TopbarProps> = ({
 
             <div className={classes.breadcrumbsRow}>
                 <div className={classes.breadcrumbs}>
-                    <Breadcrumbs separator={<span style={{margin: '0 4px', color: '#aaa'}}>/</span>}>
+                    <Breadcrumbs separator={<span className={classes.breadcrumbSeparator}>/</span>}>
                         {breadcrumbItems.map((item, index) => (
                             <NavLink key={index} to={item.link ?? '#'}>
                                 {item.content}

@@ -120,37 +120,37 @@ export const OrganizerDashboard = () => {
                 value: formatCurrency(stats.total_gross_sales, selectedCurrency),
                 description: t`Gross Sales`,
                 icon: <IconCash size={18}/>,
-                backgroundColor: '#7C63E6'
+                backgroundColor: 'var(--ue-forest)'
             },
             {
                 value: formatNumber(stats.total_products_sold),
                 description: t`Products Sold`,
                 icon: <IconTicket size={18}/>,
-                backgroundColor: '#4B7BE5'
+                backgroundColor: 'var(--ue-plum)'
             },
             {
                 value: formatNumber(stats.total_attendees_registered),
                 description: t`Attendees`,
                 icon: <IconUsers size={18}/>,
-                backgroundColor: '#E6677E'
+                backgroundColor: 'var(--ue-coral)'
             },
             {
                 value: formatNumber(stats.total_orders),
                 description: t`Total Orders`,
                 icon: <IconBuildingStore size={18}/>,
-                backgroundColor: '#E67D49'
+                backgroundColor: 'var(--ue-marigold)'
             },
             {
                 value: formatCurrency(stats.total_tax, selectedCurrency),
                 description: t`Total Tax`,
                 icon: <IconReceiptTax size={18}/>,
-                backgroundColor: '#49A6B7'
+                backgroundColor: 'var(--ue-blue-slate)'
             },
             {
                 value: formatCurrency(stats.total_fees, selectedCurrency),
                 description: t`Total Fees`,
                 icon: <IconReportMoney size={18}/>,
-                backgroundColor: '#63B3A1'
+                backgroundColor: 'var(--ue-forest-deep)'
             },
         );
     }

@@ -6,11 +6,11 @@
   padding: 0 16px;
   height: 36px;
   font-weight: 800;
-  border-radius: 18px;
-  color: white !important;
-  background: rgba(255, 255, 255, 0.14) !important;
-  border: 1px solid rgba(255, 255, 255, 0.24) !important;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  border-radius: var(--hi-radius-md);
+  color: var(--ue-plum-deep) !important;
+  background: var(--hi-shell-accent) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-shell-accent) 65%, var(--ue-marigold)) !important;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--ue-plum-deep) 18%, transparent);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
@@ -21,9 +21,8 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
-    background: rgba(184, 242, 230, 0.18) !important;
-
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--ue-plum-deep) 22%, transparent);
+    background: var(--ue-sky) !important;
   }
 
   &:active {

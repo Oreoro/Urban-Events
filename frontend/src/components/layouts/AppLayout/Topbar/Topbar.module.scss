@@ -23,15 +23,14 @@
 
   .breadcrumbsRow {
     padding: 10px 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background-color: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--hi-border);
+    background-color: var(--hi-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     border-top-left-radius: var(--hi-radius-md);
-    box-shadow: 3px 0 12px rgb(47 52 64 / 10%);
+    box-shadow: 3px 0 12px color-mix(in srgb, var(--ue-ink) 8%, transparent);
     position: relative;
     z-index: 5;
     min-height: 44px;
@@ -122,7 +121,7 @@
         left: 0;
         width: 0;
         height: 1px;
-        background-color: var(--hi-primary);
+        background-color: var(--hi-secondary-strong);
         transition: width 0.2s ease;
       }
 
@@ -151,7 +150,7 @@
   }
 
   &.withShadow {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--ue-ink) 10%, transparent);
   }
 
   .burger {
@@ -162,7 +161,7 @@
   }
 
   .logo {
-    color: var(--hi-color-white);
+    color: var(--hi-shell-text);
     font-weight: bold;
     font-size: 1.2em;
     display: flex;
@@ -181,7 +180,7 @@
   .menu {
     display: flex;
     align-items: center;
-    color: var(--hi-color-white);
+    color: var(--hi-shell-text);
   }
 
   @include mixins.respond-below(md) {
@@ -196,7 +195,7 @@
     align-items: center;
     font-weight: 500;
     transition: transform 0.2s ease;
-    color: #fff;
+    color: var(--hi-shell-text);
 
     &:hover {
       transform: translateY(-1px);
@@ -227,5 +226,10 @@
         }
       }
     }
+  }
+
+  .breadcrumbSeparator {
+    margin: 0 4px;
+    color: var(--hi-text-muted);
   }
 }

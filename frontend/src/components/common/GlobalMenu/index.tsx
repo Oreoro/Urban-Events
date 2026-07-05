@@ -17,13 +17,15 @@ import {useDisclosure} from "@mantine/hooks";
 import {AboutModal} from "../../modals/AboutModal";
 import {getConfig} from "../../../utilites/config.ts";
 import {CreateOrganizerModal} from "../../modals/CreateOrganizerModal";
+import classes from "./GlobalMenu.module.scss";
+import type {ComponentType, MouseEventHandler} from "react";
 
 interface Link {
     label: string;
-    icon: any;
+    icon: ComponentType<{ size?: number; stroke?: number }>;
     link?: string;
     target?: string;
-    onClick?: (event: any) => void;
+    onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export const GlobalMenu = () => {
@@ -66,16 +68,19 @@ export const GlobalMenu = () => {
 
     if (!getConfig("VITE_HIDE_ABOUT_LINK")) {
         links.push({
-            label: `About & Support`,
+            label: t`About & Support`,
             icon: IconLifebuoy,
-            onClick: openAboutModal,
+            onClick: (event) => {
+                event.preventDefault();
+                openAboutModal();
+            },
         });
     }
 
     links.push({
         label: t`Create Organizer`,
         icon: IconPlus,
-        onClick: (event: any) => {
+        onClick: (event) => {
             event.preventDefault();
             openCreateOrganizerModal();
         }
@@ -84,7 +89,7 @@ export const GlobalMenu = () => {
     links.push({
         label: t`Logout`,
         icon: IconLogout,
-        onClick: async (event: any) => {
+        onClick: async (event) => {
             event.preventDefault();
             await authClient.logout();
             localStorage.removeItem("token");
@@ -94,28 +99,36 @@ export const GlobalMenu = () => {
 
     return (
         <>
-            <Menu shadow="md" width={200}>
+            <Menu shadow="md" width={220} position="bottom-end" offset={10}>
                 <Menu.Target>
-                    <UnstyledButton>
-                        <Avatar color={"aqua.1"} c="primary.8" radius="xl" fw={800}>
+                    <UnstyledButton className={classes.menuButton}>
+                        <Avatar className={classes.avatar} radius="xl" fw={800}>
                             {me ? getInitials(me.first_name + " " + me.last_name) : ".."}
                         </Avatar>
                     </UnstyledButton>
                 </Menu.Target>
 
-                <Menu.Dropdown>
-                    {links.map((link) => (
-                        <NavLink
-                            onClick={link.onClick}
-                            to={link.link ?? "#"}
-                            key={link.label}
-                            target={link.target ?? ""}
-                        >
-                            <Menu.Item component={"div"} leftSection={<link.icon/>}>
-                                {link.label}
-                            </Menu.Item>
-                        </NavLink>
-                    ))}
+                <Menu.Dropdown className={classes.dropdown}>
+                    {links.map((link) => {
+                        const Icon = link.icon;
+
+                        return (
+                            <NavLink
+                                onClick={link.onClick}
+                                to={link.link ?? "#"}
+                                key={link.label}
+                                target={link.target ?? ""}
+                            >
+                                <Menu.Item
+                                    component={"div"}
+                                    className={classes.menuItem}
+                                    leftSection={<Icon size={18} stroke={1.7}/>}
+                                >
+                                    {link.label}
+                                </Menu.Item>
+                            </NavLink>
+                        );
+                    })}
                 </Menu.Dropdown>
             </Menu>
             {aboutModalOpen && <AboutModal onClose={closeAboutModal}/>}
