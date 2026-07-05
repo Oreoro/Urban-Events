@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease;
@@ -13,8 +13,9 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    height: 60px;
+    padding: 0 20px;
+    height: 56px;
+    border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
       padding: 0 12px;
@@ -22,21 +23,19 @@
   }
 
   .breadcrumbsRow {
-    padding: 10px 20px;
-    border-top: 1px solid var(--hi-border);
+    padding: 10px 28px;
+    border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    border-top-left-radius: var(--hi-radius-md);
-    box-shadow: 3px 0 12px color-mix(in srgb, var(--ue-ink) 8%, transparent);
+    box-shadow: none;
     position: relative;
     z-index: 5;
     min-height: 44px;
 
     @include mixins.respond-below(md) {
-      border-top-left-radius: 0;
       padding: 10px 16px;
     }
   }
@@ -61,7 +60,7 @@
     display: flex;
     align-items: center;
     font-size: 0.85rem;
-    color: var(--hi-text-light);
+    color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
     overflow-x: auto;
@@ -99,7 +98,7 @@
     }
 
     a {
-      color: var(--hi-text-light);
+      color: var(--hi-text-muted);
       font-weight: 650;
       transition: color 0.2s ease;
       position: relative;
@@ -150,18 +149,18 @@
   }
 
   &.withShadow {
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--ue-ink) 8%, transparent);
   }
 
   .burger {
-    --burger-color: var(--hi-color-white);
+    --burger-color: var(--hi-text);
     @include mixins.respond-above(md) {
       display: none;
     }
   }
 
   .logo {
-    color: var(--hi-shell-text);
+    color: var(--hi-text);
     font-weight: bold;
     font-size: 1.2em;
     display: flex;
@@ -180,12 +179,12 @@
   .menu {
     display: flex;
     align-items: center;
-    color: var(--hi-shell-text);
+    color: var(--hi-text);
   }
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: var(--hi-shell-bg);
+      background: var(--hi-surface);
     }
   }
 

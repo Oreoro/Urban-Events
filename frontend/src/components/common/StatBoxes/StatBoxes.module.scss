@@ -3,9 +3,9 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 14px;
   color: var(--hi-text);
-  margin: 0.5rem 0;
+  margin: 1rem 0 1.25rem;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(2, 1fr);
@@ -19,20 +19,22 @@
 .statistic {
   display: flex;
   align-items: center;
-  padding: 1.25rem !important;
+  padding: 1rem 1.05rem !important;
   margin-bottom: 0 !important;
   height: 100%;
-  border-color: var(--hi-border-strong) !important;
+  min-height: 108px;
+  border-color: var(--hi-border) !important;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent) !important;
 
   .leftPanel {
     flex: 1;
     display: grid;
     grid-template-rows: auto auto;
-    min-height: 65px;
-    gap: 2px;
+    min-height: 56px;
+    gap: 3px;
 
     .number {
-      font-size: 1.75rem;
+      font-size: 1.52rem;
       font-weight: 800;
       letter-spacing: 0;
       line-height: 1.2;
@@ -45,8 +47,8 @@
     }
 
     .description {
-      font-size: 0.85rem;
-      color: var(--hi-color-gray-dark);
+      font-size: 0.74rem;
+      color: var(--hi-text-muted);
       font-weight: 800;
       align-self: start;
       text-transform: uppercase;
@@ -55,23 +57,23 @@
   }
 
   .rightPanel {
-    margin-left: 1rem;
+    margin-left: 0.9rem;
     align-self: flex-start;
 
     .icon {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border-radius: var(--hi-radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      box-shadow: 0 8px 16px color-mix(in srgb, var(--ue-ink) 12%, transparent);
+      box-shadow: none;
 
       @include mixins.respond-below(md) {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
+        width: 32px;
+        height: 32px;
+        border-radius: var(--hi-radius-md);
       }
     }
   }

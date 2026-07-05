@@ -2,12 +2,12 @@
 
 :root {
   --ue-powder-blush: #e9897e;
-  --ue-eggshell: #f6f8fa;
-  --ue-icy-aqua: #e3f8f3;
-  --ue-light-blue: #eaf4ff;
+  --ue-eggshell: #f7f9fc;
+  --ue-icy-aqua: #dff7f1;
+  --ue-light-blue: #e8f2ff;
   --ue-blue-slate: #475467;
-  --ue-canvas: #f6f8fa;
-  --ue-canvas-soft: #eef2f6;
+  --ue-canvas: #f7f9fc;
+  --ue-canvas-soft: #eef3f8;
   --ue-surface: #ffffff;
   --ue-ink: #111827;
   --ue-ink-soft: #344054;
@@ -30,10 +30,10 @@
   --ue-plum-deep: var(--ue-navy-deep);
   --ue-forest: var(--ue-teal);
   --ue-forest-deep: var(--ue-teal-deep);
-  --ue-mint: #e6f7f2;
-  --ue-sky: #eaf4ff;
-  --ue-border: #d7dee8;
-  --ue-border-strong: #b8c2cc;
+  --ue-mint: #e7f7f3;
+  --ue-sky: #e8f2ff;
+  --ue-border: #d8e0ea;
+  --ue-border-strong: #b9c4d0;
 
   --hi-font-heading: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
   --hi-font-body: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
@@ -51,7 +51,7 @@
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
-  --hi-border: color-mix(in srgb, var(--ue-border) 82%, white);
+  --hi-border: color-mix(in srgb, var(--ue-border) 88%, white);
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);
@@ -59,13 +59,13 @@
   --hi-pink: var(--ue-coral-deep);
   --hi-primary-alt: var(--ue-coral-deep);
   --hi-action-fill: var(--hi-secondary-strong);
-  --hi-shell-bg: var(--ue-navy-deep);
+  --hi-shell-bg: #111827;
   --hi-shell-bg-strong: #0b1220;
-  --hi-shell-surface: #1d2939;
-  --hi-shell-surface-hover: #253044;
-  --hi-shell-text: #f8fafc;
-  --hi-shell-muted: #b7c3d0;
-  --hi-shell-accent: #8adfd0;
+  --hi-shell-surface: #1f2937;
+  --hi-shell-surface-hover: #273449;
+  --hi-shell-text: #f9fafb;
+  --hi-shell-muted: #aeb9c8;
+  --hi-shell-accent: #79d8ca;
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
 
   --hi-color-white: #ffffff;
@@ -83,9 +83,9 @@
   --hi-radius-lg: 10px;
   --hi-radius-xl: 14px;
 
-  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 8%, transparent), 0 8px 18px color-mix(in srgb, var(--ue-ink) 6%, transparent);
-  --hi-shadow-md: 0 4px 10px color-mix(in srgb, var(--ue-ink) 8%, transparent), 0 14px 30px color-mix(in srgb, var(--ue-ink) 8%, transparent);
-  --hi-shadow-lg: 0 10px 22px color-mix(in srgb, var(--ue-ink) 10%, transparent), 0 24px 48px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 7%, transparent), 0 4px 10px color-mix(in srgb, var(--ue-ink) 4%, transparent);
+  --hi-shadow-md: 0 3px 8px color-mix(in srgb, var(--ue-ink) 8%, transparent), 0 10px 22px color-mix(in srgb, var(--ue-ink) 6%, transparent);
+  --hi-shadow-lg: 0 8px 18px color-mix(in srgb, var(--ue-ink) 10%, transparent), 0 18px 40px color-mix(in srgb, var(--ue-ink) 8%, transparent);
 }
 
 * {
