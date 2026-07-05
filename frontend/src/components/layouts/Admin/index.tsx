@@ -2,12 +2,9 @@ import {IconUsers, IconBuildingBank, IconLayoutDashboard, IconCalendar, IconRece
 import {t} from "@lingui/macro";
 import {NavItem, BreadcrumbItem} from "../AppLayout/types";
 import AppLayout from "../AppLayout";
-import {useIsCurrentUserSuperAdmin} from "../../../hooks/useIsCurrentUserAdmin.ts";
-import {useNavigate} from "react-router";
+import {AuthGuard} from "../../common/AuthGuard";
 
-const AdminLayout = () => {
-    const isSuperAdmin = useIsCurrentUserSuperAdmin();
-    const navigate = useNavigate();
+const AdminLayoutContent = () => {
     const navItems: NavItem[] = [
         {label: t`Admin`},
         {link: '', label: t`Dashboard`, icon: IconLayoutDashboard},
@@ -28,11 +25,6 @@ const AdminLayout = () => {
         }
     ];
 
-    if (!isSuperAdmin) {
-        navigate('/');
-        return ;
-    }
-
     return (
         <AppLayout
             navItems={navItems}
@@ -41,5 +33,11 @@ const AdminLayout = () => {
         />
     );
 };
+
+const AdminLayout = () => (
+    <AuthGuard requireSuperAdmin>
+        <AdminLayoutContent/>
+    </AuthGuard>
+);
 
 export default AdminLayout;

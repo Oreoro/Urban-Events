@@ -134,7 +134,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-height: 560px;
   overflow: hidden;
-  background-color: var(--accent-soft);
+  background-color: var(--theme-surface);
 
   // When aspect ratio is provided via CSS custom property, use it
   // Otherwise fall back to auto sizing based on image
@@ -170,7 +170,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   .coverWrapper[style*="--cover-aspect-ratio"] & {
     position: relative;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   // When no aspect ratio, let image determine height naturally
@@ -179,7 +179,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .mainCard:hover & {
-    transform: scale(1.02);
+    transform: none;
   }
 }
 

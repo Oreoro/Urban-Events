@@ -6,7 +6,7 @@ const BASE_URL = isSsr()
     ? getConfig('VITE_API_URL_SERVER')
     : getConfig('VITE_API_URL_CLIENT');
 const LOGIN_PATH = "/auth/login";
-const PREVIOUS_URL_KEY = 'previous_url';
+export const PREVIOUS_URL_KEY = 'previous_url';
 
 // todo - This isn't scalable, we need to better way to manage this
 const ALLOWED_UNAUTHENTICATED_PATHS = [
@@ -38,18 +38,22 @@ export const api = axios.create({
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        const { status } = error.response;
-        const currentPath = window?.location.pathname;
+        if (typeof window === 'undefined') {
+            return Promise.reject(error);
+        }
+
+        const status = error.response?.status;
+        const currentPath = window.location.pathname;
         const isAllowedUnauthenticatedPath = ALLOWED_UNAUTHENTICATED_PATHS.some(path => currentPath.includes(path));
         const isManageEventPath = currentPath.startsWith('/manage/event/');
         const isAuthError = status === 401 || status === 403;
 
         if (isAuthError && (!isAllowedUnauthenticatedPath || isManageEventPath)) {
             // Store the current URL before redirecting to the login page
-            window?.localStorage?.setItem(PREVIOUS_URL_KEY, window?.location.href);
+            window.localStorage.setItem(PREVIOUS_URL_KEY, window.location.href);
             // Preserve query params (UTM tracking) during redirect
-            const searchParams = window?.location?.search || '';
-            window?.location?.replace(LOGIN_PATH + searchParams);
+            const searchParams = window.location.search || '';
+            window.location.replace(LOGIN_PATH + searchParams);
         }
 
         return Promise.reject(error);

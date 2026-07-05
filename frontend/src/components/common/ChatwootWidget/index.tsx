@@ -6,14 +6,23 @@ import { getConfig } from "../../../utilites/config.ts";
 
 const CHATWOOT_ROUTES = ["/manage", "/account", "/welcome"];
 
+const shouldRunChatwoot = () => {
+    if (isSsr()) {
+        return false;
+    }
+
+    return CHATWOOT_ROUTES.some(route => window.location.pathname.includes(route));
+};
+
 const ChatwootWidget = () => {
     const scriptRef = useRef<HTMLScriptElement | null>(null);
-    const { data: me, isLoading } = useGetMe();
+    const isChatwootRoute = shouldRunChatwoot();
+    const { data: me, isLoading } = useGetMe({enabled: isChatwootRoute});
     const chatwootToken = getConfig('VITE_CHATWOOT_WEBSITE_TOKEN');
     const chatwootUrl = getConfig('VITE_CHATWOOT_BASE_URL') || 'https://app.chatwoot.com';
 
     useEffect(() => {
-        if (isSsr() || isLoading || !chatwootToken) {
+        if (!isChatwootRoute || isLoading || !chatwootToken) {
             return;
         }
 
@@ -62,7 +71,7 @@ const ChatwootWidget = () => {
         } catch (error) {
             console.error("Error initializing ChatwootWidget:", error);
         }
-    }, [isLoading, me]);
+    }, [isChatwootRoute, isLoading, me]);
 
     const removeChatwootScript = () => {
         try {

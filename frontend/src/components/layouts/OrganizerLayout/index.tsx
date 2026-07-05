@@ -41,8 +41,9 @@ import { confirmationDialog } from "../../../utilites/confirmationDialog.tsx";
 import { showError, showSuccess } from "../../../utilites/notifications.tsx";
 import { useResendEmailConfirmation } from "../../../mutations/useResendEmailConfirmation.ts";
 import { useGetMe } from "../../../queries/useGetMe.ts";
+import { AuthGuard } from "../../common/AuthGuard";
 
-const OrganizerLayout = () => {
+const OrganizerLayoutContent = () => {
     const { organizerId } = useParams();
     const location = useLocation();
     const { data: organizer } = useGetOrganizer(organizerId);
@@ -314,5 +315,11 @@ const OrganizerLayout = () => {
         </>
     );
 };
+
+const OrganizerLayout = () => (
+    <AuthGuard>
+        <OrganizerLayoutContent/>
+    </AuthGuard>
+);
 
 export default OrganizerLayout;

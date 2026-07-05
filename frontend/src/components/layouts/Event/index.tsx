@@ -48,8 +48,9 @@ import {useGetMe} from "../../../queries/useGetMe.ts";
 import {useResendEmailConfirmation} from "../../../mutations/useResendEmailConfirmation.ts";
 import {useState} from "react";
 import {eventHomepageUrl} from "../../../utilites/urlHelper.ts";
+import {AuthGuard} from "../../common/AuthGuard";
 
-const EventLayout = () => {
+const EventLayoutContent = () => {
     const location = useLocation();
     const {eventId} = useParams();
 
@@ -264,5 +265,11 @@ const EventLayout = () => {
         />
     );
 };
+
+const EventLayout = () => (
+    <AuthGuard>
+        <EventLayoutContent/>
+    </AuthGuard>
+);
 
 export default EventLayout;

@@ -126,13 +126,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .coverWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 2.5 / 1;
+  aspect-ratio: var(--cover-aspect-ratio, 2.5 / 1);
   max-height: 400px;
   overflow: hidden;
-  background-color: var(--accent-soft);
+  background-color: var(--theme-surface);
 
   @include mixins.respond-below(md) {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: var(--cover-aspect-ratio, 16 / 10);
     max-height: 300px;
   }
 }
@@ -153,13 +153,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 38%;
+  object-fit: contain;
+  object-position: center center;
   transition: transform $transition-slow;
   z-index: 1;
 
   .heroSection:hover & {
-    transform: scale(1.02);
+    transform: none;
   }
 }
 
