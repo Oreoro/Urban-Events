@@ -25,7 +25,7 @@
       transition: color 0.2s ease;
 
       &:hover {
-        color: var(--mantine-color-secondary-5);
+        color: var(--hi-secondary-strong);
       }
     }
   }
@@ -63,7 +63,7 @@
   }
 
   &:hover {
-    color: var(--mantine-color-secondary-5);
+    color: var(--hi-secondary-strong);
   }
 
   &[data-expanded="true"] {
@@ -114,8 +114,8 @@
     }
 
     &:focus {
-      border-color: var(--mantine-color-secondary-5);
-      box-shadow: 0 0 0 3px var(--mantine-color-secondary-1);
+      border-color: var(--hi-secondary-strong);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--hi-secondary-strong) 18%, transparent);
     }
   }
 
@@ -173,6 +173,6 @@
   font-family: inherit;
 
   &:hover {
-    color: var(--mantine-color-secondary-5);
+    color: var(--hi-secondary-strong);
   }
 }

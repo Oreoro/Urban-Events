@@ -9,8 +9,9 @@ import classes from "./Register.module.scss";
 import {getClientLocale} from "../../../../locales.ts";
 import {useEffect} from "react";
 import {getUserCurrency} from "../../../../utilites/currency.ts";
-import {getConfig} from "../../../../utilites/config.ts";
 import {captureUtmData, getStoredUtmData, clearStoredUtmData} from "../../../../utilites/utm.ts";
+import {getPrivacyUrl, getTermsUrl} from "../../../../utilites/legalUrls.ts";
+import {getConfig} from "../../../../utilites/config.ts";
 
 export const Register = () => {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ export const Register = () => {
     return (
         <>
             <header className={classes.header}>
-                <h2>{t`Get started`}</h2>
+                <h1>{t`Get started`}</h1>
                 <p>
                     <Trans>
                         Already have an account?{' '}
@@ -110,12 +111,18 @@ export const Register = () => {
                             {...form.getInputProps('password')}
                             label={t`Password`}
                             placeholder={t`Your password`}
+                            visibilityToggleButtonProps={{
+                                'aria-label': t`Show or hide password`,
+                            }}
                             required
                         />
                         <PasswordInput
                             {...form.getInputProps('password_confirmation')}
                             label={t`Confirm Password`}
                             placeholder={t`Confirm password`}
+                            visibilityToggleButtonProps={{
+                                'aria-label': t`Show or hide password confirmation`,
+                            }}
                             required
                         />
                     </SimpleGrid>
@@ -132,17 +139,17 @@ export const Register = () => {
                         label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
                     />
 
-                    <Button color="secondary.5" type="submit" fullWidth disabled={mutate.isPending}>
+                    <Button color="secondary.8" type="submit" fullWidth disabled={mutate.isPending}>
                         {mutate.isPending ? t`Working...` : t`Register`}
                     </Button>
                 </form>
                 <footer>
                     <Trans>
                         By registering you agree to our <NavLink target={'_blank'}
-                                                                 to={getConfig("VITE_TOS_URL", "https://hi.events/terms-of-service?utm_source=app-register-footer") as string}>Terms
+                                                                 to={getTermsUrl()}>Terms
                         of Service</NavLink> and <NavLink
                         target={'_blank'}
-                        to={getConfig("VITE_PRIVACY_URL", 'https://hi.events/privacy-policy?utm_source=app-register-footer') as string}>Privacy Policy</NavLink>.
+                        to={getPrivacyUrl()}>Privacy Policy</NavLink>.
                     </Trans>
                 </footer>
             </div>

@@ -14,7 +14,7 @@ import {formatAddress, getShortLocationDisplay} from "../../../utilites/addressU
 import {getImageUrl, organizerHomepagePath} from "../../../utilites/urlHelper.ts";
 import {removeTransparency} from "../../../utilites/colorHelper.ts";
 import {StatusToggle} from "../../common/StatusToggle";
-import {getConfig} from "../../../utilites/config.ts";
+import {getPrivacyUrl, getTermsUrl} from "../../../utilites/legalUrls.ts";
 import {Pagination} from "../../common/Pagination";
 import {computeThemeVariables, validateThemeSettings} from "../../../utilites/themeUtils.ts";
 import {ensureHomepageFontLoaded} from "../../../utilites/fontLoader.ts";
@@ -253,6 +253,7 @@ export const OrganizerHomepage = ({
                                                                         className={classes.socialIcon}
                                                                         variant="subtle"
                                                                         size="md"
+                                                                        aria-label={platform}
                                                                     >
                                                                         <IconComponent size={16}/>
                                                                     </ActionIcon>
@@ -345,14 +346,14 @@ export const OrganizerHomepage = ({
                         <div className={classes.footerSection}>
                             <div className={classes.footerLinks}>
                                 <Anchor
-                                    href={getConfig('VITE_PRIVACY_URL', 'https://urbanevents.pk/privacy-policy')}
+                                    href={getPrivacyUrl()}
                                     className={classes.footerLink}
                                 >
                                     {t`Privacy Policy`}
                                 </Anchor>
                                 <span className={classes.footerSeparator}>•</span>
                                 <Anchor
-                                    href={getConfig('VITE_TOS_URL', 'https://urbanevents.pk/terms-of-service')}
+                                    href={getTermsUrl()}
                                     className={classes.footerLink}
                                 >
                                     {t`Terms of Service`}

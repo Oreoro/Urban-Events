@@ -11,6 +11,7 @@ import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import {AcceptInvitationRequest} from "../../../../types.ts";
 import {getConfig} from "../../../../utilites/config.ts";
 import classes from "./AcceptInvitation.module.scss";
+import {getTermsUrl} from "../../../../utilites/legalUrls.ts";
 
 const AcceptInvitation = () => {
     const navigate = useNavigate();
@@ -84,7 +85,7 @@ const AcceptInvitation = () => {
     return (
         <>
             <header className={classes.header}>
-                <h2>{t`Accept invitation`}</h2>
+                <h1>{t`Accept invitation`}</h1>
                 <p>{t`Complete your profile to join the team.`}</p>
             </header>
             <div className={classes.invitationCard}>
@@ -126,12 +127,18 @@ const AcceptInvitation = () => {
                                 {...form.getInputProps('password')}
                                 label={t`Password`}
                                 placeholder={t`Create a password`}
+                                visibilityToggleButtonProps={{
+                                    'aria-label': t`Show or hide password`,
+                                }}
                                 required
                             />
                             <PasswordInput
                                 {...form.getInputProps('password_confirmation')}
                                 label={t`Confirm Password`}
                                 placeholder={t`Confirm password`}
+                                visibilityToggleButtonProps={{
+                                    'aria-label': t`Show or hide password confirmation`,
+                                }}
                                 required
                             />
                         </div>
@@ -143,7 +150,7 @@ const AcceptInvitation = () => {
                                     I agree to the{' '}
                                     <Anchor
                                         target={'_blank'}
-                                        href={getConfig("VITE_TOS_URL", 'https://hi.events/terms-of-service')}
+                                        href={getTermsUrl()}
                                     >
                                         terms and conditions
                                     </Anchor>
@@ -158,7 +165,7 @@ const AcceptInvitation = () => {
                         />
 
                         <Button
-                            color="secondary.5"
+                            color="secondary.8"
                             fullWidth
                             loading={acceptInvitationMutation.isPending}
                             type="submit"

@@ -144,6 +144,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   @include mixins.respond-below(md) {
     max-height: 400px;
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -163,6 +164,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   transition: transform $transition-slow;
   z-index: 1;
+  object-position: center 32%;
 
   // When wrapper has aspect ratio, image should fill it
   .coverWrapper[style*="--cover-aspect-ratio"] & {
@@ -184,7 +186,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.42);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.12) 42%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
   pointer-events: none;
 }
 
