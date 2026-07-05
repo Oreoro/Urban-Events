@@ -71,38 +71,38 @@ export const ThemeColorControls = ({
 
     const presets: ThemePreset[] = [
         {
-            label: t`Urban`,
-            description: t`Deep green with eggshell canvas`,
-            accent: urbanEventsColors.forest,
-            background: urbanEventsColors.eggshell,
+            label: t`SaaS`,
+            description: t`Teal actions on a neutral workspace`,
+            accent: urbanEventsColors.teal,
+            background: urbanEventsColors.canvas,
             mode: 'light',
         },
         {
-            label: t`Plum`,
-            description: t`Muted plum with warm canvas`,
-            accent: urbanEventsColors.plum,
+            label: t`Navy`,
+            description: t`Executive navy with cool panels`,
+            accent: urbanEventsColors.navy,
             background: urbanEventsColors.canvasSoft,
             mode: 'light',
         },
         {
-            label: t`Mint`,
+            label: t`Teal`,
             description: t`Deep teal with mint surface`,
-            accent: urbanEventsColors.forestDeep,
+            accent: urbanEventsColors.tealDeep,
             background: urbanEventsColors.mint,
             mode: 'light',
         },
         {
             label: t`Coral`,
-            description: t`Coral accent with cream canvas`,
+            description: t`Coral accent with white canvas`,
             accent: urbanEventsColors.coralDeep,
-            background: urbanEventsColors.canvas,
+            background: urbanEventsColors.surface,
             mode: 'light',
         },
         {
             label: t`Night`,
-            description: t`Aqua accent on deep plum`,
+            description: t`Mint accent on deep navy`,
             accent: urbanEventsColors.icyAqua,
-            background: urbanEventsColors.plumDeep,
+            background: urbanEventsColors.navyDeep,
             mode: 'dark',
         },
     ];
@@ -156,7 +156,7 @@ export const ThemeColorControls = ({
                 <Group justify="space-between" align="center" mb="xs" wrap="nowrap">
                     <div>
                         <Text size="sm" fw={700}>{t`Palette`}</Text>
-                        <Text size="xs" c="dimmed">{t`Urban Events theme presets`}</Text>
+                        <Text size="xs" c="dimmed">{t`Professional SaaS presets`}</Text>
                     </div>
                     <Tooltip label={t`Reset palette`}>
                         <ActionIcon

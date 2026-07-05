@@ -14,20 +14,20 @@ interface CheckoutThemeProviderProps {
  */
 const LIGHT_PALETTE = {
     surface: '#ffffff',
-    background: '#FFF9EA',
-    textPrimary: '#2F3440',
-    textSecondary: '#4A5262',
-    textTertiary: '#6B7280',
-    border: 'rgba(74, 82, 98, 0.18)',
+    background: '#F7F9FC',
+    textPrimary: '#172033',
+    textSecondary: '#334155',
+    textTertiary: '#64748B',
+    border: 'rgba(51, 65, 85, 0.18)',
 };
 
 const DARK_PALETTE = {
-    surface: '#252B35',
-    background: '#171B22',
-    textPrimary: '#ffffff',
-    textSecondary: '#D5DEE2',
-    textTertiary: '#A8B3BD',
-    border: 'rgba(255, 255, 255, 0.14)',
+    surface: '#23324D',
+    background: '#172033',
+    textPrimary: '#F8FAFC',
+    textSecondary: '#DCE7F3',
+    textTertiary: '#AAB8CB',
+    border: 'rgba(248, 250, 252, 0.16)',
 };
 
 /**
@@ -36,7 +36,7 @@ const DARK_PALETTE = {
 function createColorPalette(accentColor: string): MantineColorsTuple {
     const rgb = hexToRgb(accentColor);
     if (!rgb) {
-        return ['#EEF1F4', '#D9DEE5', '#B8C0CC', '#94A0B0', '#728092', '#5E6472', '#4A5262', '#3F4756', '#343B48', '#2F3440'];
+        return ['#EEF4F8', '#D8E0EA', '#BAC7D6', '#94A3B8', '#64748B', '#475569', '#334155', '#23324D', '#172033', '#111827'];
     }
 
     const {r, g, b} = rgb;

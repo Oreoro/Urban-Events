@@ -98,28 +98,28 @@ export function getContrastColor(backgroundColor: string): string {
 }
 
 const URBAN_EVENTS_THEME = {
-    accent: '#14665F',
-    background: '#FAF3DD',
-    darkBackground: '#241F2A',
+    accent: '#0F766E',
+    background: '#F7F9FC',
+    darkBackground: '#172033',
 };
 
 export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {
     if (mode === 'light') {
         return {
-            surface: '#FFFDF6',
-            textPrimary: '#27313C',
-            textSecondary: '#42505E',
-            textTertiary: '#6D7784',
-            border: 'rgba(88, 96, 111, 0.2)',
+            surface: '#FFFFFF',
+            textPrimary: '#172033',
+            textSecondary: '#334155',
+            textTertiary: '#64748B',
+            border: 'rgba(51, 65, 85, 0.18)',
         };
     }
 
     return {
-        surface: '#332936',
-        textPrimary: '#FFFAF0',
-        textSecondary: '#E7DDE4',
-        textTertiary: '#C7BBC5',
-        border: 'rgba(255, 250, 240, 0.16)',
+        surface: '#23324D',
+        textPrimary: '#F8FAFC',
+        textSecondary: '#DCE7F3',
+        textTertiary: '#AAB8CB',
+        border: 'rgba(248, 250, 252, 0.16)',
     };
 }
 
@@ -191,7 +191,7 @@ const isOverpoweringAccent = (accent: string): boolean => {
 
 const getReadableAccent = (accent: string | undefined, mode: 'light' | 'dark'): string => {
     if (!accent || isOverpoweringAccent(accent)) {
-        return mode === 'dark' ? '#C8F3EA' : URBAN_EVENTS_THEME.accent;
+        return mode === 'dark' ? '#DDF7F0' : URBAN_EVENTS_THEME.accent;
     }
 
     const derived = getDerivedColors(mode);
