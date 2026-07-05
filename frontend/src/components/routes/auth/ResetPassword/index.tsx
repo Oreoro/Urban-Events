@@ -54,7 +54,7 @@ export const ResetPassword = () => {
     return (
         <>
             <header className={classes.header}>
-                <h2>{t`Create new password`}</h2>
+                <h1>{t`Create new password`}</h1>
                 <p>{t`Your new password must be at least 8 characters long.`}</p>
             </header>
             <div className={classes.resetPasswordCard}>
@@ -63,15 +63,21 @@ export const ResetPassword = () => {
                         {...form.getInputProps('password')}
                         label={t`New Password`}
                         placeholder={t`Enter new password`}
+                        visibilityToggleButtonProps={{
+                            'aria-label': t`Show or hide new password`,
+                        }}
                         required
                     />
                     <PasswordInput
                         {...form.getInputProps('password_confirmation')}
                         label={t`Confirm Password`}
                         placeholder={t`Confirm new password`}
+                        visibilityToggleButtonProps={{
+                            'aria-label': t`Show or hide password confirmation`,
+                        }}
                         required
                     />
-                    <Button color="secondary.5" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
+                    <Button color="secondary.8" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
                         {mutate.isPending ? t`Resetting...` : t`Reset password`}
                     </Button>
                 </form>

@@ -54,7 +54,7 @@ export const ForgotPassword = () => {
     return (
         <>
             <header className={classes.header}>
-                <h2>{t`Reset password`}</h2>
+                <h1>{t`Reset password`}</h1>
                 <p>{t`Enter your email and we'll send you instructions to reset your password.`}</p>
             </header>
             <div className={classes.forgotPasswordCard}>
@@ -66,7 +66,7 @@ export const ForgotPassword = () => {
                         placeholder="you@example.com"
                         required
                     />
-                    <Button color="secondary.5" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
+                    <Button color="secondary.8" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
                         {mutate.isPending ? t`Sending...` : t`Send reset link`}
                     </Button>
                 </form>

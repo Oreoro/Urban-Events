@@ -77,7 +77,7 @@ const Login = () => {
     return (
         <>
             <header className={classes.header}>
-                <h2>{t`Welcome back`}</h2>
+                <h1>{t`Welcome back`}</h1>
                 <p>
                     <Trans>
                         Don't have an account?{' '}
@@ -97,10 +97,13 @@ const Login = () => {
                     <PasswordInput {...form.getInputProps('password')}
                                    label={t`Password`}
                                    placeholder={t`Your password`}
+                                   visibilityToggleButtonProps={{
+                                       'aria-label': t`Show or hide password`,
+                                   }}
                                    required
                                    mt="md"
                     />
-                    <Button color="secondary.5" type="submit" fullWidth loading={isPending} disabled={isPending} mt="lg">
+                    <Button color="secondary.8" type="submit" fullWidth loading={isPending} disabled={isPending} mt="lg">
                         {isPending ? t`Logging in` : t`Log in`}
                     </Button>
                     <p>
@@ -153,7 +156,7 @@ const Login = () => {
                                     />
                                     <Button
                                         type="submit"
-                                        color="secondary.5"
+                                        color="secondary.8"
                                         loading={ticketLookupMutation.isPending}
                                         disabled={ticketLookupMutation.isPending}
                                     >
