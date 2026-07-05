@@ -4,76 +4,10 @@ import {t} from "@lingui/macro";
 import {useGetMe} from "../../../queries/useGetMe.ts";
 import {PoweredByFooter} from "../../common/PoweredByFooter";
 import {LanguageSwitcher} from "../../common/LanguageSwitcher";
-import {
-    IconChartBar,
-    IconCreditCard,
-    IconDeviceMobile,
-    IconSparkles,
-    IconUsers,
-} from '@tabler/icons-react';
 import {useCallback, useRef} from "react";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 import {BrandWordmark} from "../../common/BrandWordmark";
-
-const FeaturePanel = () => {
-    const featuredAuthFeatures = [
-        {
-            icon: IconCreditCard,
-            title: t`Instant Payouts`,
-            description: t`Get paid immediately via Stripe Connect`
-        },
-        {
-            icon: IconChartBar,
-            title: t`Real-Time Analytics`,
-            description: t`Track sales, revenue, and attendance with detailed reports`
-        },
-        {
-            icon: IconUsers,
-            title: t`Team Management`,
-            description: t`Invite unlimited team members with custom roles`
-        },
-        {
-            icon: IconDeviceMobile,
-            title: t`Mobile Optimized`,
-            description: t`Beautiful checkout experience on any device`
-        },
-    ];
-
-    return (
-        <div className={classes.rightPanel}>
-            <div className={classes.backgroundImage} />
-            <div className={classes.backgroundOverlay} />
-            <div className={classes.gridPattern} />
-
-            <div className={classes.overlay}>
-                <div className={classes.content}>
-                    <div className={classes.badge}>
-                        <IconSparkles size={14} />
-                        <span>{t`Event Management Platform`}</span>
-                    </div>
-
-                    <div className={classes.featureGrid}>
-                        {featuredAuthFeatures.map((feature, index) => {
-                            const Icon = feature.icon;
-                            return (
-                                <div key={index} className={classes.feature}>
-                                    <div className={classes.featureIcon}>
-                                        <Icon size={18} />
-                                    </div>
-                                    <div className={classes.featureText}>
-                                        <h3>{feature.title}</h3>
-                                        <p>{feature.description}</p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
 
 const AuthLayout = () => {
     const me = useGetMe();
@@ -125,8 +59,6 @@ const AuthLayout = () => {
                         </div>
                     </main>
                 </div>
-
-                <FeaturePanel />
             </div>
         </div>
     );
