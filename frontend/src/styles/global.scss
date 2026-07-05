@@ -31,7 +31,7 @@
   --ue-border: #ded4bf;
   --ue-border-strong: #c7bba3;
 
-  --hi-font-heading: 'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  --hi-font-heading: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
   --hi-font-body: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
@@ -94,6 +94,8 @@ html {
 
 body {
   font-family: var(--mantine-font-family);
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--hi-text);
   background: var(--checkout-background, var(--ue-canvas)) !important;
   height: auto;
@@ -102,7 +104,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--hi-font-heading);
+  color: var(--hi-text);
   letter-spacing: 0;
+  line-height: 1.18;
 }
 
 fieldset {
@@ -152,6 +157,14 @@ a {
   box-shadow: 0 0 0 3px rgba(20, 124, 116, 0.12);
 }
 
+.mantine-Input-input {
+  background-color: var(--hi-surface);
+}
+
+.mantine-Input-input::placeholder {
+  color: color-mix(in srgb, var(--hi-text-muted) 68%, white);
+}
+
 .mantine-Card-root,
 .mantine-Paper-root {
   background-color: var(--hi-surface-raised);
@@ -188,6 +201,17 @@ a {
 
 .mantine-Table-table {
   color: var(--hi-text);
+}
+
+.mantine-Table-table th {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.mantine-Table-table td {
+  font-size: 0.91rem;
 }
 
 .mantine-SimpleGrid-root {

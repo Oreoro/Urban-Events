@@ -3,10 +3,11 @@
 .card {
   container-type: inline-size;
   margin-bottom: 1rem;
+  padding: 0.875rem !important;
 
   .wrapper {
     display: flex;
-    gap: 10px;
+    gap: 0.875rem;
     align-items: center;
     place-content: space-between;
 
@@ -25,7 +26,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       align-items: center;
       place-self: flex-end;
 
@@ -42,7 +43,7 @@
 
     .actions {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;
@@ -50,6 +51,6 @@
   }
 
   button {
-    height: 42px !important;
+    min-height: 40px !important;
   }
 }

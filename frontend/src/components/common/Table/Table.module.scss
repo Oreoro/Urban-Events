@@ -4,9 +4,10 @@
   white-space: nowrap;
 
   th {
-    background-color: #462e7812;
-    color: var(--hi-secondary-text) !important;
-    padding: 0.75rem 0.625rem !important;
+    background-color: var(--ue-mint);
+    color: var(--ue-forest-deep) !important;
+    padding: 0.8rem 0.875rem !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--ue-forest) 18%, var(--hi-border));
   }
 }
 
@@ -20,10 +21,27 @@
 }
 
 .table {
+  border-collapse: separate;
+  border-spacing: 0;
+
   tr td,
   tr,
   th {
-    padding: 15px !important;
+    padding: 0.875rem !important;
     white-space: nowrap;
+  }
+
+  td {
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, white);
+    color: var(--hi-text-light);
+    font-weight: 550;
+  }
+
+  tbody tr {
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--ue-canvas-soft);
+    }
   }
 }

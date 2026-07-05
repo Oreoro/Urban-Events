@@ -62,7 +62,7 @@ export const SearchBar = ({sortProps, onClear, value, onChange, ...props}: Searc
             <TextInput
                 className={classes.searchBar}
                 leftSection={<IconSearch size="1.1rem" stroke={1.5}/>}
-                radius="sm"
+                radius="md"
                 size="md"
                 value={searchValue}
                 {...props}
@@ -73,7 +73,7 @@ export const SearchBar = ({sortProps, onClear, value, onChange, ...props}: Searc
                     }
                 }}
                 rightSection={<IconX aria-label={t`Clear Search Text`}
-                                     color={'#ddd'}
+                                     className={classes.clearIcon}
                                      style={{cursor: 'pointer'}}
                                      display={value ? 'block' : 'none'}
                                      onClick={() => onClear()}
@@ -89,5 +89,4 @@ export const SearchBar = ({sortProps, onClear, value, onChange, ...props}: Searc
         </div>
     );
 };
-
 
