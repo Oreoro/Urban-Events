@@ -7,11 +7,11 @@
   height: 36px;
   font-weight: 800;
   border-radius: var(--hi-radius-md);
-  color: var(--ue-plum-deep) !important;
-  background: var(--hi-shell-accent) !important;
-  border: 1px solid color-mix(in srgb, var(--hi-shell-accent) 65%, var(--ue-marigold)) !important;
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--ue-plum-deep) 18%, transparent);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color: #ffffff !important;
+  background: var(--ue-teal) !important;
+  border: 1px solid var(--ue-teal-deep) !important;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-navy-deep) 20%, transparent);
+  transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   position: relative;
   overflow: hidden;
 
@@ -20,9 +20,9 @@
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px color-mix(in srgb, var(--ue-plum-deep) 22%, transparent);
-    background: var(--ue-sky) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--ue-teal-deep) 18%, transparent);
+    background: var(--ue-teal-deep) !important;
   }
 
   &:active {

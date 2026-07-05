@@ -18,7 +18,7 @@ interface EventCardProps {
 
 const placeholderIcons = [IconTicket, IconCalendar, IconMusic, IconPalette, IconSparkles];
 
-export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#0F766E'}) => {
+export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#0E7C70'}) => {
     const iconIndex = event.id ? Number(event.id) % placeholderIcons.length : 0;
     const PlaceholderIcon = placeholderIcons[iconIndex];
 

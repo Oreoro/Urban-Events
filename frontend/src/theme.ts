@@ -3,32 +3,32 @@ import {createTheme} from "@mantine/core";
 import {generateColors} from "@mantine/colors-generator";
 
 export const urbanEventsColors = {
-    powderBlush: "#F2A199",
-    eggshell: "#F7F9FC",
-    icyAqua: "#DDF7F0",
-    lightBlue: "#E5F2FF",
-    blueSlate: "#475569",
-    canvas: "#F7F9FC",
-    canvasSoft: "#EEF4F8",
+    powderBlush: "#E9897E",
+    eggshell: "#F6F8FA",
+    icyAqua: "#E3F8F3",
+    lightBlue: "#EAF4FF",
+    blueSlate: "#475467",
+    canvas: "#F6F8FA",
+    canvasSoft: "#EEF2F6",
     surface: "#FFFFFF",
-    ink: "#172033",
-    inkSoft: "#334155",
-    muted: "#64748B",
-    border: "#D8E0EA",
-    borderStrong: "#BAC7D6",
-    navy: "#23324D",
-    navyDeep: "#172033",
-    teal: "#0F766E",
-    tealDeep: "#115E59",
-    plum: "#23324D",
-    plumDeep: "#172033",
-    forest: "#0F766E",
-    forestDeep: "#115E59",
-    coral: "#D96B60",
-    coralDeep: "#B94C43",
-    marigold: "#C98912",
-    mint: "#DFF8F1",
-    sky: "#E5F2FF",
+    ink: "#111827",
+    inkSoft: "#344054",
+    muted: "#667085",
+    border: "#D7DEE8",
+    borderStrong: "#B8C2CC",
+    navy: "#253044",
+    navyDeep: "#101828",
+    teal: "#0E7C70",
+    tealDeep: "#0B5F58",
+    plum: "#253044",
+    plumDeep: "#101828",
+    forest: "#0E7C70",
+    forestDeep: "#0B5F58",
+    coral: "#D9705F",
+    coralDeep: "#B9564A",
+    marigold: "#B7791F",
+    mint: "#E6F7F2",
+    sky: "#EAF4FF",
     success: "#0F7B5F",
 } as const;
 
@@ -80,11 +80,11 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "14px",
     },
     shadows: {
-        xs: "0 1px 2px rgba(23, 32, 51, 0.08)",
-        sm: "0 5px 16px rgba(23, 32, 51, 0.10)",
-        md: "0 14px 34px rgba(23, 32, 51, 0.13)",
-        lg: "0 22px 54px rgba(23, 32, 51, 0.16)",
-        xl: "0 30px 72px rgba(23, 32, 51, 0.20)",
+        xs: "0 1px 2px rgba(16, 24, 40, 0.06)",
+        sm: "0 1px 3px rgba(16, 24, 40, 0.08), 0 8px 18px rgba(16, 24, 40, 0.06)",
+        md: "0 4px 10px rgba(16, 24, 40, 0.08), 0 14px 30px rgba(16, 24, 40, 0.08)",
+        lg: "0 10px 22px rgba(16, 24, 40, 0.10), 0 24px 48px rgba(16, 24, 40, 0.10)",
+        xl: "0 18px 36px rgba(16, 24, 40, 0.12), 0 32px 70px rgba(16, 24, 40, 0.12)",
     },
     components: {
         ActionIcon: {
@@ -107,6 +107,12 @@ export const getUrbanEventsTheme = () => createTheme({
             defaultProps: {
                 radius: "sm",
                 fw: 700,
+            },
+            styles: {
+                root: {
+                    letterSpacing: 0,
+                    textTransform: "none",
+                },
             },
         },
         Button: {
@@ -197,6 +203,14 @@ export const getUrbanEventsTheme = () => createTheme({
         SegmentedControl: {
             defaultProps: {
                 radius: "md",
+            },
+            styles: {
+                root: {
+                    borderColor: "var(--hi-border)",
+                },
+                label: {
+                    fontWeight: 700,
+                },
             },
         },
         Tabs: {

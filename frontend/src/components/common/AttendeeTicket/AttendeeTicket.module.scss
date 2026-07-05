@@ -249,7 +249,7 @@
 
 .attendeeEmail {
   font-size: 14px;
-  color: #64748b;
+  color: var(--hi-text-muted);
 
   @media print {
     font-size: 14px;
@@ -260,7 +260,7 @@
 // Footer Text
 .footerText {
   font-size: 14px;
-  color: #475569;
+  color: var(--hi-text-light);
   line-height: 1.5;
   flex: 1;
 

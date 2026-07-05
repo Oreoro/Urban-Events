@@ -10,7 +10,7 @@ import {CheckoutThemeProvider} from "../../layouts/Checkout/CheckoutThemeProvide
 import {detectMode} from "../../../utilites/themeUtils.ts";
 import {IconAlertTriangle, IconCircleCheck} from "@tabler/icons-react";
 
-const DEFAULT_ACCENT = '#0F766E';
+const DEFAULT_ACCENT = '#0E7C70';
 
 interface JoinWaitlistModalProps extends GenericModalProps {
     product: Product;

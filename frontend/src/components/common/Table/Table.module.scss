@@ -4,10 +4,10 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--ue-mint);
-    color: var(--ue-forest-deep) !important;
+    background-color: var(--hi-surface-soft);
+    color: var(--hi-text-muted) !important;
     padding: 0.8rem 0.875rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--ue-forest) 18%, var(--hi-border));
+    border-bottom: 1px solid var(--hi-border-strong);
   }
 }
 
@@ -41,7 +41,7 @@
     transition: background-color 0.15s ease;
 
     &:hover {
-      background-color: var(--ue-canvas-soft);
+      background-color: color-mix(in srgb, var(--ue-canvas-soft) 78%, white);
     }
   }
 }

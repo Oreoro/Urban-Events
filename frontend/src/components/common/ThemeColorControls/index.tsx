@@ -79,7 +79,7 @@ export const ThemeColorControls = ({
         },
         {
             label: t`Navy`,
-            description: t`Executive navy with cool panels`,
+            description: t`Executive graphite with cool panels`,
             accent: urbanEventsColors.navy,
             background: urbanEventsColors.canvasSoft,
             mode: 'light',

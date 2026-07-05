@@ -11,16 +11,16 @@
 
   &:hover {
     background: var(--hi-shell-surface-hover);
-    border-color: color-mix(in srgb, var(--hi-shell-accent) 40%, transparent);
-    box-shadow: 0 8px 18px color-mix(in srgb, var(--ue-plum-deep) 24%, transparent);
+    border-color: color-mix(in srgb, var(--hi-shell-accent) 34%, transparent);
+    box-shadow: 0 8px 18px color-mix(in srgb, var(--ue-navy-deep) 18%, transparent);
     transform: translateY(-1px);
   }
 }
 
 .avatar {
-  background: var(--hi-shell-accent);
-  color: var(--ue-plum-deep);
-  border: 1px solid color-mix(in srgb, var(--ue-marigold) 30%, var(--hi-shell-accent));
+  background: var(--ue-teal);
+  color: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--hi-shell-accent) 30%, var(--ue-teal-deep));
   font-size: 0.82rem;
 }
 

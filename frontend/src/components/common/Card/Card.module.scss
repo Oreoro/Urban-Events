@@ -22,7 +22,7 @@
   }
 
   &.lightAccent {
-    background-color: var(--ue-mint);
+    background-color: color-mix(in srgb, var(--ue-mint) 70%, white);
     border: 1px solid color-mix(in srgb, var(--ue-forest) 18%, var(--ue-border));
     box-shadow: none;
   }

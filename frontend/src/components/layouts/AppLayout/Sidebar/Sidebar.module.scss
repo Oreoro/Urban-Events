@@ -7,7 +7,7 @@
   background: var(--hi-shell-bg);
   color: var(--hi-shell-text);
   position: relative;
-  box-shadow: 10px 0 28px color-mix(in srgb, var(--ue-plum-deep) 24%, transparent);
+  box-shadow: 8px 0 24px color-mix(in srgb, var(--ue-navy-deep) 18%, transparent);
   height: 100vh;
 
   &.closed {
@@ -25,7 +25,7 @@
     padding: 10px 0;
     min-height: 76px;
     margin-bottom: 6px;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-shell-text) 12%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-shell-text) 10%, transparent);
     flex-shrink: 0;
 
     a {
@@ -81,7 +81,7 @@
     .link {
       display: flex;
       align-items: center;
-      color: var(--hi-shell-text);
+      color: color-mix(in srgb, var(--hi-shell-text) 86%, transparent);
       padding: 9px 12px;
       text-decoration: none;
       margin: 4px 10px;
@@ -98,8 +98,9 @@
       text-align: left;
 
       .navBadge {
-        background: var(--hi-shell-accent);
-        color: var(--ue-plum-deep);
+        background: color-mix(in srgb, var(--hi-shell-accent) 18%, var(--hi-shell-surface));
+        color: var(--hi-shell-text);
+        border: 1px solid color-mix(in srgb, var(--hi-shell-accent) 22%, transparent);
         padding: 2px 6px;
         border-radius: 12px;
         font-size: 0.75em;
@@ -126,26 +127,26 @@
       }
 
       &.linkActive {
-        background: var(--hi-shell-accent);
-        color: var(--ue-plum-deep);
+        background: var(--hi-shell-surface);
+        color: var(--hi-shell-text);
         font-weight: 800;
-        box-shadow: inset 3px 0 0 var(--ue-marigold), 0 8px 18px color-mix(in srgb, var(--ue-plum-deep) 22%, transparent);
+        box-shadow: inset 3px 0 0 var(--ue-teal), 0 1px 0 color-mix(in srgb, var(--hi-shell-text) 7%, transparent);
 
         .linkIcon {
-          color: var(--ue-forest-deep);
+          color: var(--hi-shell-accent);
         }
       }
 
       &:hover {
         background: var(--hi-shell-surface-hover);
         color: var(--hi-shell-text);
-        transform: translateY(-1px);
+        transform: translateX(2px);
       }
 
       svg {
         margin-right: 12px;
         min-width: 20px;
-        color: var(--hi-shell-accent);
+        color: color-mix(in srgb, var(--hi-shell-accent) 82%, var(--hi-shell-muted));
         transition: color 0.2s ease;
       }
     }
