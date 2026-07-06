@@ -32,20 +32,20 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-display;
   font-size: 13px;
   font-weight: 650;
-  background-color: var(--checkout-border, #E6E4DF);
-  color: var(--checkout-text-secondary, #4f4d48);
+  background-color: var(--checkout-border, var(--hi-border));
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
   transition: background-color $transition-fast, color $transition-fast;
 
   &.active {
-    background-color: var(--checkout-accent, var(--mantine-primary-color-filled));
-    color: var(--checkout-accent-contrast, #ffffff);
+    background-color: var(--checkout-accent, var(--hi-primary));
+    color: var(--checkout-accent-contrast, var(--hi-color-white));
   }
 }
 
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
   transition: color $transition-fast;
 
   @include mixins.respond-below(sm) {
@@ -53,14 +53,14 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.activeLabel {
-    color: var(--checkout-text-primary, #37352f);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
 .connector {
   width: 40px;
   height: 2px;
-  background-color: var(--checkout-border, #E6E4DF);
+  background-color: var(--checkout-border, var(--hi-border));
   margin: 0 8px;
   border-radius: 1px;
   transition: background-color $transition-fast;
@@ -71,6 +71,6 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.activeConnector {
-    background-color: var(--checkout-accent, var(--mantine-primary-color-filled));
+    background-color: var(--checkout-accent, var(--hi-primary));
   }
 }

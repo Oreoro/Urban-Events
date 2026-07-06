@@ -7,12 +7,13 @@
 
 
 .control {
-  background-color:#6319ff;
-  color: #fff;
+  background-color: var(--hi-primary);
+  color: var(--hi-color-white);
 
   &:disabled {
-    border-color: #ddd;
+    border-color: var(--hi-border);
     background-color: transparent;
+    color: var(--hi-text-muted);
   }
 }
 

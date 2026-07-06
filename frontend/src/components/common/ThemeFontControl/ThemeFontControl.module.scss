@@ -18,25 +18,25 @@
 
 .optionSample {
   font-size: 13px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   letter-spacing: 0;
 }
 
 .preview {
-  border: 1px solid var(--hi-border, #ded4bf);
-  border-radius: var(--mantine-radius-md);
-  background: #fffdf6;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface-soft);
   padding: 12px;
 }
 
 .previewLabel {
-  color: var(--hi-text-muted, #6d7784);
+  color: var(--hi-text-muted);
   letter-spacing: 0;
   margin-bottom: 4px;
 }
 
 .previewSample {
-  color: var(--hi-text, #27313c);
+  color: var(--hi-text);
   font-size: 1rem;
   font-weight: 650;
   line-height: 1.45;

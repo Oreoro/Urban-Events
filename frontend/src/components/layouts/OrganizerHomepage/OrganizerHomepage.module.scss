@@ -138,7 +138,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   object-fit: cover;
   filter: blur(20px);
-  transform: scale(1.1);
   z-index: 0;
 }
 
@@ -628,17 +627,5 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     filter: brightness(1.1);
-  }
-}
-
-// Animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

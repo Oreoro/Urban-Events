@@ -148,7 +148,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   object-fit: cover;
   filter: blur(20px);
-  transform: scale(1.1);
   z-index: 0;
 }
 
@@ -179,7 +178,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.04);
+  background: color-mix(in srgb, var(--primary-text-color) 5%, transparent);
   pointer-events: none;
 }
 
@@ -196,19 +195,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px);
+  background: var(--content-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: $radius-sm;
   padding: 8px 14px;
   font-size: 0.8rem;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 650;
+  color: var(--primary-text-color);
 
   svg {
     width: 0.7rem;
     height: 0.7rem;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
   }
 }
 
@@ -301,8 +298,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.favoriteButton:hover {
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.1);
+    color: var(--hi-danger);
+    background: color-mix(in srgb, var(--hi-danger) 9%, var(--content-bg-color));
   }
 }
 
@@ -621,7 +618,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .mapOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: color-mix(in srgb, var(--primary-text-color) 8%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -867,9 +864,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-quantity-error) {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #dc2626;
+    background: color-mix(in srgb, var(--hi-danger) 10%, var(--content-bg-color));
+    border: 1px solid color-mix(in srgb, var(--hi-danger) 20%, var(--border-color));
+    color: var(--hi-danger);
     border-radius: $radius-sm;
     padding: 12px 16px;
     font-size: 0.875rem;
@@ -1248,7 +1245,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   cursor: pointer;
   box-shadow: none;
-  animation: fadeInUp 0.4s ease-out;
   transition: background-color $transition-fast, color $transition-fast;
 
   @include mixins.respond-below(sm) {
@@ -1261,28 +1257,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     filter: brightness(1.06);
   }
-}
-
-// Animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// Animate sections
-.section {
-  animation: fadeInUp 0.4s ease-out backwards;
-
-  &:nth-child(2) { animation-delay: 0.1s; }
-  &:nth-child(3) { animation-delay: 0.15s; }
-  &:nth-child(4) { animation-delay: 0.2s; }
-  &:nth-child(5) { animation-delay: 0.25s; }
 }
 
 // No cover image adjustments

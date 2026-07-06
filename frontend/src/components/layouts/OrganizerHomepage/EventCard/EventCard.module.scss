@@ -34,7 +34,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
       .shareButton {
         opacity: 1;
-        transform: scale(1);
       }
 
       .dateBadge {
@@ -129,7 +128,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .placeholderContent {
   position: relative;
-  transition: transform $transition-slow;
 }
 
 .placeholderIcon {
@@ -157,17 +155,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Share button
 .shareButton {
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity $transition-fast;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  transition: opacity $transition-fast, background-color $transition-fast, border-color $transition-fast;
+  background: var(--content-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: $radius-xs;
   box-shadow: none;
   padding: 4px;
 
   @media (max-width: 640px) {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -186,14 +182,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background: var(--hi-danger, #c4554d);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--hi-danger) 10%, var(--content-bg-color));
+  border: 1px solid color-mix(in srgb, var(--hi-danger) 18%, var(--border-color));
   border-radius: $radius-xs;
   box-shadow: none;
 }
 
 .liveText {
-  color: white;
+  color: var(--hi-danger);
   font-size: 0.625rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -203,20 +199,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .liveDot {
   width: 5px;
   height: 5px;
-  background: white;
+  background: var(--hi-danger);
   border-radius: 50%;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
 }
 
 // Date badge
@@ -237,7 +221,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
   bottom: 8px;
   left: 8px;
-  backdrop-filter: blur(10px);
   transition: border-color $transition-fast;
 
   @include mixins.respond-below('sm') {
