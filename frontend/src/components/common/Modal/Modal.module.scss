@@ -1,6 +1,6 @@
 .content {
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg) !important;
+    border-radius: var(--hi-radius-md) !important;
     background: var(--hi-surface);
     box-shadow: none;
     overflow: hidden;
@@ -43,12 +43,12 @@
 
 // Branded modal header styles
 .brandedHeader {
-    background: var(--hi-surface-soft) !important;
-    padding: 14px 18px !important;
-    margin-bottom: 14px;
+    background: var(--hi-surface) !important;
+    padding: 13px 18px 8px !important;
+    margin-bottom: 0;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid var(--hi-border);
+    border-bottom: 0;
 }
 
 .brandedTitle {

@@ -1,9 +1,9 @@
 .dangerZone {
   border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   padding: 16px;
   margin-bottom: 16px;
-  background: var(--hi-status-danger-bg);
+  background: var(--hi-surface);
 }
 
 .heading {
@@ -18,7 +18,7 @@
 
 .section {
   padding: 12px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-status-danger-border) 78%, white);
+  border-bottom: 1px solid var(--hi-border);
 
   &:last-child {
     border-bottom: none;
