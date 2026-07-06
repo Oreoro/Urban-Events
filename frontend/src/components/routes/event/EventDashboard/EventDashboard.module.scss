@@ -1,9 +1,32 @@
+.dashboardStack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.overviewPanel {
+  padding: 16px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border-strong);
+  border-radius: var(--hi-radius-lg);
+  box-shadow: none;
+
+  @media (max-width: 768px) {
+    padding: 14px;
+  }
+}
+
+.pageTitle {
+  margin: 0 !important;
+}
+
 .chartCard {
-  margin-top: 14px;
   padding: 16px !important;
-  border-color: var(--hi-border) !important;
+  margin: 0 !important;
+  border-color: var(--hi-border-strong) !important;
   box-shadow: none !important;
   border-radius: var(--hi-radius-lg) !important;
+  background: var(--hi-surface) !important;
 
   .chartCardTitle {
     display: flex;
@@ -16,7 +39,8 @@
       margin: 0;
       font-size: 1rem;
       line-height: 1.25;
-      font-weight: 600;
+      font-weight: 650;
+      color: var(--hi-text);
     }
   }
 
@@ -35,13 +59,13 @@
 .dateRangeSelector {
   display: flex;
   justify-content: flex-end;
-  margin-top: 14px;
-  margin-bottom: 10px;
+  margin: 0 0 -4px;
 
   :global(.mantine-SegmentedControl-root) {
     padding: 2px;
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-border-strong);
+    border-radius: var(--hi-radius-md);
   }
 
   :global(.mantine-SegmentedControl-label) {
@@ -53,12 +77,11 @@
 }
 
 .setupCard {
-  margin-bottom: 18px;
-  margin-top: 14px;
+  margin: 0 !important;
   position: relative;
   padding: 16px;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-border-strong);
   box-shadow: none;
   border-radius: var(--hi-radius-lg);
 }
@@ -254,9 +277,9 @@
 }
 
 .stripeUpgradeCard {
-  margin: 18px 0;
+  margin: 0 !important;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-border-strong);
   box-shadow: none !important;
   color: var(--hi-text);
   padding: 18px;

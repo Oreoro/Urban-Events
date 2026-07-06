@@ -26,9 +26,9 @@ import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 export const DashBoardSkeleton = () => {
     return (
         <>
-            <Skeleton height={120} radius="l" mb="20px"/>
-            <Skeleton height={350} radius="l" mb="20px"/>
-            <Skeleton height={350} radius="l"/>
+            <Skeleton height={96} radius="lg" mb="14px"/>
+            <Skeleton height={320} radius="lg" mb="14px"/>
+            <Skeleton height={320} radius="lg"/>
         </>
     );
 }
@@ -108,42 +108,45 @@ export const EventDashboard = () => {
 
     return (
         <PageBody>
-            <PageTitle
-                style={{marginBottom: 0}}
-                subheading={!isMobile && event?.title ? event.title : undefined}
-            >
-                <Trans>Dashboard</Trans>
-            </PageTitle>
+            <div className={classes.dashboardStack}>
+                <section className={classes.overviewPanel}>
+                    <PageTitle
+                        className={classes.pageTitle}
+                        subheading={!isMobile && event?.title ? event.title : undefined}
+                    >
+                        <Trans>Dashboard</Trans>
+                    </PageTitle>
 
-            {!event && <DashBoardSkeleton/>}
+                    {!event && <DashBoardSkeleton/>}
 
-            {showStripeUpgradeNotice && (
-                <Card className={classes.stripeUpgradeCard}>
-                    <div className={classes.stripeUpgradeContent}>
-                        <div className={classes.stripeIcon}>
-                            <IconAlertCircle/>
-                        </div>
-                        <div className={classes.stripeTextContainer}>
-                            <div className={classes.stripeText}>
-                                <h3>{t`Important: Stripe reconnection required`}</h3>
-                                <p>{t`We've relocated our headquarters to Ireland. As a result, we need you to reconnect your Stripe account. This quick process takes just a few minutes. Your sales and existing data remain completely unaffected.`}</p>
-                                <p className={classes.stripeApology}>{t`Sorry for the inconvenience.`}</p>
+                    {event && <StatBoxes/>}
+                </section>
+
+                {showStripeUpgradeNotice && (
+                    <Card className={classes.stripeUpgradeCard}>
+                        <div className={classes.stripeUpgradeContent}>
+                            <div className={classes.stripeIcon}>
+                                <IconAlertCircle/>
                             </div>
-                            <StripeConnectButton
-                                className={classes.stripeButton}
-                                buttonText={t`Reconnect Stripe →`}
-                                variant="filled"
-                                size="md"
-                                platform="ie"
-                            />
+                            <div className={classes.stripeTextContainer}>
+                                <div className={classes.stripeText}>
+                                    <h3>{t`Important: Stripe reconnection required`}</h3>
+                                    <p>{t`We've relocated our headquarters to Ireland. As a result, we need you to reconnect your Stripe account. This quick process takes just a few minutes. Your sales and existing data remain completely unaffected.`}</p>
+                                    <p className={classes.stripeApology}>{t`Sorry for the inconvenience.`}</p>
+                                </div>
+                                <StripeConnectButton
+                                    className={classes.stripeButton}
+                                    buttonText={t`Reconnect Stripe →`}
+                                    variant="filled"
+                                    size="md"
+                                    platform="ie"
+                                />
+                            </div>
                         </div>
-                    </div>
-                </Card>
-            )}
+                    </Card>
+                )}
 
             {event && (<>
-                <StatBoxes/>
-
                 {shouldShowChecklist && (
                     <Card className={classes.setupCard}>
                         <div
@@ -371,6 +374,7 @@ export const EventDashboard = () => {
                     />
                 </Card>
             </>)}
+            </div>
         </PageBody>
     )
 };

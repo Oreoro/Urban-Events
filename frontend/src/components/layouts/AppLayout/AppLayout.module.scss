@@ -29,7 +29,7 @@
     grid-area: main;
     padding: 22px 34px 48px;
     overflow: auto;
-    background: var(--hi-surface);
+    background: var(--hi-shell-bg);
 
     @include mixins.scrollbar;
 
