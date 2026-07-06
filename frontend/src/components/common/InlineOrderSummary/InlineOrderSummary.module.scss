@@ -3,7 +3,7 @@
 .inlineOrderSummary {
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   margin-bottom: 20px;
   box-shadow: none;
   overflow: hidden;
@@ -326,7 +326,7 @@
   gap: 12px;
   background-color: var(--hi-shell-bg);
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   padding: 12px 14px;
   margin-top: 16px;
 }

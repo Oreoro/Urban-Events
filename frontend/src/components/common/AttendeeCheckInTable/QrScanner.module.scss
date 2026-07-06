@@ -68,7 +68,7 @@
     border: 4px solid color-mix(in srgb, var(--hi-color-white) 48%, transparent);
     position: absolute;
     animation: colorfulBorder 10s infinite;
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     outline: solid 50vmax color-mix(in srgb, var(--hi-text) 54%, transparent);
     transition: outline-color 0.2s ease-out;
     min-width: 200px;
