@@ -4,14 +4,15 @@
   margin-bottom: var(--hi-spacing-md);
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-left: 2px solid var(--hi-border-strong);
+  border-left: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
   box-shadow: none;
 
   h3 {
     margin: 0 0 var(--hi-spacing-sm) 0;
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--hi-text-light);
+    font-weight: 650;
+    color: var(--hi-text);
   }
 }
 
@@ -51,11 +52,11 @@
   cursor: pointer;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
 
     .toggleLabel {
@@ -74,10 +75,10 @@
 
   &.hasReminder {
     border-color: var(--hi-status-warning-border);
-    background: var(--hi-status-warning-bg);
+    background: var(--hi-shell-bg);
 
     &:hover {
-      background: var(--hi-status-warning-bg);
+      background: var(--hi-control-bg-hover);
       border-color: var(--hi-border-strong);
     }
   }
@@ -96,8 +97,8 @@
 
   .toggleLabel {
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--hi-text-light);
+    font-weight: 600;
+    color: var(--hi-text);
     transition: color 0.15s ease;
   }
 

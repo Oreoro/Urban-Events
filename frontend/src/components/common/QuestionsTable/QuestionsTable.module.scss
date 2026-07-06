@@ -19,11 +19,11 @@
   padding: 12px 14px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
   }
 
@@ -72,6 +72,7 @@
 
 .questionTitle {
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .hiddenIcon {
@@ -92,7 +93,7 @@
   text-align: center;
   background: var(--hi-surface);
   border: 1px dashed var(--hi-border-strong);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
 }
 
 // Preview Card
@@ -109,7 +110,7 @@
   color: var(--hi-text-muted);
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     color: var(--hi-text);
   }
 }
@@ -142,7 +143,7 @@
   :global(.mantine-TextInput-input),
   :global(.mantine-Select-input),
   :global(.mantine-Textarea-input) {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg);
   }
 }
 
@@ -183,8 +184,8 @@
 
 .defaultFields {
   padding: 6px 10px;
-  background: var(--hi-surface-soft);
-  border-radius: var(--hi-radius-sm);
+  background: var(--hi-shell-bg);
+  border-radius: var(--hi-radius-md);
   border: 1px dashed var(--hi-border-strong);
 }
 
@@ -198,7 +199,7 @@
   padding: 2px 8px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: 999px;
+  border-radius: var(--hi-radius-sm);
   font-size: 0.75rem;
   color: var(--hi-text-muted);
 }
