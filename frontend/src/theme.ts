@@ -77,14 +77,14 @@ export const getUrbanEventsTheme = () => createTheme({
         sm: "4px",
         md: "6px",
         lg: "8px",
-        xl: "10px",
+        xl: "8px",
     },
     shadows: {
-        xs: "0 1px 2px rgba(55, 53, 47, 0.05)",
-        sm: "0 1px 2px rgba(55, 53, 47, 0.06)",
-        md: "0 2px 8px rgba(55, 53, 47, 0.08)",
-        lg: "0 8px 24px rgba(55, 53, 47, 0.10)",
-        xl: "0 12px 32px rgba(55, 53, 47, 0.12)",
+        xs: "none",
+        sm: "none",
+        md: "none",
+        lg: "none",
+        xl: "none",
     },
     components: {
         ActionIcon: {
@@ -94,6 +94,7 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 root: {
+                    borderWidth: "1px",
                     transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
                 },
             },
@@ -101,6 +102,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Alert: {
             defaultProps: {
                 radius: "md",
+                variant: "light",
             },
         },
         Badge: {
@@ -149,7 +151,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Checkbox: {
             defaultProps: {
                 radius: "sm",
-                color: "secondary",
+                color: "slate",
             },
         },
         Input: {
@@ -176,7 +178,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Menu: {
             defaultProps: {
                 radius: "md",
-                shadow: "xs",
+                shadow: "none",
             },
             styles: {
                 dropdown: {
@@ -201,6 +203,35 @@ export const getUrbanEventsTheme = () => createTheme({
             defaultProps: {
                 radius: "md",
                 shadow: "none",
+                withBorder: true,
+            },
+            styles: {
+                root: {
+                    borderColor: "var(--hi-border)",
+                },
+            },
+        },
+        Popover: {
+            defaultProps: {
+                radius: "md",
+                shadow: "none",
+            },
+            styles: {
+                dropdown: {
+                    borderColor: "var(--hi-border)",
+                    boxShadow: "none",
+                },
+            },
+        },
+        Progress: {
+            defaultProps: {
+                color: "slate",
+                radius: "sm",
+            },
+        },
+        Radio: {
+            defaultProps: {
+                color: "slate",
             },
         },
         SegmentedControl: {
@@ -219,7 +250,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Tabs: {
             defaultProps: {
                 radius: "md",
-                color: "secondary",
+                color: "slate",
             },
         },
         Table: {
@@ -265,6 +296,13 @@ export const getUrbanEventsTheme = () => createTheme({
             defaultProps: {
                 radius: "sm",
                 withArrow: true,
+            },
+            styles: {
+                tooltip: {
+                    backgroundColor: "var(--hi-text)",
+                    color: "#fff",
+                    fontWeight: 500,
+                },
             },
         },
     },
