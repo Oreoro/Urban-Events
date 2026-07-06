@@ -12,10 +12,10 @@
     text-align: center;
 }
 
-.celebrationEmoji {
-    width: 72px;
-    height: 72px;
-    border-radius: var(--hi-radius-lg);
+.statusIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--hi-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,18 +23,23 @@
     background: var(--hi-surface-soft);
     border: 1px solid var(--hi-border);
     margin-bottom: 1rem;
+
+    svg {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 .title {
-    font-size: 1.32rem;
-    font-weight: 600;
+    font-size: 1.22rem;
+    font-weight: 650;
     color: var(--hi-text);
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    color: var(--mantine-color-dimmed);
-    font-size: 0.95rem;
+    color: var(--hi-text-muted);
+    font-size: 0.9rem;
     margin-bottom: 1.5rem;
 }
 

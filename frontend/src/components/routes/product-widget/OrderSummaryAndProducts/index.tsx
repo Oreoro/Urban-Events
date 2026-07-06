@@ -175,17 +175,17 @@ const WelcomeHeader = ({order, event, allowSelfEdit}: { order: Order; event: Eve
     return (
         <div className={classes.welcomeHeader}>
             {isCompleted && (
-                <div className={classes.confettiIcon}>
+                <div className={classes.statusIcon}>
                     <IconCheck size={34}/>
                 </div>
             )}
             {isAwaitingPayment && (
-                <div className={classes.confettiIcon}>
+                <div className={classes.statusIcon}>
                     <IconClock size={34}/>
                 </div>
             )}
             {isCancelled && (
-                <div className={classes.confettiIcon}>
+                <div className={classes.statusIcon}>
                     <IconX size={34}/>
                 </div>
             )}

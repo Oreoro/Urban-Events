@@ -237,7 +237,6 @@ export const ShareModal = ({
                                             <Tooltip label={copied ? t`Copied!` : t`Copy to clipboard`}>
                                                 <Button
                                                     variant="light"
-                                                    color={copied ? 'teal' : 'gray'}
                                                     onClick={copy}
                                                     leftSection={copied ? <IconCheck size={16}/> : <IconCopy size={16}/>}
                                                 >

@@ -62,7 +62,7 @@ const GettingStarted = () => {
                     <div className={classes.headerContent}>
                         <div className={classes.headerTitle}>
                             <Group gap={12} align="center">
-                                <IconChecklist size={30} className={classes.confettiIcon}/>
+                                <IconChecklist size={30} className={classes.headerIcon}/>
                                 <Text component="h1" className={classes.mainTitle}>
                                     {t`Event setup`}
                                 </Text>
