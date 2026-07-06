@@ -35,7 +35,7 @@ const AuthLayout = () => {
                 <div className={classes.leftPanel}>
                     <main className={classes.container}>
                         <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
-                            <BrandWordmark tone="dark" size="lg"/>
+                            <BrandWordmark tone="dark" size="md"/>
                         </div>
                         <div className={classes.wrapper}>
                             <Outlet />
