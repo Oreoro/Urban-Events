@@ -89,8 +89,12 @@ const Payment = () => {
     if (!isNeemEnabled && !isStripeEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
         return (
             <CheckoutContent>
-                <Card>
-                    {t`No payment methods are currently available. Please contact the event organizer for assistance.`}
+                <Card className={classes.emptyState}>
+                    <IconCreditCard size={22} className={classes.emptyStateIcon}/>
+                    <h2 className={classes.emptyStateTitle}>{t`Payments are unavailable`}</h2>
+                    <p className={classes.emptyStateText}>
+                        {t`No payment methods are currently available. Please contact the event organizer for assistance.`}
+                    </p>
                 </Card>
             </CheckoutContent>
         );
@@ -102,22 +106,23 @@ const Payment = () => {
                 {(event && order) && (
                     <InlineOrderSummary event={event} order={order} defaultExpanded={false}/>
                 )}
-                {isNeemEnabled && (
-                    <div style={{display: activePaymentMethod === 'NEEM' ? 'block' : 'none'}}>
+
+                {isNeemEnabled && activePaymentMethod === 'NEEM' && (
+                    <section className={classes.paymentMethodPanel}>
                         <NeemPaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
-                    </div>
+                    </section>
                 )}
 
-                {isStripeEnabled && (
-                    <div style={{display: activePaymentMethod === 'STRIPE' ? 'block' : 'none'}}>
+                {isStripeEnabled && activePaymentMethod === 'STRIPE' && (
+                    <section className={classes.paymentMethodPanel}>
                         <StripePaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
-                    </div>
+                    </section>
                 )}
 
-                {isOfflineEnabled && (
-                    <div style={{display: activePaymentMethod === 'OFFLINE' ? 'block' : 'none'}}>
+                {isOfflineEnabled && activePaymentMethod === 'OFFLINE' && (
+                    <section className={classes.paymentMethodPanel}>
                         <OfflinePaymentMethod event={event as Event}/>
-                    </div>
+                    </section>
                 )}
 
                 {availablePaymentMethodCount > 1 && (
