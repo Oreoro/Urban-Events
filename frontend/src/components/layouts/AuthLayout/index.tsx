@@ -8,6 +8,7 @@ import {useCallback, useRef} from "react";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 import {BrandWordmark} from "../../common/BrandWordmark";
+import {getConfig} from "../../../utilites/config.ts";
 
 const AuthLayout = () => {
     const me = useGetMe();
@@ -21,7 +22,8 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(t`HiEvents v${__APP_VERSION__}`);
+            const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
+            showInfo(`${appName} v${__APP_VERSION__}`);
         }
     }, []);
 
