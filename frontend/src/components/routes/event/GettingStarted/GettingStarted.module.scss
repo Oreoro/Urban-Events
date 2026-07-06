@@ -1,12 +1,12 @@
 @use "../../../../styles/mixins.scss";
 
 .headerCard {
-  background: var(--hi-surface);
-  border-radius: var(--hi-radius-lg);
+  background: transparent;
+  border-radius: 0;
   box-shadow: none !important;
-  padding: 20px;
-  margin-bottom: 18px;
-  border: 1px solid var(--hi-border);
+  padding: 2px 0 6px;
+  margin-bottom: 16px;
+  border: 0;
   position: relative;
   overflow: hidden;
 
@@ -21,7 +21,7 @@
   }
 
   @include mixins.respond-below(sm) {
-    padding: 24px;
+    padding: 0 0 4px;
 
     &::before {
       width: 180px;
@@ -34,7 +34,7 @@
 .headerContent {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   z-index: 1;
 
@@ -49,8 +49,8 @@
 }
 
 .mainTitle {
-  font-size: 1.32rem;
-  font-weight: 600;
+  font-size: clamp(1.42rem, 1.6vw, 1.85rem);
+  font-weight: 650;
   color: var(--hi-text);
   margin: 0;
   line-height: 1.2;
@@ -75,10 +75,12 @@
 .confettiIcon {
   color: var(--hi-text-muted);
   animation: none;
+  width: 28px;
+  height: 28px;
 }
 
 .subtitle {
-  margin-top: 12px;
+  margin-top: 8px;
   font-size: 0.93rem;
   line-height: 1.5;
   color: var(--hi-text-muted);
@@ -86,7 +88,7 @@
 }
 
 .progressBarContainer {
-  margin-top: 24px;
+  margin-top: 18px;
   max-width: 600px;
 
   @include mixins.respond-below(sm) {
@@ -95,8 +97,8 @@
 }
 
 .progressBar {
-  height: 8px;
-  background-color: var(--hi-surface-soft);
+  height: 6px;
+  background-color: var(--hi-shell-bg-strong);
 
   [role="progressbar"] {
     background: var(--hi-text);
@@ -108,7 +110,7 @@
 .actionItems {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(calc(50% - 16px), 1fr));
-  gap: 12px;
+  gap: 10px;
 
   @include mixins.respond-below(sm) {
     grid-template-columns: 1fr;
@@ -125,7 +127,7 @@
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-      background: var(--hi-surface-soft);
+      background: var(--hi-control-bg-hover);
       border-color: var(--hi-border-strong);
       box-shadow: none;
       transform: none;

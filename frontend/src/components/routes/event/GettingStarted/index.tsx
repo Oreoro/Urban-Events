@@ -3,8 +3,8 @@ import {Card} from "../../../common/Card";
 import {t} from "@lingui/macro"
 import {Button, Group, Progress, Text} from "@mantine/core";
 import classes from "./GettingStarted.module.scss";
-import {NavLink, useLocation, useNavigate, useParams} from "react-router";
-import {IconBolt, IconCheck, IconConfetti, IconPaint, IconRocket} from "@tabler/icons-react";
+import {NavLink, useParams} from "react-router";
+import {IconBolt, IconCheck, IconChecklist, IconPaint, IconRocket, IconTicket} from "@tabler/icons-react";
 import {useGetEvent} from "../../../../queries/useGetEvent.ts";
 import {useGetEventImages} from "../../../../queries/useGetEventImages.ts";
 import {Tooltip} from "../../../common/Tooltip";
@@ -12,35 +12,10 @@ import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import {getProductsFromEvent} from "../../../../utilites/helpers.ts";
-import {useEffect, useState} from 'react';
-import ConfettiAnimation from "./ConfettiAnimaiton";
-import {Browser, useBrowser} from "../../../../hooks/useGetBrowser.ts";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 
 const GettingStarted = () => {
     const {eventId} = useParams();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const [showConfetti, setShowConfetti] = useState(false);
-    const browser = useBrowser();
-
-    useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
-        const isChromeOrFirefox = browser === Browser.Chrome || browser === Browser.Firefox;
-
-        if (searchParams.get('new_event') === 'true' && isChromeOrFirefox) {
-            setShowConfetti(true);
-
-            setTimeout(() => {
-                searchParams.delete('new_event');
-                navigate({
-                    pathname: location.pathname,
-                    search: searchParams.toString()
-                }, {replace: true});
-            }, 2000);
-        }
-    }, [location, navigate]);
-
     const eventQuery = useGetEvent(eventId);
     const event = eventQuery.data;
     const products = getProductsFromEvent(event);
@@ -82,19 +57,18 @@ const GettingStarted = () => {
 
     return (
         <>
-            {showConfetti && <ConfettiAnimation duration={2000}/>}
             <PageBody>
                 <Card className={classes.headerCard}>
                     <div className={classes.headerContent}>
                         <div className={classes.headerTitle}>
                             <Group gap={12} align="center">
-                                <IconConfetti size={35} className={classes.confettiIcon}/>
+                                <IconChecklist size={30} className={classes.confettiIcon}/>
                                 <Text component="h1" className={classes.mainTitle}>
-                                    {t`Congratulations on creating an event!`}
+                                    {t`Event setup`}
                                 </Text>
                             </Group>
                             <Text component="p" className={classes.subtitle}>
-                                {t`Before your event can go live, there are a few things you need to do. Complete all the steps below to get started.`}
+                                {t`Complete the essentials before publishing your event and selling tickets.`}
                             </Text>
 
                             <div className={classes.progressBarContainer}>
@@ -108,9 +82,8 @@ const GettingStarted = () => {
                                         account?.is_account_email_confirmed
                                     ].filter(Boolean).length / 6 * 100}
                                     size="md"
-                                    radius="xl"
+                                    radius="sm"
                                     className={classes.progressBar}
-                                    color="violet"
                                 />
                             </div>
                         </div>
@@ -120,8 +93,9 @@ const GettingStarted = () => {
                 <div className={classes.actionItems}>
                     <Card className={hasProducts ? classes.completedCard : ''}>
                         {hasProducts && <CompletedBadge/>}
-                        <h2>
-                            {t`🎟️ Add tickets`}
+                        <h2 className={classes.cardTitle}>
+                            <IconTicket size={22}/>
+                            {t`Add tickets`}
                         </h2>
                         <p>
                             {t`Create tickets for your event, set prices, and manage available quantity.`}

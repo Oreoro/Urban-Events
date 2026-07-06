@@ -88,7 +88,7 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
         eventMutation.mutateAsync({
             eventData: values,
         }).then((data) => {
-            navigate(`/manage/event/${data.data.id}/getting-started?new_event=true`)
+            navigate(`/manage/event/${data.data.id}/getting-started`)
         }).catch((error) => {
             errorHandler(form, error);
         });

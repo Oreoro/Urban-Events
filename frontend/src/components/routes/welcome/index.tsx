@@ -268,7 +268,7 @@ export const CreateEvent = ({progressInfo}: {
         }, {
             onSuccess: (values) => {
                 trackEvent(AnalyticsEvents.FIRST_EVENT_CREATED);
-                navigate(`/manage/event/${values.data.id}/getting-started?new_event=true`)
+                navigate(`/manage/event/${values.data.id}/getting-started`)
             }
         });
     }
