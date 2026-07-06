@@ -48,7 +48,7 @@ export const AttendeeList = ({
         if (attendee.status === 'AWAITING_PAYMENT' && !allowOrdersAwaitingOfflinePaymentToCheckIn) {
             return 'gray';
         }
-        return 'teal';
+        return 'dark';
     };
 
     if (isLoading || !attendees || !products) {

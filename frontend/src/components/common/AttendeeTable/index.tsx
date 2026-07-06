@@ -138,7 +138,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     enableHiding: false,
                     cell: (info: CellContext<Attendee, unknown>) => (
                         <Group gap="sm" wrap="nowrap">
-                            <Avatar size={44} radius={10} color="primary" variant="light">
+                            <Avatar size={44} radius={10} className={classes.attendeeAvatar}>
                                 {getInitials(info.row.original.first_name + ' ' + info.row.original.last_name)}
                             </Avatar>
                             <div className={classes.attendeeDetails}>
@@ -215,7 +215,6 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                     className={classes.actionIcon}
                                                     size="xs"
                                                     variant="subtle"
-                                                    color="green"
                                                     onClick={() => {
                                                         if (info.row.original.notes && info.row.original.notes.length > 100) {
                                                             handleModalClick(info.row.original, viewModalOpen);

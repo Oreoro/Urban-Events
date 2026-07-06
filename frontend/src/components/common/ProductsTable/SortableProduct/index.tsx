@@ -270,7 +270,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     <Badge
                                         leftSection={<IconTicket size={12}/>}
                                         variant="light"
-                                        color="violet"
+                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Ticket`}
@@ -279,7 +279,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     <Badge
                                         leftSection={<IconPackage size={12}/>}
                                         variant="light"
-                                        color="cyan"
+                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Product`}
@@ -288,7 +288,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                 {product.waitlist_enabled && (
                                     <Badge
                                         variant="light"
-                                        color="secondary"
+                                        color="gray"
                                         size="sm"
                                         leftSection={<IconClock size={12}/>}
                                     >
@@ -298,7 +298,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                 {product.type === ProductPriceType.Donation && (
                                     <Badge
                                         variant="outline"
-                                        color="pink"
+                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Donation`}

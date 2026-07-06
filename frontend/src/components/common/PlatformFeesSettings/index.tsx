@@ -205,7 +205,7 @@ export const PlatformFeesSettings = ({
                                     <Group gap="xs" mb="md">
                                         <Text fw={600}>{t`Pass to Buyer`}</Text>
                                         {selectedOption === 'pass' && (
-                                            <Text size="xs" c="teal" fw={500}>{t`Selected`}</Text>
+                                            <Text size="xs" c="var(--hi-text-muted)" fw={500}>{t`Selected`}</Text>
                                         )}
                                     </Group>
                                     <Text size="sm" c="dimmed" mb="md">
@@ -228,7 +228,7 @@ export const PlatformFeesSettings = ({
                                     <Group gap="xs" mb="md">
                                         <Text fw={600}>{t`Absorb Fee`}</Text>
                                         {selectedOption === 'absorb' && (
-                                            <Text size="xs" c="teal" fw={500}>{t`Selected`}</Text>
+                                            <Text size="xs" c="var(--hi-text-muted)" fw={500}>{t`Selected`}</Text>
                                         )}
                                     </Group>
                                     <Text size="sm" c="dimmed" mb="md">

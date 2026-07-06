@@ -6,6 +6,13 @@
   gap: 6px;
 }
 
+.attendeeAvatar {
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-muted);
+  border: 1px solid var(--hi-border);
+  font-weight: 600;
+}
+
 .nameRow {
   display: flex;
   align-items: center;

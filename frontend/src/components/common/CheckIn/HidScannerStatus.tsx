@@ -41,7 +41,6 @@ export const HidScannerStatus = ({
             <Button
                 size="xs"
                 variant="white"
-                color={pageHasFocus ? "primary" : "marigold"}
                 leftSection={<IconX size={14}/>}
                 miw={95}
                 onClick={() => {

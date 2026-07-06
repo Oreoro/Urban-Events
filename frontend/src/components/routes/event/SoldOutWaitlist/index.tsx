@@ -79,7 +79,6 @@ export const SoldOutWaitlist = () => {
             >
                 <Button
                     size="sm"
-                    color="green"
                     leftSection={<IconSend size={16}/>}
                     onClick={openOfferModal}
                 >
