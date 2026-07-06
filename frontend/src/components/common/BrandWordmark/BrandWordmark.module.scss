@@ -1,6 +1,5 @@
 .wordmark {
   --brand-primary: var(--hi-text);
-  --brand-accent: var(--hi-text);
   --brand-subtle: var(--hi-text-muted);
 
   display: inline-flex;
@@ -8,7 +7,7 @@
   gap: 0;
   color: var(--brand-primary);
   font-family: var(--hi-font-heading);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: 0;
   line-height: 1;
   text-decoration: none;
@@ -16,9 +15,7 @@
 }
 
 .wordmarkText {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.18em;
+  display: inline-block;
   position: relative;
 }
 
@@ -26,32 +23,22 @@
   display: none;
 }
 
-.primary {
-  color: var(--brand-primary);
-}
-
-.accent {
-  color: var(--brand-primary);
-}
-
 .light {
   --brand-primary: var(--hi-shell-text);
-  --brand-accent: var(--hi-shell-text);
   --brand-subtle: var(--hi-shell-text);
 }
 
 .dark {
   --brand-primary: var(--hi-text);
-  --brand-accent: var(--hi-text);
   --brand-subtle: var(--hi-text);
 }
 
 .sm {
-  font-size: 0.92rem;
+  font-size: 0.96rem;
 }
 
 .md {
-  font-size: 0.98rem;
+  font-size: 1.08rem;
 }
 
 .lg {

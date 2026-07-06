@@ -15,17 +15,17 @@
 
   // Forgot password link
   p {
-    margin: 1rem 0 0;
+    margin: 0.9rem 0 0;
     text-align: center;
 
     a {
       font-size: 0.8125rem;
-      color: var(--hi-color-gray-dark);
-      font-weight: 400;
-      transition: color 0.2s ease;
+      color: var(--hi-text-muted);
+      font-weight: 560;
+      transition: color 0.16s ease;
 
       &:hover {
-        color: var(--hi-secondary-strong);
+        color: var(--hi-text);
       }
     }
   }
@@ -33,27 +33,28 @@
 
 // Ticket Lookup Section
 .ticketLookup {
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--hi-border);
+  margin-top: 0.85rem;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+  background: var(--hi-surface);
 
   @include mixins.respond-below(sm) {
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
+    margin-top: 0.75rem;
   }
 }
 
 .ticketLookupTrigger {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.5rem 0;
+  min-height: 42px;
+  padding: 0.65rem 0.85rem;
   font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--hi-color-gray-dark);
-  transition: color 0.2s ease;
+  font-weight: 600;
+  color: var(--hi-text-muted);
+  transition: background-color 0.16s ease, color 0.16s ease;
   background: none;
   border: none;
   cursor: pointer;
@@ -63,7 +64,8 @@
   }
 
   &:hover {
-    color: var(--hi-secondary-strong);
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
   }
 
   &[data-expanded="true"] {
@@ -76,6 +78,7 @@
 }
 
 .chevron {
+  margin-left: auto;
   transition: transform 0.25s ease;
   opacity: 0.5;
 
@@ -85,7 +88,7 @@
 }
 
 .ticketLookupContent {
-  padding-top: 1rem;
+  padding: 0 0.85rem 0.85rem;
 }
 
 .ticketLookupForm {
@@ -103,26 +106,27 @@
   }
 
   :global(.mantine-TextInput-input) {
-    border-radius: var(--hi-radius-md);
-    border: 1px solid var(--hi-border);
-    padding: 0.625rem 0.875rem;
+    border-radius: var(--hi-radius-sm);
+    border: 1px solid var(--hi-border-strong);
+    padding: 0.6rem 0.78rem;
     font-size: 0.875rem;
     background: white;
+    min-height: 38px;
 
     @include mixins.respond-below(sm) {
       font-size: 1rem;
     }
 
     &:focus {
-      border-color: var(--hi-text-muted);
+      border-color: var(--hi-text);
       box-shadow: 0 0 0 3px var(--hi-focus-ring);
     }
   }
 
   :global(.mantine-Button-root) {
     height: 38px;
-    border-radius: var(--hi-radius-md);
-    font-weight: 600;
+    border-radius: var(--hi-radius-sm);
+    font-weight: 650;
     font-size: 0.8125rem;
     padding: 0 1.25rem;
     white-space: nowrap;
@@ -140,9 +144,9 @@
 
 .successMessage {
   text-align: center;
-  padding: 1.25rem;
+  padding: 1rem;
   background: var(--hi-surface-soft);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   border: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
@@ -164,7 +168,7 @@
 
 .resetLink {
   font-size: 0.8125rem;
-  color: var(--hi-color-gray-dark);
+  color: var(--hi-text-muted);
   text-decoration: underline;
   text-underline-offset: 2px;
   background: none;
@@ -173,6 +177,6 @@
   font-family: inherit;
 
   &:hover {
-    color: var(--hi-secondary-strong);
+    color: var(--hi-text);
   }
 }

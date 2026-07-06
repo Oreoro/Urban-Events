@@ -17,6 +17,16 @@
       margin-bottom: 0.875rem;
     }
 
+    :global(.mantine-Checkbox-root) {
+      margin-bottom: 0.95rem;
+    }
+
+    :global(.mantine-Checkbox-label) {
+      color: var(--hi-text-muted);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+    }
+
     :global(.mantine-SimpleGrid-root) {
       gap: 0.875rem;
 

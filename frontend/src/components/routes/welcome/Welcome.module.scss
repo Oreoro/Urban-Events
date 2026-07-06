@@ -6,8 +6,8 @@
   }
 
   min-height: 100vh;
-  background: var(--ue-canvas);
-  padding: 3rem 1rem;
+  background: var(--hi-shell-bg);
+  padding: 2.75rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,34 +15,34 @@
 
   @media (max-width: 768px) {
     justify-content: flex-start;
-    padding: 3rem 1rem 2rem;
+    padding: 2.5rem 1rem 2rem;
   }
 }
 
 .welcomeContent {
   width: 100%;
-  max-width: 850px;
-  min-width: 550px;
+  max-width: 780px;
+  min-width: 0;
   margin: 0 auto;
 
   @media (max-width: 768px) {
     max-width: 100%;
-    min-width: auto;
+    min-width: 0;
   }
 }
 
 // Header Section
 .welcomeHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.35rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.15rem;
   }
 }
 
 .logo {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   opacity: 1;
 
   @media (max-width: 768px) {
@@ -51,37 +51,28 @@
 }
 
 .welcomeTitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  font-size: 1.55rem;
-  font-weight: 600;
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 650;
   color: var(--hi-text);
   margin: 0;
   line-height: 1.2;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
-}
-
-.welcomeTitleIcon {
-  color: var(--hi-text-muted);
-  flex-shrink: 0;
 }
 
 // Clean Main Card
 .welcomeCard {
   background: var(--hi-surface-raised);
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-lg) !important;
   overflow: hidden;
   box-shadow: none !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-border-strong) !important;
 
   @media (max-width: 768px) {
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: var(--hi-radius-lg) !important;
     box-shadow: none !important;
   }
 }
@@ -94,7 +85,7 @@
 
 // Clean Step Layout
 .stepContainer {
-  padding: 1.5rem 2rem;
+  padding: 1.35rem 1.5rem 1.5rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -103,19 +94,19 @@
 
 // Progress Container
 .progressContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 1.35rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 }
 
 // Progress Bar
 .progressBar {
   width: 100%;
-  height: 6px;
-  background-color: var(--hi-color-gray-2);
-  border-radius: 3px;
+  height: 4px;
+  background-color: var(--hi-surface-soft);
+  border-radius: 999px;
   overflow: hidden;
   margin-bottom: 0.5rem;
 }
@@ -123,13 +114,13 @@
 .progressFill {
   height: 100%;
   background: var(--hi-text);
-  border-radius: 3px;
+  border-radius: 999px;
   transition: width 0.3s ease;
 }
 
 .stepHeader {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1.25rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -137,22 +128,22 @@
 }
 
 .stepTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 650;
   color: var(--hi-text);
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.18rem;
     margin-bottom: 0.5rem;
   }
 }
 
 .stepDescription {
-  font-size: 1rem;
-  color: var(--hi-secondary-text);
+  font-size: 0.92rem;
+  color: var(--hi-text-muted);
   margin: 0;
   line-height: 1.5;
 
@@ -162,7 +153,7 @@
 }
 
 .stepContent {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -180,31 +171,32 @@
   :global(.mantine-DateTimePicker-input),
   :global(.mantine-TextInput-input),
   :global(.mantine-Select-input) {
-    min-height: 56px !important;
-    height: 56px !important;
+    min-height: 44px !important;
+    height: 44px !important;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding: 0 16px !important;
-    border: 1px solid var(--hi-color-gray-2) !important;
-    border-radius: 8px !important;
+    padding: 0 12px !important;
+    border: 1px solid var(--hi-border-strong) !important;
+    border-radius: var(--hi-radius-sm) !important;
     background: var(--hi-color-white) !important;
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     color: var(--hi-text) !important;
     transition: border-color 0.15s ease !important;
 
     &:focus {
       border-color: var(--hi-text) !important;
       outline: none !important;
+      box-shadow: 0 0 0 3px var(--hi-focus-ring) !important;
     }
 
     &::placeholder {
-      color: var(--hi-color-gray-dark) !important;
+      color: color-mix(in srgb, var(--hi-text-muted) 72%, white) !important;
     }
 
     @media (max-width: 768px) {
-      min-height: 48px !important;
-      height: 48px !important;
+      min-height: 44px !important;
+      height: 44px !important;
       font-size: 16px !important; // Prevent zoom on iOS
     }
   }
@@ -213,18 +205,18 @@
   :global(.mantine-DateTimePicker-label),
   :global(.mantine-TextInput-label),
   :global(.mantine-Select-label) {
-    font-weight: 500 !important;
-    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    font-size: 0.8125rem !important;
     color: var(--hi-text) !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
   }
 }
 
 // Clean Category Grid
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 0.6rem;
 
   @media (max-width: 768px) {
     display: none; // Hide grid on mobile
@@ -243,15 +235,15 @@
 .categoryCard {
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: var(--hi-radius-md);
+  padding: 0.8rem 0.7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.35rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
-  min-height: 72px;
+  min-height: 68px;
 
   &:hover {
     background: var(--hi-surface-soft);
@@ -272,11 +264,11 @@
 
 .categoryCardSelected {
   border-color: var(--hi-text) !important;
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-control-bg-hover) !important;
 }
 
 .categoryEmoji {
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   line-height: 1;
 
   @media (max-width: 768px) {
@@ -286,7 +278,7 @@
 
 .categoryText {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -300,10 +292,10 @@
 
 // Email Verification Specific
 .emailDisplay {
-  background: var(--hi-color-gray);
-  border: 1px solid var(--hi-color-gray-2);
-  border-radius: 8px;
-  padding: 1rem;
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  padding: 0.85rem;
   margin-top: 1rem;
   margin-bottom: 0;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
@@ -325,8 +317,8 @@
 .pinInput {
   // Clean PinInput styling
   :global(.mantine-PinInput-input) {
-    border: 1px solid var(--hi-color-gray-2);
-    border-radius: 8px;
+    border: 1px solid var(--hi-border-strong);
+    border-radius: var(--hi-radius-sm);
     font-weight: 600;
     text-align: center;
     background: var(--hi-color-white);
@@ -335,6 +327,7 @@
     &:focus {
       border-color: var(--hi-text);
       outline: none;
+      box-shadow: 0 0 0 3px var(--hi-focus-ring);
     }
 
     // Force smaller size on mobile
@@ -387,8 +380,8 @@
 
   // Clean dropdown styling
   :global(.mantine-Select-dropdown) {
-    border: 1px solid var(--hi-color-gray-2) !important;
-    border-radius: 8px !important;
+    border: 1px solid var(--hi-border) !important;
+    border-radius: var(--hi-radius-md) !important;
     box-shadow: none !important;
     padding: 4px !important;
   }
@@ -419,16 +412,16 @@
 .primaryButton {
   background: var(--hi-text) !important;
   border: 1px solid var(--hi-text) !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  height: 48px !important;
+  border-radius: var(--hi-radius-sm) !important;
+  font-weight: 650 !important;
+  font-size: 0.9rem !important;
+  height: 44px !important;
   transition: background-color 0.15s ease, border-color 0.15s ease !important;
   margin-top: 1em;
 
   &:hover:not(:disabled) {
-    background: var(--hi-color-black) !important;
-    border-color: var(--hi-color-black) !important;
+    background: var(--hi-text-light) !important;
+    border-color: var(--hi-text-light) !important;
     box-shadow: none !important;
   }
 

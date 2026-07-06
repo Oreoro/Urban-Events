@@ -17,8 +17,6 @@ export const BrandWordmark = ({
     onClick,
 }: BrandWordmarkProps) => {
     const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
-    const [firstWord, ...remainingWords] = appName.trim().split(/\s+/);
-    const rest = remainingWords.join(" ");
 
     return (
         <span
@@ -27,8 +25,7 @@ export const BrandWordmark = ({
             onClick={onClick}
         >
             <span className={classes.wordmarkText}>
-                <span className={classes.primary}>{firstWord}</span>
-                {rest && <span className={classes.accent}>{rest}</span>}
+                {appName}
             </span>
         </span>
     );

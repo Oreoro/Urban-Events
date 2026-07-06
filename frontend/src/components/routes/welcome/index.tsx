@@ -15,7 +15,7 @@ import {LoadingContainer} from "../../common/LoadingContainer";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
 import {useConfirmEmailWithCode} from "../../../mutations/useConfirmEmailWithCode.ts";
 import {useResendEmailConfirmation} from "../../../mutations/useResendEmailConfirmation.ts";
-import {IconClock, IconMailCheck, IconSparkles} from "@tabler/icons-react";
+import {IconArrowRight, IconClock, IconMailCheck} from "@tabler/icons-react";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {DateTimePicker} from "@mantine/dates";
 import dayjs from "dayjs";
@@ -404,7 +404,7 @@ export const CreateEvent = ({progressInfo}: {
                             fullWidth
                             size="lg"
                             loading={eventMutation.isPending}
-                            leftSection={eventMutation.isPending ? null : <IconSparkles size={20}/>}
+                            rightSection={eventMutation.isPending ? null : <IconArrowRight size={18}/>}
                             className={classes.primaryButton}
                             disabled={eventMutation.isPending || !selectedCategory}
                             aria-label={eventMutation.isPending ? t`Creating your event, please wait` : t`Continue to next step`}
@@ -475,7 +475,6 @@ const Welcome = () => {
                         <Trans>
                             Welcome to {getConfig("VITE_APP_NAME", "Urban Events")}, {userData?.first_name}
                         </Trans>
-                        <IconSparkles size={24} aria-hidden className={classes.welcomeTitleIcon}/>
                     </h1>
                 </div>
 
