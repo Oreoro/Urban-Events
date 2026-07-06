@@ -165,7 +165,6 @@ const AcceptInvitation = () => {
                         />
 
                         <Button
-                            color="secondary.8"
                             fullWidth
                             loading={acceptInvitationMutation.isPending}
                             type="submit"

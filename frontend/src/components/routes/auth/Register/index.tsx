@@ -139,7 +139,7 @@ export const Register = () => {
                         label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
                     />
 
-                    <Button color="secondary.8" type="submit" fullWidth disabled={mutate.isPending}>
+                    <Button type="submit" fullWidth disabled={mutate.isPending}>
                         {mutate.isPending ? t`Working...` : t`Register`}
                     </Button>
                 </form>

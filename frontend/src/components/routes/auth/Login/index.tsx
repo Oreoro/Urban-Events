@@ -103,7 +103,7 @@ const Login = () => {
                                    required
                                    mt="md"
                     />
-                    <Button color="secondary.8" type="submit" fullWidth loading={isPending} disabled={isPending} mt="lg">
+                    <Button type="submit" fullWidth loading={isPending} disabled={isPending} mt="lg">
                         {isPending ? t`Logging in` : t`Log in`}
                     </Button>
                     <p>
@@ -156,7 +156,6 @@ const Login = () => {
                                     />
                                     <Button
                                         type="submit"
-                                        color="secondary.8"
                                         loading={ticketLookupMutation.isPending}
                                         disabled={ticketLookupMutation.isPending}
                                     >

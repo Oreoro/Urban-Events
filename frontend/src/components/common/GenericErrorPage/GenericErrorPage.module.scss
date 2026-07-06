@@ -65,7 +65,7 @@
 }
 
 .title {
-  font-weight: 650;
+  font-weight: 600;
   margin-bottom: var(--mantine-spacing-md);
   font-size: clamp(24px, 5vw, 36px);
   line-height: 1.2;
@@ -104,7 +104,7 @@
 
 .button {
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  font-weight: 650;
+  font-weight: 600;
   min-height: 44px; // Better touch target on mobile
   font-size: clamp(14px, 2vw, 16px);
 

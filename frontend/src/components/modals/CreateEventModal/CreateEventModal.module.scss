@@ -98,14 +98,14 @@
 }
 
 .headerTitle {
-  font-size: 1.25rem;
-  font-weight: 650;
+  font-size: 1.16rem;
+  font-weight: 600;
   color: var(--hi-text);
   margin: 0 0 0.125rem;
   letter-spacing: 0;
   
   @include mixins.respond-below(sm) {
-    font-size: 1.25rem;
+    font-size: 1.16rem;
   }
 }
 

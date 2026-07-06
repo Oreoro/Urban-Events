@@ -77,7 +77,7 @@ export const ResetPassword = () => {
                         }}
                         required
                     />
-                    <Button color="secondary.8" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
+                    <Button type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
                         {mutate.isPending ? t`Resetting...` : t`Reset password`}
                     </Button>
                 </form>

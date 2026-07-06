@@ -31,7 +31,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
   font-family: $font-display;
   font-size: 13px;
-  font-weight: 650;
+  font-weight: 600;
   background-color: var(--checkout-border, var(--hi-border));
   color: var(--checkout-text-secondary, var(--hi-text-muted));
   transition: background-color $transition-fast, color $transition-fast;
