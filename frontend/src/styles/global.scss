@@ -472,8 +472,8 @@ a {
 }
 
 .mantine-Table-table th {
-  background: var(--hi-surface-soft);
-  border-bottom: 1px solid var(--hi-border-strong);
+  background: var(--hi-surface);
+  border-bottom: 1px solid var(--hi-border);
   color: var(--hi-text-muted);
   font-size: 0.75rem;
   font-weight: 600;
@@ -483,7 +483,7 @@ a {
 }
 
 .mantine-Table-table td {
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
   color: var(--hi-text-light);
   font-size: 0.87rem;
   font-weight: 500;

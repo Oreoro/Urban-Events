@@ -19,7 +19,7 @@
   padding: 12px 14px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 
   &:hover {
@@ -93,7 +93,7 @@
   text-align: center;
   background: var(--hi-surface);
   border: 1px dashed var(--hi-border-strong);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 }
 
 // Preview Card

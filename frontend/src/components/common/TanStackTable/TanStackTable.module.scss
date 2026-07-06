@@ -18,10 +18,10 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-surface-soft);
+    background-color: var(--hi-surface);
     color: var(--hi-text-muted) !important;
-    padding: 0.54rem 0.72rem !important;
-    border-bottom: 1px solid var(--hi-border-strong);
+    padding: 0.5rem 0.68rem !important;
+    border-bottom: 1px solid var(--hi-border);
     font-size: 0.73rem;
     font-weight: 600;
     letter-spacing: 0;
@@ -33,7 +33,7 @@
 .card {
   padding: 0 !important;
   overflow: hidden;
-  border-radius: var(--hi-radius-lg) !important;
+  border-radius: var(--hi-radius-md) !important;
   border-color: var(--hi-border) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
@@ -69,10 +69,10 @@
     }
 
     td {
-      padding: 0.62rem 0.72rem !important;
+      padding: 0.58rem 0.68rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
+      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
       font-size: 0.86rem;
       font-weight: 500;
       line-height: 1.35;
@@ -127,6 +127,6 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-surface);
   z-index: 12;
 }
