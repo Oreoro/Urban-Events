@@ -351,18 +351,22 @@ a {
 }
 
 .mantine-Table-table th {
-  background: var(--hi-surface);
-  border-bottom: 1px solid var(--hi-border);
+  background: var(--hi-surface-soft);
+  border-bottom: 1px solid var(--hi-border-strong);
   color: var(--hi-text-muted);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0;
   text-transform: none;
+  line-height: 1.25;
 }
 
 .mantine-Table-table td {
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, white);
-  font-size: 0.91rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
+  color: var(--hi-text-light);
+  font-size: 0.87rem;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .mantine-Table-table tbody tr {
@@ -370,7 +374,7 @@ a {
 }
 
 .mantine-Table-table tbody tr:hover {
-  background: color-mix(in srgb, var(--ue-canvas-soft) 78%, white);
+  background: var(--hi-control-bg-hover);
 }
 
 .mantine-Tabs-list {

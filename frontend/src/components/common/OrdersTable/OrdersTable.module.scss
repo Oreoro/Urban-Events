@@ -4,7 +4,7 @@
 .customerDetails {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
   flex: 1;
 }
@@ -18,7 +18,7 @@
 
 .customerName {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 620;
   line-height: 1.3;
   text-decoration: none;
   color: var(--hi-text);
@@ -35,7 +35,7 @@
 }
 
 .customerEmail {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3;
   color: var(--hi-text-muted);
   overflow: hidden;
@@ -48,7 +48,7 @@
 .orderDetails {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .orderId {
@@ -134,7 +134,7 @@
 
 .amountGross {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 620;
   color: var(--hi-text);
   line-height: 1.3;
 }
@@ -183,7 +183,7 @@
   padding: 4px 8px;
   border-radius: var(--hi-radius-sm);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
@@ -224,6 +224,21 @@
   justify-content: flex-end;
 }
 
+.action {
+  :global(.mantine-Button-root) {
+    min-width: 30px;
+    min-height: 30px;
+    padding-inline: 0;
+    border-radius: var(--hi-radius-sm);
+    color: var(--hi-text-muted);
+  }
+
+  :global(.mantine-Button-root:hover) {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
+}
+
 // Action menu helpers (for mobile/desktop)
 .action {
   .desktopAction {
@@ -245,13 +260,17 @@
 .orderCard {
   display: flex;
   flex-direction: row;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 14px;
+  margin-bottom: 10px;
   align-items: center;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+  background: var(--hi-surface);
 
   @include mixins.respond-below(md) {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
 
   & .colDetails {
@@ -261,8 +280,8 @@
     max-width: 100%;
 
     @include mixins.respond-below(md) {
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     .header {
@@ -278,7 +297,7 @@
     }
 
     .reference {
-      margin-top: 10px;
+      margin-top: 6px;
       font-size: 0.9em;
       color: var(--hi-text-muted);
     }
@@ -289,7 +308,7 @@
     }
 
     .amount {
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       font-weight: 600;
       font-size: 1.2em;
     }
@@ -332,11 +351,11 @@
 
     .status {
       display: flex;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
 
       @include mixins.respond-above(md) {
         place-content: flex-end;
-        margin-bottom: 35px;
+        margin-bottom: 24px;
       }
     }
   }

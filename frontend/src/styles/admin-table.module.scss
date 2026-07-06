@@ -5,6 +5,7 @@
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-lg);
     overflow: hidden;
+    box-shadow: none;
 }
 
 .tableScroll {
@@ -16,22 +17,26 @@
 .table {
     :global {
         thead tr th {
-            padding: 10px 14px;
+            padding: 9px 13px;
             font-weight: 600;
             font-size: 12px;
             text-transform: none;
             letter-spacing: 0;
             color: var(--hi-text-muted);
-            background: var(--hi-surface);
-            border-bottom: 1px solid var(--hi-border);
+            background: var(--hi-surface-soft);
+            border-bottom: 1px solid var(--hi-border-strong);
             white-space: nowrap;
+            line-height: 1.25;
         }
 
         tbody tr td {
-            padding: 11px 14px;
+            padding: 10px 13px;
             vertical-align: middle;
-            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, white);
-            color: var(--hi-text);
+            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
+            color: var(--hi-text-light);
+            font-size: 0.86rem;
+            font-weight: 500;
+            line-height: 1.35;
         }
 
         tbody tr:last-child td {
@@ -69,6 +74,7 @@
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-lg);
+    box-shadow: none;
 }
 
 @include respond-below('md') {
