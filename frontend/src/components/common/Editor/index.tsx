@@ -118,7 +118,7 @@ export const Editor = ({
                     <InputDescription size={size}>{description}</InputDescription>
                 </div>
             )}
-            <RichTextEditor variant={'subtle'} editor={editor}>
+            <RichTextEditor variant={'subtle'} editor={editor} className={classes.editorRoot}>
                 <RichTextEditor.Toolbar sticky className={classes.toolbar}>
                     {editorType === 'full' && (
                         <>

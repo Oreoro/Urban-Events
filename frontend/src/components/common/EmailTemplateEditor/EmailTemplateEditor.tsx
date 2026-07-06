@@ -99,16 +99,16 @@ export const EmailTemplateEditor = ({
         <div className={classes.editor}>
             <form onSubmit={form.onSubmit(handleSave)}>
                 <Stack gap="md">
-                    <Group justify="space-between" align="flex-start">
+                    <Group justify="space-between" align="flex-start" className={classes.editorHeader}>
                         <div>
-                            <Text size="lg" fw={600} mb="xs">
+                            <Text className={classes.editorTitle} mb={4}>
                                 {template ? (
                                     <Trans>Edit {templateTypeLabels[templateType]} Template</Trans>
                                 ) : (
                                     <Trans>Create {templateTypeLabels[templateType]} Template</Trans>
                                 )}
                             </Text>
-                            <Text size="sm" c="dimmed">
+                            <Text className={classes.editorSubtitle}>
                                 <Trans>Customize your email template using Liquid templating</Trans>
                             </Text>
                         </div>
@@ -130,7 +130,7 @@ export const EmailTemplateEditor = ({
                         {...form.getInputProps('subject')}
                     />
 
-                    <Tabs value={activeTab} onChange={(value) => setActiveTab(value || 'editor')}>
+                    <Tabs value={activeTab} onChange={(value) => setActiveTab(value || 'editor')} className={classes.templateTabs}>
                         <Tabs.List>
                             <Tabs.Tab value="editor" leftSection={<IconBraces size={16}/>}>
                                 <Trans>Editor</Trans>
@@ -184,7 +184,7 @@ export const EmailTemplateEditor = ({
                         </Tabs.Panel>
                     </Tabs>
 
-                    <Divider/>
+                    <Divider className={classes.sectionDivider}/>
 
                     <Switch
                         label={<Trans>Template Active</Trans>}

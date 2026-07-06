@@ -1,10 +1,58 @@
 .inputWrapper {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .error {
-  padding: 5px;
+  padding: 6px 2px 0;
 }
 
 .toolbar {
+  background: var(--hi-shell-bg) !important;
+  border-bottom: 1px solid var(--hi-border) !important;
+  padding: 6px !important;
+
+  :global(.mantine-RichTextEditor-controlsGroup) {
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-sm);
+    overflow: hidden;
+    background: var(--hi-surface);
+  }
+
+  :global(.mantine-RichTextEditor-control) {
+    color: var(--hi-text-muted);
+    border-color: var(--hi-border);
+
+    &:hover {
+      color: var(--hi-text);
+      background: var(--hi-control-bg-hover);
+    }
+
+    &[data-active] {
+      color: var(--hi-text);
+      background: var(--hi-control-bg-active);
+    }
+  }
+}
+
+.editorRoot {
+  overflow: hidden;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+  background: var(--hi-surface);
+
+  :global(.mantine-RichTextEditor-content) {
+    background: var(--hi-surface);
+  }
+
+  :global(.ProseMirror) {
+    min-height: 180px;
+    padding: 16px;
+    color: var(--hi-text-light);
+    font-size: 0.92rem;
+    line-height: 1.65;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }

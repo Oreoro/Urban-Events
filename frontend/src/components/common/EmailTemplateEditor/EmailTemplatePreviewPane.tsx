@@ -23,10 +23,10 @@ export const EmailTemplatePreviewPane = ({
             <div className={classes.templatePreview}>
                 <div className={classes.previewHeader}>
                     <Stack gap="xs">
-                        <Text size="sm" fw={500} c="dimmed">
+                        <Text className={classes.previewLabel}>
                             <Trans>Email Preview</Trans>
                         </Text>
-                        <Text size="lg" fw={600}>
+                        <Text className={classes.previewSubject}>
                             {previewData?.subject || subject || <Trans>Subject will appear here</Trans>}
                         </Text>
                     </Stack>
@@ -52,7 +52,7 @@ export const EmailTemplatePreviewPane = ({
                     )}
 
                     {!error && !hasContent && !isLoading && (
-                        <Stack gap="md" align="center" py="xl">
+                        <Stack gap="md" align="center" py="xl" className={classes.previewEmpty}>
                             <IconEye size={48} color="var(--hi-text-muted)"/>
                             <Text c="dimmed" ta="center">
                                 <Trans>Enter a subject and body to see the preview</Trans>
@@ -65,7 +65,7 @@ export const EmailTemplatePreviewPane = ({
             {previewData && (
                 <>
                     <Divider/>
-                    <Text size="xs" c="dimmed" fs="italic">
+                    <Text size="xs" className={classes.previewNote}>
                         <Trans>This preview shows how your email will look with sample data. Actual emails will use real
                             values.</Trans>
                     </Text>
