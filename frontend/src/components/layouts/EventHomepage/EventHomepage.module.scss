@@ -293,21 +293,22 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--accent-soft);
+    background: var(--content-bg-color);
+    border-color: var(--border-color);
     color: var(--primary-text-color);
   }
 
   &.favoriteButton:hover {
-    color: var(--hi-danger);
-    background: color-mix(in srgb, var(--hi-danger) 9%, var(--content-bg-color));
+    color: var(--primary-text-color);
+    background: var(--content-bg-color);
   }
 }
 
 .eventTitle {
   font-family: $font-display;
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 750;
-  line-height: 1.15;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 650;
+  line-height: 1.18;
   letter-spacing: 0;
   color: var(--primary-text-color);
   margin: 0 0 20px;
@@ -326,15 +327,16 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .metaIconBox {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: $radius-md;
-  background: var(--accent-soft);
+  background: var(--content-bg-color);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   transition: background-color $transition-fast, color $transition-fast;
 
   svg {
@@ -343,8 +345,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--primary-color);
-    color: var(--accent-contrast);
+    background: var(--content-bg-color);
+    color: var(--primary-text-color);
   }
 }
 
@@ -398,7 +400,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all $transition-fast;
+  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   svg {
     width: 0.9rem;
@@ -406,9 +408,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--accent-soft);
+    background: var(--content-bg-color);
     color: var(--primary-text-color);
-    border-color: var(--primary-color);
+    border-color: var(--border-color);
   }
 
   @include mixins.respond-below(md) {
@@ -435,8 +437,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .sectionTitle {
   font-family: $font-display;
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.18rem;
+  font-weight: 650;
   letter-spacing: 0;
   color: var(--primary-text-color);
   margin: 0;
@@ -669,8 +671,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-category-title) {
     font-family: $font-display;
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-size: 1.18rem;
+    font-weight: 650;
     letter-spacing: 0;
     color: var(--primary-text-color);
     margin: 0 0 18px;
@@ -692,7 +694,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-row) {
     background: var(--content-bg-color);
-    border-radius: $radius-lg;
+    border-radius: $radius-md;
     border: 1px solid var(--border-color);
     padding: 0;
     transition: background-color $transition-fast, border-color $transition-fast;
@@ -701,24 +703,25 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 
     &:hover {
-      background: color-mix(in srgb, var(--content-bg-color) 88%, var(--accent-soft));
-      border-color: var(--primary-color);
+      background: var(--content-bg-color);
+      border-color: var(--border-color);
     }
   }
 
   :global(.hi-product-row.hi-product-highlighted) {
-    background: var(--accent-soft);
-    border-color: var(--primary-color);
+    background: var(--content-bg-color);
+    border-color: var(--border-color);
 
     &:hover {
-      background: color-mix(in srgb, var(--accent-soft) 80%, var(--content-bg-color));
-      border-color: var(--primary-color);
+      background: var(--content-bg-color);
+      border-color: var(--border-color);
     }
   }
 
   :global(.hi-product-highlight-message) {
-    background: var(--primary-color);
-    color: var(--accent-contrast);
+    background: var(--content-bg-color);
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.75rem;
     font-weight: 600;
     padding: 6px 16px;
@@ -727,8 +730,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-row.selected) {
-    border-color: var(--primary-color);
-    background: var(--accent-soft);
+    border-color: var(--primary-text-color);
+    background: var(--content-bg-color);
   }
 
   :global(.hi-title-row) {
@@ -744,7 +747,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     h3 {
       font-family: $font-display;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.1rem;
       color: var(--primary-text-color);
       margin: 0;
@@ -801,7 +804,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-price-tier-price) {
     font-family: $font-display;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.1rem;
     color: var(--primary-text-color);
   }
@@ -828,10 +831,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         justify-content: center;
         font-size: 0.9rem;
         cursor: pointer;
-        transition: all $transition-fast;
+        transition: background-color $transition-fast, color $transition-fast;
 
         &:hover:not(:disabled) {
-          background: var(--accent-soft);
+          background: var(--content-bg-color);
           color: var(--primary-text-color);
         }
 
@@ -843,7 +846,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
       input {
         font-family: $font-display;
-        font-weight: 700;
+        font-weight: 600;
         min-width: 32px;
         text-align: center;
         font-size: 1rem;
@@ -864,9 +867,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-quantity-error) {
-    background: color-mix(in srgb, var(--hi-danger) 10%, var(--content-bg-color));
-    border: 1px solid color-mix(in srgb, var(--hi-danger) 20%, var(--border-color));
-    color: var(--hi-danger);
+    background: var(--content-bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text-color);
     border-radius: $radius-sm;
     padding: 12px 16px;
     font-size: 0.875rem;
@@ -890,7 +893,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-top: 1px solid var(--border-color);
 
     .hi-product-page-message {
-      background: var(--accent-soft);
+      background: var(--content-bg-color);
+      border: 1px solid var(--border-color);
       border-radius: $radius-sm;
       padding: 12px 16px;
       margin-bottom: 16px;
@@ -903,32 +907,32 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     padding: 18px 24px !important;
     height: auto !important;
-    background: var(--primary-color) !important;
-    background-color: var(--primary-color) !important;
-    color: var(--accent-contrast) !important;
-    border: none !important;
+    background: var(--primary-text-color) !important;
+    background-color: var(--primary-text-color) !important;
+    color: var(--content-bg-color) !important;
+    border: 1px solid var(--primary-text-color) !important;
     border-radius: $radius-md !important;
     font-family: $font-display;
     font-size: 1rem !important;
-    font-weight: 700 !important;
-    text-transform: uppercase;
+    font-weight: 600 !important;
+    text-transform: none;
     letter-spacing: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: all $transition-fast;
+    transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
     // Override Mantine button internals
     :global(.mantine-Button-label) {
-      color: var(--accent-contrast) !important;
+      color: var(--content-bg-color) !important;
     }
 
     &:hover:not(:disabled) {
-      filter: brightness(1.1);
-      background: var(--primary-color) !important;
-      background-color: var(--primary-color) !important;
+      filter: none;
+      background: var(--primary-text-color) !important;
+      background-color: var(--primary-text-color) !important;
     }
 
     &:disabled {
@@ -969,15 +973,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-apply-promo-code-button) {
-    background: var(--primary-color);
-    color: var(--accent-contrast);
-    border: none;
+    background: var(--primary-text-color);
+    color: var(--content-bg-color);
+    border: 1px solid var(--primary-text-color);
     border-radius: $radius-sm;
     font-weight: 600;
     padding: 10px 20px;
 
     &:hover {
-      filter: brightness(1.1);
+      filter: none;
     }
   }
 
@@ -986,7 +990,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.9rem;
 
     b {
-      color: var(--primary-color);
+      color: var(--primary-text-color);
     }
   }
 }
@@ -1016,13 +1020,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 72px;
   height: 72px;
   border-radius: $radius-md;
-  background: var(--primary-color);
+  background: var(--content-bg-color);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-contrast);
+  color: var(--secondary-color);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
@@ -1046,7 +1051,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .organizerName {
   font-family: $font-display;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.15rem;
   color: var(--primary-text-color);
   margin: 0 0 4px;
