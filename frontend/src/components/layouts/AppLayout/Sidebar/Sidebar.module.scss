@@ -7,7 +7,7 @@
   background: var(--hi-shell-bg);
   color: var(--hi-shell-text);
   position: relative;
-  box-shadow: inset -1px 0 0 var(--hi-border);
+  border-right: 1px solid var(--hi-border);
   min-width: 0;
   height: 100vh;
   height: 100dvh;
@@ -24,9 +24,9 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 6px 0 4px;
-    min-height: 48px;
-    margin-bottom: 2px;
+    padding: 7px 0 4px;
+    min-height: 44px;
+    margin-bottom: 1px;
     border-bottom: 0;
     flex-shrink: 0;
 
@@ -34,7 +34,7 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 9px 15px;
+      padding: 8px 14px;
       color: var(--hi-shell-text);
       line-height: 1;
     }
@@ -44,7 +44,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 4px 0 18px;
+    padding: 3px 0 16px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -72,8 +72,8 @@
     }
 
     .sectionHeading {
-      padding: 16px 15px 5px;
-      font-size: 0.68rem;
+      padding: 14px 14px 5px;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
@@ -86,11 +86,12 @@
       display: flex;
       align-items: center;
       color: color-mix(in srgb, var(--hi-shell-text) 70%, transparent);
-      padding: 6px 8px;
+      min-height: 30px;
+      padding: 5px 8px;
       text-decoration: none;
       margin: 1px 8px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       font-weight: 500;
       transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
       position: relative;
@@ -125,7 +126,7 @@
       &.linkActive {
         background: var(--hi-shell-surface);
         color: var(--hi-shell-text);
-        font-weight: 620;
+        font-weight: 600;
         box-shadow: none;
 
         .linkIcon {
@@ -139,7 +140,7 @@
       }
 
       svg {
-        margin-right: 9px;
+        margin-right: 8px;
         min-width: 18px;
         color: color-mix(in srgb, var(--hi-shell-text) 48%, transparent);
         transition: color 0.14s ease;

@@ -167,6 +167,28 @@ a {
 
 .mantine-Modal-content {
   @include mixins.scrollbar();
+  border: 1px solid var(--hi-border);
+  box-shadow: none !important;
+}
+
+.mantine-Modal-header {
+  border-bottom: 1px solid var(--hi-border);
+  background: var(--hi-surface);
+}
+
+.mantine-Modal-title {
+  color: var(--hi-text);
+  font-weight: 650;
+}
+
+.mantine-Modal-close {
+  color: var(--hi-text-muted);
+  border-radius: var(--hi-radius-sm);
+}
+
+.mantine-Modal-close:hover {
+  background: var(--hi-control-bg-hover);
+  color: var(--hi-text);
 }
 
 .mantine-Button-root:hover:not([data-disabled]) {

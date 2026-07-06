@@ -9,7 +9,7 @@
   grid-template-columns: 1fr;
   min-height: 100vh;
   height: 100dvh;
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
   transition: grid-template-columns 160ms ease;
 
   @media (min-width: 768px) {
@@ -17,7 +17,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 248px minmax(0, 1fr);
+    grid-template-columns: 232px minmax(0, 1fr);
 
     &.closed {
       grid-template-areas:
@@ -29,15 +29,16 @@
 
   .main {
     grid-area: main;
-    padding: 26px 36px 56px;
+    padding: 24px 34px 54px;
     overflow: auto;
-    background: var(--hi-surface);
+    background: var(--hi-shell-bg);
     color: var(--hi-text);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
       padding: 16px 14px 44px;
+      background: var(--hi-surface);
     }
   }
 

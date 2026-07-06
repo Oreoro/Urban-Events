@@ -17,6 +17,7 @@ export const BrandWordmark = ({
     onClick,
 }: BrandWordmarkProps) => {
     const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
+    const displayName = appName.replace(/\s+/g, "");
 
     return (
         <span
@@ -25,7 +26,7 @@ export const BrandWordmark = ({
             onClick={onClick}
         >
             <span className={classes.wordmarkText}>
-                {appName}
+                {displayName}
             </span>
         </span>
     );
