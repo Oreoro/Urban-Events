@@ -85,7 +85,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
 
     const ActionMenu = ({webhook}: { webhook: Webhook }) => (
         <Group wrap="nowrap" gap={0} justify="flex-end">
-            <Menu shadow="xs" width={200}>
+            <Menu width={200}>
                 <Menu.Target>
                     <Button size="xs" variant="transparent">
                         <IconDotsVertical/>

@@ -99,10 +99,10 @@ export const GlobalMenu = () => {
 
     return (
         <>
-            <Menu shadow="xs" width={220} position="bottom-end" offset={10}>
+            <Menu width={220} position="bottom-end" offset={10}>
                 <Menu.Target>
                     <UnstyledButton className={classes.menuButton}>
-                        <Avatar className={classes.avatar} radius="xl" fw={800}>
+                        <Avatar className={classes.avatar} radius="sm" fw={800}>
                             {me ? getInitials(me.first_name + " " + me.last_name) : ".."}
                         </Avatar>
                     </UnstyledButton>

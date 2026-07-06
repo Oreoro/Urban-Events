@@ -566,7 +566,7 @@ export const OrderSummaryAndProducts = () => {
                         icon={<IconCheck size={16}/>}
                         color="primary"
                         mb="lg"
-                        radius="lg"
+                        radius="md"
                         className={classes.successAlert}
                     >
                         <Text size="sm" className={classes.successAlertText}>

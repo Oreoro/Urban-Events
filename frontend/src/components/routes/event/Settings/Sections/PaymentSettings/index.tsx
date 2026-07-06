@@ -132,7 +132,7 @@ export const PaymentAndInvoicingSettings = () => {
                                         marginTop: '5px',
                                         marginBottom: '10px'
                                     }}>{t`Offline Payments Settings`}</h4>
-                                    <MantineCard shadow="sm" padding="lg" radius="md" withBorder mb="md">
+                                    <MantineCard shadow="none" padding="lg" radius="md" withBorder mb="md">
                                         <h4 style={{
                                             margin: 0,
                                             fontWeight: 'normal'

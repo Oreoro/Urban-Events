@@ -141,7 +141,7 @@ export const InlineOrderSummary = ({
                             <span className={classes.totalsLabelWithInfo}>
                                 <span>{t`Fees`}</span>
                                 {order.taxes_and_fees_rollup?.fees && order.taxes_and_fees_rollup.fees.length > 0 && (
-                                    <Popover position="top" withArrow shadow="sm" width={220}>
+                                    <Popover position="top" withArrow width={220}>
                                         <Popover.Target>
                                             <span className={classes.infoIcon}>
                                                 <IconInfoCircle size={14} />
@@ -174,7 +174,7 @@ export const InlineOrderSummary = ({
                                 <span className={classes.totalsLabelWithInfo}>
                                     <span>{t`Taxes`}</span>
                                     {order.taxes_and_fees_rollup?.taxes && order.taxes_and_fees_rollup.taxes.length > 0 && (
-                                        <Popover position="top" withArrow shadow="sm" width={220}>
+                                        <Popover position="top" withArrow width={220}>
                                             <Popover.Target>
                                                 <span className={classes.infoIcon}>
                                                     <IconInfoCircle size={14} />

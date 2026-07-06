@@ -15,7 +15,7 @@ export function ColumnVisibilityToggle<TData>({table}: ColumnVisibilityTogglePro
     }
 
     return (
-        <Menu shadow="xs" width={200} closeOnItemClick={false}>
+        <Menu width={200} closeOnItemClick={false}>
             <Menu.Target>
                 <Button size="xs" variant="light" leftSection={<IconColumns size={16}/>}>
                     {t`Columns`}

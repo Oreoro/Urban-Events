@@ -449,7 +449,7 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                 >
                                     {isScheduled ? t`Schedule Message` : (form.values.is_test ? t`Send Test` : t`Send Message`)}
                                 </Button>
-                                <Menu shadow="xs" width={220} position="bottom-end">
+                                <Menu width={220} position="bottom-end">
                                     <Menu.Target>
                                         <Button
                                             type="button"

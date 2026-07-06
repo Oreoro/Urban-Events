@@ -60,8 +60,8 @@ const MigrationNotice = ({stripeData}: { stripeData: StripeConnectAccountsRespon
                 <ThemeIcon
                     size="lg"
                     variant="light"
-                    radius="xl"
-                    color="primary"
+                    radius="md"
+                    color="slate"
                     style={{marginTop: '2px'}}
                 >
                     <IconInfoCircle size={20}/>
@@ -108,7 +108,7 @@ const MigrationBanner = ({stripeData}: { stripeData: StripeConnectAccountsRespon
     return (
         <Card variant="lightGray" className={paymentClasses.migrationBanner}>
             <Group gap="sm" mb="md">
-                <ThemeIcon size="lg" variant="light" radius="xl" color="blue">
+                <ThemeIcon size="lg" variant="light" radius="md" color="slate">
                     <IconInfoCircle size={20}/>
                 </ThemeIcon>
                 <div>
@@ -139,8 +139,8 @@ const PlatformPanel = ({
     isMigrationComplete?: boolean;
 }) => {
     const platformColors = {
-        ca: 'orange',
-        ie: 'green'
+        ca: 'slate',
+        ie: 'slate'
     };
 
     return (
@@ -153,7 +153,7 @@ const PlatformPanel = ({
                     <ThemeIcon
                         size="md"
                         variant="light"
-                        radius="xl"
+                        radius="sm"
                         color={platformColors[platform]}
                     >
                         {account?.is_setup_complete ? <IconCheck size={16}/> : <IconAlertCircle size={16}/>}
@@ -166,7 +166,7 @@ const PlatformPanel = ({
                     </div>
                 </Group>
                 {!hideLabels && platform === 'ca' && isActive && (
-                    <Text size="xs" c="orange" fw={500}>
+                    <Text size="xs" c="dimmed" fw={500}>
                         {t`Upgrade Available`}
                     </Text>
                 )}
@@ -385,7 +385,7 @@ const HiEventsConnectStatus = ({account}: { account: Account }) => {
             content = (
                 <>
                     <Group gap="xs" mb="md">
-                        <ThemeIcon size="sm" variant="light" radius="xl" color="green">
+                        <ThemeIcon size="sm" variant="light" radius="sm" color="slate">
                             <IconCheck size={16}/>
                         </ThemeIcon>
                         <Text size="sm" fw={500}>

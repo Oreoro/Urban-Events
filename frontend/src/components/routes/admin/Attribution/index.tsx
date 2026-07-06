@@ -45,7 +45,7 @@ const Attribution = () => {
                     </SimpleGrid>
                 ) : summary && (
                     <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="md">
-                        <Paper shadow="sm" p="md" radius="md" withBorder>
+                        <Paper shadow="none" p="md" radius="md" withBorder>
                             <div>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Paid Accounts`}
@@ -56,7 +56,7 @@ const Attribution = () => {
                             </div>
                         </Paper>
 
-                        <Paper shadow="sm" p="md" radius="md" withBorder>
+                        <Paper shadow="none" p="md" radius="md" withBorder>
                             <div>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Organic Accounts`}
@@ -67,7 +67,7 @@ const Attribution = () => {
                             </div>
                         </Paper>
 
-                        <Paper shadow="sm" p="md" radius="md" withBorder>
+                        <Paper shadow="none" p="md" radius="md" withBorder>
                             <div>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Referral Accounts`}
@@ -78,7 +78,7 @@ const Attribution = () => {
                             </div>
                         </Paper>
 
-                        <Paper shadow="sm" p="md" radius="md" withBorder>
+                        <Paper shadow="none" p="md" radius="md" withBorder>
                             <div>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Unattributed Accounts`}

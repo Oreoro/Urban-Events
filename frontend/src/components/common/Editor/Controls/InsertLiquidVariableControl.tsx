@@ -104,7 +104,7 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
     }, {} as Record<string, TemplateVariable[]>);
 
     return (
-        <Menu shadow="xs" width={380}>
+        <Menu width={380}>
             <Menu.Target>
                 <RichTextEditor.Control
                     title={t`Insert Variable`}

@@ -127,7 +127,7 @@ const SortableQuestion = ({
                 </Text>
             </div>
 
-            <Menu shadow="xs" width={180} position="bottom-end">
+            <Menu width={180} position="bottom-end">
                 <Menu.Target>
                     <ActionIcon variant="subtle" color="gray" size="sm">
                         <IconDotsVertical size={16}/>
