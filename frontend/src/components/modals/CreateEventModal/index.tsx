@@ -9,7 +9,7 @@ import {hasLength, useForm} from "@mantine/form";
 import {useCreateEvent} from "../../../mutations/useCreateEvent.ts";
 import {Editor} from "../../common/Editor";
 import {useGetOrganizers} from "../../../queries/useGetOrganizers.ts";
-import {IconSparkles, IconUsers, IconX} from "@tabler/icons-react";
+import {IconCalendarEvent, IconSparkles, IconUsers, IconX} from "@tabler/icons-react";
 import classes from "./CreateEventModal.module.scss";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
 import dayjs from "dayjs";
@@ -169,7 +169,7 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
                                 placeholder={t`Select a category`}
                                 data={EventCategories.map((category) => ({
                                     value: category.id,
-                                    label: `${category.emoji} ${category.name}`,
+                                    label: category.name,
                                 }))}
                                 size="lg"
                                 searchable
@@ -242,7 +242,7 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
                                 type={'submit'}
                                 size="xl"
                                 className={classes.createButton}
-                                leftSection={<IconCalendarEvent size={24}/>}
+                                leftSection={<IconCalendarEvent size={18}/>}
                             >
                                 {t`Continue Setup`}
                             </Button>
