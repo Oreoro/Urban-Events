@@ -15,7 +15,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 248px 1fr;
+    grid-template-columns: 236px 1fr;
 
     &.closed {
       grid-template-areas:
@@ -27,9 +27,9 @@
 
   .main {
     grid-area: main;
-    padding: 24px 36px 48px;
+    padding: 22px 34px 48px;
     overflow: auto;
-    background: var(--ue-canvas);
+    background: var(--hi-surface);
 
     @include mixins.scrollbar;
 
@@ -39,17 +39,17 @@
   }
 
   .sidebarOpen {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     background: var(--hi-surface);
-    color: var(--hi-text-light);
+    color: var(--hi-text-muted);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 14px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     box-shadow: none;
@@ -58,7 +58,7 @@
 
     &:hover {
       color: var(--hi-text);
-      background: var(--hi-control-bg-hover);
+      background: var(--hi-shell-surface);
     }
 
     @media (max-width: 767px) {

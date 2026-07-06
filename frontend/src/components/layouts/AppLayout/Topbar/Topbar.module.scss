@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 14px;
-    height: 38px;
+    padding: 0 12px;
+    height: 40px;
     border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
@@ -23,9 +23,9 @@
   }
 
   .breadcrumbsRow {
-    padding: 8px 40px;
+    padding: 7px 34px;
     border-bottom: 1px solid var(--hi-border);
-    background-color: color-mix(in srgb, var(--hi-surface) 92%, transparent);
+    background-color: var(--hi-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,7 +33,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 38px;
+    min-height: 36px;
 
     @include mixins.respond-below(md) {
       padding: 10px 16px;
@@ -59,7 +59,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -100,17 +100,21 @@
     a {
       color: var(--hi-text-muted);
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color 0.14s ease, background-color 0.14s ease;
       position: relative;
+      border-radius: var(--hi-radius-sm);
+      padding: 2px 4px;
+      margin-left: -4px;
       @include mixins.ellipsis();
 
       &:hover {
         color: var(--hi-text);
+        background: var(--hi-shell-surface);
       }
 
       &:last-child {
-        color: var(--hi-text);
-        font-weight: 560;
+        color: var(--hi-text-light);
+        font-weight: 500;
       }
 
       &::after {
@@ -123,6 +127,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    gap: 4px;
   }
 
   .statusToggleContainer {
