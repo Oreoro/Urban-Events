@@ -7,8 +7,10 @@
   background: var(--hi-shell-bg);
   color: var(--hi-shell-text);
   position: relative;
-  box-shadow: inset -1px 0 0 color-mix(in srgb, var(--hi-border) 82%, transparent);
+  box-shadow: inset -1px 0 0 var(--hi-border);
+  min-width: 0;
   height: 100vh;
+  height: 100dvh;
 
   &.closed {
       @media (min-width: 768px) {
@@ -22,8 +24,8 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 5px 0 3px;
-    min-height: 42px;
+    padding: 6px 0 4px;
+    min-height: 48px;
     margin-bottom: 2px;
     border-bottom: 0;
     flex-shrink: 0;
@@ -32,7 +34,9 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 9px 14px;
+      padding: 9px 15px;
+      color: var(--hi-shell-text);
+      line-height: 1;
     }
   }
 
@@ -40,7 +44,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 3px 0 18px;
+    padding: 4px 0 18px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -68,9 +72,9 @@
     }
 
     .sectionHeading {
-      padding: 14px 14px 4px;
+      padding: 16px 15px 5px;
       font-size: 0.68rem;
-      font-weight: 560;
+      font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
       color: var(--hi-shell-muted);
@@ -81,26 +85,26 @@
     .link {
       display: flex;
       align-items: center;
-      color: color-mix(in srgb, var(--hi-shell-text) 72%, transparent);
-      padding: 5px 7px;
+      color: color-mix(in srgb, var(--hi-shell-text) 70%, transparent);
+      padding: 6px 8px;
       text-decoration: none;
-      margin: 1px 7px;
+      margin: 1px 8px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.84rem;
+      font-size: 0.83rem;
       font-weight: 500;
       transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 14px);
+      width: calc(100% - 16px);
       background: none;
       border: none;
       text-align: left;
 
       .navBadge {
-        background: color-mix(in srgb, var(--hi-shell-bg) 72%, white);
+        background: var(--hi-surface);
         color: var(--hi-shell-muted);
-        border: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
+        border: 1px solid var(--hi-border);
         padding: 1px 6px;
         border-radius: 12px;
         font-size: 0.75em;
@@ -113,7 +117,7 @@
       }
 
       &.loading {
-        background-color: var(--hi-shell-bg-strong);
+        background-color: var(--hi-shell-surface);
         color: transparent;
         opacity: 0.72;
       }
@@ -121,7 +125,7 @@
       &.linkActive {
         background: var(--hi-shell-surface);
         color: var(--hi-shell-text);
-        font-weight: 600;
+        font-weight: 620;
         box-shadow: none;
 
         .linkIcon {
@@ -135,9 +139,9 @@
       }
 
       svg {
-        margin-right: 8px;
-        min-width: 17px;
-        color: color-mix(in srgb, var(--hi-shell-text) 50%, transparent);
+        margin-right: 9px;
+        min-width: 18px;
+        color: color-mix(in srgb, var(--hi-shell-text) 48%, transparent);
         transition: color 0.14s ease;
       }
     }
@@ -145,7 +149,7 @@
 
   .sidebarFooter {
     margin-top: auto;
-    padding: 9px 10px 10px;
+    padding: 10px 11px 12px;
     flex-shrink: 0;
     position: relative;
     z-index: 2;
@@ -175,7 +179,7 @@
     justify-content: center;
     position: absolute;
     right: 8px;
-    top: 8px;
+    top: 11px;
     transform: none;
     transition: color 0.15s ease, background-color 0.15s ease;
     z-index: 5;

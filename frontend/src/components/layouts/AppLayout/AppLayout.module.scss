@@ -7,7 +7,9 @@
     "main";
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100dvh;
+  background: var(--hi-surface);
   transition: grid-template-columns 160ms ease;
 
   @media (min-width: 768px) {
@@ -15,7 +17,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 236px 1fr;
+    grid-template-columns: 248px minmax(0, 1fr);
 
     &.closed {
       grid-template-areas:
@@ -27,14 +29,15 @@
 
   .main {
     grid-area: main;
-    padding: 22px 34px 48px;
+    padding: 26px 36px 56px;
     overflow: auto;
-    background: var(--hi-shell-bg);
+    background: var(--hi-surface);
+    color: var(--hi-text);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
-      padding: 14px 12px 44px;
+      padding: 16px 14px 44px;
     }
   }
 
@@ -49,7 +52,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 12px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     box-shadow: none;
@@ -58,7 +61,8 @@
 
     &:hover {
       color: var(--hi-text);
-      background: var(--hi-shell-surface);
+      background: var(--hi-control-bg-hover);
+      border-color: var(--hi-border-strong);
     }
 
     @media (max-width: 767px) {
