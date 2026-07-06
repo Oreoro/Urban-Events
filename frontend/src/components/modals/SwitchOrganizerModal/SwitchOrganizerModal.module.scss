@@ -13,19 +13,17 @@
     gap: 12px;
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid var(--mantine-color-gray-3);
-    border-radius: 8px;
-    background: white;
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
+    background: var(--hi-surface);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     text-align: left;
     position: relative;
 
     &:hover {
-        background: var(--mantine-color-gray-0);
-        border-color: var(--mantine-color-primary-9);
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: var(--hi-surface-soft);
+        border-color: var(--hi-border-strong);
 
         .selectIcon {
             opacity: 1;
@@ -33,17 +31,17 @@
     }
 
     &:active {
-        transform: translateY(0);
+        background: var(--hi-control-bg-active);
     }
 }
 
 .organizerLogo {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: var(--hi-radius-md);
     overflow: hidden;
     flex-shrink: 0;
-    background: var(--mantine-color-gray-1);
+    background: var(--hi-surface-soft);
 
     img {
         width: 100%;
@@ -58,8 +56,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--mantine-color-gray-2);
-    color: var(--mantine-color-gray-6);
+    background: var(--hi-control-bg-active);
+    color: var(--hi-text-muted);
 }
 
 .organizerInfo {
@@ -69,8 +67,8 @@
 
 .organizerName {
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--mantine-color-gray-9);
+    font-weight: 650;
+    color: var(--hi-text);
     margin: 0 0 2px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -78,7 +76,7 @@
 }
 
 .selectIcon {
-    color: var(--mantine-color-primary-9);
+    color: var(--hi-primary);
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -86,7 +84,7 @@
 .emptyState {
     text-align: center;
     padding: 40px 20px;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
 
     svg {
         margin-bottom: 16px;
@@ -106,19 +104,19 @@
     gap: 8px;
     width: 100%;
     padding: 10px 16px;
-    border: 1px dashed var(--mantine-color-gray-4);
-    border-radius: 8px;
+    border: 1px dashed var(--hi-border-strong);
+    border-radius: var(--hi-radius-md);
     background: transparent;
     cursor: pointer;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
 
     &:hover {
-        border-color: var(--mantine-color-primary-5);
-        color: var(--mantine-color-primary-6);
-        background: var(--mantine-color-primary-0);
+        border-color: color-mix(in srgb, var(--hi-primary) 35%, var(--hi-border));
+        color: var(--hi-text);
+        background: color-mix(in srgb, var(--hi-primary) 7%, white);
     }
 }
 
@@ -131,25 +129,25 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
     font-size: 0.8rem;
     font-weight: 500;
     margin-top: 4px;
 
     &:hover {
-        color: var(--mantine-color-gray-8);
+        color: var(--hi-text);
     }
 }
 
 .archivedCount {
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
     font-weight: 400;
 }
 
 .archivedItem {
     composes: organizerItem;
     opacity: 0.6;
-    border-color: var(--mantine-color-gray-2);
+    border-color: var(--hi-border);
 
     &:hover {
         opacity: 0.85;
@@ -159,5 +157,5 @@
 .archiveBadge {
     display: flex;
     align-items: center;
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
 }

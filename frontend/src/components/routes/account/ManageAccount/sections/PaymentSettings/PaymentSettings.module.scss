@@ -5,7 +5,7 @@
   }
 
   p {
-    color: var(--hi-color-gray-dark);
+    color: var(--hi-text-muted);
 
     &:last-child {
       margin-bottom: 0;
@@ -14,14 +14,14 @@
 }
 
 .migrationNotice {
-  background: var(--mantine-color-blue-0);
-  border: 1px solid var(--mantine-color-blue-2);
-  border-radius: 8px;
+  background: color-mix(in srgb, var(--hi-primary) 7%, white);
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border));
+  border-radius: var(--hi-radius-md);
   margin-bottom: 20px;
 }
 
 .migrationBanner {
-  border: 2px solid var(--mantine-color-blue-4);
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 22%, var(--hi-border));
   margin-bottom: 16px;
 }
 
@@ -30,12 +30,12 @@
   transition: all 0.2s ease;
 
   &.activePlatform {
-    border: 2px solid var(--mantine-color-green-5);
-    background: var(--mantine-color-green-0);
+    border: 1px solid color-mix(in srgb, var(--hi-success) 30%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-success) 7%, white);
 
     &.ca {
-      border-color: var(--mantine-color-orange-5);
-      background: var(--mantine-color-orange-0);
+      border-color: color-mix(in srgb, var(--hi-warning) 30%, var(--hi-border));
+      background: color-mix(in srgb, var(--hi-warning) 8%, white);
     }
   }
 

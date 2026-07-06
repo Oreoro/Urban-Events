@@ -36,12 +36,7 @@
 }
 
 .logo {
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
+  transition: opacity 0.15s ease;
 }
 
 .content {
@@ -51,11 +46,8 @@
   background: var(--hi-surface-raised);
   padding: var(--mantine-spacing-xl);
   border-radius: var(--hi-radius-lg);
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.04);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.68);
+  box-shadow: var(--hi-shadow-sm);
+  border: 1px solid var(--hi-border);
   position: relative;
 
   @include mixins.respond-below(md) {
@@ -73,7 +65,7 @@
 }
 
 .title {
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: var(--mantine-spacing-md);
   font-size: clamp(24px, 5vw, 36px);
   line-height: 1.2;
@@ -94,7 +86,7 @@
   line-height: 1.6;
   margin-bottom: var(--mantine-spacing-lg);
   font-size: clamp(16px, 2.5vw, 18px);
-  color: var(--mantine-color-gray-7);
+  color: var(--hi-text-light);
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -111,52 +103,21 @@
 }
 
 .button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-weight: 650;
   min-height: 44px; // Better touch target on mobile
   font-size: clamp(14px, 2vw, 16px);
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-      0 8px 25px rgba(147, 51, 234, 0.25),
-      0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
   }
 
   &:active {
-    transform: translateY(0);
+    box-shadow: none;
   }
 
   @include mixins.respond-below(sm) {
     width: 100%;
     max-width: 280px;
-  }
-}
-
-// Animation keyframes
-@keyframes drift {
-  0%, 100% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  25% {
-    transform: translateX(20px) translateY(-30px) scale(1.1);
-  }
-  50% {
-    transform: translateX(-15px) translateY(20px) scale(0.9);
-  }
-  75% {
-    transform: translateX(25px) translateY(15px) scale(1.05);
-  }
-}
-
-@keyframes drift-slow {
-  0%, 100% {
-    transform: translateX(0) translateY(0) scale(1);
-  }
-  33% {
-    transform: translateX(-25px) translateY(20px) scale(1.08);
-  }
-  66% {
-    transform: translateX(20px) translateY(-25px) scale(0.92);
   }
 }

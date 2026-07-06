@@ -9,14 +9,14 @@
     align-items: center;
     gap: 8px;
     padding: 10px 14px;
-    background: var(--mantine-color-gray-0);
-    border: 1px solid var(--mantine-color-gray-1);
-    border-radius: 12px;
-    transition: all 0.15s ease;
+    background: var(--hi-surface-soft);
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     
     &:hover {
-        background: var(--mantine-color-gray-1);
-        border-color: var(--mantine-color-gray-2);
+        background: var(--hi-control-bg-active);
+        border-color: var(--hi-border-strong);
         
         .copyButton {
             opacity: 1;
@@ -25,7 +25,7 @@
 }
 
 .codeText {
-    color: var(--mantine-color-gray-7);
+    color: var(--hi-text-light);
     font-weight: 500;
     letter-spacing: 0;
     font-size: 0.85rem;
@@ -40,7 +40,7 @@
     font-size: 0.75rem;
     
     &:hover {
-        background: var(--mantine-color-gray-2);
+        background: var(--hi-control-bg-active);
         opacity: 1;
     }
 }
@@ -59,52 +59,52 @@
     align-items: center;
     padding: 6px 8px;
     border-radius: 8px;
-    background: var(--mantine-color-gray-0);
-    border: 1px solid var(--mantine-color-gray-1);
-    transition: all 0.15s ease;
+    background: var(--hi-surface-soft);
+    border: 1px solid var(--hi-border);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     width: 70px;
     flex: 1;
     
     &:hover {
-        background: var(--mantine-color-gray-1);
-        border-color: var(--mantine-color-gray-2);
+        background: var(--hi-control-bg-active);
+        border-color: var(--hi-border-strong);
     }
     
     &:first-child {
         .statIcon {
-            color: var(--mantine-color-gray-5);
+            color: var(--hi-text-muted);
         }
         
         .statValue {
-            color: var(--mantine-color-gray-8);
+            color: var(--hi-text);
         }
     }
     
     &:last-child {
         .statIcon {
-            color: var(--mantine-color-gray-5);
+            color: var(--hi-text-muted);
         }
         
         .statValue {
-            color: var(--mantine-color-gray-8);
+            color: var(--hi-text);
         }
     }
 }
 
 .statIcon {
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
     flex-shrink: 0;
 }
 
 .statValue {
     font-weight: 600;
     font-size: 0.8rem;
-    color: var(--mantine-color-gray-8);
+    color: var(--hi-text);
 }
 
 .statLabel {
     font-size: 0.65rem;
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0;
@@ -119,11 +119,11 @@
 
 .affiliateName {
     font-weight: 500;
-    color: var(--mantine-color-gray-8);
+    color: var(--hi-text);
     font-size: 0.9rem;
 }
 
 .affiliateEmail {
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
     font-size: 0.8rem;
 }

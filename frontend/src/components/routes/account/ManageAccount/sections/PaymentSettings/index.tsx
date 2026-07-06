@@ -61,30 +61,30 @@ const MigrationNotice = ({stripeData}: { stripeData: StripeConnectAccountsRespon
                     size="lg"
                     variant="light"
                     radius="xl"
-                    color="blue"
+                    color="primary"
                     style={{marginTop: '2px'}}
                 >
                     <IconInfoCircle size={20}/>
                 </ThemeIcon>
 
                 <div style={{flex: 1}}>
-                    <Title order={3} mb="sm" c="blue.8">{t`Action Required: Reconnect Your Stripe Account`}</Title>
+                    <Title order={3} mb="sm" c="var(--hi-text)">{t`Action Required: Reconnect Your Stripe Account`}</Title>
 
-                    <Text size="sm" mb="md" lh={1.5} c="dark.6">
+                    <Text size="sm" mb="md" lh={1.5} c="var(--hi-text-light)">
                         {t`We've officially moved our headquarters to Ireland 🇮🇪. As part of this transition, we're now using Stripe Ireland instead of Stripe Canada. To keep your payouts running smoothly, you'll need to reconnect your Stripe account.`}
                     </Text>
 
                     <div style={{
-                        background: 'var(--mantine-color-gray-0)',
+                        background: 'var(--hi-surface)',
                         padding: '16px',
-                        borderRadius: '6px',
+                        borderRadius: 'var(--hi-radius-md)',
                         marginBottom: '16px',
-                        border: '1px solid var(--mantine-color-gray-2)'
+                        border: '1px solid var(--hi-border)'
                     }}>
-                        <Text size="sm" fw={500} mb="sm" c="dark.7">{t`Here's what to expect:`}</Text>
-                        <Text size="xs" mb="xs" c="dark.6">• {t`Takes just a few minutes`}</Text>
-                        <Text size="xs" mb="xs" c="dark.6">• {t`No impact on your current or past transactions`}</Text>
-                        <Text size="xs" c="dark.6">• {t`Payments will continue to flow without interruption`}</Text>
+                        <Text size="sm" fw={500} mb="sm" c="var(--hi-text)">{t`Here's what to expect:`}</Text>
+                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`Takes just a few minutes`}</Text>
+                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`No impact on your current or past transactions`}</Text>
+                        <Text size="xs" c="var(--hi-text-light)">• {t`Payments will continue to flow without interruption`}</Text>
                     </div>
 
                     <Text size="xs" c="dimmed" fs="italic">

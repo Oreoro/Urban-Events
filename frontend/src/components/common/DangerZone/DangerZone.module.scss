@@ -1,12 +1,12 @@
 .dangerZone {
-  border: 1px solid var(--mantine-color-red-3);
-  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--hi-danger) 24%, var(--hi-border));
+  border-radius: var(--hi-radius-md);
   padding: 20px;
   margin-bottom: 20px;
 }
 
 .heading {
-  color: var(--mantine-color-red-7);
+  color: var(--hi-danger);
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 15px 0;
@@ -17,7 +17,7 @@
 
 .section {
   padding: 15px 0;
-  border-bottom: 1px solid var(--mantine-color-gray-2);
+  border-bottom: 1px solid var(--hi-border);
 
   &:last-child {
     border-bottom: none;
@@ -36,7 +36,7 @@
 }
 
 .sectionDescription {
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   font-size: 13px;
   margin: 0 0 12px 0;
 }

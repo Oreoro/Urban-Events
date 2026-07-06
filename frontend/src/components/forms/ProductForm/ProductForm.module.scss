@@ -2,13 +2,13 @@
   position: relative;
   padding: var(--hi-spacing-md) var(--hi-spacing-lg);
   margin-bottom: var(--hi-spacing-md);
-  border-left: 3px solid var(--mantine-color-blue-5);
+  border-left: 2px solid var(--hi-primary);
 
   h3 {
     margin: 0 0 var(--hi-spacing-sm) 0;
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--mantine-color-gray-7);
+    font-weight: 650;
+    color: var(--hi-text-light);
   }
 }
 
@@ -46,36 +46,36 @@
   margin-top: var(--hi-spacing-sm);
   margin-bottom: var(--hi-spacing-xl);
   cursor: pointer;
-  background: var(--mantine-color-gray-0);
-  border: 1px solid var(--mantine-color-gray-2);
-  border-radius: var(--mantine-radius-md);
-  transition: all 0.15s ease;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: var(--mantine-color-gray-1);
-    border-color: var(--mantine-color-gray-3);
+    background: var(--hi-surface-soft);
+    border-color: var(--hi-border-strong);
 
     .toggleLabel {
-      color: var(--mantine-color-gray-8);
+      color: var(--hi-text);
     }
 
     svg {
-      color: var(--mantine-color-gray-6);
+      color: var(--hi-text-light);
     }
   }
 
   &:focus-visible {
-    outline: 2px solid var(--mantine-color-violet-4);
+    outline: 2px solid var(--hi-primary);
     outline-offset: 2px;
   }
 
   &.hasReminder {
-    border-color: var(--mantine-color-orange-3);
-    background: var(--mantine-color-orange-0);
+    border-color: color-mix(in srgb, var(--hi-warning) 28%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-warning) 8%, white);
 
     &:hover {
-      background: var(--mantine-color-orange-1);
-      border-color: var(--mantine-color-orange-4);
+      background: color-mix(in srgb, var(--hi-warning) 12%, white);
+      border-color: color-mix(in srgb, var(--hi-warning) 38%, var(--hi-border));
     }
   }
 
@@ -86,7 +86,7 @@
 
     svg {
       flex-shrink: 0;
-      color: var(--mantine-color-gray-5);
+      color: var(--hi-text-muted);
       transition: color 0.15s ease;
     }
   }
@@ -94,7 +94,7 @@
   .toggleLabel {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--mantine-color-gray-7);
+    color: var(--hi-text-light);
     transition: color 0.15s ease;
   }
 
@@ -104,7 +104,7 @@
 
   .toggleDescription {
     font-size: 0.8rem;
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
   }
 
   .taxReminder {
@@ -113,10 +113,10 @@
     gap: 6px;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--mantine-color-orange-7);
+    color: var(--hi-warning);
 
     svg {
-      color: var(--mantine-color-orange-5);
+      color: var(--hi-warning);
     }
   }
 }

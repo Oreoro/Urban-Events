@@ -175,7 +175,7 @@ const HomepageDesigner = () => {
                                             <Text fw={500} size="sm">{t`Cover Image`}</Text>
                                             <Tooltip
                                                 label={t`We recommend dimensions of 1950px by 650px, a ratio of 3:1, and a maximum file size of 5MB`}>
-                                                <IconHelp size={16} style={{ color: 'var(--mantine-color-gray-6)' }}/>
+                                                <IconHelp size={16} style={{ color: 'var(--hi-text-muted)' }}/>
                                             </Tooltip>
                                         </Group>
                                         <ImageUploadDropzone

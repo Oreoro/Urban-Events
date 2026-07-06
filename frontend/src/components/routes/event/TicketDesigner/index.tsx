@@ -142,7 +142,7 @@ const TicketDesigner = () => {
                                                     <Text fw={500} size="sm">{t`Logo`}</Text>
                                                     <Tooltip
                                                         label={t`We recommend a square logo with minimum dimensions of 200x200px`}>
-                                                        <IconHelp size={16} style={{ color: 'var(--mantine-color-gray-6)' }}/>
+                                                        <IconHelp size={16} style={{ color: 'var(--hi-text-muted)' }}/>
                                                     </Tooltip>
                                                 </Group>
                                                 <ImageUploadDropzone

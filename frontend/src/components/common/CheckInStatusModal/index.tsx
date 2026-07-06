@@ -72,18 +72,18 @@ export const CheckInStatusModal = ({
         return (
             <Box key={list.id} className={classes.listItem} style={{
                 opacity: isEligible ? 1 : 0.6,
-                borderColor: isEligible ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-gray-1)'
+                borderColor: isEligible ? 'var(--hi-border)' : 'color-mix(in srgb, var(--hi-border) 62%, white)'
             }}>
                 <Group justify="space-between" wrap="nowrap">
                     <Group gap="sm" style={{flex: 1}}>
                         {isEligible ? (
                             isCheckedIn ? (
-                                <IconCheck size={20} color="var(--mantine-color-green-6)"/>
+                                <IconCheck size={20} color="var(--hi-success)"/>
                             ) : (
-                                <IconX size={20} color="var(--mantine-color-gray-5)"/>
+                                <IconX size={20} color="var(--hi-text-muted)"/>
                             )
                         ) : (
-                            <IconX size={20} color="var(--mantine-color-gray-4)"/>
+                            <IconX size={20} color="var(--hi-text-muted)"/>
                         )}
                         <Box style={{flex: 1}}>
                             <Text size="sm" fw={500}>

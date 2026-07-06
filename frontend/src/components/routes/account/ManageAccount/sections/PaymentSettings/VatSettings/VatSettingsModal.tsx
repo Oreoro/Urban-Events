@@ -21,14 +21,14 @@ export const VatSettingsModal = ({account, opened, onClose}: VatSettingsModalPro
                 {t`As your business is based in the EU, we need to determine the correct VAT treatment for our platform fees:`}
             </Text>
             <div style={{
-                background: 'var(--mantine-color-gray-0)',
+                background: 'var(--hi-surface-soft)',
                 padding: '12px',
-                borderRadius: '6px',
+                borderRadius: 'var(--hi-radius-md)',
                 marginBottom: '16px',
-                border: '1px solid var(--mantine-color-gray-2)'
+                border: '1px solid var(--hi-border)'
             }}>
-                <Text size="xs" mb="xs" c="dark.6">• {t`EU VAT-registered businesses: Reverse charge mechanism applies (0% - Article 196 of VAT Directive 2006/112/EC)`}</Text>
-                <Text size="xs" c="dark.6">• {t`Non-VAT registered businesses or individuals: Irish VAT at 23% applies`}</Text>
+                <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`EU VAT-registered businesses: Reverse charge mechanism applies (0% - Article 196 of VAT Directive 2006/112/EC)`}</Text>
+                <Text size="xs" c="var(--hi-text-light)">• {t`Non-VAT registered businesses or individuals: Irish VAT at 23% applies`}</Text>
             </div>
 
             <VatSettingsForm

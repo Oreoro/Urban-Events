@@ -14,14 +14,14 @@
   display: flex;
   flex-direction: column;
   padding: 0.875rem;
-  background: var(--mantine-color-gray-0);
-  border: 1px solid var(--mantine-color-gray-2);
-  border-radius: var(--mantine-radius-sm);
-  transition: all 0.2s ease;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    border-color: var(--mantine-color-gray-3);
-    transform: translateY(-1px);
+    background: var(--hi-surface-soft);
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -43,14 +43,14 @@
 
 .product {
   margin-top: 0.25rem;
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
 }
 
 .actionButton {
   margin-left: auto;
 
   &:hover {
-    background-color: var(--mantine-color-blue-0);
+    background-color: color-mix(in srgb, var(--hi-primary) 8%, white);
   }
 }
 
@@ -64,7 +64,7 @@
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   padding-left: .4rem;
-  border-top: 1px solid var(--mantine-color-gray-2);
+  border-top: 1px solid var(--hi-border);
 }
 
 .questionAnswer {
@@ -83,7 +83,7 @@
 }
 
 .answer {
-  color: var(--mantine-color-gray-7);
+  color: var(--hi-text-light);
   padding-left: 1.5rem;
   font-size: var(--mantine-font-size-sm);
 }
