@@ -282,18 +282,22 @@ const Checkout = () => {
                 withCloseButton={false}
                 centered
                 size="m"
+                classNames={{
+                    content: classes.checkoutModalContent,
+                    body: classes.checkoutModalBody,
+                }}
             >
-                <div style={{textAlign: 'center', padding: '20px 0'}}>
-                    <h3 style={{color: 'var(--checkout-text-primary)', margin: '0 0 8px 0'}}>
+                <div className={classes.checkoutModal}>
+                    <h3 className={classes.checkoutModalTitle}>
                         {t`You have run out of time to complete your order.`}
                     </h3>
-                    <p style={{color: 'var(--checkout-text-secondary)', margin: '0'}}>
+                    <p className={classes.checkoutModalText}>
                         {t`Please return to the event page to start over.`}
                     </p>
                     <Button
                         onClick={handleReturn}
                         variant="filled"
-                        mt="xl"
+                        className={classes.checkoutModalPrimary}
                     >
                         {t`Return to Event Page`}
                     </Button>
@@ -306,26 +310,31 @@ const Checkout = () => {
                 withCloseButton={false}
                 centered
                 size="m"
+                classNames={{
+                    content: classes.checkoutModalContent,
+                    body: classes.checkoutModalBody,
+                }}
             >
-                <div style={{textAlign: 'center', padding: '20px 0'}}>
-                    <h3 style={{color: 'var(--checkout-text-primary)', margin: '0 0 8px 0'}}>
+                <div className={classes.checkoutModal}>
+                    <h3 className={classes.checkoutModalTitle}>
                         {t`Are you sure you want to leave?`}
                     </h3>
-                    <p style={{color: 'var(--checkout-text-secondary)', margin: '0'}}>
+                    <p className={classes.checkoutModalText}>
                         {t`Your current order will be lost.`}
                     </p>
-                    <Group justify="center" gap="md" mt="xl">
+                    <Group justify="center" gap="sm" className={classes.checkoutModalActions}>
                         <Button
                             onClick={handleAbandonCancel}
                             variant="subtle"
+                            className={classes.checkoutModalSecondary}
                         >
                             {t`No, keep me here`}
                         </Button>
                         <Button
                             onClick={handleAbandonConfirm}
                             variant="outline"
-                            color="gray"
                             loading={abandonOrderMutation.isPending}
+                            className={classes.checkoutModalDanger}
                         >
                             {t`Yes, cancel my order`}
                         </Button>
