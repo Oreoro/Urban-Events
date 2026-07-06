@@ -2,18 +2,18 @@
 .contactDetails {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .contactName {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 650;
   line-height: 1.3;
   color: var(--hi-text);
 }
 
 .contactEmail {
-  font-size: 13px;
+  font-size: 0.75rem;
   line-height: 1.3;
   color: var(--hi-text-muted);
   overflow: hidden;
@@ -27,10 +27,10 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 12px;
+  padding: 3px 7px;
   border-radius: var(--hi-radius-sm);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   white-space: nowrap;
 
   &[data-status="WAITING"] {
@@ -69,4 +69,16 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  :global(.mantine-Button-root) {
+    min-width: 28px;
+    min-height: 28px;
+    padding-inline: 0;
+    color: var(--hi-text-muted);
+  }
+
+  :global(.mantine-Button-root:hover) {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
 }

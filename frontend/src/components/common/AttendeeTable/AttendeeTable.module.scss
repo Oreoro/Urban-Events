@@ -3,14 +3,14 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
 }
 
 .attendeeAvatar {
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg);
   color: var(--hi-text-muted);
-  border: 1px solid var(--hi-border);
-  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  font-weight: 650;
 }
 
 .nameRow {
@@ -20,8 +20,8 @@
 }
 
 .attendeeName {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 650;
   line-height: 1.3;
   text-decoration: none;
   color: var(--hi-text);
@@ -32,9 +32,15 @@
 }
 
 .attendeeId {
-  font-size: 12px;
+  width: fit-content;
+  padding: 1px 5px;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-shell-bg);
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--hi-text-muted);
-  font-family: 'Courier New', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   line-height: 1.3;
 }
 
@@ -45,7 +51,7 @@
 }
 
 .attendeeEmail {
-  font-size: 13px;
+  font-size: 0.75rem;
   line-height: 1.3;
   color: var(--hi-text-muted);
   overflow: hidden;
@@ -68,12 +74,12 @@
 .orderTicketContainer {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
 }
 
 .ticketName {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 650;
   color: var(--hi-text);
   line-height: 1.3;
   overflow: hidden;
@@ -82,9 +88,15 @@
 }
 
 .orderId {
-  font-size: 11px;
+  width: fit-content;
+  padding: 1px 5px;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-shell-bg);
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--hi-text-muted);
-  font-family: 'Courier New', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   line-height: 1.3;
 
   :hover {
@@ -93,7 +105,7 @@
 }
 
 .registrationDate {
-  font-size: 12px;
+  font-size: 0.74rem;
   color: var(--hi-text-muted);
   line-height: 1.3;
 }
@@ -101,13 +113,13 @@
 .checkInButton {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border: 1px solid var(--hi-border);
+  gap: 5px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
   background: var(--hi-surface);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 0.76rem;
+  font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
 
@@ -126,10 +138,10 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 9px;
+  padding: 3px 7px;
   border-radius: var(--hi-radius-sm);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   white-space: nowrap;
 
   &[data-status="ACTIVE"] {
