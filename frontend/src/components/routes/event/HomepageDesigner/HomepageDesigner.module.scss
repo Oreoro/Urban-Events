@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: row;
   margin: calc(var(--hi-spacing-lg) * -1);
+  min-height: calc(100dvh - 82px);
+  background: var(--hi-surface);
 
   h2 {
     margin-bottom: 0;
@@ -20,11 +22,11 @@
   }
 
   .sidebar {
-    min-width: 380px;
-    max-width: 380px;
-    background-color: var(--hi-surface);
-    padding: var(--hi-spacing-lg);
-    height: calc(100vh - 55px);
+    min-width: 360px;
+    max-width: 360px;
+    background-color: var(--hi-shell-bg);
+    padding: 18px;
+    height: calc(100dvh - 82px);
     overflow-y: auto;
     position: sticky;
     top: 0;
@@ -47,15 +49,16 @@
     }
 
     .header {
-      margin-bottom: var(--hi-spacing-lg);
-      padding-bottom: var(--hi-spacing-md);
+      margin-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--hi-border);
       
       h2 {
-        margin: 0 0 var(--hi-spacing-xs) 0;
-        font-size: 1.05rem;
-        font-weight: 600;
+        margin: 0 0 4px 0;
+        font-size: 1rem;
+        font-weight: 650;
         color: var(--hi-text);
+        line-height: 1.25;
       }
     }
 
@@ -64,20 +67,22 @@
       
       .accordionItem {
         border: 1px solid var(--hi-border);
-        border-radius: var(--hi-radius-md);
+        border-radius: var(--hi-radius-lg);
         overflow: hidden;
+        background: var(--hi-surface);
         
         &:not(:last-child) {
-          margin-bottom: var(--hi-spacing-md);
+          margin-bottom: 8px;
         }
 
         :global(.mantine-Accordion-control) {
-          padding: var(--hi-spacing-md);
+          padding: 10px 12px;
           background: var(--hi-surface);
           color: var(--hi-text);
+          font-weight: 600;
           
           &:hover {
-            background: var(--hi-surface-soft);
+            background: var(--hi-control-bg-hover);
           }
           
           &[data-active] {
@@ -91,7 +96,7 @@
         }
 
         :global(.mantine-Accordion-content) {
-          padding: var(--hi-spacing-lg);
+          padding: 14px;
         }
       }
     }
@@ -130,10 +135,11 @@
   }
 
   .previewContainer {
-    height: calc(100vh - 55px);
+    height: calc(100dvh - 82px);
     width: 100%;
     overflow: hidden;
     min-width: 400px;
+    background: var(--hi-surface);
 
     @include mixins.respond-below(sm) {
       padding: 20px;
@@ -150,16 +156,18 @@
       width: 100%;
       height: 100%;
       min-height: 500px;
+      background: var(--hi-surface);
       --scale: 0.75;
 
       iframe {
         transform: scale(var(--scale));
         transform-origin: 0 0;
-        width: calc(100% / var(--scale));
-        height: calc(100% / var(--scale));
-        border: none;
+        border: 1px solid var(--hi-border);
+        border-radius: var(--hi-radius-lg);
         position: absolute;
-        inset: 0;
+        inset: 18px;
+        width: calc((100% - 36px) / var(--scale));
+        height: calc((100% - 36px) / var(--scale));
       }
     }
 

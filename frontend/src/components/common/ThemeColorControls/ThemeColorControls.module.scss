@@ -4,7 +4,7 @@
 
 .section {
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   background: var(--hi-surface);
   padding: 12px;
 }
@@ -18,13 +18,13 @@
   width: 100%;
   padding: 8px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   background: var(--hi-surface);
   color: var(--hi-text);
   transition: background-color 160ms ease, border-color 160ms ease;
 
   &:hover:not(:disabled) {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
     box-shadow: none;
     transform: none;
@@ -41,7 +41,7 @@
   }
 
   &[data-active="true"] {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-active);
     border-color: var(--hi-border-strong);
     box-shadow: none;
   }
@@ -65,7 +65,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--hi-surface);
   box-shadow: none;
 }
 
@@ -83,16 +83,16 @@
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: 999px;
+  border-radius: var(--hi-radius-sm);
   background: var(--hi-text);
-  color: #ffffff;
+  color: var(--hi-color-white);
 }
 
 .previewShell {
   display: grid;
   gap: 10px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   padding: 12px;
   min-height: 178px;
 }
@@ -101,7 +101,7 @@
   display: inline-block;
   width: 28px;
   height: 28px;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
 }
 
@@ -132,7 +132,7 @@
 
 .previewCard {
   border: 1px solid;
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--hi-radius-lg);
   padding: 12px;
 }
 
