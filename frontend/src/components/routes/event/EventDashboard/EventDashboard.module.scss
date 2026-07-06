@@ -21,11 +21,11 @@
 }
 
 .chartCard {
-  padding: 15px 16px 12px !important;
+  padding: 14px 15px 11px !important;
   margin: 0 !important;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
-  border-radius: var(--hi-radius-lg) !important;
+  border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
 
   .chartCardTitle {
@@ -79,11 +79,11 @@
 .setupCard {
   margin: 0 !important;
   position: relative;
-  padding: 15px;
+  padding: 14px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   box-shadow: none;
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 }
 
 .dismissButton {
@@ -156,7 +156,7 @@
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 12px 14px;
+  padding: 11px 13px;
   background: var(--hi-surface);
   border-radius: 0;
   border: 0;
@@ -223,6 +223,7 @@
 .checkboxComplete {
   background-color: var(--hi-text);
   border-color: var(--hi-text);
+  color: var(--hi-color-white);
 }
 
 /* Tablet and smaller desktop styles */
@@ -295,8 +296,8 @@
   border: 1px solid var(--hi-border);
   box-shadow: none !important;
   color: var(--hi-text);
-  padding: 18px;
-  border-radius: var(--hi-radius-lg);
+  padding: 16px;
+  border-radius: var(--hi-radius-md);
   position: relative;
   overflow: hidden;
 

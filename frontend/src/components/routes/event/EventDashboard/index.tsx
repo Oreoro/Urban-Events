@@ -12,7 +12,7 @@ import {formatCurrency} from "../../../../utilites/currency.ts";
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {Button, SegmentedControl, Skeleton, Tooltip} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {IconAlertCircle, IconRocket, IconX} from "@tabler/icons-react";
+import {IconAlertCircle, IconCheck, IconRocket, IconX} from "@tabler/icons-react";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
@@ -27,9 +27,9 @@ import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 export const DashBoardSkeleton = () => {
     return (
         <>
-            <Skeleton height={96} radius="lg" mb="14px"/>
-            <Skeleton height={320} radius="lg" mb="14px"/>
-            <Skeleton height={320} radius="lg"/>
+            <Skeleton height={96} radius="md" mb="14px"/>
+            <Skeleton height={320} radius="md" mb="14px"/>
+            <Skeleton height={320} radius="md"/>
         </>
     );
 }
@@ -178,14 +178,7 @@ export const EventDashboard = () => {
                                                         [classes.checkboxComplete]: event?.status === 'LIVE',
                                                     })}
                                                 >
-                                                    {event?.status === 'LIVE' && (
-                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13.3333 4L6.00001 11.3333L2.66667 8"
-                                                                  stroke="white" strokeWidth="2" strokeLinecap="round"
-                                                                  strokeLinejoin="round"/>
-                                                        </svg>
-                                                    )}
+                                                    {event?.status === 'LIVE' && <IconCheck size={13} stroke={2.4}/>}
                                                 </div>
                                             </div>
                                             {t`Make your event live`}
@@ -223,14 +216,7 @@ export const EventDashboard = () => {
                                                         [classes.checkboxComplete]: account?.stripe_connect_setup_complete,
                                                     })}
                                                 >
-                                                    {account?.stripe_connect_setup_complete && (
-                                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M13.3333 4L6.00001 11.3333L2.66667 8"
-                                                                  stroke="white" strokeWidth="2" strokeLinecap="round"
-                                                                  strokeLinejoin="round"/>
-                                                        </svg>
-                                                    )}
+                                                    {account?.stripe_connect_setup_complete && <IconCheck size={13} stroke={2.4}/>}
                                                 </div>
                                             </div>
                                             {t`Connect payment processing`}

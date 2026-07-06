@@ -2,7 +2,7 @@
 
 .overviewPanel {
   padding: 0;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -17,9 +17,9 @@
 .headerSection {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   padding-bottom: 0;
   border-bottom: 0;
 
@@ -154,7 +154,7 @@
 .statisticsContainer {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
   margin: 0;
   background: transparent;
   border: 0;
@@ -182,9 +182,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
-  min-height: 78px;
-  padding: 14px 13px;
+  gap: 8px;
+  min-height: 72px;
+  padding: 12px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
@@ -201,12 +201,12 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: 5px;
+  gap: 4px;
 }
 
 .statValue {
   color: var(--hi-text);
-  font-size: clamp(1rem, 1.18vw, 1.22rem);
+  font-size: clamp(0.98rem, 1.1vw, 1.18rem);
   font-weight: 650;
   line-height: 1.12;
   letter-spacing: 0;
@@ -217,17 +217,20 @@
   color: var(--hi-text-muted);
   font-size: 0.72rem;
   font-weight: 560;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .statIcon {
   display: grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
-  color: color-mix(in srgb, var(--hi-text-muted) 70%, transparent);
+  width: 26px;
+  height: 26px;
+  color: var(--hi-text-muted);
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
   flex: 0 0 auto;
-  margin-top: 1px;
+  margin-top: 0;
 }
 
 .noticeCard {
@@ -240,11 +243,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 14px;
 
   @include mixins.respond-above(lg) {
     grid-template-columns: minmax(300px, 0.82fr) 1.36fr;
-    gap: 18px;
+    gap: 14px;
     align-items: stretch;
   }
 }
@@ -286,10 +289,10 @@
   font-weight: 650;
   color: var(--hi-text);
   margin: 0;
-  padding: 12px 14px 10px;
+  padding: 10px 12px 9px;
   border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
 }
 
 // Orders list
@@ -312,7 +315,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 11px 14px;
+  padding: 10px 12px;
   border: 0 !important;
   border-bottom: 1px solid var(--hi-border) !important;
   border-radius: 0 !important;
@@ -348,10 +351,11 @@
 }
 
 .orderAvatar {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: var(--hi-radius-sm);
   background: var(--hi-shell-bg-strong);
+  border: 1px solid var(--hi-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,7 +439,7 @@
 .emptyState {
   background: var(--hi-surface);
   border-radius: 0;
-  padding: 2.25rem 1.5rem;
+  padding: 2rem 1.25rem;
   text-align: center;
   border: 0;
   position: relative;
@@ -478,10 +482,14 @@
 
 .emptyStateIcon {
   color: var(--hi-text-muted);
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  padding: 7px;
   position: relative;
   z-index: 1;
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
 }
 
 // Skeleton loading

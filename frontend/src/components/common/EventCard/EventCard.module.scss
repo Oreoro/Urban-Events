@@ -47,7 +47,7 @@
   display: flex;
   text-decoration: none;
   color: inherit;
-  min-height: 96px;
+  min-height: 88px;
 
   @include mixins.respond-below(md, true) {
     flex-direction: column;
@@ -58,8 +58,8 @@
 
 .imageContainer {
   position: relative;
-  width: 104px;
-  min-width: 104px;
+  width: 92px;
+  min-width: 92px;
   overflow: hidden;
   border-right: 1px solid var(--hi-border);
 
@@ -97,8 +97,8 @@
 
 .statusBadge {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 6px;
+  left: 6px;
   padding: 3px 6px;
   border-radius: var(--hi-radius-sm);
   font-size: 10px;
@@ -145,8 +145,8 @@
 
 .dateBadge {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
+  bottom: 6px;
+  left: 6px;
   background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
   padding: 5px 6px;
@@ -176,10 +176,10 @@
 
 .content {
   flex: 1;
-  padding: 12px 13px;
+  padding: 10px 12px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
 
   @include mixins.respond-below(md, true) {
@@ -287,23 +287,23 @@
 .statsPanel {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px;
-  background: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  gap: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   flex-shrink: 0;
 
   @include mixins.respond-below(lg, true) {
-    gap: 6px;
-    padding: 4px;
+    gap: 0;
+    padding: 0;
   }
 
   @include mixins.respond-below(md, true) {
     justify-content: flex-start;
     width: fit-content;
-    padding: 4px;
-    border: 1px solid var(--hi-border);
+    padding: 4px 0 0;
+    border-top: 1px solid var(--hi-border);
   }
 }
 
@@ -311,21 +311,21 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 2px;
   cursor: default;
-  min-width: 72px;
-  padding: 4px 8px;
+  min-width: 68px;
+  padding: 2px 9px;
 
   @include mixins.respond-below(lg, true) {
-    min-width: 72px;
+    min-width: 68px;
   }
 
   &:first-child {
-    padding-left: 8px;
+    padding-left: 0;
   }
 
   + .stat {
-    border-left: 0;
+    border-left: 1px solid var(--hi-border);
   }
 }
 

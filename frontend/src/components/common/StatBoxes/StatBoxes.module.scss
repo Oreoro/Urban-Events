@@ -3,7 +3,7 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
   color: var(--hi-text);
   margin: 0;
   background: transparent;
@@ -29,10 +29,10 @@
 .statistic {
   display: flex;
   align-items: flex-start;
-  padding: 13px 12px !important;
+  padding: 12px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 74px;
+  min-height: 72px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
@@ -52,7 +52,7 @@
     gap: 2px;
 
     .number {
-      font-size: clamp(1rem, 1.22vw, 1.24rem);
+      font-size: clamp(0.98rem, 1.1vw, 1.18rem);
       font-weight: 650;
       letter-spacing: 0;
       line-height: 1.12;
@@ -87,14 +87,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: color-mix(in srgb, var(--hi-text-muted) 70%, transparent);
-      background: transparent;
-      border: 0;
+      color: var(--hi-text-muted);
+      background: var(--hi-surface-soft);
+      border: 1px solid var(--hi-border);
       box-shadow: none;
 
       @include mixins.respond-below(md) {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
       }
     }
   }
