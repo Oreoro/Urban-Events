@@ -14,7 +14,6 @@ import {
 } from '@tabler/icons-react';
 import {t, Trans} from '@lingui/macro';
 
-import {PageTitle} from "../../../common/PageTitle";
 import {PageBody} from "../../../common/PageBody";
 import {useGetOrganizerStats} from "../../../../queries/useGetOrganizerStats.ts";
 import {useGetEvents} from "../../../../queries/useGetEvents.ts";
@@ -37,6 +36,7 @@ interface OrganizerStatDisplayItem {
     value: string | number;
     description: string;
     icon: ReactNode;
+    tone: 'primary' | 'neutral' | 'success' | 'warning';
 }
 
 export const DashboardSkeleton = () => {
@@ -118,31 +118,37 @@ export const OrganizerDashboard = () => {
                 value: formatCurrency(stats.total_gross_sales, selectedCurrency),
                 description: t`Gross Sales`,
                 icon: <IconCash size={18}/>,
+                tone: 'primary',
             },
             {
                 value: formatNumber(stats.total_products_sold),
                 description: t`Products Sold`,
                 icon: <IconTicket size={18}/>,
+                tone: 'neutral',
             },
             {
                 value: formatNumber(stats.total_attendees_registered),
                 description: t`Attendees`,
                 icon: <IconUsers size={18}/>,
+                tone: 'success',
             },
             {
                 value: formatNumber(stats.total_orders),
                 description: t`Total Orders`,
                 icon: <IconBuildingStore size={18}/>,
+                tone: 'warning',
             },
             {
                 value: formatCurrency(stats.total_tax, selectedCurrency),
                 description: t`Total Tax`,
                 icon: <IconReceiptTax size={18}/>,
+                tone: 'neutral',
             },
             {
                 value: formatCurrency(stats.total_fees, selectedCurrency),
                 description: t`Total Fees`,
                 icon: <IconReportMoney size={18}/>,
+                tone: 'primary',
             },
         );
     }
@@ -151,9 +157,26 @@ export const OrganizerDashboard = () => {
         <PageBody>
             <section className={classes.overviewPanel}>
                 <div className={classes.headerSection}>
-                    <PageTitle className={classes.pageTitle} subheading={t`Organizer dashboard`}>
-                        {organizer ? organizer.name : t`Organizer Dashboard`}
-                    </PageTitle>
+                    <div className={classes.dashboardIdentity}>
+                        <div className={classes.pageIcon} aria-hidden="true">
+                            <IconBuildingStore size={20} stroke={1.7}/>
+                        </div>
+                        <div className={classes.titleBlock}>
+                            <p className={classes.kicker}><Trans>Workspace overview</Trans></p>
+                            <h1 className={classes.pageTitle}>
+                                {organizer ? organizer.name : t`Organizer Dashboard`}
+                            </h1>
+                            <div className={classes.metaPills} aria-label={t`Dashboard summary`}>
+                                <span>{selectedCurrency}</span>
+                                <span>
+                                    <Trans>{recentEvents.length} events</Trans>
+                                </span>
+                                <span>
+                                    <Trans>{recentOrders.length} recent orders</Trans>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     {currencies?.length > 1 && (
                         <Menu
                             width={240}
@@ -202,7 +225,7 @@ export const OrganizerDashboard = () => {
                 {stats && organizerStatItems.length > 0 && (
                     <div className={classes.statisticsContainer}>
                         {organizerStatItems.map((item) => (
-                            <div className={classes.statCard} key={item.description}>
+                            <div className={classes.statCard} data-tone={item.tone} key={item.description}>
                                 <div className={classes.statContent}>
                                     <span className={classes.statValue}>{item.value}</span>
                                     <span className={classes.statLabel}>{item.description}</span>
@@ -226,7 +249,10 @@ export const OrganizerDashboard = () => {
             <div className={classes.recentItemsGrid}>
                 {/* Events Section - First on mobile, second on desktop */}
                 <div className={`${classes.recentSection} ${classes.eventsSection}`}>
-                    <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
+                    <div className={classes.sectionHeader}>
+                        <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
+                        <span className={classes.sectionCount}>{recentEvents.length}</span>
+                    </div>
                     {isLoadingEvents && (
                         <div className={classes.skeletonStack}>
                             {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
@@ -259,7 +285,10 @@ export const OrganizerDashboard = () => {
 
                 {/* Orders Section - Second on mobile, first on desktop */}
                 <div className={`${classes.recentSection} ${classes.ordersSection}`}>
-                    <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
+                    <div className={classes.sectionHeader}>
+                        <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
+                        <span className={classes.sectionCount}>{recentOrders.length}</span>
+                    </div>
                     {isLoadingOrders && (
                         <div className={classes.skeletonStack}>
                             {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
