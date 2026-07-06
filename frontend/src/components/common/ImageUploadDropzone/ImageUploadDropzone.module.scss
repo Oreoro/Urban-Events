@@ -10,27 +10,28 @@
 .dropzone {
   width: 100%;
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 
   &:hover {
     border-color: var(--hi-border-strong);
+    background: var(--hi-shell-bg);
   }
 }
 
 .dropzoneRoot {
-  border: 1px dashed var(--hi-border-strong);
+  border: 1px dashed var(--hi-border);
   background-color: var(--hi-surface);
   border-radius: var(--hi-radius-md);
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .dropzoneInner {
-  min-height: 140px;
+  min-height: 118px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding: 14px;
 }
 
 .emptyDropzone {
@@ -38,11 +39,11 @@
 }
 
 .iconWrapper {
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-shell-bg);
   color: var(--hi-text-muted);
-  width: 56px;
-  height: 56px;
-  border-radius: var(--hi-radius-md);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--hi-radius-sm);
   border: 1px solid var(--hi-border);
   display: flex;
   justify-content: center;
@@ -62,10 +63,12 @@
   max-height: 240px;
   object-fit: contain;
   border-radius: var(--hi-radius-sm);
+  border: 1px solid var(--hi-border);
 }
 
 .replaceButton {
   margin-top: 0.25rem;
+  min-height: 28px;
 }
 
 .loadingContainer {
@@ -79,8 +82,8 @@
 // Compact mode styles
 .compact {
   .dropzoneInner {
-    min-height: 60px;
-    padding: 12px;
+    min-height: 54px;
+    padding: 10px;
   }
   
   .previewImage {
@@ -107,7 +110,7 @@
 // Error states
 .dropzoneError {
   border-color: var(--hi-border-strong) !important;
-  background-color: var(--hi-surface);
+  background-color: var(--hi-status-danger-bg);
   
   &:hover {
     border-color: var(--hi-border-strong) !important;

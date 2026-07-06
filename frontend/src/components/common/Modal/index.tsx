@@ -22,6 +22,8 @@ export const Modal = (props: MantineModalProps & ModalProps) => {
             title={props.heading}
             closeOnClickOutside={false}
             classNames={{
+                content: classes.content,
+                body: classes.body,
                 title: classNames(
                     classes.modalTitle,
                     modalHeader === 'branded' && classes.brandedTitle
@@ -35,7 +37,7 @@ export const Modal = (props: MantineModalProps & ModalProps) => {
                 ...props.classNames
             }}
         >
-            <div style={{padding: '15px', paddingTop: 0}}>
+            <div className={classes.inner}>
                 {props.children}
             </div>
         </MantineModal>

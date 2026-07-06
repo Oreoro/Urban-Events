@@ -157,7 +157,6 @@ export const ImageUploadDropzone = ({
                     <img src={previewImage} alt="Uploaded preview" className={classes.previewImage}/>
                     <Button
                         variant="light"
-                        color="blue"
                         size="xs"
                         leftSection={<IconReplace size={14}/>}
                         onClick={handleReplace}

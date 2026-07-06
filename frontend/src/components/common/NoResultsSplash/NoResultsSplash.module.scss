@@ -7,27 +7,27 @@
   flex-direction: column;
   max-width: 460px;
   text-align: center;
-  margin: 36px auto;
-  padding: 24px;
+  margin: 28px auto;
+  padding: 20px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
 
   img {
     max-width: 500px;
-    width: 150px;
-    height: 150px;
-    opacity: 0.72;
+    width: 96px;
+    height: 96px;
+    opacity: 0.55;
 
     @include mixins.respond-below(md) {
-      width: 170px;
-      height: 170px;
+      width: 104px;
+      height: 104px;
     }
   }
 
   h2 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.96rem;
+    font-weight: 620;
     margin-bottom: 0;
     margin-top: 8px;
     color: var(--hi-text);
@@ -35,7 +35,7 @@
 
   p {
     color: var(--hi-text-muted);
-    font-size: 0.88rem;
+    font-size: 0.84rem;
     line-height: 1.5;
   }
 }

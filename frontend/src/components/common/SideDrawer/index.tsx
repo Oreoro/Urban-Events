@@ -20,10 +20,14 @@ export const SideDrawer = (props: DrawerProps & SideDrawerProps) => {
             title={props.heading}
             closeOnClickOutside={false}
             classNames={{
+                content: classes.content,
+                header: classes.header,
+                body: classes.body,
                 title: classes.sideDrawerTitle,
+                close: classes.close,
             }}
         >
-            <div style={{padding: '15px', paddingTop: 0}}>
+            <div className={classes.inner}>
                 {props.children}
             </div>
         </Drawer>

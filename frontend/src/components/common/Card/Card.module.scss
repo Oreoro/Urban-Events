@@ -1,8 +1,8 @@
 .card {
   box-sizing: border-box;
-  border-radius: var(--hi-radius-lg);
-  padding: var(--hi-spacing-lg);
-  margin-bottom: var(--hi-spacing-lg);
+  border-radius: var(--hi-radius-md);
+  padding: 16px;
+  margin-bottom: 14px;
   color: var(--hi-text);
 
   &.noStyle {
@@ -10,7 +10,7 @@
   }
 
   &.lightGray {
-    background-color: var(--checkout-accent-soft, var(--hi-surface-soft));
+    background-color: var(--checkout-accent-soft, var(--hi-shell-bg));
     border: 1px solid var(--checkout-border, var(--hi-border));
   }
 
@@ -22,7 +22,7 @@
   }
 
   &.lightAccent {
-    background-color: var(--hi-surface-soft);
+    background-color: var(--hi-shell-bg);
     border: 1px solid var(--hi-border);
     box-shadow: none;
   }

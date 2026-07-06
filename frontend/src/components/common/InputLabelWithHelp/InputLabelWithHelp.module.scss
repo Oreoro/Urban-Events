@@ -2,12 +2,20 @@
 .labelWrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 5px;
+    color: var(--hi-text);
+    font-size: 0.86rem;
+    font-weight: 600;
 }
 
 .helpIcon {
-    margin-left: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    color: var(--hi-text-muted);
+
+    &:hover {
+        color: var(--hi-text);
+    }
 }

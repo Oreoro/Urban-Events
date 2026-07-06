@@ -1,15 +1,30 @@
+.content {
+    border: 1px solid var(--hi-border);
+    box-shadow: none;
+}
+
+.body {
+    padding: 0 !important;
+}
+
+.inner {
+    padding: 0 16px 16px;
+}
+
 .modalTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    color: var(--hi-text);
+    font-size: 1rem;
+    font-weight: 620;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
 }
 
 // Branded modal header styles
 .brandedHeader {
-    background: var(--hi-surface-soft) !important;
-    padding: 24px !important;
-    margin-bottom: 16px;
+    background: var(--hi-shell-bg) !important;
+    padding: 16px !important;
+    margin-bottom: 14px;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--hi-border);
@@ -17,8 +32,8 @@
 
 .brandedTitle {
     color: var(--hi-text) !important;
-    font-size: 1.35rem !important;
-    font-weight: 600 !important;
+    font-size: 1rem !important;
+    font-weight: 620 !important;
     margin: 0 !important;
     position: relative;
     z-index: 1;
@@ -32,7 +47,7 @@
     transition: background-color 0.15s ease;
     
     &:hover {
-        background-color: var(--hi-control-bg-active) !important;
+        background-color: var(--hi-shell-surface) !important;
         color: var(--hi-text) !important;
     }
     

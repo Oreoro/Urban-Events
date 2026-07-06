@@ -1,6 +1,33 @@
-.sideBarTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 5px;
+.content {
+    border-left: 1px solid var(--hi-border);
+    box-shadow: none;
+}
+
+.header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--hi-border);
+}
+
+.body {
+    padding: 0 !important;
+}
+
+.inner {
+    padding: 16px;
+}
+
+.sideDrawerTitle {
+    color: var(--hi-text);
+    font-size: 1rem;
+    font-weight: 620;
+    letter-spacing: 0;
+}
+
+.close {
+    color: var(--hi-text-muted);
+
+    &:hover {
+        background: var(--hi-shell-surface);
+        color: var(--hi-text);
+    }
 }

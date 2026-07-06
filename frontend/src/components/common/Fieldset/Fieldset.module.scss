@@ -1,3 +1,13 @@
+.fieldset {
+  background: var(--hi-surface) !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-md) !important;
+  padding: 14px !important;
+}
+
 .legend {
-  font-size: 1.2rem;
+  color: var(--hi-text);
+  font-size: 0.9rem;
+  font-weight: 620;
+  letter-spacing: 0;
 }
