@@ -7,7 +7,7 @@ import {t} from "@lingui/macro";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {formatCurrency} from "../../../utilites/currency.ts";
 import {formatNumber} from "../../../utilites/helpers.ts";
-import {ReactNode} from "react";
+import {CSSProperties, ReactNode} from "react";
 
 interface StatBoxProps {
     number: string | number;
@@ -24,7 +24,7 @@ export const StatBox = ({number, description, icon, backgroundColor}: StatBoxPro
                 <div className={classes.description}>{description}</div>
             </div>
             <div className={classes.rightPanel}>
-                <div className={classes.icon} style={{backgroundColor}}>
+                <div className={classes.icon} style={{'--stat-color': backgroundColor} as CSSProperties}>
                     {icon}
                 </div>
             </div>

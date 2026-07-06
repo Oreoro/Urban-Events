@@ -4,9 +4,9 @@
 .headerSection {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -24,22 +24,22 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 12px;
-  font-size: 0.875rem;
-  font-weight: 800;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--hi-text);
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border-strong);
+  background: var(--ue-canvas-soft);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: none;
   transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background: var(--ue-mint);
-    border-color: color-mix(in srgb, var(--ue-forest) 30%, var(--hi-border-strong));
-    color: var(--ue-forest-deep);
-    transform: translateY(-1px);
+    background: var(--hi-shell-surface-hover);
+    border-color: var(--hi-border-strong);
+    color: var(--hi-text);
+    transform: none;
   }
 
   &:disabled {
@@ -76,7 +76,7 @@
 
 .currencyCode {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', monospace;
-  font-weight: 800;
+  font-weight: 650;
   font-size: 0.875rem;
   color: var(--hi-text);
   min-width: 45px;
@@ -94,10 +94,10 @@
 }
 
 .selectedCurrency {
-  background: var(--ue-mint);
+  background: var(--ue-canvas-soft);
 
   .currencyCode {
-    color: var(--ue-forest-deep);
+    color: var(--hi-text);
   }
 }
 
@@ -139,8 +139,8 @@
 .statisticsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
+  gap: 12px;
+  margin-bottom: 1.5rem;
 
   > * {
     flex: 1 1 300px;
@@ -164,11 +164,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 16px;
 
   @include mixins.respond-above(lg) {
     grid-template-columns: minmax(300px, 1fr) 2fr;
-    gap: 1.5rem;
+    gap: 16px;
     align-items: stretch;
   }
 }
@@ -178,11 +178,11 @@
   flex-direction: column;
   gap: 1rem;
   height: 100%;
-  background: var(--hi-surface);
+  background: var(--ue-canvas-soft);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-lg);
-  box-shadow: var(--hi-shadow-sm);
-  padding: 1rem;
+  box-shadow: none;
+  padding: 12px;
 }
 
 // Mobile-first ordering
@@ -205,10 +205,10 @@
 }
 
 .sectionTitle {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 0.98rem;
+  font-weight: 650;
   color: var(--hi-text);
-  margin: 0;
+  margin: 0 2px;
   letter-spacing: 0;
 }
 
@@ -230,24 +230,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 10px;
+  padding: 11px 12px;
   border-color: var(--hi-border);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
   cursor: pointer;
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 8px !important;
 
   &:hover {
-    border-color: color-mix(in srgb, var(--ue-forest) 28%, var(--hi-border-strong));
-    box-shadow: var(--hi-shadow-md);
+    background: var(--hi-surface);
+    border-color: var(--hi-border-strong);
+    box-shadow: none;
 
     .orderArrow {
       transform: translateX(2px);
-      color: var(--ue-forest);
+      color: var(--hi-text);
     }
 
     .customerName {
-      color: var(--ue-forest);
+      color: var(--hi-text);
     }
   }
 
@@ -265,15 +266,15 @@
 }
 
 .orderAvatar {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--hi-radius-md);
-  background: var(--ue-mint);
+  background: var(--ue-canvas-soft);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--ue-forest);
+  color: var(--hi-text-muted);
 }
 
 .orderDetails {
@@ -308,8 +309,8 @@
 }
 
 .orderAmount {
-  font-weight: 800;
-  color: var(--ue-forest);
+  font-weight: 650;
+  color: var(--hi-text);
 }
 
 .orderSeparator {
@@ -342,9 +343,9 @@
 
 // Empty states
 .emptyState {
-  background: var(--ue-canvas-soft);
+  background: var(--hi-surface);
   border-radius: var(--hi-radius-lg);
-  padding: 3rem 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   border: 1px dashed var(--hi-border-strong);
   position: relative;
@@ -372,8 +373,8 @@
   }
 
   h4 {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.05rem;
+    font-weight: 650;
     color: var(--hi-text);
     margin: 1rem 0 0.5rem;
     position: relative;
@@ -397,7 +398,7 @@
 }
 
 .emptyStateIcon {
-  color: var(--hi-secondary-strong);
+  color: var(--hi-text-muted);
   position: relative;
   z-index: 1;
 }

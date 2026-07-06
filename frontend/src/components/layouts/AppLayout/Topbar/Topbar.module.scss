@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    height: 56px;
+    padding: 0 16px;
+    height: 46px;
     border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
@@ -23,7 +23,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 10px 28px;
+    padding: 8px 34px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -33,7 +33,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 44px;
+    min-height: 40px;
 
     @include mixins.respond-below(md) {
       padding: 10px 16px;
@@ -59,7 +59,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -99,7 +99,7 @@
 
     a {
       color: var(--hi-text-muted);
-      font-weight: 650;
+      font-weight: 500;
       transition: color 0.2s ease;
       position: relative;
       @include mixins.ellipsis();
@@ -120,7 +120,7 @@
         left: 0;
         width: 0;
         height: 1px;
-        background-color: var(--hi-secondary-strong);
+        background-color: var(--hi-shell-accent);
         transition: width 0.2s ease;
       }
 
@@ -149,7 +149,7 @@
   }
 
   &.withShadow {
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--ue-ink) 8%, transparent);
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent);
   }
 
   .burger {
@@ -162,7 +162,7 @@
   .logo {
     color: var(--hi-text);
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     padding-inline: 5px;
@@ -192,9 +192,9 @@
     margin-right: 8px;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 650;
     transition: transform 0.2s ease;
-    color: var(--hi-shell-text);
+    color: var(--hi-text-muted);
 
     &:hover {
       transform: translateY(-1px);

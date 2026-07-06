@@ -158,8 +158,8 @@ export const OrganizerDashboard = () => {
     return (
         <PageBody>
             <div className={classes.headerSection}>
-                <PageTitle className={classes.pageTitle}>
-                    {organizer ? `${organizer.name} - ${t`Dashboard`}` : t`Organizer Dashboard`}
+                <PageTitle className={classes.pageTitle} subheading={t`Organizer dashboard`}>
+                    {organizer ? organizer.name : t`Organizer Dashboard`}
                 </PageTitle>
                 {currencies?.length > 1 && (
                     <Menu
@@ -317,7 +317,7 @@ export const OrganizerDashboard = () => {
                     )}
                     {!isLoadingOrders && (!recentOrders || recentOrders.length === 0) && (
                         <div className={classes.emptyState}>
-                            <div className={classes.emptyStateIcon}>📦</div>
+                            <IconReceiptTax className={classes.emptyStateIcon} size={46} stroke={1.5}/>
                             <h4><Trans>No orders yet</Trans></h4>
                             <p><Trans>When customers purchase tickets, their orders will appear here.</Trans></p>
                         </div>
@@ -339,7 +339,7 @@ const getOrderStatusColor = (status: Order['status'], paymentStatus?: Order['pay
         return 'red';
     }
     if (status === 'COMPLETED' || paymentStatus === 'PAYMENT_RECEIVED') {
-        return 'teal';
+        return 'green';
     }
     if (status === 'AWAITING_OFFLINE_PAYMENT' || paymentStatus === 'AWAITING_OFFLINE_PAYMENT' || status === 'RESERVED' || paymentStatus === 'AWAITING_PAYMENT') {
         return 'orange';

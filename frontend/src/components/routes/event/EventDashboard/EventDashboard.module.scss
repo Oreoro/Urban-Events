@@ -2,7 +2,7 @@
   margin-top: 16px;
   padding: 20px 22px 16px !important;
   border-color: var(--hi-border) !important;
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent) !important;
+  box-shadow: none !important;
 
   .chartCardTitle {
     display: flex;
@@ -15,7 +15,7 @@
       margin: 0;
       font-size: 1.08rem;
       line-height: 1.25;
-      font-weight: 850;
+      font-weight: 650;
     }
   }
 
@@ -39,6 +39,7 @@
 
   :global(.mantine-SegmentedControl-root) {
     padding: 3px;
+    background: var(--ue-canvas-soft);
   }
 
   :global(.mantine-SegmentedControl-label) {
@@ -55,7 +56,7 @@
   padding: 32px 28px;
   background: var(--hi-surface);
   border: 1px solid var(--mantine-color-gray-2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .dismissButton {
@@ -248,7 +249,7 @@
   margin: 24px 0;
   background: var(--ue-canvas-soft);
   border: 1px solid var(--mantine-color-primary-1);
-  box-shadow: 0 4px 16px var(--mantine-color-primary-1) !important;
+  box-shadow: none !important;
   color: var(--mantine-color-gray-9);
   padding: 28px 32px;
   border-radius: var(--hi-radius-md);

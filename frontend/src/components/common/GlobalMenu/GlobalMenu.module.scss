@@ -6,23 +6,23 @@
   height: 34px;
   border-radius: 999px;
   border: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  background: var(--ue-canvas-soft);
   transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 
   &:hover {
     background: var(--hi-surface-soft);
-    border-color: color-mix(in srgb, var(--ue-forest) 28%, var(--hi-border));
-    box-shadow: var(--hi-shadow-sm);
-    transform: translateY(-1px);
+    border-color: var(--hi-border-strong);
+    box-shadow: none;
+    transform: none;
   }
 }
 
 .avatar {
   width: 28px;
   height: 28px;
-  background: var(--ue-teal);
-  color: #ffffff;
-  border: 1px solid var(--ue-teal-deep);
+  background: var(--hi-surface);
+  color: var(--hi-text);
+  border: 1px solid var(--hi-border);
   font-size: 0.78rem;
 }
 
