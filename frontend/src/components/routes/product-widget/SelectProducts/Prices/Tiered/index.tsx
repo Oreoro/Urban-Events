@@ -80,7 +80,7 @@ export const TieredPricing = ({product, event, form, productIndex}: TieredPricin
                         </Group>
 
                         {price.is_discounted && (
-                            <div style={{textDecoration: 'line-through', fontSize: '.9em'}}>
+                            <div className={'hi-price-tier-discounted-price'}>
                                 <Currency
                                     price={price.price_before_discount}
                                     currency={event?.currency}
