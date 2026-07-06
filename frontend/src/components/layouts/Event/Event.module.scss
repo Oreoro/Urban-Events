@@ -12,10 +12,13 @@
   }
 
   .statusAction {
-    margin-left: 4px;
-    font-weight: 400;
-    font-size: 0.85em;
-    opacity: 0.9;
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: 1px solid var(--hi-border);
+    font-weight: 500;
+    font-size: 0.84em;
+    color: var(--hi-text-muted);
+    opacity: 1;
 
     @include mixins.respond-below(md) {
       display: none;
@@ -27,7 +30,7 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
-  font-weight: 650;
+  font-weight: 600;
   transition: color 0.15s ease, background-color 0.15s ease;
   color: var(--hi-text-light);
 
@@ -72,7 +75,7 @@
 
   :global(.mantine-Button-root) {
     color: var(--hi-text-light);
-    font-weight: 650;
+    font-weight: 600;
   }
 
   &:hover {

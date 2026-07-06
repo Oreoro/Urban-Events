@@ -16,25 +16,25 @@ $color-text-secondary: var(--hi-text-light);
 $color-text-muted: var(--hi-text-muted);
 $color-border: var(--hi-border);
 $color-border-light: var(--hi-surface-soft);
-$color-success: var(--hi-success);
-$color-money: var(--hi-success);
+$color-success: var(--hi-text);
+$color-money: var(--hi-text);
 
 // ==========================================
 // Category Container Styles
 // ==========================================
 
 .sortableCategory {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   transition: background-color $transition-fast, border-color $transition-fast;
   border-radius: $card-radius;
-  padding: 12px;
+  padding: 10px;
   box-shadow: $card-shadow;
   border: 1px solid $color-border;
   background-color: var(--hi-surface);
 
   &:hover {
     box-shadow: $card-shadow-hover;
-    border-color: $color-border;
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -112,7 +112,7 @@ $color-money: var(--hi-success);
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 // ==========================================
@@ -132,11 +132,12 @@ $color-money: var(--hi-success);
           background-color $transition-fast,
           border-color $transition-fast;
   grid-template-areas: "sort content action";
-  grid-template-columns: 36px 1fr auto;
+  grid-template-columns: 32px 1fr auto;
 
   &:hover {
     box-shadow: none;
-    border-color: $color-border;
+    border-color: var(--hi-border-strong);
+    background-color: var(--hi-surface-soft);
 
     .actionButton {
       background-color: var(--hi-control-bg-hover);
@@ -173,9 +174,9 @@ $color-money: var(--hi-success);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
   border-right: 1px solid $color-border;
-  background-color: color-mix(in srgb, var(--hi-surface-soft) 72%, white);
+  background-color: transparent;
 }
 
 // Main content area
@@ -183,8 +184,8 @@ $color-money: var(--hi-success);
   grid-area: content;
   display: flex;
   flex-direction: column;
-  padding: 13px 16px;
-  gap: 10px;
+  padding: 12px 14px;
+  gap: 8px;
   min-width: 0;
 
   @include mixins.respond-below(sm) {
@@ -218,7 +219,7 @@ $color-money: var(--hi-success);
 .productTitle {
   margin: 0;
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
   color: $color-text-primary;
   line-height: 1.4;
 
@@ -239,7 +240,7 @@ $color-money: var(--hi-success);
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 12px;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(3, 1fr);
@@ -282,7 +283,7 @@ $color-money: var(--hi-success);
 
 .priceAmount {
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
   color: $color-text-primary;
   font-variant-numeric: tabular-nums;
 
@@ -422,9 +423,9 @@ $color-money: var(--hi-success);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10px;
+  padding: 0 8px;
   border-left: 1px solid $color-border;
-  background-color: color-mix(in srgb, var(--hi-surface-soft) 72%, white);
+  background-color: transparent;
 
   @include mixins.respond-below(lg) {
     border-left: none;
