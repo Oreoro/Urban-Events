@@ -1,6 +1,6 @@
 import {t} from "@lingui/macro";
 import {NavLink, useParams} from "react-router";
-import {Badge, Button, Group, SimpleGrid, Text, TextInput} from "@mantine/core";
+import {Button, Group, SimpleGrid, Text, TextInput} from "@mantine/core";
 import {
     IconCalendar,
     IconCalendarEvent,
@@ -30,9 +30,9 @@ import {Event, Order} from "../../../types.ts";
 import classes from './MyTickets.module.scss';
 
 const OrderStatusBadge = () => (
-    <Badge variant="light" color="green" size="sm">
+    <span className={classes.statusBadge}>
         {t`Completed`}
-    </Badge>
+    </span>
 );
 
 const OrderCard = ({order}: { order: Order }) => {
@@ -49,7 +49,7 @@ const OrderCard = ({order}: { order: Order }) => {
                     <h3 className={classes.eventTitle}>{event?.title}</h3>
                     <OrderStatusBadge/>
                 </div>
-                <Text size="xs" c="dimmed">
+                <Text size="xs" className={classes.orderMeta}>
                     {t`Order`} #{order.public_id}
                 </Text>
             </div>
@@ -57,10 +57,10 @@ const OrderCard = ({order}: { order: Order }) => {
             <SimpleGrid cols={{base: 1, sm: 2}} spacing="md" className={classes.orderDetails}>
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconCalendarEvent size={18} style={{color: 'var(--hi-text-muted)'}}/>
+                        <IconCalendarEvent size={18} className={classes.detailIcon}/>
                         <div>
-                            <Text size="xs" c="dimmed">{t`Event Date`}</Text>
-                            <Text size="sm"><EventDateRange event={event}/></Text>
+                            <Text size="xs" className={classes.detailLabel}>{t`Event Date`}</Text>
+                            <Text size="sm" className={classes.detailValue}><EventDateRange event={event}/></Text>
                         </div>
                     </Group>
                 </div>
@@ -68,10 +68,10 @@ const OrderCard = ({order}: { order: Order }) => {
                 {location && (
                     <div className={classes.detailItem}>
                         <Group gap="xs" wrap="nowrap">
-                            <IconMapPin size={18} style={{color: 'var(--hi-text-muted)'}}/>
+                            <IconMapPin size={18} className={classes.detailIcon}/>
                             <div>
-                                <Text size="xs" c="dimmed">{t`Location`}</Text>
-                                <Text size="sm" lineClamp={1}>{location}</Text>
+                                <Text size="xs" className={classes.detailLabel}>{t`Location`}</Text>
+                                <Text size="sm" lineClamp={1} className={classes.detailValue}>{location}</Text>
                             </div>
                         </Group>
                     </div>
@@ -79,20 +79,20 @@ const OrderCard = ({order}: { order: Order }) => {
 
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconTicket size={18} style={{color: 'var(--hi-text-muted)'}}/>
+                        <IconTicket size={18} className={classes.detailIcon}/>
                         <div>
-                            <Text size="xs" c="dimmed">{t`Tickets`}</Text>
-                            <Text size="sm">{ticketCount} {ticketCount === 1 ? t`ticket` : t`tickets`}</Text>
+                            <Text size="xs" className={classes.detailLabel}>{t`Tickets`}</Text>
+                            <Text size="sm" className={classes.detailValue}>{ticketCount} {ticketCount === 1 ? t`ticket` : t`tickets`}</Text>
                         </div>
                     </Group>
                 </div>
 
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconCalendar size={18} style={{color: 'var(--hi-text-muted)'}}/>
+                        <IconCalendar size={18} className={classes.detailIcon}/>
                         <div>
-                            <Text size="xs" c="dimmed">{t`Purchased`}</Text>
-                            <Text size="sm">{event && dateToBrowserTz(order.created_at, event.timezone)}</Text>
+                            <Text size="xs" className={classes.detailLabel}>{t`Purchased`}</Text>
+                            <Text size="sm" className={classes.detailValue}>{event && dateToBrowserTz(order.created_at, event.timezone)}</Text>
                         </div>
                     </Group>
                 </div>
@@ -103,8 +103,8 @@ const OrderCard = ({order}: { order: Order }) => {
                     component={NavLink}
                     to={orderUrl}
                     variant="filled"
-                    color="secondary"
                     size="sm"
+                    className={classes.primaryAction}
                     leftSection={<IconExternalLink size={16}/>}
                 >
                     {t`View Order`}
@@ -113,6 +113,7 @@ const OrderCard = ({order}: { order: Order }) => {
                     <Button
                         variant="subtle"
                         size="sm"
+                        className={classes.secondaryAction}
                         leftSection={<IconPrinter size={16}/>}
                         onClick={() => window?.open(printUrl, '_blank')}
                     >
@@ -195,7 +196,7 @@ export const MyTickets = () => {
                                     />
                                     <Button
                                         type="submit"
-                                        color="secondary.5"
+                                        className={classes.primaryAction}
                                         loading={ticketLookupMutation.isPending}
                                         disabled={ticketLookupMutation.isPending}
                                     >

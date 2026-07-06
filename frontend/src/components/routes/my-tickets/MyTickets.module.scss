@@ -11,16 +11,16 @@
 }
 
 .header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 18px;
-  padding: 24px;
+  padding: 22px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-lg);
 
   h1 {
-    margin: 14px 0 6px;
-    font-size: 1.55rem;
+    margin: 12px 0 6px;
+    font-size: 1.42rem;
     font-weight: 650;
     color: var(--hi-text);
 
@@ -33,10 +33,10 @@
 
 .headerIcon {
   color: var(--hi-text-muted);
-  padding: 13px;
-  background: var(--hi-surface);
+  padding: 10px;
+  background: var(--hi-shell-bg);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -71,13 +71,12 @@
   position: relative;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   border: 1px solid var(--hi-border);
-  padding: 18px;
+  padding: 16px;
 
   &:hover {
     transform: none;
     background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
-    box-shadow: none;
   }
 
   &::before {
@@ -107,13 +106,31 @@
 
 .eventTitle {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 650;
+  font-size: 1rem;
+  font-weight: 640;
   color: var(--hi-text);
 
   @include mixins.respond-below(md) {
     font-size: 1.125rem;
   }
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 2px 8px;
+  color: var(--hi-status-success-text);
+  background: var(--hi-status-success-bg);
+  border: 1px solid var(--hi-status-success-border);
+  border-radius: var(--hi-radius-sm);
+  font-size: 0.72rem;
+  font-weight: 580;
+  line-height: 1;
+}
+
+.orderMeta {
+  color: var(--hi-text-muted);
 }
 
 .orderDetails {
@@ -139,12 +156,27 @@
   }
 }
 
+.detailIcon {
+  flex-shrink: 0;
+  color: var(--hi-text-muted);
+}
+
+.detailLabel {
+  color: var(--hi-text-muted);
+  font-weight: 540;
+}
+
+.detailValue {
+  color: var(--hi-text);
+  font-weight: 540;
+}
+
 .headerIconError {
   color: var(--hi-status-danger-text);
-  padding: 13px;
-  background: var(--hi-surface);
+  padding: 10px;
+  background: var(--hi-status-danger-bg);
   border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -184,6 +216,29 @@
 
 .emailInput {
   flex: 1;
+}
+
+.primaryAction {
+  background: var(--hi-text) !important;
+  border: 1px solid var(--hi-text) !important;
+  border-radius: var(--hi-radius-md) !important;
+  color: var(--hi-color-white) !important;
+  font-weight: 600 !important;
+
+  &:hover {
+    background: var(--hi-color-black) !important;
+    border-color: var(--hi-color-black) !important;
+  }
+}
+
+.secondaryAction {
+  color: var(--hi-text-muted) !important;
+  border-radius: var(--hi-radius-md) !important;
+
+  &:hover {
+    background: var(--hi-control-bg-hover) !important;
+    color: var(--hi-text) !important;
+  }
 }
 
 .successMessage {
