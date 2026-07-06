@@ -3,7 +3,6 @@ import {useParams} from "react-router";
 import {PageTitle} from "../../../common/PageTitle";
 import {PageBody} from "../../../common/PageBody";
 import {StatBoxes} from "../../../common/StatBoxes";
-import {useGetMe} from "../../../../queries/useGetMe.ts";
 import {t, Trans} from "@lingui/macro";
 import {AreaChart} from "@mantine/charts";
 import {Card} from "../../../common/Card";
@@ -13,7 +12,7 @@ import {formatCurrency} from "../../../../utilites/currency.ts";
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {Button, SegmentedControl, Skeleton, Tooltip} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {IconAlertCircle, IconRocket, IconSparkles, IconX} from "@tabler/icons-react";
+import {IconAlertCircle, IconRocket, IconX} from "@tabler/icons-react";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
@@ -37,7 +36,6 @@ export const DashBoardSkeleton = () => {
 export const EventDashboard = () => {
     const {eventId} = useParams();
     const eventQuery = useGetEvent(eventId);
-    const {data: me} = useGetMe();
     const event = eventQuery?.data;
     const defaultDateRangeRef = useRef<string | null>(null);
     if (event && !defaultDateRangeRef.current) {
@@ -110,24 +108,11 @@ export const EventDashboard = () => {
 
     return (
         <PageBody>
-            <PageTitle style={{marginBottom: 0}}>
-                {!isMobile && (
-                    <>
-                        <Trans>
-                            Welcome back{me?.first_name && ', ' + me?.first_name}
-                        </Trans>
-                        <IconSparkles size={22} color="var(--hi-secondary-strong)" style={{marginLeft: 8, verticalAlign: -3}}/>
-                    </>
-                )}
-
-                {isMobile && (
-                    <>
-                        <Trans>
-                            Hi {me?.first_name && me?.first_name}
-                        </Trans>
-                        <IconSparkles size={20} color="var(--hi-secondary-strong)" style={{marginLeft: 6, verticalAlign: -3}}/>
-                    </>
-                )}
+            <PageTitle
+                style={{marginBottom: 0}}
+                subheading={!isMobile && event?.title ? event.title : undefined}
+            >
+                <Trans>Dashboard</Trans>
             </PageTitle>
 
             {!event && <DashBoardSkeleton/>}

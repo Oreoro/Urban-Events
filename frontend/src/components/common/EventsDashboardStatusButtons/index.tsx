@@ -11,22 +11,22 @@ export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashb
     const navigate = useNavigate();
 
     return (
-        <Group mt={10} mb={15}>
+        <Group mt={8} mb={12} gap={6}>
             <Button
                 size={'compact-sm'}
-                variant={eventsState === 'upcoming' || !eventsState ? 'light' : 'transparent'}
+                variant={eventsState === 'upcoming' || !eventsState ? 'light' : 'subtle'}
                 onClick={() => navigate(baseUrl + '/upcoming' + window.location.search)}
             >
                 {t`Upcoming`}
             </Button>
             <Button size={'compact-sm'}
-                    variant={eventsState === 'ended' ? 'light' : 'transparent'}
+                    variant={eventsState === 'ended' ? 'light' : 'subtle'}
                     onClick={() => navigate(baseUrl + '/ended' + window.location.search)}
             >
                 {t`Ended`}
             </Button>
             <Button size={'compact-sm'}
-                    variant={eventsState === 'archived' ? 'light' : 'transparent'}
+                    variant={eventsState === 'archived' ? 'light' : 'subtle'}
                     onClick={() => navigate(baseUrl + '/archived' + window.location.search)}
             >
                 {t`Archived`}

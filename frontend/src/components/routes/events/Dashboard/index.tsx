@@ -1,7 +1,7 @@
 import {Event, QueryFilters} from "../../../../types.ts";
 import {useGetEvents} from "../../../../queries/useGetEvents.ts";
 import {EventCard} from "../../../common/EventCard";
-import {t, Trans} from "@lingui/macro";
+import {t} from "@lingui/macro";
 import {SearchBarWrapper} from "../../../common/SearchBar";
 import {Button, Menu, Skeleton} from "@mantine/core";
 import {
@@ -26,7 +26,6 @@ import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper
 import {EventsDashboardStatusButtons} from "../../../common/EventsDashboardStatusButtons";
 import {NoEventsBlankSlate} from "../../../common/NoEventsBlankSlate";
 import {useState} from "react";
-import {getConfig} from "../../../../utilites/config.ts";
 import {getImageUrl} from "../../../../utilites/urlHelper.ts";
 
 const DashboardSkeleton = () => {
@@ -84,9 +83,6 @@ export function Dashboard() {
             <div className={classes.pageHeader}>
                 <div className={classes.headerContent}>
                     <h1 className={classes.pageTitle}>{getHeading()}</h1>
-                    <p className={classes.welcomeMessage}>
-                        <Trans>Welcome to {getConfig('VITE_APP_NAME', 'Urban Events')}, here's a listing of all your events</Trans>
-                    </p>
                 </div>
 
                 {/* Organizer Navigation */}
