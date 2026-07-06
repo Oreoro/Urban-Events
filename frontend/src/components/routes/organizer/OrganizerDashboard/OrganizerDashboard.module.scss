@@ -177,9 +177,9 @@
   flex-direction: column;
   gap: 0.8rem;
   height: 100%;
-  background: transparent;
+  background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
   padding: 12px;
 }
@@ -242,7 +242,6 @@
     box-shadow: none;
 
     .orderArrow {
-      transform: translateX(2px);
       color: var(--hi-text);
     }
 
@@ -330,7 +329,7 @@
 .orderArrow {
   flex-shrink: 0;
   color: var(--hi-text-muted);
-  transition: all 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 // Events list
@@ -358,17 +357,6 @@
 
   &::before {
     display: none;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(0.8);
-      opacity: 0.5;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.3;
-    }
   }
 
   h4 {

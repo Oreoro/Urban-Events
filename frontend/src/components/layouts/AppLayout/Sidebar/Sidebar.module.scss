@@ -114,16 +114,8 @@
 
       &.loading {
         background-color: var(--hi-shell-surface);
-        animation: pulse 1.5s infinite;
-      }
-
-      @keyframes pulse {
-        0%, 100% {
-          opacity: 0.6;
-        }
-        50% {
-          opacity: 0.3;
-        }
+        color: transparent;
+        opacity: 0.72;
       }
 
       &.linkActive {

@@ -322,11 +322,11 @@ export const EventDashboard = () => {
                         legendProps={{verticalAlign: 'bottom', height: 50}}
 
                         series={[
-                            {name: 'orders_created', color: 'secondary.7', label: t`Completed Orders`},
+                            {name: 'orders_created', color: 'slate.5', label: t`Completed Orders`},
                             {name: 'products_sold', color: 'primary.6', label: t`Products Sold`},
-                            {name: 'attendees_registered', color: 'coral.5', label: t`Attendees Registered`},
+                            {name: 'attendees_registered', color: 'marigold.5', label: t`Attendees Registered`},
                         ]}
-                        curveType="bump"
+                        curveType="linear"
                         tickLine="none"
                         areaChartProps={{syncId: 'events'}}
                     />
@@ -361,11 +361,11 @@ export const EventDashboard = () => {
                         legendProps={{verticalAlign: 'bottom', height: 50}}
                         series={[
                             {name: 'total_fees', label: t`Total Fees`, color: 'slate.5'},
-                            {name: 'total_sales_gross', label: t`Gross Sales`, color: 'secondary.7'},
+                            {name: 'total_sales_gross', label: t`Gross Sales`, color: 'primary.6'},
                             {name: 'total_tax', label: t`Total Tax`, color: 'marigold.5'},
                             {name: 'total_refunded', label: t`Total Refunded`, color: 'coral.6'},
                         ]}
-                        curveType="natural"
+                        curveType="linear"
                         tickLine="none"
                         areaChartProps={{syncId: 'events'}}
                     />

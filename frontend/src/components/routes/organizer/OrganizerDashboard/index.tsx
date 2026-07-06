@@ -336,15 +336,15 @@ export const OrganizerDashboard = () => {
 
 const getOrderStatusColor = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {
     if (status === 'CANCELLED' || paymentStatus === 'PAYMENT_FAILED') {
-        return 'red';
+        return 'coral';
     }
     if (status === 'COMPLETED' || paymentStatus === 'PAYMENT_RECEIVED') {
-        return 'green';
+        return 'primary';
     }
     if (status === 'AWAITING_OFFLINE_PAYMENT' || paymentStatus === 'AWAITING_OFFLINE_PAYMENT' || status === 'RESERVED' || paymentStatus === 'AWAITING_PAYMENT') {
-        return 'orange';
+        return 'marigold';
     }
-    return 'gray';
+    return 'slate';
 };
 
 const formatOrderStatus = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {
