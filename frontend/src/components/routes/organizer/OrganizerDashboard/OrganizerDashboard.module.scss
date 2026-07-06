@@ -1,13 +1,27 @@
 @use "../../../../styles/mixins.scss";
 
+.overviewPanel {
+  padding: 16px;
+  margin-bottom: 14px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border-strong);
+  border-radius: var(--hi-radius-lg);
+  box-shadow: none;
+
+  @include mixins.respond-below(md) {
+    padding: 14px;
+  }
+}
+
 // Header section
 .headerSection {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 0.7rem;
-  padding-bottom: 0;
+  margin-bottom: 14px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--hi-border);
 
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -25,13 +39,14 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 9px;
+  min-height: 32px;
+  padding: 5px 10px;
   font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--hi-text-muted);
+  font-weight: 600;
+  color: var(--hi-text);
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border: 1px solid var(--hi-border-strong);
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   cursor: pointer;
@@ -54,7 +69,7 @@
 }
 
 .currencyText {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', monospace;
+  font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', monospace;
   letter-spacing: 0;
 }
 
@@ -138,46 +153,34 @@
 // Statistics grid
 .statisticsContainer {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0;
-  margin: 0.6rem 0 1rem;
-  background: var(--hi-surface);
+  margin: 0;
+  background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   overflow: hidden;
 
   > * {
     min-width: 0;
-    border-radius: 0 !important;
-    border-width: 0 1px 1px 0 !important;
-    border-color: var(--hi-border) !important;
+    border-right: 1px solid var(--hi-border);
 
-    &:nth-child(3n) {
+    &:last-child {
       border-right-width: 0 !important;
-    }
-
-    &:nth-last-child(-n + 3) {
-      border-bottom-width: 0 !important;
     }
   }
 
   @include mixins.respond-below(lg) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     > * {
-      &:nth-child(3n) {
-        border-right-width: 1px !important;
-      }
+      border-bottom: 1px solid var(--hi-border);
 
-      &:nth-child(2n) {
+      &:nth-child(3n) {
         border-right-width: 0 !important;
       }
 
       &:nth-last-child(-n + 3) {
-        border-bottom-width: 1px !important;
-      }
-
-      &:nth-last-child(-n + 2) {
         border-bottom-width: 0 !important;
       }
     }
@@ -201,6 +204,60 @@
   @extend .statisticsContainer;
 }
 
+.statCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 76px;
+  padding: 13px 12px;
+  background: var(--hi-surface);
+  color: var(--hi-text);
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background: var(--hi-control-bg-hover);
+  }
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 4px;
+}
+
+.statValue {
+  color: var(--hi-text);
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.statLabel {
+  color: var(--hi-text-muted);
+  font-size: 0.73rem;
+  font-weight: 560;
+  line-height: 1.25;
+}
+
+.statIcon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: color-mix(in srgb, var(--hi-text-muted) 78%, transparent);
+  flex: 0 0 auto;
+}
+
+.noticeCard {
+  margin-bottom: 0 !important;
+  color: var(--hi-text-muted);
+  background: var(--hi-surface-soft) !important;
+}
+
 // Recent items section
 .recentItemsGrid {
   display: grid;
@@ -220,8 +277,8 @@
   gap: 0;
   height: 100%;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border: 1px solid var(--hi-border-strong);
+  border-radius: var(--hi-radius-lg);
   box-shadow: none;
   padding: 0;
   overflow: hidden;
@@ -251,9 +308,10 @@
   font-weight: 650;
   color: var(--hi-text);
   margin: 0;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
+  background: var(--hi-surface);
 }
 
 // Orders list
@@ -276,7 +334,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 9px 12px;
+  padding: 11px 14px;
   border: 0 !important;
   border-bottom: 1px solid var(--hi-border) !important;
   border-radius: 0 !important;
@@ -285,7 +343,7 @@
   margin-bottom: 0 !important;
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border) !important;
     box-shadow: none;
 
@@ -312,8 +370,8 @@
 }
 
 .orderAvatar {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--hi-radius-sm);
   background: var(--hi-surface-soft);
   display: flex;
@@ -339,8 +397,8 @@
 }
 
 .customerName {
-  font-size: 0.85rem;
-  font-weight: 560;
+  font-size: 0.86rem;
+  font-weight: 600;
   color: var(--hi-text);
   transition: color 0.15s ease;
   @include mixins.ellipsis;
@@ -350,7 +408,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.78rem;
+  font-size: 0.79rem;
   color: var(--hi-text-muted);
 }
 
@@ -391,6 +449,7 @@
     border-radius: 0 !important;
     border-width: 0 0 1px !important;
     margin-bottom: 0 !important;
+    border-color: var(--hi-border) !important;
   }
 }
 
@@ -398,7 +457,7 @@
 .emptyState {
   background: var(--hi-surface);
   border-radius: 0;
-  padding: 2.5rem 2rem;
+  padding: 2.25rem 1.5rem;
   text-align: center;
   border: 0;
   position: relative;
@@ -443,6 +502,8 @@
   color: var(--hi-text-muted);
   position: relative;
   z-index: 1;
+  width: 34px;
+  height: 34px;
 }
 
 // Skeleton loading
