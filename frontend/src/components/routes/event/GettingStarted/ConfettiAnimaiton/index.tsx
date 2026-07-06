@@ -4,7 +4,7 @@ interface ConfettiAnimationProps {
     duration?: number;
 }
 
-const CONFETTI_COLORS = ['#2383E2', '#37352F', '#D97367', '#CB912F', '#EDECE8'];
+const CONFETTI_COLORS = ['#37352F', '#787774', '#D9D7D2', '#F1F1EF', '#FFFFFF'];
 const CONFETTI_SHAPES = ['circle', 'square', 'bar'] as const;
 
 const ConfettiAnimation: FC<ConfettiAnimationProps> = ({ duration = 4000 }) => {

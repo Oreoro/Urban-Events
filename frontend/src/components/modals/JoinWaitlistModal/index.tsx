@@ -10,7 +10,7 @@ import {CheckoutThemeProvider} from "../../layouts/Checkout/CheckoutThemeProvide
 import {detectMode} from "../../../utilites/themeUtils.ts";
 import {IconAlertTriangle, IconCircleCheck} from "@tabler/icons-react";
 
-const DEFAULT_ACCENT = '#2383E2';
+const DEFAULT_ACCENT = '#37352F';
 
 interface JoinWaitlistModalProps extends GenericModalProps {
     product: Product;
@@ -31,7 +31,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
     const homepageSettings = event?.settings?.homepage_theme_settings;
     const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
     const mode = useMemo(
-        () => homepageSettings?.mode || detectMode(homepageSettings?.background || '#FBFBFA'),
+        () => homepageSettings?.mode || detectMode(homepageSettings?.background || '#F7F7F5'),
         [homepageSettings?.mode, homepageSettings?.background]
     );
 

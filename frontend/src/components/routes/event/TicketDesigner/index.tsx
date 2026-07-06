@@ -37,7 +37,7 @@ const TicketDesigner = () => {
 
     const form = useForm<TicketDesignSettings>({
         initialValues: {
-            accent_color: '#2383E2',
+            accent_color: '#37352F',
             logo_image_id: undefined,
             footer_text: '',
             date_display_mode: 'START_DATE_TIME',
@@ -51,7 +51,7 @@ const TicketDesigner = () => {
         if (eventSettingsQuery?.isFetched && eventSettingsQuery?.data?.ticket_design_settings) {
             const settings = eventSettingsQuery.data.ticket_design_settings;
             form.setValues({
-                accent_color: settings.accent_color || '#2383E2',
+                accent_color: settings.accent_color || '#37352F',
                 logo_image_id: settings.logo_image_id || undefined,
                 footer_text: settings.footer_text || '',
                 date_display_mode: settings.date_display_mode || 'START_DATE_TIME',

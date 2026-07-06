@@ -25,8 +25,8 @@ import {Card} from "../Card";
 
 const placeholderColors = [
     'var(--hi-surface-soft)',
-    'var(--ue-light-blue)',
-    'var(--ue-powder-blush)',
+    'var(--hi-control-bg-hover)',
+    'var(--hi-status-neutral-bg)',
     'var(--ue-slate-soft)',
 ];
 

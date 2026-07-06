@@ -21,8 +21,8 @@ export const WidgetEditor = () => {
     const {data: eventSettings, isFetched: isEventSettingsFetched} = useGetEventSettings(eventId);
     const form = useForm({
         initialValues: {
-            background_color: "#FBFBFA",
-            primary_color: "#2383E2",
+            background_color: "#F7F7F5",
+            primary_color: "#37352F",
             primary_text_color: "#FFFFFF",
             secondary_color: "#F7F7F5",
             secondary_text_color: "#37352F",

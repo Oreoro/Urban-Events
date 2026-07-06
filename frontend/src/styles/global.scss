@@ -16,16 +16,16 @@
   --ue-slate-deep: var(--ue-ink);
   --ue-slate-soft: #eeeeec;
   --ue-aqua: var(--ue-icy-aqua);
-  --ue-aqua-deep: #2383e2;
+  --ue-aqua-deep: #37352f;
   --ue-blush: var(--ue-powder-blush);
-  --ue-blush-deep: #d97367;
-  --ue-coral: #d97367;
-  --ue-coral-deep: #b6534b;
-  --ue-marigold: #cb912f;
+  --ue-blush-deep: #c4554d;
+  --ue-coral: #c4554d;
+  --ue-coral-deep: #7a3b37;
+  --ue-marigold: #787774;
   --ue-navy: #37352f;
   --ue-navy-deep: #191918;
-  --ue-teal: #2383e2;
-  --ue-teal-deep: #0b6bcb;
+  --ue-teal: #37352f;
+  --ue-teal-deep: #191918;
   --ue-plum: var(--ue-navy);
   --ue-plum-deep: var(--ue-navy-deep);
   --ue-forest: var(--ue-teal);
@@ -40,8 +40,8 @@
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
-  --hi-primary: #2383e2;
-  --hi-primary-hover: #0b6bcb;
+  --hi-primary: #37352f;
+  --hi-primary-hover: #191918;
   --hi-secondary: var(--ue-mint);
   --hi-secondary-strong: var(--ue-forest);
   --hi-secondary-text: var(--ue-ink);
@@ -65,12 +65,12 @@
   --hi-shell-surface-hover: #e6e5e2;
   --hi-shell-text: #37352f;
   --hi-shell-muted: #85837f;
-  --hi-shell-accent: #2383e2;
+  --hi-shell-accent: #37352f;
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
   --hi-control-bg: #ffffff;
   --hi-control-bg-hover: #f7f7f5;
   --hi-control-bg-active: #eeeeec;
-  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 18%, transparent);
+  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 14%, transparent);
   --hi-danger: #c4554d;
   --hi-success: #2f8f62;
   --hi-warning: #cb912f;
@@ -202,6 +202,59 @@ a {
   font-weight: 560;
   letter-spacing: 0;
   text-transform: none;
+  border: 1px solid var(--hi-status-neutral-border);
+  background: var(--hi-status-neutral-bg);
+  color: var(--hi-status-neutral-text);
+}
+
+.mantine-Badge-root[data-variant="light"],
+.mantine-Badge-root[data-variant="outline"] {
+  border: 1px solid var(--hi-status-neutral-border);
+  background: var(--hi-status-neutral-bg);
+  color: var(--hi-status-neutral-text);
+}
+
+.mantine-Badge-root[data-variant="filled"] {
+  border: 1px solid var(--hi-text);
+  background: var(--hi-text);
+  color: var(--hi-color-white);
+}
+
+.mantine-Badge-section {
+  color: currentColor;
+}
+
+.mantine-Alert-root {
+  border: 1px solid var(--hi-border);
+  background: var(--hi-surface-soft);
+  color: var(--hi-text);
+  box-shadow: none;
+}
+
+.mantine-Alert-icon,
+.mantine-Alert-title {
+  color: var(--hi-text);
+}
+
+.mantine-Alert-message {
+  color: var(--hi-text-muted);
+}
+
+.mantine-ThemeIcon-root[data-variant="light"],
+.mantine-ThemeIcon-root[data-variant="outline"],
+.mantine-Avatar-root {
+  border: 1px solid var(--hi-border);
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-muted);
+  box-shadow: none;
+}
+
+.mantine-Progress-root {
+  background: var(--hi-surface-soft);
+}
+
+.mantine-Progress-section {
+  background: var(--hi-text-muted);
 }
 
 .mantine-Skeleton-root {

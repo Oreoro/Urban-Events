@@ -105,15 +105,15 @@
   gap: 5px;
 
   &.status-live {
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
-    border: 1px solid var(--hi-status-success-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &.status-onsale {
-    background: var(--hi-status-info-bg);
-    color: var(--hi-status-info-text);
-    border: 1px solid var(--hi-status-info-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &.status-draft {
@@ -267,15 +267,15 @@
   }
 
   &.ticket-partial {
-    background: var(--hi-status-warning-bg);
-    color: var(--hi-status-warning-text);
-    border: 1px solid var(--hi-status-warning-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &.ticket-sold-out {
-    background: var(--hi-status-danger-bg);
-    color: var(--hi-status-danger-text);
-    border: 1px solid var(--hi-status-danger-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 }
 
