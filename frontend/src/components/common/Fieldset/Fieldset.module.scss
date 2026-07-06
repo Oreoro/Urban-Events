@@ -1,13 +1,16 @@
 .fieldset {
-  background: var(--hi-surface) !important;
-  border: 1px solid var(--hi-border) !important;
+  background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface)) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
   border-radius: var(--hi-radius-md) !important;
-  padding: 12px !important;
+  padding: 14px !important;
 }
 
 .legend {
+  padding: 0 5px;
+  background: var(--hi-surface);
   color: var(--hi-text);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 620;
   letter-spacing: 0;
+  line-height: 1.3;
 }

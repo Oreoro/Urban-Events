@@ -1,7 +1,7 @@
 .settingsLayout {
   display: grid;
-  grid-template-columns: minmax(0, 208px) minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 218px) minmax(0, 1fr);
+  gap: 28px;
   align-items: start;
 }
 
@@ -12,29 +12,33 @@
 }
 
 .sideMenu {
-  padding: 2px;
+  padding: 7px;
+  background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
 }
 
 .sideMenuTitle {
-  margin: 0 0 6px 7px;
+  margin: 0 0 7px;
+  padding: 0 7px;
   color: var(--hi-text-muted);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.74rem;
+  font-weight: 650;
   letter-spacing: 0;
   text-transform: none;
 }
 
 .navList {
-  gap: 2px;
+  gap: 1px;
 }
 
 .navLink {
-  min-height: 31px;
+  min-height: 32px;
   color: var(--hi-text-muted);
   border-radius: var(--hi-radius-sm);
-  font-size: 0.84rem;
-  font-weight: 520;
-  padding-inline: 7px;
+  font-size: 0.835rem;
+  font-weight: 560;
+  padding-inline: 8px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -42,9 +46,9 @@
   }
 
   &[data-active] {
-    background: var(--hi-control-bg-active);
+    background: color-mix(in srgb, var(--hi-text) 6%, var(--hi-surface));
     color: var(--hi-text);
-    font-weight: 600;
+    font-weight: 650;
   }
 
   :global(.mantine-NavLink-section) {
@@ -78,10 +82,10 @@
 
 .content {
   min-width: 0;
-  max-width: 900px;
+  max-width: 940px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .settingSection {
@@ -91,16 +95,73 @@
   > :global(.card.lightGray),
   > :global(.card.lightAccent) {
     margin-bottom: 0;
-    padding: 18px;
-    border-color: var(--hi-border);
+    padding: 20px;
+    border-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
     border-radius: var(--hi-radius-md);
     background: var(--hi-surface);
   }
 
-  h2 {
-    margin: 0 0 12px;
+  > :global(.card.default:hover),
+  > :global(.card.lightGray:hover),
+  > :global(.card.lightAccent:hover) {
+    border-color: var(--hi-border);
+  }
+
+  :global(.mantine-Paper-root) {
+    border-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface)) !important;
+    background: color-mix(in srgb, var(--hi-shell-bg) 58%, var(--hi-surface)) !important;
+    border-radius: var(--hi-radius-md) !important;
+    box-shadow: none !important;
+  }
+
+  :global(.mantine-InputWrapper-root),
+  :global(.mantine-Switch-root) {
+    margin-bottom: 12px;
+  }
+
+  :global(.mantine-InputWrapper-label),
+  :global(.mantine-Switch-label) {
     color: var(--hi-text);
-    font-size: 1rem;
+    font-size: 0.84rem;
+    font-weight: 620;
+    line-height: 1.35;
+  }
+
+  :global(.mantine-InputWrapper-description),
+  :global(.mantine-Switch-description) {
+    color: var(--hi-text-muted);
+    font-size: 0.78rem;
+    font-weight: 450;
+    line-height: 1.42;
+  }
+
+  :global(.mantine-Input-input) {
+    min-height: 36px;
+    border-color: var(--hi-border);
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+
+  :global(.mantine-Checkbox-root) {
+    margin-bottom: 10px;
+  }
+
+  :global(.mantine-Checkbox-label) {
+    color: var(--hi-text);
+    font-size: 0.84rem;
+    font-weight: 620;
+  }
+
+  :global(.mantine-Checkbox-description) {
+    color: var(--hi-text-muted);
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    color: var(--hi-text);
+    font-size: 0.98rem;
     font-weight: 650;
     letter-spacing: 0;
     line-height: 1.32;
@@ -108,14 +169,14 @@
 
   h3 {
     color: var(--hi-text);
-    font-size: 0.93rem;
+    font-size: 0.9rem;
     font-weight: 620;
     letter-spacing: 0;
   }
 
   h4 {
     color: var(--hi-text);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0;
   }
