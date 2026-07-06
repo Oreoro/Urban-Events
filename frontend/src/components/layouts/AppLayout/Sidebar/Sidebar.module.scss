@@ -124,13 +124,13 @@
       }
 
       &.linkActive {
-        background: var(--hi-shell-surface);
-        color: var(--hi-shell-text);
+        background: color-mix(in srgb, var(--hi-shell-accent) 10%, white);
+        color: var(--hi-shell-accent);
         font-weight: 600;
         box-shadow: none;
 
         .linkIcon {
-          color: var(--hi-shell-text);
+          color: var(--hi-shell-accent);
         }
       }
 

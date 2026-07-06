@@ -15,11 +15,19 @@
   font-feature-settings: "ss01" on, "cv05" on, "cv11" on;
 }
 
+.wordmark,
+.wordmark * {
+  color: var(--brand-primary) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
 .wordmarkText {
   display: inline-block;
   position: relative;
   font-size: var(--brand-font-size);
   color: currentColor;
+  font-weight: 700;
 }
 
 .wordmarkText::after {
@@ -27,7 +35,7 @@
 }
 
 .light {
-  --brand-primary: var(--hi-shell-text);
+  --brand-primary: currentColor;
 }
 
 .dark {
