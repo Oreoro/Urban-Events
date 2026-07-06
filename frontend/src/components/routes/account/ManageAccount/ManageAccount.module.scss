@@ -1,4 +1,13 @@
 .container {
+  margin-bottom: var(--hi-spacing-xl);
+
+  h1 {
+    margin: 0 0 16px;
+    font-size: 1.55rem;
+    font-weight: 680;
+    letter-spacing: 0;
+  }
+
   .tabsCard {
     padding: 0;
     box-shadow: none;

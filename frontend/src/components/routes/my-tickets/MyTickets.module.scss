@@ -1,9 +1,9 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 32px 20px;
+  padding: 34px 20px;
 
   @include mixins.respond-below(md) {
     padding: 20px 16px;
@@ -12,10 +12,14 @@
 
 .header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
+  padding: 24px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
 
   h1 {
-    margin: 16px 0 8px;
+    margin: 14px 0 6px;
     font-size: 1.55rem;
     font-weight: 650;
     color: var(--hi-text);
@@ -56,6 +60,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 14px;
 
   @include mixins.respond-below(md) {
     gap: 16px;
@@ -66,6 +71,7 @@
   position: relative;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   border: 1px solid var(--hi-border);
+  padding: 18px;
 
   &:hover {
     transform: none;
@@ -95,7 +101,7 @@
 .eventInfo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -111,16 +117,22 @@
 }
 
 .orderDetails {
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--hi-border);
 }
 
 .detailItem {
   min-width: 0;
-  padding: 10px;
+  padding: 10px 12px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   background: var(--hi-shell-bg);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: var(--hi-control-bg-hover);
+    border-color: var(--hi-border-strong);
+  }
 
   @include mixins.respond-below(md) {
     margin-bottom: 4px;
@@ -143,6 +155,8 @@
 
 .requestCard {
   margin-top: 24px;
+  padding: 18px;
+  border-radius: var(--hi-radius-lg);
 }
 
 .requestHeader {

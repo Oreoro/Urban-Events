@@ -58,10 +58,15 @@ const Configurations = () => {
 
     return (
         <>
-            <Container size="xl" p="xl">
+            <Container size="xl" p="xl" className={classes.configShell}>
                 <Stack gap="lg">
-                    <Group justify="space-between">
-                        <Title order={1}>{t`Configurations`}</Title>
+                    <Group justify="space-between" className={classes.configHeader}>
+                        <div>
+                            <Title order={1} className={classes.configTitle}>{t`Configurations`}</Title>
+                            <Text className={classes.configSubtitle}>
+                                {t`Manage fee presets used across accounts. Keep names clear because they can appear in customer-facing payment flows.`}
+                            </Text>
+                        </div>
                         <Button
                             leftSection={<IconPlus size={16} />}
                             onClick={() => setShowCreateModal(true)}
@@ -80,7 +85,7 @@ const Configurations = () => {
                                 <Group justify="space-between" align="flex-start">
                                     <Stack gap="xs">
                                         <Group gap="sm">
-                                            <Text fw={600}>{config.name}</Text>
+                                            <Text className={classes.configName}>{config.name}</Text>
                                             {config.is_system_default && (
                                                 <Badge color="blue" size="sm">{t`System Default`}</Badge>
                                             )}
@@ -88,23 +93,24 @@ const Configurations = () => {
                                                 <Badge color="orange" size="sm">{t`Fees Bypassed`}</Badge>
                                             )}
                                         </Group>
-                                        <Group gap="xl">
-                                            <div>
+                                        <div className={classes.configMetaGrid}>
+                                            <div className={classes.configMetaItem}>
                                                 <Text size="xs" c="dimmed">{t`Fixed Fee`}</Text>
                                                 <Text size="sm" fw={500}>
                                                     {getCurrencySymbol(config.application_fees?.currency || 'USD')}
                                                     {config.application_fees?.fixed || 0} {config.application_fees?.currency || 'USD'}
                                                 </Text>
                                             </div>
-                                            <div>
+                                            <div className={classes.configMetaItem}>
                                                 <Text size="xs" c="dimmed">{t`Percentage Fee`}</Text>
                                                 <Text size="sm" fw={500}>{config.application_fees?.percentage || 0}%</Text>
                                             </div>
-                                        </Group>
+                                        </div>
                                     </Stack>
                                     <Group gap="xs">
                                         <ActionIcon
                                             variant="light"
+                                            className={classes.configAction}
                                             onClick={() => setEditingConfig(config)}
                                         >
                                             <IconEdit size={16} />
@@ -112,6 +118,7 @@ const Configurations = () => {
                                         <ActionIcon
                                             variant="light"
                                             color="red"
+                                            className={classes.configAction}
                                             onClick={() => handleDelete(config)}
                                             disabled={config.is_system_default}
                                         >
@@ -123,7 +130,7 @@ const Configurations = () => {
                         ))}
 
                         {configurations.length === 0 && (
-                            <Text c="dimmed" ta="center">{t`No configurations found`}</Text>
+                            <Text className={classes.emptyState}>{t`No configurations found`}</Text>
                         )}
                     </Stack>
                 </Stack>
