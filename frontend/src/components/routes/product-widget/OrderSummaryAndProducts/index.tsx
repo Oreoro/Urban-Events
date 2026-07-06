@@ -148,7 +148,7 @@ const GuestListItem = ({
 const DetailItem = ({icon: Icon, label, value}: { icon: any, label: string, value: React.ReactNode }) => (
     <div className={classes.detailItem}>
         <Group gap="xs" wrap="nowrap">
-            <Icon size={20} style={{color: 'var(--checkout-accent, var(--hi-text-muted))', flexShrink: 0}}/>
+            <Icon size={20} className={classes.detailIcon}/>
             <div className={classes.detailContent}>
                 <Text size="sm" c="dimmed" className={classes.label}>{label}</Text>
                 <Text className={classes.value}>{value}</Text>
@@ -222,7 +222,7 @@ const OrderDetails = ({
     onEditClick: () => void;
     onResendClick: () => void;
 }) => (
-    <Card style={{marginBottom: '40px'}}>
+    <Card className={classes.sectionCard}>
         <SimpleGrid cols={{base: 1, sm: 2}} spacing="md">
             <DetailItem
                 icon={IconUser}
@@ -250,7 +250,7 @@ const OrderDetails = ({
                 label={t`Email`}
                 value={
                     <Group gap="xs" wrap="nowrap">
-                        <span style={{wordBreak: 'break-all'}}>{order.email}</span>
+                        <span className={classes.breakableValue}>{order.email}</span>
                         {allowSelfEdit && order.status !== 'CANCELLED' && (
                             <Tooltip label={t`Resend Confirmation`}>
                                 <ActionIcon size="xs" variant="subtle" onClick={onResendClick}>
@@ -375,7 +375,7 @@ const OrderStatus = ({order}: { order: Order }) => {
 };
 
 const PostCheckoutMessage = ({ message }: { message: string }) => (
-    <div style={{ marginTop: '20px', marginBottom: '40px' }}>
+    <div className={classes.contentSection}>
         <h1 className={classes.heading}>{t`Additional Information`}</h1>
         <Card>
             <div dangerouslySetInnerHTML={{ __html: message }} />
@@ -384,8 +384,8 @@ const PostCheckoutMessage = ({ message }: { message: string }) => (
 );
 
 const OfflinePaymentInstructions = ({ event }: { event: Event }) => (
-    <div style={{ marginTop: '20px', marginBottom: '40px' }}>
-        <h2>{t`Payment Instructions`}</h2>
+    <div className={classes.contentSection}>
+        <h2 className={classes.heading}>{t`Payment Instructions`}</h2>
         <Card>
             <div
                 dangerouslySetInnerHTML={{
@@ -567,12 +567,9 @@ export const OrderSummaryAndProducts = () => {
                         color="primary"
                         mb="lg"
                         radius="lg"
-                        style={{
-                            backgroundColor: 'var(--hi-status-success-bg)',
-                            borderColor: 'var(--hi-status-success-border)',
-                        }}
+                        className={classes.successAlert}
                     >
-                        <Text size="sm" style={{color: 'var(--checkout-text-primary, var(--hi-text))'}}>
+                        <Text size="sm" className={classes.successAlertText}>
                             {t`Your order details have been updated. A confirmation email has been sent to the new email address.`}
                         </Text>
                     </Alert>

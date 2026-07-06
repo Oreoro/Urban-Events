@@ -1,0 +1,22 @@
+.expiredCard {
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.expiredIcon {
+  color: var(--hi-status-danger-text) !important;
+  background: var(--hi-status-danger-bg) !important;
+  border: 1px solid var(--hi-status-danger-border);
+}
+
+.expiredTitle {
+  color: var(--checkout-text-primary, var(--hi-text));
+  font-size: 1.05rem;
+  font-weight: 680;
+}
+
+.expiredText {
+  max-width: 420px;
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  line-height: 1.55;
+}
