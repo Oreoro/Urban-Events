@@ -51,7 +51,7 @@
 
 .iconWrapper {
     flex-shrink: 0;
-    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-primary)));
+    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
     margin-top: 1px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .privacyLink {
-    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-primary)));
+    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
     text-decoration: underline;
 
     &:hover {
@@ -93,7 +93,7 @@
 }
 
 .acceptButton {
-    background: var(--event-primary-color, var(--organizer-primary-color, var(--hi-primary)));
+    background: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
     color: var(--event-accent-contrast, var(--organizer-accent-contrast, var(--hi-color-white)));
 }
 

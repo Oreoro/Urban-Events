@@ -39,7 +39,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
-  background: var(--accent-soft, var(--checkout-accent-soft, var(--mantine-primary-color-light)));
+  background: var(--accent-soft, var(--checkout-accent-soft, var(--hi-surface-soft)));
 
   @include mixins.respond-below(sm) {
     width: 64px;
@@ -50,7 +50,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .icon {
   width: 36px;
   height: 36px;
-  color: var(--primary-color, var(--checkout-accent, var(--hi-primary)));
+  color: var(--primary-color, var(--checkout-text-primary, var(--hi-text)));
 
   @include mixins.respond-below(sm) {
     width: 28px;
@@ -86,7 +86,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600 !important;
   font-size: 15px !important;
   margin-top: 16px;
-  background: var(--primary-color, var(--checkout-accent, var(--mantine-primary-color-filled))) !important;
+  background: var(--primary-color, var(--checkout-accent, var(--hi-text))) !important;
   color: var(--accent-contrast, var(--checkout-accent-contrast, var(--hi-color-white))) !important;
   transition: filter $transition-fast, background-color $transition-fast, border-color $transition-fast;
 
@@ -104,7 +104,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .helpLink {
-  color: var(--primary-color, var(--checkout-accent, var(--mantine-primary-color-filled)));
+  color: var(--primary-color, var(--checkout-accent, var(--hi-text)));
   text-decoration: none;
 
   &:hover {

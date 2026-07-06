@@ -3,12 +3,20 @@
 }
 
 .hi-product-widget-container {
+  --widget-fg: var(--widget-primary-text-color, var(--hi-text));
+  --widget-muted-fg: color-mix(in srgb, var(--widget-fg) 58%, var(--widget-background-color, var(--hi-color-white)));
+  --widget-accent: var(--widget-secondary-color, var(--hi-text));
+  --widget-accent-text: var(--widget-secondary-text-color, var(--hi-color-white));
+  --widget-border: var(--widget-primary-color, var(--hi-border));
+  --widget-border-strong: color-mix(in srgb, var(--widget-border) 78%, var(--widget-fg));
+  --widget-soft-accent: color-mix(in srgb, var(--widget-accent) 7%, var(--widget-background-color, var(--hi-color-white)));
+
   background-color: var(--widget-background-color, var(--hi-color-white));
-  color: var(--widget-primary-text-color);
+  color: var(--widget-fg);
   padding: var(--widget-padding, var(--hi-spacing-md));
 
   a, button {
-    color: var(--widget-primary-text-color, var(--hi-primary));
+    color: var(--widget-fg);
   }
 
   .hi-product-rows {
@@ -20,21 +28,21 @@
     .hi-product-row {
       display: flex;
       flex-flow: column;
-      border: 3px solid var(--widget-primary-color, var(--hi-secondary));
-      border-radius: 5px;
+      border: 1px solid var(--widget-border);
+      border-radius: var(--hi-radius-lg);
       position: relative;
       overflow: hidden;
 
       &.hi-product-highlighted {
-        border-color: var(--widget-secondary-color, var(--hi-primary));
-        background-color: color-mix(in srgb, var(--widget-secondary-color, var(--hi-primary)) 10%, var(--widget-background-color, var(--hi-color-white)));
+        border-color: var(--widget-border-strong);
+        background-color: var(--widget-soft-accent);
       }
 
       .hi-product-highlight-message {
-        background: var(--widget-secondary-color, var(--hi-primary));
-        color: var(--widget-secondary-text-color, var(--hi-color-white));
+        background: var(--widget-accent);
+        color: var(--widget-accent-text);
         font-size: 0.75rem;
-        font-weight: 600;
+        font-weight: 500;
         padding: 6px 16px;
         text-align: center;
         letter-spacing: 0;
@@ -67,23 +75,23 @@
             margin: 10px 0;
 
             a {
-              font-weight: bold;
+              font-weight: 600;
             }
           }
 
           .hi-product-title-metadata {
             margin-left: 5px;
-            font-weight: normal;
+            font-weight: 400;
             display: flex;
           }
 
           .hi-product-collapse-arrow {
             display: flex;
-            color: var(--widget-secondary-color, var(--hi-primary));
+            color: var(--widget-muted-fg);
             margin-left: 10px;
 
             svg {
-              transition: all 0.1s linear;
+              transition: transform 0.1s linear;
             }
 
             svg.open {
@@ -103,7 +111,7 @@
           .hi-price-tier-amount {
             span:first-child {
               display: block;
-              color: var(--hi-text-muted);
+              color: var(--widget-muted-fg);
               font-size: .85em;
             }
           }
@@ -111,12 +119,12 @@
       }
 
       .hi-product-quantity-error {
-        color: var(--widget-primary-color, var(--hi-primary));
+        color: var(--hi-status-danger-text);
         background-color: var(--widget-background-color, var(--hi-color-white));
-        border: 2px solid var(--widget-primary-color, var(--hi-primary));
+        border: 1px solid var(--hi-status-danger-border);
         padding: 10px 20px;
         margin: 10px 0;
-        border-radius: 5px;
+        border-radius: var(--hi-radius-md);
       }
 
       .hi-price-tier-row {
@@ -124,7 +132,7 @@
 
         .hi-price-tier {
           .hi-price-tier-label {
-            font-weight: bold;
+            font-weight: 600;
           }
 
           .hi-price-tier-price {
@@ -139,9 +147,9 @@
 
             .hi-donation-input-wrapper {
               .hi-donation-input {
-                color: var(--widget-primary-text-color, var(--hi-primary));
+                color: var(--widget-fg);
                 background-color: var(--widget-background-color, var(--hi-color-white));
-                border: 2px solid var(--widget-primary-color, var(--hi-primary));
+                border: 1px solid var(--widget-border);
               }
             }
           }
@@ -150,7 +158,7 @@
         .hi-product-quantity-selector {
           .button-input {
             input {
-              color: var(--widget-primary-text-color, var(--hi-primary));
+              color: var(--widget-fg);
             }
 
             button {
@@ -159,20 +167,20 @@
                 opacity: .5;
               }
 
-              background-color: var(--widget-secondary-color, var(--hi-primary));
-              color: var(--widget-secondary-text-color, var(--hi-color-white));
+              background-color: var(--widget-accent);
+              color: var(--widget-accent-text);
             }
           }
 
           .select-input {
             input {
               background-color: var(--widget-background-color, var(--hi-color-white));
-              border: 2px solid var(--widget-primary-color, var(--hi-primary));
-              color: var(--widget-primary-text-color, var(--hi-primary));
+              border: 1px solid var(--widget-border);
+              color: var(--widget-fg);
             }
 
             svg {
-              color: var(--widget-primary-text-color, var(--hi-primary));
+              color: var(--widget-muted-fg);
             }
           }
         }
@@ -181,12 +189,12 @@
   }
 
   .hi-waitlist-button {
-    background-color: var(--widget-secondary-color, var(--hi-primary));
-    color: var(--widget-secondary-text-color, var(--hi-color-white));
+    background-color: var(--widget-accent);
+    color: var(--widget-accent-text);
     border: none;
     font-size: 0.75rem;
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: var(--hi-radius-sm);
     cursor: pointer;
     white-space: nowrap;
 
@@ -197,7 +205,7 @@
 
   .hi-waitlist-joined {
     font-size: 0.8rem;
-    color: var(--widget-primary-text-color, var(--hi-primary));
+    color: var(--widget-muted-fg);
     white-space: nowrap;
   }
 
@@ -211,20 +219,20 @@
       flex: 1;
       margin-right: 20px;
       background: var(--widget-background-color, var(--hi-color-white));
-      border: 2px solid var(--widget-primary-color, var(--hi-primary));
-      color: var(--widget-primary-text-color, var(--hi-primary));
+      border: 1px solid var(--widget-border);
+      color: var(--widget-fg);
     }
 
     .hi-apply-promo-code-button {
       width: 200px;
-      background-color: var(--widget-secondary-color, var(--hi-primary));
-      color: var(--widget-secondary-text-color, var(--hi-color-white));
+      background-color: var(--widget-accent);
+      color: var(--widget-accent-text);
       border: none;
     }
 
     .hi-close-promo-code-input-button {
-        background-color: var(--widget-secondary-color, var(--hi-primary));
-        color: var(--widget-secondary-text-color, var(--hi-color-white));
+        background-color: var(--widget-accent);
+        color: var(--widget-accent-text);
         border: none;
     }
 
@@ -246,13 +254,13 @@
     .hi-product-page-message {
       margin-bottom: 20px;
       padding: 10px 20px;
-      border-radius: 5px;
-      background-color: var(--widget-secondary-color, var(--hi-secondary));
+      border-radius: var(--hi-radius-md);
+      background-color: var(--widget-soft-accent);
     }
 
     .hi-continue-button {
-      background-color: var(--widget-secondary-color, var(--hi-primary));
-      color: var(--widget-secondary-text-color, var(--hi-color-white));
+      background-color: var(--widget-accent);
+      color: var(--widget-accent-text);
     }
   }
 }
