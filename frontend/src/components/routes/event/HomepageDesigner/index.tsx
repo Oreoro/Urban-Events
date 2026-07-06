@@ -215,7 +215,7 @@ const HomepageDesigner = () => {
                                                         icon: <IconPhoto/>,
                                                         label: t`Use cover image`,
                                                         value: 'MIRROR_COVER_IMAGE',
-                                                        description: t`Use a blurred version of the cover image as the background`,
+                                                        description: t`Use the cover image as the page background`,
                                                         disabled: !existingCover,
                                                     },
                                                 ]}

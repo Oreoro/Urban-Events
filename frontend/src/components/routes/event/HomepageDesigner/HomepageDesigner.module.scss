@@ -67,7 +67,7 @@
       
       .accordionItem {
         border: 1px solid var(--hi-border);
-        border-radius: var(--hi-radius-lg);
+        border-radius: var(--hi-radius-md);
         overflow: hidden;
         background: var(--hi-surface);
         
@@ -163,7 +163,7 @@
         transform: scale(var(--scale));
         transform-origin: 0 0;
         border: 1px solid var(--hi-border);
-        border-radius: var(--hi-radius-lg);
+        border-radius: var(--hi-radius-md);
         position: absolute;
         inset: 18px;
         width: calc((100% - 36px) / var(--scale));
