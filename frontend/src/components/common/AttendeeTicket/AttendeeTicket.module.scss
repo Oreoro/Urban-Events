@@ -22,7 +22,7 @@
 
 .ticket {
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   border: 1px solid var(--hi-border);
   max-width: 760px;
   margin: 0 auto;
@@ -47,9 +47,9 @@
 
 // Header
 .header {
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   border-bottom: 1px solid var(--hi-border);
-  padding: 20px 24px;
+  padding: 18px 22px;
 
   @include mixins.respond-below(sm) {
     padding: 20px;
@@ -106,7 +106,7 @@
 .priceDisplay {
   font-size: 16px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--hi-text);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
   padding: 6px 10px;
@@ -127,8 +127,8 @@
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 24px;
-  padding: 24px;
+  gap: 20px;
+  padding: 22px;
   flex: 1;
   align-items: start;
 
@@ -182,10 +182,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 10px 12px;
+  padding: 9px 11px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
 
   @media print {
     padding: 7px 0;
@@ -228,9 +228,9 @@
 
 // Attendee Section
 .attendeeSection {
-  background: var(--hi-shell-bg);
-  padding: 18px;
-  border-radius: var(--hi-radius-lg);
+  background: var(--hi-surface-soft);
+  padding: 16px;
+  border-radius: var(--hi-radius-md);
   border: 1px solid var(--hi-border);
   margin-top: auto;
 
@@ -331,10 +331,10 @@
 
 .qrContainer {
   position: relative;
-  padding: 16px;
+  padding: 14px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,9 +348,9 @@
   }
 
   @media print {
-    border-color: var(--accent);
+    border-color: var(--hi-border);
     padding: 15px;
-    border-width: 3px;
+    border-width: 1px;
   }
 }
 
@@ -365,7 +365,7 @@
   position: relative;
   width: 160px;
   height: 160px;
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   border: 1px solid;
   overflow: hidden;
 
@@ -475,11 +475,11 @@
   font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
   font-size: 14px;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--hi-shell-bg);
+  color: var(--hi-text);
+  background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
-  padding: 8px 16px;
-  border-radius: var(--hi-radius-md);
+  padding: 7px 12px;
+  border-radius: var(--hi-radius-sm);
   letter-spacing: 0;
 
   @include mixins.respond-below(sm) {
@@ -488,7 +488,7 @@
   }
 
   @media print {
-    color: var(--accent);
+    color: var(--hi-text);
     background: var(--hi-surface-soft);
     font-size: 14px;
     padding: 8px 16px;
@@ -498,9 +498,9 @@
 
 // Footer
 .footer {
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   border-top: 1px solid var(--hi-border);
-  padding: 20px 32px;
+  padding: 18px 22px;
 
   @include mixins.respond-below(sm) {
     padding: 16px 20px;

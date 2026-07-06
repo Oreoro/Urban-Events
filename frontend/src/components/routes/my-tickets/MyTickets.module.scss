@@ -13,10 +13,10 @@
 .header {
   text-align: left;
   margin-bottom: 18px;
-  padding: 22px;
+  padding: 20px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 
   h1 {
     margin: 12px 0 6px;
@@ -33,10 +33,10 @@
 
 .headerIcon {
   color: var(--hi-text-muted);
-  padding: 10px;
-  background: var(--hi-shell-bg);
+  padding: 8px;
+  background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -71,7 +71,8 @@
   position: relative;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   border: 1px solid var(--hi-border);
-  padding: 16px;
+  padding: 14px;
+  border-radius: var(--hi-radius-md);
 
   &:hover {
     transform: none;
@@ -140,10 +141,10 @@
 
 .detailItem {
   min-width: 0;
-  padding: 10px 12px;
+  padding: 9px 11px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
@@ -187,8 +188,8 @@
 
 .requestCard {
   margin-top: 24px;
-  padding: 18px;
-  border-radius: var(--hi-radius-lg);
+  padding: 16px;
+  border-radius: var(--hi-radius-md);
 }
 
 .requestHeader {
@@ -243,9 +244,9 @@
 
 .successMessage {
   text-align: center;
-  padding: 16px;
-  background: var(--hi-shell-bg);
-  border-radius: var(--hi-radius-lg);
+  padding: 14px;
+  background: var(--hi-surface-soft);
+  border-radius: var(--hi-radius-md);
   border: 1px solid var(--hi-border);
 
   p {
