@@ -12,7 +12,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   gap: 8px;
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 }
 
 .statusIcon {
@@ -22,7 +22,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   align-items: center;
   justify-content: center;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
-  background: var(--hi-shell-bg);
+  background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
   border-radius: var(--hi-radius-md);
   margin-bottom: 8px;
@@ -87,7 +87,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   padding: 10px 12px;
   border: 1px solid var(--checkout-border, var(--hi-border));
   border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  background: var(--checkout-surface, var(--hi-surface));
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {

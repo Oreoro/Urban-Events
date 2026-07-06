@@ -146,7 +146,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 .checkoutModalContent {
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
 }
 

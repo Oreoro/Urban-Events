@@ -3,7 +3,7 @@
   max-width: 900px;
   margin: 0 auto;
   height: 99%;
-  background: var(--hi-shell-bg);
+  background: var(--checkout-surface, var(--hi-surface));
 
   @media print {
     padding: 0;

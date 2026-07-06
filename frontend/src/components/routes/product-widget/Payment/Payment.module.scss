@@ -27,8 +27,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 6px;
   padding: 4px;
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
-  background: var(--hi-shell-bg);
+  border-radius: var(--hi-radius-md);
+  background: var(--checkout-surface, var(--hi-surface));
 }
 
 .paymentMethodTab {
