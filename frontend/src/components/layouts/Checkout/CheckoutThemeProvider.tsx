@@ -14,11 +14,11 @@ interface CheckoutThemeProviderProps {
  */
 const LIGHT_PALETTE = {
     surface: '#ffffff',
-    background: '#F6F8FA',
-    textPrimary: '#111827',
-    textSecondary: '#344054',
-    textTertiary: '#667085',
-    border: 'rgba(51, 65, 85, 0.18)',
+    background: '#F7F7F5',
+    textPrimary: '#37352F',
+    textSecondary: '#4F4D48',
+    textTertiary: '#787774',
+    border: '#E6E4DF',
 };
 
 const DARK_PALETTE = {
@@ -81,10 +81,10 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
         colors: {
             primary: primaryColors,
         },
-        fontFamily: "'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
+        fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         headings: {
-            fontFamily: "'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
-            fontWeight: '800',
+            fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontWeight: '700',
         },
         primaryShade: mode === 'dark' ? 6 : 7,
         components: {

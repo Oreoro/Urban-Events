@@ -67,6 +67,13 @@
   --hi-shell-muted: #85837f;
   --hi-shell-accent: #2383e2;
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
+  --hi-control-bg: #ffffff;
+  --hi-control-bg-hover: #f7f7f5;
+  --hi-control-bg-active: #eeeeec;
+  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 18%, transparent);
+  --hi-danger: #c4554d;
+  --hi-success: #2f8f62;
+  --hi-warning: #cb912f;
 
   --hi-color-white: #ffffff;
   --hi-color-black: #000000;
@@ -83,9 +90,9 @@
   --hi-radius-lg: 10px;
   --hi-radius-xl: 14px;
 
-  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent);
-  --hi-shadow-md: 0 2px 8px color-mix(in srgb, var(--ue-ink) 8%, transparent);
-  --hi-shadow-lg: 0 8px 24px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 5%, transparent);
+  --hi-shadow-md: 0 1px 3px color-mix(in srgb, var(--ue-ink) 7%, transparent);
+  --hi-shadow-lg: 0 6px 18px color-mix(in srgb, var(--ue-ink) 8%, transparent);
 }
 
 * {
@@ -151,22 +158,18 @@ a {
   transform: none;
 }
 
-.mantine-Button-root:active:not([data-disabled]) {
-  transform: translateY(0);
-}
-
 .mantine-Input-input:focus,
 .mantine-Input-input:focus-within {
-  border-color: var(--hi-secondary-strong);
-  box-shadow: 0 0 0 3px rgba(14, 124, 112, 0.14);
+  border-color: var(--hi-shell-accent);
+  box-shadow: 0 0 0 3px var(--hi-focus-ring);
 }
 
 .mantine-Input-input {
-  background-color: var(--hi-surface);
+  background-color: var(--hi-control-bg);
 }
 
 .mantine-Input-input:hover:not(:disabled) {
-  border-color: color-mix(in srgb, var(--ue-blue-slate) 34%, var(--hi-border-strong));
+  border-color: color-mix(in srgb, var(--ue-blue-slate) 42%, var(--hi-border-strong));
 }
 
 .mantine-Input-input::placeholder {
@@ -184,9 +187,14 @@ a {
 }
 
 .mantine-Button-root[data-variant="light"] {
-  color: var(--hi-secondary-strong);
-  background-color: color-mix(in srgb, var(--ue-mint) 78%, white);
-  border: 1px solid color-mix(in srgb, var(--ue-teal) 16%, var(--hi-border));
+  color: var(--hi-text);
+  background-color: var(--hi-control-bg-hover);
+  border: 1px solid var(--hi-border);
+}
+
+.mantine-Button-root[data-variant="light"]:hover:not([data-disabled]) {
+  background-color: var(--hi-control-bg-active);
+  border-color: var(--hi-border-strong);
 }
 
 .mantine-Button-root[data-variant="subtle"],
@@ -203,7 +211,7 @@ a {
 .mantine-Menu-dropdown {
   background: var(--hi-surface);
   border-color: var(--hi-border);
-  box-shadow: var(--hi-shadow-md);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .mantine-Menu-item {
@@ -211,8 +219,8 @@ a {
 }
 
 .mantine-Menu-item:hover {
-  background: color-mix(in srgb, var(--ue-mint) 72%, white);
-  color: var(--ue-forest-deep);
+  background: var(--hi-control-bg-hover);
+  color: var(--hi-text);
 }
 
 .mantine-Table-table {
@@ -220,11 +228,11 @@ a {
 }
 
 .mantine-Table-table th {
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
   border-bottom: 1px solid var(--hi-border-strong);
   color: var(--hi-text-muted);
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -258,12 +266,12 @@ a {
 }
 
 .mantine-Tabs-tab[data-active] {
-  background: color-mix(in srgb, var(--ue-mint) 70%, white);
-  color: var(--ue-teal-deep);
+  background: var(--hi-control-bg-active);
+  color: var(--hi-text);
 }
 
 .mantine-SegmentedControl-root {
-  background: var(--hi-surface-soft);
+  background: var(--hi-control-bg-hover);
   border: 1px solid var(--hi-border);
 }
 

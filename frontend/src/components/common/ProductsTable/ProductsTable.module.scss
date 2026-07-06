@@ -5,35 +5,36 @@
 // ==========================================
 
 $card-radius: var(--hi-radius-md, 8px);
-$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-$card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+$card-shadow: none;
+$card-shadow-hover: none;
 $transition-fast: 150ms ease;
 $transition-base: 200ms ease;
 
 
-$color-text-primary: #1f2937;
-$color-text-secondary: #6b7280;
-$color-text-muted: #9ca3af;
-$color-border: #e5e7eb;
-$color-border-light: #f3f4f6;
-$color-success: #10b981;
-$color-money: #059669;
+$color-text-primary: var(--hi-text);
+$color-text-secondary: var(--hi-text-light);
+$color-text-muted: var(--hi-text-muted);
+$color-border: var(--hi-border);
+$color-border-light: var(--hi-surface-soft);
+$color-success: var(--hi-success);
+$color-money: var(--hi-success);
 
 // ==========================================
 // Category Container Styles
 // ==========================================
 
 .sortableCategory {
-  margin-bottom: 24px;
-  transition: transform $transition-base, box-shadow $transition-base;
+  margin-bottom: 18px;
+  transition: background-color $transition-fast, border-color $transition-fast;
   border-radius: $card-radius;
   padding: var(--hi-spacing-lg);
   box-shadow: $card-shadow;
   border: 1px solid $color-border;
-  background-color: #ffffff;
+  background-color: var(--hi-surface);
 
   &:hover {
     box-shadow: $card-shadow-hover;
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -59,7 +60,7 @@ $color-money: #059669;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 600;
+  font-weight: 650;
   color: $color-text-primary;
 }
 
@@ -92,7 +93,7 @@ $color-money: #059669;
 }
 
 .isOver {
-  background-color: $color-border-light;
+  background-color: var(--hi-control-bg-hover);
 }
 
 .isDragging {
@@ -103,8 +104,7 @@ $color-money: #059669;
 .dragOverlay {
   .sortableCategory,
   .productCard {
-    transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--hi-shadow-md);
   }
 }
 
@@ -123,23 +123,22 @@ $color-money: #059669;
   box-sizing: border-box;
   border-radius: $card-radius;
   border: 1px solid $color-border;
-  background-color: #ffffff;
+  background-color: var(--hi-surface);
   display: grid;
   padding: 0;
   overflow: hidden;
   transition:
-          transform $transition-base,
-          box-shadow $transition-base,
-          border-color $transition-base;
+          background-color $transition-fast,
+          border-color $transition-fast;
   grid-template-areas: "sort content action";
   grid-template-columns: 44px 1fr auto;
 
   &:hover {
     box-shadow: $card-shadow-hover;
-    border-color: darken($color-border, 5%);
+    border-color: var(--hi-border-strong);
 
     .actionButton {
-      background-color: $color-border-light;
+      background-color: var(--hi-control-bg-hover);
     }
   }
 
@@ -174,8 +173,8 @@ $color-money: #059669;
   justify-content: center;
   align-items: center;
   padding: 12px 0;
-  border-right: 1px solid $color-border-light;
-  background-color: #fafafa;
+  border-right: 1px solid $color-border;
+  background-color: var(--hi-surface-soft);
 }
 
 // Main content area
@@ -218,7 +217,7 @@ $color-money: #059669;
 .productTitle {
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 650;
   color: $color-text-primary;
   line-height: 1.4;
 
@@ -300,8 +299,8 @@ $color-money: #059669;
   align-items: center;
   gap: 4px;
   padding: 2px 8px;
-  background-color: #fef3c7;
-  color: #92400e;
+  background-color: color-mix(in srgb, var(--hi-warning) 14%, white);
+  color: var(--hi-warning);
   border-radius: 4px;
   font-size: 11px;
   font-weight: 500;
@@ -309,7 +308,7 @@ $color-money: #059669;
   transition: background-color $transition-fast;
 
   &:hover {
-    background-color: #fde68a;
+    background-color: color-mix(in srgb, var(--hi-warning) 18%, white);
   }
 
   svg {
@@ -367,7 +366,7 @@ $color-money: #059669;
 .lowStock {
   font-size: 11px;
   font-weight: 500;
-  color: #ea580c;
+  color: var(--hi-warning);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -377,7 +376,7 @@ $color-money: #059669;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #ea580c;
+    background-color: var(--hi-warning);
     animation: pulse 2s infinite;
   }
 }
@@ -427,12 +426,12 @@ $color-money: #059669;
   align-items: center;
   justify-content: center;
   padding: 0 12px;
-  border-left: 1px solid $color-border-light;
-  background-color: #fafafa;
+  border-left: 1px solid $color-border;
+  background-color: var(--hi-surface-soft);
 
   @include mixins.respond-below(lg) {
     border-left: none;
-    border-top: 1px solid $color-border-light;
+    border-top: 1px solid $color-border;
     padding: 12px 16px;
     justify-content: flex-start;
   }
@@ -469,11 +468,11 @@ $color-money: #059669;
 // ==========================================
 
 .dragPreview {
-  background-color: #fff;
+  background-color: var(--hi-surface);
   border: 1px solid $color-border;
   border-radius: $card-radius;
   padding: 12px 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--hi-shadow-md);
 
   h3 {
     margin: 0 0 4px;
@@ -489,7 +488,7 @@ $color-money: #059669;
 }
 
 .moreProducts {
-  background-color: $color-border-light;
+  background-color: var(--hi-surface-soft);
   border-radius: $card-radius;
   padding: 12px 16px;
   margin-top: 8px;

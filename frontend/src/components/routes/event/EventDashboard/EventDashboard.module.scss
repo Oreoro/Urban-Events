@@ -334,34 +334,32 @@
 .stripeButton {
   align-self: flex-start;
 
-  background: var(--hi-secondary-strong) !important;
+  background: var(--hi-text) !important;
   color: white !important;
-  font-weight: 600;
+  font-weight: 650;
   border: none !important;
-  padding: 12px 24px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px var(--mantine-color-secondary-2), 0 2px 4px var(--mantine-color-secondary-1) !important;
+  padding: 10px 18px;
+  transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+  box-shadow: none !important;
   min-width: 180px;
-  border-radius: 8px !important;
+  border-radius: var(--hi-radius-md) !important;
 
   &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--mantine-color-secondary-3), 0 4px 8px var(--mantine-color-secondary-2) !important;
-    background: var(--hi-primary) !important;
+    box-shadow: none !important;
+    background: var(--hi-color-black) !important;
   }
 
   &:disabled {
     background: var(--mantine-color-gray-2) !important;
     color: var(--mantine-color-gray-5) !important;
-    transform: none;
-    box-shadow: 0 2px 8px var(--mantine-color-primary-1) !important;
+    box-shadow: none !important;
     opacity: 0.7;
   }
 
   &[data-loading="true"] {
-    background: var(--mantine-color-primary-4) !important;
+    background: var(--hi-text-light) !important;
     color: white !important;
-    box-shadow: 0 2px 8px var(--mantine-color-primary-2) !important;
+    box-shadow: none !important;
   }
 
   @media (max-width: 768px) {

@@ -94,7 +94,7 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 root: {
-                    transition: "background-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
+                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
                 },
             },
         },
@@ -124,7 +124,7 @@ export const getUrbanEventsTheme = () => createTheme({
                     fontWeight: 650,
                     letterSpacing: 0,
                     minHeight: "2.25rem",
-                    transition: "background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
+                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
                 },
                 label: {
                     whiteSpace: "normal",
@@ -162,10 +162,11 @@ export const getUrbanEventsTheme = () => createTheme({
                     color: "var(--hi-text)",
                     fontWeight: 500,
                     minHeight: "2.625rem",
+                    backgroundColor: "var(--hi-control-bg)",
                 },
                 label: {
                     color: "var(--hi-text)",
-                    fontWeight: 700,
+                    fontWeight: 650,
                 },
                 description: {
                     color: "var(--hi-text-muted)",
@@ -175,11 +176,12 @@ export const getUrbanEventsTheme = () => createTheme({
         Menu: {
             defaultProps: {
                 radius: "md",
-                shadow: "md",
+                shadow: "xs",
             },
             styles: {
                 dropdown: {
                     borderColor: "var(--hi-border)",
+                    boxShadow: "var(--hi-shadow-sm)",
                 },
                 item: {
                     fontWeight: 600,
@@ -198,6 +200,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Paper: {
             defaultProps: {
                 radius: "lg",
+                shadow: "none",
             },
         },
         SegmentedControl: {
@@ -219,7 +222,41 @@ export const getUrbanEventsTheme = () => createTheme({
                 color: "secondary",
             },
         },
+        Table: {
+            styles: {
+                table: {
+                    color: "var(--hi-text)",
+                },
+                th: {
+                    fontWeight: 700,
+                    color: "var(--hi-text-muted)",
+                },
+                td: {
+                    color: "var(--hi-text)",
+                },
+            },
+        },
         TextInput: {
+            defaultProps: {
+                radius: "md",
+            },
+        },
+        NumberInput: {
+            defaultProps: {
+                radius: "md",
+            },
+        },
+        PasswordInput: {
+            defaultProps: {
+                radius: "md",
+            },
+        },
+        Select: {
+            defaultProps: {
+                radius: "md",
+            },
+        },
+        Textarea: {
             defaultProps: {
                 radius: "md",
             },

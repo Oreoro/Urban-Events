@@ -35,7 +35,7 @@
 .ticketLookup {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--hi-color-gray-2);
+  border-top: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
     margin-top: 1.5rem;
@@ -104,7 +104,7 @@
 
   :global(.mantine-TextInput-input) {
     border-radius: var(--hi-radius-md);
-    border: 1.5px solid var(--hi-color-gray-2);
+    border: 1px solid var(--hi-border-strong);
     padding: 0.625rem 0.875rem;
     font-size: 0.875rem;
     background: white;
@@ -114,8 +114,8 @@
     }
 
     &:focus {
-      border-color: var(--hi-secondary-strong);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--hi-secondary-strong) 18%, transparent);
+      border-color: var(--hi-shell-accent);
+      box-shadow: 0 0 0 3px var(--hi-focus-ring);
     }
   }
 
@@ -141,9 +141,9 @@
 .successMessage {
   text-align: center;
   padding: 1.25rem;
-  background: var(--hi-color-gray);
+  background: var(--hi-surface-soft);
   border-radius: var(--hi-radius-lg);
-  border: 1px solid var(--hi-color-gray-2);
+  border: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
     padding: 1rem;
