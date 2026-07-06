@@ -45,7 +45,6 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'#0d9488'}
                             onClick={() => openCreateModal()}
                         >
                             {t`Add Product to Category`}
@@ -63,7 +62,6 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
             <Button
                 size={'xs'}
                 leftSection={<IconPlus/>}
-                color={'#0d9488'}
                 onClick={() => openCreateModal()}
             >{t`Add Product`}
             </Button>

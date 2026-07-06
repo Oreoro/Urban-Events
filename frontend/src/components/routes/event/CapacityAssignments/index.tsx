@@ -44,7 +44,6 @@ const CapacityAssignments = () => {
             )}>
                 <Button
                     leftSection={<IconPlus/>}
-                    color={'#0d9488'}
                     onClick={() => openCreateModal()}>{t`Create Capacity Assignment`}
                 </Button>
             </ToolBar>

@@ -53,7 +53,6 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                     <Button
                         size={'xs'}
                         leftSection={<IconPlus/>}
-                        color={'#0d9488'}
                         onClick={() => openCreateModal()}>{t`Create a Promo Code`}
                     </Button>
                 </>
@@ -98,7 +97,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     title={t`Click to copy`}
                                     style={{cursor: 'pointer', alignItems: 'center'}}
                                     rightSection={(<Flex>
-                                        {clipboard.copied ? <IconCheck color={'#0d9488'} size={'12'}/> :
+                                        {clipboard.copied ? <IconCheck color={'var(--hi-primary)'} size={'12'}/> :
                                             <IconCopy size={'12'}/>}
                                     </Flex>)}
                                     onClick={() => {
@@ -116,7 +115,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     <CopyCodeBadge/>
                                 </MantineTable.Td>
                                 <MantineTable.Td>
-                                    <Badge color={'cyan'} variant={'light'}>
+                                    <Badge color={'gray'} variant={'light'}>
                                         <Discount/>
                                     </Badge>
                                 </MantineTable.Td>
@@ -145,7 +144,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                                     })}>
                                                 <Badge
                                                     variant={'light'}
-                                                    color={'pink'}>{code.applicable_product_ids?.length} {t`Product(s)`}</Badge>
+                                                    color={'blue'}>{code.applicable_product_ids?.length} {t`Product(s)`}</Badge>
                                             </Tooltip>
                                         )}
                                     </div>
@@ -158,7 +157,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     </Tooltip> : t`Never`}</MantineTable.Td>
                                 <MantineTable.Td>
                                     <Group wrap={'nowrap'} gap={0} justify={'flex-end'}>
-                                        <Menu shadow="md" width={200}>
+                                        <Menu shadow="xs" width={200}>
                                             <Menu.Target>
                                                 <Button size={'xs'} variant={'transparent'}><IconDotsVertical/></Button>
                                             </Menu.Target>

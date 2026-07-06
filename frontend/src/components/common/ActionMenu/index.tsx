@@ -33,7 +33,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
                                                       }) => {
     return (
         <>
-            <Menu shadow="md" width={200}>
+            <Menu shadow="xs" width={200}>
                 <Menu.Target>
                     <div style={{cursor: 'pointer'}}>
                         {target}

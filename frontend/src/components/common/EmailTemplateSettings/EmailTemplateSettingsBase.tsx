@@ -261,8 +261,8 @@ export const EmailTemplateSettingsBase = ({
                             <div>
                                 <Badge
                                     size="xs"
-                                    color={template.is_active ? 'teal' : 'red'}
-                                    variant="filled"
+                                    color={template.is_active ? 'blue' : 'red'}
+                                    variant="light"
                                 >
                                     {template.is_active ? t`Active` : t`Inactive`}
                                 </Badge>

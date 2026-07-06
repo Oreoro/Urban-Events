@@ -99,7 +99,7 @@ export const GlobalMenu = () => {
 
     return (
         <>
-            <Menu shadow="md" width={220} position="bottom-end" offset={10}>
+            <Menu shadow="xs" width={220} position="bottom-end" offset={10}>
                 <Menu.Target>
                     <UnstyledButton className={classes.menuButton}>
                         <Avatar className={classes.avatar} radius="xl" fw={800}>

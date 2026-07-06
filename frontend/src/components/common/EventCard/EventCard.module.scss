@@ -109,13 +109,15 @@
   gap: 5px;
 
   &.status-live {
-    background: var(--hi-primary);
-    color: #ffffff;
+    background: color-mix(in srgb, var(--hi-success) 10%, white);
+    color: color-mix(in srgb, var(--hi-success) 62%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
   }
 
   &.status-onsale {
-    background: var(--hi-text);
-    color: #ffffff;
+    background: color-mix(in srgb, var(--hi-primary) 9%, white);
+    color: color-mix(in srgb, var(--hi-primary) 64%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
   }
 
   &.status-draft {
@@ -126,15 +128,16 @@
 
   &.status-ended,
   &.status-archived {
-    background: var(--hi-text-muted);
-    color: #ffffff;
+    background: var(--ue-canvas-soft);
+    color: var(--hi-text-muted);
+    border: 1px solid var(--hi-border);
   }
 }
 
 .pulseDot {
   width: 6px;
   height: 6px;
-  background: var(--mantine-color-white);
+  background: currentColor;
   border-radius: 50%;
   animation: pulse 1.5s ease-in-out infinite;
 }

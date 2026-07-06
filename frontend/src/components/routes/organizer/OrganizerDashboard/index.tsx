@@ -163,7 +163,7 @@ export const OrganizerDashboard = () => {
                 </PageTitle>
                 {currencies?.length > 1 && (
                     <Menu
-                        shadow="md"
+                        shadow="xs"
                         width={240}
                         position="bottom-end"
                         disabled={organizerStatsQuery.isLoading}

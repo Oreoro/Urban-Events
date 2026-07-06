@@ -85,7 +85,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
 
     const ActionMenu = ({webhook}: { webhook: Webhook }) => (
         <Group wrap="nowrap" gap={0} justify="flex-end">
-            <Menu shadow="md" width={200}>
+            <Menu shadow="xs" width={200}>
                 <Menu.Target>
                     <Button size="xs" variant="transparent">
                         <IconDotsVertical/>
@@ -145,7 +145,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
         }
 
         const isSuccess = (webhook.last_response_code >= 200 && webhook.last_response_code < 300) && webhook.last_response_code !== 0;
-        const statusColor = isSuccess ? '#0d9488' : 'red';
+        const statusColor = isSuccess ? 'blue' : 'red';
         const statusText = isSuccess ? 'Success' : 'Error';
 
         return (
@@ -219,7 +219,6 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'#0d9488'}
                             onClick={() => openCreateModal()}>{t`Add Webhook`}
                         </Button>
                     </>

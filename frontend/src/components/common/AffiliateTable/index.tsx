@@ -62,7 +62,6 @@ export const AffiliateTable = ({affiliates, openCreateModal}: AffiliateTableProp
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'#0d9488'}
                             onClick={openCreateModal}
                         >
                             {t`Create Affiliate`}

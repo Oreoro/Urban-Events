@@ -39,7 +39,7 @@ export const QrScannerControls = ({
                 <IconX color={'#ffffff95'} size={30}/>
             </Button>
             <Button variant={'transparent'} className={classes.switchCameraButton}>
-                <Menu shadow="md" width={200}>
+                <Menu shadow="xs" width={200}>
                     <Menu.Target>
                         <IconCameraRotate color={'#ffffff95'} size={30}/>
                     </Menu.Target>
