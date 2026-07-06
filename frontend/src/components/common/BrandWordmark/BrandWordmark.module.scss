@@ -1,8 +1,11 @@
 .wordmark {
   --brand-primary: var(--hi-text);
+  --brand-mark-size: 24px;
+  --brand-font-size: 1rem;
 
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   color: var(--brand-primary);
   font-family: var(--hi-font-heading);
   font-weight: 680;
@@ -13,9 +16,24 @@
   font-feature-settings: "ss01" on, "cv05" on;
 }
 
+.wordmarkMark {
+  display: inline-grid;
+  place-items: center;
+  width: var(--brand-mark-size);
+  height: var(--brand-mark-size);
+  border: 1px solid currentColor;
+  border-radius: var(--hi-radius-sm);
+  color: currentColor;
+  font-size: calc(var(--brand-mark-size) * 0.36);
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
 .wordmarkText {
   display: inline-block;
   position: relative;
+  font-size: var(--brand-font-size);
 }
 
 .wordmarkText::after {
@@ -31,13 +49,17 @@
 }
 
 .sm {
-  font-size: 0.92rem;
+  --brand-mark-size: 21px;
+  --brand-font-size: 0.9rem;
 }
 
 .md {
-  font-size: 1rem;
+  --brand-mark-size: 24px;
+  --brand-font-size: 1rem;
 }
 
 .lg {
-  font-size: clamp(2rem, 5vw, 3.15rem);
+  --brand-mark-size: 42px;
+  --brand-font-size: clamp(2rem, 5vw, 3.15rem);
+  gap: 12px;
 }
