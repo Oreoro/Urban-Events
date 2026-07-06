@@ -52,3 +52,7 @@
     @include auth.auth-footer-terms;
   }
 }
+
+.hiddenField {
+  display: none;
+}

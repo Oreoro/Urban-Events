@@ -34,9 +34,14 @@ const AuthLayout = () => {
             <div className={classes.splitLayout}>
                 <div className={classes.leftPanel}>
                     <main className={classes.container}>
-                        <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
+                        <button
+                            type="button"
+                            className={classes.logoButton}
+                            onClick={handleLogoClick}
+                            aria-label={t`Show application version`}
+                        >
                             <BrandWordmark tone="dark" size="md"/>
-                        </div>
+                        </button>
                         <div className={classes.wrapper}>
                             <Outlet />
                             {/*

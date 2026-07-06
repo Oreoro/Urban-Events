@@ -53,8 +53,13 @@
   }
 }
 
-.logo {
+.logoButton {
   margin-bottom: 1.5rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 
   @include mixins.respond-below(md) {
     margin-bottom: 1.35rem;
@@ -62,6 +67,12 @@
 
   @include mixins.respond-below(sm) {
     margin-bottom: 1.25rem;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hi-text);
+    outline-offset: 4px;
+    border-radius: var(--hi-radius-sm);
   }
 }
 

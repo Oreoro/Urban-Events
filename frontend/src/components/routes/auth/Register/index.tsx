@@ -128,7 +128,7 @@ export const Register = () => {
                     </SimpleGrid>
 
                     <TextInput
-                        style={{display: 'none'}}
+                        className={classes.hiddenField}
                         {...form.getInputProps('timezone')}
                         type="hidden"
                     />
