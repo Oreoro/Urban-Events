@@ -3,13 +3,13 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0;
+  gap: 8px;
   color: var(--hi-text);
   margin: 0;
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(3, 1fr);
@@ -20,34 +20,9 @@
   }
 
   > * {
-    border-radius: 0 !important;
-    border-width: 0 1px 0 0 !important;
+    border-radius: var(--hi-radius-md) !important;
+    border-width: 1px !important;
     border-color: var(--hi-border) !important;
-
-    &:last-child {
-      border-right-width: 0 !important;
-    }
-
-    @include mixins.respond-below(lg) {
-      border-bottom-width: 1px !important;
-
-      &:nth-child(3n) {
-        border-right-width: 0 !important;
-      }
-
-      &:nth-last-child(-n + 3) {
-        border-bottom-width: 0 !important;
-      }
-    }
-
-    @include mixins.respond-below(md) {
-      border-right-width: 0 !important;
-      border-bottom-width: 1px !important;
-
-      &:last-child {
-        border-bottom-width: 0 !important;
-      }
-    }
   }
 }
 
@@ -57,15 +32,16 @@
   padding: 13px 12px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 76px;
+  min-height: 74px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
-  border-radius: 0 !important;
-  transition: background-color 0.15s ease;
+  border-radius: var(--hi-radius-md) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
+    border-color: var(--hi-border-strong) !important;
   }
 
   .leftPanel {
@@ -76,7 +52,7 @@
     gap: 2px;
 
     .number {
-      font-size: clamp(1rem, 1.35vw, 1.35rem);
+      font-size: clamp(1rem, 1.22vw, 1.24rem);
       font-weight: 650;
       letter-spacing: 0;
       line-height: 1.12;
@@ -111,7 +87,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: color-mix(in srgb, var(--hi-text-muted) 78%, transparent);
+      color: color-mix(in srgb, var(--hi-text-muted) 70%, transparent);
       background: transparent;
       border: 0;
       box-shadow: none;

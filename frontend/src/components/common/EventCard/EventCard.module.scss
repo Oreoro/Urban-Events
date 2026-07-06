@@ -7,7 +7,7 @@
   transition: background-color 0.15s ease, border-color 0.15s ease;
   container-type: inline-size;
   min-width: 240px;
-  border-radius: var(--hi-radius-lg) !important;
+  border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 
@@ -58,15 +58,15 @@
 
 .imageContainer {
   position: relative;
-  width: 112px;
-  min-width: 112px;
+  width: 104px;
+  min-width: 104px;
   overflow: hidden;
   border-right: 1px solid var(--hi-border);
 
   @include mixins.respond-below(md, true) {
     width: 100%;
     min-width: 100%;
-    height: 112px;
+    height: 108px;
     border-right: 0;
     border-bottom: 1px solid var(--hi-border);
   }
@@ -99,7 +99,7 @@
   position: absolute;
   top: 8px;
   left: 8px;
-  padding: 3px 7px;
+  padding: 3px 6px;
   border-radius: var(--hi-radius-sm);
   font-size: 10px;
   font-weight: 600;
@@ -149,7 +149,7 @@
   left: 8px;
   background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
-  padding: 5px 7px;
+  padding: 5px 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,23 +287,23 @@
 .statsPanel {
   display: flex;
   align-items: center;
-  gap: 0;
-  padding: 0 0 0 12px;
-  background: transparent;
-  border-left: 1px solid var(--hi-border);
-  border-radius: 0;
+  gap: 6px;
+  padding: 4px;
+  background: var(--hi-shell-bg-strong);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   flex-shrink: 0;
 
   @include mixins.respond-below(lg, true) {
-    gap: 0;
-    padding: 0 0 0 12px;
+    gap: 6px;
+    padding: 4px;
   }
 
   @include mixins.respond-below(md, true) {
     justify-content: flex-start;
-    padding: 10px 0 0;
-    border-left: 0;
-    border-top: 1px solid var(--hi-border);
+    width: fit-content;
+    padding: 4px;
+    border: 1px solid var(--hi-border);
   }
 }
 
@@ -311,21 +311,21 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 3px;
   cursor: default;
-  min-width: 76px;
-  padding: 0 10px;
+  min-width: 72px;
+  padding: 4px 8px;
 
   @include mixins.respond-below(lg, true) {
-    min-width: 76px;
+    min-width: 72px;
   }
 
   &:first-child {
-    padding-left: 0;
+    padding-left: 8px;
   }
 
   + .stat {
-    border-left: 1px solid var(--hi-border);
+    border-left: 0;
   }
 }
 

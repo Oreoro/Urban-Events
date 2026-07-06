@@ -2,7 +2,7 @@
 
 .overviewPanel {
   padding: 0;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   padding-bottom: 0;
   border-bottom: 0;
 
@@ -154,49 +154,23 @@
 .statisticsContainer {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0;
+  gap: 8px;
   margin: 0;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
 
   > * {
     min-width: 0;
-    border-right: 1px solid var(--hi-border);
-
-    &:last-child {
-      border-right-width: 0 !important;
-    }
   }
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    > * {
-      border-bottom: 1px solid var(--hi-border);
-
-      &:nth-child(3n) {
-        border-right-width: 0 !important;
-      }
-
-      &:nth-last-child(-n + 3) {
-        border-bottom-width: 0 !important;
-      }
-    }
   }
 
   @include mixins.respond-below(sm) {
     grid-template-columns: 1fr;
-
-    > * {
-      border-right-width: 0 !important;
-      border-bottom-width: 1px !important;
-
-      &:last-child {
-        border-bottom-width: 0 !important;
-      }
-    }
   }
 }
 
@@ -209,14 +183,17 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  min-height: 82px;
-  padding: 15px 14px;
+  min-height: 78px;
+  padding: 14px 13px;
   background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   color: var(--hi-text);
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -229,7 +206,7 @@
 
 .statValue {
   color: var(--hi-text);
-  font-size: clamp(1rem, 1.28vw, 1.3rem);
+  font-size: clamp(1rem, 1.18vw, 1.22rem);
   font-weight: 650;
   line-height: 1.12;
   letter-spacing: 0;
@@ -248,7 +225,7 @@
   place-items: center;
   width: 24px;
   height: 24px;
-  color: color-mix(in srgb, var(--hi-text-muted) 78%, transparent);
+  color: color-mix(in srgb, var(--hi-text-muted) 70%, transparent);
   flex: 0 0 auto;
   margin-top: 1px;
 }
@@ -263,11 +240,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 18px;
 
   @include mixins.respond-above(lg) {
     grid-template-columns: minmax(300px, 0.82fr) 1.36fr;
-    gap: 16px;
+    gap: 18px;
     align-items: stretch;
   }
 }
@@ -279,7 +256,7 @@
   height: 100%;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
   padding: 0;
   overflow: hidden;
@@ -309,10 +286,10 @@
   font-weight: 650;
   color: var(--hi-text);
   margin: 0;
-  padding: 11px 14px;
+  padding: 12px 14px 10px;
   border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
 }
 
 // Orders list
@@ -335,7 +312,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 14px;
+  padding: 11px 14px;
   border: 0 !important;
   border-bottom: 1px solid var(--hi-border) !important;
   border-radius: 0 !important;
@@ -374,7 +351,7 @@
   width: 28px;
   height: 28px;
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   display: flex;
   align-items: center;
   justify-content: center;

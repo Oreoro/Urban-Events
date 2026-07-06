@@ -32,8 +32,8 @@
   --ue-forest-deep: var(--ue-teal-deep);
   --ue-mint: #eef6ff;
   --ue-sky: #edf5ff;
-  --ue-border: #e9e8e4;
-  --ue-border-strong: #d8d7d2;
+  --ue-border: #eeeeeb;
+  --ue-border-strong: #d9d8d3;
 
   --hi-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -60,16 +60,16 @@
   --hi-primary-alt: var(--ue-coral-deep);
   --hi-action-fill: var(--hi-secondary-strong);
   --hi-shell-bg: #fbfbfa;
-  --hi-shell-bg-strong: #f5f5f3;
-  --hi-shell-surface: #f1f1ef;
-  --hi-shell-surface-hover: #ebebe8;
+  --hi-shell-bg-strong: #f7f7f5;
+  --hi-shell-surface: #f3f3f1;
+  --hi-shell-surface-hover: #eeeeeb;
   --hi-shell-text: #37352f;
   --hi-shell-muted: #85837f;
   --hi-shell-accent: #37352f;
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
   --hi-control-bg: #ffffff;
-  --hi-control-bg-hover: #f7f7f6;
-  --hi-control-bg-active: #eeeeec;
+  --hi-control-bg-hover: #f6f6f4;
+  --hi-control-bg-active: #eeeeeb;
   --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 14%, transparent);
   --hi-danger: #c4554d;
   --hi-success: #2f8f62;
