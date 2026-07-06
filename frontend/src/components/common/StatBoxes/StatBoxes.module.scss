@@ -3,9 +3,13 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
+  gap: 0;
   color: var(--hi-text);
   margin: 0.65rem 0 0.9rem;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  overflow: hidden;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(2, 1fr);
@@ -14,19 +18,60 @@
   @include mixins.respond-below(md) {
     grid-template-columns: 1fr;
   }
+
+  > * {
+    border-radius: 0 !important;
+    border-width: 0 1px 1px 0 !important;
+    border-color: var(--hi-border) !important;
+
+    &:nth-child(3n) {
+      border-right-width: 0 !important;
+    }
+
+    &:nth-last-child(-n + 3) {
+      border-bottom-width: 0 !important;
+    }
+
+    @include mixins.respond-below(lg) {
+      &:nth-child(3n) {
+        border-right-width: 1px !important;
+      }
+
+      &:nth-child(2n) {
+        border-right-width: 0 !important;
+      }
+
+      &:nth-last-child(-n + 3) {
+        border-bottom-width: 1px !important;
+      }
+
+      &:nth-last-child(-n + 2) {
+        border-bottom-width: 0 !important;
+      }
+    }
+
+    @include mixins.respond-below(md) {
+      border-right-width: 0 !important;
+      border-bottom-width: 1px !important;
+
+      &:last-child {
+        border-bottom-width: 0 !important;
+      }
+    }
+  }
 }
 
 .statistic {
   display: flex;
   align-items: center;
-  padding: 10px 12px !important;
+  padding: 11px 13px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 66px;
+  min-height: 62px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: 0 !important;
 
   .leftPanel {
     flex: 1;
@@ -36,7 +81,7 @@
     gap: 2px;
 
     .number {
-      font-size: 1.06rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 0;
       line-height: 1.2;
@@ -59,19 +104,19 @@
   }
 
   .rightPanel {
-    margin-left: 0.9rem;
+    margin-left: 0.7rem;
     align-self: flex-start;
 
     .icon {
-      width: 23px;
-      height: 23px;
+      width: 22px;
+      height: 22px;
       border-radius: var(--hi-radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 54%, var(--hi-text));
-      background: var(--hi-surface-soft);
-      border: 1px solid var(--hi-border);
+      color: var(--hi-text-muted);
+      background: transparent;
+      border: 0;
       box-shadow: none;
 
       @include mixins.respond-below(md) {
