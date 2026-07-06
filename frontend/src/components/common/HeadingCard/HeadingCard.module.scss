@@ -1,18 +1,23 @@
 .heading {
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 650;
   color: var(--hi-text);
+  line-height: 1.25;
 }
 
 .subHeading {
-  font-size: 0.9em;
+  font-size: 0.86em;
   color: var(--hi-text-muted);
+  line-height: 1.45;
 }
 
 .card {
   display: flex;
   align-items: center;
   margin-top: 0;
+  background: var(--hi-surface) !important;
+  border-color: var(--hi-border) !important;
+  box-shadow: none !important;
 
   .button {
     display: flex;
