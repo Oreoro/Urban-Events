@@ -40,14 +40,14 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &:hover {
-    border-color: var(--checkout-accent-muted, color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border)));
-    background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 7%, white));
+    border-color: var(--hi-border-strong);
+    background: var(--hi-surface-soft);
   }
 
   &.active {
-    border-color: var(--checkout-accent, var(--hi-primary));
-    background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
-    color: var(--checkout-accent, var(--hi-primary));
+    border-color: var(--hi-border-strong);
+    background: var(--hi-surface-soft);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
@@ -77,7 +77,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--checkout-text-secondary, var(--hi-text-muted));
 
   a {
-    color: var(--checkout-accent, var(--hi-primary));
+    color: var(--checkout-text-primary, var(--hi-text));
     text-decoration: none;
 
     &:hover {

@@ -44,6 +44,6 @@
 }
 
 .activeCard {
-    border: 1px solid color-mix(in srgb, var(--hi-primary) 36%, var(--hi-border));
-    background: color-mix(in srgb, var(--hi-primary) 5%, white);
+    border: 1px solid var(--hi-border-strong);
+    background: var(--hi-surface-soft);
 }

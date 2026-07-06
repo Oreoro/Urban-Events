@@ -568,8 +568,8 @@ export const OrderSummaryAndProducts = () => {
                         mb="lg"
                         radius="lg"
                         style={{
-                            backgroundColor: 'color-mix(in srgb, var(--hi-success) 8%, var(--checkout-surface, var(--hi-surface)))',
-                            borderColor: 'color-mix(in srgb, var(--hi-success) 18%, var(--checkout-border, var(--hi-border)))',
+                            backgroundColor: 'var(--hi-status-success-bg)',
+                            borderColor: 'var(--hi-status-success-border)',
                         }}
                     >
                         <Text size="sm" style={{color: 'var(--checkout-text-primary, var(--hi-text))'}}>

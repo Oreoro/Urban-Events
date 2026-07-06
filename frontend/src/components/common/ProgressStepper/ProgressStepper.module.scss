@@ -37,8 +37,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color $transition-fast, color $transition-fast;
 
   &.active {
-    background-color: var(--checkout-accent, var(--hi-primary));
-    color: var(--checkout-accent-contrast, var(--hi-color-white));
+    background-color: var(--checkout-text-primary, var(--hi-text));
+    color: var(--checkout-surface, var(--hi-color-white));
   }
 }
 
@@ -71,6 +71,6 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.activeConnector {
-    background-color: var(--checkout-accent, var(--hi-primary));
+    background-color: var(--checkout-text-primary, var(--hi-text));
   }
 }

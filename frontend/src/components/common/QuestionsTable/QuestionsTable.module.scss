@@ -37,7 +37,7 @@
   }
 
   &.dragging {
-    border-color: color-mix(in srgb, var(--hi-primary) 34%, var(--hi-border));
+    border-color: var(--hi-border-strong);
     box-shadow: none;
     z-index: 100;
   }

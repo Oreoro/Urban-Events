@@ -12,8 +12,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 16px 20px;
   margin-bottom: 24px;
   border-radius: $radius-sm;
-  background: color-mix(in srgb, var(--hi-success) 10%, var(--checkout-surface, var(--hi-surface)));
-  border: 1px solid color-mix(in srgb, var(--hi-success) 24%, var(--checkout-border, var(--hi-border)));
+  background: var(--hi-status-success-bg);
+  border: 1px solid var(--hi-status-success-border);
 }
 
 .waitlistBannerIcon {
@@ -21,7 +21,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 40px;
   height: 40px;
   border-radius: $radius-sm;
-  background: var(--hi-success);
+  background: var(--hi-status-success-text);
   color: var(--hi-color-white);
   display: flex;
   align-items: center;
@@ -96,8 +96,9 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ticketCountBadge {
-  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
-  color: var(--checkout-accent, var(--hi-primary));
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-muted);
+  border: 1px solid var(--hi-border);
   font-size: 12px;
   padding: 2px 10px;
   border-radius: $radius-xs;
@@ -125,8 +126,9 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 32px;
   height: 32px;
   border-radius: $radius-sm;
-  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
-  color: var(--checkout-accent, var(--hi-primary));
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-light);
+  border: 1px solid var(--hi-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,8 +152,9 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .copiedBadge {
-  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
-  color: var(--checkout-accent, var(--hi-primary));
+  background: var(--hi-status-success-bg);
+  color: var(--hi-status-success-text);
+  border: 1px solid var(--hi-status-success-border);
   font-size: 12px;
   padding: 4px 8px;
   border-radius: $radius-xs;
@@ -185,7 +188,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--checkout-text-secondary, var(--hi-text-muted));
 
   a {
-    color: var(--checkout-accent, var(--hi-primary));
+    color: var(--checkout-text-primary, var(--hi-text));
     text-decoration: none;
 
     &:hover {

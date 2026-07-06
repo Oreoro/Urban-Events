@@ -21,18 +21,20 @@
 
     &.taxType {
       .header {
-        background: color-mix(in srgb, var(--hi-primary) 7%, white);
+        background: var(--hi-surface-soft);
         color: var(--hi-text);
       }
 
       .iconWrapper {
-        background: color-mix(in srgb, var(--hi-primary) 9%, white);
-        color: var(--hi-primary);
+        background: var(--hi-surface);
+        color: var(--hi-text-muted);
+        border: 1px solid var(--hi-border);
       }
 
       .rateBadge {
-        background: color-mix(in srgb, var(--hi-primary) 9%, white);
-        color: var(--hi-primary);
+        background: var(--hi-surface);
+        color: var(--hi-text);
+        border: 1px solid var(--hi-border);
       }
     }
 

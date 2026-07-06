@@ -81,11 +81,11 @@
 .eventImagePlaceholder {
   width: 100%;
   height: 100%;
-  background: var(--checkout-accent-soft, var(--hi-surface-soft));
+  background: var(--hi-surface-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--checkout-accent, var(--hi-text-muted));
+  color: var(--hi-text-muted);
 }
 
 .eventDetails {
@@ -185,13 +185,13 @@
   font-weight: 500;
 }
 
-// Promo Code - uses accent colors
+// Promo Code
 .promoCode {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 8%, white));
-  border: 1px solid var(--checkout-accent-muted, color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border)));
+  background-color: var(--hi-status-success-bg);
+  border: 1px solid var(--hi-status-success-border);
   border-radius: var(--hi-radius-md);
   padding: 10px 12px;
   margin: 16px 0;
@@ -203,13 +203,13 @@
   gap: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--checkout-accent, var(--hi-primary));
+  color: var(--hi-status-success-text);
 }
 
 .promoCodeDiscount {
   font-size: 14px;
-  font-weight: 600;
-  color: var(--checkout-accent, var(--hi-primary));
+  font-weight: 500;
+  color: var(--hi-status-success-text);
 }
 
 // Totals
@@ -288,7 +288,7 @@
 }
 
 .totalsValueFree {
-  color: var(--checkout-accent, var(--hi-success));
+  color: var(--hi-status-success-text);
 }
 
 .totalsRowFinal {
@@ -316,20 +316,20 @@
   margin-left: 4px;
 }
 
-// Buyer Protection - uses accent colors
+// Buyer Protection
 .buyerProtection {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background-color: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-success) 8%, white));
-  border: 1px solid var(--checkout-accent-muted, color-mix(in srgb, var(--hi-success) 16%, var(--hi-border)));
+  background-color: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   padding: 12px 14px;
   margin-top: 16px;
 }
 
 .buyerProtectionIcon {
-  color: var(--checkout-accent, var(--hi-success));
+  color: var(--hi-text-muted);
   flex-shrink: 0;
   margin-top: 1px;
 }

@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 11;
-  background: color-mix(in srgb, var(--hi-warning) 14%, white);
+  background: var(--hi-status-warning-bg);
   color: var(--hi-text);
   padding: 0.75rem 1.5rem;
   display: flex;
@@ -10,7 +10,7 @@
   justify-content: center;
   gap: 1rem;
   box-shadow: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-warning) 28%, var(--hi-border));
+  border-bottom: 1px solid var(--hi-status-warning-border);
 
   @media (max-width: 768px) {
     flex-direction: column;

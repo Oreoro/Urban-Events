@@ -13,7 +13,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .confettiIcon {
-  color: var(--checkout-accent, var(--hi-primary));
+  color: var(--checkout-text-tertiary, var(--hi-text-muted));
   margin-bottom: 8px;
 }
 
@@ -121,8 +121,9 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .cancelledBadge {
   font-size: 11px;
   font-weight: 500;
-  color: var(--hi-danger);
-  background: color-mix(in srgb, var(--hi-danger) 10%, white);
+  color: var(--hi-status-danger-text);
+  background: var(--hi-status-danger-bg);
+  border: 1px solid var(--hi-status-danger-border);
   padding: 2px 8px;
   border-radius: var(--hi-radius-sm);
   text-decoration: none;

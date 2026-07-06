@@ -374,12 +374,12 @@ const SelectProducts = (props: SelectProductsProps) => {
                                 size="md"
                                 styles={{
                                     root: {
-                                        backgroundColor: props.colors?.secondary || 'var(--primary-color, var(--hi-primary))',
+                                        backgroundColor: props.colors?.secondary || 'var(--hi-text)',
                                         color: props.colors?.secondaryText || 'var(--accent-contrast, var(--hi-color-white))',
                                         fontWeight: 600,
                                         marginBottom: '12px',
                                         '&:hover': {
-                                            backgroundColor: props.colors?.secondary || 'var(--primary-color, var(--hi-primary-hover))',
+                                            backgroundColor: props.colors?.secondary || 'var(--hi-color-black)',
                                             filter: 'brightness(0.95)',
                                         }
                                     }
@@ -394,7 +394,7 @@ const SelectProducts = (props: SelectProductsProps) => {
                                 size={'sm'}
                                 styles={{
                                     root: {
-                                        color: props.colors?.primaryText || 'var(--primary-color, var(--hi-primary))',
+                                        color: props.colors?.primaryText || 'var(--hi-text-light)',
                                         '&:hover': {
                                             backgroundColor: 'transparent',
                                             textDecoration: 'underline'
