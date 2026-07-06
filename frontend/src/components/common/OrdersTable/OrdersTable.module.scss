@@ -17,7 +17,7 @@
 }
 
 .customerName {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
   text-decoration: none;
@@ -52,7 +52,7 @@
 }
 
 .orderId {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--hi-text);
   font-family: 'Courier New', monospace;
@@ -115,7 +115,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 8px;
+  padding: 3px 7px;
   background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
@@ -132,7 +132,7 @@
 }
 
 .amountGross {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--hi-text);
   line-height: 1.3;
@@ -179,16 +179,16 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 9px;
+  padding: 4px 8px;
   border-radius: var(--hi-radius-sm);
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
-    background: color-mix(in srgb, var(--hi-success) 10%, white);
-    color: color-mix(in srgb, var(--hi-success) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-primary) 8%, white);
+    color: color-mix(in srgb, var(--hi-primary) 66%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
   }
 
   &[data-status="RESERVED"] {

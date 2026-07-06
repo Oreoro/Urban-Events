@@ -3,7 +3,7 @@
 .tableWrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 
 .toolbar {
@@ -19,10 +19,10 @@
   th {
     background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.8rem 0.875rem !important;
-    border-bottom: 1px solid var(--hi-border-strong);
+    padding: 0.68rem 0.75rem !important;
+    border-bottom: 1px solid var(--hi-border);
     font-size: 0.76rem;
-    font-weight: 700;
+    font-weight: 620;
   }
 }
 
@@ -52,7 +52,7 @@
     }
 
     td {
-      padding: 0.875rem !important;
+      padding: 0.75rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
       border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, white);

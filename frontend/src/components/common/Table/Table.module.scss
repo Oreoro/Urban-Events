@@ -6,8 +6,9 @@
   th {
     background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.8rem 0.875rem !important;
-    border-bottom: 1px solid var(--hi-border-strong);
+    padding: 0.68rem 0.75rem !important;
+    border-bottom: 1px solid var(--hi-border);
+    font-weight: 620;
   }
 }
 
@@ -27,7 +28,7 @@
   tr td,
   tr,
   th {
-    padding: 0.875rem !important;
+    padding: 0.75rem !important;
     white-space: nowrap;
   }
 
