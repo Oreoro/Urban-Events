@@ -3,32 +3,33 @@
 // Shared Auth Header Styles
 @mixin auth-header {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 
   @include mixins.respond-below(sm) {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   h1 {
     margin: 0 0 0.45rem;
-    font-size: 1.22rem;
+    font-size: 1.16rem;
     font-weight: 650;
     color: var(--hi-text);
     letter-spacing: 0;
+    line-height: 1.2;
 
     @include mixins.respond-below(sm) {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
     }
   }
 
   p {
     margin: 0;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     color: var(--hi-text-muted);
-    line-height: 1.6;
+    line-height: 1.5;
 
     @include mixins.respond-below(sm) {
-      font-size: 0.875rem;
+      font-size: 0.84rem;
     }
 
     a {
@@ -46,13 +47,13 @@
 // Shared Auth Card Base Styles
 @mixin auth-card {
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-lg);
-  padding: 1.2rem;
+  border-radius: var(--hi-radius-md);
+  padding: 1rem;
   box-shadow: none;
   border: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
-    padding: 1.1rem;
+    padding: 0.95rem;
     border-radius: var(--hi-radius-md);
   }
 }
@@ -64,9 +65,9 @@
   :global(.mantine-Select-input) {
     border-radius: var(--hi-radius-sm);
     border: 1px solid var(--hi-border);
-    padding: 0.56rem 0.72rem;
-    font-size: 0.85rem;
-    min-height: 38px;
+    padding: 0.52rem 0.66rem;
+    font-size: 0.84rem;
+    min-height: 36px;
     transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
     background: var(--hi-control-bg);
     color: var(--hi-text);
@@ -94,19 +95,19 @@
 
   :global(.mantine-InputWrapper-label) {
     font-weight: 600;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--hi-text-light);
-    margin-bottom: 0.32rem;
+    margin-bottom: 0.28rem;
   }
 }
 
 // Shared Button Styles
 @mixin auth-button($margin-top: 0) {
   :global(.mantine-Button-root) {
-    height: 38px;
+    height: 36px;
     border-radius: var(--hi-radius-sm);
     font-weight: 620;
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
     border: 1px solid var(--hi-text) !important;
     background: var(--hi-text) !important;
