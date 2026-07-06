@@ -1,0 +1,164 @@
+.settingsLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.sideRail {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+}
+
+.sideMenu {
+  padding: 4px;
+}
+
+.sideMenuTitle {
+  margin: 0 0 8px 8px;
+  color: var(--hi-text-muted);
+  font-size: 0.72rem;
+  font-weight: 680;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.navList {
+  gap: 3px;
+}
+
+.navLink {
+  min-height: 34px;
+  color: var(--hi-text-muted);
+  border-radius: var(--hi-radius-md);
+  font-size: 0.88rem;
+  font-weight: 520;
+  padding-inline: 8px;
+
+  &:hover {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
+
+  &[data-active] {
+    background: var(--hi-control-bg-active);
+    color: var(--hi-text);
+    font-weight: 620;
+  }
+
+  :global(.mantine-NavLink-section) {
+    color: var(--hi-text-muted);
+    margin-right: 8px;
+  }
+
+  &[data-active] :global(.mantine-NavLink-section) {
+    color: var(--hi-text);
+  }
+}
+
+.navLinkDanger {
+  color: var(--hi-status-danger-text);
+
+  &:hover,
+  &[data-active] {
+    background: var(--hi-status-danger-bg);
+    color: var(--hi-status-danger-text);
+  }
+
+  :global(.mantine-NavLink-section),
+  &[data-active] :global(.mantine-NavLink-section) {
+    color: var(--hi-status-danger-text);
+  }
+}
+
+.navIcon {
+  flex-shrink: 0;
+}
+
+.content {
+  min-width: 0;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.settingSection {
+  scroll-margin-top: 24px;
+
+  > :global(.card.default),
+  > :global(.card.lightGray),
+  > :global(.card.lightAccent) {
+    margin-bottom: 0;
+    padding: 20px;
+    border-color: var(--hi-border);
+    border-radius: var(--hi-radius-lg);
+    background: var(--hi-surface);
+  }
+
+  h2 {
+    margin: 0 0 14px;
+    color: var(--hi-text);
+    font-size: 1.05rem;
+    font-weight: 680;
+    letter-spacing: 0;
+    line-height: 1.32;
+  }
+
+  h3 {
+    color: var(--hi-text);
+    font-size: 0.96rem;
+    font-weight: 640;
+    letter-spacing: 0;
+  }
+
+  h4 {
+    color: var(--hi-text);
+    font-size: 0.9rem;
+    font-weight: 620;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .settingsLayout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .sideRail {
+    position: static;
+  }
+
+  .sideMenu {
+    padding: 8px;
+    background: var(--hi-surface);
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-lg);
+  }
+
+  .navList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
+    gap: 4px;
+  }
+
+  .content {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .navList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .settingSection {
+    > :global(.card.default),
+    > :global(.card.lightGray),
+    > :global(.card.lightAccent) {
+      padding: 16px;
+    }
+  }
+}
