@@ -3,7 +3,7 @@
 .inlineOrderSummary {
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   margin-bottom: 24px;
   box-shadow: none;
   overflow: hidden;
@@ -67,7 +67,7 @@
 .eventImage {
   width: 56px;
   height: 56px;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   overflow: hidden;
   flex-shrink: 0;
 
@@ -190,9 +190,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--hi-status-success-bg);
-  border: 1px solid var(--hi-status-success-border);
-  border-radius: var(--hi-radius-md);
+  background-color: var(--checkout-surface, var(--hi-surface));
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
   padding: 10px 12px;
   margin: 16px 0;
 }
@@ -203,13 +203,13 @@
   gap: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--hi-status-success-text);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .promoCodeDiscount {
   font-size: 14px;
   font-weight: 500;
-  color: var(--hi-status-success-text);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 // Totals
@@ -288,7 +288,7 @@
 }
 
 .totalsValueFree {
-  color: var(--hi-status-success-text);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .totalsRowFinal {
@@ -321,9 +321,9 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background-color: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  background-color: var(--checkout-surface, var(--hi-surface));
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
   padding: 12px 14px;
   margin-top: 16px;
 }

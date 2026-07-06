@@ -629,3 +629,130 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: brightness(1.1);
   }
 }
+
+.pageWrapper {
+  background: var(--ue-canvas);
+}
+
+.wrapper {
+  max-width: 960px;
+  padding-top: 28px;
+}
+
+.heroSection,
+.eventsSection {
+  background: var(--hi-surface);
+  border-color: var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+}
+
+.coverWrapper {
+  background: var(--hi-surface-soft);
+}
+
+.coverImage {
+  background: var(--hi-surface-soft);
+}
+
+.logoWrapper,
+.socialIcon,
+.contactButton,
+.filterToggle,
+.paginationComponent :global(.mantine-Pagination-control) {
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  color: var(--primary-text-color);
+  box-shadow: none;
+}
+
+.logoWrapper,
+.logo,
+.logoFallback {
+  border-radius: var(--hi-radius-sm);
+}
+
+.logoFallback {
+  color: var(--hi-text-muted);
+}
+
+.metaIcon,
+.socialIcon,
+.organizerMeta,
+.footerLink,
+.poweredByFooter,
+.footerSeparator {
+  color: var(--secondary-color);
+}
+
+.metaItem a:hover,
+.description a,
+.footerLink:hover,
+.poweredByFooter a:hover {
+  color: var(--primary-text-color);
+}
+
+.socialIcon:hover,
+.contactButton:hover,
+.paginationComponent :global(.mantine-Pagination-control:hover:not([data-active])) {
+  background: var(--hi-control-bg-hover);
+  border-color: var(--hi-border-strong);
+  color: var(--primary-text-color);
+}
+
+.description {
+  blockquote {
+    border-left-color: var(--hi-border-strong);
+    background: var(--hi-surface-soft);
+    border-radius: var(--hi-radius-sm);
+    padding: 0.85rem 1rem;
+  }
+
+  img {
+    border-radius: var(--hi-radius-sm);
+    border: 1px solid var(--hi-border);
+  }
+}
+
+.eventsHeader,
+.paginationWrapper {
+  border-color: var(--hi-border);
+}
+
+.filterToggle {
+  padding: 3px;
+  border-radius: var(--hi-radius-sm);
+}
+
+.filterButton {
+  color: var(--secondary-color);
+  border-radius: var(--hi-radius-xs);
+}
+
+.filterButton:hover:not(.filterButtonActive) {
+  color: var(--primary-text-color);
+  background: var(--hi-control-bg-hover);
+}
+
+.filterButtonActive {
+  background: var(--hi-text);
+  color: var(--hi-color-white);
+}
+
+.paginationComponent :global(.mantine-Pagination-control[data-active]) {
+  background: var(--hi-text);
+  border-color: var(--hi-text);
+  color: var(--hi-color-white);
+}
+
+.submitButton {
+  background: var(--hi-text);
+  border: 1px solid var(--hi-text);
+  color: var(--hi-color-white);
+  border-radius: var(--hi-radius-sm);
+
+  &:hover {
+    filter: none;
+    background: var(--hi-color-black);
+    border-color: var(--hi-color-black);
+  }
+}

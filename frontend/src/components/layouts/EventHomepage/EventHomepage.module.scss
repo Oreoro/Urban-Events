@@ -1280,10 +1280,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--accent-soft);
-  color: var(--primary-color);
+  background: var(--hi-surface-soft);
+  color: var(--primary-text-color);
   padding: 6px 12px;
   border-radius: $radius-sm;
+  border: 1px solid var(--hi-border);
   font-size: 0.85rem;
   font-weight: 600;
 
@@ -1291,4 +1292,180 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0.9rem;
     height: 0.9rem;
   }
+}
+
+.pageWrapper {
+  background: var(--ue-canvas);
+}
+
+.wrapper {
+  max-width: 960px;
+  padding-top: 28px;
+}
+
+.mainCard {
+  background: var(--hi-surface);
+  border-color: var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+}
+
+.coverWrapper {
+  background: var(--hi-surface-soft);
+}
+
+.coverImage {
+  background: var(--hi-surface-soft);
+}
+
+.statusBadge,
+.organizerPill,
+.actionButton,
+.metaIconBox,
+.addToCalendarButton,
+.mapOverlayLabel,
+.socialLink,
+.contactButton {
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  color: var(--primary-text-color);
+  box-shadow: none;
+}
+
+.organizerPill:hover,
+.actionButton:hover,
+.addToCalendarButton:hover,
+.socialLink:hover,
+.contactButton:hover {
+  background: var(--hi-control-bg-hover);
+  border-color: var(--hi-border-strong);
+  color: var(--primary-text-color);
+}
+
+.organizerPillAvatar,
+.organizerPillAvatarPlaceholder,
+.organizerAvatar,
+.organizerAvatarPlaceholder {
+  border-radius: var(--hi-radius-sm);
+  border: 1px solid var(--hi-border);
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-muted);
+}
+
+.metaIconBox,
+.organizerLocation svg {
+  color: var(--hi-text-muted);
+}
+
+.metaLink,
+.directionsLink,
+.readMoreToggle,
+.organizerName a:hover,
+.organizerBio a,
+.footerLink:hover,
+.poweredByFooter a:hover {
+  color: var(--primary-text-color);
+}
+
+.description,
+.organizerBio {
+  color: var(--secondary-color);
+
+  blockquote {
+    border-left-color: var(--hi-border-strong);
+    background: var(--hi-surface-soft);
+    border-radius: var(--hi-radius-sm);
+    padding: 0.85rem 1rem;
+  }
+
+  img {
+    border-radius: var(--hi-radius-sm);
+    border: 1px solid var(--hi-border);
+  }
+}
+
+.section,
+.eventHeader {
+  border-color: var(--hi-border);
+}
+
+.ticketsSection {
+  :global(.hi-product-rows),
+  :global(.hi-product-category-rows) {
+    gap: 0;
+  }
+
+  :global(.hi-product-row) {
+    background: var(--hi-surface);
+    border-color: var(--hi-border);
+    border-radius: 0;
+    border-width: 0 0 1px;
+
+    &:first-child {
+      border-top-left-radius: var(--hi-radius-lg);
+      border-top-right-radius: var(--hi-radius-lg);
+      border-top-width: 1px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--hi-radius-lg);
+      border-bottom-right-radius: var(--hi-radius-lg);
+    }
+
+    &:hover {
+      background: var(--hi-surface-soft);
+      border-color: var(--hi-border);
+    }
+  }
+
+  :global(.hi-product-row.hi-product-highlighted),
+  :global(.hi-product-row.selected) {
+    background: var(--hi-surface);
+    border-color: var(--hi-text);
+  }
+
+  :global(.hi-product-highlight-message),
+  :global(.hi-product-quantity-error),
+  :global(.hi-footer-row .hi-product-page-message) {
+    background: var(--hi-surface-soft);
+    border-color: var(--hi-border);
+    color: var(--primary-text-color);
+  }
+
+  :global(.hi-product-quantity-selector .button-input) {
+    background: var(--hi-surface);
+    border-color: var(--hi-border);
+    border-radius: var(--hi-radius-sm);
+  }
+
+  :global(.hi-product-quantity-selector .button-input button:hover:not(:disabled)) {
+    background: var(--hi-control-bg-hover);
+  }
+
+  :global(.hi-continue-button),
+  :global(.hi-apply-promo-code-button) {
+    background: var(--hi-text) !important;
+    background-color: var(--hi-text) !important;
+    border-color: var(--hi-text) !important;
+    color: var(--hi-color-white) !important;
+    border-radius: var(--hi-radius-sm) !important;
+  }
+
+  :global(.hi-promo-code-input) {
+    background: var(--hi-surface);
+    border-color: var(--hi-border);
+    border-radius: var(--hi-radius-sm);
+  }
+}
+
+.scrollToTicketsButton {
+  background: var(--hi-text);
+  color: var(--hi-color-white);
+  border: 1px solid var(--hi-text);
+  border-radius: var(--hi-radius-sm);
+}
+
+.scrollToTicketsButton:hover {
+  filter: none;
+  background: var(--hi-color-black);
+  border-color: var(--hi-color-black);
 }
