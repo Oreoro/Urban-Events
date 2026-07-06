@@ -37,7 +37,7 @@ const TicketDesigner = () => {
 
     const form = useForm<TicketDesignSettings>({
         initialValues: {
-            accent_color: '#37352F',
+            accent_color: '#111827',
             logo_image_id: undefined,
             footer_text: '',
             date_display_mode: 'START_DATE_TIME',

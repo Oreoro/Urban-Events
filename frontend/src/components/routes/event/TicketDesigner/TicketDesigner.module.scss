@@ -5,7 +5,8 @@
   flex-direction: row;
   margin: calc(var(--hi-spacing-lg) * -1);
   min-height: calc(100dvh - 82px);
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
+  color: var(--hi-text);
 
   h2 {
     margin-bottom: 0;
@@ -19,10 +20,10 @@
 }
 
 .sidebar {
-  min-width: 360px;
-  max-width: 360px;
-  background-color: var(--hi-shell-bg);
-  padding: 18px;
+  min-width: 348px;
+  max-width: 348px;
+  background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
+  padding: 16px;
   height: calc(100dvh - 82px);
   overflow-y: auto;
   position: sticky;
@@ -48,9 +49,9 @@
 }
 
 .header {
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--hi-border);
+  margin-bottom: 12px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, var(--hi-surface));
   
   h2 {
     margin: 0 0 4px 0;
@@ -59,34 +60,49 @@
     color: var(--hi-text);
     line-height: 1.25;
   }
+
+  :global(.mantine-Text-root) {
+    color: var(--hi-text-muted) !important;
+    font-size: 0.82rem;
+    line-height: 1.42;
+  }
 }
 
 .accordion {
+  display: grid;
+  gap: 6px;
   margin-bottom: 0;
   
   .accordionItem {
-    border: 1px solid var(--hi-border);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
     border-radius: var(--hi-radius-md);
     overflow: hidden;
     background: var(--hi-surface);
     
     &:not(:last-child) {
-      margin-bottom: 8px;
+      margin-bottom: 0;
     }
 
     :global(.mantine-Accordion-control) {
-      padding: 10px 12px;
+      min-height: 36px;
+      padding: 8px 10px;
       background: var(--hi-surface);
       color: var(--hi-text);
-      font-weight: 600;
+      font-weight: 620;
       
       &:hover {
         background: var(--hi-control-bg-hover);
       }
       
       &[data-active] {
-        border-bottom: 1px solid var(--hi-border);
+        background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+        border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
       }
+    }
+
+    :global(.mantine-Accordion-icon) {
+      color: var(--hi-text-muted);
+      margin-inline-end: 8px;
     }
 
     :global(.mantine-Accordion-panel) {
@@ -95,7 +111,7 @@
     }
 
     :global(.mantine-Accordion-content) {
-      padding: 14px;
+      padding: 12px;
     }
   }
 }
@@ -105,30 +121,36 @@
   padding: 0;
   margin: 0;
 
-  // Fix large margins on ColorInput components
   :global(.mantine-ColorInput-root) {
     margin-bottom: 0;
   }
 
   :global(.mantine-ColorInput-label) {
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 620;
+    font-size: 0.82rem;
   }
 
   :global(.mantine-ColorInput-description) {
-    font-size: 0.8125rem;
+    color: var(--hi-text-muted);
+    font-size: 0.76rem;
     margin-top: 0.25rem;
   }
 
-  // TextInput styling
   :global(.mantine-TextInput-label) {
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 620;
+    font-size: 0.82rem;
   }
 
   :global(.mantine-TextInput-description) {
-    font-size: 0.8125rem;
+    color: var(--hi-text-muted);
+    font-size: 0.76rem;
     margin-top: 0.25rem;
+  }
+
+  :global(.mantine-Input-input) {
+    min-height: 34px;
+    border-color: var(--hi-border);
+    font-size: 0.82rem;
   }
 
   &:disabled {
@@ -144,8 +166,8 @@
   min-width: 500px;
   display: flex;
   flex-direction: column;
-  background: var(--hi-surface);
-  border-left: 1px solid var(--hi-border);
+  background: var(--hi-shell-bg);
+  border-left: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
 
   @include mixins.respond-below(lg) {
     width: 100%;
@@ -166,7 +188,7 @@
   align-items: center;
   padding: 12px 18px;
   background: var(--hi-surface);
-  border-bottom: 1px solid var(--hi-border);
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
   
   h3 {
     margin: 0;

@@ -11,7 +11,8 @@
   flex-direction: row;
   margin: calc(var(--hi-spacing-lg) * -1);
   min-height: calc(100dvh - 82px);
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
+  color: var(--hi-text);
 
   h2 {
     margin-bottom: 0;
@@ -22,10 +23,10 @@
   }
 
   .sidebar {
-    min-width: 360px;
-    max-width: 360px;
-    background-color: var(--hi-shell-bg);
-    padding: 18px;
+    min-width: 348px;
+    max-width: 348px;
+    background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
+    padding: 16px;
     height: calc(100dvh - 82px);
     overflow-y: auto;
     position: sticky;
@@ -49,9 +50,9 @@
     }
 
     .header {
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--hi-border);
+      margin-bottom: 12px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, var(--hi-surface));
 
       h2 {
         margin: 0 0 4px 0;
@@ -60,34 +61,49 @@
         color: var(--hi-text);
         line-height: 1.25;
       }
+
+      :global(.mantine-Text-root) {
+        color: var(--hi-text-muted) !important;
+        font-size: 0.82rem;
+        line-height: 1.42;
+      }
     }
 
     .accordion {
+      display: grid;
+      gap: 6px;
       margin-bottom: 0;
 
       .accordionItem {
-        border: 1px solid var(--hi-border);
+        border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
         border-radius: var(--hi-radius-md);
         overflow: hidden;
         background: var(--hi-surface);
 
         &:not(:last-child) {
-          margin-bottom: 8px;
+          margin-bottom: 0;
         }
 
         :global(.mantine-Accordion-control) {
-          padding: 10px 12px;
+          min-height: 36px;
+          padding: 8px 10px;
           background: var(--hi-surface);
           color: var(--hi-text);
-          font-weight: 600;
+          font-weight: 620;
 
           &:hover {
             background: var(--hi-control-bg-hover);
           }
 
           &[data-active] {
-            border-bottom: 1px solid var(--hi-border);
+            background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
           }
+        }
+
+        :global(.mantine-Accordion-icon) {
+          color: var(--hi-text-muted);
+          margin-inline-end: 8px;
         }
 
         :global(.mantine-Accordion-panel) {
@@ -96,7 +112,7 @@
         }
 
         :global(.mantine-Accordion-content) {
-          padding: 14px;
+          padding: 12px;
 
           :global(.mantine-ColorInput-root),
           :global(.mantine-TextInput-root),
@@ -105,6 +121,26 @@
           :global(.mantine-Switch-root) {
             margin-bottom: 0;
           }
+
+          :global(.mantine-InputWrapper-label),
+          :global(.mantine-Switch-label) {
+            color: var(--hi-text);
+            font-size: 0.82rem;
+            font-weight: 620;
+          }
+
+          :global(.mantine-InputWrapper-description),
+          :global(.mantine-Switch-description) {
+            color: var(--hi-text-muted);
+            font-size: 0.76rem;
+            line-height: 1.42;
+          }
+
+          :global(.mantine-Input-input) {
+            min-height: 34px;
+            border-color: var(--hi-border);
+            font-size: 0.82rem;
+          }
         }
       }
     }
@@ -112,8 +148,8 @@
 
   .previewContainer {
     flex: 1;
-    padding: 18px;
-    background: var(--hi-surface);
+    padding: 18px 20px;
+    background: var(--hi-shell-bg);
     min-width: 400px;
 
     @include mixins.respond-below(sm) {
@@ -135,20 +171,20 @@
 .stickyContainer {
   position: sticky;
   top: 18px;
-  min-height: 80vh;
+  min-height: calc(100dvh - 118px);
   background-color: var(--hi-surface);
   border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   overflow: hidden;
 }
 
 .browserChrome {
   width: 100%;
-  background: var(--hi-surface-soft);
+  background: color-mix(in srgb, var(--hi-shell-bg) 72%, var(--hi-surface));
   border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
-  height: 34px;
+  height: 32px;
   display: flex;
-  border-bottom: 1px solid var(--hi-border);
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
 }
 
 .browserActionButtons {
@@ -161,8 +197,8 @@
   div {
     width: 8px;
     height: 8px;
-    border-radius: var(--hi-radius-xs);
-    background-color: var(--hi-border-strong);
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--hi-text-muted) 36%, var(--hi-surface));
     display: inline-block;
     margin-right: 5px;
   }
@@ -174,9 +210,10 @@
 
   div {
     background-color: var(--hi-surface);
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
     margin-right: 12px;
-    font-size: 0.85em;
+    font-size: 0.78rem;
     padding: 3px 10px;
     color: var(--hi-text-muted);
     white-space: nowrap;
@@ -199,6 +236,7 @@
   width: 100%;
   z-index: 1;
   padding: 18px;
+  background: var(--hi-surface);
   overflow: auto;
 
   h1 {
@@ -209,8 +247,11 @@
   }
 
   .widgetWrapper {
-    padding: 6px;
+    padding: 8px;
     margin: 12px 0;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+    border-radius: var(--hi-radius-md);
+    background: var(--hi-shell-bg);
   }
 
   p.lorem {
