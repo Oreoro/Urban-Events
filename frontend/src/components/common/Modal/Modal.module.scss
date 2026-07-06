@@ -7,17 +7,18 @@
 
 // Branded modal header styles
 .brandedHeader {
-    background: var(--hi-secondary-strong) !important;
-    padding: 30px 24px !important;
-    margin-bottom: 20px;
+    background: var(--hi-surface-soft) !important;
+    padding: 24px !important;
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--hi-border);
 }
 
 .brandedTitle {
-    color: white !important;
-    font-size: 1.75rem !important;
-    font-weight: 700 !important;
+    color: var(--hi-text) !important;
+    font-size: 1.35rem !important;
+    font-weight: 650 !important;
     margin: 0 !important;
     position: relative;
     z-index: 1;
@@ -25,13 +26,14 @@
 }
 
 .brandedClose {
-    color: white !important;
+    color: var(--hi-text-muted) !important;
     position: relative;
     z-index: 2;
     transition: background-color 0.15s ease;
     
     &:hover {
-        background-color: rgba(255, 255, 255, 0.15) !important;
+        background-color: var(--hi-control-bg-active) !important;
+        color: var(--hi-text) !important;
     }
     
     svg {

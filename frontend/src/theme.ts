@@ -8,7 +8,7 @@ export const urbanEventsColors = {
     icyAqua: "#EFF6FF",
     lightBlue: "#EAF3FF",
     blueSlate: "#6F6E69",
-    canvas: "#FBFBFA",
+    canvas: "#FFFFFF",
     canvasSoft: "#F7F7F5",
     surface: "#FFFFFF",
     ink: "#37352F",
@@ -50,14 +50,14 @@ export const getUrbanEventsTheme = () => createTheme({
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     headings: {
         fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        fontWeight: "700",
+        fontWeight: "650",
         sizes: {
-            h1: {fontSize: "2rem", lineHeight: "1.18"},
-            h2: {fontSize: "1.55rem", lineHeight: "1.22"},
-            h3: {fontSize: "1.2rem", lineHeight: "1.28"},
+            h1: {fontSize: "1.875rem", lineHeight: "1.16"},
+            h2: {fontSize: "1.45rem", lineHeight: "1.2"},
+            h3: {fontSize: "1.12rem", lineHeight: "1.25"},
         },
     },
-    defaultRadius: "md",
+    defaultRadius: "sm",
     fontSizes: {
         xs: "0.75rem",
         sm: "0.875rem",
@@ -89,7 +89,7 @@ export const getUrbanEventsTheme = () => createTheme({
     components: {
         ActionIcon: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 variant: "subtle",
             },
             styles: {
@@ -106,7 +106,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Badge: {
             defaultProps: {
                 radius: "sm",
-                fw: 700,
+                fw: 600,
             },
             styles: {
                 root: {
@@ -117,13 +117,13 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Button: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
             styles: {
                 root: {
-                    fontWeight: 650,
+                    fontWeight: 600,
                     letterSpacing: 0,
-                    minHeight: "2.25rem",
+                    minHeight: "2.125rem",
                     transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
                 },
                 label: {
@@ -136,7 +136,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Card: {
             defaultProps: {
-                radius: "lg",
+                radius: "md",
                 shadow: "none",
                 withBorder: true,
             },
@@ -154,19 +154,19 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Input: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
             styles: {
                 input: {
                     borderColor: "var(--hi-border-strong)",
                     color: "var(--hi-text)",
                     fontWeight: 500,
-                    minHeight: "2.625rem",
+                    minHeight: "2.375rem",
                     backgroundColor: "var(--hi-control-bg)",
                 },
                 label: {
                     color: "var(--hi-text)",
-                    fontWeight: 650,
+                    fontWeight: 600,
                 },
                 description: {
                     color: "var(--hi-text-muted)",
@@ -181,7 +181,7 @@ export const getUrbanEventsTheme = () => createTheme({
             styles: {
                 dropdown: {
                     borderColor: "var(--hi-border)",
-                    boxShadow: "var(--hi-shadow-sm)",
+                    boxShadow: "none",
                 },
                 item: {
                     fontWeight: 600,
@@ -190,7 +190,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Modal: {
             defaultProps: {
-                radius: "lg",
+                radius: "md",
                 overlayProps: {
                     blur: 4,
                     opacity: 0.45,
@@ -199,20 +199,20 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Paper: {
             defaultProps: {
-                radius: "lg",
+                radius: "md",
                 shadow: "none",
             },
         },
         SegmentedControl: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
             styles: {
                 root: {
                     borderColor: "var(--hi-border)",
                 },
                 label: {
-                    fontWeight: 700,
+                    fontWeight: 600,
                 },
             },
         },
@@ -228,7 +228,7 @@ export const getUrbanEventsTheme = () => createTheme({
                     color: "var(--hi-text)",
                 },
                 th: {
-                    fontWeight: 700,
+                    fontWeight: 600,
                     color: "var(--hi-text-muted)",
                 },
                 td: {
@@ -238,27 +238,27 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         TextInput: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
         },
         NumberInput: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
         },
         PasswordInput: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
         },
         Select: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
         },
         Textarea: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
             },
         },
         Tooltip: {

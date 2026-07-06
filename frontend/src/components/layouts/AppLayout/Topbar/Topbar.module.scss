@@ -5,7 +5,7 @@
   background: var(--hi-surface);
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  transition: border-color 0.15s ease;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 14px;
-    height: 42px;
+    padding: 0 12px;
+    height: 40px;
     border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
@@ -23,7 +23,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 7px 32px;
+    padding: 6px 32px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -33,7 +33,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 36px;
+    min-height: 34px;
 
     @include mixins.respond-below(md) {
       padding: 10px 16px;
@@ -138,7 +138,7 @@
   }
 
   &.withShadow {
-    box-shadow: 0 1px 0 var(--hi-border);
+    box-shadow: none;
   }
 
   .burger {
@@ -150,7 +150,7 @@
 
   .logo {
     color: var(--hi-text);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1rem;
     display: flex;
     justify-content: center;
@@ -181,7 +181,7 @@
     margin-right: 8px;
     display: flex;
     align-items: center;
-    font-weight: 650;
+    font-weight: 600;
     transition: color 0.15s ease, background-color 0.15s ease;
     color: var(--hi-text-muted);
 

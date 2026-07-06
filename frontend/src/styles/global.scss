@@ -6,7 +6,7 @@
   --ue-icy-aqua: #eff6ff;
   --ue-light-blue: #eaf3ff;
   --ue-blue-slate: #6f6e69;
-  --ue-canvas: #fbfbfa;
+  --ue-canvas: #ffffff;
   --ue-canvas-soft: #f7f7f5;
   --ue-surface: #ffffff;
   --ue-ink: #37352f;
@@ -51,7 +51,7 @@
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
-  --hi-border: color-mix(in srgb, var(--ue-border) 82%, white);
+  --hi-border: color-mix(in srgb, var(--ue-border) 74%, white);
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);
@@ -62,7 +62,7 @@
   --hi-shell-bg: #f7f7f5;
   --hi-shell-bg-strong: #eeeeec;
   --hi-shell-surface: #eeeeec;
-  --hi-shell-surface-hover: #e8e8e5;
+  --hi-shell-surface-hover: #e9e9e6;
   --hi-shell-text: #37352f;
   --hi-shell-muted: #85837f;
   --hi-shell-accent: #2383e2;
@@ -106,7 +106,7 @@ html {
 body {
   font-family: var(--mantine-font-family);
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.48;
   color: var(--hi-text);
   background: var(--checkout-background, var(--ue-canvas)) !important;
   height: auto;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--hi-font-heading);
   color: var(--hi-text);
   letter-spacing: 0;
-  line-height: 1.18;
+  line-height: 1.16;
 }
 
 fieldset {
@@ -143,7 +143,7 @@ a {
 
 // Mantine overrides
 .mantine-InputWrapper-root, .mantine-Switch-root {
-  margin-bottom: var(--hi-spacing-lg);
+  margin-bottom: 16px;
 }
 
 .mantine-ScrollArea-viewport {
@@ -184,6 +184,14 @@ a {
 
 .mantine-Button-root[data-variant="filled"] {
   box-shadow: none;
+  background-color: var(--hi-text);
+  color: var(--hi-color-white);
+  border: 1px solid var(--hi-text);
+}
+
+.mantine-Button-root[data-variant="filled"]:hover:not([data-disabled]) {
+  background-color: var(--hi-color-black);
+  border-color: var(--hi-color-black);
 }
 
 .mantine-Button-root[data-variant="light"] {
@@ -211,7 +219,7 @@ a {
 .mantine-Menu-dropdown {
   background: var(--hi-surface);
   border-color: var(--hi-border);
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: none;
 }
 
 .mantine-Menu-item {
@@ -229,12 +237,12 @@ a {
 
 .mantine-Table-table th {
   background: var(--hi-surface);
-  border-bottom: 1px solid var(--hi-border-strong);
+  border-bottom: 1px solid var(--hi-border);
   color: var(--hi-text-muted);
-  font-size: 0.76rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .mantine-Table-table td {
@@ -257,7 +265,7 @@ a {
 .mantine-Tabs-tab {
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text-muted);
-  font-weight: 750;
+  font-weight: 600;
 }
 
 .mantine-Tabs-tab:hover {
@@ -277,7 +285,7 @@ a {
 
 .mantine-SegmentedControl-indicator {
   background: var(--hi-surface);
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: none;
 }
 
 .mantine-SimpleGrid-root {

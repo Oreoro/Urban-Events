@@ -8,14 +8,14 @@
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   height: 100vh;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-columns 160ms ease;
 
   @media (min-width: 768px) {
     grid-template-areas:
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 252px 1fr;
+    grid-template-columns: 236px 1fr;
 
     &.closed {
       grid-template-areas:
@@ -27,24 +27,24 @@
 
   .main {
     grid-area: main;
-    padding: 28px 32px 56px;
+    padding: 24px 32px 56px;
     overflow: auto;
     background: var(--ue-canvas);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
-      padding: 16px 16px 56px;
+      padding: 14px 14px 52px;
     }
   }
 
   .sidebarOpen {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     background: var(--hi-surface);
     color: var(--hi-text-muted);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     display: flex;
     justify-content: center;
     align-items: center;
