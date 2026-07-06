@@ -65,13 +65,13 @@
 // Clean Main Card
 .welcomeCard {
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-lg) !important;
+  border-radius: var(--hi-radius-md) !important;
   overflow: hidden;
   box-shadow: none !important;
   border: 1px solid var(--hi-border) !important;
 
   @media (max-width: 768px) {
-    border-radius: var(--hi-radius-lg) !important;
+    border-radius: var(--hi-radius-md) !important;
     box-shadow: none !important;
   }
 }
@@ -267,7 +267,7 @@
   min-height: 48px;
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
   }
 
@@ -288,21 +288,23 @@
   background: var(--hi-control-bg-active) !important;
 }
 
-.categoryEmoji {
+.categoryMark {
   width: 28px;
   height: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  font-size: 1rem;
+  border-radius: var(--hi-radius-sm);
+  color: var(--hi-text-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
   line-height: 1;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 0.72rem;
   }
 }
 
