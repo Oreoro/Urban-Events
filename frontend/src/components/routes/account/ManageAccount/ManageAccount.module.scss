@@ -2,6 +2,8 @@
   .tabsCard {
     padding: 0;
     box-shadow: none;
+    border-radius: var(--hi-radius-lg);
+    overflow: hidden;
   }
 
   .tabWrapper {
@@ -11,10 +13,16 @@
     .tabContent {
       position: relative;
       padding: var(--hi-spacing-lg);
+      background: var(--hi-surface);
+      border: 1px solid var(--hi-border);
+      border-radius: var(--hi-radius-lg);
     }
 
     .feeExample {
       padding: var(--hi-spacing-lg);
+      background: var(--hi-shell-bg);
+      border: 1px solid var(--hi-border);
+      border-radius: var(--hi-radius-lg);
     }
   }
 
@@ -27,12 +35,13 @@
   }
 
   .heading {
-    font-size: 1.1em;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 650;
     color: var(--hi-text);
   }
 
   .subHeading {
-    font-size: 0.9em;
+    font-size: 0.88rem;
+    color: var(--hi-text-muted);
   }
 }

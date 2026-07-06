@@ -2,7 +2,7 @@
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-lg);
-    padding: 24px;
+    padding: 20px;
     box-shadow: none;
 }
 
@@ -17,6 +17,10 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    padding: 10px 12px;
+    background: var(--hi-shell-bg);
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
 }
 
 .statsGrid {
@@ -33,8 +37,13 @@
     align-items: center;
     gap: 12px;
     padding: 12px;
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg);
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
+
+    svg {
+        color: var(--hi-text-muted);
+    }
 }
 
 .usersList {
@@ -48,6 +57,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg);
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+        background: var(--hi-control-bg-hover);
+        border-color: var(--hi-border-strong);
+    }
 }
