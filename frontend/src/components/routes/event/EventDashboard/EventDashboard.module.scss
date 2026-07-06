@@ -16,14 +16,14 @@
       margin: 0;
       font-size: 1rem;
       line-height: 1.25;
-      font-weight: 650;
+      font-weight: 600;
     }
   }
 
   .dateRange {
     color: var(--hi-text-muted);
     font-size: 0.8rem;
-    font-weight: 650;
+    font-weight: 400;
     white-space: nowrap;
   }
 
@@ -48,7 +48,7 @@
     min-height: 28px;
     padding-inline: 10px;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
@@ -99,7 +99,7 @@
     margin-bottom: 0.35rem;
     margin-top: 0;
     color: var(--hi-text);
-    font-weight: 650;
+    font-weight: 600;
     letter-spacing: 0;
   }
 
@@ -132,7 +132,7 @@
     font-size: 0.9rem;
     margin: 0 0 0.45rem 0;
     color: var(--hi-text);
-    font-weight: 650;
+    font-weight: 600;
     display: flex;
     align-items: center;
   }
@@ -142,6 +142,21 @@
     color: var(--hi-text-muted);
     font-size: 0.8rem;
     line-height: 1.5;
+  }
+
+  :global(.mantine-Button-root) {
+    background: var(--hi-surface-soft) !important;
+    color: var(--hi-text) !important;
+    border: 1px solid var(--hi-border) !important;
+    font-weight: 500;
+    box-shadow: none !important;
+
+    &:hover:not(:disabled) {
+      background: var(--hi-control-bg-active) !important;
+      border-color: var(--hi-border-strong) !important;
+      color: var(--hi-text) !important;
+      box-shadow: none !important;
+    }
   }
 
 }
@@ -288,7 +303,7 @@
   h3 {
     margin: 0 0 8px 0;
     font-size: 1rem;
-    font-weight: 650;
+    font-weight: 600;
     color: var(--hi-text);
     letter-spacing: 0;
   }
@@ -314,7 +329,7 @@
 
   background: var(--hi-text) !important;
   color: white !important;
-  font-weight: 650;
+  font-weight: 600;
   border: none !important;
   padding: 10px 18px;
   transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;

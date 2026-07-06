@@ -26,14 +26,14 @@
 }
 
 .pageTitle {
-  font-size: clamp(1.45rem, 1.8vw, 1.85rem);
-  font-weight: 650;
+  font-size: clamp(1.38rem, 1.55vw, 1.7rem);
+  font-weight: 600;
   margin: 0;
   letter-spacing: 0;
   line-height: 1.2;
   
   @include mixins.respond-below(sm) {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -93,13 +93,13 @@
 
 .organizerName {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--hi-text);
 }
 
 .organizerCount {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--hi-text);
 }
 
@@ -128,7 +128,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--hi-text-light);
   background: var(--hi-surface-soft);
   

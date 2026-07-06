@@ -158,7 +158,7 @@ export const EventDashboard = () => {
                         <div className={classes.setupCardContent}>
                             <div className={classes.checklistContainer}>
                                 <h2>
-                                    <IconRocket size={24} color="var(--hi-secondary-strong)" style={{marginRight: 8, verticalAlign: -4}}/>
+                                    <IconRocket size={18} color="var(--hi-text-muted)" style={{marginRight: 8, verticalAlign: -3}}/>
                                     {t`Get your event ready`}
                                 </h2>
                                 <p className={classes.setupDescription}>

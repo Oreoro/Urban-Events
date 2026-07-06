@@ -22,8 +22,8 @@
   }
 
   &.lightAccent {
-    background-color: color-mix(in srgb, var(--ue-mint) 70%, white);
-    border: 1px solid color-mix(in srgb, var(--ue-forest) 18%, var(--ue-border));
+    background-color: var(--hi-surface-soft);
+    border: 1px solid var(--hi-border);
     box-shadow: none;
   }
 }
