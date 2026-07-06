@@ -1,23 +1,23 @@
 import {t} from "@lingui/macro";
 
 export const EventCategories = [
-    {id: 'NIGHTLIFE', name: t`Nightlife`, emoji: '🪩'},
-    {id: 'FESTIVAL', name: t`Festival`, emoji: '🎉'},
+    {id: 'NIGHTLIFE', name: t`Nightlife`},
+    {id: 'FESTIVAL', name: t`Festival`},
 
-    {id: 'MUSIC', name: t`Music`, emoji: '🎵'},
-    {id: 'SPORTS', name: t`Sports`, emoji: '⚽'},
-    {id: 'COMEDY', name: t`Comedy`, emoji: '😂'},
-    {id: 'THEATER', name: t`Theater`, emoji: '🎭'},
-    {id: 'ART', name: t`Art`, emoji: '🎨'},
+    {id: 'MUSIC', name: t`Music`},
+    {id: 'SPORTS', name: t`Sports`},
+    {id: 'COMEDY', name: t`Comedy`},
+    {id: 'THEATER', name: t`Theater`},
+    {id: 'ART', name: t`Art`},
 
-    {id: 'SOCIAL', name: t`Social`, emoji: '🤝'},
-    {id: 'FOOD_DRINK', name: t`Food & Drink`, emoji: '🍽️'},
-    {id: 'CHARITY', name: t`Charity`, emoji: '🎗️'},
+    {id: 'SOCIAL', name: t`Social`},
+    {id: 'FOOD_DRINK', name: t`Food & Drink`},
+    {id: 'CHARITY', name: t`Charity`},
 
-    {id: 'BUSINESS', name: t`Business`, emoji: '💼'},
-    {id: 'TECH', name: t`Tech`, emoji: '💻'},
-    {id: 'EDUCATION', name: t`Education`, emoji: '📚'},
-    {id: 'WORKSHOP', name: t`Workshop`, emoji: '🛠️'},
+    {id: 'BUSINESS', name: t`Business`},
+    {id: 'TECH', name: t`Tech`},
+    {id: 'EDUCATION', name: t`Education`},
+    {id: 'WORKSHOP', name: t`Workshop`},
 
-    {id: 'OTHER', name: t`Other`, emoji: '📝'},
+    {id: 'OTHER', name: t`Other`},
 ];

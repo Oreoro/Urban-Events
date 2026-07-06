@@ -83,7 +83,7 @@ export const EventDetailsForm = () => {
                         placeholder={t`Select a category`}
                         data={EventCategories.map((category) => ({
                             value: category.id,
-                            label: `${category.emoji} ${category.name}`,
+                            label: category.name,
                         }))}
                         searchable
                         clearable
