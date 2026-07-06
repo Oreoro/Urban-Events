@@ -1,5 +1,6 @@
 import React from 'react';
 import {Popover as MantinePopover, PopoverProps as MantinePopoverProps} from "@mantine/core";
+import classes from "./Popover.module.scss";
 
 
 interface PopoverProps extends MantinePopoverProps {
@@ -7,15 +8,15 @@ interface PopoverProps extends MantinePopoverProps {
     title: React.ReactNode;
 }
 
-export const Popover = ({children, title, ...props}: PopoverProps) => {
+export const Popover = ({children, title, shadow = 'none', offset = 8, ...props}: PopoverProps) => {
     return (
-        <MantinePopover {...props}>
+        <MantinePopover {...props} shadow={shadow} offset={offset}>
             <MantinePopover.Target>
-                <div style={{cursor: "pointer", display: "inline-flex"}}>
+                <div className={classes.target}>
                     {children}
                 </div>
             </MantinePopover.Target>
-            <MantinePopover.Dropdown>
+            <MantinePopover.Dropdown className={classes.dropdown}>
                 {title}
             </MantinePopover.Dropdown>
         </MantinePopover>

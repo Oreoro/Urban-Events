@@ -374,6 +374,22 @@ a {
   border-color: var(--hi-border) !important;
 }
 
+.mantine-Popover-dropdown {
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-md) !important;
+  background: var(--hi-surface) !important;
+  color: var(--hi-text-light) !important;
+  box-shadow: none !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.mantine-Popover-arrow {
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface) !important;
+}
+
 .mantine-Table-table {
   color: var(--hi-text);
 }

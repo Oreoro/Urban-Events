@@ -1,0 +1,19 @@
+.target {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dropdown {
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 8px 10px;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-md) !important;
+  background: var(--hi-surface) !important;
+  color: var(--hi-text-light);
+  box-shadow: none !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
