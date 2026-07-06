@@ -1,9 +1,9 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 32px 20px;
 
   @include mixins.respond-below(md) {
     padding: 20px 16px;
@@ -12,12 +12,12 @@
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 
   h1 {
-    margin: 20px 0 12px;
-    font-size: 2rem;
-    font-weight: 600;
+    margin: 16px 0 8px;
+    font-size: 1.55rem;
+    font-weight: 650;
     color: var(--hi-text);
 
     @include mixins.respond-below(md) {
@@ -29,10 +29,10 @@
 
 .headerIcon {
   color: var(--hi-text-muted);
-  padding: 16px;
-  background: var(--hi-surface-soft);
+  padding: 13px;
+  background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -55,7 +55,7 @@
 .ordersList {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 
   @include mixins.respond-below(md) {
     gap: 16px;
@@ -69,7 +69,7 @@
 
   &:hover {
     transform: none;
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
     box-shadow: none;
   }
@@ -83,7 +83,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
   gap: 12px;
 
@@ -101,8 +101,8 @@
 
 .eventTitle {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 650;
   color: var(--hi-text);
 
   @include mixins.respond-below(md) {
@@ -117,6 +117,10 @@
 
 .detailItem {
   min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-shell-bg);
 
   @include mixins.respond-below(md) {
     margin-bottom: 4px;
@@ -125,10 +129,10 @@
 
 .headerIconError {
   color: var(--hi-status-danger-text);
-  padding: 16px;
-  background: var(--hi-status-danger-bg);
+  padding: 13px;
+  background: var(--hi-surface);
   border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -171,9 +175,9 @@
 .successMessage {
   text-align: center;
   padding: 16px;
-  background: var(--hi-status-success-bg);
-  border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-status-success-border);
+  background: var(--hi-shell-bg);
+  border-radius: var(--hi-radius-lg);
+  border: 1px solid var(--hi-border);
 
   p {
     margin: 0 0 8px;

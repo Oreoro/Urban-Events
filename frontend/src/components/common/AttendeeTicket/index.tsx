@@ -146,9 +146,9 @@ export const AttendeeTicket = ({
                                 <div className={classes.qrPlaceholderContent}>
                                     <div className={`${classes.statusIconCircle} ${isCancelled ? classes.statusIconCancelled : classes.statusIconPending}`}>
                                         {isCancelled ? (
-                                            <IconX size={20} stroke={2} color="white" />
+                                            <IconX size={20} stroke={2} />
                                         ) : (
-                                            <IconLock size={20} stroke={2} color="white" />
+                                            <IconLock size={20} stroke={2} />
                                         )}
                                     </div>
                                     <span className={`${classes.statusText} ${isCancelled ? classes.statusTextCancelled : classes.statusTextPending}`}>
