@@ -1,6 +1,5 @@
 import {useGetEvent} from "../../../../queries/useGetEvent.ts";
 import {useParams} from "react-router";
-import {PageTitle} from "../../../common/PageTitle";
 import {PageBody} from "../../../common/PageBody";
 import {StatBoxes} from "../../../common/StatBoxes";
 import {t, Trans} from "@lingui/macro";
@@ -12,7 +11,7 @@ import {formatCurrency} from "../../../../utilites/currency.ts";
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {Button, SegmentedControl, Skeleton, Tooltip} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {IconAlertCircle, IconCheck, IconRocket, IconX} from "@tabler/icons-react";
+import {IconAlertCircle, IconCheck, IconLayoutDashboard, IconRocket, IconX} from "@tabler/icons-react";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
@@ -111,16 +110,34 @@ export const EventDashboard = () => {
         <PageBody>
             <div className={classes.dashboardStack}>
                 <section className={classes.overviewPanel}>
-                    <PageTitle
-                        className={classes.pageTitle}
-                        subheading={!isMobile && event?.title ? event.title : undefined}
-                    >
-                        <Trans>Dashboard</Trans>
-                    </PageTitle>
+                    <div className={classes.dashboardHeader}>
+                        <div className={classes.dashboardIdentity}>
+                            <div className={classes.pageIcon} aria-hidden="true">
+                                <IconLayoutDashboard size={20} stroke={1.7}/>
+                            </div>
+                            <div className={classes.titleBlock}>
+                                <p className={classes.kicker}><Trans>Event workspace</Trans></p>
+                                <h1 className={classes.pageTitle}>
+                                    {!isMobile && event?.title ? event.title : t`Dashboard`}
+                                </h1>
+                                {event && (
+                                    <div className={classes.metaPills} aria-label={t`Event dashboard summary`}>
+                                        <span>{event.status}</span>
+                                        <span>{event.currency}</span>
+                                        {dateRangeLabel && <span>{dateRangeLabel}</span>}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
 
                     {!event && <DashBoardSkeleton/>}
 
-                    {event && <StatBoxes/>}
+                    {event && (
+                        <div className={classes.statsShell}>
+                            <StatBoxes/>
+                        </div>
+                    )}
                 </section>
 
                 {showStripeUpgradeNotice && (
