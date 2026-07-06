@@ -1,12 +1,12 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #f4eeee;
+  --ue-powder-blush: #f7edec;
   --ue-eggshell: #fbfbfa;
-  --ue-icy-aqua: #eef6ff;
-  --ue-light-blue: #edf5ff;
-  --ue-blue-slate: #787774;
-  --ue-canvas: #ffffff;
+  --ue-icy-aqua: #eff6ff;
+  --ue-light-blue: #eaf3ff;
+  --ue-blue-slate: #6f6e69;
+  --ue-canvas: #fbfbfa;
   --ue-canvas-soft: #f7f7f5;
   --ue-surface: #ffffff;
   --ue-ink: #37352f;
@@ -40,8 +40,8 @@
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
-  --hi-primary: var(--mantine-color-primary-7);
-  --hi-primary-hover: var(--mantine-color-primary-8);
+  --hi-primary: #2383e2;
+  --hi-primary-hover: #0b6bcb;
   --hi-secondary: var(--ue-mint);
   --hi-secondary-strong: var(--ue-forest);
   --hi-secondary-text: var(--ue-ink);
@@ -51,7 +51,7 @@
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
-  --hi-border: color-mix(in srgb, var(--ue-border) 88%, white);
+  --hi-border: color-mix(in srgb, var(--ue-border) 82%, white);
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);

@@ -44,37 +44,37 @@ export const StatBoxes = () => {
             number: formatNumber(eventStats?.total_attendees_registered as number),
             description: t`Attendees`,
             icon: <IconUsers size={18}/>,
-            backgroundColor: 'var(--ue-coral)'
+            backgroundColor: 'var(--hi-text-muted)'
         },
         {
             number: formatNumber(eventStats?.total_products_sold as number),
             description: t`Products sold`,
             icon: <IconShoppingCart size={18}/>,
-            backgroundColor: 'var(--ue-plum)'
+            backgroundColor: 'var(--hi-text-muted)'
         },
         {
             number: formatCurrency(eventStats?.total_refunded as number || 0, event?.currency),
             description: t`Refunded`,
             icon: <IconCreditCardRefund size={18}/>,
-            backgroundColor: 'var(--ue-blue-slate)'
+            backgroundColor: 'var(--hi-text-muted)'
         },
         {
             number: formatCurrency(eventStats?.total_gross_sales || 0, event?.currency),
             description: t`Gross sales`,
             icon: <IconCash size={18}/>,
-            backgroundColor: 'var(--ue-forest)'
+            backgroundColor: 'var(--hi-text-muted)'
         },
         {
             number: formatNumber(eventStats?.total_views as number),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
-            backgroundColor: 'var(--ue-forest-deep)'
+            backgroundColor: 'var(--hi-text-muted)'
         },
         {
             number: formatNumber(eventStats?.total_orders as number),
             description: t`Completed orders`,
             icon: <IconReceipt size={18}/>,
-            backgroundColor: 'var(--ue-marigold)'
+            backgroundColor: 'var(--hi-text-muted)'
         }
     ];
 

@@ -3,12 +3,12 @@ import {createTheme} from "@mantine/core";
 import {generateColors} from "@mantine/colors-generator";
 
 export const urbanEventsColors = {
-    powderBlush: "#F4EEEE",
+    powderBlush: "#F7EDEC",
     eggshell: "#FBFBFA",
-    icyAqua: "#EEF6FF",
-    lightBlue: "#EDF5FF",
-    blueSlate: "#787774",
-    canvas: "#FFFFFF",
+    icyAqua: "#EFF6FF",
+    lightBlue: "#EAF3FF",
+    blueSlate: "#6F6E69",
+    canvas: "#FBFBFA",
     canvasSoft: "#F7F7F5",
     surface: "#FFFFFF",
     ink: "#37352F",
@@ -34,7 +34,7 @@ export const urbanEventsColors = {
 
 export const getUrbanEventsTheme = () => createTheme({
     colors: {
-        primary: generateColors(urbanEventsColors.navy),
+        primary: generateColors(urbanEventsColors.teal),
         secondary: generateColors(urbanEventsColors.teal),
         blush: generateColors(urbanEventsColors.coral),
         aqua: generateColors(urbanEventsColors.teal),

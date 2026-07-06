@@ -1,11 +1,11 @@
 @use "../../../styles/mixins.scss";
 
 .calloutBox {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+  padding: 14px;
+  text-align: left;
   position: relative;
   overflow: hidden;
   
@@ -30,12 +30,12 @@
   top: 8px;
   right: 8px;
   z-index: 2;
-  color: rgba(255, 255, 255, 0.6);
-  transition: all 0.2s ease;
+  color: var(--hi-text-muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
   
   &:hover {
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--hi-text);
+    background: var(--hi-surface-soft);
   }
 }
 
@@ -43,50 +43,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  margin-bottom: 12px;
+  width: 32px;
+  height: 32px;
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  margin-bottom: 10px;
   position: relative;
   z-index: 1;
   
   svg {
-    color: white;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    color: var(--hi-text-muted);
   }
 }
 
 .calloutTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--hi-text);
+  margin: 0 0 6px 0;
   position: relative;
   z-index: 1;
 }
 
 .calloutText {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 16px 0;
+  font-size: 0.78rem;
+  color: var(--hi-text-muted);
+  margin: 0 0 12px 0;
   line-height: 1.5;
   position: relative;
   z-index: 1;
 }
 
 .calloutButton {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  color: white !important;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: var(--hi-surface-soft) !important;
+  border: 1px solid var(--hi-border) !important;
+  color: var(--hi-text) !important;
+  font-weight: 650;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
   position: relative;
   z-index: 1;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.25) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: var(--hi-control-bg-active) !important;
+    border-color: var(--hi-border-strong) !important;
   }
 }

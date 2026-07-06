@@ -18,7 +18,7 @@
     background-color: var(--checkout-surface, var(--hi-surface-raised));
     border: 1px solid var(--checkout-border, var(--hi-border));
     box-shadow: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
   }
 
   &.lightAccent {

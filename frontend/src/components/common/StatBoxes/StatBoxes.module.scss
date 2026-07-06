@@ -5,7 +5,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   color: var(--hi-text);
-  margin: 1rem 0 1.25rem;
+  margin: 0.9rem 0 1.2rem;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(2, 1fr);
@@ -22,7 +22,7 @@
   padding: 14px 15px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 96px;
+  min-height: 88px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
 
@@ -34,7 +34,7 @@
     gap: 2px;
 
     .number {
-      font-size: 1.38rem;
+      font-size: 1.3rem;
       font-weight: 700;
       letter-spacing: 0;
       line-height: 1.2;
@@ -47,7 +47,7 @@
     }
 
     .description {
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       color: var(--hi-text-muted);
       font-weight: 600;
       align-self: start;
@@ -61,15 +61,15 @@
     align-self: flex-start;
 
     .icon {
-      width: 30px;
-      height: 30px;
-      border-radius: var(--hi-radius-md);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--hi-radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--stat-color);
-      background: color-mix(in srgb, var(--stat-color) 12%, white);
-      border: 1px solid color-mix(in srgb, var(--stat-color) 18%, var(--hi-border));
+      color: var(--hi-text-muted);
+      background: var(--hi-surface-soft);
+      border: 1px solid var(--hi-border);
       box-shadow: none;
 
       @include mixins.respond-below(md) {

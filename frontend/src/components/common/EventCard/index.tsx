@@ -24,10 +24,10 @@ import {formatDateWithLocale, relativeDate} from "../../../utilites/dates.ts";
 import {Card} from "../Card";
 
 const placeholderColors = [
-    'var(--ue-slate)',
-    'var(--hi-secondary-strong)',
-    'var(--ue-blush-deep)',
-    'var(--ue-blue-slate)',
+    'var(--hi-surface-soft)',
+    'var(--ue-light-blue)',
+    'var(--ue-powder-blush)',
+    'var(--ue-slate-soft)',
 ];
 
 interface EventCardProps {

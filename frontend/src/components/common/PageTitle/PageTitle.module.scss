@@ -1,20 +1,20 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
 }
 
 .title {
   color: var(--hi-text);
-  font-size: clamp(1.7rem, 2.2vw, 2.15rem);
+  font-size: clamp(1.55rem, 1.8vw, 1.9rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: 0;
   margin-bottom: 0.4rem !important;
   margin-top: 0;
 
   @include mixins.respond-below(md) {
-    font-size: 1.45rem !important;
+    font-size: 1.38rem !important;
   }
 }
 
@@ -24,5 +24,5 @@
   color: var(--hi-text-muted);
   font-weight: 500;
   line-height: 1.55;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }

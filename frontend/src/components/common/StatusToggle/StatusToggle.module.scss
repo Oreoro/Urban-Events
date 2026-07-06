@@ -6,10 +6,10 @@
   left: 0;
   right: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.44);
-  backdrop-filter: blur(8px);
-  padding: 0.75rem 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: var(--hi-surface-soft);
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--hi-border);
+  box-shadow: none;
   animation: slideDown 0.3s ease-out;
 
   @keyframes slideDown {
@@ -40,7 +40,7 @@
 }
 
 .message {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--hi-text);
   font-size: 0.875rem;
   font-weight: 400;
 
@@ -54,16 +54,15 @@
   padding: 0.25rem 0.75rem;
   height: auto;
   min-height: 28px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: white;
-  transition: all 0.2s ease;
+  background: var(--hi-primary);
+  border: 1px solid var(--hi-primary-hover);
+  color: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.35);
-    transform: translateY(-1px);
-    color: white;
+    background: var(--hi-primary-hover);
+    border-color: var(--hi-primary-hover);
+    color: #ffffff;
   }
 
   @include mixins.respond-below(sm) {

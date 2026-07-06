@@ -27,13 +27,13 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
-  font-weight: 800;
-  transition: transform 0.2s ease;
+  font-weight: 650;
+  transition: color 0.15s ease, background-color 0.15s ease;
   color: var(--hi-text-light);
 
   &:hover {
-    transform: translateY(-1px);
     color: var(--hi-text);
+    background: var(--hi-surface-soft);
   }
 
   .eventPageButtonText {
@@ -68,15 +68,18 @@
   display: flex;
   align-items: center;
   font-weight: 500;
-  transition: transform 0.2s ease;
+  transition: color 0.15s ease, background-color 0.15s ease;
 
   :global(.mantine-Button-root) {
     color: var(--hi-text-light);
-    font-weight: 800;
+    font-weight: 650;
   }
 
   &:hover {
-    transform: translateY(-1px);
+    :global(.mantine-Button-root) {
+      color: var(--hi-text);
+      background: var(--hi-surface-soft);
+    }
   }
 
   @include mixins.respond-below(md) {
