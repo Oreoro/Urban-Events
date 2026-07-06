@@ -1,151 +1,14 @@
 @use "../../../styles/mixins.scss";
 
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: color-mix(in srgb, var(--hi-text) 28%, transparent);
-  backdrop-filter: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  z-index: 10;
-  
-  @include mixins.respond-below(md) {
-    padding: 0;
-    align-items: flex-start;
-  }
-}
-
-// Main modal container
-.modalContainer {
-  background: var(--hi-surface);
-  border-radius: var(--hi-radius-md);
-  max-width: 680px;
-  width: 100%;
-  max-height: 90vh;
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
-  border: 1px solid var(--hi-border);
-  box-shadow: none;
-  display: flex;
-  flex-direction: column;
-
-  @include mixins.respond-below(md) {
-    border-radius: 0;
-    max-height: 100dvh;
-    height: 100dvh;
-    width: 100vw;
-    max-width: none;
-  }
-}
-
-// Close button
-.closeButton {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-border);
-  background: var(--hi-surface);
-  color: var(--hi-text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-  z-index: 10;
-  box-shadow: none;
-
-  &:hover {
-    background: var(--hi-surface-soft);
-    border-color: var(--hi-border-strong);
-    color: var(--hi-text);
-    transform: none;
-  }
-
-  &:active {
-    transform: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--hi-text);
-    outline-offset: 2px;
-  }
-}
-
-// Modal header
-.modalHeader {
-  background: var(--hi-surface);
-  padding: 1.1rem 1.5rem 0.9rem;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-  border-bottom: 1px solid var(--hi-border);
-
-  @include mixins.respond-below(md) {
-    padding: 1.25rem 1rem 0.75rem;
-  }
-}
-
-.headerContent {
-  position: relative;
-  z-index: 1;
-}
-
-.headerTitle {
-  font-size: 1.02rem;
-  font-weight: 650;
-  color: var(--hi-text);
-  margin: 0 0 0.125rem;
-  letter-spacing: 0;
-  
-  @include mixins.respond-below(sm) {
-    font-size: 1.16rem;
-  }
-}
-
-.headerSubtitle {
-  font-size: 0.82rem;
-  color: var(--hi-text-muted);
-  margin: 0;
-  font-weight: 400;
-  
-  @include mixins.respond-below(sm) {
-    font-size: 0.75rem;
-  }
-}
-
-// Modal content
-.modalContent {
-  max-height: calc(90vh - 120px);
-  overflow-y: auto;
-  @include mixins.scrollbar();
-  -webkit-overflow-scrolling: touch;
-  flex: 1;
-  min-height: 0;
-
-  @include mixins.respond-below(md) {
-    max-height: none;
-    overflow-y: auto;
-  }
-}
-
 .formContainer {
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding-bottom: 2px;
 
   @include mixins.respond-below(md) {
-    padding: 1.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
   }
 
   @include mixins.respond-below(sm) {
-    padding: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 0.25rem;
   }
 
   // Ensure consistent spacing between form elements
@@ -158,9 +21,16 @@
   }
 }
 
+.modalDescription {
+  color: var(--hi-text-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
 // Create organizer link
 .createOrganizerLink {
-  text-align: center;
+  text-align: left;
   margin-top: 0.75rem;
   margin-bottom: 1.25rem;
   font-size: 0.82rem;
