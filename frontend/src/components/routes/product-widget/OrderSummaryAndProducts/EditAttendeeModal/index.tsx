@@ -1,5 +1,5 @@
 import {t} from "@lingui/macro";
-import {Alert, Button, Group, Modal, Text, TextInput} from "@mantine/core";
+import {Button, Group, Modal, Text, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {IconInfoCircle} from "@tabler/icons-react";
 import {Attendee} from "../../../../../types";
@@ -73,11 +73,12 @@ export const EditAttendeeModal = ({
                     />
 
                     {emailChanged && (
-                        <Alert mb={20} icon={<IconInfoCircle size={16}/>} color="blue">
+                        <div className={classes.notice}>
+                            <IconInfoCircle size={16} className={classes.noticeIcon}/>
                             <Text size="sm">
                                 {t`The email address has been changed. The attendee will receive a new ticket at the updated email address.`}
                             </Text>
-                        </Alert>
+                        </div>
                     )}
 
                     <Group justify="flex-end" gap="sm" mt="md">

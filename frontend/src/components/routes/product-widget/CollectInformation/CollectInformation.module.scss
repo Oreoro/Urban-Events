@@ -59,6 +59,10 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 0 0 14px;
 }
 
+.validEmailIcon {
+  color: var(--hi-status-success-text);
+}
+
 .copyDetailsSection {
   margin-top: 4px;
   padding-top: 14px;
@@ -75,6 +79,19 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .copyLabel {
   flex-shrink: 0;
   color: var(--checkout-text-primary, var(--hi-text));
+}
+
+.tooltipTarget {
+  display: inline-block;
+}
+
+.billingHeading {
+  margin: 24px 0 8px;
+  color: var(--checkout-text-primary, var(--hi-text));
+  font-family: $font-display;
+  font-size: 0.98rem;
+  font-weight: 680;
+  line-height: 1.35;
 }
 
 .ticketSection {

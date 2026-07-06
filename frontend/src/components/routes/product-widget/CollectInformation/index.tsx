@@ -81,7 +81,7 @@ export const CollectInformation = () => {
     };
 
     const EmailCheckIcon = () => (
-        <IconCircleCheck size={18} style={{color: 'var(--hi-status-success-text)'}}/>
+        <IconCircleCheck size={18} className={classes.validEmailIcon}/>
     );
 
     let productIndex = 0;
@@ -473,7 +473,7 @@ export const CollectInformation = () => {
                                     position="right"
                                     withArrow
                                 >
-                                    <div style={{display: 'inline-block'}}>
+                                    <div className={classes.tooltipTarget}>
                                         <Checkbox
                                             size="sm"
                                             label={t`Copy details to first attendee`}
@@ -511,7 +511,7 @@ export const CollectInformation = () => {
 
                     {requireBillingAddress && (
                         <>
-                            <h3 style={{marginBottom: 5}}>
+                            <h3 className={classes.billingHeading}>
                                 {t`Billing Address`}
                             </h3>
 
