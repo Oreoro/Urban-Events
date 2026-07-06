@@ -43,6 +43,10 @@
 }
 
 .lg {
-  --brand-font-size: clamp(2rem, 5vw, 3.15rem);
+  --brand-font-size: 2.6rem;
   gap: 0;
+
+  @media (max-width: 768px) {
+    --brand-font-size: 2rem;
+  }
 }

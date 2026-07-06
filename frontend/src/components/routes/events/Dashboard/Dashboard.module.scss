@@ -26,14 +26,14 @@
 }
 
 .pageTitle {
-  font-size: clamp(1.38rem, 1.55vw, 1.7rem);
+  font-size: 1.45rem;
   font-weight: 600;
   margin: 0;
   letter-spacing: 0;
   line-height: 1.2;
   
   @include mixins.respond-below(sm) {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 }
 

@@ -6,7 +6,7 @@
 
 .title {
   color: var(--hi-text);
-  font-size: clamp(1.5rem, 1.55vw, 1.82rem);
+  font-size: 1.52rem;
   font-weight: 650;
   line-height: 1.18;
   letter-spacing: 0;
@@ -14,7 +14,7 @@
   margin-top: 0;
 
   @include mixins.respond-below(md) {
-    font-size: 1.38rem !important;
+    font-size: 1.32rem !important;
   }
 }
 

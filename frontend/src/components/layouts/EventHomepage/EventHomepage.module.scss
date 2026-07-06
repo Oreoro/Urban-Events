@@ -307,12 +307,16 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .eventTitle {
   font-family: $font-display;
-  font-size: clamp(1.48rem, 3.4vw, 2rem);
+  font-size: 1.58rem;
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: 0;
   color: var(--primary-text-color);
   margin: 0 0 20px;
+
+  @include mixins.respond-below(sm) {
+    font-size: 1.34rem;
+  }
 }
 
 .eventMeta {

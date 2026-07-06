@@ -240,12 +240,16 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .nameSection {
   h1 {
     font-family: $font-display;
-    font-size: clamp(1.35rem, 3.1vw, 1.75rem);
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0 0 8px 0;
     color: var(--primary-text-color);
     line-height: 1.2;
     letter-spacing: 0;
+
+    @include mixins.respond-below(sm) {
+      font-size: 1.28rem;
+    }
   }
 }
 
