@@ -24,17 +24,17 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 7px 0 4px;
-    min-height: 44px;
-    margin-bottom: 1px;
-    border-bottom: 0;
+    padding: 8px 0 7px;
+    min-height: 46px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--hi-border);
     flex-shrink: 0;
 
     a {
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 14px;
+      padding: 8px 15px;
       color: var(--hi-shell-text);
       line-height: 1;
     }
@@ -44,7 +44,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 3px 0 16px;
+    padding: 6px 0 16px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -72,8 +72,8 @@
     }
 
     .sectionHeading {
-      padding: 14px 14px 5px;
-      font-size: 0.7rem;
+      padding: 15px 14px 5px;
+      font-size: 0.68rem;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
@@ -85,9 +85,9 @@
     .link {
       display: flex;
       align-items: center;
-      color: color-mix(in srgb, var(--hi-shell-text) 70%, transparent);
+      color: color-mix(in srgb, var(--hi-shell-text) 68%, transparent);
       min-height: 30px;
-      padding: 5px 8px;
+      padding: 5px 9px;
       text-decoration: none;
       margin: 1px 8px;
       border-radius: var(--hi-radius-sm);
@@ -98,7 +98,7 @@
       overflow: hidden;
       cursor: pointer;
       width: calc(100% - 16px);
-      background: none;
+      background: transparent;
       border: none;
       text-align: left;
 
@@ -118,31 +118,31 @@
       }
 
       &.loading {
-        background-color: var(--hi-shell-surface);
+        background-color: color-mix(in srgb, var(--hi-shell-surface) 70%, transparent);
         color: transparent;
         opacity: 0.72;
       }
 
       &.linkActive {
-        background: color-mix(in srgb, var(--hi-shell-accent) 10%, white);
-        color: var(--hi-shell-accent);
+        background: var(--hi-shell-surface);
+        color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
 
         .linkIcon {
-          color: var(--hi-shell-accent);
+          color: var(--hi-text);
         }
       }
 
       &:hover {
-        background: var(--hi-shell-surface-hover);
+        background: color-mix(in srgb, var(--hi-shell-surface-hover) 74%, transparent);
         color: var(--hi-shell-text);
       }
 
       svg {
         margin-right: 8px;
         min-width: 18px;
-        color: color-mix(in srgb, var(--hi-shell-text) 48%, transparent);
+        color: color-mix(in srgb, var(--hi-shell-text) 46%, transparent);
         transition: color 0.14s ease;
       }
     }

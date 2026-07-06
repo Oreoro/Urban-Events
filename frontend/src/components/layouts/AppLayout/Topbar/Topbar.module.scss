@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   display: flex;
   flex-direction: column;
   transition: border-color 0.15s ease;
@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     padding: 0 14px;
-    height: 42px;
+    height: 44px;
     border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text);
 
@@ -24,7 +24,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 7px 36px;
+    padding: 7px 34px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -34,7 +34,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 36px;
+    min-height: 37px;
 
     @include mixins.respond-below(md) {
       padding: 10px 16px;
@@ -60,7 +60,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.78rem;
+    font-size: 0.79rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -104,7 +104,7 @@
       transition: color 0.14s ease, background-color 0.14s ease;
       position: relative;
       border-radius: var(--hi-radius-sm);
-      padding: 3px 5px;
+      padding: 3px 6px;
       margin-left: -4px;
       @include mixins.ellipsis();
 

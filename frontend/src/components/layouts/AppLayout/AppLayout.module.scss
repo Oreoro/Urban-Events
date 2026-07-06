@@ -31,14 +31,14 @@
     grid-area: main;
     padding: 26px 34px 56px;
     overflow: auto;
-    background: var(--hi-surface);
+    background: var(--ue-canvas);
     color: var(--hi-text);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
       padding: 16px 14px 44px;
-      background: var(--hi-surface);
+      background: var(--ue-canvas);
     }
   }
 
