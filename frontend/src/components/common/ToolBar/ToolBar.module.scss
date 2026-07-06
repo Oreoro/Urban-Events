@@ -2,12 +2,15 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.8rem;
-  padding: 0.65rem !important;
+  margin-bottom: 0.65rem;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 
   .wrapper {
     display: flex;
-    gap: 0.65rem;
+    gap: 0.5rem;
     align-items: center;
     place-content: space-between;
 
@@ -26,7 +29,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.45rem;
       align-items: center;
       place-self: flex-end;
 
@@ -43,7 +46,7 @@
 
     .actions {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.45rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;
@@ -51,6 +54,6 @@
   }
 
   button {
-    min-height: 36px !important;
+    min-height: 32px !important;
   }
 }

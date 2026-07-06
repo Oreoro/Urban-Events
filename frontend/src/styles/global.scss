@@ -403,6 +403,33 @@ a {
   box-shadow: none;
 }
 
+.mantine-Pagination-root {
+  display: flex;
+  justify-content: center;
+}
+
+.mantine-Pagination-control {
+  min-width: 30px;
+  height: 30px;
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface) !important;
+  color: var(--hi-text-muted) !important;
+  font-size: 0.82rem;
+  font-weight: 560;
+  box-shadow: none !important;
+}
+
+.mantine-Pagination-control:hover:not([data-disabled]):not([data-active]) {
+  background: var(--hi-shell-bg) !important;
+  color: var(--hi-text) !important;
+}
+
+.mantine-Pagination-control[data-active] {
+  background: var(--hi-text) !important;
+  border-color: var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
+}
+
 .mantine-SimpleGrid-root {
   .mantine-InputWrapper-root, .mantine-Switch-root {
     //margin-bottom: 0;

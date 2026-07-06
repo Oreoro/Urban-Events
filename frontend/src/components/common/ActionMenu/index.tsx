@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Group, Menu} from '@mantine/core';
+import {ActionIcon, Menu} from '@mantine/core';
 import {IconDotsVertical} from '@tabler/icons-react';
 
 export interface MenuItem {
@@ -22,9 +22,9 @@ interface ActionMenuProps {
 }
 
 const DefaultTarget = () => (
-    <Button variant="transparent">
-        <IconDotsVertical/>
-    </Button>
+    <ActionIcon variant="subtle" size="sm" radius="sm">
+        <IconDotsVertical size={16}/>
+    </ActionIcon>
 );
 
 export const ActionMenu: React.FC<ActionMenuProps> = ({
