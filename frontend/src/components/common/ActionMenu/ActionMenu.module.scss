@@ -14,7 +14,7 @@
 }
 
 .dropdown {
-  padding: 5px !important;
+  padding: 6px !important;
   border: 1px solid var(--hi-border) !important;
   border-radius: var(--hi-radius-lg) !important;
   background: var(--hi-surface) !important;
@@ -29,7 +29,7 @@
 }
 
 .item {
-  min-height: 30px;
+  min-height: 32px;
   border-radius: var(--hi-radius-sm) !important;
   font-size: 0.82rem;
   font-weight: 560;
@@ -43,4 +43,9 @@
     background: var(--hi-control-bg-hover) !important;
     color: var(--hi-text) !important;
   }
+}
+
+.dropdown :global(.mantine-Menu-divider) {
+  border-color: var(--hi-border);
+  margin: 5px 0;
 }

@@ -1,11 +1,14 @@
 .content {
     border-left: 1px solid var(--hi-border);
+    background: var(--hi-surface);
     box-shadow: none;
 }
 
 .header {
-    padding: 14px 16px;
+    min-height: 50px;
+    padding: 14px 18px 10px;
     border-bottom: 1px solid var(--hi-border);
+    background: var(--hi-surface);
 }
 
 .body {
@@ -13,21 +16,23 @@
 }
 
 .inner {
-    padding: 16px;
+    padding: 18px;
 }
 
 .sideDrawerTitle {
     color: var(--hi-text);
     font-size: 1rem;
-    font-weight: 620;
+    font-weight: 650;
     letter-spacing: 0;
+    line-height: 1.25;
 }
 
 .close {
-    color: var(--hi-text-muted);
+    color: var(--hi-text-muted) !important;
+    border-radius: var(--hi-radius-sm) !important;
 
     &:hover {
-        background: var(--hi-shell-surface);
-        color: var(--hi-text);
+        background: var(--hi-control-bg-hover) !important;
+        color: var(--hi-text) !important;
     }
 }

@@ -2,7 +2,7 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
   padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
@@ -29,7 +29,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 0.45rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
 
@@ -46,7 +46,7 @@
 
     .actions {
       display: flex;
-      gap: 0.45rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;

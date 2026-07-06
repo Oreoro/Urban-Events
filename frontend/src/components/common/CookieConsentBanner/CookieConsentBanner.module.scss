@@ -3,11 +3,11 @@
     bottom: 20px;
     right: 20px;
     z-index: 900;
-    max-width: 340px;
+    max-width: 360px;
     padding: 16px;
     border-radius: var(--hi-radius-lg);
-    background: var(--event-content-bg-color, var(--organizer-content-bg-color, var(--hi-surface)));
-    border: 1px solid var(--event-border-color, var(--organizer-border-color, var(--hi-border)));
+    background: var(--hi-surface);
+    border: 1px solid var(--hi-border);
     box-shadow: none;
     backdrop-filter: none;
 
@@ -37,7 +37,8 @@
     transition: background 0.15s;
 
     &:hover {
-        background: var(--event-accent-soft, var(--organizer-accent-soft, var(--hi-surface-soft)));
+        background: var(--hi-control-bg-hover);
+        color: var(--hi-text);
     }
 }
 
@@ -51,7 +52,15 @@
 
 .iconWrapper {
     flex-shrink: 0;
-    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
+    width: 30px;
+    height: 30px;
+    border-radius: var(--hi-radius-sm);
+    border: 1px solid var(--hi-border);
+    background: var(--hi-shell-bg);
+    color: var(--hi-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 1px;
 }
 
@@ -59,11 +68,11 @@
     margin: 0;
     font-size: 13px;
     line-height: 1.45;
-    color: var(--event-primary-text-color, var(--organizer-primary-text-color, var(--hi-text)));
+    color: var(--hi-text);
 }
 
 .privacyLink {
-    color: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
+    color: var(--hi-text);
     text-decoration: underline;
 
     &:hover {
@@ -80,29 +89,37 @@
 .acceptButton,
 .declineButton {
     padding: 6px 14px;
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.15s, background 0.15s;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     border: none;
 
     &:hover {
-        opacity: 0.85;
+        opacity: 1;
     }
 }
 
 .acceptButton {
-    background: var(--event-primary-color, var(--organizer-primary-color, var(--hi-text)));
-    color: var(--event-accent-contrast, var(--organizer-accent-contrast, var(--hi-color-white)));
+    background: var(--hi-text);
+    color: var(--hi-color-white);
+    border: 1px solid var(--hi-text);
+
+    &:hover {
+        background: var(--hi-color-black);
+        border-color: var(--hi-color-black);
+    }
 }
 
 .declineButton {
     background: transparent;
-    color: var(--event-secondary-color, var(--organizer-secondary-color, var(--hi-text-muted)));
-    border: 1px solid var(--event-border-color, var(--organizer-border-color, var(--hi-border)));
+    color: var(--hi-text-muted);
+    border: 1px solid var(--hi-border);
 
     &:hover {
-        background: var(--event-accent-soft, var(--organizer-accent-soft, var(--hi-surface-soft)));
+        background: var(--hi-control-bg-hover);
+        color: var(--hi-text);
+        border-color: var(--hi-border-strong);
     }
 }

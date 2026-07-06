@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ue-canvas);
+  background: var(--hi-shell-bg);
   padding: var(--mantine-spacing-md);
 
   @include mixins.respond-below(md) {
@@ -40,11 +40,11 @@
 }
 
 .content {
-  max-width: 520px;
+  max-width: 440px;
   width: 100%;
   text-align: center;
-  background: var(--hi-surface-raised);
-  padding: var(--mantine-spacing-xl);
+  background: var(--hi-surface);
+  padding: 32px;
   border-radius: var(--hi-radius-lg);
   box-shadow: none;
   border: 1px solid var(--hi-border);
@@ -65,39 +65,39 @@
 }
 
 .title {
-  font-weight: 600;
-  margin-bottom: var(--mantine-spacing-md);
-  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 650;
+  margin-bottom: 10px;
+  font-size: clamp(1.25rem, 3vw, 1.45rem);
   line-height: 1.2;
   color: var(--hi-text);
   letter-spacing: 0;
 
   @include mixins.respond-below(md) {
-    font-size: clamp(22px, 4.5vw, 32px);
+    font-size: clamp(1.2rem, 3vw, 1.35rem);
     margin-bottom: var(--mantine-spacing-sm);
   }
 
   @include mixins.respond-below(sm) {
-    font-size: clamp(20px, 4vw, 28px);
+    font-size: 1.2rem;
   }
 }
 
 .description {
   line-height: 1.6;
   margin-bottom: var(--mantine-spacing-lg);
-  font-size: clamp(16px, 2.5vw, 18px);
-  color: var(--hi-text-light);
+  font-size: 0.95rem;
+  color: var(--hi-text-muted);
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 
   @include mixins.respond-below(md) {
-    font-size: clamp(15px, 2.2vw, 17px);
+    font-size: 0.92rem;
     margin-bottom: var(--mantine-spacing-md);
   }
 
   @include mixins.respond-below(sm) {
-    font-size: clamp(14px, 2vw, 16px);
+    font-size: 0.9rem;
     line-height: 1.5;
   }
 }
@@ -106,9 +106,14 @@
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   font-weight: 600;
   min-height: 44px; // Better touch target on mobile
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: 0.92rem;
+  background: var(--hi-text) !important;
+  border: 1px solid var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
 
   &:hover {
+    background: var(--hi-color-black) !important;
+    border-color: var(--hi-color-black) !important;
     box-shadow: none;
   }
 
