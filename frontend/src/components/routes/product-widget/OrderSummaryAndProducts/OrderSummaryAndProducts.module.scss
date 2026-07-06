@@ -4,16 +4,27 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 
 .welcomeHeader {
   margin-bottom: 24px;
-  padding: 32px 20px 24px;
+  padding: 28px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  background: var(--checkout-surface, var(--hi-surface));
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-lg);
 }
 
 .confettiIcon {
-  color: var(--checkout-text-tertiary, var(--hi-text-muted));
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  background: var(--hi-shell-bg);
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-md);
   margin-bottom: 8px;
 }
 
@@ -45,14 +56,17 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   font-family: $font-display;
   font-size: 1.08rem;
   font-weight: 600;
-  margin-top: 24px;
-  margin-bottom: 5px;
+  margin: 26px 0 10px;
   color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .detailItem {
   min-width: 0;
   overflow: hidden;
+  padding: 12px;
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-shell-bg);
 
   .detailContent {
     min-width: 0;
@@ -75,23 +89,28 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .guestList {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .guestItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--checkout-border, var(--hi-border));
+  padding: 12px;
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-shell-bg);
   gap: 12px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  &:hover {
+    background: var(--hi-control-bg-hover);
+    border-color: var(--hi-border-strong);
   }
 
-  &:first-child {
-    padding-top: 0;
+  @include mixins.respond-below(sm) {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
@@ -161,4 +180,13 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   display: flex;
   gap: 4px;
   flex-shrink: 0;
+
+  :global(.mantine-ActionIcon-root) {
+    border: 1px solid transparent;
+
+    &:hover {
+      border-color: var(--checkout-border, var(--hi-border));
+      background: var(--checkout-surface, var(--hi-surface));
+    }
+  }
 }

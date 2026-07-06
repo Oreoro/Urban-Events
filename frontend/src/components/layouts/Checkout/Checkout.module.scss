@@ -18,7 +18,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   // --checkout-text-primary, --checkout-text-secondary, --checkout-text-tertiary
   // --checkout-border
 
-  background-color: var(--checkout-background, var(--ue-canvas));
+  background-color: var(--checkout-background, var(--hi-shell-bg));
   color: var(--checkout-text-primary, var(--hi-text));
 
   // Countdown timer colors - semantic colors that don't change with theme
@@ -54,7 +54,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
     flex: 1;
 
     .header {
-      min-height: 52px;
+      min-height: 56px;
       background-color: var(--checkout-surface);
       border-bottom: 1px solid var(--checkout-border);
       display: flex;
@@ -63,10 +63,26 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
       flex-direction: column;
       box-shadow: none;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
 
       .actionBar {
-        padding: var(--hi-spacing-md);
-        width: 100%;
+        width: min(100%, 980px);
+        padding: 9px 20px;
+        margin: 0 auto;
+
+        :global(.mantine-Button-root),
+        :global(.mantine-ActionIcon-root) {
+          border: 1px solid transparent;
+          color: var(--checkout-text-secondary, var(--hi-text-muted));
+
+          &:hover {
+            background: var(--hi-control-bg-hover);
+            border-color: var(--checkout-border, var(--hi-border));
+            color: var(--checkout-text-primary, var(--hi-text));
+          }
+        }
 
         .title {
           font-family: $font-display;
@@ -106,5 +122,23 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
   :global(.mantine-SegmentedControl-label[data-active]) {
     color: var(--hi-text) !important;
+  }
+
+  :global(.mantine-Input-input),
+  :global(.mantine-NativeSelect-input) {
+    background: var(--checkout-surface, var(--hi-surface));
+    border-color: var(--checkout-border, var(--hi-border));
+    color: var(--checkout-text-primary, var(--hi-text));
+
+    &:focus,
+    &:focus-within {
+      border-color: var(--checkout-text-primary, var(--hi-text));
+      box-shadow: 0 0 0 3px var(--hi-focus-ring);
+    }
+  }
+
+  :global(.mantine-InputWrapper-label) {
+    color: var(--checkout-text-primary, var(--hi-text));
+    font-weight: 600;
   }
 }

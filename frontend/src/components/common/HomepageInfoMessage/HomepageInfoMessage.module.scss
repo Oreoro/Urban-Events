@@ -13,16 +13,16 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 200px);
-  padding: 20px;
+  padding: 24px;
 }
 
 .card {
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   background: var(--content-bg-color, var(--checkout-surface, var(--hi-surface)));
   border: 1px solid var(--border-color, var(--checkout-border, var(--hi-border)));
   border-radius: $radius-lg;
-  padding: 40px 32px;
+  padding: 32px;
   text-align: center;
   box-shadow: none;
 
@@ -32,25 +32,26 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .iconContainer {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  border-radius: $radius-md;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 24px;
-  background: var(--accent-soft, var(--checkout-accent-soft, var(--hi-surface-soft)));
+  margin: 0 auto 18px;
+  background: var(--hi-shell-bg);
+  border: 1px solid var(--border-color, var(--checkout-border, var(--hi-border)));
 
   @include mixins.respond-below(sm) {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
   }
 }
 
 .icon {
-  width: 36px;
-  height: 36px;
-  color: var(--primary-color, var(--checkout-text-primary, var(--hi-text)));
+  width: 28px;
+  height: 28px;
+  color: var(--secondary-color, var(--checkout-text-secondary, var(--hi-text-muted)));
 
   @include mixins.respond-below(sm) {
     width: 28px;
