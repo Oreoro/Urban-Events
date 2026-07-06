@@ -5,14 +5,15 @@
 }
 
 .accountCard {
-    background: var(--mantine-color-body);
-    border: 1px solid var(--mantine-color-default-border);
-    border-radius: var(--mantine-radius-md);
+    background: var(--hi-surface);
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
     padding: 1.5rem;
-    transition: box-shadow 0.2s;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-        box-shadow: var(--mantine-shadow-sm);
+        background: var(--hi-surface-soft);
+        border-color: var(--hi-border-strong);
     }
 }
 
@@ -33,12 +34,12 @@
     font-size: 1.125rem;
     font-weight: 600;
     margin: 0;
-    color: var(--mantine-color-text);
+    color: var(--hi-text);
 }
 
 .accountEmail {
     font-size: 0.875rem;
-    color: var(--mantine-color-dimmed);
+    color: var(--hi-text-muted);
 }
 
 .cardBody {
@@ -57,12 +58,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--mantine-color-blue-6);
+    color: var(--hi-text-muted);
 }
 
 .cardFooter {
     padding-top: 1rem;
-    border-top: 1px solid var(--mantine-color-default-border);
+    border-top: 1px solid var(--hi-border);
 }
 
 .footerInfo {
@@ -76,7 +77,7 @@
     align-items: center;
     gap: 0.375rem;
     font-size: 0.875rem;
-    color: var(--mantine-color-dimmed);
+    color: var(--hi-text-muted);
 }
 
 .emptyState {
@@ -86,7 +87,7 @@
 
 .usersSection {
     padding-top: 1rem;
-    border-top: 1px solid var(--mantine-color-default-border);
+    border-top: 1px solid var(--hi-border);
 }
 
 .usersList {
@@ -100,12 +101,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem;
-    background: var(--mantine-color-gray-0);
-    border-radius: var(--mantine-radius-sm);
-    transition: background-color 0.2s;
+    background: var(--hi-surface-soft);
+    border-radius: var(--hi-radius-sm);
+    border: 1px solid var(--hi-border);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-        background: var(--mantine-color-gray-1);
+        background: var(--hi-control-bg-active);
+        border-color: var(--hi-border-strong);
     }
 }
 

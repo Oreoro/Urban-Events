@@ -104,7 +104,8 @@ $color-money: var(--hi-success);
 .dragOverlay {
   .sortableCategory,
   .productCard {
-    box-shadow: var(--hi-shadow-md);
+    box-shadow: none;
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -134,7 +135,7 @@ $color-money: var(--hi-success);
   grid-template-columns: 44px 1fr auto;
 
   &:hover {
-    box-shadow: $card-shadow-hover;
+    box-shadow: none;
     border-color: var(--hi-border-strong);
 
     .actionButton {
@@ -282,7 +283,7 @@ $color-money: var(--hi-success);
 .priceAmount {
   font-size: 16px;
   font-weight: 700;
-  color: $color-money;
+  color: $color-text-primary;
   font-variant-numeric: tabular-nums;
 
   @include mixins.respond-below(sm) {
@@ -291,7 +292,7 @@ $color-money: var(--hi-success);
 }
 
 .freePrice {
-  color: $color-success;
+  color: $color-text-primary;
 }
 
 .taxIndicator {
@@ -472,7 +473,7 @@ $color-money: var(--hi-success);
   border: 1px solid $color-border;
   border-radius: $card-radius;
   padding: 12px 16px;
-  box-shadow: var(--hi-shadow-md);
+  box-shadow: none;
 
   h3 {
     margin: 0 0 4px;
@@ -499,5 +500,5 @@ $color-money: var(--hi-success);
 
 .isDragging {
   opacity: 0.5;
-  box-shadow: $card-shadow;
+  box-shadow: none;
 }

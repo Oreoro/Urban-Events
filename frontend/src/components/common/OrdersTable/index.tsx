@@ -138,7 +138,7 @@ export const OrdersTable = ({orders, event}: OrdersTableProps) => {
 
         return (
             <Group wrap={'nowrap'} gap={0} justify={'flex-end'}>
-                <Menu shadow="md" width={200}>
+                <Menu shadow="xs" width={200}>
                     <Menu.Target>
                         <div className={classes.action}>
                             <Button size={"xs"} variant={"transparent"}>
@@ -232,7 +232,7 @@ export const OrdersTable = ({orders, event}: OrdersTableProps) => {
                                 width={200}
                                 position="bottom"
                                 withArrow
-                                shadow="md"
+                                shadow="xs"
                             >
                                 <Popover.Target>
                                     <Anchor

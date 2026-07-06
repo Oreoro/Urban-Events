@@ -166,7 +166,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                         width={200}
                                         position="bottom"
                                         withArrow
-                                        shadow="md"
+                                        shadow="xs"
                                     >
                                         <Popover.Target>
                                             <Anchor

@@ -21,7 +21,7 @@
   font-weight: 600;
   line-height: 1.3;
   text-decoration: none;
-  color: var(--mantine-color-text);
+  color: var(--hi-text);
 
   &:hover {
     text-decoration: underline;
@@ -30,14 +30,14 @@
 
 .companyName {
   font-size: 12px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   line-height: 1.3;
 }
 
 .customerEmail {
   font-size: 13px;
   line-height: 1.3;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -54,7 +54,7 @@
 .orderId {
   font-size: 14px;
   font-weight: 500;
-  color: var(--mantine-color-text);
+  color: var(--hi-text);
   font-family: 'Courier New', monospace;
   line-height: 1.3;
   text-decoration: none;
@@ -73,7 +73,7 @@
 
 .createdDate {
   font-size: 12px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   line-height: 1.3;
 }
 
@@ -82,7 +82,7 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: var(--mantine-color-primary-filled);
+  color: var(--hi-primary);
   text-decoration: none;
   font-weight: 500;
   line-height: 1.3;
@@ -97,7 +97,7 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   line-height: 1.3;
 }
 
@@ -106,7 +106,7 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: var(--mantine-color-yellow-9);
+  color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
   line-height: 1.3;
 }
 
@@ -116,10 +116,11 @@
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background: var(--mantine-color-gray-1);
-  border-radius: 4px;
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
   font-size: 12px;
-  color: var(--mantine-color-gray-7);
+  color: var(--hi-text-light);
   font-weight: 500;
 }
 
@@ -133,13 +134,13 @@
 .amountGross {
   font-size: 16px;
   font-weight: 600;
-  color: var(--mantine-color-text);
+  color: var(--hi-text);
   line-height: 1.3;
 }
 
 .amountBreakdown {
   font-size: 11px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
   line-height: 1.3;
 }
 
@@ -152,15 +153,15 @@
 
   &[data-refund-status="REFUNDED"],
   &[data-refund-status="PARTIALLY_REFUNDED"] {
-    color: var(--mantine-color-orange-7);
+    color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
   }
 
   &[data-refund-status="REFUND_PENDING"] {
-    color: var(--mantine-color-yellow-7);
+    color: color-mix(in srgb, var(--hi-warning) 56%, var(--hi-text));
   }
 
   &[data-refund-status="REFUND_FAILED"] {
-    color: var(--mantine-color-red-7);
+    color: color-mix(in srgb, var(--hi-danger) 66%, var(--hi-text));
   }
 }
 
@@ -170,7 +171,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: var(--mantine-color-dimmed);
+  color: var(--hi-text-muted);
 }
 
 // Status Section
@@ -178,35 +179,40 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 5px 9px;
+  border-radius: var(--hi-radius-sm);
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
-    background: var(--mantine-color-green-1);
-    color: var(--mantine-color-green-9);
+    background: color-mix(in srgb, var(--hi-success) 10%, white);
+    color: color-mix(in srgb, var(--hi-success) 66%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
   }
 
   &[data-status="RESERVED"] {
-    background: var(--mantine-color-blue-1);
-    color: var(--mantine-color-blue-9);
+    background: color-mix(in srgb, var(--hi-primary) 10%, white);
+    color: color-mix(in srgb, var(--hi-primary) 66%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border));
   }
 
   &[data-status="AWAITING_OFFLINE_PAYMENT"] {
-    background: var(--mantine-color-yellow-1);
-    color: var(--mantine-color-yellow-9);
+    background: color-mix(in srgb, var(--hi-warning) 12%, white);
+    color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-warning) 18%, var(--hi-border));
   }
 
   &[data-status="CANCELLED"] {
-    background: var(--mantine-color-red-1);
-    color: var(--mantine-color-red-9);
+    background: color-mix(in srgb, var(--hi-danger) 10%, white);
+    color: color-mix(in srgb, var(--hi-danger) 66%, var(--hi-text));
+    border: 1px solid color-mix(in srgb, var(--hi-danger) 18%, var(--hi-border));
   }
 
   &[data-status="ABANDONED"] {
-    background: var(--mantine-color-gray-1);
-    color: var(--mantine-color-gray-9);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text-muted);
+    border: 1px solid var(--hi-border);
   }
 }
 
@@ -261,7 +267,7 @@
     .header {
       font-size: 1.1em;
       font-weight: 600;
-      color: #333333;
+      color: var(--hi-text);
       @include mixins.ellipsis;
     }
 
@@ -273,12 +279,12 @@
     .reference {
       margin-top: 10px;
       font-size: 0.9em;
-      color: #9f9f9f;
+      color: var(--hi-text-muted);
     }
 
     .createdDate {
       font-size: 0.9em;
-      color: #9f9f9f;
+      color: var(--hi-text-muted);
     }
 
     .amount {

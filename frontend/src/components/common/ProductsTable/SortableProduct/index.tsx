@@ -450,7 +450,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                 {/* Actions */}
                 <div className={classes.actionSection}>
                     <Group wrap="nowrap" gap={0}>
-                        <Menu shadow="md" width={200} position="bottom-end">
+                        <Menu shadow="xs" width={200} position="bottom-end">
                             <Menu.Target>
                                 <div>
                                     <Button
