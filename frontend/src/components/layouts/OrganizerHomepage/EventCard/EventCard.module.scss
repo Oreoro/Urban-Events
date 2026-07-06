@@ -19,8 +19,8 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     .eventCard {
-      background: var(--content-bg-color);
-      border-color: var(--border-color);
+      background: var(--hi-control-bg-hover);
+      border-color: var(--hi-border-strong);
 
       .shareButton {
         opacity: 1;
@@ -45,7 +45,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-body;
   background: var(--content-bg-color);
   border: 1px solid var(--border-color);
-  border-radius: $radius-md;
+  border-radius: var(--hi-radius-lg);
   overflow: visible;
   transition: background-color $transition-fast, border-color $transition-fast;
   display: flex;
@@ -57,8 +57,8 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   @include mixins.respond-above('sm') {
     flex-direction: row;
     height: auto;
-    min-height: 118px;
-    padding: 10px;
+    min-height: 116px;
+    padding: 8px;
     gap: 14px;
   }
 }
@@ -73,8 +73,8 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @include mixins.respond-above('sm') {
-    width: 164px;
-    height: 104px;
+    width: 156px;
+    height: 100px;
   }
 }
 
@@ -85,7 +85,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
   border-radius: $radius-sm;
   overflow: hidden;
-  background: var(--bg-color);
+  background: var(--hi-surface-soft);
   border: 1px solid var(--border-color);
 
   @include mixins.respond-below('sm') {
@@ -104,7 +104,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .placeholderImage {
   width: 100%;
   height: 100%;
-  background: var(--accent-soft);
+  background: var(--hi-surface-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,7 +119,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .placeholderIcon {
   width: 2.4rem;
   height: 2.4rem;
-  color: var(--placeholder-accent, var(--primary-color));
+  color: var(--secondary-color);
 
   @media (max-width: 640px) {
     width: 2.75rem;
@@ -142,7 +142,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .shareButton {
   opacity: 1;
   transition: opacity $transition-fast, background-color $transition-fast, border-color $transition-fast;
-  background: var(--content-bg-color);
+  background: var(--hi-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xs;
   box-shadow: none;
@@ -168,7 +168,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   gap: 4px;
   padding: 3px 7px;
-  background: var(--content-bg-color);
+  background: var(--hi-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xs;
   box-shadow: none;
@@ -185,14 +185,14 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .liveDot {
   width: 5px;
   height: 5px;
-  background: var(--primary-color);
+  background: currentColor;
   border-radius: 50%;
 }
 
 // Date badge
 .dateBadge {
   position: absolute;
-  background: var(--content-bg-color);
+  background: var(--hi-surface);
   color: var(--primary-text-color);
   border: 1px solid var(--border-color);
   padding: 5px 8px;
@@ -223,7 +223,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   min-width: 0;
   justify-content: center;
 
@@ -295,7 +295,8 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  padding-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--hi-border);
 
   @include mixins.respond-below('sm') {
     gap: 8px;
@@ -333,7 +334,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.85rem;
   color: var(--primary-text-color);
   padding: 5px 9px;
-  background: var(--content-bg-color);
+  background: var(--hi-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xs;
   white-space: nowrap;

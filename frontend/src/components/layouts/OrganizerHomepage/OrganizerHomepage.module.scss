@@ -88,7 +88,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wrapper {
-  max-width: 920px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 24px 24px 16px;
 
@@ -176,7 +176,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .profileMain {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 18px;
 
   @include mixins.respond-below(sm) {
     flex-direction: column;
@@ -186,8 +186,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .logoWrapper {
   flex-shrink: 0;
-  width: 76px;
-  height: 76px;
+  width: 64px;
+  height: 64px;
   border-radius: $radius-md;
   border: 1px solid var(--border-color);
   background: var(--accent-soft);
@@ -197,8 +197,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 
   @include mixins.respond-below(sm) {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
   }
 }
 
@@ -239,7 +239,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .nameSection {
   h1 {
     font-family: $font-display;
-    font-size: clamp(1.4rem, 3.4vw, 1.8rem);
+    font-size: clamp(1.35rem, 3.1vw, 1.75rem);
     font-weight: 600;
     margin: 0 0 8px 0;
     color: var(--primary-text-color);
@@ -631,7 +631,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pageWrapper {
-  background: var(--ue-canvas);
+  background: var(--hi-shell-bg);
 }
 
 .wrapper {
@@ -644,6 +644,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--hi-surface);
   border-color: var(--hi-border);
   border-radius: var(--hi-radius-lg);
+}
+
+.heroSection:hover,
+.eventsSection:hover {
+  border-color: var(--hi-border-strong);
 }
 
 .coverWrapper {
@@ -663,6 +668,23 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--hi-border);
   color: var(--primary-text-color);
   box-shadow: none;
+}
+
+.socialIcon,
+.contactButton {
+  border-radius: var(--hi-radius-sm);
+}
+
+.profileActions {
+  gap: 8px;
+}
+
+.organizerMeta {
+  gap: 10px;
+}
+
+.metaItem {
+  padding: 3px 0;
 }
 
 .logoWrapper,

@@ -1300,13 +1300,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .wrapper {
   max-width: 960px;
-  padding-top: 28px;
+  padding-top: 24px;
 }
 
 .mainCard {
   background: var(--hi-surface);
   border-color: var(--hi-border);
   border-radius: var(--hi-radius-lg);
+}
+
+.mainCard:hover {
+  border-color: var(--hi-border-strong);
 }
 
 .coverWrapper {
@@ -1329,6 +1333,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--hi-border);
   color: var(--primary-text-color);
   box-shadow: none;
+}
+
+.socialLink,
+.contactButton {
+  border-radius: var(--hi-radius-sm);
 }
 
 .organizerPill:hover,
@@ -1388,6 +1397,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-color: var(--hi-border);
 }
 
+.metaItem {
+  align-items: flex-start;
+}
+
 .ticketsSection {
   :global(.hi-product-rows),
   :global(.hi-product-category-rows) {
@@ -1397,23 +1410,21 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-row) {
     background: var(--hi-surface);
     border-color: var(--hi-border);
-    border-radius: 0;
-    border-width: 0 0 1px;
+    border-radius: var(--hi-radius-lg);
+    border-width: 1px;
+    margin-bottom: 8px;
 
     &:first-child {
-      border-top-left-radius: var(--hi-radius-lg);
-      border-top-right-radius: var(--hi-radius-lg);
       border-top-width: 1px;
     }
 
     &:last-child {
-      border-bottom-left-radius: var(--hi-radius-lg);
-      border-bottom-right-radius: var(--hi-radius-lg);
+      margin-bottom: 0;
     }
 
     &:hover {
-      background: var(--hi-surface-soft);
-      border-color: var(--hi-border);
+      background: var(--hi-control-bg-hover);
+      border-color: var(--hi-border-strong);
     }
   }
 
@@ -1421,6 +1432,20 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-row.selected) {
     background: var(--hi-surface);
     border-color: var(--hi-text);
+  }
+
+  :global(.hi-product-title) {
+    padding: 16px 18px;
+  }
+
+  :global(.hi-product-content) {
+    padding: 0 18px 18px;
+    border-top-color: var(--hi-border);
+  }
+
+  :global(.hi-price-tier-row:not(:last-child)) {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--hi-border);
   }
 
   :global(.hi-product-highlight-message),
@@ -1439,6 +1464,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-quantity-selector .button-input button:hover:not(:disabled)) {
     background: var(--hi-control-bg-hover);
+  }
+
+  :global(.hi-product-description-row) {
+    border-top-color: var(--hi-border);
   }
 
   :global(.hi-continue-button),
