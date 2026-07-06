@@ -113,7 +113,7 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                                 borderRadius: '6px',
                                 maxHeight: '300px',
                                 overflow: 'auto',
-                                backgroundColor: 'var(--mantine-color-gray-0)'
+                                backgroundColor: 'var(--hi-surface-soft)'
                             }}>
                                 {formatContent(log.payload)}
                             </Code>
@@ -127,7 +127,7 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                                 borderRadius: '6px',
                                 maxHeight: '300px',
                                 overflow: 'auto',
-                                backgroundColor: 'var(--mantine-color-gray-0)'
+                                backgroundColor: 'var(--hi-surface-soft)'
                             }}>
                                 {formatContent(log.response_body)}
                             </Code>

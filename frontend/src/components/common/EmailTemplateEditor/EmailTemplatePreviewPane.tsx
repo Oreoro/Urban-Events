@@ -53,7 +53,7 @@ export const EmailTemplatePreviewPane = ({
 
                     {!error && !hasContent && !isLoading && (
                         <Stack gap="md" align="center" py="xl">
-                            <IconEye size={48} color="var(--mantine-color-gray-5)"/>
+                            <IconEye size={48} color="var(--hi-text-muted)"/>
                             <Text c="dimmed" ta="center">
                                 <Trans>Enter a subject and body to see the preview</Trans>
                             </Text>

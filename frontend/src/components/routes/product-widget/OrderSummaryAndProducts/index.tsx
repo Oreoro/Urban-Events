@@ -148,7 +148,7 @@ const GuestListItem = ({
 const DetailItem = ({icon: Icon, label, value}: { icon: any, label: string, value: React.ReactNode }) => (
     <div className={classes.detailItem}>
         <Group gap="xs" wrap="nowrap">
-            <Icon size={20} style={{color: 'var(--checkout-accent, var(--mantine-color-gray-6))', flexShrink: 0}}/>
+            <Icon size={20} style={{color: 'var(--checkout-accent, var(--hi-text-muted))', flexShrink: 0}}/>
             <div className={classes.detailContent}>
                 <Text size="sm" c="dimmed" className={classes.label}>{label}</Text>
                 <Text className={classes.value}>{value}</Text>

@@ -15,33 +15,6 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .confettiIcon {
   color: var(--checkout-accent, var(--hi-primary));
   margin-bottom: 8px;
-  animation: bounceIn 0.6s ease-out, subtleBounce 2s ease-in-out 0.6s infinite;
-}
-
-@keyframes bounceIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes subtleBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
 }
 
 .welcomeMessage {
@@ -148,10 +121,10 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .cancelledBadge {
   font-size: 11px;
   font-weight: 500;
-  color: #dc2626;
-  background: rgba(220, 38, 38, 0.1);
+  color: var(--hi-danger);
+  background: color-mix(in srgb, var(--hi-danger) 10%, white);
   padding: 2px 8px;
-  border-radius: 4px;
+  border-radius: var(--hi-radius-sm);
   text-decoration: none;
 }
 

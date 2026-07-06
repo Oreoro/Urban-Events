@@ -124,9 +124,9 @@
 }
 
 .headerIconError {
-  color: var(--mantine-color-red-6);
+  color: var(--hi-danger);
   padding: 16px;
-  background: rgba(239, 68, 68, 0.08);
+  background: color-mix(in srgb, var(--hi-danger) 8%, white);
   border-radius: var(--hi-radius-lg);
 
   @include mixins.respond-below(md) {

@@ -131,12 +131,12 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
                                         </Text>
                                         <Text 
                                             size="xs" 
-                                            c="blue" 
+                                            c="var(--hi-primary)"
                                             ff="monospace"
                                             style={{
-                                                backgroundColor: 'var(--mantine-color-gray-0)',
+                                                backgroundColor: 'var(--hi-surface-soft)',
                                                 padding: '2px 6px',
-                                                borderRadius: '4px',
+                                                borderRadius: 'var(--hi-radius-sm)',
                                                 display: 'inline-block',
                                                 width: 'fit-content'
                                             }}

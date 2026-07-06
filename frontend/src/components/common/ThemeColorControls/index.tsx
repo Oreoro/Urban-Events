@@ -340,8 +340,8 @@ export const ThemeColorControls = ({
                 {hasIssues ? (
                     <Tooltip label={t`Use a stronger accent or calmer background for better readability`} multiline w={230}>
                         <Group gap={6} style={{cursor: 'help'}} wrap="nowrap">
-                            <IconEyeExclamation size={22} color="var(--mantine-color-yellow-7)" />
-                            <Text size="xs" c="yellow.8">{t`Needs contrast review`}</Text>
+                            <IconEyeExclamation size={22} color="var(--hi-warning)" />
+                            <Text size="xs" c="var(--hi-warning)">{t`Needs contrast review`}</Text>
                         </Group>
                     </Tooltip>
                 ) : (

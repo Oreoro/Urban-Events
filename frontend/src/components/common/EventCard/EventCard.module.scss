@@ -151,7 +151,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background: var(--mantine-color-white);
+  background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
   padding: 6px 10px;
   display: flex;
@@ -282,9 +282,9 @@
   }
 
   &.ticket-sold-out {
-    background: var(--mantine-color-red-0);
-    color: var(--mantine-color-red-7);
-    border: 1px solid var(--mantine-color-red-2);
+    background: color-mix(in srgb, var(--hi-danger) 10%, white);
+    color: var(--hi-danger);
+    border: 1px solid color-mix(in srgb, var(--hi-danger) 18%, var(--hi-border));
   }
 }
 

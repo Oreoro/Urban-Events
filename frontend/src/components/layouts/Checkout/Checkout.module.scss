@@ -23,12 +23,12 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
   // Countdown timer colors - semantic colors that don't change with theme
   .countdown {
-    color: var(--mantine-color-teal-6, #0ca678);
+    color: var(--hi-success);
     font-weight: 600;
   }
 
   .countdownCloseToExpiry {
-    color: var(--mantine-color-red-7, #ad2f26);
+    color: var(--hi-danger);
   }
 
   .timerGroup {

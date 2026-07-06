@@ -43,10 +43,10 @@
 .title {
   font-size: 15px;
   font-weight: 500;
-  color: var(--checkout-text-primary, #111827);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .subtitle {
   font-size: 14px;
-  color: var(--checkout-text-secondary, #6B7280);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 }

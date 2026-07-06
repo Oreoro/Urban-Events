@@ -62,7 +62,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-display;
   font-size: 20px;
   font-weight: 600;
-  color: var(--primary-text-color, var(--checkout-text-primary, #111827));
+  color: var(--primary-text-color, var(--checkout-text-primary, var(--hi-text)));
   margin: 0 0 8px 0;
   line-height: 1.4;
 

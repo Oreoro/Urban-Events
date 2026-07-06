@@ -5,14 +5,14 @@
 
 :global {
   .mantine-Combobox-option[data-active] {
-    background-color: var(--mantine-color-blue-light);
+    background-color: color-mix(in srgb, var(--hi-primary) 8%, white);
   }
 
   .mantine-Combobox-option[data-selected] {
-    background-color: var(--mantine-color-blue-light);
+    background-color: color-mix(in srgb, var(--hi-primary) 8%, white);
 
     &[data-active] {
-      background-color: var(--mantine-color-blue-light-hover);
+      background-color: color-mix(in srgb, var(--hi-primary) 12%, white);
     }
   }
 }

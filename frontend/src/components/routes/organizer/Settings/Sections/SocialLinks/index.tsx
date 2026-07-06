@@ -211,16 +211,16 @@ export const SocialLinks = () => {
                             padding: '12px',
                             marginTop: '20px',
                             marginBottom: '20px',
-                            borderRadius: '8px',
-                            backgroundColor: 'var(--mantine-color-gray-0)',
-                            border: '1px solid var(--mantine-color-gray-3)',
-                            transition: 'all 0.2s',
+                            borderRadius: 'var(--hi-radius-md)',
+                            backgroundColor: 'var(--hi-surface)',
+                            border: '1px solid var(--hi-border)',
+                            transition: 'background-color 0.15s ease, border-color 0.15s ease',
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'var(--mantine-color-gray-1)';
+                            e.currentTarget.style.backgroundColor = 'var(--hi-surface-soft)';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'var(--mantine-color-gray-0)';
+                            e.currentTarget.style.backgroundColor = 'var(--hi-surface)';
                         }}
                     >
                         <Group justify="center" gap="xs">

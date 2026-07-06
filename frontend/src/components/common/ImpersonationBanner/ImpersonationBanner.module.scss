@@ -2,15 +2,15 @@
   position: sticky;
   top: 0;
   z-index: 11;
-  background: #f57c00;
-  color: white;
+  background: color-mix(in srgb, var(--hi-warning) 14%, white);
+  color: var(--hi-text);
   padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-bottom: 2px solid #e65100;
+  box-shadow: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-warning) 28%, var(--hi-border));
 
   @media (max-width: 768px) {
     flex-direction: column;

@@ -312,7 +312,7 @@ const Messages = () => {
                         </Group>
                         <div>
                             <Text size="sm" fw={500} c="dimmed" mb="xs">{t`Message Content`}</Text>
-                            <ScrollArea h={300} style={{border: '1px solid var(--mantine-color-gray-3)', borderRadius: '4px'}}>
+                            <ScrollArea h={300} style={{border: '1px solid var(--hi-border)', borderRadius: 'var(--hi-radius-md)'}}>
                                 <div
                                     style={{padding: '12px'}}
                                     dangerouslySetInnerHTML={{__html: selectedMessage.message}}

@@ -105,11 +105,11 @@
 
 // Error states
 .dropzoneError {
-  border-color: var(--mantine-color-red-3) !important;
-  background-color: var(--mantine-color-red-0);
+  border-color: color-mix(in srgb, var(--hi-danger) 28%, var(--hi-border)) !important;
+  background-color: color-mix(in srgb, var(--hi-danger) 8%, white);
   
   &:hover {
-    border-color: var(--mantine-color-red-4) !important;
+    border-color: color-mix(in srgb, var(--hi-danger) 38%, var(--hi-border)) !important;
   }
 }
 
