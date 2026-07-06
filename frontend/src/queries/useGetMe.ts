@@ -9,12 +9,16 @@ interface UseGetMeOptions {
 }
 
 export const useGetMe = (options: UseGetMeOptions = {}) => {
-    return useQuery<User>({
+    return useQuery<User | null>({
         queryKey: [GET_ME_QUERY_KEY],
 
         queryFn: async () => {
-            const {data} = await userClient.me();
-            return data;
+            try {
+                const {data} = await userClient.me();
+                return data ?? null;
+            } catch {
+                return null;
+            }
         },
 
         retry: false,

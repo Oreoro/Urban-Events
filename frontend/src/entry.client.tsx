@@ -1,4 +1,4 @@
-import {hydrateRoot} from "react-dom/client";
+import {createRoot, hydrateRoot} from "react-dom/client";
 import {createBrowserRouter, matchRoutes, RouterProvider} from "react-router-dom";
 
 import {router} from "./router";
@@ -32,12 +32,19 @@ async function initClientApp() {
 
     const browserRouter = createBrowserRouter(router);
 
-    hydrateRoot(
-        document.getElementById("app") as HTMLElement,
+    const container = document.getElementById("app") as HTMLElement;
+    const app = (
         <App queryClient={queryClient} locale={rawLocale} dehydratedState={dehydratedState}>
             <RouterProvider router={browserRouter}/>
         </App>
     );
+
+    if (container.children.length > 0) {
+        hydrateRoot(container, app);
+        return;
+    }
+
+    createRoot(container).render(app);
 }
 
 initClientApp();
