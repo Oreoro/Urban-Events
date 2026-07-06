@@ -33,8 +33,25 @@ export const confirmationDialog = (
     } : undefined;
 
     modals.openConfirmModal({
-        title: message,
+        title: t`Confirm action`,
+        children: message,
         labels,
+        centered: true,
+        radius: "md",
+        size: "sm",
+        overlayProps: {
+            blur: 3,
+            opacity: 0.28,
+        },
+        cancelProps: {
+            variant: "default",
+        },
+        confirmProps: {
+            variant: "filled",
+        },
+        groupProps: {
+            gap: "xs",
+        },
         styles: checkoutStyles,
         onConfirm: () => onConfirm(),
     });

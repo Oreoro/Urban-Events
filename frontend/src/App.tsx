@@ -90,7 +90,12 @@ export const App: FC<
                                     </Helmet>
                                     {props.children}
                                 </ModalsProvider>
-                                <Notifications/>
+                                <Notifications
+                                    position="top-center"
+                                    limit={3}
+                                    containerWidth={420}
+                                    notificationMaxHeight={160}
+                                />
                                 {showGlobalConsentBanner && (
                                     <CookieConsentBanner onConsent={handleGlobalConsent}/>
                                 )}
