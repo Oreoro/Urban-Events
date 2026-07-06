@@ -336,9 +336,9 @@ export default App;
                         </div>
                     </div>
                     <div className={classes.websitePlaceholder}>
-                        <h1>{t`Your awesome website`}</h1>
+                        <h1>{t`Event page`}</h1>
                         <p className={classes.lorem}>
-                            {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat elementum...`}
+                            {t`Event details, schedule, and organizer notes.`}
                         </p>
 
                         <div className={classes.widgetWrapper}>
@@ -361,7 +361,7 @@ export default App;
                         </div>
 
                         <p className={classes.lorem}>
-                            {t`Nam placerat elementum...`}
+                            {t`More event context and FAQs.`}
                         </p>
                     </div>
                 </section>

@@ -67,7 +67,7 @@
 
       .accordionItem {
         border: 1px solid var(--hi-border);
-        border-radius: var(--hi-radius-lg);
+        border-radius: var(--hi-radius-md);
         overflow: hidden;
         background: var(--hi-surface);
 
@@ -137,7 +137,7 @@
   top: 18px;
   min-height: 80vh;
   background-color: var(--hi-surface);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   border: 1px solid var(--hi-border);
   overflow: hidden;
 }
@@ -145,26 +145,26 @@
 .browserChrome {
   width: 100%;
   background: var(--hi-surface-soft);
-  border-radius: var(--hi-radius-lg) var(--hi-radius-lg) 0 0;
-  height: 40px;
+  border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
+  height: 34px;
   display: flex;
   border-bottom: 1px solid var(--hi-border);
 }
 
 .browserActionButtons {
-  width: 100px;
+  width: 62px;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 8px;
 
   div {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--hi-radius-xs);
     background-color: var(--hi-border-strong);
     display: inline-block;
-    margin-right: 6px;
+    margin-right: 5px;
   }
 }
 
@@ -175,9 +175,9 @@
   div {
     background-color: var(--hi-surface);
     border-radius: var(--hi-radius-sm);
-    margin-right: 20%;
+    margin-right: 12px;
     font-size: 0.85em;
-    padding: 4px 12px;
+    padding: 3px 10px;
     color: var(--hi-text-muted);
     white-space: nowrap;
     overflow: hidden;
@@ -198,18 +198,19 @@
   height: 100%;
   width: 100%;
   z-index: 1;
-  padding: var(--hi-spacing-lg);
+  padding: 18px;
   overflow: auto;
 
   h1 {
-    font-size: 1.25rem;
-    color: var(--hi-text-light);
-    margin-bottom: var(--hi-spacing-md);
+    font-size: 1rem;
+    color: var(--hi-text);
+    margin-bottom: 8px;
+    font-weight: 650;
   }
 
   .widgetWrapper {
-    padding: var(--hi-spacing-sm);
-    margin: var(--hi-spacing-md) 0;
+    padding: 6px;
+    margin: 12px 0;
   }
 
   p.lorem {
