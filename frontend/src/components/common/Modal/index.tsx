@@ -1,18 +1,15 @@
 import {Modal as MantineModal, ModalProps as MantineModalProps} from "@mantine/core";
 import React from "react";
 import classes from "./Modal.module.scss";
-import classNames from "classnames";
 
 interface ModalProps {
     heading?: string | React.ReactNode,
-    modalHeader?: 'default' | 'branded',
 }
 
 export const Modal = (props: MantineModalProps & ModalProps) => {
-    const { modalHeader = 'default', ...restProps } = props;
     return (
         <MantineModal
-            {...restProps}
+            {...props}
             overlayProps={{
                 opacity: 0.55,
                 blur: 3,
@@ -24,18 +21,9 @@ export const Modal = (props: MantineModalProps & ModalProps) => {
             classNames={{
                 content: classes.content,
                 body: classes.body,
-                title: classNames(
-                    classes.modalTitle,
-                    modalHeader === 'branded' && classes.brandedTitle
-                ),
-                header: classNames(
-                    classes.header,
-                    modalHeader === 'branded' && classes.brandedHeader
-                ),
-                close: classNames(
-                    classes.close,
-                    modalHeader === 'branded' && classes.brandedClose
-                ),
+                title: classes.modalTitle,
+                header: classes.header,
+                close: classes.close,
                 ...props.classNames
             }}
         >

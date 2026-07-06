@@ -40,39 +40,3 @@
         color: var(--hi-text) !important;
     }
 }
-
-// Branded modal header styles
-.brandedHeader {
-    background: var(--hi-surface) !important;
-    padding: 13px 18px 8px !important;
-    margin-bottom: 0;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 0;
-}
-
-.brandedTitle {
-    color: var(--hi-text) !important;
-    font-size: 1rem !important;
-    font-weight: 650 !important;
-    margin: 0 !important;
-    position: relative;
-    z-index: 1;
-    letter-spacing: 0;
-}
-
-.brandedClose {
-    color: var(--hi-text-muted) !important;
-    position: relative;
-    z-index: 2;
-    transition: background-color 0.15s ease;
-    
-    &:hover {
-        background-color: var(--hi-control-bg-hover) !important;
-        color: var(--hi-text) !important;
-    }
-    
-    svg {
-        stroke-width: 2.5;
-    }
-}

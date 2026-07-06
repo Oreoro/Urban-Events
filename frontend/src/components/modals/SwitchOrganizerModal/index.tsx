@@ -45,7 +45,6 @@ export const SwitchOrganizerModal: React.FC<SwitchOrganizerModalProps> = ({
             opened={opened}
             onClose={onClose}
             heading={heading || t`Switch Organizer`}
-            modalHeader="branded"
             size="md"
         >
                 {isLoading ? (

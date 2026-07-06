@@ -245,7 +245,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .organizerPillAvatar {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
+  border-radius: $radius-sm;
   object-fit: cover;
   border: 2px solid var(--content-bg-color);
 }
@@ -253,7 +253,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .organizerPillAvatarPlaceholder {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
+  border-radius: $radius-sm;
   background: var(--primary-color);
   display: flex;
   align-items: center;
@@ -1137,7 +1137,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .socialLink {
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  border-radius: $radius-md;
   background: var(--accent-soft);
   display: flex;
   align-items: center;
