@@ -27,8 +27,8 @@
   }
 
   &.selected {
-    background-color: color-mix(in srgb, var(--hi-primary) 7%, white);
-    border-left: 3px solid var(--hi-primary);
+    background-color: var(--hi-surface-soft);
+    border-left: 3px solid var(--hi-border-strong);
     padding-left: 13px;
   }
 

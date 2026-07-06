@@ -28,34 +28,39 @@
   align-items: center;
   gap: 4px;
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: var(--hi-radius-sm);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 
   &[data-status="WAITING"] {
-    background: color-mix(in srgb, var(--hi-primary) 9%, white);
-    color: var(--hi-primary-hover);
+    background: var(--hi-status-info-bg);
+    color: var(--hi-status-info-text);
+    border: 1px solid var(--hi-status-info-border);
   }
 
   &[data-status="OFFERED"] {
-    background: color-mix(in srgb, var(--hi-warning) 12%, white);
-    color: var(--hi-warning);
+    background: var(--hi-status-warning-bg);
+    color: var(--hi-status-warning-text);
+    border: 1px solid var(--hi-status-warning-border);
   }
 
   &[data-status="PURCHASED"] {
-    background: color-mix(in srgb, var(--hi-success) 10%, white);
-    color: var(--hi-success);
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
+    border: 1px solid var(--hi-status-success-border);
   }
 
   &[data-status="CANCELLED"] {
-    background: var(--hi-surface-soft);
-    color: var(--hi-text-muted);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &[data-status="OFFER_EXPIRED"] {
-    background: color-mix(in srgb, var(--hi-danger) 10%, white);
-    color: var(--hi-danger);
+    background: var(--hi-status-danger-bg);
+    color: var(--hi-status-danger-text);
+    border: 1px solid var(--hi-status-danger-border);
   }
 }
 

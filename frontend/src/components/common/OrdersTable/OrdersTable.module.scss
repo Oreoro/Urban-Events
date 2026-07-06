@@ -82,12 +82,13 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: var(--hi-primary);
+  color: var(--hi-text-light);
   text-decoration: none;
   font-weight: 500;
   line-height: 1.3;
 
   &:hover {
+    color: var(--hi-text);
     text-decoration: underline;
   }
 }
@@ -106,7 +107,7 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
+  color: var(--hi-status-warning-text);
   line-height: 1.3;
 }
 
@@ -153,15 +154,15 @@
 
   &[data-refund-status="REFUNDED"],
   &[data-refund-status="PARTIALLY_REFUNDED"] {
-    color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
+    color: var(--hi-status-warning-text);
   }
 
   &[data-refund-status="REFUND_PENDING"] {
-    color: color-mix(in srgb, var(--hi-warning) 56%, var(--hi-text));
+    color: var(--hi-status-warning-text);
   }
 
   &[data-refund-status="REFUND_FAILED"] {
-    color: color-mix(in srgb, var(--hi-danger) 66%, var(--hi-text));
+    color: var(--hi-status-danger-text);
   }
 }
 
@@ -182,37 +183,37 @@
   padding: 4px 8px;
   border-radius: var(--hi-radius-sm);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
-    background: color-mix(in srgb, var(--hi-primary) 8%, white);
-    color: color-mix(in srgb, var(--hi-primary) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
+    border: 1px solid var(--hi-status-success-border);
   }
 
   &[data-status="RESERVED"] {
-    background: color-mix(in srgb, var(--hi-primary) 10%, white);
-    color: color-mix(in srgb, var(--hi-primary) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border));
+    background: var(--hi-status-info-bg);
+    color: var(--hi-status-info-text);
+    border: 1px solid var(--hi-status-info-border);
   }
 
   &[data-status="AWAITING_OFFLINE_PAYMENT"] {
-    background: color-mix(in srgb, var(--hi-warning) 12%, white);
-    color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-warning) 18%, var(--hi-border));
+    background: var(--hi-status-warning-bg);
+    color: var(--hi-status-warning-text);
+    border: 1px solid var(--hi-status-warning-border);
   }
 
   &[data-status="CANCELLED"] {
-    background: color-mix(in srgb, var(--hi-danger) 10%, white);
-    color: color-mix(in srgb, var(--hi-danger) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-danger) 18%, var(--hi-border));
+    background: var(--hi-status-danger-bg);
+    color: var(--hi-status-danger-text);
+    border: 1px solid var(--hi-status-danger-border);
   }
 
   &[data-status="ABANDONED"] {
-    background: var(--hi-surface-soft);
-    color: var(--hi-text-muted);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 }
 

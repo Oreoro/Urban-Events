@@ -2,7 +2,10 @@
   position: relative;
   padding: var(--hi-spacing-md) var(--hi-spacing-lg);
   margin-bottom: var(--hi-spacing-md);
-  border-left: 2px solid var(--hi-primary);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-left: 2px solid var(--hi-border-strong);
+  box-shadow: none;
 
   h3 {
     margin: 0 0 var(--hi-spacing-sm) 0;
@@ -65,17 +68,17 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-primary);
+    outline: 2px solid var(--hi-text);
     outline-offset: 2px;
   }
 
   &.hasReminder {
-    border-color: color-mix(in srgb, var(--hi-warning) 28%, var(--hi-border));
-    background: color-mix(in srgb, var(--hi-warning) 8%, white);
+    border-color: var(--hi-status-warning-border);
+    background: var(--hi-status-warning-bg);
 
     &:hover {
-      background: color-mix(in srgb, var(--hi-warning) 12%, white);
-      border-color: color-mix(in srgb, var(--hi-warning) 38%, var(--hi-border));
+      background: var(--hi-status-warning-bg);
+      border-color: var(--hi-border-strong);
     }
   }
 
@@ -113,10 +116,10 @@
     gap: 6px;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--hi-warning);
+    color: var(--hi-status-warning-text);
 
     svg {
-      color: var(--hi-warning);
+      color: var(--hi-status-warning-text);
     }
   }
 }

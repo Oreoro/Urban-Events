@@ -105,9 +105,9 @@
   white-space: nowrap;
 
   &.checkedIn {
-    border-color: color-mix(in srgb, var(--hi-success) 22%, var(--hi-border));
-    background: color-mix(in srgb, var(--hi-success) 10%, white);
-    color: color-mix(in srgb, var(--hi-success) 66%, var(--hi-text));
+    border-color: var(--hi-status-success-border);
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
   }
 
   &.notCheckedIn {
@@ -122,25 +122,25 @@
   padding: 5px 9px;
   border-radius: var(--hi-radius-sm);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 
   &[data-status="ACTIVE"] {
-    background: color-mix(in srgb, var(--hi-success) 10%, white);
-    color: color-mix(in srgb, var(--hi-success) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
+    border: 1px solid var(--hi-status-success-border);
   }
 
   &[data-status="AWAITING_PAYMENT"] {
-    background: color-mix(in srgb, var(--hi-warning) 12%, white);
-    color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-warning) 18%, var(--hi-border));
+    background: var(--hi-status-warning-bg);
+    color: var(--hi-status-warning-text);
+    border: 1px solid var(--hi-status-warning-border);
   }
 
   &[data-status="CANCELLED"] {
-    background: color-mix(in srgb, var(--hi-danger) 10%, white);
-    color: color-mix(in srgb, var(--hi-danger) 66%, var(--hi-text));
-    border: 1px solid color-mix(in srgb, var(--hi-danger) 18%, var(--hi-border));
+    background: var(--hi-status-danger-bg);
+    color: var(--hi-status-danger-text);
+    border: 1px solid var(--hi-status-danger-border);
   }
 }
 

@@ -159,7 +159,6 @@ export const AttendeeTicket = ({
                         ) : (
                             <div
                                 className={classes.qrContainer}
-                                style={{borderColor: accentColor}}
                             >
                                 <QRCode
                                     value={String(attendee.public_id)}

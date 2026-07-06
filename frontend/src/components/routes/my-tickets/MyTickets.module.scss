@@ -17,7 +17,7 @@
   h1 {
     margin: 20px 0 12px;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--hi-text);
 
     @include mixins.respond-below(md) {
@@ -28,11 +28,11 @@
 }
 
 .headerIcon {
-  color: var(--hi-primary);
+  color: var(--hi-text-muted);
   padding: 16px;
-  background: color-mix(in srgb, var(--hi-primary) 8%, white);
-  border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -124,10 +124,11 @@
 }
 
 .headerIconError {
-  color: var(--hi-danger);
+  color: var(--hi-status-danger-text);
   padding: 16px;
-  background: color-mix(in srgb, var(--hi-danger) 8%, white);
-  border-radius: var(--hi-radius-lg);
+  background: var(--hi-status-danger-bg);
+  border: 1px solid var(--hi-status-danger-border);
+  border-radius: var(--hi-radius-md);
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -148,7 +149,7 @@
   color: var(--hi-text);
 
   svg {
-    color: var(--hi-primary);
+    color: var(--hi-text-muted);
   }
 }
 
@@ -170,9 +171,9 @@
 .successMessage {
   text-align: center;
   padding: 16px;
-  background: color-mix(in srgb, var(--hi-primary) 7%, white);
+  background: var(--hi-status-success-bg);
   border-radius: var(--hi-radius-md);
-  border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
+  border: 1px solid var(--hi-status-success-border);
 
   p {
     margin: 0 0 8px;
