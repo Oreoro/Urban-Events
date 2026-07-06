@@ -6,6 +6,7 @@
   position: relative;
   overflow-x: hidden;
   background: var(--hi-shell-bg);
+  color: var(--hi-text);
 }
 
 .splitLayout {
@@ -19,7 +20,7 @@
 
 .leftPanel {
   width: 100%;
-  max-width: 560px;
+  max-width: 520px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding: 2rem 1.5rem 2.25rem;
+  padding: 2.25rem 1.5rem 2.5rem;
   min-height: 100vh;
 
   @include mixins.respond-below(md) {
@@ -54,15 +55,21 @@
 }
 
 .logoButton {
-  margin-bottom: 1.5rem;
-  padding: 0;
+  margin-bottom: 1.35rem;
+  padding: 6px 8px;
   color: inherit;
   background: transparent;
   border: 0;
+  border-radius: var(--hi-radius-sm);
   cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: var(--hi-control-bg-hover);
+  }
 
   @include mixins.respond-below(md) {
-    margin-bottom: 1.35rem;
+    margin-bottom: 1.25rem;
   }
 
   @include mixins.respond-below(sm) {
@@ -78,7 +85,7 @@
 
 .wrapper {
   width: 100%;
-  max-width: 430px;
+  max-width: 420px;
 
   @include mixins.respond-below(sm) {
     max-width: 100%;
