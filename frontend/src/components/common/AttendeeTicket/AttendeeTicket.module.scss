@@ -31,7 +31,6 @@
   flex-direction: column;
 
   @media print {
-    box-shadow: none;
     border: none;
     border-radius: 0;
     max-width: 100%;
@@ -353,6 +352,12 @@
     padding: 15px;
     border-width: 3px;
   }
+}
+
+.qrCode {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 // QR Placeholder States (Awaiting Payment / Cancelled)

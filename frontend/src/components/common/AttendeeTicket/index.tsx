@@ -164,17 +164,14 @@ export const AttendeeTicket = ({
                                     value={String(attendee.public_id)}
                                     size={180}
                                     level="M"
-                                    style={{height: "auto", maxWidth: "100%", width: "100%"}}
+                                    className={classes.qrCode}
                                 />
                             </div>
                         )}
 
                         <div className={classes.ticketId}>
                             <div className={classes.detailLabel}>{t`Ticket ID`}</div>
-                            <div
-                                className={classes.ticketIdValue}
-                                style={{color: accentColor}}
-                            >{attendee.public_id}</div>
+                            <div className={classes.ticketIdValue}>{attendee.public_id}</div>
                         </div>
                     </div>
                 </div>

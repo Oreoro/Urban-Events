@@ -49,7 +49,7 @@ const PrintProduct = () => {
                 />
 
                 {(event?.settings?.is_online_event && (
-                    <div style={{ marginTop: '32px', maxWidth: '900px', width: '100%' }}>
+                    <div className={classes.onlineEventDetails}>
                         <OnlineEventDetails eventSettings={event.settings}/>
                     </div>
                 ))}
