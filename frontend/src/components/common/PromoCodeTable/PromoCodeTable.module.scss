@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--hi-border);
 }
 
 .itemName {
@@ -37,5 +37,5 @@
 .noCodes {
   padding: 1em;
   text-align: center;
-  color: #999;
+  color: var(--hi-text-muted);
 }

@@ -73,9 +73,9 @@
   .attendee {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--hi-surface);
     padding: 15px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--hi-border);
 
     .details {
       flex: 1;
@@ -85,12 +85,12 @@
 
       .awaitingPayment {
         margin: 3px 0;
-        color: #e09300;
+        color: var(--hi-warning);
         font-weight: 900;
       }
 
       .product {
-        color: #999;
+        color: var(--hi-text-muted);
         font-size: 1em;
         display: flex;
         align-items: center;
@@ -111,7 +111,7 @@
 
   .checkInCount {
     font-size: 1em;
-    color: #999;
+    color: var(--hi-text-muted);
     margin-bottom: 10px;
 
     h4 {

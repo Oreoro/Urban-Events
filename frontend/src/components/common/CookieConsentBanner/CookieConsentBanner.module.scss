@@ -6,28 +6,16 @@
     max-width: 340px;
     padding: 16px;
     border-radius: var(--hi-radius-lg);
-    background: var(--event-content-bg-color, var(--organizer-content-bg-color, rgba(255, 255, 255, 0.97)));
-    border: 1px solid var(--event-border-color, var(--organizer-border-color, rgba(0, 0, 0, 0.08)));
+    background: var(--event-content-bg-color, var(--organizer-content-bg-color, var(--hi-surface)));
+    border: 1px solid var(--event-border-color, var(--organizer-border-color, var(--hi-border)));
     box-shadow: none;
     backdrop-filter: none;
-    animation: slideUp 0.18s ease-out;
 
     @media (max-width: 480px) {
         bottom: 12px;
         right: 12px;
         left: 12px;
         max-width: none;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
@@ -44,12 +32,12 @@
     border: none;
     border-radius: var(--hi-radius-sm);
     background: transparent;
-    color: var(--event-secondary-color, var(--organizer-secondary-color, #6b7280));
+    color: var(--event-secondary-color, var(--organizer-secondary-color, var(--hi-text-muted)));
     cursor: pointer;
     transition: background 0.15s;
 
     &:hover {
-        background: var(--event-accent-soft, var(--organizer-accent-soft, rgba(0, 0, 0, 0.05)));
+        background: var(--event-accent-soft, var(--organizer-accent-soft, var(--hi-surface-soft)));
     }
 }
 
@@ -71,7 +59,7 @@
     margin: 0;
     font-size: 13px;
     line-height: 1.45;
-    color: var(--event-primary-text-color, var(--organizer-primary-text-color, #374151));
+    color: var(--event-primary-text-color, var(--organizer-primary-text-color, var(--hi-text)));
 }
 
 .privacyLink {
@@ -105,16 +93,16 @@
 }
 
 .acceptButton {
-    background: var(--event-primary-color, var(--organizer-primary-color, #0e7c70));
-    color: var(--event-accent-contrast, var(--organizer-accent-contrast, #ffffff));
+    background: var(--event-primary-color, var(--organizer-primary-color, var(--hi-primary)));
+    color: var(--event-accent-contrast, var(--organizer-accent-contrast, var(--hi-color-white)));
 }
 
 .declineButton {
     background: transparent;
-    color: var(--event-secondary-color, var(--organizer-secondary-color, #6b7280));
-    border: 1px solid var(--event-border-color, var(--organizer-border-color, rgba(0, 0, 0, 0.1)));
+    color: var(--event-secondary-color, var(--organizer-secondary-color, var(--hi-text-muted)));
+    border: 1px solid var(--event-border-color, var(--organizer-border-color, var(--hi-border)));
 
     &:hover {
-        background: var(--event-accent-soft, var(--organizer-accent-soft, rgba(0, 0, 0, 0.03)));
+        background: var(--event-accent-soft, var(--organizer-accent-soft, var(--hi-surface-soft)));
     }
 }

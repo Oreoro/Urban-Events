@@ -18,8 +18,8 @@ export const HidScannerStatus = ({
 
     return (
         <div style={{
-            backgroundColor: pageHasFocus ? '#12b886' : '#ffa94d',
-            color: 'white',
+            backgroundColor: pageHasFocus ? 'var(--hi-primary)' : 'var(--hi-warning)',
+            color: 'var(--hi-color-white)',
             padding: '8px 16px',
             display: 'flex',
             alignItems: 'center',
@@ -40,7 +40,7 @@ export const HidScannerStatus = ({
             <Button
                 size="xs"
                 variant="white"
-                color={pageHasFocus ? "teal" : "orange"}
+                color={pageHasFocus ? "primary" : "marigold"}
                 leftSection={<IconX size={14}/>}
                 miw={95}
                 onClick={() => {

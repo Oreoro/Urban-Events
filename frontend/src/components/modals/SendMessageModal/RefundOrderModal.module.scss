@@ -1,15 +1,15 @@
 .orderSummary {
   padding: 10px;
-  background-color: #f7f7f7;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  background-color: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
 }
 
 .attendee {
   display: flex;
   padding: 10px;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   margin-bottom: 10px;
   align-items: center;
 

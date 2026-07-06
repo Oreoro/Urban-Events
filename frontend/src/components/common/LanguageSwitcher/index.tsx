@@ -55,7 +55,7 @@ export const LanguageSwitcher = () => {
     return (
         <>
             <Select
-                leftSection={<IconWorld size={15} color={'#ccc'}/>}
+                leftSection={<IconWorld size={15} color="var(--hi-text-muted)"/>}
                 width={180}
                 size={'xs'}
                 required

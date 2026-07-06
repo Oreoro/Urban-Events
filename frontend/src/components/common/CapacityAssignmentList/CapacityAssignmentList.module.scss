@@ -61,7 +61,7 @@
       .capacityAssignmentAppliesTo {
         .appliesToText {
           display: flex;
-          color: #999;
+          color: var(--hi-text-muted);
           justify-content: center;
           align-items: center;
         }
@@ -85,7 +85,7 @@
 
         .capacityText {
           margin-top: 10px;
-          color: #999;
+          color: var(--hi-text-muted);
         }
       }
 

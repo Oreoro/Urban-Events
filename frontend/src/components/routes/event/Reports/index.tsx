@@ -16,19 +16,19 @@ const Reports = () => {
             id: ReportTypes.ProductSales,
             title: t`Product Sales`,
             description: t`Product sales, revenue, and tax breakdown`,
-            icon: <Avatar size={40} color={'#831781'}><IconReportMoney/></Avatar>
+            icon: <Avatar size={40} color="primary" variant="light"><IconReportMoney/></Avatar>
         },
         {
             id: ReportTypes.DailySales,
             title: t`Daily Sales Report`,
             description: t`Daily sales, tax, and fee breakdown`,
-            icon: <Avatar size={40} color={'#00a3e0'}><IconChartBar/></Avatar>
+            icon: <Avatar size={40} color="slate" variant="light"><IconChartBar/></Avatar>
         },
         {
             id: ReportTypes.PromoCodes,
             title: t`Promo Codes Report`,
             description: t`Promo code usage and discount breakdown`,
-            icon: <Avatar size={40} color={'#634fc0'}><IconReportMoney/></Avatar>
+            icon: <Avatar size={40} color="marigold" variant="light"><IconReportMoney/></Avatar>
         }
     ];
 

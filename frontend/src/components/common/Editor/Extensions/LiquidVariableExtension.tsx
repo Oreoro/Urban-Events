@@ -30,7 +30,7 @@ export const LiquidVariable = Node.create({
             'span',
             {
                 'data-liquid-variable': node.attrs.variable,
-                style: 'background-color: #e8f4ff; color: #0066cc; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; white-space: nowrap;',
+                style: 'background-color: color-mix(in srgb, var(--hi-primary) 10%, var(--hi-color-white)); color: var(--hi-primary-hover); border: 1px solid color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border)); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; white-space: nowrap;',
             },
             `{{ ${node.attrs.variable} }}`,
         ];

@@ -103,7 +103,7 @@
           .hi-price-tier-amount {
             span:first-child {
               display: block;
-              color: #909090;
+              color: var(--hi-text-muted);
               font-size: .85em;
             }
           }
@@ -256,4 +256,3 @@
     }
   }
 }
-

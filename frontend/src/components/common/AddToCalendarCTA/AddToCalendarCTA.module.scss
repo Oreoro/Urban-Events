@@ -4,9 +4,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--checkout-accent-soft, rgba(99, 102, 241, 0.1));
-  border: 1px solid var(--checkout-border, rgba(99, 102, 241, 0.2));
-  border-radius: 12px;
+  background: var(--checkout-accent-soft, var(--hi-surface-soft));
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-lg);
   padding: 20px;
   margin-top: 32px;
   margin-bottom: 32px;
@@ -20,12 +20,13 @@
 .iconContainer {
   width: 40px;
   height: 40px;
-  background: var(--checkout-accent-soft, rgba(99, 102, 241, 0.15));
-  border-radius: 8px;
+  background: var(--checkout-accent-soft, var(--hi-surface-soft));
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--checkout-accent, #4F46E5);
+  color: var(--checkout-accent, var(--hi-primary));
   flex-shrink: 0;
 }
 

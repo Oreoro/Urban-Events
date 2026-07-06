@@ -5,7 +5,7 @@
       height: 1px;
       margin: 7px 0;
       width: 100%;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--hi-border);
     }
 
     .itemRow {
@@ -28,5 +28,11 @@
         white-space: nowrap;
       }
     }
+  }
+
+  .previousPrice {
+    color: var(--hi-text-muted);
+    margin-right: 5px;
+    display: inline-block;
   }
 }
