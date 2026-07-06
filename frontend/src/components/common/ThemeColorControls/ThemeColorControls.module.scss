@@ -4,9 +4,9 @@
 
 .section {
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
-  padding: 12px;
+  padding: 10px;
 }
 
 .presetButton {
@@ -16,9 +16,9 @@
   gap: 8px;
   min-height: 54px;
   width: 100%;
-  padding: 8px;
+  padding: 7px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
   color: var(--hi-text);
   transition: background-color 160ms ease, border-color 160ms ease;
@@ -49,9 +49,9 @@
 
 .presetSwatches {
   position: relative;
-  width: 38px;
-  height: 34px;
-  flex: 0 0 38px;
+  width: 34px;
+  height: 30px;
+  flex: 0 0 34px;
 }
 
 .backgroundSwatch {
@@ -59,6 +59,7 @@
   left: 0;
   top: 0;
   border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm) !important;
 }
 
 .accentSwatch {
@@ -66,6 +67,7 @@
   right: 0;
   bottom: 0;
   border: 2px solid var(--hi-surface);
+  border-radius: var(--hi-radius-sm) !important;
   box-shadow: none;
 }
 
@@ -92,9 +94,9 @@
   display: grid;
   gap: 10px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
-  padding: 12px;
-  min-height: 178px;
+  border-radius: var(--hi-radius-md);
+  padding: 10px;
+  min-height: 166px;
 }
 
 .previewMark {
@@ -111,7 +113,7 @@
 }
 
 .previewMuted {
-  color: var(--theme-text-secondary, #42505e);
+  color: var(--theme-text-secondary, var(--hi-text-muted));
   letter-spacing: 0;
 }
 
@@ -132,8 +134,8 @@
 
 .previewCard {
   border: 1px solid;
-  border-radius: var(--hi-radius-lg);
-  padding: 12px;
+  border-radius: var(--hi-radius-md);
+  padding: 10px;
 }
 
 .previewButton {
