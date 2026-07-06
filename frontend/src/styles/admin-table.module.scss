@@ -3,7 +3,7 @@
 .tableWrapper {
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     overflow: hidden;
     box-shadow: none;
 }
@@ -17,7 +17,7 @@
 .table {
     :global {
         thead tr th {
-            padding: 9px 13px;
+            padding: 8px 12px;
             font-weight: 600;
             font-size: 12px;
             text-transform: none;
@@ -30,7 +30,7 @@
         }
 
         tbody tr td {
-            padding: 10px 13px;
+            padding: 9px 12px;
             vertical-align: middle;
             border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
             color: var(--hi-text-light);
@@ -69,11 +69,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 48px 24px;
+    padding: 40px 22px;
     text-align: center;
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     box-shadow: none;
 }
 
