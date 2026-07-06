@@ -1,18 +1,18 @@
 .dashboardStack {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .overviewPanel {
-  padding: 16px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border-strong);
-  border-radius: var(--hi-radius-lg);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
 
   @media (max-width: 768px) {
-    padding: 14px;
+    margin-bottom: -2px;
   }
 }
 
@@ -21,9 +21,9 @@
 }
 
 .chartCard {
-  padding: 16px !important;
+  padding: 15px 16px 12px !important;
   margin: 0 !important;
-  border-color: var(--hi-border-strong) !important;
+  border-color: var(--hi-border) !important;
   box-shadow: none !important;
   border-radius: var(--hi-radius-lg) !important;
   background: var(--hi-surface) !important;
@@ -37,7 +37,7 @@
 
     h2 {
       margin: 0;
-      font-size: 1rem;
+      font-size: 0.94rem;
       line-height: 1.25;
       font-weight: 650;
       color: var(--hi-text);
@@ -46,7 +46,7 @@
 
   .dateRange {
     color: var(--hi-text-muted);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 400;
     white-space: nowrap;
   }
@@ -59,12 +59,12 @@
 .dateRangeSelector {
   display: flex;
   justify-content: flex-end;
-  margin: 0 0 -4px;
+  margin: -2px 0 -6px;
 
   :global(.mantine-SegmentedControl-root) {
     padding: 2px;
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border-strong);
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
   }
 
@@ -79,9 +79,9 @@
 .setupCard {
   margin: 0 !important;
   position: relative;
-  padding: 16px;
+  padding: 15px;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border-strong);
+  border: 1px solid var(--hi-border);
   box-shadow: none;
   border-radius: var(--hi-radius-lg);
 }
@@ -118,7 +118,10 @@
   width: 100%;
 
   h2 {
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.96rem;
     margin-bottom: 0.35rem;
     margin-top: 0;
     color: var(--hi-text);
@@ -129,10 +132,15 @@
   .setupDescription {
     margin-bottom: 1rem;
     color: var(--hi-text-muted);
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     line-height: 1.5;
     max-width: 80%;
   }
+}
+
+.checklistTitleIcon {
+  color: var(--hi-text-muted);
+  flex: 0 0 auto;
 }
 
 .checklistItems {
@@ -141,14 +149,14 @@
   gap: 0;
   margin: 0;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   overflow: hidden;
 }
 
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 13px 14px;
+  padding: 12px 14px;
   background: var(--hi-surface);
   border-radius: 0;
   border: 0;
@@ -210,6 +218,11 @@
   svg {
     transform: scale(0.72);
   }
+}
+
+.checkboxComplete {
+  background-color: var(--hi-text);
+  border-color: var(--hi-text);
 }
 
 /* Tablet and smaller desktop styles */
@@ -279,7 +292,7 @@
 .stripeUpgradeCard {
   margin: 0 !important;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border-strong);
+  border: 1px solid var(--hi-border);
   box-shadow: none !important;
   color: var(--hi-text);
   padding: 18px;

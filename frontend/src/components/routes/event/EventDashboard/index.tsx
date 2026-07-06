@@ -18,6 +18,7 @@ import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.t
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import {useEffect, useRef, useState} from 'react';
+import classNames from "classnames";
 import {EventLifecycleStatus, EventStatus, StripePlatform} from "../../../../types.ts";
 import {isHiEvents} from "../../../../utilites/helpers.ts";
 import {StripeConnectButton} from "../../../common/StripeConnectButton";
@@ -161,7 +162,7 @@ export const EventDashboard = () => {
                         <div className={classes.setupCardContent}>
                             <div className={classes.checklistContainer}>
                                 <h2>
-                                    <IconRocket size={18} color="var(--hi-text-muted)" style={{marginRight: 8, verticalAlign: -3}}/>
+                                    <IconRocket size={18} className={classes.checklistTitleIcon}/>
                                     {t`Get your event ready`}
                                 </h2>
                                 <p className={classes.setupDescription}>
@@ -173,8 +174,9 @@ export const EventDashboard = () => {
                                         <h3>
                                             <div className={classes.checkboxContainer}>
                                                 <div
-                                                    className={classes.checkbox}
-                                                    style={{backgroundColor: event?.status === 'LIVE' ? 'var(--hi-text)' : 'transparent'}}
+                                                    className={classNames(classes.checkbox, {
+                                                        [classes.checkboxComplete]: event?.status === 'LIVE',
+                                                    })}
                                                 >
                                                     {event?.status === 'LIVE' && (
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -217,8 +219,9 @@ export const EventDashboard = () => {
                                         <h3>
                                             <div className={classes.checkboxContainer}>
                                                 <div
-                                                    className={classes.checkbox}
-                                                    style={{backgroundColor: account?.stripe_connect_setup_complete ? 'var(--hi-text)' : 'transparent'}}
+                                                    className={classNames(classes.checkbox, {
+                                                        [classes.checkboxComplete]: account?.stripe_connect_setup_complete,
+                                                    })}
                                                 >
                                                     {account?.stripe_connect_setup_complete && (
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
