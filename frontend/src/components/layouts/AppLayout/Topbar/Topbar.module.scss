@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 12px;
-    height: 40px;
+    padding: 0 14px;
+    height: 38px;
     border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
@@ -23,9 +23,9 @@
   }
 
   .breadcrumbsRow {
-    padding: 6px 32px;
+    padding: 8px 40px;
     border-bottom: 1px solid var(--hi-border);
-    background-color: var(--hi-surface);
+    background-color: color-mix(in srgb, var(--hi-surface) 92%, transparent);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,7 +33,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 34px;
+    min-height: 38px;
 
     @include mixins.respond-below(md) {
       padding: 10px 16px;
@@ -110,7 +110,7 @@
 
       &:last-child {
         color: var(--hi-text);
-        font-weight: 600;
+        font-weight: 560;
       }
 
       &::after {
@@ -129,7 +129,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    margin-left: 16px;
+    margin-left: 14px;
     margin-right: auto;
 
     @include mixins.respond-below(md) {
@@ -151,7 +151,7 @@
   .logo {
     color: var(--hi-text);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.96rem;
     display: flex;
     justify-content: center;
     padding-inline: 5px;
@@ -187,7 +187,7 @@
 
     &:hover {
       color: var(--hi-text);
-      background: var(--hi-surface-soft);
+      background: var(--hi-control-bg-hover);
     }
 
     .entityPageButtonText {
@@ -218,7 +218,7 @@
   }
 
   .breadcrumbSeparator {
-    margin: 0 4px;
-    color: var(--hi-text-muted);
+    margin: 0 5px;
+    color: color-mix(in srgb, var(--hi-text-muted) 64%, transparent);
   }
 }

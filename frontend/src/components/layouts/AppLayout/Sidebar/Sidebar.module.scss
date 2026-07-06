@@ -22,9 +22,9 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 4px 0;
-    min-height: 44px;
-    margin-bottom: 4px;
+    padding: 5px 0 3px;
+    min-height: 46px;
+    margin-bottom: 2px;
     border-bottom: 0;
     flex-shrink: 0;
 
@@ -32,7 +32,7 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 10px 14px;
+      padding: 10px 16px;
     }
   }
 
@@ -40,7 +40,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 2px 0 18px;
+    padding: 4px 0 18px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -68,8 +68,8 @@
     }
 
     .sectionHeading {
-      padding: 13px 14px 5px;
-      font-size: 0.7rem;
+      padding: 15px 16px 5px;
+      font-size: 0.69rem;
       font-weight: 560;
       text-transform: none;
       letter-spacing: 0;
@@ -81,26 +81,26 @@
     .link {
       display: flex;
       align-items: center;
-      color: color-mix(in srgb, var(--hi-shell-text) 76%, transparent);
+      color: color-mix(in srgb, var(--hi-shell-text) 78%, transparent);
       padding: 5px 8px;
       text-decoration: none;
-      margin: 1px 7px;
+      margin: 1px 8px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       font-weight: 500;
       transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 14px);
+      width: calc(100% - 16px);
       background: none;
       border: none;
       text-align: left;
 
       .navBadge {
-        background: var(--hi-shell-surface);
+        background: color-mix(in srgb, var(--hi-shell-bg) 72%, white);
         color: var(--hi-shell-muted);
-        border: 1px solid var(--hi-border);
+        border: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
         padding: 1px 6px;
         border-radius: 12px;
         font-size: 0.75em;
@@ -122,7 +122,7 @@
         background: var(--hi-shell-surface);
         color: var(--hi-shell-text);
         font-weight: 600;
-        box-shadow: none;
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hi-border) 55%, transparent);
 
         .linkIcon {
           color: var(--hi-shell-text);
@@ -135,7 +135,7 @@
       }
 
       svg {
-        margin-right: 8px;
+        margin-right: 9px;
         min-width: 17px;
         color: color-mix(in srgb, var(--hi-shell-text) 58%, transparent);
         transition: color 0.14s ease;
@@ -145,7 +145,7 @@
 
   .sidebarFooter {
     margin-top: auto;
-    padding: 10px;
+    padding: 10px 12px 12px;
     flex-shrink: 0;
     position: relative;
     z-index: 2;
@@ -167,14 +167,14 @@
   }
 
   .sidebarClose {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     color: var(--hi-shell-muted);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 7px;
+    right: 8px;
     top: 9px;
     transform: none;
     transition: color 0.15s ease, background-color 0.15s ease;
@@ -184,6 +184,7 @@
     &:hover {
       transform: none;
       color: var(--hi-shell-text);
+      background: var(--hi-shell-surface-hover);
     }
 
     @media (max-width: 767px) {

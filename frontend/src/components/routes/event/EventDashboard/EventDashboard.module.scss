@@ -1,9 +1,9 @@
 .chartCard {
-  margin-top: 12px;
+  margin-top: 14px;
   padding: 16px !important;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-lg) !important;
 
   .chartCardTitle {
     display: flex;
@@ -22,7 +22,7 @@
 
   .dateRange {
     color: var(--hi-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 400;
     white-space: nowrap;
   }
@@ -35,12 +35,12 @@
 .dateRangeSelector {
   display: flex;
   justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: 14px;
   margin-bottom: 10px;
 
   :global(.mantine-SegmentedControl-root) {
     padding: 2px;
-    background: var(--hi-surface-soft);
+    background: var(--hi-surface);
     border: 1px solid var(--hi-border);
   }
 
@@ -48,19 +48,19 @@
     min-height: 28px;
     padding-inline: 10px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 560;
   }
 }
 
 .setupCard {
-  margin-bottom: 20px;
-  margin-top: 16px;
+  margin-bottom: 18px;
+  margin-top: 14px;
   position: relative;
   padding: 16px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   box-shadow: none;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
 }
 
 .dismissButton {
@@ -115,18 +115,26 @@
 .checklistItems {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0;
   margin: 0;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-lg);
+  overflow: hidden;
 }
 
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 12px;
+  padding: 13px 14px;
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-border);
+  border-radius: 0;
+  border: 0;
+  border-right: 1px solid var(--hi-border);
   transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:last-child {
+    border-right: 0;
+  }
 
   h3 {
     font-size: 0.9rem;
@@ -148,7 +156,7 @@
     background: var(--hi-surface-soft) !important;
     color: var(--hi-text) !important;
     border: 1px solid var(--hi-border) !important;
-    font-weight: 500;
+    font-weight: 560;
     box-shadow: none !important;
 
     &:hover:not(:disabled) {
@@ -198,6 +206,12 @@
 @media (max-width: 992px) {
   .checklistItem {
     width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--hi-border);
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 
   .setupCard {
@@ -241,12 +255,12 @@
 
 .stripeUpgradeCard {
   margin: 18px 0;
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   box-shadow: none !important;
   color: var(--hi-text);
   padding: 18px;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   position: relative;
   overflow: hidden;
 
@@ -284,7 +298,7 @@
   width: 34px;
   height: 34px;
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -335,7 +349,7 @@
   transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
   box-shadow: none !important;
   min-width: 180px;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
 
   &:hover:not(:disabled) {
     box-shadow: none !important;

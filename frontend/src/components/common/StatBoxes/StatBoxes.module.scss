@@ -5,10 +5,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   color: var(--hi-text);
-  margin: 0.65rem 0 0.9rem;
+  margin: 0.75rem 0 1.1rem;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   overflow: hidden;
 
   @include mixins.respond-below(lg) {
@@ -64,10 +64,10 @@
 .statistic {
   display: flex;
   align-items: center;
-  padding: 11px 13px !important;
+  padding: 13px 15px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 62px;
+  min-height: 74px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
@@ -81,7 +81,7 @@
     gap: 2px;
 
     .number {
-      font-size: 1rem;
+      font-size: 1.12rem;
       font-weight: 600;
       letter-spacing: 0;
       line-height: 1.2;
@@ -94,7 +94,7 @@
     }
 
     .description {
-      font-size: 0.72rem;
+      font-size: 0.73rem;
       color: var(--hi-text-muted);
       font-weight: 500;
       align-self: start;
@@ -108,15 +108,15 @@
     align-self: flex-start;
 
     .icon {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: var(--hi-radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--hi-text-muted);
-      background: transparent;
-      border: 0;
+      color: color-mix(in srgb, var(--hi-text-muted) 86%, transparent);
+      background: var(--hi-surface-soft);
+      border: 1px solid var(--hi-border);
       box-shadow: none;
 
       @include mixins.respond-below(md) {

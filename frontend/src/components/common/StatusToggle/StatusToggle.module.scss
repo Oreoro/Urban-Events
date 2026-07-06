@@ -7,7 +7,7 @@
   right: 0;
   z-index: 1;
   background: var(--hi-surface);
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 1rem;
   border-bottom: 1px solid var(--hi-border);
   box-shadow: none;
 
@@ -31,7 +31,7 @@
 
 .message {
   color: var(--hi-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.81rem;
   font-weight: 500;
 
   @include mixins.respond-below(sm) {
@@ -41,9 +41,9 @@
 
 .publishButton {
   font-size: 0.8125rem;
-  padding: 0.22rem 0.65rem;
+  padding: 0.2rem 0.6rem;
   height: auto;
-  min-height: 28px;
+  min-height: 27px;
   background: var(--hi-text);
   border: 1px solid var(--hi-text);
   color: var(--hi-color-white);
