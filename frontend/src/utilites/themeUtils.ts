@@ -98,7 +98,7 @@ export function getContrastColor(backgroundColor: string): string {
 }
 
 const URBAN_EVENTS_THEME = {
-    accent: '#2383E2',
+    accent: '#37352F',
     background: '#F7F7F5',
     darkBackground: '#191918',
 };
@@ -126,7 +126,7 @@ export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColor
 export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(74, 82, 98, 0.08)' : 'rgba(184, 242, 230, 0.15)';
+        return mode === 'light' ? 'rgba(55, 53, 47, 0.08)' : 'rgba(247, 247, 245, 0.14)';
     }
     const opacity = mode === 'light' ? 0.08 : 0.15;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -135,7 +135,7 @@ export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
 export function getAccentMuted(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(74, 82, 98, 0.6)' : 'rgba(184, 242, 230, 0.7)';
+        return mode === 'light' ? 'rgba(55, 53, 47, 0.62)' : 'rgba(247, 247, 245, 0.72)';
     }
     const opacity = mode === 'light' ? 0.6 : 0.7;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -191,7 +191,7 @@ const isOverpoweringAccent = (accent: string): boolean => {
 
 const getReadableAccent = (accent: string | undefined, mode: 'light' | 'dark'): string => {
     if (!accent || isOverpoweringAccent(accent)) {
-        return mode === 'dark' ? '#E3F8F3' : URBAN_EVENTS_THEME.accent;
+        return mode === 'dark' ? '#F7F7F5' : URBAN_EVENTS_THEME.accent;
     }
 
     const derived = getDerivedColors(mode);

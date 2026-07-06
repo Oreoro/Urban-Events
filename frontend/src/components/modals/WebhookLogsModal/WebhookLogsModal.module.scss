@@ -1,8 +1,8 @@
 .logEntry {
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-  border-radius: var(--hi-radius-md);
   border-left: 4px solid var(--log-status-color, var(--hi-status-neutral-text)) !important;
+  border-radius: var(--hi-radius-md);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -16,8 +16,8 @@
 }
 
 .chevronIcon {
-  transition: transform 0.2s ease;
   color: var(--log-status-color, var(--hi-status-neutral-text));
+  transition: transform 0.2s ease;
 }
 
 .chevronIconExpanded {
@@ -25,23 +25,23 @@
 }
 
 .statusIcon {
-  border-radius: var(--hi-radius-md);
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--log-status-color, var(--hi-status-neutral-text));
-  background: var(--log-status-bg, var(--hi-status-neutral-bg));
   border: 1px solid var(--log-status-border, var(--hi-status-neutral-border));
+  border-radius: var(--hi-radius-md);
+  background: var(--log-status-bg, var(--hi-status-neutral-bg));
+  color: var(--log-status-color, var(--hi-status-neutral-text));
 }
 
 .codeBlock {
-  border-radius: var(--hi-radius-md);
   max-height: 300px;
   overflow: auto;
-  background-color: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background-color: var(--hi-surface-soft);
 }
 
 .noLogsAlert {

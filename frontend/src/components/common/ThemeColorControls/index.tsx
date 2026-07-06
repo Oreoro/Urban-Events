@@ -346,7 +346,7 @@ export const ThemeColorControls = ({
                     </Tooltip>
                 ) : (
                     <Group gap={6} wrap="nowrap">
-                        <IconEyeCheck size={22} color="var(--mantine-color-secondary-7)" />
+                        <IconEyeCheck size={22} color="var(--hi-status-success-text)" />
                         <Text size="xs" c="dimmed">{t`Readable colors`}</Text>
                     </Group>
                 )}
