@@ -74,10 +74,10 @@ export const getUrbanEventsTheme = () => createTheme({
     },
     radius: {
         xs: "3px",
-        sm: "4px",
+        sm: "5px",
         md: "6px",
-        lg: "8px",
-        xl: "8px",
+        lg: "6px",
+        xl: "6px",
     },
     shadows: {
         xs: "none",
