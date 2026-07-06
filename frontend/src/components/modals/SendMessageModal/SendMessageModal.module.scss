@@ -1,7 +1,7 @@
 .formSection {
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 1rem;
 
     :global(.mantine-InputWrapper-root) {
         margin-bottom: 0;
@@ -14,10 +14,12 @@
 }
 
 .footerSection {
-    margin-top: 0.875rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--hi-border);
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 1rem;
 }
 
 .sendButton {
@@ -29,7 +31,7 @@
 .menuButton {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid var(--hi-border);
     padding-left: 0.625rem;
     padding-right: 0.625rem;
 }
@@ -66,7 +68,8 @@
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
     overflow: hidden;
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
+    padding: 3px;
 }
 
 .toggleOption {
@@ -75,7 +78,7 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 9px 12px;
+    padding: 8px 12px;
     font-size: 0.82rem;
     font-weight: 500;
     border: none;
@@ -118,7 +121,7 @@
     font-size: 0.78rem;
     font-weight: 500;
     border: 1px solid var(--hi-border);
-    border-radius: 999px;
+    border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
     color: var(--hi-text-muted);
     cursor: pointer;
@@ -144,7 +147,7 @@
     align-items: center;
     gap: 12px;
     padding: 12px 14px;
-    background: var(--hi-surface);
+    background: var(--hi-shell-bg);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
 }
@@ -156,7 +159,8 @@
     width: 36px;
     height: 36px;
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface-soft);
+    background: var(--hi-surface);
+    border: 1px solid var(--hi-border);
     color: var(--hi-text-muted);
     flex-shrink: 0;
 }

@@ -2,7 +2,7 @@
 
 .mailLayout {
   display: flex;
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
   overflow: hidden;
   margin: calc(var(--hi-spacing-lg) * -1);
   margin-bottom: calc((var(--hi-spacing-lg) + 40px) * -1);
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
 
   @media (max-width: 991px) {
     width: 300px;
@@ -42,7 +42,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px 10px;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid var(--hi-border);
   flex-shrink: 0;
 }
 
@@ -53,8 +54,8 @@
 }
 
 .listHeading {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.02rem;
+  font-weight: 650;
   margin: 0;
   color: var(--hi-text);
 }
@@ -63,15 +64,17 @@
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--hi-text-muted);
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
   padding: 1px 7px;
   border-radius: 10px;
   line-height: 1.5;
 }
 
 .searchBar {
-  padding: 0 16px 8px;
+  padding: 10px 14px 8px;
   flex-shrink: 0;
+  border-bottom: 1px solid var(--hi-border);
 }
 
 .listBody {
@@ -99,7 +102,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg);
   min-width: 0;
 }
 
@@ -128,7 +131,7 @@
 }
 
 .previewHeader {
-  padding: 16px 24px 18px;
+  padding: 16px 22px 18px;
   border-bottom: 1px solid var(--hi-border);
   background: var(--hi-surface);
   flex-shrink: 0;
@@ -138,7 +141,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .backButton {
@@ -157,8 +160,8 @@
 }
 
 .previewSubject {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.08rem;
+  font-weight: 680;
   color: var(--hi-text);
   margin-bottom: 14px;
   line-height: 1.35;
@@ -169,7 +172,15 @@
 .previewMeta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+.previewAvatar {
+  background: var(--hi-shell-bg) !important;
+  border: 1px solid var(--hi-border);
+  color: var(--hi-text-muted) !important;
+  font-size: 0.74rem;
+  font-weight: 650;
 }
 
 .previewSenderInfo {
@@ -179,7 +190,7 @@
 
 .previewSenderName {
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 620;
   color: var(--hi-text);
 }
 
@@ -214,7 +225,7 @@
 .previewBody {
   flex: 1;
   overflow-y: auto;
-  padding: 24px;
+  padding: 22px;
 
   @include mixins.scrollbar;
 }
@@ -223,8 +234,9 @@
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-lg);
-  padding: 28px;
+  padding: 24px;
   box-shadow: none;
+  max-width: 860px;
 }
 
 .previewContent {
@@ -269,7 +281,7 @@
   justify-content: center;
   gap: 10px;
   z-index: 1;
-  background: color-mix(in srgb, var(--hi-surface) 92%, transparent);
+  background: color-mix(in srgb, var(--hi-shell-bg) 92%, transparent);
 
   p {
     font-size: 0.85rem;
@@ -283,15 +295,16 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--hi-border);
 }
 
 .ghostAvatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--hi-border);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
   flex-shrink: 0;
 }
 

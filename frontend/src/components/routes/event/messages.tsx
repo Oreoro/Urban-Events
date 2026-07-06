@@ -84,7 +84,7 @@ const MessagePreview = ({message, eventId, onBack, eventTimezone}: { message: Me
                 </div>
                 <div className={classes.previewSubject}>{message.subject}</div>
                 <div className={classes.previewMeta}>
-                    <Avatar color="grape" size={36} radius="xl">
+                    <Avatar className={classes.previewAvatar} size={34} radius="md">
                         {getInitials(senderName)}
                     </Avatar>
                     <div className={classes.previewSenderInfo}>
