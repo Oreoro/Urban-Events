@@ -323,10 +323,16 @@ a {
   background: var(--hi-surface);
   border-color: var(--hi-border);
   box-shadow: none;
+  border-radius: var(--hi-radius-lg);
+  padding: 5px;
 }
 
 .mantine-Menu-item {
   color: var(--hi-text) !important;
+  min-height: 30px;
+  border-radius: var(--hi-radius-sm);
+  font-size: 0.82rem;
+  font-weight: 560;
 }
 
 .mantine-Menu-item:hover {
@@ -336,8 +342,8 @@ a {
 
 .mantine-Menu-label {
   color: var(--hi-text-muted) !important;
-  font-size: 0.74rem;
-  font-weight: 560;
+  font-size: 0.71rem;
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: none;
 }

@@ -1,6 +1,9 @@
 .content {
     border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-lg) !important;
+    background: var(--hi-surface);
     box-shadow: none;
+    overflow: hidden;
 }
 
 .body {
@@ -8,22 +11,40 @@
 }
 
 .inner {
-    padding: 0 16px 16px;
+    padding: 0 18px 18px;
+}
+
+.header {
+    min-height: 46px;
+    padding: 13px 18px 8px !important;
+    border-bottom: 0;
+    background: var(--hi-surface);
 }
 
 .modalTitle {
     color: var(--hi-text);
     font-size: 1rem;
-    font-weight: 620;
-    margin-top: 12px;
-    margin-bottom: 4px;
+    font-weight: 650;
+    margin-top: 0;
+    margin-bottom: 0;
     letter-spacing: 0;
+    line-height: 1.25;
+}
+
+.close {
+    color: var(--hi-text-muted) !important;
+    border-radius: var(--hi-radius-sm) !important;
+
+    &:hover {
+        background: var(--hi-control-bg-hover) !important;
+        color: var(--hi-text) !important;
+    }
 }
 
 // Branded modal header styles
 .brandedHeader {
-    background: var(--hi-shell-bg) !important;
-    padding: 16px !important;
+    background: var(--hi-surface-soft) !important;
+    padding: 14px 18px !important;
     margin-bottom: 14px;
     position: relative;
     overflow: hidden;
@@ -33,7 +54,7 @@
 .brandedTitle {
     color: var(--hi-text) !important;
     font-size: 1rem !important;
-    font-weight: 620 !important;
+    font-weight: 650 !important;
     margin: 0 !important;
     position: relative;
     z-index: 1;
@@ -47,7 +68,7 @@
     transition: background-color 0.15s ease;
     
     &:hover {
-        background-color: var(--hi-shell-surface) !important;
+        background-color: var(--hi-control-bg-hover) !important;
         color: var(--hi-text) !important;
     }
     

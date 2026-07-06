@@ -2,15 +2,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--hi-radius-md);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--hi-radius-sm);
   border: 1px solid var(--hi-border);
-  background: var(--ue-canvas-soft);
+  background: var(--hi-surface);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
     box-shadow: none;
     transform: none;
@@ -18,24 +18,36 @@
 }
 
 .avatar {
-  width: 26px;
-  height: 26px;
-  background: var(--hi-surface);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface-soft);
   color: var(--hi-text);
   border: 1px solid var(--hi-border);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
+  font-weight: 650;
 }
 
 .dropdown {
-  padding: 6px;
+  padding: 5px !important;
+  border-radius: var(--hi-radius-lg) !important;
+  border: 1px solid var(--hi-border) !important;
+  box-shadow: none !important;
 }
 
 .menuItem {
+  min-height: 31px;
   border-radius: var(--hi-radius-sm);
-  color: var(--hi-text);
-  font-weight: 600;
+  color: var(--hi-text-light);
+  font-size: 0.82rem;
+  font-weight: 560;
 
   svg {
     color: var(--hi-text-muted);
+  }
+
+  &:hover {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
   }
 }

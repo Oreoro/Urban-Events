@@ -1,6 +1,7 @@
 import React from 'react';
 import {ActionIcon, Menu} from '@mantine/core';
 import {IconDotsVertical} from '@tabler/icons-react';
+import classes from './ActionMenu.module.scss';
 
 export interface MenuItem {
     label: string;
@@ -22,7 +23,7 @@ interface ActionMenuProps {
 }
 
 const DefaultTarget = () => (
-    <ActionIcon variant="subtle" size="sm" radius="sm">
+    <ActionIcon variant="subtle" size="sm" radius="sm" className={classes.defaultTarget}>
         <IconDotsVertical size={16}/>
     </ActionIcon>
 );
@@ -33,22 +34,23 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
                                                       }) => {
     return (
         <>
-            <Menu shadow="xs" width={200}>
+            <Menu shadow="none" width={204} offset={6}>
                 <Menu.Target>
-                    <div style={{cursor: 'pointer'}}>
+                    <div className={classes.target}>
                         {target}
                     </div>
                 </Menu.Target>
 
-                <Menu.Dropdown>
+                <Menu.Dropdown className={classes.dropdown}>
                     {itemsGroups.map((group, groupIndex) => (
                         <React.Fragment key={groupIndex}>
                             {group.showDividerAbove && <Menu.Divider/>}
-                            <Menu.Label>{group.label}</Menu.Label>
+                            {group.label && <Menu.Label className={classes.label}>{group.label}</Menu.Label>}
                             {group.items.map((item, itemIndex) => item.visible !== false && (
                                 <Menu.Item
                                     key={itemIndex}
                                     color={item.color}
+                                    className={classes.item}
                                     leftSection={item.icon}
                                     onClick={item.onClick}
                                 >

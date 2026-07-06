@@ -29,9 +29,11 @@ export const Modal = (props: MantineModalProps & ModalProps) => {
                     modalHeader === 'branded' && classes.brandedTitle
                 ),
                 header: classNames(
+                    classes.header,
                     modalHeader === 'branded' && classes.brandedHeader
                 ),
                 close: classNames(
+                    classes.close,
                     modalHeader === 'branded' && classes.brandedClose
                 ),
                 ...props.classNames
