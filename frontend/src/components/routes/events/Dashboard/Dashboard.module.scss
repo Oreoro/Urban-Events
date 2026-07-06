@@ -3,15 +3,15 @@
 .eventsContainer {
   margin-top: 0;
   margin-bottom: 1.25rem;
+  max-width: 1180px;
 }
 
-// Page Header - Integrated design
 .pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin: 0.1rem 0 0.85rem;
+  margin: 0 0 0.85rem;
   
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -21,13 +21,43 @@
   }
 }
 
+.headerIdentity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.pageIcon {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface);
+  color: var(--hi-text-muted);
+}
+
 .headerContent {
+  min-width: 0;
   flex: 1;
 }
 
-.pageTitle {
-  font-size: 1.45rem;
+.pageKicker {
+  margin-bottom: 2px;
+  color: var(--hi-text-muted);
+  font-size: 0.75rem;
   font-weight: 600;
+  line-height: 1.2;
+}
+
+.pageTitle {
+  color: var(--hi-text);
+  font-size: 1.34rem;
+  font-weight: 650;
   margin: 0;
   letter-spacing: 0;
   line-height: 1.2;
@@ -37,15 +67,14 @@
   }
 }
 
-// Organizer Button - Compact and integrated
 .organizerButton {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  gap: 0.6rem;
+  background: color-mix(in srgb, var(--hi-surface) 88%, var(--hi-shell-bg));
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   border-radius: var(--hi-radius-md);
-  padding: 0.55rem 0.75rem;
+  padding: 0.38rem 0.55rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
@@ -57,7 +86,7 @@
   }
   
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
   }
   
@@ -67,12 +96,13 @@
 }
 
 .organizerLogo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--hi-radius-sm);
   overflow: hidden;
   flex-shrink: 0;
   background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
   
   img {
     width: 100%;
@@ -92,14 +122,14 @@
 }
 
 .organizerName {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 620;
   color: var(--hi-text);
 }
 
 .organizerCount {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 620;
   color: var(--hi-text);
 }
 
@@ -109,21 +139,19 @@
   flex-shrink: 0;
 }
 
-// Multiple organizers - stacked logos
 .organizerLogos {
   display: flex;
   align-items: center;
 }
 
 .miniLogo {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--hi-radius-md);
+  width: 26px;
+  height: 26px;
+  border-radius: var(--hi-radius-sm);
   overflow: hidden;
-  background: white;
-  border: 1px solid var(--hi-surface);
+  border: 1px solid var(--hi-border);
   box-shadow: none;
-  margin-left: -8px;
+  margin-left: -7px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,21 @@
+.statusGroup {
+  width: fit-content;
+  padding: 3px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border-radius: var(--hi-radius-md);
+  background: color-mix(in srgb, var(--hi-surface) 82%, var(--hi-shell-bg));
+}
+
+.statusButton {
+  min-height: 28px !important;
+  padding-inline: 10px !important;
+  border-radius: var(--hi-radius-sm) !important;
+  font-size: 0.78rem !important;
+  font-weight: 620 !important;
+
+  &[data-active="true"] {
+    background: var(--hi-surface) !important;
+    color: var(--hi-text) !important;
+    border-color: var(--hi-border) !important;
+  }
+}

@@ -7,6 +7,7 @@ import {Button, Menu, Skeleton} from "@mantine/core";
 import {
     IconArrowRight,
     IconBuilding,
+    IconCalendarEvent,
     IconCalendarPlus,
     IconChevronDown,
     IconPlus,
@@ -81,8 +82,14 @@ export function Dashboard() {
     return (
         <div className={classes.eventsContainer}>
             <div className={classes.pageHeader}>
-                <div className={classes.headerContent}>
-                    <h1 className={classes.pageTitle}>{getHeading()}</h1>
+                <div className={classes.headerIdentity}>
+                    <div className={classes.pageIcon}>
+                        <IconCalendarEvent size={18} stroke={1.8}/>
+                    </div>
+                    <div className={classes.headerContent}>
+                        <div className={classes.pageKicker}>{t`Events database`}</div>
+                        <h1 className={classes.pageTitle}>{getHeading()}</h1>
+                    </div>
                 </div>
 
                 {/* Organizer Navigation */}
