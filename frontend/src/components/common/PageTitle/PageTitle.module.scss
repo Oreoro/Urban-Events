@@ -1,14 +1,14 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
 }
 
 .title {
   color: var(--hi-text);
-  font-size: clamp(1.55rem, 2vw, 2.15rem);
-  font-weight: 600;
-  line-height: 1.12;
+  font-size: clamp(1.42rem, 1.75vw, 1.9rem);
+  font-weight: 650;
+  line-height: 1.15;
   letter-spacing: 0;
   margin-bottom: 0.28rem !important;
   margin-top: 0;
@@ -20,9 +20,9 @@
 
 .subheading {
   max-width: 760px;
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   color: var(--hi-text-muted);
   font-weight: 400;
-  line-height: 1.55;
-  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
 }

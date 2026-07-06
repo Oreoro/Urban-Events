@@ -5,10 +5,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   color: var(--hi-text);
-  margin: 0.75rem 0 1.1rem;
+  margin: 0.6rem 0 1rem;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   overflow: hidden;
 
   @include mixins.respond-below(lg) {
@@ -63,11 +63,11 @@
 
 .statistic {
   display: flex;
-  align-items: center;
-  padding: 13px 15px !important;
+  align-items: flex-start;
+  padding: 12px 13px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 74px;
+  min-height: 66px;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
@@ -77,26 +77,26 @@
     flex: 1;
     display: grid;
     grid-template-rows: auto auto;
-    min-height: 50px;
+    min-height: 42px;
     gap: 2px;
 
     .number {
       font-size: 1.12rem;
-      font-weight: 600;
+      font-weight: 650;
       letter-spacing: 0;
       line-height: 1.2;
       align-self: end;
       color: var(--hi-text);
 
       @include mixins.respond-below(md) {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
 
     .description {
       font-size: 0.73rem;
       color: var(--hi-text-muted);
-      font-weight: 500;
+      font-weight: 520;
       align-self: start;
       text-transform: none;
       letter-spacing: 0;
@@ -104,25 +104,24 @@
   }
 
   .rightPanel {
-    margin-left: 0.7rem;
+    margin-left: 0.6rem;
     align-self: flex-start;
 
     .icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border-radius: var(--hi-radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: color-mix(in srgb, var(--hi-text-muted) 86%, transparent);
-      background: var(--hi-surface-soft);
-      border: 1px solid var(--hi-border);
+      color: color-mix(in srgb, var(--hi-text-muted) 74%, transparent);
+      background: transparent;
+      border: 0;
       box-shadow: none;
 
       @include mixins.respond-below(md) {
-        width: 30px;
-        height: 30px;
-        border-radius: var(--hi-radius-md);
+        width: 22px;
+        height: 22px;
       }
     }
   }

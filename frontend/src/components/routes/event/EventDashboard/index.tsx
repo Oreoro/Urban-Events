@@ -324,7 +324,7 @@ export const EventDashboard = () => {
                         series={[
                             {name: 'orders_created', color: 'slate.5', label: t`Completed Orders`},
                             {name: 'products_sold', color: 'primary.6', label: t`Products Sold`},
-                            {name: 'attendees_registered', color: 'marigold.5', label: t`Attendees Registered`},
+                            {name: 'attendees_registered', color: 'slate.3', label: t`Attendees Registered`},
                         ]}
                         curveType="linear"
                         tickLine="none"
@@ -362,8 +362,8 @@ export const EventDashboard = () => {
                         series={[
                             {name: 'total_fees', label: t`Total Fees`, color: 'slate.5'},
                             {name: 'total_sales_gross', label: t`Gross Sales`, color: 'primary.6'},
-                            {name: 'total_tax', label: t`Total Tax`, color: 'marigold.5'},
-                            {name: 'total_refunded', label: t`Total Refunded`, color: 'coral.6'},
+                            {name: 'total_tax', label: t`Total Tax`, color: 'slate.3'},
+                            {name: 'total_refunded', label: t`Total Refunded`, color: 'slate.7'},
                         ]}
                         curveType="linear"
                         tickLine="none"

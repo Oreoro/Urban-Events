@@ -27,14 +27,14 @@
 
   .main {
     grid-area: main;
-    padding: 28px 40px 56px;
+    padding: 24px 36px 48px;
     overflow: auto;
     background: var(--ue-canvas);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
-      padding: 14px 14px 52px;
+      padding: 14px 12px 44px;
     }
   }
 

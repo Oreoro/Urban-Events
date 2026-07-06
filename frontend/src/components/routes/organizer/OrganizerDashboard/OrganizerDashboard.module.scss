@@ -6,8 +6,8 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0;
 
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -140,10 +140,10 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  margin: 0.75rem 0 1.25rem;
+  margin: 0.6rem 0 1rem;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   overflow: hidden;
 
   > * {
@@ -205,11 +205,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 14px;
 
   @include mixins.respond-above(lg) {
     grid-template-columns: minmax(300px, 0.82fr) 1.36fr;
-    gap: 18px;
+    gap: 14px;
     align-items: stretch;
   }
 }
@@ -221,7 +221,7 @@
   height: 100%;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
   padding: 0;
   overflow: hidden;
@@ -247,11 +247,11 @@
 }
 
 .sectionTitle {
-  font-size: 0.96rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 650;
   color: var(--hi-text);
   margin: 0;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
 }
@@ -276,7 +276,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 9px 12px;
   border: 0 !important;
   border-bottom: 1px solid var(--hi-border) !important;
   border-radius: 0 !important;
@@ -312,8 +312,8 @@
 }
 
 .orderAvatar {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--hi-radius-sm);
   background: var(--hi-surface-soft);
   display: flex;
@@ -339,8 +339,8 @@
 }
 
 .customerName {
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 560;
   color: var(--hi-text);
   transition: color 0.15s ease;
   @include mixins.ellipsis;
@@ -350,7 +350,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--hi-text-muted);
 }
 
@@ -368,7 +368,7 @@
 }
 
 .orderId {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--hi-text-muted);
   font-family: 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', monospace;
   letter-spacing: 0;
