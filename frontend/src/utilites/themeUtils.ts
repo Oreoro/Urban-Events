@@ -94,32 +94,32 @@ export function isLightColor(hex: string): boolean {
 }
 
 export function getContrastColor(backgroundColor: string): string {
-    return isLightColor(backgroundColor) ? '#1a1a1a' : '#ffffff';
+    return isLightColor(backgroundColor) ? '#37352F' : '#ffffff';
 }
 
 const URBAN_EVENTS_THEME = {
-    accent: '#0E7C70',
-    background: '#F6F8FA',
-    darkBackground: '#101828',
+    accent: '#2383E2',
+    background: '#F7F7F5',
+    darkBackground: '#191918',
 };
 
 export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {
     if (mode === 'light') {
         return {
             surface: '#FFFFFF',
-            textPrimary: '#111827',
-            textSecondary: '#344054',
-            textTertiary: '#667085',
-            border: 'rgba(51, 65, 85, 0.18)',
+            textPrimary: '#37352F',
+            textSecondary: '#4F4D48',
+            textTertiary: '#787774',
+            border: '#E6E4DF',
         };
     }
 
     return {
-        surface: '#253044',
-        textPrimary: '#F8FAFC',
-        textSecondary: '#DDE7F2',
-        textTertiary: '#B7C3D0',
-        border: 'rgba(248, 250, 252, 0.16)',
+        surface: '#22211F',
+        textPrimary: '#F7F7F5',
+        textSecondary: '#D9D7D2',
+        textTertiary: '#A7A5A0',
+        border: 'rgba(247, 247, 245, 0.16)',
     };
 }
 

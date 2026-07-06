@@ -5,7 +5,7 @@
   display: flex;
   position: relative;
   overflow-x: hidden;
-  background: var(--ue-canvas);
+  background: var(--ue-canvas-soft);
 }
 
 .splitLayout {
@@ -19,7 +19,7 @@
 
 .leftPanel {
   width: 100%;
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 2rem 2.5rem;
   min-height: 100vh;
 
   @include mixins.respond-below(md) {
@@ -54,10 +54,10 @@
 }
 
 .logo {
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.75rem;
 
   @include mixins.respond-below(md) {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
   @include mixins.respond-below(sm) {
@@ -67,20 +67,20 @@
 
 .wrapper {
   width: 100%;
-  max-width: 480px;
+  max-width: 500px;
 
   @include mixins.respond-below(sm) {
     max-width: 100%;
   }
 
   a {
-    color: var(--hi-secondary-strong);
+    color: var(--hi-shell-accent);
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
+    font-weight: 600;
+    transition: color 0.16s ease;
 
     &:hover {
-      color: var(--hi-primary);
+      color: var(--ue-teal-deep);
       text-decoration: underline;
     }
   }
@@ -89,7 +89,7 @@
     font-size: 0.875rem;
     margin-top: 2rem;
     text-align: center;
-    color: var(--hi-color-gray-dark);
+    color: var(--hi-text-muted);
     line-height: 1.6;
 
     a {
@@ -99,6 +99,6 @@
 
   .languageSwitcher {
     max-width: 100px;
-    margin: 1.5rem auto 0;
+    margin: 1.25rem auto 0;
   }
 }

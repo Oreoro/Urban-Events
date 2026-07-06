@@ -39,7 +39,7 @@ export const HOMEPAGE_FONTS: HomepageFontDefinition[] = [
     {value: 'Lora', label: 'Lora', category: 'serif', bunnyFamily: 'lora', weights: '400,500,600,700', stack: serifStack},
 ];
 
-export const DEFAULT_HOMEPAGE_FONT = 'Manrope';
+export const DEFAULT_HOMEPAGE_FONT = 'Inter';
 
 const FONT_LOOKUP: Record<string, HomepageFontDefinition> = HOMEPAGE_FONTS.reduce(
     (acc, font) => ({...acc, [font.value]: font}),
