@@ -1,12 +1,12 @@
 .modal {
   :global {
     .mantine-Modal-title {
-      color: var(--checkout-text-primary, #1a1a1a);
+      color: var(--checkout-text-primary, var(--hi-text));
     }
 
     .mantine-TextInput-label,
     .mantine-Checkbox-label {
-      color: var(--checkout-text-primary, #1a1a1a);
+      color: var(--checkout-text-primary, var(--hi-text));
     }
   }
 }

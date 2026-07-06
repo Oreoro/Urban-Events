@@ -25,7 +25,7 @@ import {trackPixelEvent, hasActivePixels} from "../../../utilites/trackingPixels
 import {CookieConsentBanner} from "../../common/CookieConsentBanner";
 import {useGetEventPublic} from "../../../queries/useGetEventPublic.ts";
 
-const DEFAULT_ACCENT = '#0E7C70';
+const DEFAULT_ACCENT = '#2383E2';
 
 const Checkout = () => {
     const {eventId, orderShortId} = useParams();
@@ -186,7 +186,7 @@ const Checkout = () => {
     const homepageSettings = event?.settings?.homepage_theme_settings;
     const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
     // Mode is derived from the homepage background color (light homepage = light checkout)
-    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || '#ffffff');
+    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || '#FBFBFA');
 
     return (
         <CheckoutThemeProvider accentColor={accentColor} mode={checkoutMode}>

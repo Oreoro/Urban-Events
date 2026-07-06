@@ -18,8 +18,8 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   // --checkout-text-primary, --checkout-text-secondary, --checkout-text-tertiary
   // --checkout-border
 
-  background-color: var(--checkout-background, #F9FAFB);
-  color: var(--checkout-text-primary, #1a1a1a);
+  background-color: var(--checkout-background, var(--ue-canvas));
+  color: var(--checkout-text-primary, var(--hi-text));
 
   // Countdown timer colors - semantic colors that don't change with theme
   .countdown {

@@ -12,8 +12,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 16px 20px;
   margin-bottom: 24px;
   border-radius: $radius-sm;
-  background: color-mix(in srgb, var(--hi-success, #2f8f62) 10%, var(--checkout-surface, #ffffff));
-  border: 1px solid color-mix(in srgb, var(--hi-success, #2f8f62) 24%, var(--checkout-border, #e6e4df));
+  background: color-mix(in srgb, var(--hi-success) 10%, var(--checkout-surface, var(--hi-surface)));
+  border: 1px solid color-mix(in srgb, var(--hi-success) 24%, var(--checkout-border, var(--hi-border)));
 }
 
 .waitlistBannerIcon {
@@ -21,8 +21,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 40px;
   height: 40px;
   border-radius: $radius-sm;
-  background: var(--hi-success, #2f8f62);
-  color: white;
+  background: var(--hi-success);
+  color: var(--hi-color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,13 +33,13 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-display;
   font-size: 15px;
   font-weight: 650;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
   margin: 0 0 4px 0;
 }
 
 .waitlistBannerText {
   font-size: 13px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
   margin: 0;
   line-height: 1.5;
 }
@@ -49,18 +49,18 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1.125rem;
   font-weight: 650;
   margin-bottom: 8px;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .sectionHelper {
   font-size: 14px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
   margin-bottom: 20px;
 }
 
 .copyDetailsSection {
   padding-top: 16px;
-  border-top: 1px solid var(--checkout-border, #e6e4df);
+  border-top: 1px solid var(--checkout-border, var(--hi-border));
 }
 
 .copyDetailsMultiple {
@@ -72,7 +72,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .copyLabel {
   flex-shrink: 0;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .ticketSection {
@@ -91,13 +91,13 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
     font-size: 1.125rem;
     font-weight: 650;
-    color: var(--checkout-text-primary, #37352f);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
 .ticketCountBadge {
-  background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
-  color: var(--checkout-accent, var(--mantine-primary-color-filled));
+  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
+  color: var(--checkout-accent, var(--hi-primary));
   font-size: 12px;
   padding: 2px 10px;
   border-radius: $radius-xs;
@@ -125,8 +125,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 32px;
   height: 32px;
   border-radius: $radius-sm;
-  background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
-  color: var(--checkout-accent, var(--mantine-primary-color-filled));
+  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
+  color: var(--checkout-accent, var(--hi-primary));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,18 +140,18 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0 0 2px 0;
     font-size: 15px;
     font-weight: 500;
-    color: var(--checkout-text-primary, #37352f);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
 .attendeeTicketType {
   font-size: 13px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 }
 
 .copiedBadge {
-  background: var(--checkout-accent-soft, #D1FAE5);
-  color: var(--checkout-accent, #2383e2);
+  background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
+  color: var(--checkout-accent, var(--hi-primary));
   font-size: 12px;
   padding: 4px 8px;
   border-radius: $radius-xs;
@@ -182,10 +182,10 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   margin-top: 12px;
   font-size: 12px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 
   a {
-    color: var(--checkout-accent, var(--mantine-primary-color-filled));
+    color: var(--checkout-accent, var(--hi-primary));
     text-decoration: none;
 
     &:hover {

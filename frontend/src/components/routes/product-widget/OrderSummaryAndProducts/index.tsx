@@ -564,15 +564,15 @@ export const OrderSummaryAndProducts = () => {
                 {emailUpdated && (
                     <Alert
                         icon={<IconCheck size={16}/>}
-                        color="green"
+                        color="primary"
                         mb="lg"
                         radius="lg"
                         style={{
-                            backgroundColor: 'var(--checkout-surface, #ECFDF5)',
-                            borderColor: 'var(--checkout-border, #D1FAE5)',
+                            backgroundColor: 'color-mix(in srgb, var(--hi-success) 8%, var(--checkout-surface, var(--hi-surface)))',
+                            borderColor: 'color-mix(in srgb, var(--hi-success) 18%, var(--checkout-border, var(--hi-border)))',
                         }}
                     >
-                        <Text size="sm" style={{color: 'var(--checkout-text-primary, #065F46)'}}>
+                        <Text size="sm" style={{color: 'var(--checkout-text-primary, var(--hi-text))'}}>
                             {t`Your order details have been updated. A confirmation email has been sent to the new email address.`}
                         </Text>
                     </Alert>

@@ -21,23 +21,23 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   font-family: $font-display;
   font-size: 24px;
   font-weight: 650;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
   margin-bottom: 4px;
 }
 
 .confirmationText {
   font-size: 15px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 
   strong {
     font-weight: 500;
-    color: var(--checkout-text-primary, #37352f);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
 .selfServiceHint {
   font-size: 13px;
-  color: var(--checkout-text-tertiary, #787774);
+  color: var(--checkout-text-tertiary, var(--hi-text-muted));
   margin-top: 4px;
 }
 
@@ -47,7 +47,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   font-weight: 650;
   margin-top: 24px;
   margin-bottom: 5px;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .detailItem {
@@ -61,14 +61,14 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 
   .label {
     margin-bottom: 0.25rem;
-    color: var(--checkout-text-secondary, #4f4d48);
+    color: var(--checkout-text-secondary, var(--hi-text-muted));
   }
 
   .value {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    color: var(--checkout-text-primary, #37352f);
+    color: var(--checkout-text-primary, var(--hi-text));
   }
 }
 
@@ -82,7 +82,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   align-items: center;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 1px solid var(--checkout-border, #e6e4df);
+  border-bottom: 1px solid var(--checkout-border, var(--hi-border));
   gap: 12px;
 
   &:last-child {
@@ -110,7 +110,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 
 .guestName {
   font-weight: 500;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
   margin-bottom: 4px;
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   flex-wrap: wrap;
   gap: 8px;
   font-size: 13px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 }
 
 .guestEmail {
@@ -144,7 +144,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   &::before {
     content: '•';
     margin-right: 8px;
-    color: var(--checkout-text-tertiary, #787774);
+    color: var(--checkout-text-tertiary, var(--hi-text-muted));
   }
 
   @include mixins.respond-below(sm) {

@@ -15,12 +15,12 @@ const ProductWidget = () => {
 
         return {
             colors: {
-                background: searchParams.get("BackgroundColor") || '#ffffff',
-                primary: searchParams.get("PrimaryColor") || '#7b5db8',
-                primaryText: searchParams.get("PrimaryTextColor") || '#000000',
-                secondary: searchParams.get("SecondaryColor") || '#7b5eb9',
-                secondaryText: searchParams.get("SecondaryTextColor") || '#ffffff',
-                bodyBackground: searchParams.get("BackgroundColor") || '#ffffff',
+                background: searchParams.get("BackgroundColor") || '#FBFBFA',
+                primary: searchParams.get("PrimaryColor") || '#2383E2',
+                primaryText: searchParams.get("PrimaryTextColor") || '#37352F',
+                secondary: searchParams.get("SecondaryColor") || '#2383E2',
+                secondaryText: searchParams.get("SecondaryTextColor") || '#FFFFFF',
+                bodyBackground: searchParams.get("BackgroundColor") || '#FBFBFA',
             },
             continueButtonText: searchParams.get("ContinueButtonText") || 'Continue',
             padding: searchParams.get("Padding") || '10px',

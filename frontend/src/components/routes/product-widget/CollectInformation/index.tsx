@@ -80,7 +80,7 @@ export const CollectInformation = () => {
     };
 
     const EmailCheckIcon = () => (
-        <IconCircleCheck size={18} style={{color: 'var(--primary-color, #10B981)'}}/>
+        <IconCircleCheck size={18} style={{color: 'var(--checkout-accent, var(--hi-primary))'}}/>
     );
 
     let productIndex = 0;

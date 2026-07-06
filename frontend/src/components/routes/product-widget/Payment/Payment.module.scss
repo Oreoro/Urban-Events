@@ -17,7 +17,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .paymentMethodLabel {
   margin-bottom: 8px;
-  color: var(--checkout-text-primary, #37352f);
+  color: var(--checkout-text-primary, var(--hi-text));
 }
 
 .paymentMethodTabs {
@@ -30,24 +30,24 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: var(--checkout-surface, #FFFFFF);
-  border: 1px solid var(--checkout-border, #E5E7EB);
+  background: var(--checkout-surface, var(--hi-surface));
+  border: 1px solid var(--checkout-border, var(--hi-border));
   border-radius: $radius-xs;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &:hover {
-    border-color: var(--checkout-accent-muted, #D1D5DB);
-    background: var(--checkout-accent-soft, #F9FAFB);
+    border-color: var(--checkout-accent-muted, color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border)));
+    background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 7%, white));
   }
 
   &.active {
-    border-color: var(--checkout-accent, var(--mantine-primary-color-filled));
-    background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
-    color: var(--checkout-accent, var(--mantine-primary-color-filled));
+    border-color: var(--checkout-accent, var(--hi-primary));
+    background: var(--checkout-accent-soft, color-mix(in srgb, var(--hi-primary) 9%, white));
+    color: var(--checkout-accent, var(--hi-primary));
   }
 }
 
@@ -74,10 +74,10 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   margin-top: 12px;
   font-size: 12px;
-  color: var(--checkout-text-secondary, #4f4d48);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 
   a {
-    color: var(--checkout-accent, var(--mantine-primary-color-filled));
+    color: var(--checkout-accent, var(--hi-primary));
     text-decoration: none;
 
     &:hover {
