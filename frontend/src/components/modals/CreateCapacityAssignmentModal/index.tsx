@@ -53,7 +53,6 @@ export const CreateCapacityAssignmentModal = ({onClose}: GenericModalProps) => {
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'#0d9488'}
                             onClick={() => window.location.href = `/manage/event/${eventId}/products/#create-product`}
                         >
                             {t`Create a Product`}

@@ -1,28 +1,17 @@
 @use "../../../../styles/mixins.scss";
 
 .headerCard {
-  background: var(--ue-canvas-soft);
+  background: var(--hi-surface);
   border-radius: var(--hi-radius-lg);
-  box-shadow: 0 8px 24px rgba(149, 157, 165, 0.08) !important;
-  padding: 32px;
-  margin-bottom: 32px;
-  border: none;
+  box-shadow: none !important;
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid var(--hi-border);
   position: relative;
   overflow: hidden;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 240px;
-    height: 240px;
-    background-image: url("/images/balloons.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top right;
-    opacity: 0.7;
-    z-index: 0;
+    display: none;
   }
 
   @include mixins.respond-below(lg) {
@@ -60,9 +49,9 @@
 }
 
 .mainTitle {
-  font-size: 28px;
+  font-size: 1.45rem;
   font-weight: 700;
-  color: var(--mantine-color-gray-9);
+  color: var(--hi-text);
   margin: 0;
   line-height: 1.2;
 
@@ -84,8 +73,8 @@
 }
 
 .confettiIcon {
-  color: var(--mantine-color-secondary-5);
-  animation: pulse 2s infinite ease-in-out;
+  color: var(--hi-primary);
+  animation: none;
 }
 
 @keyframes pulse {
@@ -102,9 +91,9 @@
 
 .subtitle {
   margin-top: 12px;
-  font-size: 16px;
+  font-size: 0.93rem;
   line-height: 1.5;
-  color: var(--mantine-color-gray-7);
+  color: var(--hi-text-muted);
   max-width: 600px;
 }
 
@@ -119,11 +108,11 @@
 
 .progressBar {
   height: 8px;
-  background-color: var(--mantine-color-secondary-1);
+  background-color: var(--hi-surface-soft);
 
   [role="progressbar"] {
-    background: var(--hi-secondary-strong);
-    box-shadow: 0 0 8px var(--mantine-color-secondary-3);
+    background: var(--hi-primary);
+    box-shadow: none;
     transition: width 0.5s ease-in-out;
   }
 }
@@ -158,7 +147,7 @@
 .actionItems {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(calc(50% - 16px), 1fr));
-  gap: 24px;
+  gap: 12px;
 
   @include mixins.respond-below(sm) {
     grid-template-columns: 1fr;
@@ -168,27 +157,30 @@
   & > div {
     margin-bottom: 0;
     position: relative;
-    padding: 28px;
-    border: 1px solid var(--mantine-color-gray-2);
-    border-radius: 12px;
-    transition: all 0.2s ease-in-out;
+    padding: 16px;
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
+    background: var(--hi-surface);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-      transform: translateY(-2px);
+      background: var(--hi-surface-soft);
+      border-color: var(--hi-border-strong);
+      box-shadow: none;
+      transform: none;
     }
 
     h2 {
       margin-top: 0;
       margin-bottom: 12px;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--mantine-color-gray-9);
+      font-size: 0.98rem;
+      font-weight: 650;
+      color: var(--hi-text);
     }
 
     p {
       margin-bottom: 20px;
-      color: var(--mantine-color-gray-7);
+      color: var(--hi-text-muted);
       line-height: 1.5;
       font-size: 14px;
     }
@@ -200,17 +192,18 @@
 }
 
 .completedCard {
-  background-color: var(--mantine-color-green-0);
-  border-color: var(--mantine-color-green-2);
+  background-color: color-mix(in srgb, var(--hi-success) 7%, white);
+  border-color: color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
 }
 
 .completedBadge {
   position: absolute;
   top: 12px;
   right: 12px;
-  background-color: var(--mantine-color-green-1);
-  color: var(--mantine-color-green-6);
-  border-radius: 50%;
+  background-color: color-mix(in srgb, var(--hi-success) 10%, white);
+  color: color-mix(in srgb, var(--hi-success) 68%, var(--hi-text));
+  border: 1px solid color-mix(in srgb, var(--hi-success) 18%, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
   width: 28px;
   height: 28px;
   display: flex;
@@ -219,8 +212,8 @@
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: var(--mantine-color-green-2);
-    transform: scale(1.05);
+    background-color: color-mix(in srgb, var(--hi-success) 13%, white);
+    transform: none;
   }
 
   svg {

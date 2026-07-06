@@ -36,7 +36,7 @@
 
 .warningText {
     font-size: 0.75rem;
-    color: var(--mantine-color-dimmed);
+    color: var(--hi-text-muted);
     text-align: center;
     margin: 0;
 }
@@ -63,10 +63,10 @@
 .sendToggle {
     display: flex;
     gap: 0;
-    border: 1px solid var(--mantine-color-gray-3);
-    border-radius: var(--mantine-radius-md);
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
     overflow: hidden;
-    background: var(--mantine-color-gray-0);
+    background: var(--hi-surface-soft);
 }
 
 .toggleOption {
@@ -80,21 +80,21 @@
     font-weight: 500;
     border: none;
     background: transparent;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
     cursor: pointer;
     transition: all 0.15s ease;
 
     &:hover:not(.toggleActive) {
-        color: var(--mantine-color-gray-8);
-        background: var(--mantine-color-gray-1);
+        color: var(--hi-text);
+        background: var(--hi-control-bg-active);
     }
 }
 
 .toggleActive {
-    background: #fff;
-    color: var(--mantine-color-dark-8);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    border-radius: calc(var(--mantine-radius-md) - 1px);
+    background: var(--hi-surface);
+    color: var(--hi-text);
+    box-shadow: none;
+    border-radius: var(--hi-radius-sm);
     position: relative;
     z-index: 1;
 }
@@ -117,25 +117,25 @@
     padding: 5px 12px;
     font-size: 0.78rem;
     font-weight: 500;
-    border: 1px solid var(--mantine-color-gray-3);
+    border: 1px solid var(--hi-border);
     border-radius: 999px;
-    background: #fff;
-    color: var(--mantine-color-gray-7);
+    background: var(--hi-surface);
+    color: var(--hi-text-muted);
     cursor: pointer;
     transition: all 0.15s ease;
     white-space: nowrap;
 
     &:hover:not(.presetChipActive) {
-        border-color: var(--mantine-color-primary-3);
-        color: var(--mantine-color-primary-6);
-        background: var(--mantine-color-primary-0);
+        border-color: color-mix(in srgb, var(--hi-primary) 22%, var(--hi-border));
+        color: var(--hi-primary);
+        background: color-mix(in srgb, var(--hi-primary) 7%, white);
     }
 }
 
 .presetChipActive {
-    border-color: var(--mantine-color-primary-5);
-    background: var(--mantine-color-primary-0);
-    color: var(--mantine-color-primary-7);
+    border-color: color-mix(in srgb, var(--hi-primary) 28%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-primary) 9%, white);
+    color: var(--hi-primary);
     font-weight: 600;
 }
 
@@ -144,9 +144,9 @@
     align-items: center;
     gap: 12px;
     padding: 12px 14px;
-    background: var(--mantine-color-primary-0);
-    border: 1px solid var(--mantine-color-primary-2);
-    border-radius: var(--mantine-radius-md);
+    background: color-mix(in srgb, var(--hi-primary) 7%, white);
+    border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
+    border-radius: var(--hi-radius-md);
 }
 
 .scheduledConfirmationIcon {
@@ -155,9 +155,9 @@
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 50%;
-    background: var(--mantine-color-primary-1);
-    color: var(--mantine-color-primary-6);
+    border-radius: var(--hi-radius-md);
+    background: color-mix(in srgb, var(--hi-primary) 9%, white);
+    color: var(--hi-primary);
     flex-shrink: 0;
 }
 
@@ -170,15 +170,15 @@
 .scheduledConfirmationDate {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--mantine-color-dark-7);
+    color: var(--hi-text);
 }
 
 .scheduledConfirmationTime {
     font-size: 0.78rem;
-    color: var(--mantine-color-gray-7);
+    color: var(--hi-text-muted);
 }
 
 .scheduledConfirmationTz {
     font-size: 0.7rem;
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
 }

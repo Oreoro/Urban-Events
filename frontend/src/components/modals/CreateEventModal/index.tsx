@@ -9,7 +9,7 @@ import {hasLength, useForm} from "@mantine/form";
 import {useCreateEvent} from "../../../mutations/useCreateEvent.ts";
 import {Editor} from "../../common/Editor";
 import {useGetOrganizers} from "../../../queries/useGetOrganizers.ts";
-import {IconCalendarEvent, IconSparkles, IconUsers, IconX} from "@tabler/icons-react";
+import {IconSparkles, IconUsers, IconX} from "@tabler/icons-react";
 import classes from "./CreateEventModal.module.scss";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
 import dayjs from "dayjs";
@@ -96,22 +96,6 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
 
     return (
         <div className={classes.modalOverlay} onClick={onClose}>
-            <div className={classes.floatingIcons}>
-                <IconCalendarEvent className={classes.floatingIcon} style={{top: '10%', left: '15%', animationDelay: '0s'}}/>
-                <IconSparkles className={classes.floatingIcon}
-                              style={{top: '20%', right: '20%', animationDelay: '2s'}}/>
-                <IconUsers className={classes.floatingIcon} style={{top: '60%', left: '10%', animationDelay: '4s'}}/>
-                <IconCalendarEvent className={classes.floatingIcon}
-                                   style={{bottom: '30%', right: '15%', animationDelay: '1s'}}/>
-                <IconSparkles className={classes.floatingIcon}
-                              style={{bottom: '15%', left: '25%', animationDelay: '3s'}}/>
-                <IconUsers className={classes.floatingIcon} style={{top: '40%', right: '8%', animationDelay: '5s'}}/>
-                <IconSparkles className={classes.floatingIcon}
-                              style={{top: '70%', left: '70%', animationDelay: '2.5s'}}/>
-                <IconCalendarEvent className={classes.floatingIcon}
-                                   style={{top: '25%', left: '60%', animationDelay: '1.5s'}}/>
-            </div>
-
             <div className={classes.modalContainer} onClick={(e) => e.stopPropagation()}>
                 <button
                     className={classes.closeButton}
@@ -123,7 +107,6 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
 
                 <div className={classes.modalHeader}>
                     <div className={classes.headerContent}>
-                        <div className={classes.magicWand}><IconSparkles size={28}/></div>
                         <h1 className={classes.headerTitle}>{t`Create Your Event`}</h1>
                         <p className={classes.headerSubtitle}>{t`Tell us about your event`}</p>
                     </div>

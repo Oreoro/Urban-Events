@@ -2,7 +2,7 @@
 
 .mailLayout {
   display: flex;
-  background: #ffffff;
+  background: var(--hi-surface);
   overflow: hidden;
   margin: calc(var(--hi-spacing-lg) * -1);
   margin-bottom: calc((var(--hi-spacing-lg) + 40px) * -1);
@@ -23,8 +23,8 @@
   min-width: 360px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--mantine-color-gray-2);
-  background: #ffffff;
+  border-right: 1px solid var(--hi-border);
+  background: var(--hi-surface);
 
   @media (max-width: 991px) {
     width: 300px;
@@ -56,14 +56,14 @@
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
-  color: var(--mantine-color-dark-8);
+  color: var(--hi-text);
 }
 
 .messageCount {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--mantine-color-gray-6);
-  background: var(--mantine-color-gray-1);
+  color: var(--hi-text-muted);
+  background: var(--hi-surface-soft);
   padding: 1px 7px;
   border-radius: 10px;
   line-height: 1.5;
@@ -86,7 +86,7 @@
 
 .listFooter {
   padding: 8px 16px;
-  border-top: 1px solid var(--mantine-color-gray-2);
+  border-top: 1px solid var(--hi-border);
   display: flex;
   justify-content: center;
   flex-shrink: 0;
@@ -99,7 +99,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--mantine-color-gray-0);
+  background: var(--hi-surface-soft);
   min-width: 0;
 }
 
@@ -115,7 +115,7 @@
 
   svg {
     opacity: 0.3;
-    color: var(--mantine-color-gray-5);
+    color: var(--hi-text-muted);
   }
 
   p {
@@ -123,14 +123,14 @@
     margin: 0;
     max-width: 320px;
     line-height: 1.5;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
   }
 }
 
 .previewHeader {
   padding: 16px 24px 18px;
-  border-bottom: 1px solid var(--mantine-color-gray-2);
-  background: #ffffff;
+  border-bottom: 1px solid var(--hi-border);
+  background: var(--hi-surface);
   flex-shrink: 0;
 }
 
@@ -159,7 +159,7 @@
 .previewSubject {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--mantine-color-dark-8);
+  color: var(--hi-text);
   margin-bottom: 14px;
   line-height: 1.35;
   overflow-wrap: break-word;
@@ -180,17 +180,17 @@
 .previewSenderName {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--mantine-color-dark-7);
+  color: var(--hi-text);
 }
 
 .previewRecipientType {
   font-size: 0.78rem;
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   margin-top: 2px;
 }
 
 .recipientLink {
-  color: var(--mantine-color-primary-6);
+  color: var(--hi-primary);
   text-decoration: underline dotted;
   cursor: pointer;
 
@@ -200,14 +200,14 @@
 }
 
 .recipientLinkDisabled {
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   text-decoration: underline dotted;
   cursor: default;
 }
 
 .previewDate {
   font-size: 0.78rem;
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   white-space: nowrap;
 }
 
@@ -220,17 +220,17 @@
 }
 
 .previewCard {
-  background: #ffffff;
-  border: 1px solid var(--mantine-color-gray-2);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-lg);
   padding: 28px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: none;
 }
 
 .previewContent {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: var(--mantine-color-dark-7);
+  color: var(--hi-text-light);
   word-break: break-word;
 
   img {
@@ -239,14 +239,14 @@
   }
 
   a {
-    color: var(--mantine-color-primary-6);
+    color: var(--hi-primary);
   }
 }
 
 .previewActions {
   padding: 14px 24px;
-  border-top: 1px solid var(--mantine-color-gray-2);
-  background: #ffffff;
+  border-top: 1px solid var(--hi-border);
+  background: var(--hi-surface);
   flex-shrink: 0;
 }
 
@@ -269,12 +269,12 @@
   justify-content: center;
   gap: 10px;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.92);
+  background: color-mix(in srgb, var(--hi-surface) 92%, transparent);
 
   p {
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
     margin: 0;
   }
 }
@@ -284,14 +284,14 @@
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--mantine-color-gray-1);
+  border-bottom: 1px solid var(--hi-border);
 }
 
 .ghostAvatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--mantine-color-gray-2);
+  background: var(--hi-border);
   flex-shrink: 0;
 }
 
@@ -307,21 +307,21 @@
   width: 45%;
   height: 9px;
   border-radius: 4px;
-  background: var(--mantine-color-gray-2);
+  background: var(--hi-border);
 }
 
 .ghostLineLong {
   width: 85%;
   height: 10px;
   border-radius: 4px;
-  background: var(--mantine-color-gray-1);
+  background: var(--hi-surface-soft);
 }
 
 .ghostLineMed {
   width: 65%;
   height: 8px;
   border-radius: 4px;
-  background: var(--mantine-color-gray-1);
+  background: var(--hi-surface-soft);
 }
 
 .loadingState {
@@ -337,7 +337,7 @@
   align-items: center;
   gap: 5px;
   font-size: 0.78rem;
-  color: var(--mantine-color-blue-6);
+  color: var(--hi-primary);
 }
 
 // ── Mobile: show one panel at a time ────────────────

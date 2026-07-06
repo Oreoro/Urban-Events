@@ -106,7 +106,7 @@ const Users = () => {
                 </Badge>
             </Table.Td>
             <Table.Td width={'60px'}>
-                <Menu shadow="md" width={200}>
+                <Menu shadow="xs" width={200}>
                     <Menu.Target>
                         <Button variant={'transparent'}>
                             <IconDotsVertical size={18}/>

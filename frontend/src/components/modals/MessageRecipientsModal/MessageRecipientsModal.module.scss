@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid var(--mantine-color-gray-2);
+  border-bottom: 1px solid var(--hi-border);
   gap: 12px;
 
   &:last-child {
@@ -13,7 +13,7 @@
 
 .recipientEmail {
   font-size: 0.88rem;
-  color: var(--mantine-color-dark-7);
+  color: var(--hi-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -30,14 +30,14 @@
 
 .recipientDate {
   font-size: 0.75rem;
-  color: var(--mantine-color-gray-5);
+  color: var(--hi-text-muted);
   white-space: nowrap;
 }
 
 .emptyState {
   text-align: center;
   padding: 32px 16px;
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   font-size: 0.88rem;
 }
 
@@ -50,6 +50,6 @@
 
 .headerCount {
   font-size: 0.78rem;
-  color: var(--mantine-color-gray-6);
+  color: var(--hi-text-muted);
   margin-bottom: 12px;
 }

@@ -64,7 +64,7 @@ export const EditQuestionModal = ({onClose, questionId}: EditQuestionModalProps)
         onSuccess: () => {
             notifications.show({
                 message: t`Successfully Created Question`,
-                color: '#0d9488',
+                color: 'blue',
                 position: 'top-center',
             });
             queryClient.invalidateQueries({queryKey: [GET_EVENT_QUESTIONS_QUERY_KEY, eventId]}).then(() => {
