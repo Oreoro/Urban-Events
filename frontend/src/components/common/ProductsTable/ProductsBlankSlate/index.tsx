@@ -1,6 +1,6 @@
 import {NoResultsSplash} from "../../NoResultsSplash";
 import {Button} from "../../Button";
-import {IconPlus} from "@tabler/icons-react";
+import {IconPlus, IconSearch, IconTicket} from "@tabler/icons-react";
 import {t, Trans} from "@lingui/macro";
 
 interface ProductsBlankSlateProps {
@@ -16,7 +16,7 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
     if (searchTerm) {
         return (
             <NoResultsSplash
-                imageHref={'/blank-slate/tickets.svg'}
+                icon={<IconSearch size={24} stroke={1.8}/>}
                 heading={t`No Search Results`}
                 subHeading={(
                     <>
@@ -35,7 +35,7 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
     if (showLargeBlankSlate) {
         return (
             <NoResultsSplash
-                imageHref={'/blank-slate/tickets.svg'}
+                icon={<IconTicket size={24} stroke={1.8}/>}
                 heading={t`No Products Yet`}
                 subHeading={(
                     <>
@@ -43,8 +43,8 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
                             {t`You'll need at least one product to get started. Free, paid or let the user decide what to pay.`}
                         </p>
                         <Button
-                            size={'xs'}
-                            leftSection={<IconPlus/>}
+                            size={'sm'}
+                            leftSection={<IconPlus size={16}/>}
                             onClick={() => openCreateModal()}
                         >
                             {t`Add Product to Category`}
@@ -56,15 +56,21 @@ export const ProductsBlankSlate = ({openCreateModal, productCategories, searchTe
     }
 
     return (
-        <div style={{textAlign: 'center'}}><p style={{marginBottom: 20, marginTop: 0}}>
-            {t`This category doesn't have any products yet.`}
-        </p>
-            <Button
-                size={'xs'}
-                leftSection={<IconPlus/>}
-                onClick={() => openCreateModal()}
-            >{t`Add Product`}
-            </Button>
-        </div>
+        <NoResultsSplash
+            compact
+            icon={<IconTicket size={22} stroke={1.8}/>}
+            heading={t`No products in this category`}
+            subHeading={(
+                <>
+                    <p>{t`This category doesn't have any products yet.`}</p>
+                    <Button
+                        size={'sm'}
+                        leftSection={<IconPlus size={16}/>}
+                        onClick={() => openCreateModal()}
+                    >{t`Add Product`}
+                    </Button>
+                </>
+            )}
+        />
     )
 }

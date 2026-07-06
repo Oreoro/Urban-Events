@@ -7,7 +7,9 @@ interface NoResultsSplashProps {
     heading?: React.ReactNode,
     children?: React.ReactNode,
     subHeading?: React.ReactNode,
-    imageHref?: string
+    imageHref?: string,
+    icon?: React.ReactNode,
+    compact?: boolean,
 }
 
 export const NoResultsSplash = ({
@@ -15,14 +17,20 @@ export const NoResultsSplash = ({
                                     children,
                                     subHeading,
                                     imageHref = '/no-results-empty-boxes.svg',
+                                    icon,
+                                    compact = false,
                                 }: NoResultsSplashProps) => {
     const [searchParams] = useSearchParams();
     const hasSearchQuery = !!searchParams.get('query');
 
     return (
-        <div className={classes.container}>
-            <div className={classes.visual}>
-                <img alt={t`No results`} width={300} src={imageHref}/>
+        <div className={`${classes.container} ${compact ? classes.compact : ''}`}>
+            <div className={classes.visual} aria-hidden="true">
+                {icon ? (
+                    <span className={classes.icon}>{icon}</span>
+                ) : (
+                    <img alt="" width={300} src={imageHref}/>
+                )}
             </div>
 
             {heading && !hasSearchQuery && <h2>{heading}</h2>}

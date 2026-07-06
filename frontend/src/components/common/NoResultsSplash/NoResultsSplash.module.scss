@@ -2,13 +2,13 @@
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  max-width: 480px;
-  text-align: center;
+  max-width: 520px;
+  text-align: left;
   margin: 24px auto;
-  padding: 24px;
+  padding: 22px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
@@ -21,7 +21,8 @@
     height: 54px;
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text);
   }
 
   img {
@@ -35,6 +36,13 @@
       width: 32px;
       height: 32px;
     }
+  }
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
   }
 
   h2 {
@@ -51,4 +59,10 @@
     line-height: 1.5;
     margin: 8px 0 14px;
   }
+}
+
+.compact {
+  max-width: 100%;
+  margin: 12px 0;
+  padding: 16px;
 }

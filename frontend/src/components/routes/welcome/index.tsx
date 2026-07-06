@@ -308,14 +308,17 @@ export const CreateEvent = ({progressInfo}: {
                     <h2 className={classes.stepTitle}>
                         {t`Create your first event`}
                     </h2>
+                    <p className={classes.stepDescription}>
+                        {t`Start with the basics. You can refine tickets, branding, and checkout after the event is created.`}
+                    </p>
                 </div>
 
                 <div className={classes.stepContent}>
                     <form onSubmit={form.onSubmit(handleSubmit)}>
                         <Stack gap={24}>
                             {/* Event Category */}
-                            <div>
-                                <Text size="lg" fw={600} mb="lg">{t`What type of event?`}</Text>
+                            <div className={classes.fieldGroup}>
+                                <Text className={classes.fieldQuestion}>{t`Choose an event type`}</Text>
 
                                 {/* Desktop Grid */}
                                 <div className={classes.categoryGrid}>
@@ -328,6 +331,7 @@ export const CreateEvent = ({progressInfo}: {
                                             }`}
                                             onClick={() => handleCategorySelect(category.id)}
                                             disabled={eventMutation.isPending}
+                                            aria-pressed={selectedCategory === category.id}
                                         >
                                             <div className={classes.categoryMark}>{getCategoryMark(category.name)}</div>
                                             <div className={classes.categoryText}>{category.name}</div>
@@ -476,6 +480,7 @@ const Welcome = () => {
                     <div className={classes.logo}>
                         <BrandWordmark tone="light" size="md"/>
                     </div>
+                    <p className={classes.welcomeKicker}>{t`Workspace setup`}</p>
                     <h1 className={classes.welcomeTitle}>
                         <Trans>
                             Welcome to {getConfig("VITE_APP_NAME", "Urban Events")}, {userData?.first_name}
