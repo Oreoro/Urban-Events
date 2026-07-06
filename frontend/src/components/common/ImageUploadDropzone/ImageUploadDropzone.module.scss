@@ -10,18 +10,18 @@
 .dropzone {
   width: 100%;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.15s ease;
 
   &:hover {
-    border-color: color-mix(in srgb, var(--hi-primary) 35%, var(--hi-border-strong));
+    border-color: var(--hi-border-strong);
   }
 }
 
 .dropzoneRoot {
   border: 1px dashed var(--hi-border-strong);
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-surface);
   border-radius: var(--hi-radius-md);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .dropzoneInner {
@@ -38,11 +38,12 @@
 }
 
 .iconWrapper {
-  background-color: color-mix(in srgb, var(--hi-primary) 8%, white);
-  color: var(--hi-primary);
-  width: 70px;
-  height: 70px;
-  border-radius: var(--hi-radius-lg);
+  background-color: var(--hi-surface-soft);
+  color: var(--hi-text-muted);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--hi-radius-md);
+  border: 1px solid var(--hi-border);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,11 +106,11 @@
 
 // Error states
 .dropzoneError {
-  border-color: color-mix(in srgb, var(--hi-danger) 28%, var(--hi-border)) !important;
-  background-color: color-mix(in srgb, var(--hi-danger) 8%, white);
+  border-color: var(--hi-border-strong) !important;
+  background-color: var(--hi-surface);
   
   &:hover {
-    border-color: color-mix(in srgb, var(--hi-danger) 38%, var(--hi-border)) !important;
+    border-color: var(--hi-border-strong) !important;
   }
 }
 

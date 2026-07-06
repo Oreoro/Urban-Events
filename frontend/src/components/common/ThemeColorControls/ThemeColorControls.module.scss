@@ -31,7 +31,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-primary);
+    outline: 2px solid var(--hi-text);
     outline-offset: 2px;
   }
 
@@ -41,8 +41,8 @@
   }
 
   &[data-active="true"] {
-    background: color-mix(in srgb, var(--hi-primary) 6%, white);
-    border-color: color-mix(in srgb, var(--hi-primary) 30%, var(--hi-border));
+    background: var(--hi-surface-soft);
+    border-color: var(--hi-border-strong);
     box-shadow: none;
   }
 }
@@ -84,7 +84,7 @@
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  background: var(--hi-primary);
+  background: var(--hi-text);
   color: #ffffff;
 }
 
@@ -125,7 +125,7 @@
   padding: 0 8px;
   border-radius: var(--hi-radius-sm);
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0;
   white-space: nowrap;
 }

@@ -67,7 +67,7 @@
 
 .organizerName {
     font-size: 0.95rem;
-    font-weight: 650;
+    font-weight: 600;
     color: var(--hi-text);
     margin: 0 0 2px 0;
     white-space: nowrap;
@@ -76,9 +76,9 @@
 }
 
 .selectIcon {
-    color: var(--hi-primary);
+    color: var(--hi-text-muted);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.15s ease;
 }
 
 .emptyState {
@@ -111,12 +111,12 @@
     color: var(--hi-text-muted);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 
     &:hover {
-        border-color: color-mix(in srgb, var(--hi-primary) 35%, var(--hi-border));
+        border-color: var(--hi-border-strong);
         color: var(--hi-text);
-        background: color-mix(in srgb, var(--hi-primary) 7%, white);
+        background: var(--hi-surface-soft);
     }
 }
 

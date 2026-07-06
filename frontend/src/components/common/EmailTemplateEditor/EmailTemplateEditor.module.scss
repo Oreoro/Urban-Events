@@ -58,13 +58,13 @@
   }
   
   .tokenReference {
-    background: color-mix(in srgb, var(--hi-primary) 7%, white);
-    border: 1px solid color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border));
+    background: var(--hi-surface);
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
     
     .tokenItem {
       padding: 0.5rem 0.75rem;
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-primary) 12%, var(--hi-border));
+      border-bottom: 1px solid var(--hi-border);
       
       &:last-child {
         border-bottom: none;
@@ -73,7 +73,7 @@
       .tokenName {
         font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
         font-size: 0.8rem;
-        background: color-mix(in srgb, var(--hi-primary) 10%, white);
+        background: var(--hi-surface-soft);
         padding: 0.125rem 0.375rem;
         border-radius: 0.25rem;
         display: inline-block;
