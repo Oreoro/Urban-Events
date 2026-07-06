@@ -29,18 +29,18 @@
 }
 
 .dropdown {
-  padding: 6px !important;
-  border-radius: var(--hi-radius-lg) !important;
+  padding: 4px !important;
+  border-radius: var(--hi-radius-md) !important;
   border: 1px solid var(--hi-border) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 }
 
 .menuItem {
-  min-height: 32px;
+  min-height: 30px;
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text-light);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 560;
 
   svg {

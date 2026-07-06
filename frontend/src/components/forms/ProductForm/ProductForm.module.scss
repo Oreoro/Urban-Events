@@ -1,11 +1,11 @@
 .priceTierCard {
   position: relative;
-  padding: var(--hi-spacing-md) var(--hi-spacing-lg);
+  padding: 12px 14px;
   margin-bottom: var(--hi-spacing-md);
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-left: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
 
   h3 {
@@ -46,13 +46,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: var(--hi-spacing-sm) var(--hi-spacing-md);
+  padding: 8px 10px;
   margin-top: var(--hi-spacing-sm);
-  margin-bottom: var(--hi-spacing-xl);
+  margin-bottom: 18px;
   cursor: pointer;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {

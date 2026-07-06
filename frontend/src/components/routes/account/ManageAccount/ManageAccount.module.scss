@@ -2,36 +2,36 @@
   margin-bottom: var(--hi-spacing-xl);
 
   h1 {
-    margin: 0 0 16px;
-    font-size: 1.55rem;
-    font-weight: 680;
+    margin: 0 0 12px;
+    font-size: 1.45rem;
+    font-weight: 650;
     letter-spacing: 0;
   }
 
   .tabsCard {
     padding: 0;
     box-shadow: none;
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     overflow: hidden;
   }
 
   .tabWrapper {
     position: relative;
-    margin-bottom: var(--hi-spacing-lg);
+    margin-bottom: 16px;
 
     .tabContent {
       position: relative;
-      padding: var(--hi-spacing-lg);
+      padding: 16px;
       background: var(--hi-surface);
       border: 1px solid var(--hi-border);
-      border-radius: var(--hi-radius-lg);
+      border-radius: var(--hi-radius-md);
     }
 
     .feeExample {
-      padding: var(--hi-spacing-lg);
+      padding: 14px;
       background: var(--hi-shell-bg);
       border: 1px solid var(--hi-border);
-      border-radius: var(--hi-radius-lg);
+      border-radius: var(--hi-radius-md);
     }
   }
 
