@@ -26,7 +26,7 @@
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-md);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     text-decoration: none;
     color: var(--hi-text);
 

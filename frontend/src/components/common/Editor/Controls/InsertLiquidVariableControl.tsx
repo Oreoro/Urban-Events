@@ -131,7 +131,7 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
                                         </Text>
                                         <Text 
                                             size="xs" 
-                                            c="var(--hi-primary)"
+                                            c="var(--hi-text-light)"
                                             ff="monospace"
                                             style={{
                                                 backgroundColor: 'var(--hi-surface-soft)',

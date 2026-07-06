@@ -18,8 +18,9 @@ export const HidScannerStatus = ({
 
     return (
         <div style={{
-            backgroundColor: pageHasFocus ? 'var(--hi-primary)' : 'var(--hi-warning)',
-            color: 'var(--hi-color-white)',
+            backgroundColor: pageHasFocus ? 'var(--hi-text)' : 'var(--hi-status-warning-bg)',
+            color: pageHasFocus ? 'var(--hi-color-white)' : 'var(--hi-status-warning-text)',
+            borderBottom: pageHasFocus ? '1px solid var(--hi-text)' : '1px solid var(--hi-status-warning-border)',
             padding: '8px 16px',
             display: 'flex',
             alignItems: 'center',

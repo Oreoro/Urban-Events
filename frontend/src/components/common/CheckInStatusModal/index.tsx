@@ -78,7 +78,7 @@ export const CheckInStatusModal = ({
                     <Group gap="sm" style={{flex: 1}}>
                         {isEligible ? (
                             isCheckedIn ? (
-                                <IconCheck size={20} color="var(--hi-success)"/>
+                                <IconCheck size={20} color="var(--hi-status-success-text)"/>
                             ) : (
                                 <IconX size={20} color="var(--hi-text-muted)"/>
                             )

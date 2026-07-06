@@ -119,7 +119,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                     withCloseButton={false}
                 >
                     <div style={{textAlign: 'center', padding: '30px 20px'}}>
-                        <IconAlertTriangle size={48} color="var(--hi-danger)" stroke={1.6} style={{marginBottom: 16}}/>
+                        <IconAlertTriangle size={48} color="var(--hi-status-danger-text)" stroke={1.6} style={{marginBottom: 16}}/>
                         <Text size="xl" fw={600} mb="xs">
                             {t`Unable to join waitlist`}
                         </Text>

@@ -97,7 +97,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     title={t`Click to copy`}
                                     style={{cursor: 'pointer', alignItems: 'center'}}
                                     rightSection={(<Flex>
-                                        {clipboard.copied ? <IconCheck color={'var(--hi-primary)'} size={'12'}/> :
+                                        {clipboard.copied ? <IconCheck color={'var(--hi-text-muted)'} size={'12'}/> :
                                             <IconCopy size={'12'}/>}
                                     </Flex>)}
                                     onClick={() => {

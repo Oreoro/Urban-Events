@@ -302,7 +302,7 @@ $color-money: var(--hi-text);
   gap: 4px;
   padding: 2px 8px;
   background-color: var(--hi-surface-soft);
-  color: color-mix(in srgb, var(--hi-warning) 62%, var(--hi-text));
+  color: var(--hi-status-warning-text);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
   font-size: 11px;
@@ -369,7 +369,7 @@ $color-money: var(--hi-text);
 .lowStock {
   font-size: 11px;
   font-weight: 500;
-  color: var(--hi-warning);
+  color: var(--hi-status-warning-text);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -379,7 +379,7 @@ $color-money: var(--hi-text);
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--hi-warning);
+    background-color: var(--hi-status-warning-text);
     opacity: 0.72;
   }
 }

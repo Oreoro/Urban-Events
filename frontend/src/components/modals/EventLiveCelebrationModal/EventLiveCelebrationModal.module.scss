@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--hi-primary);
+    color: var(--hi-text-muted);
     background: var(--hi-surface-soft);
     border: 1px solid var(--hi-border);
     margin-bottom: 1rem;
@@ -27,7 +27,7 @@
 
 .title {
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 650;
     color: var(--hi-text);
     margin-bottom: 0.5rem;
 }

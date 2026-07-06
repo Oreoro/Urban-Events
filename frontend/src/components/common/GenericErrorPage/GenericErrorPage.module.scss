@@ -46,7 +46,7 @@
   background: var(--hi-surface-raised);
   padding: var(--mantine-spacing-xl);
   border-radius: var(--hi-radius-lg);
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: none;
   border: 1px solid var(--hi-border);
   position: relative;
 
@@ -65,7 +65,7 @@
 }
 
 .title {
-  font-weight: 700;
+  font-weight: 650;
   margin-bottom: var(--mantine-spacing-md);
   font-size: clamp(24px, 5vw, 36px);
   line-height: 1.2;

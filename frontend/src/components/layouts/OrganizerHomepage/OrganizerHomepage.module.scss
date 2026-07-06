@@ -533,7 +533,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: $radius-xs;
-    transition: all $transition-fast;
+    transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
     min-width: 36px;
     height: 36px;
 

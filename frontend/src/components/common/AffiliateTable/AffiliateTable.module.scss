@@ -33,7 +33,7 @@
 
 .copyButton {
     opacity: 0.6;
-    transition: all 0.15s ease;
+    transition: opacity 0.15s ease, background-color 0.15s ease;
     padding: 4px 8px;
     height: auto;
     border-radius: 8px;
@@ -106,7 +106,7 @@
     font-size: 0.65rem;
     color: var(--hi-text-muted);
     font-weight: 500;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0;
     margin-top: 1px;
 }

@@ -136,11 +136,11 @@
         }
         
         &[data-selected="true"] {
-          background: color-mix(in srgb, var(--hi-primary) 7%, white);
+          background: var(--hi-surface-soft);
           
           .themeCircle {
             box-shadow: none;
-            border-color: color-mix(in srgb, var(--hi-primary) 44%, var(--hi-border));
+            border-color: var(--hi-border-strong);
           }
         }
       }
@@ -196,8 +196,8 @@
         align-items: center;
         justify-content: center;
         box-shadow: none;
-        color: var(--hi-primary);
-        border: 1px solid color-mix(in srgb, var(--hi-primary) 30%, var(--hi-border));
+        color: var(--hi-text);
+        border: 1px solid var(--hi-border-strong);
       }
     }
   }
