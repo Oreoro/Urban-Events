@@ -7,9 +7,10 @@
   --widget-muted-fg: color-mix(in srgb, var(--widget-fg) 58%, var(--widget-background-color, var(--hi-color-white)));
   --widget-accent: var(--widget-secondary-color, var(--hi-text));
   --widget-accent-text: var(--widget-secondary-text-color, var(--hi-color-white));
-  --widget-border: var(--widget-primary-color, var(--hi-border));
+  --widget-border: color-mix(in srgb, var(--widget-fg) 14%, var(--widget-background-color, var(--hi-color-white)));
   --widget-border-strong: color-mix(in srgb, var(--widget-border) 78%, var(--widget-fg));
-  --widget-soft-accent: color-mix(in srgb, var(--widget-accent) 7%, var(--widget-background-color, var(--hi-color-white)));
+  --widget-soft-accent: color-mix(in srgb, var(--widget-fg) 5%, var(--widget-background-color, var(--hi-color-white)));
+  --widget-panel: color-mix(in srgb, var(--widget-fg) 2%, var(--widget-background-color, var(--hi-color-white)));
 
   background-color: var(--widget-background-color, var(--hi-color-white));
   color: var(--widget-fg);
@@ -22,16 +23,18 @@
   .hi-product-rows {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 14px;
 
     .hi-product-row {
       display: flex;
       flex-flow: column;
       border: 1px solid var(--widget-border);
       border-radius: var(--hi-radius-lg);
+      background: var(--widget-background-color, var(--hi-color-white));
       position: relative;
       overflow: hidden;
+      transition: background-color 140ms ease, border-color 140ms ease;
 
       &.hi-product-highlighted {
         border-color: var(--widget-border-strong);
@@ -43,8 +46,8 @@
         color: var(--widget-accent-text);
         font-size: 0.75rem;
         font-weight: 500;
-        padding: 6px 16px;
-        text-align: center;
+        padding: 7px 14px;
+        text-align: left;
         letter-spacing: 0;
       }
 
@@ -52,9 +55,9 @@
         font-size: .9em;
 
         img {
-            max-width: 100%;
-            height: auto;
-            margin: 10px 0;
+          max-width: 100%;
+          height: auto;
+          margin: 10px 0;
         }
       }
 
@@ -65,7 +68,7 @@
 
         .hi-product-title {
           flex: 1;
-          padding: 10px 20px;
+          padding: 10px 14px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -102,7 +105,7 @@
       }
 
       .hi-product-content {
-        padding: 10px 20px;
+        padding: 10px 14px 14px;
       }
 
       .hi-price-tiers-rows {
@@ -150,6 +153,7 @@
                 color: var(--widget-fg);
                 background-color: var(--widget-background-color, var(--hi-color-white));
                 border: 1px solid var(--widget-border);
+                border-radius: var(--hi-radius-sm);
               }
             }
           }
@@ -169,6 +173,7 @@
 
               background-color: var(--widget-accent);
               color: var(--widget-accent-text);
+              border-radius: var(--hi-radius-sm);
             }
           }
 
@@ -176,6 +181,7 @@
             input {
               background-color: var(--widget-background-color, var(--hi-color-white));
               border: 1px solid var(--widget-border);
+              border-radius: var(--hi-radius-sm);
               color: var(--widget-fg);
             }
 
@@ -212,28 +218,31 @@
   .hi-promo-code-row {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 14px;
+    margin-top: 14px;
 
     .hi-promo-code-input {
       flex: 1;
-      margin-right: 20px;
+      margin-right: 10px;
       background: var(--widget-background-color, var(--hi-color-white));
       border: 1px solid var(--widget-border);
+      border-radius: var(--hi-radius-sm);
       color: var(--widget-fg);
     }
 
     .hi-apply-promo-code-button {
-      width: 200px;
+      width: 160px;
       background-color: var(--widget-accent);
       color: var(--widget-accent-text);
       border: none;
+      border-radius: var(--hi-radius-sm);
     }
 
     .hi-close-promo-code-input-button {
-        background-color: var(--widget-accent);
-        color: var(--widget-accent-text);
-        border: none;
+      background-color: var(--widget-accent);
+      color: var(--widget-accent-text);
+      border: none;
+      border-radius: var(--hi-radius-sm);
     }
 
     .hi-promo-code-applied {
@@ -248,19 +257,21 @@
 
   .hi-footer-row {
     display: flex;
-    margin-top: 20px;
+    margin-top: 14px;
     flex-direction: column;
 
     .hi-product-page-message {
-      margin-bottom: 20px;
-      padding: 10px 20px;
+      margin-bottom: 14px;
+      padding: 10px 14px;
       border-radius: var(--hi-radius-md);
-      background-color: var(--widget-soft-accent);
+      border: 1px solid var(--widget-border);
+      background-color: var(--widget-panel);
     }
 
     .hi-continue-button {
       background-color: var(--widget-accent);
       color: var(--widget-accent-text);
+      border-radius: var(--hi-radius-sm);
     }
   }
 }
