@@ -18,11 +18,11 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-surface);
+    background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.5rem 0.68rem !important;
+    padding: 0.46rem 0.62rem !important;
     border-bottom: 1px solid var(--hi-border);
-    font-size: 0.73rem;
+    font-size: 0.71rem;
     font-weight: 600;
     letter-spacing: 0;
     line-height: 1.25;
@@ -60,20 +60,20 @@
     transition: background-color 0.14s ease, box-shadow 0.14s ease;
 
     &:hover {
-      background: var(--hi-control-bg-hover);
+      background: var(--hi-surface-soft);
 
       .stickyLeft,
       .stickyRight {
-        background: var(--hi-control-bg-hover);
+        background: var(--hi-surface-soft);
       }
     }
 
     td {
-      padding: 0.58rem 0.68rem !important;
+      padding: 0.52rem 0.62rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
       border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 500;
       line-height: 1.35;
       vertical-align: middle;
@@ -127,6 +127,6 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-surface);
+  background-color: var(--hi-surface-soft);
   z-index: 12;
 }

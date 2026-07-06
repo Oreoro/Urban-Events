@@ -2,6 +2,7 @@ import React from "react";
 import classes from './NoResultsSplash.module.scss';
 import {useSearchParams} from "react-router";
 import {t} from "@lingui/macro";
+import {IconInbox} from "@tabler/icons-react";
 
 interface NoResultsSplashProps {
     heading?: React.ReactNode,
@@ -16,7 +17,7 @@ export const NoResultsSplash = ({
                                     heading = t`There's nothing to show yet`,
                                     children,
                                     subHeading,
-                                    imageHref = '/no-results-empty-boxes.svg',
+                                    imageHref,
                                     icon,
                                     compact = false,
                                 }: NoResultsSplashProps) => {
@@ -28,8 +29,10 @@ export const NoResultsSplash = ({
             <div className={classes.visual} aria-hidden="true">
                 {icon ? (
                     <span className={classes.icon}>{icon}</span>
-                ) : (
+                ) : imageHref ? (
                     <img alt="" width={300} src={imageHref}/>
+                ) : (
+                    <IconInbox size={22} stroke={1.7}/>
                 )}
             </div>
 

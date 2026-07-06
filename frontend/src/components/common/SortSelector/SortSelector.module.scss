@@ -12,16 +12,16 @@
     }
 
     input {
-      min-height: 32px;
-      height: 32px;
-      background: var(--hi-shell-bg);
+      min-height: 31px;
+      height: 31px;
+      background: var(--hi-surface);
       border-color: var(--hi-border);
       color: var(--hi-text-light);
       font-size: 0.82rem;
       font-weight: 520;
 
       &:hover {
-        background: var(--hi-surface);
+        background: var(--hi-control-bg-hover);
         border-color: var(--hi-border-strong);
       }
     }
