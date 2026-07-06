@@ -44,8 +44,8 @@
   width: 100%;
   text-align: center;
   background: var(--hi-surface);
-  padding: 28px;
-  border-radius: var(--hi-radius-lg);
+  padding: 24px;
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
   border: 1px solid var(--hi-border);
   position: relative;
@@ -60,7 +60,7 @@
     max-width: 100%;
     padding: var(--mantine-spacing-md);
     margin: 0;
-    border-radius: var(--mantine-radius-lg);
+    border-radius: var(--hi-radius-md);
   }
 }
 

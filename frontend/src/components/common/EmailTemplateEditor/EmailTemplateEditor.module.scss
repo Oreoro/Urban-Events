@@ -1,15 +1,15 @@
 .editor {
   .editorHeader {
-    padding: 14px;
+    padding: 12px;
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     background: var(--hi-shell-bg);
   }
 
   .editorTitle {
     color: var(--hi-text);
-    font-size: 1rem;
-    font-weight: 680;
+    font-size: 0.95rem;
+    font-weight: 650;
     letter-spacing: 0;
   }
 
@@ -24,7 +24,7 @@
       gap: 4px;
       padding: 4px;
       border: 1px solid var(--hi-border);
-      border-radius: var(--hi-radius-lg);
+      border-radius: var(--hi-radius-md);
       background: var(--hi-shell-bg);
     }
 
@@ -36,7 +36,7 @@
 
   .ctaCard {
     border-color: var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     background: var(--hi-shell-bg);
   }
 
@@ -46,14 +46,14 @@
 
   .templatePreview {
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     background: var(--hi-surface);
     
     .previewHeader {
-      padding: 12px 14px;
+      padding: 10px 12px;
       background: var(--hi-shell-bg);
       border-bottom: 1px solid var(--hi-border);
-      border-radius: var(--hi-radius-lg) var(--hi-radius-lg) 0 0;
+      border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
     }
 
     .previewLabel {
@@ -64,14 +64,14 @@
 
     .previewSubject {
       color: var(--hi-text);
-      font-size: 1rem;
-      font-weight: 680;
+      font-size: 0.95rem;
+      font-weight: 650;
       line-height: 1.35;
     }
     
     .previewContent {
       min-height: 260px;
-      padding: 22px;
+      padding: 18px;
       
       :global(.mantine-TypographyStylesProvider-root) {
         color: var(--hi-text-light);
@@ -124,7 +124,7 @@
       svg {
         padding: 10px;
         border: 1px solid var(--hi-border);
-        border-radius: var(--hi-radius-lg);
+        border-radius: var(--hi-radius-md);
         background: var(--hi-shell-bg);
       }
     }
@@ -142,7 +142,7 @@
   .tokenReference {
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-lg);
+    border-radius: var(--hi-radius-md);
     
     .tokenItem {
       padding: 0.5rem 0.75rem;

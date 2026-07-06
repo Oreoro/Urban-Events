@@ -6,10 +6,10 @@
   gap: 16px;
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-lg);
-  padding: 18px;
-  margin-top: 28px;
-  margin-bottom: 28px;
+  border-radius: var(--hi-radius-md);
+  padding: 14px;
+  margin-top: 22px;
+  margin-bottom: 22px;
 
   @include mixins.respond-below(sm) {
     flex-direction: column;
@@ -18,8 +18,8 @@
 }
 
 .iconContainer {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   background: var(--hi-shell-bg);
   border: 1px solid var(--checkout-border, var(--hi-border));
   border-radius: var(--hi-radius-md);
