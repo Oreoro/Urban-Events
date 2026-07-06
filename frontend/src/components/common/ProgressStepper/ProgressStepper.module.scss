@@ -9,6 +9,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   gap: 0;
+  padding: 6px 0;
 }
 
 .stepContainer {
@@ -23,28 +24,30 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .circle {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--hi-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: $font-display;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  background-color: var(--checkout-border, var(--hi-border));
+  background-color: var(--checkout-surface, var(--hi-surface));
+  border: 1px solid var(--checkout-border, var(--hi-border));
   color: var(--checkout-text-secondary, var(--hi-text-muted));
-  transition: background-color $transition-fast, color $transition-fast;
+  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &.active {
     background-color: var(--checkout-text-primary, var(--hi-text));
+    border-color: var(--checkout-text-primary, var(--hi-text));
     color: var(--checkout-surface, var(--hi-color-white));
   }
 }
 
 .label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 560;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
   transition: color $transition-fast;
 
@@ -58,8 +61,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .connector {
-  width: 40px;
-  height: 2px;
+  width: 38px;
+  height: 1px;
   background-color: var(--checkout-border, var(--hi-border));
   margin: 0 8px;
   border-radius: 1px;

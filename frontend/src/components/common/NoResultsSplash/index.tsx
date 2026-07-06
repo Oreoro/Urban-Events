@@ -11,7 +11,7 @@ interface NoResultsSplashProps {
 }
 
 export const NoResultsSplash = ({
-                                    heading = t`'There\'s nothing to show yet'`,
+                                    heading = t`There's nothing to show yet`,
                                     children,
                                     subHeading,
                                     imageHref = '/no-results-empty-boxes.svg',
@@ -21,7 +21,9 @@ export const NoResultsSplash = ({
 
     return (
         <div className={classes.container}>
-            <img alt={t`No results`} width={300} src={imageHref}/>
+            <div className={classes.visual}>
+                <img alt={t`No results`} width={300} src={imageHref}/>
+            </div>
 
             {heading && !hasSearchQuery && <h2>{heading}</h2>}
 

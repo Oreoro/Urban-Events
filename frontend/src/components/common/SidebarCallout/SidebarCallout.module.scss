@@ -4,7 +4,7 @@
   background: var(--hi-shell-bg);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-lg);
-  padding: 12px;
+  padding: 12px 12px 13px;
   text-align: left;
   position: relative;
   overflow: hidden;
@@ -32,8 +32,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
@@ -47,7 +47,7 @@
 }
 
 .calloutTitle {
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 650;
   color: var(--hi-text);
   margin: 0 0 6px 0;
@@ -56,7 +56,7 @@
 }
 
 .calloutText {
-  font-size: 0.78rem;
+  font-size: 0.77rem;
   color: var(--hi-text-muted);
   margin: 0 0 10px 0;
   line-height: 1.5;
@@ -69,6 +69,7 @@
   border: 1px solid var(--hi-border) !important;
   color: var(--hi-text) !important;
   font-weight: 600;
+  min-height: 32px;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   position: relative;
   z-index: 1;

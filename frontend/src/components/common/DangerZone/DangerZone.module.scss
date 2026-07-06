@@ -1,14 +1,14 @@
 .dangerZone {
   border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-lg);
   padding: 16px;
   margin-bottom: 16px;
-  background: var(--hi-surface);
+  background: var(--hi-status-danger-bg);
 }
 
 .heading {
   color: var(--hi-status-danger-text);
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   font-weight: 620;
   margin: 0 0 10px 0;
   display: flex;
@@ -18,7 +18,7 @@
 
 .section {
   padding: 12px 0;
-  border-bottom: 1px solid var(--hi-status-danger-border);
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-status-danger-border) 78%, white);
 
   &:last-child {
     border-bottom: none;
@@ -32,7 +32,7 @@
 
 .sectionTitle {
   color: var(--hi-text);
-  font-weight: 580;
+  font-weight: 620;
   font-size: 0.86rem;
   margin: 0 0 4px 0;
 }

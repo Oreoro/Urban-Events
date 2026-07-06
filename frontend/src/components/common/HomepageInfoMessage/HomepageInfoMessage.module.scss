@@ -12,35 +12,62 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 200px);
-  padding: 24px;
+  min-height: calc(100vh - 220px);
+  padding: 20px;
 }
 
 .card {
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
+  --message-status-bg: var(--hi-status-neutral-bg);
+  --message-status-text: var(--hi-status-neutral-text);
+  --message-status-border: var(--hi-status-neutral-border);
   background: var(--content-bg-color, var(--checkout-surface, var(--hi-surface)));
   border: 1px solid var(--border-color, var(--checkout-border, var(--hi-border)));
   border-radius: $radius-lg;
-  padding: 32px;
+  padding: 28px;
   text-align: center;
   box-shadow: none;
 
+  &[data-status="success"] {
+    --message-status-bg: var(--hi-status-success-bg);
+    --message-status-text: var(--hi-status-success-text);
+    --message-status-border: var(--hi-status-success-border);
+  }
+
+  &[data-status="warning"],
+  &[data-status="processing"],
+  &[data-status="awaiting_payment"],
+  &[data-status="offline_payment"] {
+    --message-status-bg: var(--hi-status-warning-bg);
+    --message-status-text: var(--hi-status-warning-text);
+    --message-status-border: var(--hi-status-warning-border);
+  }
+
+  &[data-status="error"],
+  &[data-status="expired"],
+  &[data-status="cancelled"],
+  &[data-status="not_found"] {
+    --message-status-bg: var(--hi-status-danger-bg);
+    --message-status-text: var(--hi-status-danger-text);
+    --message-status-border: var(--hi-status-danger-border);
+  }
+
   @include mixins.respond-below(sm) {
-    padding: 32px 24px;
+    padding: 24px;
   }
 }
 
 .iconContainer {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   border-radius: $radius-md;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 18px;
-  background: var(--hi-shell-bg);
-  border: 1px solid var(--border-color, var(--checkout-border, var(--hi-border)));
+  margin: 0 auto 16px;
+  background: var(--message-status-bg);
+  border: 1px solid var(--message-status-border);
 
   @include mixins.respond-below(sm) {
     width: 48px;
@@ -49,9 +76,9 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
-  color: var(--secondary-color, var(--checkout-text-secondary, var(--hi-text-muted)));
+  width: 26px;
+  height: 26px;
+  color: var(--message-status-text);
 
   @include mixins.respond-below(sm) {
     width: 28px;
@@ -61,8 +88,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .title {
   font-family: $font-display;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 650;
   color: var(--primary-text-color, var(--checkout-text-primary, var(--hi-text)));
   margin: 0 0 8px 0;
   line-height: 1.4;
@@ -73,7 +100,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .subtitle {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--secondary-color, var(--checkout-text-secondary, var(--hi-text-muted)));
   margin: 0 0 24px 0;
   line-height: 1.5;
@@ -86,7 +113,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-display;
   font-weight: 600 !important;
   font-size: 15px !important;
-  margin-top: 16px;
+  margin-top: 12px;
   background: var(--primary-color, var(--checkout-accent, var(--hi-text))) !important;
   color: var(--accent-contrast, var(--checkout-accent-contrast, var(--hi-color-white))) !important;
   transition: filter $transition-fast, background-color $transition-fast, border-color $transition-fast;

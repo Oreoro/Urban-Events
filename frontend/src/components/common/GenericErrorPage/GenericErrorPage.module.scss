@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--mantine-spacing-xl) 0;
+  padding: 32px 0;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -40,11 +40,11 @@
 }
 
 .content {
-  max-width: 440px;
+  max-width: 420px;
   width: 100%;
   text-align: center;
   background: var(--hi-surface);
-  padding: 32px;
+  padding: 28px;
   border-radius: var(--hi-radius-lg);
   box-shadow: none;
   border: 1px solid var(--hi-border);
@@ -67,7 +67,7 @@
 .title {
   font-weight: 650;
   margin-bottom: 10px;
-  font-size: clamp(1.25rem, 3vw, 1.45rem);
+  font-size: clamp(1.2rem, 3vw, 1.38rem);
   line-height: 1.2;
   color: var(--hi-text);
   letter-spacing: 0;
@@ -83,11 +83,11 @@
 }
 
 .description {
-  line-height: 1.6;
-  margin-bottom: var(--mantine-spacing-lg);
-  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
   color: var(--hi-text-muted);
-  max-width: 400px;
+  max-width: 360px;
   margin-left: auto;
   margin-right: auto;
 
@@ -105,8 +105,8 @@
 .button {
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   font-weight: 600;
-  min-height: 44px; // Better touch target on mobile
-  font-size: 0.92rem;
+  min-height: 40px;
+  font-size: 0.9rem;
   background: var(--hi-text) !important;
   border: 1px solid var(--hi-text) !important;
   color: var(--hi-color-white) !important;

@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     background: var(--hi-shell-bg);
-    padding: 24px;
+    padding: 20px;
 }
 
 .root {
@@ -25,10 +25,10 @@
 }
 
 .content {
-    max-width: 440px;
+    max-width: 420px;
     text-align: center;
     background-color: var(--hi-surface);
-    padding: 32px;
+    padding: 28px;
     border-radius: var(--hi-radius-lg);
     box-shadow: none;
     backdrop-filter: none;
@@ -38,7 +38,7 @@
 .title {
     font-weight: 650;
     margin-bottom: 10px;
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     color: var(--hi-text);
     line-height: 1.2;
 
@@ -50,6 +50,7 @@
 .description {
     line-height: 1.55;
     margin-bottom: 18px;
+    font-size: 0.9rem;
     color: var(--hi-text-muted);
 }
 
