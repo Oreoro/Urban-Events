@@ -61,8 +61,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   height: 48px;
   border-radius: $radius-sm;
   font-family: $font-display;
-  font-weight: 650;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 15px;
   transition: filter $transition-fast;
 
   &:hover:not(:disabled) {
