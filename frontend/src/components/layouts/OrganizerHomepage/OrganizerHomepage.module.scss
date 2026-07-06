@@ -4,8 +4,8 @@
 $font-display: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 $font-body: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
-$radius-xl: 10px;
-$radius-lg: 8px;
+$radius-xl: 6px;
+$radius-lg: 6px;
 $radius-md: 6px;
 $radius-sm: 5px;
 $radius-xs: 4px;
@@ -137,7 +137,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(20px);
+  filter: none;
+  opacity: 0.22;
   z-index: 0;
 }
 
@@ -643,7 +644,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .eventsSection {
   background: var(--hi-surface);
   border-color: var(--hi-border);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
 }
 
 .heroSection:hover,

@@ -18,12 +18,6 @@ export const BrandWordmark = ({
 }: BrandWordmarkProps) => {
     const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
     const displayName = appName.replace(/\s+/g, " ").trim();
-    const monogram = displayName
-        .split(/\s+/)
-        .map((part) => part[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase();
 
     return (
         <span
@@ -31,9 +25,6 @@ export const BrandWordmark = ({
             aria-label={appName}
             onClick={onClick}
         >
-            <span className={classes.wordmarkMark} aria-hidden="true">
-                {monogram}
-            </span>
             <span className={classes.wordmarkText}>
                 {displayName}
             </span>

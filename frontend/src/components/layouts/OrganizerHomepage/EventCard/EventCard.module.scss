@@ -4,7 +4,7 @@
 $font-display: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 $font-body: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
-$radius-lg: 8px;
+$radius-lg: 6px;
 $radius-md: 6px;
 $radius-sm: 5px;
 $radius-xs: 4px;
@@ -45,7 +45,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-body;
   background: var(--content-bg-color);
   border: 1px solid var(--border-color);
-  border-radius: var(--hi-radius-lg);
+  border-radius: var(--hi-radius-md);
   overflow: visible;
   transition: background-color $transition-fast, border-color $transition-fast;
   display: flex;
