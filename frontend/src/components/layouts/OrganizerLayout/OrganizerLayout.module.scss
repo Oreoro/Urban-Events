@@ -74,6 +74,25 @@
     margin-left: 16px;
   }
 
+  .statusLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+  }
+
+  .statusDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--hi-text-muted);
+    flex: 0 0 auto;
+
+    &[data-status="live"] {
+      background: var(--hi-success);
+    }
+  }
+
   .statusAction {
     margin-left: 8px;
     padding-left: 8px;

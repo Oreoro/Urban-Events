@@ -317,6 +317,21 @@ a {
   color: var(--hi-text) !important;
 }
 
+.mantine-Button-root[data-variant="transparent"],
+.mantine-ActionIcon-root[data-variant="transparent"] {
+  color: var(--hi-text-light) !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+.mantine-Button-root[data-variant="transparent"]:hover:not([data-disabled]),
+.mantine-ActionIcon-root[data-variant="transparent"]:hover:not([data-disabled]) {
+  color: var(--hi-text) !important;
+  background-color: var(--hi-control-bg-hover) !important;
+  border-color: var(--hi-border) !important;
+}
+
 .mantine-Button-root[data-variant="outline"],
 .mantine-ActionIcon-root[data-variant="outline"] {
   color: var(--hi-text) !important;
