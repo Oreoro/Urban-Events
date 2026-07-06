@@ -25,20 +25,36 @@ import {trackEvent, AnalyticsEvents} from "../../../utilites/analytics.ts";
 import {getDateTimePickerFormat} from "../../../utilites/dates.ts";
 import {BrandWordmark} from "../../common/BrandWordmark";
 
+type ProgressInfo = { currentStep: number, totalSteps: number, progressPercentage: number };
+
+const StepProgress = ({progressInfo}: { progressInfo?: ProgressInfo }) => {
+    if (!progressInfo) {
+        return null;
+    }
+
+    return (
+        <div className={classes.progressContainer}>
+            <div className={classes.progressMeta}>
+                <span>{t`Step ${progressInfo.currentStep} of ${progressInfo.totalSteps}`}</span>
+                <span>{Math.round(progressInfo.progressPercentage)}%</span>
+            </div>
+            <progress
+                className={classes.progressBar}
+                value={progressInfo.progressPercentage}
+                max={100}
+                aria-label={t`Onboarding progress`}
+            />
+        </div>
+    );
+};
+
 export const CreateOrganizer = ({progressInfo}: {
-    progressInfo?: { currentStep: number, totalSteps: number, progressPercentage: number }
+    progressInfo?: ProgressInfo
 }) => {
     return (
         <div className={classes.stepContainer}>
             <div className={classes.stepHeader}>
-                {progressInfo && (
-                    <div className={classes.progressContainer}>
-                        <div className={classes.progressBar}>
-                            <div className={classes.progressFill}
-                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
-                        </div>
-                    </div>
-                )}
+                <StepProgress progressInfo={progressInfo}/>
                 <h2 className={classes.stepTitle}>
                     {t`Set up your organization`}
                 </h2>
@@ -54,7 +70,7 @@ export const CreateOrganizer = ({progressInfo}: {
 }
 
 const ConfirmVerificationPin = ({progressInfo}: {
-    progressInfo: { currentStep: number, totalSteps: number, progressPercentage: number }
+    progressInfo: ProgressInfo
 }) => {
     const {data: userData} = useGetMe();
     const confirmEmailMutation = useConfirmEmailWithCode();
@@ -132,14 +148,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
     return (
         <div className={classes.stepContainer}>
             <div className={classes.stepHeader}>
-                {progressInfo && (
-                    <div className={classes.progressContainer}>
-                        <div className={classes.progressBar}>
-                            <div className={classes.progressFill}
-                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
-                        </div>
-                    </div>
-                )}
+                <StepProgress progressInfo={progressInfo}/>
                 <h2 className={classes.stepTitle}>
                     {t`Check your email`}
                 </h2>
@@ -220,7 +229,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
 }
 
 export const CreateEvent = ({progressInfo}: {
-    progressInfo?: { currentStep: number, totalSteps: number, progressPercentage: number }
+    progressInfo?: ProgressInfo
 }) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const form = useForm({
@@ -292,14 +301,7 @@ export const CreateEvent = ({progressInfo}: {
         <LoadingContainer>
             <div className={classes.stepContainer}>
                 <div className={classes.stepHeader}>
-                    {progressInfo && (
-                        <div className={classes.progressContainer}>
-                            <div className={classes.progressBar}>
-                                <div className={classes.progressFill}
-                                     style={{width: `${progressInfo.progressPercentage}%`}}></div>
-                            </div>
-                        </div>
-                    )}
+                    <StepProgress progressInfo={progressInfo}/>
                     <h2 className={classes.stepTitle}>
                         {t`Create your first event`}
                     </h2>

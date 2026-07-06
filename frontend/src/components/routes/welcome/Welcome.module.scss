@@ -7,21 +7,20 @@
 
   min-height: 100vh;
   background: var(--hi-shell-bg);
-  padding: 2.75rem 1rem;
+  padding: 3.25rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   @media (max-width: 768px) {
-    justify-content: flex-start;
     padding: 2.5rem 1rem 2rem;
   }
 }
 
 .welcomeContent {
   width: 100%;
-  max-width: 780px;
+  max-width: 720px;
   min-width: 0;
   margin: 0 auto;
 
@@ -33,8 +32,8 @@
 
 // Header Section
 .welcomeHeader {
-  text-align: center;
-  margin-bottom: 1.35rem;
+  text-align: left;
+  margin-bottom: 1.2rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1.15rem;
@@ -42,7 +41,7 @@
 }
 
 .logo {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.8rem;
   opacity: 1;
 
   @media (max-width: 768px) {
@@ -52,7 +51,7 @@
 
 .welcomeTitle {
   display: block;
-  font-size: 1.35rem;
+  font-size: 1.42rem;
   font-weight: 650;
   color: var(--hi-text);
   margin: 0;
@@ -65,11 +64,11 @@
 
 // Clean Main Card
 .welcomeCard {
-  background: var(--hi-surface-raised);
+  background: var(--hi-surface);
   border-radius: var(--hi-radius-lg) !important;
   overflow: hidden;
   box-shadow: none !important;
-  border: 1px solid var(--hi-border-strong) !important;
+  border: 1px solid var(--hi-border) !important;
 
   @media (max-width: 768px) {
     border-radius: var(--hi-radius-lg) !important;
@@ -85,7 +84,7 @@
 
 // Clean Step Layout
 .stepContainer {
-  padding: 1.35rem 1.5rem 1.5rem;
+  padding: 1.35rem 1.45rem 1.45rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -94,32 +93,52 @@
 
 // Progress Container
 .progressContainer {
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.15rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
   }
 }
 
-// Progress Bar
-.progressBar {
-  width: 100%;
-  height: 4px;
-  background-color: var(--hi-surface-soft);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
+.progressMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--hi-text-muted);
+  font-size: 0.76rem;
+  font-weight: 560;
+  line-height: 1.3;
 }
 
-.progressFill {
-  height: 100%;
-  background: var(--hi-text);
-  border-radius: 999px;
-  transition: width 0.3s ease;
+.progressBar {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  background-color: var(--hi-surface-soft);
+  border: 0;
+  border-radius: var(--hi-radius-sm);
+  overflow: hidden;
+
+  &::-webkit-progress-bar {
+    background-color: var(--hi-surface-soft);
+    border-radius: var(--hi-radius-sm);
+  }
+
+  &::-webkit-progress-value {
+    background-color: var(--hi-text);
+    border-radius: var(--hi-radius-sm);
+    transition: width 0.3s ease;
+  }
+
+  &::-moz-progress-bar {
+    background-color: var(--hi-text);
+    border-radius: var(--hi-radius-sm);
+  }
 }
 
 .stepHeader {
-  text-align: center;
+  text-align: left;
   margin-bottom: 1.25rem;
 
   @media (max-width: 768px) {
@@ -133,7 +152,7 @@
   color: var(--hi-text);
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
-  text-align: center;
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 1.18rem;
@@ -146,6 +165,7 @@
   color: var(--hi-text-muted);
   margin: 0;
   line-height: 1.5;
+  max-width: 560px;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -178,7 +198,7 @@
     align-items: center;
     padding: 0 12px !important;
     border: 1px solid var(--hi-border-strong) !important;
-    border-radius: var(--hi-radius-sm) !important;
+    border-radius: var(--hi-radius-md) !important;
     background: var(--hi-color-white) !important;
     font-size: 0.9rem !important;
     color: var(--hi-text) !important;
@@ -215,8 +235,8 @@
 // Clean Category Grid
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  gap: 0.5rem;
 
   @media (max-width: 768px) {
     display: none; // Hide grid on mobile
@@ -236,14 +256,15 @@
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  padding: 0.8rem 0.7rem;
+  padding: 0.68rem 0.72rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: flex-start;
+  gap: 0.62rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
-  min-height: 68px;
+  min-height: 48px;
 
   &:hover {
     background: var(--hi-surface-soft);
@@ -257,18 +278,27 @@
 
   @media (max-width: 768px) {
     padding: 0.75rem 0.4rem;
-    min-height: 56px;
+    min-height: 48px;
     gap: 0.25rem;
   }
 }
 
 .categoryCardSelected {
   border-color: var(--hi-text) !important;
-  background: var(--hi-control-bg-hover) !important;
+  background: var(--hi-control-bg-active) !important;
 }
 
 .categoryEmoji {
-  font-size: 1.15rem;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--hi-shell-bg);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  font-size: 1rem;
   line-height: 1;
 
   @media (max-width: 768px) {
@@ -278,8 +308,9 @@
 
 .categoryText {
   font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
+  font-weight: 580;
+  color: var(--hi-text);
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -318,7 +349,7 @@
   // Clean PinInput styling
   :global(.mantine-PinInput-input) {
     border: 1px solid var(--hi-border-strong);
-    border-radius: var(--hi-radius-sm);
+    border-radius: var(--hi-radius-md);
     font-weight: 600;
     text-align: center;
     background: var(--hi-color-white);
@@ -412,7 +443,7 @@
 .primaryButton {
   background: var(--hi-text) !important;
   border: 1px solid var(--hi-text) !important;
-  border-radius: var(--hi-radius-sm) !important;
+  border-radius: var(--hi-radius-md) !important;
   font-weight: 650 !important;
   font-size: 0.9rem !important;
   height: 44px !important;
@@ -444,7 +475,7 @@
     font-size: 0.9rem !important;
     background: var(--hi-surface) !important;
     border: 1px solid var(--hi-border) !important;
-    border-radius: 6px !important;
+    border-radius: var(--hi-radius-md) !important;
     padding: 8px 16px !important;
     transition: background-color 0.15s ease, color 0.15s ease !important;
 
