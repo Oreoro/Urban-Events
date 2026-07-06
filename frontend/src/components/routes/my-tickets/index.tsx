@@ -57,7 +57,7 @@ const OrderCard = ({order}: { order: Order }) => {
             <SimpleGrid cols={{base: 1, sm: 2}} spacing="md" className={classes.orderDetails}>
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconCalendarEvent size={18} style={{color: 'var(--mantine-color-gray-6)'}}/>
+                        <IconCalendarEvent size={18} style={{color: 'var(--hi-text-muted)'}}/>
                         <div>
                             <Text size="xs" c="dimmed">{t`Event Date`}</Text>
                             <Text size="sm"><EventDateRange event={event}/></Text>
@@ -68,7 +68,7 @@ const OrderCard = ({order}: { order: Order }) => {
                 {location && (
                     <div className={classes.detailItem}>
                         <Group gap="xs" wrap="nowrap">
-                            <IconMapPin size={18} style={{color: 'var(--mantine-color-gray-6)'}}/>
+                            <IconMapPin size={18} style={{color: 'var(--hi-text-muted)'}}/>
                             <div>
                                 <Text size="xs" c="dimmed">{t`Location`}</Text>
                                 <Text size="sm" lineClamp={1}>{location}</Text>
@@ -79,7 +79,7 @@ const OrderCard = ({order}: { order: Order }) => {
 
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconTicket size={18} style={{color: 'var(--mantine-color-gray-6)'}}/>
+                        <IconTicket size={18} style={{color: 'var(--hi-text-muted)'}}/>
                         <div>
                             <Text size="xs" c="dimmed">{t`Tickets`}</Text>
                             <Text size="sm">{ticketCount} {ticketCount === 1 ? t`ticket` : t`tickets`}</Text>
@@ -89,7 +89,7 @@ const OrderCard = ({order}: { order: Order }) => {
 
                 <div className={classes.detailItem}>
                     <Group gap="xs" wrap="nowrap">
-                        <IconCalendar size={18} style={{color: 'var(--mantine-color-gray-6)'}}/>
+                        <IconCalendar size={18} style={{color: 'var(--hi-text-muted)'}}/>
                         <div>
                             <Text size="xs" c="dimmed">{t`Purchased`}</Text>
                             <Text size="sm">{event && dateToBrowserTz(order.created_at, event.timezone)}</Text>

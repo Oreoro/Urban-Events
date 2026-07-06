@@ -26,12 +26,12 @@
 .content {
     max-width: 500px;
     text-align: center;
-    background-color: var(--hi-surface-raised);
+    background-color: var(--hi-surface);
     padding: var(--mantine-spacing-xl);
-    border-radius: var(--mantine-radius-lg);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: var(--hi-radius-lg);
+    box-shadow: none;
+    backdrop-filter: none;
+    border: 1px solid var(--hi-border);
 }
 
 .title {
@@ -51,10 +51,10 @@
 }
 
 .button {
-    transition: all 250ms ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--mantine-shadow-md);
+        transform: none;
+        box-shadow: none;
     }
 }

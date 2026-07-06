@@ -11,10 +11,10 @@
   }
 
   @include mixins.respond-below(md) {
-    color: var(--mantine-color-dark-0) !important;
+    color: var(--hi-text-muted) !important;
 
     &:hover {
-      color: var(--mantine-color-dark-9) !important;
+      color: var(--hi-text) !important;
     }
   }
 

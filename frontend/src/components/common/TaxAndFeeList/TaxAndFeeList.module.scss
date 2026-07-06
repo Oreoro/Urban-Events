@@ -5,50 +5,53 @@
   margin-top: 20px;
 
   .taxBlock {
-    border: 1px solid var(--mantine-color-gray-3);
-    border-radius: 12px;
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-md);
     display: flex;
     flex-direction: column;
-    background: var(--mantine-color-white);
-    transition: all 0.2s ease;
+    background: var(--hi-surface);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     overflow: hidden;
 
     &:hover {
-      border-color: var(--mantine-color-primary-3);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background: var(--hi-surface-soft);
+      border-color: var(--hi-border-strong);
+      box-shadow: none;
     }
 
     &.taxType {
       .header {
-        background: var(--mantine-color-primary-0);
-        color: var(--mantine-color-primary-8);
+        background: color-mix(in srgb, var(--hi-primary) 7%, white);
+        color: var(--hi-text);
       }
 
       .iconWrapper {
-        background: var(--mantine-color-primary-1);
-        color: var(--mantine-color-primary-7);
+        background: color-mix(in srgb, var(--hi-primary) 9%, white);
+        color: var(--hi-primary);
       }
 
       .rateBadge {
-        background: var(--mantine-color-primary-1);
-        color: var(--mantine-color-primary-8);
+        background: color-mix(in srgb, var(--hi-primary) 9%, white);
+        color: var(--hi-primary);
       }
     }
 
     &.feeType {
       .header {
-        background: var(--mantine-color-secondary-0);
-        color: var(--mantine-color-secondary-8);
+        background: var(--hi-surface-soft);
+        color: var(--hi-text);
       }
 
       .iconWrapper {
-        background: var(--mantine-color-secondary-1);
-        color: var(--mantine-color-secondary-7);
+        background: var(--hi-surface);
+        color: var(--hi-text-muted);
+        border: 1px solid var(--hi-border);
       }
 
       .rateBadge {
-        background: var(--mantine-color-secondary-1);
-        color: var(--mantine-color-secondary-8);
+        background: var(--hi-surface);
+        color: var(--hi-text);
+        border: 1px solid var(--hi-border);
       }
     }
 
@@ -101,7 +104,7 @@
     .name {
       font-size: 0.95rem;
       font-weight: 500;
-      color: var(--mantine-color-gray-8);
+      color: var(--hi-text);
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -122,10 +125,10 @@
 .noTaxes {
   text-align: center;
   padding: 40px 20px;
-  color: var(--mantine-color-gray-6);
-  background: var(--mantine-color-gray-0);
-  border-radius: 12px;
-  border: 1px dashed var(--mantine-color-gray-3);
+  color: var(--hi-text-muted);
+  background: var(--hi-surface);
+  border-radius: var(--hi-radius-md);
+  border: 1px dashed var(--hi-border-strong);
   margin-top: 20px;
 
   p {

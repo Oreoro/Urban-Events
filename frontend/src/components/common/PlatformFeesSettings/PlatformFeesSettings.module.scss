@@ -11,38 +11,39 @@
 
 .breakdownLabel {
     font-size: 14px;
-    color: var(--mantine-color-gray-6);
+    color: var(--hi-text-muted);
 }
 
 .breakdownValue {
     font-size: 14px;
-    color: var(--mantine-color-gray-7);
+    color: var(--hi-text-light);
 }
 
 .breakdownLabelBold {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mantine-color-dark-7);
+    color: var(--hi-text);
 }
 
 .breakdownValueBold {
     font-size: 14px;
     font-weight: 600;
-    color: var(--mantine-color-dark-7);
+    color: var(--hi-text);
 }
 
 .breakdownDivider {
     height: 1px;
-    background: var(--mantine-color-gray-3);
+    background: var(--hi-border);
     margin: 8px 0;
 }
 
 .breakdownNote {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px dashed var(--mantine-color-gray-3);
+    border-top: 1px dashed var(--hi-border-strong);
 }
 
 .activeCard {
-    border: 2px solid var(--mantine-color-teal-5);
+    border: 1px solid color-mix(in srgb, var(--hi-primary) 36%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-primary) 5%, white);
 }
