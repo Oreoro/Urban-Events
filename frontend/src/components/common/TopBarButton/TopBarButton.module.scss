@@ -3,9 +3,9 @@
 .topBarButton {
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  height: 30px;
-  font-size: 0.79rem;
+  padding: 0 8px;
+  height: 28px;
+  font-size: 0.77rem;
   font-weight: 600;
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text) !important;
@@ -33,7 +33,21 @@
   }
 
   @include mixins.respond-below(sm) {
-    height: 30px;
-    padding: 0 9px;
+    height: 28px;
+    padding: 0 8px;
+  }
+
+  :global(.mantine-Button-section) {
+    margin-inline-end: 6px;
+  }
+
+  :global(.mantine-Button-section[data-position="right"]) {
+    margin-inline-start: 6px;
+    margin-inline-end: 0;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
   }
 }
