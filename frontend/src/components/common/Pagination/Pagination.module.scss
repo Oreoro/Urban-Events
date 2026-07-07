@@ -29,8 +29,8 @@
     }
 
     &[data-active] {
-      background: var(--hi-primary) !important;
-      border-color: var(--hi-primary) !important;
+      background: var(--hi-text) !important;
+      border-color: var(--hi-text) !important;
       color: var(--hi-color-white) !important;
     }
   }

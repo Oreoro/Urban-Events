@@ -30,8 +30,8 @@
 
       &:focus,
       &:focus-within {
-        border-color: var(--hi-primary);
-        box-shadow: 0 0 0 2px var(--hi-focus-ring);
+        border-color: var(--hi-text-muted);
+        box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
       }
     }
 
@@ -44,7 +44,7 @@
 .dropdown {
   padding: 4px !important;
   border: 1px solid var(--hi-border) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 }

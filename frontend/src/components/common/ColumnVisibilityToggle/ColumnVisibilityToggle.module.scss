@@ -18,7 +18,7 @@
 .dropdown {
   padding: 4px !important;
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 }
@@ -54,8 +54,8 @@
     background: var(--hi-surface);
 
     &:checked {
-      border-color: var(--hi-primary);
-      background: var(--hi-primary);
+      border-color: var(--hi-text);
+      background: var(--hi-text);
     }
   }
 
