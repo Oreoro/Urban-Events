@@ -1,8 +1,8 @@
 .card {
   box-sizing: border-box;
-  border-radius: var(--hi-radius-md);
-  padding: 12px;
-  margin-bottom: 10px;
+  border-radius: var(--hi-radius-sm);
+  padding: 10px;
+  margin-bottom: 8px;
   color: var(--hi-text);
 
   &.noStyle {
@@ -21,7 +21,7 @@
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-      border-color: var(--checkout-border, var(--hi-border-strong));
+      border-color: var(--checkout-border, var(--hi-border));
     }
   }
 
