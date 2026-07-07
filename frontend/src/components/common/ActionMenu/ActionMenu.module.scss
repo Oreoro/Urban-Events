@@ -5,20 +5,22 @@
 
 .defaultTarget {
   color: var(--hi-text-muted) !important;
+  border: 1px solid transparent !important;
   border-radius: var(--hi-radius-sm) !important;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
+    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
     color: var(--hi-text) !important;
   }
 }
 
 .dropdown {
   padding: 4px !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1) !important;
 }
 
 .label {
@@ -45,7 +47,20 @@
   }
 }
 
+.dangerItem {
+  color: var(--hi-status-danger-text) !important;
+
+  svg {
+    color: var(--hi-status-danger-text);
+  }
+
+  &:hover {
+    background: var(--hi-status-danger-bg) !important;
+    color: var(--hi-status-danger-text) !important;
+  }
+}
+
 .dropdown :global(.mantine-Menu-divider) {
-  border-color: var(--hi-border);
+  border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   margin: 5px 0;
 }

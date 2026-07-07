@@ -50,7 +50,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
                                 <Menu.Item
                                     key={itemIndex}
                                     color={item.color}
-                                    className={classes.item}
+                                    className={`${classes.item} ${item.color === 'red' ? classes.dangerItem : ''}`}
                                     leftSection={item.icon}
                                     onClick={item.onClick}
                                 >

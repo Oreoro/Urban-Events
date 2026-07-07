@@ -11,8 +11,9 @@ export const SideDrawer = (props: DrawerProps & SideDrawerProps) => {
         <Drawer
             {...props}
             overlayProps={{
-                opacity: 0.42,
-                blur: 2,
+                opacity: 0.34,
+                blur: 1.5,
+                ...props.overlayProps,
             }}
             position="right"
             size={props.size ?? 'xl'}
@@ -25,6 +26,7 @@ export const SideDrawer = (props: DrawerProps & SideDrawerProps) => {
                 body: classes.body,
                 title: classes.sideDrawerTitle,
                 close: classes.close,
+                ...props.classNames,
             }}
         >
             <div className={classes.inner}>
