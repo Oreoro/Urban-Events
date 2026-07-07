@@ -6,6 +6,7 @@ import {
     IconCash,
     IconChevronDown,
     IconChevronRight,
+    IconPlus,
     IconReceiptTax,
     IconReportMoney,
     IconTicket,
@@ -48,7 +49,7 @@ export const DashboardSkeleton = () => {
 
             <div className={classes.statisticsSkeletonContainer}>
                 {[...Array(6)].map((_, index) => (
-                    <Skeleton key={index} height={74} radius="md"/>
+                    <Skeleton key={index} height={58} radius="sm"/>
                 ))}
             </div>
             <div className={classes.recentItemsGrid}>
@@ -170,48 +171,58 @@ export const OrganizerDashboard = () => {
                             </div>
                         </div>
                     </div>
-                    {currencies?.length > 1 && (
-                        <Menu
-                            width={240}
-                            position="bottom-end"
-                            disabled={organizerStatsQuery.isLoading}
-                            withinPortal
+                    <div className={classes.headerActions}>
+                        {currencies?.length > 1 && (
+                            <Menu
+                                width={240}
+                                position="bottom-end"
+                                disabled={organizerStatsQuery.isLoading}
+                                withinPortal
+                            >
+                                <Menu.Target>
+                                    <UnstyledButton className={classes.currencySelector}
+                                                    disabled={organizerStatsQuery.isLoading}>
+                                    <span className={classes.currencyText}>
+                                        {selectedCurrency}
+                                    </span>
+                                        <IconChevronDown size={14} className={classes.currencyIcon}/>
+                                    </UnstyledButton>
+                                </Menu.Target>
+                                <Menu.Dropdown className={classes.currencyDropdown}>
+                                    <div className={classes.currencyScrollArea}>
+                                        {currencies
+                                            .map((currency) => (
+                                                <Menu.Item
+                                                    key={currency.value}
+                                                    onClick={() => setSelectedCurrency(currency.value)}
+                                                    className={selectedCurrency === currency.value ? classes.selectedCurrency : ''}
+                                                >
+                                            <span className={classes.currencyOption}>
+                                                <span className={classes.currencyCode}>{currency.value}</span>
+                                                <span className={classes.currencyLabel}>{currency.label}</span>
+                                            </span>
+                                                </Menu.Item>
+                                            ))}
+                                    </div>
+                                </Menu.Dropdown>
+                            </Menu>
+                        )}
+                        <Button
+                            className={classes.createEventButton}
+                            size="xs"
+                            leftSection={<IconPlus size={14}/>}
+                            onClick={() => setShowCreateEventModal(true)}
                         >
-                            <Menu.Target>
-                                <UnstyledButton className={classes.currencySelector}
-                                                disabled={organizerStatsQuery.isLoading}>
-                                <span className={classes.currencyText}>
-                                    {selectedCurrency}
-                                </span>
-                                    <IconChevronDown size={14} className={classes.currencyIcon}/>
-                                </UnstyledButton>
-                            </Menu.Target>
-                            <Menu.Dropdown className={classes.currencyDropdown}>
-                                <div className={classes.currencyScrollArea}>
-                                    {currencies
-                                        .map((currency) => (
-                                            <Menu.Item
-                                                key={currency.value}
-                                                onClick={() => setSelectedCurrency(currency.value)}
-                                                className={selectedCurrency === currency.value ? classes.selectedCurrency : ''}
-                                            >
-                                        <span className={classes.currencyOption}>
-                                            <span className={classes.currencyCode}>{currency.value}</span>
-                                            <span className={classes.currencyLabel}>{currency.label}</span>
-                                        </span>
-                                            </Menu.Item>
-                                        ))}
-                                </div>
-                            </Menu.Dropdown>
-                        </Menu>
-                    )}
+                            <Trans>New event</Trans>
+                        </Button>
+                    </div>
                 </div>
 
                 {/* Stats Section */}
                 {organizerStatsQuery.isLoading && !stats && (
                     <div className={classes.statisticsContainer}>
                         {[...Array(6)].map((_, index) => (
-                            <Skeleton key={index} height={74} radius="sm"/>
+                            <Skeleton key={index} height={58} radius="sm"/>
                         ))}
                     </div>
                 )}
@@ -298,7 +309,7 @@ export const OrganizerDashboard = () => {
                                     <Card className={classes.orderCard}>
                                         <div className={classes.orderMain}>
                                             <div className={classes.orderAvatar}>
-                                                <IconUserCircle size={24} stroke={1.5}/>
+                                                <IconUserCircle size={16} stroke={1.7}/>
                                             </div>
                                             <div className={classes.orderDetails}>
                                                 <div className={classes.orderCustomer}>
@@ -306,8 +317,10 @@ export const OrganizerDashboard = () => {
                                                         {order.first_name} {order.last_name}
                                                     </span>
                                                     <Badge
-                                                        color={getOrderStatusColor(order.status, order.payment_status)}
-                                                        variant="light"
+                                                        className={classes.orderStatusBadge}
+                                                        data-status={order.status}
+                                                        data-payment-status={order.payment_status}
+                                                        variant="outline"
                                                         radius="sm"
                                                         size="xs"
                                                     >
@@ -349,19 +362,6 @@ export const OrganizerDashboard = () => {
             )}
         </PageBody>
     );
-};
-
-const getOrderStatusColor = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {
-    if (status === 'CANCELLED' || paymentStatus === 'PAYMENT_FAILED') {
-        return 'red';
-    }
-    if (status === 'COMPLETED' || paymentStatus === 'PAYMENT_RECEIVED') {
-        return 'primary';
-    }
-    if (status === 'AWAITING_OFFLINE_PAYMENT' || paymentStatus === 'AWAITING_OFFLINE_PAYMENT' || status === 'RESERVED' || paymentStatus === 'AWAITING_PAYMENT') {
-        return 'yellow';
-    }
-    return 'slate';
 };
 
 const formatOrderStatus = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {
