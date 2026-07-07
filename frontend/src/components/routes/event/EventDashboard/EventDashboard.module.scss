@@ -5,14 +5,15 @@
 }
 
 .overviewPanel {
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  padding: 14px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
-  overflow: visible;
+  overflow: hidden;
 
   @media (max-width: 768px) {
+    padding: 12px;
     margin-bottom: 0;
   }
 }
@@ -22,15 +23,15 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
-  padding: 2px 0 18px;
-  border-bottom: 0;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--hi-border);
   background: transparent;
 }
 
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 13px;
+  gap: 11px;
   min-width: 0;
   flex: 1;
 }
@@ -38,11 +39,11 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
   color: var(--hi-text-muted);
   flex: 0 0 auto;
 }
@@ -62,10 +63,10 @@
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.76rem;
+  font-size: 1.56rem;
   font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.08;
+  line-height: 1.12;
   overflow-wrap: anywhere;
 
   @media (max-width: 768px) {
@@ -105,7 +106,11 @@
 }
 
 .statsShell {
-  padding: 0;
+  margin: 0 -14px -14px;
+
+  @media (max-width: 768px) {
+    margin: 0 -12px -12px;
+  }
 }
 
 .chartCard {

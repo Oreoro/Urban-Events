@@ -3,7 +3,7 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: 0;
   color: var(--hi-text);
   margin: 0;
   background: transparent;
@@ -20,24 +20,35 @@
   }
 
   > * {
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: 0 !important;
     border-width: 1px !important;
-    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+    border-color: var(--hi-border) !important;
   }
 }
 
 .statistic {
   display: flex;
   align-items: stretch;
-  padding: 11px !important;
+  padding: 10px 14px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 74px;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  min-height: 68px;
+  border: 0 !important;
+  border-right: 1px solid var(--hi-border) !important;
+  border-bottom: 1px solid var(--hi-border) !important;
+  border-color: var(--hi-border) !important;
   box-shadow: none !important;
-  background: var(--hi-surface) !important;
-  border-radius: var(--hi-radius-md) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
   transition: border-color 0.15s ease;
+
+  &:nth-child(3n) {
+    border-right: 0 !important;
+  }
+
+  &:nth-last-child(-n + 3) {
+    border-bottom: 0 !important;
+  }
 
   .leftPanel {
     flex: 1;
@@ -89,10 +100,58 @@
   }
 
   @include mixins.respond-below(sm) {
-    padding: 11px !important;
+    padding: 10px 12px !important;
+    border-right: 0 !important;
 
     .leftPanel {
       min-height: 44px;
+    }
+
+    &:nth-last-child(-n + 3) {
+      border-bottom: 1px solid var(--hi-border) !important;
+    }
+
+    &:last-child {
+      border-bottom: 0 !important;
+    }
+  }
+}
+
+@include mixins.respond-below(md) {
+  .statistic {
+    &:nth-child(3n) {
+      border-right: 1px solid var(--hi-border) !important;
+    }
+
+    &:nth-child(2n) {
+      border-right: 0 !important;
+    }
+
+    &:nth-last-child(-n + 3) {
+      border-bottom: 1px solid var(--hi-border) !important;
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: 0 !important;
+    }
+  }
+}
+
+@include mixins.respond-below(sm) {
+  .statistic {
+    border-right: 0 !important;
+
+    &:nth-child(3n),
+    &:nth-child(2n) {
+      border-right: 0 !important;
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: 1px solid var(--hi-border) !important;
+    }
+
+    &:last-child {
+      border-bottom: 0 !important;
     }
   }
 }
