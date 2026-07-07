@@ -26,12 +26,11 @@
   border-radius: var(--hi-radius-md);
   background: var(--hi-surface) !important;
   box-shadow: none !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
     border-color: color-mix(in srgb, var(--hi-border-strong) 60%, var(--hi-border)) !important;
-    transform: translateY(-1px);
   }
 
   .icon {
