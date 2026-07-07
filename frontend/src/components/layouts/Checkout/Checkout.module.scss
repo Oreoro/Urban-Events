@@ -18,7 +18,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   // --checkout-text-primary, --checkout-text-secondary, --checkout-text-tertiary
   // --checkout-border
 
-  background-color: var(--checkout-background, var(--hi-shell-bg));
+  background-color: color-mix(in srgb, var(--checkout-background, var(--hi-shell-bg)) 92%, white);
   color: var(--checkout-text-primary, var(--hi-text));
 
   // Countdown timer colors - semantic colors that don't change with theme
@@ -55,8 +55,8 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
     .header {
       min-height: 56px;
-      background-color: var(--checkout-surface);
-      border-bottom: 1px solid var(--checkout-border);
+      background-color: color-mix(in srgb, var(--checkout-surface, var(--hi-surface)) 96%, var(--checkout-background, var(--hi-shell-bg)));
+      border-bottom: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 84%, transparent);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -68,14 +68,15 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
       z-index: 10;
 
       .actionBar {
-        width: min(100%, 980px);
-        padding: 9px 20px;
+        width: min(100%, 880px);
+        padding: 8px 18px;
         margin: 0 auto;
 
         :global(.mantine-Button-root),
         :global(.mantine-ActionIcon-root) {
           border: 1px solid transparent;
           color: var(--checkout-text-secondary, var(--hi-text-muted));
+          border-radius: var(--hi-radius-sm);
 
           &:hover {
             background: var(--hi-control-bg-hover);
@@ -86,8 +87,8 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
         .title {
           font-family: $font-display;
-          font-size: 1rem;
-          font-weight: 600;
+          font-size: 0.92rem;
+          font-weight: 650;
           color: var(--checkout-text-primary);
         }
       }
@@ -128,18 +129,23 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   :global(.mantine-NativeSelect-input) {
     background: var(--checkout-surface, var(--hi-surface));
     border-color: var(--checkout-border, var(--hi-border));
+    border-radius: var(--hi-radius-md);
     color: var(--checkout-text-primary, var(--hi-text));
+    min-height: 38px;
+    font-size: 0.88rem;
 
     &:focus,
     &:focus-within {
       border-color: var(--checkout-text-primary, var(--hi-text));
-      box-shadow: 0 0 0 3px var(--hi-focus-ring);
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
   }
 
   :global(.mantine-InputWrapper-label) {
-    color: var(--checkout-text-primary, var(--hi-text));
-    font-weight: 600;
+    color: var(--checkout-text-secondary, var(--hi-text-muted));
+    font-size: 0.78rem;
+    font-weight: 650;
+    margin-bottom: 5px;
   }
 }
 

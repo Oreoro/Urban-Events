@@ -62,7 +62,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Main page wrapper
 .pageWrapper {
   min-height: 100vh;
-  background: var(--bg-color, var(--ue-canvas-soft));
+  background: color-mix(in srgb, var(--bg-color, var(--ue-canvas-soft)) 86%, white);
   --background-overlay: #{rgba(white, 0.5)};
 
   &[data-mode="dark"] {
@@ -88,9 +88,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wrapper {
-  max-width: 920px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 24px 24px 16px;
+  padding: 22px 24px 18px;
 
   @include mixins.respond-below(md) {
     padding: 0;
@@ -101,7 +101,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .mainCard {
   background-color: var(--content-bg-color);
   border-radius: $radius-xl;
-  border: 1px solid var(--border-color);
+  border: 1px solid color-mix(in srgb, var(--border-color) 86%, transparent);
   box-shadow: none;
   overflow: hidden;
   margin-bottom: 16px;
@@ -127,7 +127,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-height: 560px;
   overflow: hidden;
-  background-color: var(--theme-surface);
+  background-color: color-mix(in srgb, var(--content-bg-color) 84%, var(--bg-color));
+  border-bottom: 1px solid var(--border-color);
 
   // When aspect ratio is provided via CSS custom property, use it
   // Otherwise fall back to auto sizing based on image
@@ -185,8 +186,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .statusBadges {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 14px;
+  left: 14px;
   display: flex;
   gap: 8px;
   z-index: 2;
@@ -199,8 +200,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--content-bg-color);
   border: 1px solid var(--border-color);
   border-radius: $radius-sm;
-  padding: 8px 14px;
-  font-size: 0.8rem;
+  padding: 6px 10px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--primary-text-color);
 
@@ -212,7 +213,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Event header section
 .eventHeader {
-  padding: 28px 32px 24px;
+  padding: 24px 28px 22px;
 
   @include mixins.respond-below(md) {
     padding: 24px 20px;
@@ -223,22 +224,24 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .organizerPill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent-soft) 58%, var(--content-bg-color));
+  border: 1px solid var(--border-color);
   border-radius: $radius-md;
-  padding: 6px 14px 6px 6px;
+  padding: 5px 12px 5px 5px;
   text-decoration: none;
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
   cursor: pointer;
 
   &:hover {
     background: color-mix(in srgb, var(--accent-soft) 72%, var(--content-bg-color));
+    border-color: color-mix(in srgb, var(--border-color) 62%, var(--primary-text-color));
   }
 }
 
@@ -265,7 +268,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .organizerPillName {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 500;
   color: var(--primary-text-color);
 }
@@ -276,8 +279,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .actionButton {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: $radius-md;
   background: var(--content-bg-color);
   border: 1px solid var(--border-color);
@@ -307,12 +310,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .eventTitle {
   font-family: $font-display;
-  font-size: 1.58rem;
-  font-weight: 600;
+  font-size: 1.66rem;
+  font-weight: 680;
   line-height: 1.18;
   letter-spacing: 0;
   color: var(--primary-text-color);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 
   @include mixins.respond-below(sm) {
     font-size: 1.34rem;
@@ -322,20 +325,24 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .eventMeta {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 7px;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 11px;
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 84%, transparent);
+  border-radius: $radius-md;
+  background: color-mix(in srgb, var(--content-bg-color) 92%, var(--bg-color));
 }
 
 .metaIconBox {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border-radius: $radius-md;
-  background: var(--content-bg-color);
+  background: color-mix(in srgb, var(--accent-soft) 48%, var(--content-bg-color));
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
@@ -361,15 +368,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .metaPrimary {
-  font-weight: 600;
+  font-weight: 610;
   color: var(--primary-text-color);
-  font-size: 1rem;
+  font-size: 0.88rem;
   margin-bottom: 2px;
 }
 
 .metaSecondary {
   color: var(--secondary-color);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .metaLink {
@@ -394,11 +401,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .addToCalendarButton {
   margin-left: auto;
-  padding: 8px 16px;
+  padding: 6px 11px;
   background: transparent;
   border: 1px solid var(--border-color);
   border-radius: $radius-sm;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--secondary-color);
   cursor: pointer;
@@ -425,7 +432,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Section dividers
 .section {
-  padding: 28px 32px;
+  padding: 24px 28px;
   border-top: 1px solid var(--border-color);
 
   @include mixins.respond-below(md) {
@@ -437,13 +444,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .sectionTitle {
   font-family: $font-display;
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 680;
   letter-spacing: 0;
   color: var(--primary-text-color);
   margin: 0;
@@ -452,8 +459,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Description / About section
 .description {
   color: var(--secondary-color);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.65;
+  font-size: 0.92rem;
 
   p {
     margin-bottom: 1em;
@@ -667,7 +674,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-category-rows) {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   :global(.hi-product-category-row) {
@@ -676,31 +683,31 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-category-title) {
     font-family: $font-display;
-    font-size: 1.08rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 680;
     letter-spacing: 0;
     color: var(--primary-text-color);
-    margin: 0 0 18px;
+    margin: 0 0 12px;
   }
 
   :global(.hi-product-category-description) {
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     line-height: 1.6;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   :global(.hi-product-rows) {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 7px;
     margin-bottom: 0;
   }
 
   :global(.hi-product-row) {
-    background: var(--content-bg-color);
+    background: color-mix(in srgb, var(--content-bg-color) 94%, var(--bg-color));
     border-radius: $radius-md;
-    border: 1px solid var(--border-color);
+    border: 1px solid color-mix(in srgb, var(--border-color) 88%, transparent);
     padding: 0;
     transition: background-color $transition-fast, border-color $transition-fast;
     cursor: pointer;
@@ -708,35 +715,35 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 
     &:hover {
-      background: var(--content-bg-color);
-      border-color: var(--border-color);
+      background: color-mix(in srgb, var(--accent-soft) 34%, var(--content-bg-color));
+      border-color: color-mix(in srgb, var(--border-color) 62%, var(--primary-text-color));
     }
   }
 
   :global(.hi-product-row.hi-product-highlighted) {
-    background: var(--content-bg-color);
-    border-color: var(--border-color);
+    background: color-mix(in srgb, var(--accent-soft) 24%, var(--content-bg-color));
+    border-color: color-mix(in srgb, var(--primary-color) 22%, var(--border-color));
 
     &:hover {
-      background: var(--content-bg-color);
-      border-color: var(--border-color);
+      background: color-mix(in srgb, var(--accent-soft) 34%, var(--content-bg-color));
+      border-color: color-mix(in srgb, var(--primary-color) 28%, var(--border-color));
     }
   }
 
   :global(.hi-product-highlight-message) {
-    background: var(--content-bg-color);
+    background: color-mix(in srgb, var(--accent-soft) 50%, var(--content-bg-color));
     color: var(--secondary-color);
     border-bottom: 1px solid var(--border-color);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    padding: 6px 16px;
+    padding: 6px 14px;
     text-align: center;
     letter-spacing: 0;
   }
 
   :global(.hi-product-row.selected) {
     border-color: var(--primary-text-color);
-    background: var(--content-bg-color);
+    background: color-mix(in srgb, var(--accent-soft) 36%, var(--content-bg-color));
   }
 
   :global(.hi-title-row) {
@@ -744,7 +751,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-title) {
-    padding: 20px 24px;
+    padding: 14px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -753,14 +760,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     h3 {
       font-family: $font-display;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 0.96rem;
       color: var(--primary-text-color);
       margin: 0;
     }
   }
 
   :global(.hi-product-title-metadata) {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     color: var(--secondary-text-color);
     display: flex;
     align-items: center;
@@ -776,17 +783,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-content) {
-    padding: 0 24px 20px;
+    padding: 0 16px 14px;
     border-top: 1px solid var(--border-color);
     margin-top: 0;
   }
 
   :global(.hi-price-tiers-rows) {
-    padding-top: 16px;
+    padding-top: 12px;
   }
 
   :global(.hi-price-tier-row) {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 
     &:last-child {
       margin-bottom: 0;
@@ -802,15 +809,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-price-tier-label) {
-    font-weight: 600;
+    font-weight: 590;
     color: var(--primary-text-color);
-    font-size: 0.95rem;
+    font-size: 0.86rem;
   }
 
   :global(.hi-price-tier-price) {
     font-family: $font-display;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.94rem;
     color: var(--primary-text-color);
   }
 
@@ -825,8 +832,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       border: 1px solid var(--border-color);
 
       button {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
         border-radius: $radius-xs;
         border: none;
         background: transparent;
@@ -852,9 +859,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       input {
         font-family: $font-display;
         font-weight: 600;
-        min-width: 32px;
+        min-width: 28px;
         text-align: center;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: var(--primary-text-color);
         border: none;
         background: transparent;
@@ -864,10 +871,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-description-row) {
     color: var(--secondary-color);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-top: 12px;
-    padding-top: 12px;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid var(--border-color);
   }
 
@@ -893,24 +900,24 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-footer-row) {
-    margin-top: 24px;
-    padding-top: 24px;
+    margin-top: 18px;
+    padding-top: 18px;
     border-top: 1px solid var(--border-color);
 
     .hi-product-page-message {
-      background: var(--content-bg-color);
+      background: color-mix(in srgb, var(--accent-soft) 42%, var(--content-bg-color));
       border: 1px solid var(--border-color);
       border-radius: $radius-sm;
       padding: 12px 16px;
       margin-bottom: 16px;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       color: var(--primary-text-color);
     }
   }
 
   :global(.hi-continue-button) {
     width: 100%;
-    padding: 18px 24px !important;
+    padding: 13px 18px !important;
     height: auto !important;
     background: var(--primary-text-color) !important;
     background-color: var(--primary-text-color) !important;
@@ -918,7 +925,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--primary-text-color) !important;
     border-radius: $radius-md !important;
     font-family: $font-display;
-    font-size: 1rem !important;
+    font-size: 0.92rem !important;
     font-weight: 600 !important;
     text-transform: none;
     letter-spacing: 0;
@@ -955,7 +962,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-have-a-promo-code-link) {
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     text-align: center;
     display: block;
     width: 100%;
@@ -974,7 +981,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     border-radius: $radius-sm;
     color: var(--primary-text-color);
-    padding: 10px 14px;
+    padding: 9px 12px;
   }
 
   :global(.hi-apply-promo-code-button) {
@@ -983,7 +990,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--primary-text-color);
     border-radius: $radius-sm;
     font-weight: 600;
-    padding: 10px 20px;
+    padding: 9px 16px;
 
     &:hover {
       filter: none;
@@ -1300,17 +1307,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pageWrapper {
-  background: var(--ue-canvas);
+  background: color-mix(in srgb, var(--ue-canvas) 92%, white);
 }
 
 .wrapper {
-  max-width: 960px;
-  padding-top: 24px;
+  max-width: 980px;
+  padding-top: 22px;
 }
 
 .mainCard {
   background: var(--hi-surface);
-  border-color: var(--hi-border);
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
 }
 
@@ -1409,7 +1416,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .ticketsSection {
   :global(.hi-product-rows),
   :global(.hi-product-category-rows) {
-    gap: 0;
+    gap: 7px;
   }
 
   :global(.hi-product-row) {
@@ -1417,7 +1424,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-color: var(--hi-border);
     border-radius: var(--hi-radius-md);
     border-width: 1px;
-    margin-bottom: 8px;
+    margin-bottom: 0;
 
     &:first-child {
       border-top-width: 1px;
@@ -1440,16 +1447,16 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-title) {
-    padding: 16px 18px;
+    padding: 14px 16px;
   }
 
   :global(.hi-product-content) {
-    padding: 0 18px 18px;
+    padding: 0 16px 14px;
     border-top-color: var(--hi-border);
   }
 
   :global(.hi-price-tier-row:not(:last-child)) {
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--hi-border);
   }
 
@@ -1482,6 +1489,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-color: var(--hi-text) !important;
     color: var(--hi-color-white) !important;
     border-radius: var(--hi-radius-sm) !important;
+  }
+
+  :global(.hi-continue-button) {
+    padding: 13px 18px !important;
+    min-height: 42px !important;
   }
 
   :global(.hi-promo-code-input) {
