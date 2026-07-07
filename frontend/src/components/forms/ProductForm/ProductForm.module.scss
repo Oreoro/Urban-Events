@@ -1,18 +1,19 @@
 .priceTierCard {
   position: relative;
-  padding: 12px 14px;
-  margin-bottom: var(--hi-spacing-md);
+  padding: 11px 12px;
+  margin-bottom: 10px;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-left: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
   box-shadow: none;
 
   h3 {
-    margin: 0 0 var(--hi-spacing-sm) 0;
-    font-size: 0.95rem;
-    font-weight: 650;
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    font-weight: 680;
     color: var(--hi-text);
+    letter-spacing: 0;
   }
 }
 
@@ -46,12 +47,12 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px 10px;
-  margin-top: var(--hi-spacing-sm);
-  margin-bottom: 18px;
+  padding: 8px 9px;
+  margin-top: 8px;
+  margin-bottom: 14px;
   cursor: pointer;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
@@ -96,8 +97,8 @@
   }
 
   .toggleLabel {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.84rem;
+    font-weight: 650;
     color: var(--hi-text);
     transition: color 0.15s ease;
   }
@@ -107,7 +108,7 @@
   }
 
   .toggleDescription {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--hi-text-muted);
   }
 
