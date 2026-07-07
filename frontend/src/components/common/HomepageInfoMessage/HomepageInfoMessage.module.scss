@@ -110,13 +110,13 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   height: 36px;
   border-radius: $radius-sm !important;
-  border: 1px solid var(--primary-color, var(--checkout-accent, var(--hi-shell-accent))) !important;
+  border: 1px solid var(--hi-text) !important;
   font-family: $font-display;
   font-weight: 600 !important;
   font-size: 13px !important;
   margin-top: 8px;
-  background: var(--primary-color, var(--checkout-accent, var(--hi-shell-accent))) !important;
-  color: var(--accent-contrast, var(--checkout-accent-contrast, var(--hi-color-white))) !important;
+  background: var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
   box-shadow: none !important;
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
@@ -124,12 +124,12 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     transform: none;
     box-shadow: none;
     filter: none;
-    border-color: var(--checkout-accent-hover, var(--hi-primary-hover)) !important;
-    background: var(--checkout-accent-hover, var(--hi-primary-hover)) !important;
+    border-color: var(--hi-text-light) !important;
+    background: var(--hi-text-light) !important;
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-shell-accent);
+    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
     outline-offset: 2px;
   }
 }
@@ -141,7 +141,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .helpLink {
-  color: var(--primary-color, var(--checkout-accent, var(--hi-text)));
+  color: var(--hi-text);
   text-decoration: none;
 
   &:hover {

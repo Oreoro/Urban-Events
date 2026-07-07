@@ -137,7 +137,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
     &:focus,
     &:focus-within {
       border-color: var(--checkout-text-primary, var(--hi-text));
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
     }
   }
 
@@ -194,15 +194,15 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
 .checkoutModalPrimary {
   min-height: 42px;
-  background: var(--checkout-accent, var(--hi-primary));
-  border: 1px solid var(--checkout-accent, var(--hi-primary));
+  background: var(--hi-text);
+  border: 1px solid var(--hi-text);
   border-radius: var(--hi-radius-md);
-  color: var(--checkout-accent-contrast, var(--hi-color-white));
+  color: var(--hi-color-white);
   font-weight: 620;
 
   &:hover {
-    background: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary)));
-    border-color: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary)));
+    background: var(--hi-text-light);
+    border-color: var(--hi-text-light);
   }
 }
 

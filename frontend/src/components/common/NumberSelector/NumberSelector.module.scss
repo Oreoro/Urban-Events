@@ -7,9 +7,9 @@
 
 
 .control {
-  background-color: var(--checkout-accent, var(--hi-primary));
-  color: var(--checkout-accent-contrast, var(--hi-color-white));
-  border: 1px solid var(--checkout-accent, var(--hi-primary));
+  background-color: var(--hi-text);
+  color: var(--hi-color-white);
+  border: 1px solid var(--hi-text);
 
   &:disabled {
     border-color: var(--hi-border);

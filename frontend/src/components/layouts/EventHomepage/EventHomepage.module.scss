@@ -742,8 +742,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-row.selected) {
-    border-color: var(--hi-primary);
-    background: var(--hi-primary-soft);
+    border-color: color-mix(in srgb, var(--hi-text) 18%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
   }
 
   :global(.hi-title-row) {
@@ -919,10 +919,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     padding: 13px 18px !important;
     height: auto !important;
-    background: var(--hi-primary) !important;
-    background-color: var(--hi-primary) !important;
+    background: var(--hi-text) !important;
+    background-color: var(--hi-text) !important;
     color: var(--hi-color-white) !important;
-    border: 1px solid var(--hi-primary) !important;
+    border: 1px solid var(--hi-text) !important;
     border-radius: $radius-md !important;
     font-family: $font-display;
     font-size: 0.92rem !important;
@@ -943,9 +943,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover:not(:disabled) {
       filter: none;
-      background: var(--hi-primary-hover) !important;
-      background-color: var(--hi-primary-hover) !important;
-      border-color: var(--hi-primary-hover) !important;
+      background: var(--hi-text-light) !important;
+      background-color: var(--hi-text-light) !important;
+      border-color: var(--hi-text-light) !important;
     }
 
     &:disabled {
@@ -1446,8 +1446,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-row.hi-product-highlighted),
   :global(.hi-product-row.selected) {
-    background: var(--hi-primary-soft);
-    border-color: var(--hi-primary);
+    background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+    border-color: color-mix(in srgb, var(--hi-text) 18%, var(--hi-border));
   }
 
   :global(.hi-product-title) {
@@ -1487,17 +1487,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-continue-button) {
-    background: var(--hi-primary) !important;
-    background-color: var(--hi-primary) !important;
-    border-color: var(--hi-primary) !important;
+    background: var(--hi-text) !important;
+    background-color: var(--hi-text) !important;
+    border-color: var(--hi-text) !important;
     color: var(--hi-color-white) !important;
     border-radius: var(--hi-radius-sm) !important;
   }
 
   :global(.hi-continue-button:hover:not(:disabled)) {
-    background: var(--hi-primary-hover) !important;
-    background-color: var(--hi-primary-hover) !important;
-    border-color: var(--hi-primary-hover) !important;
+    background: var(--hi-text-light) !important;
+    background-color: var(--hi-text-light) !important;
+    border-color: var(--hi-text-light) !important;
   }
 
   :global(.hi-apply-promo-code-button) {
