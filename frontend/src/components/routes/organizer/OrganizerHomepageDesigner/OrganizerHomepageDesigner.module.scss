@@ -76,7 +76,7 @@
       
       .accordionItem {
         border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-        border-radius: var(--hi-radius-md);
+        border-radius: var(--hi-radius-sm);
         overflow: hidden;
         background: var(--hi-surface);
         
@@ -156,8 +156,8 @@
 
         &:focus,
         &:focus-within {
-          border-color: var(--hi-shell-accent);
-          box-shadow: 0 0 0 2px var(--hi-focus-ring);
+          border-color: var(--hi-text-muted);
+          box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
         }
       }
     }

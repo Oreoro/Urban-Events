@@ -40,11 +40,11 @@
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
-  --hi-primary: var(--ue-teal);
-  --hi-primary-hover: var(--ue-teal-deep);
-  --hi-primary-soft: color-mix(in srgb, var(--hi-primary) 10%, white);
+  --hi-primary: var(--ue-ink);
+  --hi-primary-hover: var(--ue-ink-soft);
+  --hi-primary-soft: color-mix(in srgb, var(--ue-ink) 7%, white);
   --hi-secondary: var(--ue-sky);
-  --hi-secondary-strong: var(--ue-teal);
+  --hi-secondary-strong: var(--ue-ink);
   --hi-secondary-text: var(--ue-ink);
   --hi-surface: var(--ue-surface);
   --hi-surface-raised: var(--ue-surface);
@@ -59,19 +59,19 @@
   --hi-link-color: var(--hi-shell-accent);
   --hi-pink: var(--ue-coral-deep);
   --hi-primary-alt: var(--ue-coral-deep);
-  --hi-action-fill: var(--hi-primary);
+  --hi-action-fill: var(--hi-text);
   --hi-shell-bg: #fbfbfa;
   --hi-shell-bg-strong: #fbfbfa;
   --hi-shell-surface: #f1f1ef;
   --hi-shell-surface-hover: #e6e4df;
   --hi-shell-text: var(--ue-ink);
   --hi-shell-muted: var(--ue-muted);
-  --hi-shell-accent: var(--ue-teal);
+  --hi-shell-accent: var(--ue-ink);
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
   --hi-control-bg: #ffffff;
   --hi-control-bg-hover: #f7f7f5;
   --hi-control-bg-active: #f1f1ef;
-  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 16%, transparent);
+  --hi-focus-ring: color-mix(in srgb, var(--hi-text) 12%, transparent);
   --hi-danger: #c4554d;
   --hi-success: #2f8f62;
   --hi-warning: #cb912f;
@@ -238,8 +238,8 @@ a {
 }
 
 .mantine-Badge-root[data-variant="filled"] {
-  border: 1px solid var(--hi-primary);
-  background: var(--hi-primary) !important;
+  border: 1px solid var(--hi-text);
+  background: var(--hi-text) !important;
   color: var(--hi-color-white) !important;
 }
 
@@ -348,14 +348,14 @@ a {
 
 .mantine-Button-root[data-variant="filled"] {
   box-shadow: none;
-  background-color: var(--hi-primary) !important;
+  background-color: var(--hi-text) !important;
   color: var(--hi-color-white) !important;
-  border: 1px solid var(--hi-primary) !important;
+  border: 1px solid var(--hi-text) !important;
 }
 
 .mantine-Button-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-primary-hover) !important;
-  border-color: var(--hi-primary-hover) !important;
+  background-color: var(--hi-text-light) !important;
+  border-color: var(--hi-text-light) !important;
 }
 
 .mantine-Button-root[data-variant="light"] {
@@ -409,14 +409,14 @@ a {
 }
 
 .mantine-ActionIcon-root[data-variant="filled"] {
-  background-color: var(--hi-primary) !important;
+  background-color: var(--hi-text) !important;
   color: var(--hi-color-white) !important;
-  border-color: var(--hi-primary) !important;
+  border-color: var(--hi-text) !important;
 }
 
 .mantine-ActionIcon-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-primary-hover) !important;
-  border-color: var(--hi-primary-hover) !important;
+  background-color: var(--hi-text-light) !important;
+  border-color: var(--hi-text-light) !important;
 }
 
 .mantine-Menu-dropdown {
@@ -551,8 +551,8 @@ a {
 }
 
 .mantine-Pagination-control[data-active] {
-  background: var(--hi-primary) !important;
-  border-color: var(--hi-primary) !important;
+  background: var(--hi-text) !important;
+  border-color: var(--hi-text) !important;
   color: var(--hi-color-white) !important;
 }
 

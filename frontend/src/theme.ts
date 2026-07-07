@@ -34,10 +34,10 @@ export const urbanEventsColors = {
 
 export const getUrbanEventsTheme = () => createTheme({
     colors: {
-        primary: generateColors(urbanEventsColors.teal),
-        secondary: generateColors(urbanEventsColors.teal),
+        primary: generateColors(urbanEventsColors.ink),
+        secondary: generateColors(urbanEventsColors.inkSoft),
         blush: generateColors(urbanEventsColors.coral),
-        aqua: generateColors(urbanEventsColors.teal),
+        aqua: generateColors(urbanEventsColors.ink),
         eggshell: generateColors(urbanEventsColors.eggshell),
         slate: generateColors(urbanEventsColors.blueSlate),
         coral: generateColors(urbanEventsColors.coral),

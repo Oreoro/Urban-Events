@@ -7,7 +7,7 @@
   gap: 0;
   color: var(--brand-primary);
   font-family: var(--hi-font-heading);
-  font-weight: 680;
+  font-weight: 720;
   letter-spacing: 0;
   line-height: 1;
   text-decoration: none;
@@ -27,7 +27,8 @@
   position: relative;
   font-size: var(--brand-font-size);
   color: currentColor;
-  font-weight: 680;
+  font-weight: 720;
+  text-transform: none;
 }
 
 .wordmarkText::after {

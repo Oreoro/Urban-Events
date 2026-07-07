@@ -141,7 +141,7 @@
           :global(.mantine-Input-input) {
             min-height: 34px;
             border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
-            border-radius: var(--hi-radius-md);
+            border-radius: var(--hi-radius-sm);
             background: var(--hi-surface);
             color: var(--hi-text);
             font-size: 0.82rem;
@@ -155,8 +155,8 @@
 
             &:focus,
             &:focus-within {
-              border-color: var(--hi-shell-accent);
-              box-shadow: 0 0 0 2px var(--hi-focus-ring);
+              border-color: var(--hi-text-muted);
+              box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
             }
           }
 
@@ -164,7 +164,7 @@
             gap: 4px;
             padding: 3px;
             border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-            border-radius: var(--hi-radius-md);
+            border-radius: var(--hi-radius-sm);
             background: var(--hi-shell-bg);
           }
 
