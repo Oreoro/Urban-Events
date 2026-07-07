@@ -101,7 +101,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Alert: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 variant: "light",
             },
         },
@@ -138,7 +138,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Card: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 shadow: "none",
                 withBorder: true,
             },
@@ -163,7 +163,7 @@ export const getUrbanEventsTheme = () => createTheme({
                     borderColor: "var(--hi-border-strong)",
                     color: "var(--hi-text)",
                     fontWeight: 500,
-                    minHeight: "2.375rem",
+                    minHeight: "2.125rem",
                     backgroundColor: "var(--hi-control-bg)",
                 },
                 label: {
@@ -177,7 +177,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Menu: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 shadow: "none",
             },
             styles: {
@@ -192,7 +192,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Modal: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 overlayProps: {
                     blur: 4,
                     opacity: 0.45,
@@ -201,7 +201,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Paper: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 shadow: "none",
                 withBorder: true,
             },
@@ -213,7 +213,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Popover: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 shadow: "none",
             },
             styles: {
@@ -249,7 +249,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Tabs: {
             defaultProps: {
-                radius: "md",
+                radius: "sm",
                 color: "slate",
             },
         },
