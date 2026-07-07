@@ -104,7 +104,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .placeholderImage {
   width: 100%;
   height: 100%;
-  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 7%, var(--hi-surface-soft));
+  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-text)) 7%, var(--hi-surface-soft));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,9 +118,9 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 16%, var(--hi-border));
+  border: 1px solid color-mix(in srgb, var(--placeholder-accent, var(--hi-text)) 16%, var(--hi-border));
   border-radius: var(--hi-radius-sm);
-  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 8%, var(--hi-surface));
+  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-text)) 8%, var(--hi-surface));
 }
 
 .placeholderIcon {

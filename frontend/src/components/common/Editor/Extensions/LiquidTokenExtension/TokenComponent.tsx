@@ -19,7 +19,6 @@ export const TokenComponent = ({node, selected}: TokenComponentProps) => {
         <Badge
             size="sm"
             variant={selected ? 'filled' : 'light'}
-            color="blue"
             leftSection={<IconCode size={12}/>}
             style={{
                 cursor: 'default',

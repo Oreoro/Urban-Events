@@ -25,7 +25,7 @@ interface TicketDesignSettings {
     enabled: boolean;
 }
 
-const DEFAULT_TICKET_ACCENT_COLOR = '#2383E2';
+const DEFAULT_TICKET_ACCENT_COLOR = '#37352F';
 
 const TicketDesigner = () => {
     const {eventId} = useParams();

@@ -28,7 +28,7 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
         return (
             <div className={classes.vatSettings}>
                 <Title mb={10} order={3}>{t`VAT Information`}</Title>
-                <Alert color="blue" icon={<IconInfoCircle />} mb="lg">
+                <Alert icon={<IconInfoCircle />} mb="lg">
                     <Text size="sm" fw={500} mb="xs">{t`VAT Treatment for Platform Fees`}</Text>
                     <Text size="sm" lh={1.6}>
                         {t`As your business is based in Ireland, Irish VAT at 23% applies automatically to all platform fees.`}

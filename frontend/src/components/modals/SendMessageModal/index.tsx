@@ -266,7 +266,6 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                 {!formIsDisabled && !tierLimitError && supportEmail && (
                     <Alert
                         variant="light"
-                        color="blue"
                         icon={<IconInfoCircle size="1rem"/>}
                         mb="md"
                     >

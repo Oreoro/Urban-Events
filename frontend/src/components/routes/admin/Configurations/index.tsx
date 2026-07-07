@@ -87,7 +87,7 @@ const Configurations = () => {
                                         <Group gap="sm">
                                             <Text className={classes.configName}>{config.name}</Text>
                                             {config.is_system_default && (
-                                                <Badge color="blue" size="sm">{t`System Default`}</Badge>
+                                                <Badge size="sm">{t`System Default`}</Badge>
                                             )}
                                             {config.bypass_application_fees && (
                                                 <Badge color="orange" size="sm">{t`Fees Bypassed`}</Badge>

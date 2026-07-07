@@ -224,7 +224,7 @@ export const ProductForm = ({form, product}: ProductFormProps) => {
     return (
         <>
             {Number(product?.quantity_sold) > 0 && (
-                <Alert icon={<IconInfoCircle/>} mb={20} color={'blue'}>
+                <Alert icon={<IconInfoCircle/>} mb={20}>
                     {t`You cannot change the product type as there are attendees associated with this product.`}
                 </Alert>
             )}

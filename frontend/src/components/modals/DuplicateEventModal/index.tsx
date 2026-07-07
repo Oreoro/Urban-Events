@@ -141,7 +141,6 @@ export const DuplicateEventModal = ({onClose, eventId}: DuplicateEventModalProps
                                     size="sm"
                                     onClick={handleSelectAll}
                                     disabled={allSelected}
-                                    color="blue"
                                 >
                                     <IconCheckbox size={16} />
                                 </ActionIcon>

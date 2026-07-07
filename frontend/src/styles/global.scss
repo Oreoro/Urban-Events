@@ -16,7 +16,7 @@
   --ue-slate-deep: var(--ue-ink);
   --ue-slate-soft: #e6e4df;
   --ue-aqua: var(--ue-icy-aqua);
-  --ue-aqua-deep: #2383e2;
+  --ue-aqua-deep: var(--ue-ink);
   --ue-blush: var(--ue-powder-blush);
   --ue-blush-deep: #c4554d;
   --ue-coral: #c4554d;
@@ -24,8 +24,8 @@
   --ue-marigold: #b7791f;
   --ue-navy: #37352f;
   --ue-navy-deep: #191918;
-  --ue-teal: #2383e2;
-  --ue-teal-deep: #1f6fbd;
+  --ue-teal: var(--ue-ink);
+  --ue-teal-deep: var(--ue-ink-soft);
   --ue-plum: var(--ue-navy);
   --ue-plum-deep: var(--ue-navy-deep);
   --ue-forest: #2f8f62;
@@ -153,7 +153,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--hi-shell-accent);
+  outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
   outline-offset: 2px;
 }
 
@@ -198,8 +198,8 @@ a {
 
 .mantine-Input-input:focus,
 .mantine-Input-input:focus-within {
-  border-color: var(--hi-shell-accent);
-  box-shadow: 0 0 0 3px var(--hi-focus-ring);
+  border-color: var(--hi-text-muted);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hi-text) 12%, transparent);
 }
 
 .mantine-Input-input {

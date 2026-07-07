@@ -60,7 +60,6 @@ export const LiquidTokenControl = ({templateType}: LiquidTokenControlProps) => {
                                 <Badge
                                     size="xs"
                                     variant="light"
-                                    color="blue"
                                     style={{fontFamily: 'monospace', marginBottom: '4px'}}
                                 >
                                     {token.token}

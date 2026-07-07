@@ -419,10 +419,10 @@ const AdminDashboard = () => {
                                             <Table.Td>
                                                 <Group gap="xs">
                                                     {account.account_verified_at && (
-                                                        <Badge size="xs" color="green" variant="light">{t`Verified`}</Badge>
+                                                        <Badge size="xs" variant="light">{t`Verified`}</Badge>
                                                     )}
                                                     {account.stripe_connect_setup_complete && (
-                                                        <Badge size="xs" color="blue" variant="light">{t`Stripe`}</Badge>
+                                                        <Badge size="xs" variant="light">{t`Stripe`}</Badge>
                                                     )}
                                                 </Group>
                                             </Table.Td>

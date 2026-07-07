@@ -5,7 +5,7 @@
 .hi-product-widget-container {
   --widget-fg: var(--widget-primary-text-color, var(--hi-text));
   --widget-muted-fg: color-mix(in srgb, var(--widget-fg) 58%, var(--widget-background-color, var(--hi-color-white)));
-  --widget-accent: var(--widget-secondary-color, var(--hi-primary));
+  --widget-accent: var(--widget-secondary-color, var(--hi-text));
   --widget-accent-text: var(--widget-secondary-text-color, var(--hi-color-white));
   --widget-border: color-mix(in srgb, var(--widget-fg) 14%, var(--widget-background-color, var(--hi-color-white)));
   --widget-border-strong: color-mix(in srgb, var(--widget-border) 78%, var(--widget-fg));

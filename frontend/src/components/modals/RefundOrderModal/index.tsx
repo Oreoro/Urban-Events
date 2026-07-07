@@ -135,7 +135,7 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                     </Stack>
 
                     {(isPartialRefund && Number(form.values.amount) > 0) && (
-                        <Alert icon={<IconInfoCircle/>} color="blue" variant="light">
+                        <Alert icon={<IconInfoCircle/>} variant="light">
                             {t`You are issuing a partial refund. The customer will be refunded ${Number(form.values.amount).toFixed(2)} ${order.currency}.`}
                         </Alert>
                     )}
@@ -158,7 +158,6 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
             <Stack gap="md">
                 <Alert
                     icon={<IconInfoCircle size={24}/>}
-                    color={'blue'}
                     variant="light"
                     styles={{
                         message: {fontSize: '0.95rem'}

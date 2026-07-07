@@ -24,7 +24,7 @@ export const WidgetEditor = () => {
             background_color: "#FBFBFA",
             primary_color: "#37352F",
             primary_text_color: "#37352F",
-            secondary_color: "#2383E2",
+            secondary_color: "#37352F",
             secondary_text_color: "#FFFFFF",
             continue_button_text: t`Continue`,
             padding: 20,

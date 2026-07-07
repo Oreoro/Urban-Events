@@ -50,7 +50,7 @@ const ValidationStatusAlert = ({
     switch (status) {
         case 'VALID':
             return (
-                <Alert color="green" icon={<IconCheck />}>
+                <Alert icon={<IconCheck />}>
                     <Text size="sm" fw={500}>
                         {t`VAT number validated successfully`}
                     </Text>
@@ -65,7 +65,7 @@ const ValidationStatusAlert = ({
         case 'PENDING':
         case 'VALIDATING':
             return (
-                <Alert color="blue" icon={status === 'VALIDATING' ? <Loader size="xs" /> : <IconClock />}>
+                <Alert icon={status === 'VALIDATING' ? <Loader size="xs" /> : <IconClock />}>
                     <Text size="sm" fw={500}>
                         {status === 'VALIDATING'
                             ? t`Validating your VAT number...`

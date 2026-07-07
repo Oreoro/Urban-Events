@@ -101,7 +101,7 @@
   background-color: var(--hi-shell-bg-strong);
 
   [role="progressbar"] {
-    background: var(--hi-shell-accent);
+    background: var(--hi-text);
     box-shadow: none;
     transition: width 0.5s ease-in-out;
   }

@@ -233,7 +233,6 @@ const Messages = () => {
                                                         <Tooltip label={t`Approve Message`}>
                                                             <ActionIcon
                                                                 variant="subtle"
-                                                                color="green"
                                                                 onClick={() => handleApprove(message.id)}
                                                                 loading={approveMutation.isPending}
                                                             >

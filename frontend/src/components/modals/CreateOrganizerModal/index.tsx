@@ -19,7 +19,7 @@ export const CreateOrganizerModal = ({onClose}: CreateOrganizerModalProps) => {
             opened
             size={'lg'}
         >
-            <Alert icon={<IconInfoCircle size={16}/>} variant="light" color="blue" mb="md">
+            <Alert icon={<IconInfoCircle size={16}/>} variant="light" mb="md">
                 {t`Create additional organizers to manage separate brands, departments, or event series under one account. Each organizer has its own events, settings, and public page.`}
             </Alert>
             <OrganizerCreateForm onSuccess={(organizer: Organizer) => {

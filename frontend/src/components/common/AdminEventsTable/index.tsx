@@ -157,7 +157,6 @@ const AdminEventsTable = ({events, onSort, sortBy, sortDirection, onViewEvent, o
                                         <Tooltip label={t`View Event`}>
                                             <ActionIcon
                                                 variant="subtle"
-                                                color="blue"
                                                 onClick={() => onViewEvent?.(event)}
                                             >
                                                 <IconEye size={18} />
