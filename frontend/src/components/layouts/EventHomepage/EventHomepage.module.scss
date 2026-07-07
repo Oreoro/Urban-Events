@@ -1443,7 +1443,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-row.hi-product-highlighted),
   :global(.hi-product-row.selected) {
     background: var(--hi-surface);
-    border-color: var(--hi-text);
+    border-color: var(--hi-primary);
   }
 
   :global(.hi-product-title) {
@@ -1484,11 +1484,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-continue-button),
   :global(.hi-apply-promo-code-button) {
-    background: var(--hi-text) !important;
-    background-color: var(--hi-text) !important;
-    border-color: var(--hi-text) !important;
+    background: var(--hi-primary) !important;
+    background-color: var(--hi-primary) !important;
+    border-color: var(--hi-primary) !important;
     color: var(--hi-color-white) !important;
     border-radius: var(--hi-radius-sm) !important;
+  }
+
+  :global(.hi-continue-button:hover:not(:disabled)),
+  :global(.hi-apply-promo-code-button:hover:not(:disabled)) {
+    background: var(--hi-primary-hover) !important;
+    background-color: var(--hi-primary-hover) !important;
+    border-color: var(--hi-primary-hover) !important;
   }
 
   :global(.hi-continue-button) {
@@ -1504,14 +1511,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrollToTicketsButton {
-  background: var(--hi-text);
+  background: var(--hi-primary);
   color: var(--hi-color-white);
-  border: 1px solid var(--hi-text);
+  border: 1px solid var(--hi-primary);
   border-radius: var(--hi-radius-sm);
 }
 
 .scrollToTicketsButton:hover {
   filter: none;
-  background: var(--hi-color-black);
-  border-color: var(--hi-color-black);
+  background: var(--hi-primary-hover);
+  border-color: var(--hi-primary-hover);
 }

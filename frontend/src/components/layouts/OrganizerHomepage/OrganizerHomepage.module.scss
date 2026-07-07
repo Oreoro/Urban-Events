@@ -783,25 +783,25 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterButtonActive {
-  background: var(--hi-text);
+  background: var(--hi-primary);
   color: var(--hi-color-white);
 }
 
 .paginationComponent :global(.mantine-Pagination-control[data-active]) {
-  background: var(--hi-text);
-  border-color: var(--hi-text);
+  background: var(--hi-primary);
+  border-color: var(--hi-primary);
   color: var(--hi-color-white);
 }
 
 .submitButton {
-  background: var(--hi-text);
-  border: 1px solid var(--hi-text);
+  background: var(--hi-primary);
+  border: 1px solid var(--hi-primary);
   color: var(--hi-color-white);
   border-radius: var(--hi-radius-sm);
 
   &:hover {
     filter: none;
-    background: var(--hi-color-black);
-    border-color: var(--hi-color-black);
+    background: var(--hi-primary-hover);
+    border-color: var(--hi-primary-hover);
   }
 }

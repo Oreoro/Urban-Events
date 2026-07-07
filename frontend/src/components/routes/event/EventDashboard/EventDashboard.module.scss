@@ -300,8 +300,8 @@
 }
 
 .checkboxComplete {
-  background-color: var(--hi-text);
-  border-color: var(--hi-text);
+  background-color: var(--hi-primary);
+  border-color: var(--hi-primary);
   color: var(--hi-color-white);
 }
 
@@ -457,7 +457,7 @@
 .stripeButton {
   align-self: flex-start;
 
-  background: var(--hi-text) !important;
+  background: var(--hi-primary) !important;
   color: white !important;
   font-weight: 600;
   border: none !important;
@@ -469,7 +469,7 @@
 
   &:hover:not(:disabled) {
     box-shadow: none !important;
-    background: var(--hi-color-black) !important;
+    background: var(--hi-primary-hover) !important;
   }
 
   &:disabled {
