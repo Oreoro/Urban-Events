@@ -326,8 +326,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
 
   &:hover {
-    background: var(--primary-color);
-    color: var(--accent-contrast);
+    background: var(--hi-control-bg-hover);
+    color: var(--primary-text-color);
   }
 }
 
@@ -335,18 +335,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--primary-text-color);
-  color: var(--content-bg-color);
+  background: var(--content-bg-color);
+  color: var(--primary-text-color);
   font-weight: 600;
   border-radius: $radius-sm;
   font-size: 0.84rem;
   padding: 8px 14px;
-  border: 1px solid var(--primary-text-color);
+  border: 1px solid var(--border-color);
   cursor: pointer;
   transition: background-color $transition-fast, color $transition-fast;
 
   &:hover {
-    filter: brightness(1.1);
+    background: var(--hi-control-bg-hover);
   }
 }
 
@@ -497,8 +497,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterButtonActive {
-  background: var(--primary-text-color);
-  color: var(--content-bg-color);
+  background: var(--content-bg-color);
+  color: var(--primary-text-color);
   box-shadow: none;
 }
 
@@ -555,9 +555,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &[data-active] {
-      background: var(--primary-color);
-      border-color: var(--primary-color);
-      color: var(--accent-contrast);
+      background: var(--content-bg-color);
+      border-color: var(--border-color);
+      color: var(--primary-text-color);
     }
   }
 
@@ -636,7 +636,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
 
   &:hover {
-    filter: brightness(1.1);
+    filter: none;
   }
 }
 
@@ -772,6 +772,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .filterButton {
   color: var(--secondary-color);
+  border: 1px solid transparent;
   border-radius: var(--hi-radius-xs);
   padding: 6px 14px;
   font-size: 0.8rem;
@@ -783,14 +784,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterButtonActive {
-  background: var(--hi-primary);
-  color: var(--hi-color-white);
+  background: var(--hi-surface);
+  border-color: var(--hi-border);
+  color: var(--primary-text-color);
 }
 
 .paginationComponent :global(.mantine-Pagination-control[data-active]) {
-  background: var(--hi-primary);
-  border-color: var(--hi-primary);
-  color: var(--hi-color-white);
+  background: var(--hi-surface);
+  border-color: var(--hi-border-strong);
+  color: var(--primary-text-color);
 }
 
 .submitButton {

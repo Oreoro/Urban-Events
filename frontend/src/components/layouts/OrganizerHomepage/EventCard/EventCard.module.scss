@@ -19,7 +19,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     .eventCard {
-      background: var(--hi-control-bg-hover);
+      background: color-mix(in srgb, var(--hi-control-bg-hover) 68%, var(--content-bg-color));
       border-color: var(--hi-border-strong);
 
       .shareButton {
@@ -104,7 +104,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .placeholderImage {
   width: 100%;
   height: 100%;
-  background: var(--hi-surface-soft);
+  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 7%, var(--hi-surface-soft));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,16 +114,23 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .placeholderContent {
   position: relative;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 16%, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
+  background: color-mix(in srgb, var(--placeholder-accent, var(--hi-primary)) 8%, var(--hi-surface));
 }
 
 .placeholderIcon {
-  width: 2rem;
-  height: 2rem;
-  color: var(--secondary-color);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary-text-color);
 
   @media (max-width: 640px) {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 1.35rem;
+    height: 1.35rem;
   }
 }
 
@@ -140,7 +147,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Share button
 .shareButton {
-  opacity: 1;
+  opacity: 0;
   transition: opacity $transition-fast, background-color $transition-fast, border-color $transition-fast;
   background: var(--hi-surface);
   border: 1px solid var(--border-color);
@@ -185,7 +192,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .liveDot {
   width: 5px;
   height: 5px;
-  background: currentColor;
+  background: var(--hi-success);
   border-radius: 50%;
 }
 
@@ -214,7 +221,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   svg {
-    color: var(--primary-color);
+    color: var(--secondary-color);
   }
 }
 
@@ -265,7 +272,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
 
   svg {
-    color: var(--accent-muted);
+    color: var(--secondary-color);
     flex-shrink: 0;
   }
 }
@@ -297,6 +304,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   flex-wrap: wrap;
   padding-top: 5px;
   border-top: 1px solid var(--hi-border);
+  border-top-color: color-mix(in srgb, var(--border-color) 88%, transparent);
 
   @include mixins.respond-below('sm') {
     gap: 8px;
@@ -319,7 +327,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
 
   svg {
-    color: var(--accent-muted);
+    color: var(--secondary-color);
     flex-shrink: 0;
   }
 }
@@ -334,13 +342,13 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.78rem;
   color: var(--primary-text-color);
   padding: 4px 8px;
-  background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--border-color) 88%, transparent);
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
   border-radius: $radius-xs;
   white-space: nowrap;
 
   svg {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     flex-shrink: 0;
   }
 
