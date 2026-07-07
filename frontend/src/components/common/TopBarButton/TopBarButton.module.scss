@@ -10,7 +10,7 @@
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text) !important;
   background: var(--hi-surface) !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-border) !important;
   box-shadow: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   position: relative;
@@ -25,6 +25,11 @@
     box-shadow: none;
     background: var(--hi-control-bg-hover) !important;
     border-color: var(--hi-border-strong) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hi-primary);
+    outline-offset: 2px;
   }
 
   @include mixins.respond-below(sm) {

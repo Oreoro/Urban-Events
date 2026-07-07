@@ -19,14 +19,16 @@
   }
 
   .statusDot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 999px;
-    background: var(--hi-text-muted);
+    background: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-border);
     flex: 0 0 auto;
 
     &[data-status="live"] {
       background: var(--hi-success);
+      border-color: color-mix(in srgb, var(--hi-success) 36%, var(--hi-border));
     }
   }
 
@@ -55,7 +57,7 @@
 
   &:hover {
     color: var(--hi-text);
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
   }
 
   .eventPageButtonText {
@@ -100,7 +102,7 @@
   &:hover {
     :global(.mantine-Button-root) {
       color: var(--hi-text);
-      background: var(--hi-surface-soft);
+      background: var(--hi-control-bg-hover);
     }
   }
 

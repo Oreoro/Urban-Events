@@ -7,7 +7,7 @@
 
   &:hover {
     color: var(--hi-text) !important;
-    background: var(--ue-canvas-soft) !important;
+    background: var(--hi-control-bg-hover) !important;
   }
 
   @include mixins.respond-below(md) {
@@ -52,7 +52,7 @@
 .calloutButton {
   background: var(--hi-primary) !important;
   border: 1px solid var(--hi-primary) !important;
-  color: #ffffff !important;
+  color: var(--hi-color-white) !important;
   font-weight: 600;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   position: relative;
@@ -83,14 +83,16 @@
   }
 
   .statusDot {
-    width: 6px;
-    height: 6px;
-    border-radius: var(--hi-radius-xs);
-    background: var(--hi-text-muted);
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-border);
     flex: 0 0 auto;
 
     &[data-status="live"] {
       background: var(--hi-success);
+      border-color: color-mix(in srgb, var(--hi-success) 36%, var(--hi-border));
     }
   }
 

@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   z-index: 1;
-  background: var(--hi-surface);
+  background: var(--hi-surface-soft);
   padding: 0.4rem 1rem;
   border-bottom: 1px solid var(--hi-border);
   box-shadow: none;
@@ -53,6 +53,11 @@
     background: var(--hi-primary-hover);
     border-color: var(--hi-primary-hover);
     color: var(--hi-color-white);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hi-primary);
+    outline-offset: 2px;
   }
 
   @include mixins.respond-below(sm) {
