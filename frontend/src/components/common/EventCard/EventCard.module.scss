@@ -3,7 +3,7 @@
 .eventCard {
   overflow: hidden;
   padding: 0 !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 6px !important;
   border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   container-type: inline-size;
@@ -13,12 +13,16 @@
   box-shadow: none !important;
 
   &:hover {
-    background: color-mix(in srgb, var(--hi-shell-bg) 42%, var(--hi-surface)) !important;
-    border-color: var(--hi-border) !important;
+    background: color-mix(in srgb, var(--hi-control-bg-hover) 72%, var(--hi-surface)) !important;
+    border-color: var(--hi-border-strong) !important;
     box-shadow: none;
 
     .title {
       color: var(--hi-text);
+    }
+
+    .menuButton {
+      opacity: 1;
     }
   }
 
@@ -48,7 +52,7 @@
   display: flex;
   text-decoration: none;
   color: inherit;
-  min-height: 78px;
+  min-height: 72px;
 
   @include mixins.respond-below(md, true) {
     flex-direction: column;
@@ -59,8 +63,8 @@
 
 .imageContainer {
   position: relative;
-  width: 76px;
-  min-width: 76px;
+  width: 68px;
+  min-width: 68px;
   overflow: hidden;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
 
@@ -103,7 +107,7 @@
   padding: 2px 5px;
   border-radius: var(--hi-radius-sm);
   font-size: 9px;
-  font-weight: 650;
+  font-weight: 600;
   text-transform: none;
   letter-spacing: 0;
   display: flex;
@@ -111,9 +115,9 @@
   gap: 5px;
 
   &.status-live {
-    background: var(--hi-status-neutral-bg);
-    color: var(--hi-text);
-    border: 1px solid var(--hi-status-neutral-border);
+    background: var(--hi-surface);
+    color: var(--hi-success);
+    border: 1px solid var(--hi-border);
   }
 
   &.status-onsale {
@@ -139,7 +143,7 @@
 .pulseDot {
   width: 5px;
   height: 5px;
-  background: currentColor;
+  background: var(--hi-success);
   border-radius: 50%;
   opacity: 0.75;
 }
@@ -148,7 +152,7 @@
   position: absolute;
   bottom: 5px;
   left: 5px;
-  background: var(--hi-surface);
+  background: color-mix(in srgb, var(--hi-surface) 92%, transparent);
   border-radius: var(--hi-radius-sm);
   padding: 4px 5px;
   display: flex;
@@ -177,7 +181,7 @@
 
 .content {
   flex: 1;
-  padding: 9px 10px 9px 12px;
+  padding: 9px 10px 9px 11px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -288,11 +292,11 @@
 .statsPanel {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px;
-  background: var(--hi-shell-bg);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  border-radius: var(--hi-radius-md);
+  gap: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   flex-shrink: 0;
 
   @include mixins.respond-below(lg, true) {
@@ -302,7 +306,7 @@
 
   @include mixins.respond-below(md, true) {
     justify-content: flex-start;
-    width: fit-content;
+    width: 100%;
     padding: 4px 0 0;
     border-top: 1px solid var(--hi-border);
   }
@@ -314,8 +318,8 @@
   align-items: flex-start;
   gap: 1px;
   cursor: default;
-  min-width: 72px;
-  padding: 5px 8px;
+  min-width: 70px;
+  padding: 2px 10px;
   border-radius: var(--hi-radius-sm);
 
   @include mixins.respond-below(lg, true) {
@@ -332,24 +336,24 @@
 }
 
 .statValue {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1;
 
   @include mixins.respond-below(lg, true) {
-    font-size: 16px;
+    font-size: 0.84rem;
   }
 }
 
 .statValueRevenue {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1;
 
   @include mixins.respond-below(lg, true) {
-    font-size: 16px;
+    font-size: 0.84rem;
   }
 }
 
@@ -363,8 +367,15 @@
 
 .menuButton {
   flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  &:focus-within {
+    opacity: 1;
+  }
 
   @include mixins.respond-below(md, true) {
+    opacity: 1;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -373,9 +384,10 @@
 
 .actionButton {
   color: var(--hi-text-muted);
-  width: 27px;
-  height: 27px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--hi-radius-sm);
+  border: 1px solid transparent;
 
   @include mixins.respond-below(md, true) {
     background: var(--hi-surface);
@@ -386,7 +398,8 @@
   }
 
   &:hover {
-    background: var(--hi-control-bg-active);
+    background: var(--hi-surface);
+    border-color: var(--hi-border);
     color: var(--hi-text);
   }
 }
