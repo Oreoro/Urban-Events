@@ -2,16 +2,20 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.5rem;
-  padding: 5px !important;
-  background: var(--hi-surface-soft) !important;
-  border: 1px solid var(--hi-border) !important;
-  border-radius: var(--hi-radius-md) !important;
+  margin-bottom: 0.65rem;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
+
+  &:hover {
+    border-color: transparent !important;
+  }
 
   .wrapper {
     display: flex;
-    gap: 0.45rem;
+    gap: 0.5rem;
     align-items: center;
     place-content: space-between;
 
@@ -30,7 +34,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 0.45rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
 
@@ -47,7 +51,7 @@
 
     .actions {
       display: flex;
-      gap: 0.45rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;
@@ -55,7 +59,7 @@
   }
 
   button {
-    min-height: 32px !important;
+    min-height: 30px !important;
     border-radius: var(--hi-radius-sm) !important;
     font-size: 0.8rem !important;
     font-weight: 640 !important;
@@ -72,10 +76,24 @@
         background: var(--hi-primary-hover) !important;
       }
     }
+
+    &[data-variant="default"],
+    &[data-variant="light"],
+    &[data-variant="outline"],
+    &[data-variant="subtle"] {
+      border: 1px solid var(--hi-border) !important;
+      background: var(--hi-surface) !important;
+      color: var(--hi-text) !important;
+
+      &:hover {
+        border-color: var(--hi-border-strong) !important;
+        background: var(--hi-control-bg-hover) !important;
+      }
+    }
   }
 
   :global(.mantine-Select-input) {
-    min-height: 32px;
+    min-height: 30px;
     border-color: var(--hi-border);
     border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
