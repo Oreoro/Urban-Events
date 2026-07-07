@@ -1,28 +1,43 @@
 .heading {
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 10px 14px;
+  margin-top: 14px;
 
   h3 {
     display: flex;
     align-items: center;
     margin-top: 0;
+    color: var(--hi-text);
+    font-size: 0.94rem;
+    font-weight: 680;
 
     button:first-child {
-      margin-left: 10px;
+      margin-left: 8px;
     }
   }
 }
 
 .table {
+  background: var(--hi-surface);
+
   tr td, tr th {
+    color: var(--hi-text-light);
+    font-size: 0.82rem;
+    border-bottom-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
 
     &:first-child {
-      padding-left: 20px;
+      padding-left: 14px;
     }
+  }
+
+  tr th {
+    color: var(--hi-text-muted);
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    background: var(--hi-shell-bg);
   }
 
   div:first-child {
     padding-bottom: 0 !important;
   }
 }
-

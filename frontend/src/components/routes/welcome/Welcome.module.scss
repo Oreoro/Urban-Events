@@ -6,8 +6,8 @@
   }
 
   min-height: 100vh;
-  background: var(--hi-shell-bg);
-  padding: 3.25rem 1rem;
+  background: color-mix(in srgb, var(--hi-shell-bg) 94%, white);
+  padding: 2.75rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .welcomeContent {
   width: 100%;
-  max-width: 760px;
+  max-width: 720px;
   min-width: 0;
   margin: 0 auto;
 
@@ -34,8 +34,8 @@
 .welcomeHeader {
   text-align: left;
   display: grid;
-  gap: 0.45rem;
-  margin-bottom: 1rem;
+  gap: 0.38rem;
+  margin-bottom: 0.9rem;
 
   @media (max-width: 768px) {
     margin-bottom: 0.95rem;
@@ -54,15 +54,15 @@
 .welcomeKicker {
   margin: 0;
   color: var(--hi-text-muted);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.74rem;
+  font-weight: 650;
   line-height: 1.3;
 }
 
 .welcomeTitle {
   display: block;
-  font-size: 1.32rem;
-  font-weight: 650;
+  font-size: 1.22rem;
+  font-weight: 680;
   color: var(--hi-text);
   margin: 0;
   line-height: 1.24;
@@ -78,7 +78,7 @@
   border-radius: var(--hi-radius-md) !important;
   overflow: hidden;
   box-shadow: none !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
 
   @media (max-width: 768px) {
     border-radius: var(--hi-radius-md) !important;
@@ -94,7 +94,7 @@
 
 // Clean Step Layout
 .stepContainer {
-  padding: 1.3rem 1.35rem 1.35rem;
+  padding: 1.15rem 1.2rem 1.2rem;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -103,7 +103,7 @@
 
 // Progress Container
 .progressContainer {
-  margin-bottom: 1.15rem;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -114,16 +114,16 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   color: var(--hi-text-muted);
-  font-size: 0.76rem;
-  font-weight: 560;
+  font-size: 0.72rem;
+  font-weight: 620;
   line-height: 1.3;
 }
 
 .progressBar {
   width: 100%;
-  height: 6px;
+  height: 5px;
   appearance: none;
   background-color: var(--hi-surface-soft);
   border: 0;
@@ -149,7 +149,7 @@
 
 .stepHeader {
   text-align: left;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -157,8 +157,8 @@
 }
 
 .stepTitle {
-  font-size: 1.18rem;
-  font-weight: 650;
+  font-size: 1.08rem;
+  font-weight: 680;
   color: var(--hi-text);
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
@@ -171,7 +171,7 @@
 }
 
 .stepDescription {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   color: var(--hi-text-muted);
   margin: 0;
   line-height: 1.5;
@@ -184,18 +184,18 @@
 
 .fieldGroup {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .fieldQuestion {
   color: var(--hi-text);
-  font-size: 0.9rem;
-  font-weight: 650;
+  font-size: 0.84rem;
+  font-weight: 680;
   line-height: 1.35;
 }
 
 .stepContent {
-  max-width: 680px;
+  max-width: 640px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -213,23 +213,23 @@
   :global(.mantine-DateTimePicker-input),
   :global(.mantine-TextInput-input),
   :global(.mantine-Select-input) {
-    min-height: 44px !important;
-    height: 44px !important;
+    min-height: 40px !important;
+    height: 40px !important;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     padding: 0 12px !important;
-    border: 1px solid var(--hi-border-strong) !important;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface)) !important;
     border-radius: var(--hi-radius-md) !important;
-    background: var(--hi-color-white) !important;
-    font-size: 0.9rem !important;
+    background: var(--hi-surface) !important;
+    font-size: 0.84rem !important;
     color: var(--hi-text) !important;
     transition: border-color 0.15s ease !important;
 
     &:focus {
       border-color: var(--hi-text) !important;
       outline: none !important;
-      box-shadow: 0 0 0 3px var(--hi-focus-ring) !important;
+      box-shadow: 0 0 0 2px var(--hi-focus-ring) !important;
     }
 
     &::placeholder {
@@ -247,9 +247,9 @@
   :global(.mantine-DateTimePicker-label),
   :global(.mantine-TextInput-label),
   :global(.mantine-Select-label) {
-    font-weight: 600 !important;
-    font-size: 0.8125rem !important;
-    color: var(--hi-text) !important;
+    font-weight: 650 !important;
+    font-size: 0.76rem !important;
+    color: var(--hi-text-muted) !important;
     margin-bottom: 6px !important;
   }
 }
@@ -257,7 +257,7 @@
 // Clean Category Grid
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.5rem;
 
   @media (max-width: 768px) {
@@ -276,9 +276,9 @@
 
 .categoryCard {
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
   border-radius: var(--hi-radius-md);
-  padding: 0.68rem 0.72rem;
+  padding: 0.58rem 0.62rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -286,7 +286,7 @@
   gap: 0.62rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
-  min-height: 48px;
+  min-height: 44px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -317,8 +317,8 @@
 }
 
 .categoryMark {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -337,8 +337,8 @@
 }
 
 .categoryText {
-  font-size: 0.85rem;
-  font-weight: 580;
+  font-size: 0.8rem;
+  font-weight: 590;
   color: var(--hi-text);
   text-align: left;
   white-space: nowrap;
@@ -353,14 +353,14 @@
 
 // Email Verification Specific
 .emailDisplay {
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
+  background: color-mix(in srgb, var(--hi-shell-bg) 72%, var(--hi-surface));
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
-  padding: 0.85rem;
-  margin-top: 1rem;
+  padding: 0.72rem;
+  margin-top: 0.85rem;
   margin-bottom: 0;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   color: var(--hi-text);
   font-weight: 500;
   text-align: center;
@@ -378,17 +378,17 @@
 .pinInput {
   // Clean PinInput styling
   :global(.mantine-PinInput-input) {
-    border: 1px solid var(--hi-border-strong);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
     border-radius: var(--hi-radius-md);
     font-weight: 600;
     text-align: center;
-    background: var(--hi-color-white);
+    background: var(--hi-surface);
     color: var(--hi-text);
 
     &:focus {
       border-color: var(--hi-text);
       outline: none;
-      box-shadow: 0 0 0 3px var(--hi-focus-ring);
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
 
     // Force smaller size on mobile
@@ -414,9 +414,9 @@
 .dateTimeGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 0.8rem;
   align-items: start;
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -449,8 +449,8 @@
 
   :global(.mantine-Select-item) {
     border-radius: 4px !important;
-    padding: 8px 12px !important;
-    font-size: 0.95rem !important;
+    padding: 7px 10px !important;
+    font-size: 0.84rem !important;
 
     &:hover {
       background: var(--hi-color-gray) !important;
@@ -475,10 +475,10 @@
   border: 1px solid var(--hi-text) !important;
   border-radius: var(--hi-radius-md) !important;
   font-weight: 650 !important;
-  font-size: 0.9rem !important;
-  height: 44px !important;
+  font-size: 0.86rem !important;
+  height: 40px !important;
   transition: background-color 0.15s ease, border-color 0.15s ease !important;
-  margin-top: 1em;
+  margin-top: 0.85em;
 
   &:hover:not(:disabled) {
     background: var(--hi-text-light) !important;
@@ -492,27 +492,27 @@
   }
 
   @media (max-width: 768px) {
-    height: 44px !important;
+    height: 42px !important;
   }
 }
 
 // Clean Skip Section
 .skipSection {
-  margin-top: 1.5rem;
+  margin-top: 1.1rem;
 
   :global(.mantine-Button-root) {
     color: var(--hi-text-muted) !important;
-    font-size: 0.9rem !important;
+    font-size: 0.82rem !important;
     background: var(--hi-surface) !important;
-    border: 1px solid var(--hi-border) !important;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
     border-radius: var(--hi-radius-md) !important;
-    padding: 8px 16px !important;
+    padding: 7px 13px !important;
     transition: background-color 0.15s ease, color 0.15s ease !important;
 
     &:hover {
       color: var(--hi-text) !important;
       opacity: 1 !important;
-      background: var(--hi-surface-soft) !important;
+      background: var(--hi-control-bg-hover) !important;
     }
   }
 

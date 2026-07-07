@@ -1,11 +1,16 @@
 .stripeInfo {
-  padding: 10px;
+  padding: 8px;
+
   h2 {
     margin: 0;
+    color: var(--hi-text);
+    font-size: 1rem;
+    font-weight: 680;
   }
 
   p {
     color: var(--hi-text-muted);
+    font-size: 0.84rem;
 
     &:last-child {
       margin-bottom: 0;
@@ -15,27 +20,29 @@
 
 .migrationNotice {
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .migrationBanner {
-  border: 1px solid var(--hi-border);
-  margin-bottom: 16px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  margin-bottom: 14px;
 }
 
 .platformPanel {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+  box-shadow: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 
   &.activePlatform {
-    border: 1px solid var(--hi-status-success-border);
-    background: var(--hi-status-success-bg);
+    border: 1px solid color-mix(in srgb, var(--hi-status-success-border) 72%, var(--hi-border));
+    background: color-mix(in srgb, var(--hi-status-success-bg) 56%, var(--hi-surface));
 
     &.ca {
-      border-color: var(--hi-status-warning-border);
-      background: var(--hi-status-warning-bg);
+      border-color: color-mix(in srgb, var(--hi-status-warning-border) 72%, var(--hi-border));
+      background: color-mix(in srgb, var(--hi-status-warning-bg) 56%, var(--hi-surface));
     }
   }
 
