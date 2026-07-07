@@ -22,15 +22,15 @@
   }
 
   .sidebar {
-    min-width: 348px;
-    max-width: 348px;
-    background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
-    padding: 16px;
+    min-width: 336px;
+    max-width: 336px;
+    background: var(--hi-surface);
+    padding: 14px;
     height: calc(100vh - 55px);
     overflow-y: auto;
     position: sticky;
     top: 0;
-    border-right: 1px solid var(--hi-border);
+    border-right: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
 
     @include mixins.respond-below(sm) {
       width: 100%;
@@ -40,7 +40,7 @@
       overflow: auto;
       height: auto;
       border-right: none;
-      border-bottom: 1px solid var(--hi-border);
+      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     }
 
     .sticky {
@@ -55,10 +55,11 @@
       
       h2 {
         margin: 0 0 4px 0;
-        font-size: 1rem;
-        font-weight: 650;
+        font-size: 0.94rem;
+        font-weight: 680;
         color: var(--hi-text);
         line-height: 1.25;
+        letter-spacing: 0;
       }
 
       :global(.mantine-Text-root) {
@@ -74,7 +75,7 @@
       margin-bottom: 0;
       
       .accordionItem {
-        border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+        border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
         border-radius: var(--hi-radius-md);
         overflow: hidden;
         background: var(--hi-surface);
@@ -84,11 +85,12 @@
         }
 
         :global(.mantine-Accordion-control) {
-          min-height: 36px;
-          padding: 8px 10px;
+          min-height: 34px;
+          padding: 7px 9px;
           background: var(--hi-surface);
           color: var(--hi-text);
           font-weight: 620;
+          font-size: 0.82rem;
           
           &:hover {
             background: var(--hi-control-bg-hover);
@@ -111,7 +113,7 @@
         }
 
         :global(.mantine-Accordion-content) {
-          padding: 12px;
+          padding: 10px;
         }
       }
     }
@@ -127,7 +129,8 @@
 
       :global(.mantine-ColorInput-label) {
         font-weight: 620;
-        font-size: 0.82rem;
+        font-size: 0.76rem;
+        color: var(--hi-text-muted);
       }
 
       :global(.mantine-ColorInput-description) {
@@ -138,8 +141,24 @@
 
       :global(.mantine-Input-input) {
         min-height: 34px;
-        border-color: var(--hi-border);
+        border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+        border-radius: var(--hi-radius-md);
+        background: var(--hi-surface);
+        color: var(--hi-text);
         font-size: 0.82rem;
+        font-weight: 560;
+        box-shadow: none;
+
+        &:hover {
+          border-color: var(--hi-border-strong);
+          background: var(--hi-control-bg-hover);
+        }
+
+        &:focus,
+        &:focus-within {
+          border-color: var(--hi-text);
+          box-shadow: 0 0 0 2px var(--hi-focus-ring);
+        }
       }
     }
     
@@ -235,7 +254,7 @@
     overflow: hidden;
     min-width: 400px;
     background: var(--hi-shell-bg);
-    padding: 18px;
+    padding: 16px;
 
     @include mixins.respond-below(sm) {
       padding: 20px;
@@ -256,7 +275,7 @@
       height: 100%;
       min-height: 500px;
       background: var(--hi-surface);
-      border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+      border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
       border-radius: var(--hi-radius-md);
       overflow: hidden;
       --scale: 0.75;
@@ -266,7 +285,7 @@
         transform-origin: 0 0;
         width: calc((100% - 32px) / var(--scale));
         height: calc((100% - 32px) / var(--scale));
-        border: 1px solid var(--hi-border);
+        border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
         border-radius: var(--hi-radius-md);
         position: absolute;
         inset: 16px;
