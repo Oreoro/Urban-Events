@@ -332,14 +332,14 @@
 .recentSection {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 8px;
   height: 100%;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 // Mobile-first ordering
@@ -366,10 +366,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--hi-border);
+  padding: 0 1px;
+  border-bottom: 0;
   letter-spacing: 0;
-  background: var(--hi-surface);
+  background: transparent;
 }
 
 .sectionTitle {
@@ -401,6 +401,10 @@
   flex: 1;
   gap: 0;
   padding: 0;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface);
+  overflow: hidden;
 }
 
 .orderCardLink {
@@ -439,6 +443,10 @@
   &:active {
     background: var(--hi-control-bg-active);
   }
+}
+
+.orderCardLink:last-child .orderCard {
+  border-bottom: 0 !important;
 }
 
 .orderMain {
@@ -525,6 +533,10 @@
   flex-direction: column;
   flex: 1;
   padding: 0;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface);
+  overflow: hidden;
 
   :global(.card) {
     border-radius: 0 !important;
@@ -533,24 +545,28 @@
     border-color: var(--hi-border) !important;
     box-shadow: none !important;
   }
+
+  :global(.card:last-child) {
+    border-bottom: 0 !important;
+  }
 }
 
 // Empty states
 .emptyState {
   background: var(--hi-surface);
-  border-radius: 0;
-  padding: 1.5rem 1.25rem;
+  border-radius: var(--hi-radius-md);
+  padding: 1.1rem;
   text-align: left;
-  border: 0;
+  border: 1px solid var(--hi-border);
   position: relative;
   overflow: hidden;
-  min-height: 210px;
+  min-height: 170px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  max-width: 420px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   //flex: 1;
 
   &::before {
