@@ -1,27 +1,51 @@
 .heading {
-  font-size: 1rem;
-  font-weight: 650;
+  font-size: 0.94rem;
+  font-weight: 680;
   color: var(--hi-text);
   line-height: 1.25;
+  letter-spacing: 0;
 }
 
 .subHeading {
-  font-size: 0.86em;
+  margin-top: 3px;
+  font-size: 0.82rem;
   color: var(--hi-text-muted);
   line-height: 1.45;
+  font-weight: 500;
 }
 
 .card {
   display: flex;
+  justify-content: space-between;
+  gap: 12px;
   align-items: center;
   margin-top: 0;
+  padding: 12px 14px !important;
   background: var(--hi-surface) !important;
-  border-color: var(--hi-border) !important;
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   box-shadow: none !important;
 
   .button {
     display: flex;
     flex: 1;
     place-content: flex-end;
+
+    :global(.mantine-Button-root) {
+      min-height: 32px;
+      border-radius: var(--hi-radius-sm);
+      font-size: 0.78rem;
+      font-weight: 640;
+      letter-spacing: 0;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 36em) {
+    align-items: stretch;
+    flex-direction: column;
+
+    .button {
+      place-content: flex-start;
+    }
   }
 }

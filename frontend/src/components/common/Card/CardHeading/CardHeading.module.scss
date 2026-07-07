@@ -1,18 +1,20 @@
 .wrapper {
-  padding: 0 0 12px;
-  margin: 0 0 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 74%, var(--hi-surface));
+  padding: 0 0 10px;
+  margin: 0 0 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
 
   .heading {
     margin: 0;
-    font-size: 0.98rem;
-    font-weight: 650;
+    color: var(--hi-text);
+    font-size: 0.94rem;
+    font-weight: 680;
     line-height: 1.28;
+    letter-spacing: 0;
   }
 
   .description {
     margin: 4px 0 0;
-    font-weight: 450;
+    font-weight: 500;
     font-size: 0.82rem;
     line-height: 1.45;
     color: var(--hi-text-muted);

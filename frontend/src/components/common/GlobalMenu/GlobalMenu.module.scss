@@ -5,7 +5,7 @@
   width: 32px;
   height: 32px;
   border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   background: var(--hi-surface);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
@@ -21,9 +21,9 @@
   width: 25px;
   height: 25px;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg);
   color: var(--hi-text);
-  border: 1px solid var(--hi-border);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   font-size: 0.74rem;
   font-weight: 650;
 }
@@ -31,9 +31,9 @@
 .dropdown {
   padding: 4px !important;
   border-radius: var(--hi-radius-md) !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1) !important;
 }
 
 .menuItem {
