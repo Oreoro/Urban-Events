@@ -33,10 +33,10 @@
 
 // Ticket Lookup Section
 .ticketLookup {
-  margin-top: 0.9rem;
+  margin-top: 0.82rem;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-control-bg-hover);
+  border-radius: var(--hi-radius-sm);
+  background: transparent;
   overflow: hidden;
 
   @include mixins.respond-below(sm) {
@@ -50,8 +50,8 @@
   justify-content: flex-start;
   gap: 0.5rem;
   width: 100%;
-  min-height: 38px;
-  padding: 0.54rem 0.7rem;
+  min-height: 34px;
+  padding: 0.48rem 0.64rem;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--hi-text-muted);
@@ -65,7 +65,7 @@
   }
 
   &:hover {
-    background: var(--hi-surface-soft);
+    background: var(--hi-control-bg-hover);
     color: var(--hi-text);
   }
 
@@ -89,9 +89,9 @@
 }
 
 .ticketLookupContent {
-  padding: 0 0.7rem 0.7rem;
+  padding: 0.62rem;
   border-top: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  background: transparent;
 }
 
 .ticketLookupForm {
@@ -113,8 +113,8 @@
     border: 1px solid var(--hi-border);
     padding: 0.52rem 0.66rem;
     font-size: 0.84rem;
-    background: var(--hi-control-bg);
-    min-height: 36px;
+    background: var(--hi-surface);
+    min-height: 34px;
 
     @include mixins.respond-below(sm) {
       font-size: 1rem;
@@ -127,7 +127,7 @@
   }
 
   :global(.mantine-Button-root) {
-    height: 36px;
+    height: 34px;
     border-radius: var(--hi-radius-sm);
     font-weight: 620;
     font-size: 0.8rem;
@@ -147,10 +147,10 @@
 
 .successMessage {
   text-align: left;
-  padding: 0.8rem;
-  background: var(--hi-control-bg-hover);
-  border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-border);
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
 
   @include mixins.respond-below(sm) {
     padding: 1rem;

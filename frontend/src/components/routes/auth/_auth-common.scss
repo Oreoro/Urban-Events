@@ -3,8 +3,8 @@
 // Shared Auth Header Styles
 @mixin auth-header {
   text-align: left;
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.85rem;
+  margin-bottom: 0.82rem;
+  padding-bottom: 0.78rem;
   border-bottom: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
@@ -13,8 +13,8 @@
 
   h1 {
     margin: 0 0 0.36rem;
-    font-size: 1.16rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 660;
     color: var(--hi-text);
     letter-spacing: 0;
     line-height: 1.2;
@@ -26,7 +26,7 @@
 
   p {
     margin: 0;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: var(--hi-text-muted);
     line-height: 1.5;
 
@@ -69,9 +69,9 @@
     border: 1px solid var(--hi-border);
     padding: 0.52rem 0.66rem;
     font-size: 0.84rem;
-    min-height: 36px;
+    min-height: 34px;
     transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
-    background: var(--hi-control-bg-hover);
+    background: var(--hi-surface);
     color: var(--hi-text);
 
     @include mixins.respond-below(sm) {
@@ -97,7 +97,7 @@
 
   :global(.mantine-InputWrapper-label) {
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     color: var(--hi-text-light);
     margin-bottom: 0.28rem;
   }
@@ -106,7 +106,7 @@
 // Shared Button Styles
 @mixin auth-button($margin-top: 0) {
   :global(.mantine-Button-root) {
-    height: 36px;
+    height: 34px;
     border-radius: var(--hi-radius-sm);
     font-weight: 620;
     font-size: 0.82rem;
