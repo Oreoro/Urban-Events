@@ -8,7 +8,7 @@
 .dropdown {
   max-width: min(360px, calc(100vw - 32px));
   padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-border) !important;
   border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
   color: var(--hi-text-light);

@@ -1,5 +1,5 @@
 .content {
-    border-left: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border-left: 1px solid var(--hi-border);
     background: var(--hi-surface);
     box-shadow: none;
 }
@@ -7,7 +7,7 @@
 .header {
     min-height: 46px;
     padding: 12px 14px 9px;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+    border-bottom: 1px solid var(--hi-border);
     background: var(--hi-surface);
 }
 
@@ -42,7 +42,7 @@
     :global(.mantine-Input-input),
     :global(.mantine-Textarea-input) {
         min-height: 36px;
-        border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+        border-color: var(--hi-border);
         border-radius: var(--hi-radius-md);
         background: var(--hi-surface);
         color: var(--hi-text);
@@ -58,7 +58,7 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-text);
+            border-color: var(--hi-primary);
             box-shadow: 0 0 0 2px var(--hi-focus-ring);
         }
     }

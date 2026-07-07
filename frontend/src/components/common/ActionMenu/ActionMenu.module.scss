@@ -10,14 +10,14 @@
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
-    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+    border-color: var(--hi-border) !important;
     color: var(--hi-text) !important;
   }
 }
 
 .dropdown {
   padding: 4px !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-border) !important;
   border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
@@ -61,6 +61,6 @@
 }
 
 .dropdown :global(.mantine-Menu-divider) {
-  border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border-color: var(--hi-border);
   margin: 5px 0;
 }
