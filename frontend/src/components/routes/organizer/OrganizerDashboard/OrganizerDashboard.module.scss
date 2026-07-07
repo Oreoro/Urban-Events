@@ -1,17 +1,16 @@
 @use "../../../../styles/mixins.scss";
 
 .overviewPanel {
-  padding: 14px;
-  margin-bottom: 16px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  padding: 0;
+  margin-bottom: 14px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 
   @include mixins.respond-below(md) {
-    padding: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 }
 
@@ -22,8 +21,8 @@
   align-items: flex-start;
   gap: 18px;
   margin-bottom: 0;
-  padding: 0 0 14px;
-  border-bottom: 1px solid var(--hi-border);
+  padding: 0 0 12px;
+  border-bottom: 0;
   background: transparent;
 
   @include mixins.respond-below(md) {
@@ -36,7 +35,7 @@
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
+  gap: 10px;
   min-width: 0;
   flex: 1;
 }
@@ -44,11 +43,11 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--hi-border);
+  width: 34px;
+  height: 34px;
+  border: 0;
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  background: transparent;
   color: var(--hi-text-muted);
   flex: 0 0 auto;
 }
@@ -68,14 +67,14 @@
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.56rem;
+  font-size: 1.48rem;
   font-weight: 650;
   letter-spacing: 0;
   line-height: 1.12;
   overflow-wrap: anywhere;
 
   @include mixins.respond-below(md) {
-    font-size: 1.42rem;
+    font-size: 1.36rem;
   }
 }
 
@@ -231,12 +230,11 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  margin: 0 -14px -14px;
-  border-top: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  overflow: visible;
+  margin: 0;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  overflow: hidden;
 
   > * {
     min-width: 0;
@@ -244,7 +242,6 @@
 
   @include mixins.respond-below(md) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 0 -12px -12px;
   }
 
   @include mixins.respond-below(sm) {
@@ -262,8 +259,8 @@
   display: flex;
   align-items: stretch;
   min-height: 68px;
-  padding: 10px 14px;
-  background: transparent;
+  padding: 10px 12px;
+  background: var(--hi-surface);
   border: 0;
   border-right: 1px solid var(--hi-border);
   border-bottom: 1px solid var(--hi-border);
@@ -326,7 +323,7 @@
 
 .statValue {
   color: var(--hi-text);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 650;
   line-height: 1.12;
   letter-spacing: 0;
@@ -370,11 +367,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
 
   @include mixins.respond-above(lg) {
     grid-template-columns: minmax(300px, 0.86fr) 1.34fr;
-    gap: 12px;
+    gap: 10px;
     align-items: stretch;
   }
 }
@@ -382,14 +379,14 @@
 .recentSection {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   height: 100%;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 // Mobile-first ordering
@@ -416,14 +413,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 0 1px;
-  border-bottom: 0;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
-  background: transparent;
+  background: var(--hi-surface);
 }
 
 .sectionTitle {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 650;
   color: var(--hi-text);
   margin: 0;
@@ -434,13 +431,13 @@
   align-items: center;
   justify-content: center;
   min-width: 22px;
-  height: 22px;
-  padding: 0 7px;
+  height: 20px;
+  padding: 0 6px;
   border-radius: var(--hi-radius-sm);
   border: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  background: var(--hi-surface-soft);
   color: var(--hi-text-muted);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
@@ -451,10 +448,10 @@
   flex: 1;
   gap: 0;
   padding: 0;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
-  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 }
 
 .orderCardLink {
@@ -468,7 +465,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 11px 12px;
+  padding: 10px;
   border: 0 !important;
   border-bottom: 1px solid var(--hi-border) !important;
   border-radius: 0 !important;
@@ -502,14 +499,14 @@
 .orderMain {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
   flex: 1;
 }
 
 .orderAvatar {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: var(--hi-radius-sm);
   background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
@@ -583,10 +580,10 @@
   flex-direction: column;
   flex: 1;
   padding: 0;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
-  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 
   :global(.card) {
     border-radius: 0 !important;
@@ -604,10 +601,10 @@
 // Empty states
 .emptyState {
   background: var(--hi-surface);
-  border-radius: var(--hi-radius-md);
+  border-radius: 0;
   padding: 1.1rem;
   text-align: left;
-  border: 1px solid var(--hi-border);
+  border: 0;
   position: relative;
   overflow: hidden;
   min-height: 170px;
