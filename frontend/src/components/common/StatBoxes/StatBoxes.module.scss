@@ -29,10 +29,10 @@
 .statistic {
   display: flex;
   align-items: stretch;
-  padding: 10px 14px !important;
+  padding: 8px 10px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 68px;
+  min-height: 58px;
   border: 0 !important;
   border-right: 1px solid var(--hi-border) !important;
   border-bottom: 1px solid var(--hi-border) !important;
@@ -40,7 +40,11 @@
   box-shadow: none !important;
   background: transparent !important;
   border-radius: 0 !important;
-  transition: border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--hi-control-bg-hover) 70%, var(--hi-surface)) !important;
+  }
 
   &:nth-child(3n) {
     border-right: 0 !important;
@@ -56,11 +60,11 @@
     flex-direction: column;
     justify-content: space-between;
     min-width: 0;
-    min-height: 44px;
-    gap: 6px;
+    min-height: 40px;
+    gap: 5px;
 
     .number {
-      font-size: 1.05rem;
+      font-size: 0.94rem;
       font-weight: 650;
       letter-spacing: 0;
       line-height: 1.12;
@@ -68,15 +72,15 @@
       overflow-wrap: anywhere;
 
       @include mixins.respond-below(md) {
-        font-size: 1.02rem;
+        font-size: 0.94rem;
       }
     }
 
     .description {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
+      gap: 5px;
+      font-size: 0.7rem;
       color: var(--hi-text-muted);
       font-weight: 560;
       text-transform: none;
@@ -87,24 +91,24 @@
     .labelIcon {
       display: inline-grid;
       place-items: center;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       color: color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 78%, transparent);
       flex: 0 0 auto;
 
       svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
       }
     }
   }
 
   @include mixins.respond-below(sm) {
-    padding: 10px 12px !important;
+    padding: 8px 10px !important;
     border-right: 0 !important;
 
     .leftPanel {
-      min-height: 44px;
+      min-height: 38px;
     }
 
     &:nth-last-child(-n + 3) {

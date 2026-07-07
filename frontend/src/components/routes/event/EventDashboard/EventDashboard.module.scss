@@ -1,19 +1,19 @@
 .dashboardStack {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .overviewPanel {
-  padding: 14px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 
   @media (max-width: 768px) {
-    padding: 12px;
+    padding: 0;
     margin-bottom: 0;
   }
 }
@@ -22,16 +22,16 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 18px;
-  padding: 0 0 14px;
-  border-bottom: 1px solid var(--hi-border);
+  gap: 12px;
+  padding: 0 0 10px;
+  border-bottom: 0;
   background: transparent;
 }
 
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
+  gap: 9px;
   min-width: 0;
   flex: 1;
 }
@@ -39,11 +39,11 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
   color: var(--hi-text-muted);
   flex: 0 0 auto;
 }
@@ -53,9 +53,9 @@
 }
 
 .kicker {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
   color: var(--hi-text-muted);
-  font-size: 0.74rem;
+  font-size: 0.71rem;
   font-weight: 560;
   line-height: 1.2;
 }
@@ -63,14 +63,14 @@
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.56rem;
+  font-size: 1.34rem;
   font-weight: 650;
   letter-spacing: 0;
   line-height: 1.12;
   overflow-wrap: anywhere;
 
   @media (max-width: 768px) {
-    font-size: 1.42rem;
+    font-size: 1.24rem;
   }
 }
 
@@ -78,8 +78,8 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 5px;
+  margin-top: 6px;
 
   span {
     display: inline-flex;
@@ -90,7 +90,7 @@
     border-radius: 0;
     background: transparent;
     color: var(--hi-text-muted);
-    font-size: 0.73rem;
+    font-size: 0.7rem;
     font-weight: 560;
     line-height: 1.2;
 
@@ -98,7 +98,7 @@
       content: "";
       width: 3px;
       height: 3px;
-      margin-left: 6px;
+      margin-left: 5px;
       border-radius: 50%;
       background: color-mix(in srgb, var(--hi-text-muted) 42%, transparent);
     }
@@ -106,15 +106,19 @@
 }
 
 .statsShell {
-  margin: 0 -14px -14px;
+  margin: 0;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    margin: 0 -12px -12px;
+    margin: 0;
   }
 }
 
 .chartCard {
-  padding: 12px !important;
+  padding: 10px !important;
   margin: 0 !important;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
@@ -125,12 +129,12 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 8px;
 
     h2 {
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       line-height: 1.25;
       font-weight: 650;
       color: var(--hi-text);
@@ -149,10 +153,57 @@
   }
 }
 
+.analyticsToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 34px;
+  padding: 6px 8px;
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+
+  @media (max-width: 768px) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+.analyticsTitleGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--hi-text);
+    line-height: 1.25;
+  }
+
+  span {
+    min-width: 0;
+    color: var(--hi-text-muted);
+    font-size: 0.72rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
 .dateRangeSelector {
   display: flex;
   justify-content: flex-end;
-  margin: -4px 0 -8px;
+  margin: 0;
 
   :global(.mantine-SegmentedControl-root) {
     padding: 2px;
@@ -162,10 +213,20 @@
   }
 
   :global(.mantine-SegmentedControl-label) {
-    min-height: 26px;
-    padding-inline: 9px;
-    font-size: 0.78rem;
+    min-height: 24px;
+    padding-inline: 8px;
+    font-size: 0.72rem;
     font-weight: 560;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
@@ -181,10 +242,10 @@
 
 .dismissButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--hi-radius-sm);
   display: flex;
   align-items: center;
@@ -205,7 +266,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 10px;
+  padding: 9px;
 }
 
 .checklistContainer {
@@ -214,9 +275,9 @@
   h2 {
     display: flex;
     align-items: center;
-    gap: 7px;
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
+    gap: 6px;
+    font-size: 0.84rem;
+    margin-bottom: 0.25rem;
     margin-top: 0;
     color: var(--hi-text);
     font-weight: 600;
@@ -224,9 +285,9 @@
   }
 
   .setupDescription {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
     color: var(--hi-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     line-height: 1.5;
     max-width: 640px;
   }
@@ -245,7 +306,7 @@
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 10px;
+  padding: 9px;
   background: var(--hi-surface);
   border-radius: 0;
   border: 0;
@@ -257,8 +318,8 @@
   }
 
   h3 {
-    font-size: 0.84rem;
-    margin: 0 0 0.35rem 0;
+    font-size: 0.8rem;
+    margin: 0 0 0.3rem 0;
     color: var(--hi-text);
     font-weight: 600;
     display: flex;
@@ -266,9 +327,9 @@
   }
 
   p {
-    margin: 0 0 0.65rem 0;
+    margin: 0 0 0.55rem 0;
     color: var(--hi-text-muted);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     line-height: 1.5;
   }
 
@@ -290,12 +351,12 @@
 }
 
 .checkboxContainer {
-  margin-right: 9px;
+  margin-right: 7px;
 }
 
 .checkbox {
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   border-radius: var(--hi-radius-sm);
   border: 1px solid var(--hi-border-strong);
   display: flex;
@@ -385,7 +446,7 @@
   border: 1px solid var(--hi-border);
   box-shadow: none !important;
   color: var(--hi-text);
-  padding: 16px;
+  padding: 12px;
   border-radius: var(--hi-radius-sm);
   position: relative;
   overflow: hidden;
@@ -421,8 +482,8 @@
 
 .stripeIcon {
   flex-shrink: 0;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
   display: flex;
@@ -442,7 +503,7 @@
 
   h3 {
     margin: 0 0 6px 0;
-    font-size: 0.94rem;
+    font-size: 0.86rem;
     font-weight: 600;
     color: var(--hi-text);
     letter-spacing: 0;
@@ -450,7 +511,7 @@
 
   p {
     margin: 0;
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     line-height: 1.6;
     color: var(--hi-text-muted);
     max-width: 600px;
@@ -467,7 +528,7 @@
 .stripeButton {
   align-self: flex-start;
 
-  background: var(--hi-primary) !important;
+  background: var(--hi-text) !important;
   color: white !important;
   font-weight: 600;
   border: none !important;
@@ -479,7 +540,7 @@
 
   &:hover:not(:disabled) {
     box-shadow: none !important;
-    background: var(--hi-primary-hover) !important;
+    background: var(--hi-text-light) !important;
   }
 
   &:disabled {

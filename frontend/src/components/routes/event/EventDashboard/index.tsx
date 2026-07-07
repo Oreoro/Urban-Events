@@ -26,9 +26,9 @@ import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 export const DashBoardSkeleton = () => {
     return (
         <>
-            <Skeleton height={96} radius="md" mb="14px"/>
-            <Skeleton height={320} radius="md" mb="14px"/>
-            <Skeleton height={320} radius="md"/>
+            <Skeleton height={92} radius="sm" mb="10px"/>
+            <Skeleton height={280} radius="sm" mb="10px"/>
+            <Skeleton height={280} radius="sm"/>
         </>
     );
 }
@@ -258,67 +258,68 @@ export const EventDashboard = () => {
                     </Card>
                 )}
 
-                <div className={classes.dateRangeSelector}>
-                    <SegmentedControl
-                        value={effectiveDateRange}
-                        onChange={setDateRange}
-                        data={[
-                            {
-                                label: (
-                                    <Tooltip label={t`Last 30 days`} withArrow>
-                                        <span>{t`Recent`}</span>
-                                    </Tooltip>
-                                ),
-                                value: 'last_30_days',
-                            },
-                            {
-                                label: (
-                                    <Tooltip label={t`First 7 days from event start`} withArrow>
-                                        <span>{t`Week`}</span>
-                                    </Tooltip>
-                                ),
-                                value: 'week',
-                            },
-                            {
-                                label: (
-                                    <Tooltip label={t`First 30 days from event start`} withArrow>
-                                        <span>{t`Month`}</span>
-                                    </Tooltip>
-                                ),
-                                value: 'month',
-                            },
-                            {
-                                label: (
-                                    <Tooltip label={t`First 90 days from event start`} withArrow>
-                                        <span>{t`Quarter`}</span>
-                                    </Tooltip>
-                                ),
-                                value: 'quarter',
-                            },
-                            {
-                                label: (
-                                    <Tooltip label={t`Full event duration`} withArrow>
-                                        <span>{t`Event`}</span>
-                                    </Tooltip>
-                                ),
-                                value: 'event',
-                            },
-                        ]}
-                        size="sm"
-                    />
+                <div className={classes.analyticsToolbar}>
+                    <div className={classes.analyticsTitleGroup}>
+                        <h2>{t`Analytics`}</h2>
+                        {dateRangeLabel && <span>{dateRangeLabel}</span>}
+                    </div>
+                    <div className={classes.dateRangeSelector}>
+                        <SegmentedControl
+                            value={effectiveDateRange}
+                            onChange={setDateRange}
+                            data={[
+                                {
+                                    label: (
+                                        <Tooltip label={t`Last 30 days`} withArrow>
+                                            <span>{t`Recent`}</span>
+                                        </Tooltip>
+                                    ),
+                                    value: 'last_30_days',
+                                },
+                                {
+                                    label: (
+                                        <Tooltip label={t`First 7 days from event start`} withArrow>
+                                            <span>{t`Week`}</span>
+                                        </Tooltip>
+                                    ),
+                                    value: 'week',
+                                },
+                                {
+                                    label: (
+                                        <Tooltip label={t`First 30 days from event start`} withArrow>
+                                            <span>{t`Month`}</span>
+                                        </Tooltip>
+                                    ),
+                                    value: 'month',
+                                },
+                                {
+                                    label: (
+                                        <Tooltip label={t`First 90 days from event start`} withArrow>
+                                            <span>{t`Quarter`}</span>
+                                        </Tooltip>
+                                    ),
+                                    value: 'quarter',
+                                },
+                                {
+                                    label: (
+                                        <Tooltip label={t`Full event duration`} withArrow>
+                                            <span>{t`Event`}</span>
+                                        </Tooltip>
+                                    ),
+                                    value: 'event',
+                                },
+                            ]}
+                            size="xs"
+                        />
+                    </div>
                 </div>
 
                 <Card className={classes.chartCard}>
                     <div className={classes.chartCardTitle}>
                         <h2>{t`Product Sales`}</h2>
-                        <div className={classes.dateRange}>
-                        <span>
-                            {dateRangeLabel}
-                        </span>
-                        </div>
                     </div>
                     <AreaChart
-                        h={260}
+                        h={235}
                         data={eventStats?.daily_stats.map(stat => ({
                             date: formatDateWithLocale(stat.date, 'chartDate', event.timezone),
                             orders_created: stat.orders_created,
@@ -343,15 +344,10 @@ export const EventDashboard = () => {
                 <Card className={classes.chartCard}>
                     <div className={classes.chartCardTitle}>
                         <h2>{t`Revenue`}</h2>
-                        <div className={classes.dateRange}>
-                        <span>
-                            {dateRangeLabel}
-                        </span>
-                        </div>
                     </div>
 
                     <AreaChart
-                        h={260}
+                        h={235}
                         pl={40}
                         pr={40}
                         data={eventStats?.daily_stats.map(stat => {
