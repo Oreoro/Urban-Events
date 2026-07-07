@@ -256,7 +256,9 @@ const OrganizerReportTable = <T extends Record<string, any>>({
         const wrapper = (message: React.ReactNode) => (
             <MantineTable.Tr>
                 <MantineTable.Td colSpan={columns.length} align="center" py="xl">
-                    {message}
+                    <div className={classes.tableNotice}>
+                        {message}
+                    </div>
                 </MantineTable.Td>
             </MantineTable.Tr>
         );
@@ -297,9 +299,9 @@ const OrganizerReportTable = <T extends Record<string, any>>({
 
     return (
         <>
-            <Group justify="space-between" mb="md">
+            <Group justify="space-between" mb="md" className={classes.reportHeader}>
                 <PageTitle>{title}</PageTitle>
-                <Group justify="flex-end" align="center" gap="sm">
+                <Group justify="flex-end" align="center" gap="sm" className={classes.reportActions}>
                     {showCurrencyFilter && availableCurrencies.length > 0 && (
                         <Select
                             style={{minWidth: '140px'}}
@@ -351,7 +353,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
             </Group>
 
             {totalRows > 0 && (
-                <Text size="sm" c="dimmed" mb="sm">
+                <Text size="sm" c="dimmed" mb="sm" className={classes.tableMeta}>
                     {t`Showing ${sortedData.length} of ${totalRows} records`}
                     {totalPages > 1 && ` (${t`Page`} ${currentPage} ${t`of`} ${totalPages})`}
                 </Text>

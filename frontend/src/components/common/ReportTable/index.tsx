@@ -201,7 +201,9 @@ const ReportTable = <T extends Record<string, any>>({
         const wrapper = (message: React.ReactNode) => (
             <MantineTable.Tr>
                 <MantineTable.Td colSpan={columns.length} align="center">
-                    {message}
+                    <div className={classes.tableNotice}>
+                        {message}
+                    </div>
                 </MantineTable.Td>
             </MantineTable.Tr>
         );
@@ -252,9 +254,9 @@ const ReportTable = <T extends Record<string, any>>({
 
     return (
         <>
-            <Group justify="space-between" mb="md">
+            <Group justify="space-between" mb="md" className={classes.reportHeader}>
                 <PageTitle>{title}</PageTitle>
-                <Group justify="flex-end" align="center" gap="sm">
+                <Group justify="flex-end" align="center" gap="sm" className={classes.reportActions}>
                     {showDateFilter && (
                         <Select
                             style={{minWidth: '200px'}}

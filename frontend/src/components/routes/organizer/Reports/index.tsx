@@ -51,22 +51,29 @@ const OrganizerReports = () => {
                 {t`Reports`}
             </PageTitle>
 
-            {reports.map((report) => (
-                <UnstyledButton component={Link} key={report.id} to={`/manage/organizer/${organizerId}/report/${report.id}`}>
-                    <Card className={classes.reportType}>
-                        <div className={classes.icon}>
-                            {report.icon}
-                        </div>
-                        <div className={classes.content}>
-                            <h3>{report.title}</h3>
-                            <p>{report.description}</p>
-                        </div>
-                        <div className={classes.rightCaret}>
-                            <IconChevronRight/>
-                        </div>
-                    </Card>
-                </UnstyledButton>
-            ))}
+            <div className={classes.reportList}>
+                {reports.map((report) => (
+                    <UnstyledButton
+                        className={classes.reportLink}
+                        component={Link}
+                        key={report.id}
+                        to={`/manage/organizer/${organizerId}/report/${report.id}`}
+                    >
+                        <Card className={classes.reportType}>
+                            <div className={classes.icon}>
+                                {report.icon}
+                            </div>
+                            <div className={classes.content}>
+                                <h3>{report.title}</h3>
+                                <p>{report.description}</p>
+                            </div>
+                            <div className={classes.rightCaret}>
+                                <IconChevronRight size={18}/>
+                            </div>
+                        </Card>
+                    </UnstyledButton>
+                ))}
+            </div>
         </PageBody>
     )
 }

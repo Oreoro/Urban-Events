@@ -110,6 +110,7 @@ const PlatformFeesReport = () => {
     return (
         <>
             <Alert
+                className={classes.notice}
                 icon={<IconAlertTriangle size={16} />}
                 title={t`Important Notice`}
                 color="yellow"
@@ -120,6 +121,7 @@ const PlatformFeesReport = () => {
 
             <div className={classes.eventFilter}>
                 <Select
+                    className={classes.eventSelect}
                     label={t`Filter by Event`}
                     placeholder={t`Select an event`}
                     data={eventOptions}
