@@ -238,8 +238,8 @@ a {
 }
 
 .mantine-Badge-root[data-variant="filled"] {
-  border: 1px solid var(--hi-text);
-  background: var(--hi-text) !important;
+  border: 1px solid var(--hi-primary);
+  background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
 }
 
@@ -551,8 +551,8 @@ a {
 }
 
 .mantine-Pagination-control[data-active] {
-  background: var(--hi-text) !important;
-  border-color: var(--hi-text) !important;
+  background: var(--hi-primary) !important;
+  border-color: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
 }
 

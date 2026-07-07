@@ -63,13 +63,13 @@
     box-shadow: none !important;
 
     &[data-variant="filled"] {
-      border: 1px solid var(--hi-text) !important;
-      background: var(--hi-text) !important;
+      border: 1px solid var(--hi-primary) !important;
+      background: var(--hi-primary) !important;
       color: var(--hi-color-white) !important;
 
       &:hover {
-        border-color: var(--hi-color-black) !important;
-        background: var(--hi-color-black) !important;
+        border-color: var(--hi-primary-hover) !important;
+        background: var(--hi-primary-hover) !important;
       }
     }
   }

@@ -5,7 +5,7 @@
     border-color: color-mix(in srgb, var(--hi-color-white) 42%, transparent);
   }
   50% {
-    border-color: color-mix(in srgb, var(--hi-text) 42%, transparent);
+    border-color: color-mix(in srgb, var(--hi-primary) 42%, transparent);
   }
   100% {
     border-color: color-mix(in srgb, var(--hi-color-white) 42%, transparent);
@@ -23,7 +23,7 @@
     width: 100vw;
     padding: 20px;
     text-align: center;
-    background-color: var(--hi-text);
+    background-color: var(--hi-primary);
     color: var(--hi-color-white);
     z-index: 3;
 
