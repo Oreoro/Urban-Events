@@ -1,16 +1,16 @@
 .container {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  column-gap: 12px;
-  row-gap: 6px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 5px;
   align-items: flex-start;
   width: 100%;
   max-width: 720px;
   text-align: left;
-  margin: 12px 0;
-  padding: 12px;
+  margin: 10px 0;
+  padding: 10px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   background: var(--hi-surface);
   box-shadow: none;
 
@@ -18,8 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     grid-row: 1 / span 4;
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
@@ -40,7 +40,7 @@
   }
 
   h2 {
-    font-size: 0.94rem;
+    font-size: 0.9rem;
     font-weight: 680;
     margin-bottom: 0;
     margin-top: 1px;
@@ -51,7 +51,7 @@
 
   p {
     color: var(--hi-text-muted);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     line-height: 1.48;
     margin: 0 0 6px;
     max-width: 560px;
@@ -64,9 +64,9 @@
   }
 
   :global(.mantine-Button-root) {
-    min-height: 32px;
+    min-height: 30px;
     border-radius: var(--hi-radius-sm);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 640;
     letter-spacing: 0;
     box-shadow: none;
@@ -99,14 +99,14 @@
 
 .compact {
   max-width: 100%;
-  margin: 12px 0;
-  padding: 10px;
-  grid-template-columns: 30px minmax(0, 1fr);
-  column-gap: 10px;
+  margin: 8px 0;
+  padding: 9px;
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 9px;
 
   .visual {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   h2 {
