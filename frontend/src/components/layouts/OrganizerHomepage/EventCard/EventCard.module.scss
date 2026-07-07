@@ -192,7 +192,7 @@ $transition-slow: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .liveDot {
   width: 5px;
   height: 5px;
-  background: var(--hi-success);
+  background: var(--hi-status-success-text);
   border-radius: 50%;
 }
 

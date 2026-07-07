@@ -27,8 +27,8 @@
     flex: 0 0 auto;
 
     &[data-status="live"] {
-      background: var(--hi-success);
-      border-color: color-mix(in srgb, var(--hi-success) 36%, var(--hi-border));
+      background: var(--hi-status-success-text);
+      border-color: color-mix(in srgb, var(--hi-status-success-text) 30%, var(--hi-border));
     }
   }
 
