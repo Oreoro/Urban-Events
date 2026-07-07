@@ -1,16 +1,17 @@
 @use "../../../../styles/mixins.scss";
 
 .overviewPanel {
-  padding: 0;
-  margin-bottom: 18px;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  padding: 14px;
+  margin-bottom: 16px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   box-shadow: none;
-  overflow: visible;
+  overflow: hidden;
 
   @include mixins.respond-below(md) {
-    margin-bottom: 16px;
+    padding: 12px;
+    margin-bottom: 14px;
   }
 }
 
@@ -21,8 +22,8 @@
   align-items: flex-start;
   gap: 18px;
   margin-bottom: 0;
-  padding: 2px 0 18px;
-  border-bottom: 0;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--hi-border);
   background: transparent;
 
   @include mixins.respond-below(md) {
@@ -35,7 +36,7 @@
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 13px;
+  gap: 11px;
   min-width: 0;
   flex: 1;
 }
@@ -43,11 +44,11 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
   color: var(--hi-text-muted);
   flex: 0 0 auto;
 }
@@ -67,10 +68,10 @@
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.76rem;
+  font-size: 1.56rem;
   font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.08;
+  line-height: 1.12;
   overflow-wrap: anywhere;
 
   @include mixins.respond-below(md) {
@@ -113,12 +114,12 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  min-height: 32px;
-  padding: 5px 10px;
+  min-height: 30px;
+  padding: 4px 9px;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--hi-text);
-  background: var(--hi-surface);
+  background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
   box-shadow: none;
@@ -126,7 +127,7 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background: var(--hi-control-bg-hover);
+    background: var(--hi-surface);
     border-color: var(--hi-border-strong);
     color: var(--hi-text);
     transform: none;
@@ -139,7 +140,7 @@
 
   @include mixins.respond-below(md) {
     width: fit-content;
-    margin-left: 57px;
+    margin-left: 49px;
   }
 }
 
@@ -229,8 +230,9 @@
 .statisticsContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin: 0;
+  gap: 0;
+  margin: 0 -14px -14px;
+  border-top: 0;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -242,6 +244,7 @@
 
   @include mixins.respond-below(md) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 -12px -12px;
   }
 
   @include mixins.respond-below(sm) {
@@ -251,18 +254,65 @@
 
 .statisticsSkeletonContainer {
   @extend .statisticsContainer;
+  gap: 8px;
+  margin: 0;
 }
 
 .statCard {
   display: flex;
   align-items: stretch;
-  min-height: 74px;
-  padding: 11px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  min-height: 68px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--hi-border);
+  border-bottom: 1px solid var(--hi-border);
+  border-radius: 0;
   color: var(--hi-text);
   transition: border-color 0.15s ease;
+
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+
+  &:nth-last-child(-n + 3) {
+    border-bottom: 0;
+  }
+
+  @include mixins.respond-below(md) {
+    &:nth-child(3n) {
+      border-right: 1px solid var(--hi-border);
+    }
+
+    &:nth-child(2n) {
+      border-right: 0;
+    }
+
+    &:nth-last-child(-n + 3) {
+      border-bottom: 1px solid var(--hi-border);
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+  }
+
+  @include mixins.respond-below(sm) {
+    border-right: 0;
+
+    &:nth-child(3n),
+    &:nth-child(2n) {
+      border-right: 0;
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: 1px solid var(--hi-border);
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
 }
 
 .statContent {
