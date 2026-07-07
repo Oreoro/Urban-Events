@@ -5,8 +5,8 @@
 }
 
 .header {
-    min-height: 46px;
-    padding: 12px 14px 9px;
+    min-height: 42px;
+    padding: 10px 12px 8px;
     border-bottom: 1px solid var(--hi-border);
     background: var(--hi-surface);
 }
@@ -16,13 +16,13 @@
 }
 
 .inner {
-    padding: 14px;
+    padding: 12px;
 
     :global(.mantine-InputWrapper-root),
     :global(.mantine-Switch-root),
     :global(.mantine-Checkbox-root),
     :global(.mantine-Radio-root) {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     :global(.mantine-InputWrapper-label) {
@@ -41,9 +41,9 @@
 
     :global(.mantine-Input-input),
     :global(.mantine-Textarea-input) {
-        min-height: 36px;
+        min-height: 34px;
         border-color: var(--hi-border);
-        border-radius: var(--hi-radius-md);
+        border-radius: var(--hi-radius-sm);
         background: var(--hi-surface);
         color: var(--hi-text);
         font-size: 0.84rem;
@@ -73,8 +73,8 @@
     }
 
     :global(.mantine-Button-root) {
-        min-height: 36px;
-        border-radius: var(--hi-radius-md);
+        min-height: 34px;
+        border-radius: var(--hi-radius-sm);
         font-size: 0.82rem;
         font-weight: 640;
         letter-spacing: 0;
@@ -84,7 +84,7 @@
 
 .sideDrawerTitle {
     color: var(--hi-text);
-    font-size: 0.98rem;
+    font-size: 0.94rem;
     font-weight: 680;
     letter-spacing: 0;
     line-height: 1.25;
