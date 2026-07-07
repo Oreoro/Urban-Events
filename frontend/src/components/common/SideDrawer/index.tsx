@@ -11,12 +11,12 @@ export const SideDrawer = (props: DrawerProps & SideDrawerProps) => {
         <Drawer
             {...props}
             overlayProps={{
-                opacity: 0.55,
-                blur: 3,
+                opacity: 0.42,
+                blur: 2,
             }}
             position="right"
-            size={'xl'}
-            withCloseButton={true}
+            size={props.size ?? 'xl'}
+            withCloseButton={props.withCloseButton ?? true}
             title={props.heading}
             closeOnClickOutside={false}
             classNames={{

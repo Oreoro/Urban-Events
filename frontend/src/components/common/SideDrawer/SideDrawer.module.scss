@@ -1,13 +1,13 @@
 .content {
-    border-left: 1px solid var(--hi-border);
+    border-left: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
     background: var(--hi-surface);
     box-shadow: none;
 }
 
 .header {
-    min-height: 50px;
-    padding: 14px 18px 10px;
-    border-bottom: 1px solid var(--hi-border);
+    min-height: 44px;
+    padding: 11px 14px 8px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, var(--hi-surface));
     background: var(--hi-surface);
 }
 
@@ -16,12 +16,12 @@
 }
 
 .inner {
-    padding: 16px;
+    padding: 14px;
 }
 
 .sideDrawerTitle {
     color: var(--hi-text);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 650;
     letter-spacing: 0;
     line-height: 1.25;
@@ -30,6 +30,8 @@
 .close {
     color: var(--hi-text-muted) !important;
     border-radius: var(--hi-radius-sm) !important;
+    width: 28px !important;
+    height: 28px !important;
 
     &:hover {
         background: var(--hi-control-bg-hover) !important;

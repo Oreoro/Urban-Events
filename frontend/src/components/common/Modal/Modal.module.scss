@@ -1,5 +1,5 @@
 .content {
-    border: 1px solid var(--hi-border);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
     border-radius: var(--hi-radius-md) !important;
     background: var(--hi-surface);
     box-shadow: none;
@@ -11,19 +11,19 @@
 }
 
 .inner {
-    padding: 0 18px 18px;
+    padding: 0 14px 14px;
 }
 
 .header {
-    min-height: 46px;
-    padding: 13px 18px 8px !important;
-    border-bottom: 0;
+    min-height: 42px;
+    padding: 11px 14px 7px !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, var(--hi-surface));
     background: var(--hi-surface);
 }
 
 .modalTitle {
     color: var(--hi-text);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 650;
     margin-top: 0;
     margin-bottom: 0;
@@ -34,6 +34,8 @@
 .close {
     color: var(--hi-text-muted) !important;
     border-radius: var(--hi-radius-sm) !important;
+    width: 28px !important;
+    height: 28px !important;
 
     &:hover {
         background: var(--hi-control-bg-hover) !important;

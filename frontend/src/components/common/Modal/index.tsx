@@ -11,11 +11,11 @@ export const Modal = (props: MantineModalProps & ModalProps) => {
         <MantineModal
             {...props}
             overlayProps={{
-                opacity: 0.55,
-                blur: 3,
+                opacity: 0.42,
+                blur: 2,
             }}
-            size={'xl'}
-            withCloseButton={true}
+            size={props.size ?? 'xl'}
+            withCloseButton={props.withCloseButton ?? true}
             title={props.heading}
             closeOnClickOutside={false}
             classNames={{

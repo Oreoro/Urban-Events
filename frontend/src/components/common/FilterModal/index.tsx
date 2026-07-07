@@ -1,8 +1,9 @@
 import React from 'react';
-import {Button, Group, Modal, MultiSelect, Select, Stack, Text, TextInput} from '@mantine/core';
+import {Button, Group, MultiSelect, Select, Stack, Text, TextInput} from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
 import {IconFilter} from '@tabler/icons-react';
 import {t} from '@lingui/macro';
+import {Modal} from '../Modal';
 
 export interface FilterOption {
     field: string;
@@ -254,8 +255,8 @@ export const FilterModal: React.FC<FilterModalProps> = ({
                 {hasActiveFilters ? t`Filters (${activeFilterCount})` : t`Filters`}
             </Button>
 
-            <Modal opened={opened} onClose={close} title={title} size="md">
-                <Stack>
+            <Modal opened={opened} onClose={close} heading={title} size="sm">
+                <Stack gap="sm">
                     {filters.length === 0 ? (
                         <Text c="dimmed" ta="center" py="md">
                             {t`No filters available`}
@@ -270,7 +271,7 @@ export const FilterModal: React.FC<FilterModalProps> = ({
                         })
                     )}
 
-                    <Group justify="flex-end" mt="md">
+                    <Group justify="flex-end" mt="xs" gap="xs">
                         <Button
                             variant="light"
                             onClick={handleReset}
