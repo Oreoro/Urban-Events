@@ -48,7 +48,7 @@ export const DashboardSkeleton = () => {
 
             <div className={classes.statisticsSkeletonContainer}>
                 {[...Array(6)].map((_, index) => (
-                    <Skeleton key={index} height={105} radius="md"/>
+                    <Skeleton key={index} height={74} radius="md"/>
                 ))}
             </div>
             <div className={classes.recentItemsGrid}>
@@ -211,7 +211,7 @@ export const OrganizerDashboard = () => {
                 {organizerStatsQuery.isLoading && !stats && (
                     <div className={classes.statisticsContainer}>
                         {[...Array(6)].map((_, index) => (
-                            <Skeleton key={index} height={86} radius="sm"/>
+                            <Skeleton key={index} height={74} radius="sm"/>
                         ))}
                     </div>
                 )}

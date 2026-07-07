@@ -229,7 +229,7 @@
 .statisticsContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   background: transparent;
   border: 0;
@@ -256,18 +256,13 @@
 .statCard {
   display: flex;
   align-items: stretch;
-  min-height: 86px;
-  padding: 13px;
+  min-height: 74px;
+  padding: 11px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   color: var(--hi-text);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-
-  &:hover {
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
-  }
+  transition: border-color 0.15s ease;
 }
 
 .statContent {
@@ -275,13 +270,13 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
-  gap: 10px;
+  gap: 6px;
   width: 100%;
 }
 
 .statValue {
   color: var(--hi-text);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 650;
   line-height: 1.12;
   letter-spacing: 0;
@@ -303,7 +298,7 @@
   place-items: center;
   width: 18px;
   height: 18px;
-  color: color-mix(in srgb, var(--hi-text-muted) 82%, transparent);
+  color: color-mix(in srgb, var(--hi-text-muted) 72%, transparent);
   background: transparent;
   border: 0;
   border-radius: 0;
