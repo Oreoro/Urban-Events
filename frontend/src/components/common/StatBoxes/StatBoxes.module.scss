@@ -28,11 +28,11 @@
 
 .statistic {
   display: flex;
-  align-items: flex-start;
-  padding: 12px !important;
+  align-items: stretch;
+  padding: 13px 12px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 72px;
+  min-height: 74px;
   border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;
@@ -46,17 +46,18 @@
 
   .leftPanel {
     flex: 1;
-    display: grid;
-    grid-template-rows: auto auto;
-    min-height: 42px;
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 48px;
+    gap: 8px;
 
     .number {
-      font-size: 1.08rem;
-      font-weight: 720;
+      font-size: 1.16rem;
+      font-weight: 650;
       letter-spacing: 0;
       line-height: 1.12;
-      align-self: end;
       color: var(--hi-text);
       overflow-wrap: anywhere;
 
@@ -66,52 +67,37 @@
     }
 
     .description {
-      font-size: 0.73rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
       color: var(--hi-text-muted);
-      font-weight: 620;
-      align-self: start;
+      font-weight: 560;
       text-transform: none;
       letter-spacing: 0;
       line-height: 1.25;
     }
-  }
 
-  .rightPanel {
-    margin-left: 0.6rem;
-    align-self: flex-start;
+    .labelIcon {
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      color: var(--stat-color, var(--hi-text-muted));
+      flex: 0 0 auto;
 
-    .icon {
-      width: 24px;
-      height: 24px;
-      border-radius: var(--hi-radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--hi-text-muted);
-      background: var(--hi-shell-bg);
-      border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-      box-shadow: none;
-
-      @include mixins.respond-below(md) {
-        width: 24px;
-        height: 24px;
+      svg {
+        width: 16px;
+        height: 16px;
       }
     }
   }
 
   @include mixins.respond-below(sm) {
-    padding: 0.9rem !important;
+    padding: 13px !important;
 
     .leftPanel {
-      min-height: 55px;
-
-      .number {
-        font-size: 1.25rem;
-      }
-
-      .description {
-        font-size: 0.84rem;
-      }
+      min-height: 50px;
     }
   }
 }

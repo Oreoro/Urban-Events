@@ -20,13 +20,13 @@ export const StatBox = ({number, description, icon, backgroundColor}: StatBoxPro
     return (
         <Card className={classes.statistic}>
             <div className={classes.leftPanel}>
-                <div className={classes.number}>{number}</div>
-                <div className={classes.description}>{description}</div>
-            </div>
-            <div className={classes.rightPanel}>
-                <div className={classes.icon} style={{'--stat-color': backgroundColor} as CSSProperties}>
-                    {icon}
+                <div className={classes.description}>
+                    <span className={classes.labelIcon} style={{'--stat-color': backgroundColor} as CSSProperties}>
+                        {icon}
+                    </span>
+                    <span>{description}</span>
                 </div>
+                <div className={classes.number}>{number}</div>
             </div>
         </Card>
     );

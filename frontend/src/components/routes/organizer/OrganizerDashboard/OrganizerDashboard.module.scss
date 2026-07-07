@@ -246,11 +246,9 @@
 
 .statCard {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  min-height: 72px;
-  padding: 12px;
+  align-items: stretch;
+  min-height: 74px;
+  padding: 13px 12px;
   background: var(--hi-surface);
   border: 0;
   border-right: 1px solid var(--hi-border);
@@ -286,13 +284,15 @@
 .statContent {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-width: 0;
-  gap: 4px;
+  gap: 8px;
+  width: 100%;
 }
 
 .statValue {
   color: var(--hi-text);
-  font-size: 1.05rem;
+  font-size: 1.14rem;
   font-weight: 650;
   line-height: 1.12;
   letter-spacing: 0;
@@ -300,41 +300,30 @@
 }
 
 .statLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: var(--hi-text-muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 560;
   line-height: 1.2;
 }
 
 .statIcon {
-  display: grid;
+  display: inline-grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
   color: var(--hi-text-muted);
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   flex: 0 0 auto;
-  margin-top: 0;
-}
 
-.statCard[data-tone="primary"] .statIcon {
-  color: var(--hi-primary);
-  background: color-mix(in srgb, var(--hi-primary) 8%, white);
-  border-color: color-mix(in srgb, var(--hi-primary) 18%, var(--hi-border));
-}
-
-.statCard[data-tone="success"] .statIcon {
-  color: var(--hi-success);
-  background: var(--hi-status-success-bg);
-  border-color: var(--hi-status-success-border);
-}
-
-.statCard[data-tone="warning"] .statIcon {
-  color: var(--hi-warning);
-  background: var(--hi-status-warning-bg);
-  border-color: var(--hi-status-warning-border);
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .noticeCard {
