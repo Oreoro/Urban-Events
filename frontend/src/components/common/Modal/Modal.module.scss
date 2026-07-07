@@ -1,6 +1,6 @@
 .content {
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: var(--hi-radius-sm) !important;
     background: var(--hi-surface);
     box-shadow: none;
     overflow: hidden;
@@ -11,7 +11,7 @@
 }
 
 .inner {
-    padding: 0 12px 12px;
+    padding: 0 10px 10px;
 
     :global(.mantine-InputWrapper-root),
     :global(.mantine-Switch-root),
@@ -21,27 +21,27 @@
     }
 
     :global(.mantine-InputWrapper-label) {
-        margin-bottom: 5px;
+        margin-bottom: 4px;
         color: var(--hi-text-muted);
-        font-size: 0.76rem;
+        font-size: 0.74rem;
         font-weight: 650;
         letter-spacing: 0;
     }
 
     :global(.mantine-InputWrapper-description) {
         color: var(--hi-text-muted);
-        font-size: 0.76rem;
+        font-size: 0.74rem;
         line-height: 1.42;
     }
 
     :global(.mantine-Input-input),
     :global(.mantine-Textarea-input) {
-        min-height: 34px;
+        min-height: 32px;
         border-color: var(--hi-border);
         border-radius: var(--hi-radius-sm);
         background: var(--hi-surface);
         color: var(--hi-text);
-        font-size: 0.84rem;
+        font-size: 0.8rem;
         font-weight: 560;
         box-shadow: none;
         transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
@@ -59,7 +59,7 @@
     }
 
     :global(.mantine-Textarea-input) {
-        padding-top: 8px;
+        padding-top: 7px;
         line-height: 1.45;
     }
 
@@ -75,7 +75,7 @@
 
     :global(.mantine-Fieldset-legend) {
         color: var(--hi-text);
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 650;
         letter-spacing: 0;
     }
@@ -90,20 +90,20 @@
 
     :global(.mantine-Alert-title) {
         color: var(--hi-text);
-        font-size: 0.84rem;
+        font-size: 0.8rem;
         font-weight: 680;
     }
 
     :global(.mantine-Alert-message) {
         color: var(--hi-text-muted);
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         line-height: 1.48;
     }
 
     :global(.mantine-Button-root) {
-        min-height: 34px;
+        min-height: 32px;
         border-radius: var(--hi-radius-sm);
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         font-weight: 640;
         letter-spacing: 0;
         box-shadow: none;
@@ -111,15 +111,15 @@
 }
 
 .header {
-    min-height: 42px;
-    padding: 10px 12px 8px !important;
+    min-height: 38px;
+    padding: 8px 10px 7px !important;
     border-bottom: 1px solid var(--hi-border);
     background: var(--hi-surface);
 }
 
 .modalTitle {
     color: var(--hi-text);
-    font-size: 0.94rem;
+    font-size: 0.9rem;
     font-weight: 680;
     margin-top: 0;
     margin-bottom: 0;
@@ -130,8 +130,8 @@
 .close {
     color: var(--hi-text-muted) !important;
     border-radius: var(--hi-radius-sm) !important;
-    width: 28px !important;
-    height: 28px !important;
+    width: 26px !important;
+    height: 26px !important;
 
     &:hover {
         background: var(--hi-control-bg-hover) !important;

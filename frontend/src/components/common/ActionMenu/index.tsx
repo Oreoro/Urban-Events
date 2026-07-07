@@ -34,7 +34,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
                                                       }) => {
     return (
         <>
-            <Menu shadow="none" width={204} offset={6}>
+            <Menu shadow="none" width={196} offset={5}>
                 <Menu.Target>
                     <div className={classes.target}>
                         {target}
