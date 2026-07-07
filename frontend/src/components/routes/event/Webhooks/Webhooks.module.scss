@@ -1,0 +1,53 @@
+.webhookToolbar {
+  padding: 6px !important;
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  background: var(--hi-surface) !important;
+  box-shadow: none !important;
+
+  :global(.mantine-Group-root) {
+    gap: 8px;
+  }
+
+  :global(.mantine-Button-root) {
+    min-height: 32px;
+    border: 1px solid var(--hi-text);
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-text);
+    color: var(--hi-color-white);
+    font-size: 0.8rem;
+    font-weight: 640;
+    letter-spacing: 0;
+    box-shadow: none;
+
+    &:hover {
+      border-color: var(--hi-color-black);
+      background: var(--hi-color-black);
+    }
+  }
+}
+
+.webhookCount {
+  min-height: 26px;
+  padding: 3px 8px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-shell-bg);
+  color: var(--hi-text-muted);
+  font-size: 0.74rem;
+  font-weight: 620;
+  letter-spacing: 0;
+}
+
+@media (max-width: 36em) {
+  .webhookToolbar {
+    :global(.mantine-Group-root) {
+      align-items: stretch;
+      flex-direction: column-reverse;
+    }
+
+    :global(.mantine-Button-root),
+    .webhookCount {
+      width: 100%;
+    }
+  }
+}

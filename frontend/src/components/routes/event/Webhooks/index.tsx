@@ -10,6 +10,7 @@ import {useGetWebhooks} from "../../../../queries/useGetWebhooks.ts";
 import {useParams} from "react-router";
 import {CreateWebhookModal} from "../../../modals/CreateWebhookModal";
 import {TableSkeleton} from "../../../common/TableSkeleton";
+import classes from "./Webhooks.module.scss";
 
 const Webhooks = () => {
     const {eventId} = useParams();
@@ -31,14 +32,15 @@ const Webhooks = () => {
             >
                 {t`Webhooks`}
             </PageTitle>
-            <Card>
+            <Card className={classes.webhookToolbar}>
                 <Group justify="space-between">
-                    <Button rightSection={<IconPlus/>} onClick={openCreateModal}>
+                    <Button leftSection={<IconPlus size={16}/>} onClick={openCreateModal}>
                         {t`Add Webhook`}
                     </Button>
                     <Badge
                         variant="transparent"
                         size="lg"
+                        className={classes.webhookCount}
                     >
                         {getWebhookCountText()}
                     </Badge>

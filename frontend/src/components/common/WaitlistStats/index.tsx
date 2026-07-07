@@ -1,6 +1,7 @@
 import {WaitlistStats as WaitlistStatsType} from "../../../types.ts";
 import {Paper, SimpleGrid, Text} from "@mantine/core";
 import {t} from "@lingui/macro";
+import classes from "./WaitlistStats.module.scss";
 
 interface WaitlistStatsProps {
     stats: WaitlistStatsType;
@@ -15,13 +16,13 @@ export const WaitlistStatsCards = ({stats}: WaitlistStatsProps) => {
     ];
 
     return (
-        <SimpleGrid cols={{base: 2, sm: 4}} mb="md" visibleFrom="sm">
+        <SimpleGrid cols={{base: 2, sm: 4}} visibleFrom="sm" className={classes.statsGrid}>
             {statItems.map((item) => (
-                <Paper key={item.label} withBorder p="md" radius="md">
-                    <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
+                <Paper key={item.label} withBorder p="md" radius="md" className={classes.statCard}>
+                    <Text className={classes.statLabel}>
                         {item.label}
                     </Text>
-                    <Text size="xl" fw={700} mt={4}>
+                    <Text className={classes.statValue}>
                         {item.value}
                     </Text>
                 </Paper>

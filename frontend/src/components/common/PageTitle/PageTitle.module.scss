@@ -1,28 +1,28 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  margin: 0 0 1rem;
+  margin: 0 0 0.78rem;
 }
 
 .title {
   color: var(--hi-text);
-  font-size: 1.52rem;
-  font-weight: 650;
+  font-size: 1.24rem;
+  font-weight: 680;
   line-height: 1.18;
   letter-spacing: 0;
-  margin-bottom: 0.32rem !important;
+  margin-bottom: 0.3rem !important;
   margin-top: 0;
 
   @include mixins.respond-below(md) {
-    font-size: 1.32rem !important;
+    font-size: 1.18rem !important;
   }
 }
 
 .subheading {
-  max-width: 760px;
-  font-size: 0.88rem;
+  max-width: 680px;
+  font-size: 0.84rem;
   color: var(--hi-text-muted);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.48;
-  margin-bottom: 0.72rem;
+  margin-bottom: 0;
 }

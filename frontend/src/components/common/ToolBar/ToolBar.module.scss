@@ -3,9 +3,9 @@
 .card {
   container-type: inline-size;
   margin-bottom: 0.6rem;
-  padding: 7px !important;
-  background: color-mix(in srgb, var(--hi-surface) 82%, var(--hi-shell-bg)) !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
+  padding: 6px !important;
+  background: var(--hi-surface) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   border-radius: var(--hi-radius-md) !important;
   box-shadow: none !important;
 
@@ -55,6 +55,48 @@
   }
 
   button {
-    min-height: 31px !important;
+    min-height: 32px !important;
+    border-radius: var(--hi-radius-sm) !important;
+    font-size: 0.8rem !important;
+    font-weight: 640 !important;
+    letter-spacing: 0;
+    box-shadow: none !important;
+
+    &[data-variant="filled"] {
+      border: 1px solid var(--hi-text) !important;
+      background: var(--hi-text) !important;
+      color: var(--hi-color-white) !important;
+
+      &:hover {
+        border-color: var(--hi-color-black) !important;
+        background: var(--hi-color-black) !important;
+      }
+    }
+  }
+
+  :global(.mantine-Select-input) {
+    min-height: 32px;
+    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface);
+    color: var(--hi-text);
+    font-size: 0.8rem;
+    font-weight: 560;
+    box-shadow: none;
+
+    &:hover {
+      border-color: var(--hi-border-strong);
+      background: var(--hi-control-bg-hover);
+    }
+
+    &:focus,
+    &:focus-within {
+      border-color: var(--hi-text);
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+    }
+  }
+
+  :global(.mantine-Select-section) {
+    color: var(--hi-text-muted);
   }
 }

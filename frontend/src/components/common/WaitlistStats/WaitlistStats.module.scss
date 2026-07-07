@@ -1,0 +1,28 @@
+.statsGrid {
+  margin-bottom: 0.6rem;
+}
+
+.statCard {
+  min-height: 78px;
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border-radius: var(--hi-radius-md) !important;
+  background: var(--hi-surface);
+  box-shadow: none;
+}
+
+.statLabel {
+  color: var(--hi-text-muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.statValue {
+  margin-top: 6px;
+  color: var(--hi-text);
+  font-size: 1.22rem;
+  font-weight: 720;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
