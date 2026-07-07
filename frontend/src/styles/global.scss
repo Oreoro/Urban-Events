@@ -1,39 +1,39 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #f7edec;
-  --ue-eggshell: #f8fafc;
-  --ue-icy-aqua: #ecfeff;
-  --ue-light-blue: #eff6ff;
-  --ue-blue-slate: #64748b;
-  --ue-canvas: #f8fafc;
-  --ue-canvas-soft: #f1f5f9;
+  --ue-powder-blush: #fbf2f0;
+  --ue-eggshell: #fbfbfa;
+  --ue-icy-aqua: #f1f9f7;
+  --ue-light-blue: #edf5ff;
+  --ue-blue-slate: #6f6e69;
+  --ue-canvas: #fbfbfa;
+  --ue-canvas-soft: #f7f7f5;
   --ue-surface: #ffffff;
-  --ue-ink: #111827;
-  --ue-ink-soft: #334155;
-  --ue-muted: #64748b;
+  --ue-ink: #37352f;
+  --ue-ink-soft: #4f4d49;
+  --ue-muted: #6f6e69;
   --ue-slate: var(--ue-ink-soft);
   --ue-slate-deep: var(--ue-ink);
-  --ue-slate-soft: #e2e8f0;
+  --ue-slate-soft: #e6e4df;
   --ue-aqua: var(--ue-icy-aqua);
-  --ue-aqua-deep: #0f766e;
+  --ue-aqua-deep: #2383e2;
   --ue-blush: var(--ue-powder-blush);
   --ue-blush-deep: #c4554d;
   --ue-coral: #c4554d;
   --ue-coral-deep: #7a3b37;
   --ue-marigold: #b7791f;
-  --ue-navy: #111827;
-  --ue-navy-deep: #020617;
-  --ue-teal: #0f766e;
-  --ue-teal-deep: #0b5f59;
+  --ue-navy: #37352f;
+  --ue-navy-deep: #191918;
+  --ue-teal: #2383e2;
+  --ue-teal-deep: #1f6fbd;
   --ue-plum: var(--ue-navy);
   --ue-plum-deep: var(--ue-navy-deep);
-  --ue-forest: var(--ue-teal);
-  --ue-forest-deep: var(--ue-teal-deep);
-  --ue-mint: #ecfdf5;
-  --ue-sky: #eff6ff;
-  --ue-border: #e2e8f0;
-  --ue-border-strong: #cbd5e1;
+  --ue-forest: #2f8f62;
+  --ue-forest-deep: #276f4f;
+  --ue-mint: #edf7f0;
+  --ue-sky: #edf5ff;
+  --ue-border: #e6e4df;
+  --ue-border-strong: #d9d7d2;
 
   --hi-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -42,8 +42,9 @@
   --hi-text-muted: var(--ue-muted);
   --hi-primary: var(--ue-teal);
   --hi-primary-hover: var(--ue-teal-deep);
-  --hi-secondary: var(--ue-mint);
-  --hi-secondary-strong: var(--ue-forest);
+  --hi-primary-soft: color-mix(in srgb, var(--hi-primary) 10%, white);
+  --hi-secondary: var(--ue-sky);
+  --hi-secondary-strong: var(--ue-teal);
   --hi-secondary-text: var(--ue-ink);
   --hi-surface: var(--ue-surface);
   --hi-surface-raised: var(--ue-surface);
@@ -58,19 +59,19 @@
   --hi-link-color: var(--hi-shell-accent);
   --hi-pink: var(--ue-coral-deep);
   --hi-primary-alt: var(--ue-coral-deep);
-  --hi-action-fill: var(--hi-secondary-strong);
-  --hi-shell-bg: #f8fafc;
-  --hi-shell-bg-strong: #f8fafc;
-  --hi-shell-surface: #eef2f7;
-  --hi-shell-surface-hover: #e2e8f0;
+  --hi-action-fill: var(--hi-primary);
+  --hi-shell-bg: #fbfbfa;
+  --hi-shell-bg-strong: #fbfbfa;
+  --hi-shell-surface: #f1f1ef;
+  --hi-shell-surface-hover: #e6e4df;
   --hi-shell-text: var(--ue-ink);
   --hi-shell-muted: var(--ue-muted);
   --hi-shell-accent: var(--ue-teal);
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
   --hi-control-bg: #ffffff;
-  --hi-control-bg-hover: #f8fafc;
-  --hi-control-bg-active: #eef2f7;
-  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 14%, transparent);
+  --hi-control-bg-hover: #f7f7f5;
+  --hi-control-bg-active: #f1f1ef;
+  --hi-focus-ring: color-mix(in srgb, var(--hi-shell-accent) 16%, transparent);
   --hi-danger: #c4554d;
   --hi-success: #2f8f62;
   --hi-warning: #cb912f;
@@ -152,7 +153,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--hi-secondary-strong);
+  outline: 2px solid var(--hi-shell-accent);
   outline-offset: 2px;
 }
 
@@ -347,14 +348,14 @@ a {
 
 .mantine-Button-root[data-variant="filled"] {
   box-shadow: none;
-  background-color: var(--hi-text) !important;
+  background-color: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
-  border: 1px solid var(--hi-text) !important;
+  border: 1px solid var(--hi-primary) !important;
 }
 
 .mantine-Button-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-color-black) !important;
-  border-color: var(--hi-color-black) !important;
+  background-color: var(--hi-primary-hover) !important;
+  border-color: var(--hi-primary-hover) !important;
 }
 
 .mantine-Button-root[data-variant="light"] {
@@ -408,14 +409,14 @@ a {
 }
 
 .mantine-ActionIcon-root[data-variant="filled"] {
-  background-color: var(--hi-text) !important;
+  background-color: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
-  border-color: var(--hi-text) !important;
+  border-color: var(--hi-primary) !important;
 }
 
 .mantine-ActionIcon-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-color-black) !important;
-  border-color: var(--hi-color-black) !important;
+  background-color: var(--hi-primary-hover) !important;
+  border-color: var(--hi-primary-hover) !important;
 }
 
 .mantine-Menu-dropdown {
