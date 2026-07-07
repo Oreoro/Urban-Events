@@ -4,7 +4,7 @@
 // Variables & Design Tokens
 // ==========================================
 
-$card-radius: var(--hi-radius-md, 6px);
+$card-radius: var(--hi-radius-sm, 5px);
 $transition-fast: 150ms ease;
 $transition-base: 150ms ease;
 
@@ -22,11 +22,11 @@ $color-money: var(--hi-text);
 // ==========================================
 
 .sortableCategory {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   transition: background-color $transition-fast, border-color $transition-fast;
   border-radius: $card-radius;
-  padding: 7px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  padding: 6px;
+  border: 1px solid var(--hi-border);
   background: var(--hi-surface);
 
   &:hover {
@@ -38,9 +38,9 @@ $color-money: var(--hi-text);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 32px;
-  margin-bottom: 6px;
-  gap: 10px;
+  min-height: 28px;
+  margin-bottom: 5px;
+  gap: 8px;
 }
 
 .categoryActions {
@@ -57,10 +57,10 @@ $color-money: var(--hi-text);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-weight: 650;
   color: $color-text-primary;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   line-height: 1.3;
 }
 
@@ -112,7 +112,7 @@ $color-money: var(--hi-text);
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 // ==========================================
@@ -123,7 +123,7 @@ $color-money: var(--hi-text);
   position: relative;
   box-sizing: border-box;
   border-radius: $card-radius;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-border);
   background-color: var(--hi-surface);
   display: grid;
   padding: 0;
@@ -132,12 +132,12 @@ $color-money: var(--hi-text);
           background-color $transition-fast,
           border-color $transition-fast;
   grid-template-areas: "sort content action";
-  grid-template-columns: 28px 1fr auto;
+  grid-template-columns: 26px 1fr auto;
 
   &:hover {
     box-shadow: none;
     border-color: color-mix(in srgb, var(--hi-border-strong) 74%, var(--hi-border));
-    background-color: color-mix(in srgb, var(--hi-shell-bg) 42%, var(--hi-surface));
+    background-color: color-mix(in srgb, var(--hi-control-bg-hover) 72%, var(--hi-surface));
 
     .actionButton {
       background-color: var(--hi-surface);
@@ -148,7 +148,7 @@ $color-money: var(--hi-text);
     grid-template-areas:
       "sort content"
       "sort action";
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 34px 1fr;
   }
 
   @include mixins.respond-below(sm) {
@@ -174,9 +174,9 @@ $color-money: var(--hi-text);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 0;
+  padding: 6px 0;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface-soft);
 }
 
 // Main content area
@@ -184,13 +184,13 @@ $color-money: var(--hi-text);
   grid-area: content;
   display: flex;
   flex-direction: column;
-  padding: 9px 11px;
-  gap: 6px;
+  padding: 8px 9px;
+  gap: 5px;
   min-width: 0;
 
   @include mixins.respond-below(sm) {
-    padding: 14px 16px;
-    gap: 12px;
+    padding: 10px;
+    gap: 8px;
   }
 }
 
@@ -198,30 +198,30 @@ $color-money: var(--hi-text);
 .productHeader {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .badgeRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .typeBadges {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 .productTitle {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 650;
   color: $color-text-primary;
-  line-height: 1.4;
+  line-height: 1.3;
 
   @include mixins.respond-below(sm) {
     font-size: 15px;
@@ -232,7 +232,7 @@ $color-money: var(--hi-text);
   flex-shrink: 0;
   font-weight: 600;
   text-transform: none;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0;
 }
 
@@ -240,37 +240,37 @@ $color-money: var(--hi-text);
 .detailsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
+  gap: 4px;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   @include mixins.respond-below(md) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
 
   @include mixins.respond-below(xs) {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
 }
 
 .detailItem {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   min-width: 0;
-  padding: 6px 7px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+  padding: 5px 6px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 70%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
-  background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
+  background: var(--hi-surface);
 }
 
 .detailLabel {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 620;
   text-transform: none;
   letter-spacing: 0;
@@ -286,7 +286,7 @@ $color-money: var(--hi-text);
 }
 
 .priceAmount {
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: $color-text-primary;
   font-variant-numeric: tabular-nums;
@@ -304,12 +304,12 @@ $color-money: var(--hi-text);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 6px;
+  padding: 1px 5px;
   background-color: var(--hi-shell-bg);
   color: var(--hi-status-warning-text);
   border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   cursor: help;
   transition: background-color $transition-fast;
@@ -327,17 +327,17 @@ $color-money: var(--hi-text);
 .salesValue {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
 .salesWithProgress {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .salesCount {
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: $color-text-primary;
   display: flex;
@@ -350,13 +350,13 @@ $color-money: var(--hi-text);
 }
 
 .salesTotal {
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 400;
   color: $color-text-muted;
 }
 
 .unlimited {
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: $color-text-muted;
   margin-left: 4px;
@@ -371,7 +371,7 @@ $color-money: var(--hi-text);
 }
 
 .lowStock {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--hi-status-warning-text);
   display: flex;
@@ -397,14 +397,14 @@ $color-money: var(--hi-text);
 .dateRange {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .dateItem {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.76rem;
+  gap: 4px;
+  font-size: 0.72rem;
   color: $color-text-secondary;
   cursor: help;
 
@@ -416,7 +416,7 @@ $color-money: var(--hi-text);
 
 .alwaysAvailable,
 .noEndDate {
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   color: $color-text-muted;
   font-style: italic;
 }
@@ -427,14 +427,14 @@ $color-money: var(--hi-text);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 7px;
+  padding: 0 6px;
   border-left: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface-soft);
 
   @include mixins.respond-below(lg) {
     border-left: none;
     border-top: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-    padding: 9px 11px;
+    padding: 7px 9px;
     justify-content: flex-start;
   }
 }
@@ -443,8 +443,8 @@ $color-money: var(--hi-text);
   display: flex;
   align-items: center;
   gap: 4px;
-  min-height: 30px;
-  padding: 6px 10px;
+  min-height: 28px;
+  padding: 5px 8px;
   border-radius: var(--hi-radius-sm);
   border: 1px solid transparent;
   transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
@@ -455,7 +455,7 @@ $color-money: var(--hi-text);
   }
 
   @include mixins.respond-below(lg) {
-    padding: 6px 12px;
+    padding: 5px 10px;
   }
 }
 
@@ -479,8 +479,8 @@ $color-money: var(--hi-text);
 .dragPreview {
   background-color: var(--hi-surface);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: $card-radius;
-  padding: 12px 16px;
+  border-radius: var(--hi-radius-sm);
+  padding: 10px 12px;
   box-shadow: none;
 
   h3 {
@@ -499,10 +499,10 @@ $color-money: var(--hi-text);
 .moreProducts {
   background-color: var(--hi-shell-bg);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: $card-radius;
-  padding: 12px 16px;
-  margin-top: 8px;
-  font-size: 0.78rem;
+  border-radius: var(--hi-radius-sm);
+  padding: 10px 12px;
+  margin-top: 6px;
+  font-size: 0.76rem;
   color: $color-text-secondary;
   text-align: center;
 }
