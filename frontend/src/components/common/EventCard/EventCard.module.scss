@@ -63,15 +63,15 @@
 
 .imageContainer {
   position: relative;
-  width: 58px;
-  min-width: 58px;
+  width: 52px;
+  min-width: 52px;
   overflow: hidden;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   background: var(--hi-surface-soft);
 
   @include mixins.respond-below(md, true) {
-    width: 58px;
-    min-width: 58px;
+    width: 52px;
+    min-width: 52px;
     height: auto;
     border-right: 1px solid var(--hi-border);
     border-bottom: 0;
@@ -84,7 +84,7 @@
   background-size: cover;
   background-position: center;
   filter: saturate(0.55) contrast(0.92);
-  opacity: 0.18;
+  opacity: 0.12;
 }
 
 .placeholderImage {
@@ -104,20 +104,19 @@
 }
 
 .statusBadge {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  right: 6px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: 2px 4px;
+  min-height: 21px;
+  padding: 2px 7px;
   border-radius: var(--hi-radius-sm);
-  font-size: 9px;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: none;
   letter-spacing: 0;
-  display: flex;
-  align-items: center;
   gap: 5px;
+  flex: 0 0 auto;
+  white-space: nowrap;
 
   &.status-live {
     background: var(--hi-surface);
@@ -155,9 +154,9 @@
 
 .dateBadge {
   position: absolute;
-  bottom: 6px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
   padding: 4px 5px;
@@ -187,7 +186,7 @@
 
 .content {
   flex: 1;
-  padding: 9px 10px 9px 12px;
+  padding: 9px 10px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -209,7 +208,22 @@
   min-width: 0;
 }
 
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+
+  @include mixins.respond-below(sm, true) {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+
 .title {
+  flex: 1;
+  min-width: 0;
   margin: 0;
   font-size: 0.88rem;
   font-weight: 650;

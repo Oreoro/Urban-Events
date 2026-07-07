@@ -177,11 +177,6 @@ export function EventCard({event}: EventCardProps) {
                         />
                         <div className={`${classes.imageOverlay} ${!coverImageUrl ? classes.placeholderOverlay : ''}`}/>
 
-                        <div className={`${classes.statusBadge} ${classes[`status-${statusConfig.status}`]}`}>
-                            {statusConfig.pulse && <span className={classes.pulseDot}/>}
-                            {statusConfig.label}
-                        </div>
-
                         <div className={classes.dateBadge}>
                             <span className={classes.dateDay}>{dayOfMonth}</span>
                             <span className={classes.dateMonth}>{monthShort}</span>
@@ -190,7 +185,13 @@ export function EventCard({event}: EventCardProps) {
 
                     <div className={classes.content}>
                         <div className={classes.contentMain}>
-                            <h3 className={classes.title}>{event.title}</h3>
+                            <div className={classes.titleRow}>
+                                <h3 className={classes.title}>{event.title}</h3>
+                                <span className={`${classes.statusBadge} ${classes[`status-${statusConfig.status}`]}`}>
+                                    {statusConfig.pulse && <span className={classes.pulseDot}/>}
+                                    {statusConfig.label}
+                                </span>
+                            </div>
                             <div className={classes.meta}>
                                 <span className={classes.eventDate}>{shortDateTime}</span>
                                 <span className={classes.relativeDate}>({relativeDateStr})</span>
