@@ -5,11 +5,11 @@
 .hi-product-widget-container {
   --widget-fg: var(--widget-primary-text-color, var(--hi-text));
   --widget-muted-fg: color-mix(in srgb, var(--widget-fg) 58%, var(--widget-background-color, var(--hi-color-white)));
-  --widget-accent: var(--widget-secondary-color, var(--hi-text));
+  --widget-accent: var(--widget-secondary-color, var(--hi-primary));
   --widget-accent-text: var(--widget-secondary-text-color, var(--hi-color-white));
   --widget-border: color-mix(in srgb, var(--widget-fg) 14%, var(--widget-background-color, var(--hi-color-white)));
   --widget-border-strong: color-mix(in srgb, var(--widget-border) 78%, var(--widget-fg));
-  --widget-soft-accent: color-mix(in srgb, var(--widget-fg) 5%, var(--widget-background-color, var(--hi-color-white)));
+  --widget-soft-accent: color-mix(in srgb, var(--widget-accent) 7%, var(--widget-background-color, var(--hi-color-white)));
   --widget-panel: color-mix(in srgb, var(--widget-fg) 2%, var(--widget-background-color, var(--hi-color-white)));
 
   background-color: var(--widget-background-color, var(--hi-color-white));
@@ -71,7 +71,7 @@
     font-weight: 620;
 
     &:hover {
-      background: color-mix(in srgb, var(--widget-accent) 92%, var(--hi-color-black));
+      background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
       color: var(--widget-accent-text);
     }
   }
@@ -107,7 +107,7 @@
   .hi-product-rows {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
     margin-bottom: 16px;
 
     .hi-product-row {
@@ -125,12 +125,18 @@
         background-color: var(--widget-soft-accent);
       }
 
+      &:hover {
+        border-color: color-mix(in srgb, var(--widget-border) 68%, var(--widget-fg));
+        background: color-mix(in srgb, var(--widget-soft-accent) 58%, var(--widget-background-color, var(--hi-color-white)));
+      }
+
       .hi-product-highlight-message {
-        background: var(--widget-accent);
-        color: var(--widget-accent-text);
+        background: var(--widget-soft-accent);
+        color: var(--widget-fg);
+        border-bottom: 1px solid var(--widget-border);
         font-size: 0.72rem;
-        font-weight: 500;
-        padding: 6px 14px;
+        font-weight: 600;
+        padding: 6px 12px;
         text-align: left;
         letter-spacing: 0;
       }
@@ -155,7 +161,7 @@
 
         .hi-product-title {
           flex: 1;
-          padding: 12px 14px;
+          padding: 11px 12px;
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
@@ -180,7 +186,7 @@
             font-weight: 400;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             flex-shrink: 0;
             color: var(--widget-muted-fg);
             font-size: 0.8rem;
@@ -203,7 +209,7 @@
       }
 
       .hi-product-content {
-        padding: 0 14px 14px;
+        padding: 0 12px 12px;
       }
 
       .hi-price-tiers-rows {
@@ -231,7 +237,7 @@
       }
 
       .hi-price-tier-row {
-        padding: 12px 0;
+        padding: 10px 0;
         border-bottom: 1px solid var(--widget-border);
 
         &:last-child {
@@ -331,7 +337,7 @@
     white-space: nowrap;
 
     &:hover {
-      background: color-mix(in srgb, var(--widget-accent) 92%, var(--hi-color-black));
+      background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
     }
   }
 
@@ -420,6 +426,11 @@
       border-radius: var(--hi-radius-md);
       font-weight: 620;
       height: 44px;
+
+      &:hover:not(:disabled) {
+        background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
+        border-color: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
+      }
     }
   }
 

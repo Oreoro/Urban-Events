@@ -196,15 +196,15 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: $font-display;
   font-weight: 600;
   font-size: 0.88rem;
-  background: var(--hi-text) !important;
-  border: 1px solid var(--hi-text) !important;
-  color: var(--hi-color-white) !important;
+  background: var(--checkout-accent, var(--hi-primary)) !important;
+  border: 1px solid var(--checkout-accent, var(--hi-primary)) !important;
+  color: var(--checkout-accent-contrast, var(--hi-color-white)) !important;
   transition: background-color $transition-fast, border-color $transition-fast;
 
   &:hover:not(:disabled) {
     filter: none;
-    background: var(--hi-color-black) !important;
-    border-color: var(--hi-color-black) !important;
+    background: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black)) !important;
+    border-color: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black)) !important;
   }
 }
 
