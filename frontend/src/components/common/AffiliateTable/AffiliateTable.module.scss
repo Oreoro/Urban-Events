@@ -7,16 +7,16 @@
 .codeWrapper {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    background: var(--hi-surface-soft);
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    gap: 6px;
+    padding: 4px 6px;
+    background: var(--hi-shell-bg);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+    border-radius: var(--hi-radius-sm);
     transition: background-color 0.15s ease, border-color 0.15s ease;
     
     &:hover {
-        background: var(--hi-control-bg-active);
-        border-color: var(--hi-border-strong);
+        background: var(--hi-control-bg-hover);
+        border-color: var(--hi-border);
         
         .copyButton {
             opacity: 1;
@@ -26,18 +26,18 @@
 
 .codeText {
     color: var(--hi-text-light);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0;
-    font-size: 0.85rem;
+    font-size: 0.76rem;
 }
 
 .copyButton {
     opacity: 0.6;
     transition: opacity 0.15s ease, background-color 0.15s ease;
-    padding: 4px 8px;
+    padding: 3px 6px;
     height: auto;
-    border-radius: 8px;
-    font-size: 0.75rem;
+    border-radius: var(--hi-radius-sm);
+    font-size: 0.7rem;
     
     &:hover {
         background: var(--hi-control-bg-active);
@@ -47,7 +47,7 @@
 
 .statsCell {
     display: flex;
-    gap: 8px;
+    gap: 5px;
     align-items: center;
     min-width: 160px;
 }
@@ -55,19 +55,19 @@
 .statItem {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     align-items: center;
-    padding: 6px 8px;
-    border-radius: 8px;
-    background: var(--hi-surface-soft);
-    border: 1px solid var(--hi-border);
+    padding: 4px 7px;
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-shell-bg);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
     transition: background-color 0.15s ease, border-color 0.15s ease;
     width: 70px;
     flex: 1;
     
     &:hover {
-        background: var(--hi-control-bg-active);
-        border-color: var(--hi-border-strong);
+        background: var(--hi-control-bg-hover);
+        border-color: var(--hi-border);
     }
     
     &:first-child {
@@ -97,15 +97,15 @@
 }
 
 .statValue {
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: 650;
+    font-size: 0.76rem;
     color: var(--hi-text);
 }
 
 .statLabel {
-    font-size: 0.65rem;
+    font-size: 0.64rem;
     color: var(--hi-text-muted);
-    font-weight: 500;
+    font-weight: 560;
     text-transform: none;
     letter-spacing: 0;
     margin-top: 1px;
@@ -114,16 +114,16 @@
 .affiliateInfo {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .affiliateName {
-    font-weight: 500;
+    font-weight: 650;
     color: var(--hi-text);
-    font-size: 0.9rem;
+    font-size: 0.84rem;
 }
 
 .affiliateEmail {
     color: var(--hi-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
