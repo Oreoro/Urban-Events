@@ -161,7 +161,7 @@ export function Dashboard() {
                 ) : null}
             </div>
 
-            <ToolBar searchComponent={() => (
+            <ToolBar className={classes.toolbarCard} searchComponent={() => (
                 <SearchBarWrapper
                     placeholder={t`Search by event name...`}
                     setSearchParams={setSearchParams}
@@ -222,14 +222,16 @@ export function Dashboard() {
             {(events?.length === 0 && isEventsFetched)
                 && <NoEventsBlankSlate openCreateModal={openCreateModal} eventsState={eventsState}/>}
 
-            <div>
-                {(isEventsFetching && !events) && <DashboardSkeleton/>}
+            {((isEventsFetching && !events) || (events && events.length > 0)) && (
+                <div className={classes.eventsListPanel} aria-label={t`Events list`}>
+                    {(isEventsFetching && !events) && <DashboardSkeleton/>}
 
-                {events?.map((event: Event) =>
-                    (
-                        <EventCard key={event.id} event={event}/>
-                    ))}
-            </div>
+                    {events?.map((event: Event) =>
+                        (
+                            <EventCard key={event.id} event={event}/>
+                        ))}
+                </div>
+            )}
             {events && events.length > 0
                 && <Pagination value={searchParams.pageNumber}
                                onChange={(value) => setSearchParams({pageNumber: value})}

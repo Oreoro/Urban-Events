@@ -2,16 +2,16 @@
 
 .eventsContainer {
   margin-top: 0;
-  margin-bottom: 1.25rem;
-  max-width: 1180px;
+  margin-bottom: 1.15rem;
+  max-width: 1080px;
 }
 
 .pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin: 0 0 0.85rem;
+  gap: 0.85rem;
+  margin: 0 0 0.72rem;
   
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -24,20 +24,20 @@
 .headerIdentity {
   min-width: 0;
   display: flex;
-  align-items: center;
-  gap: 11px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .pageIcon {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 34px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  flex: 0 0 30px;
+  border: 0;
+  border-radius: var(--hi-radius-sm);
+  background: transparent;
   color: var(--hi-text-muted);
 }
 
@@ -49,14 +49,14 @@
 .pageKicker {
   margin-bottom: 2px;
   color: var(--hi-text-muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.2;
 }
 
 .pageTitle {
   color: var(--hi-text);
-  font-size: 1.34rem;
+  font-size: 1.28rem;
   font-weight: 650;
   margin: 0;
   letter-spacing: 0;
@@ -70,11 +70,11 @@
 .organizerButton {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  background: color-mix(in srgb, var(--hi-surface) 88%, var(--hi-shell-bg));
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  border-radius: var(--hi-radius-md);
-  padding: 0.38rem 0.55rem;
+  gap: 0.5rem;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  padding: 0.32rem 0.48rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
@@ -96,8 +96,8 @@
 }
 
 .organizerLogo {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: var(--hi-radius-sm);
   overflow: hidden;
   flex-shrink: 0;
@@ -122,13 +122,13 @@
 }
 
 .organizerName {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 620;
   color: var(--hi-text);
 }
 
 .organizerCount {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 620;
   color: var(--hi-text);
 }
@@ -145,8 +145,8 @@
 }
 
 .miniLogo {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--hi-radius-sm);
   overflow: hidden;
   border: 1px solid var(--hi-border);
@@ -173,4 +173,34 @@
 
 .card {
   padding-bottom: 0;
+}
+
+.toolbarCard {
+  margin-bottom: 0.5rem !important;
+}
+
+.eventsListPanel {
+  margin-top: 0.55rem;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface);
+  overflow: hidden;
+
+  :global(.card) {
+    margin-bottom: 0 !important;
+    border-width: 0 0 1px !important;
+    border-radius: 0 !important;
+    border-color: var(--hi-border) !important;
+    box-shadow: none !important;
+  }
+
+  :global(.card:last-child) {
+    border-bottom: 0 !important;
+  }
+
+  :global(.mantine-Skeleton-root) {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--hi-border);
+  }
 }
