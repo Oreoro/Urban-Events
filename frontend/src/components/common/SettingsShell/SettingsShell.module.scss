@@ -1,7 +1,7 @@
 .settingsLayout {
   display: grid;
-  grid-template-columns: minmax(0, 206px) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
 }
 
@@ -19,8 +19,8 @@
 }
 
 .sideMenuTitle {
-  margin: 0 0 6px;
-  padding: 0 8px;
+  margin: 0 0 5px;
+  padding: 0 7px;
   color: var(--hi-text-muted);
   font-size: 0.72rem;
   font-weight: 620;
@@ -33,12 +33,12 @@
 }
 
 .navLink {
-  min-height: 30px;
+  min-height: 28px;
   color: var(--hi-text-muted);
   border-radius: var(--hi-radius-sm);
   font-size: 0.82rem;
   font-weight: 560;
-  padding-inline: 8px;
+  padding-inline: 7px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -53,7 +53,7 @@
 
   :global(.mantine-NavLink-section) {
     color: var(--hi-text-muted);
-    margin-right: 7px;
+    margin-right: 6px;
   }
 
   &[data-active] :global(.mantine-NavLink-section) {
@@ -82,10 +82,10 @@
 
 .content {
   min-width: 0;
-  max-width: 940px;
+  max-width: 880px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .settingSection {
@@ -95,9 +95,9 @@
   > :global(.card.lightGray),
   > :global(.card.lightAccent) {
     margin-bottom: 0;
-    padding: 16px;
+    padding: 12px;
     border-color: var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
   }
 
@@ -109,20 +109,20 @@
 
   :global(.mantine-Paper-root) {
     border-color: var(--hi-border) !important;
-    background: var(--hi-surface-soft) !important;
-    border-radius: var(--hi-radius-md) !important;
+    background: var(--hi-surface) !important;
+    border-radius: var(--hi-radius-sm) !important;
     box-shadow: none !important;
   }
 
   :global(.mantine-InputWrapper-root),
   :global(.mantine-Switch-root) {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   :global(.mantine-InputWrapper-label),
   :global(.mantine-Switch-label) {
     color: var(--hi-text);
-    font-size: 0.84rem;
+    font-size: 0.81rem;
     font-weight: 620;
     line-height: 1.35;
   }
@@ -130,38 +130,40 @@
   :global(.mantine-InputWrapper-description),
   :global(.mantine-Switch-description) {
     color: var(--hi-text-muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 450;
     line-height: 1.42;
   }
 
   :global(.mantine-Input-input) {
-    min-height: 36px;
+    min-height: 34px;
     border-color: var(--hi-border);
-    font-size: 0.86rem;
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface);
+    font-size: 0.84rem;
     font-weight: 500;
   }
 
   :global(.mantine-Checkbox-root) {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   :global(.mantine-Checkbox-label) {
     color: var(--hi-text);
-    font-size: 0.84rem;
+    font-size: 0.81rem;
     font-weight: 620;
   }
 
   :global(.mantine-Checkbox-description) {
     color: var(--hi-text-muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     line-height: 1.42;
   }
 
   h2 {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--hi-text);
-    font-size: 0.98rem;
+    font-size: 0.94rem;
     font-weight: 650;
     letter-spacing: 0;
     line-height: 1.32;
@@ -169,14 +171,14 @@
 
   h3 {
     color: var(--hi-text);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     font-weight: 620;
     letter-spacing: 0;
   }
 
   h4 {
     color: var(--hi-text);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0;
   }
@@ -193,10 +195,10 @@
   }
 
   .sideMenu {
-    padding: 7px;
+    padding: 6px;
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
   }
 
   .navList {
@@ -219,7 +221,7 @@
     > :global(.card.default),
     > :global(.card.lightGray),
     > :global(.card.lightAccent) {
-      padding: 16px;
+      padding: 12px;
     }
   }
 }
