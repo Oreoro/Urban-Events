@@ -90,7 +90,7 @@
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: none;
 
   @include mixins.respond-below(sm) {
     max-width: 100%;

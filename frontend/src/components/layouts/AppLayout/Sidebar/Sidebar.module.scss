@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   grid-area: sidebar;
-  background: var(--hi-shell-bg);
+  background: var(--ue-canvas-soft);
   color: var(--hi-shell-text);
   position: relative;
   border-right: 1px solid var(--hi-border);
@@ -27,14 +27,14 @@
     padding: 8px 0 7px;
     min-height: 46px;
     margin-bottom: 0;
-    border-bottom: 1px solid var(--hi-border);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
     flex-shrink: 0;
 
     a {
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 15px;
+      padding: 8px 14px;
       color: var(--hi-shell-text);
       line-height: 1;
     }
@@ -44,7 +44,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 6px 0 16px;
+    padding: 8px 0 16px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -72,12 +72,12 @@
     }
 
     .sectionHeading {
-      padding: 15px 14px 5px;
+      padding: 14px 13px 5px;
       font-size: 0.68rem;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
-      color: var(--hi-shell-muted);
+      color: color-mix(in srgb, var(--hi-shell-muted) 74%, transparent);
     }
 
     a,
@@ -86,28 +86,35 @@
       display: flex;
       align-items: center;
       color: color-mix(in srgb, var(--hi-shell-text) 68%, transparent);
-      min-height: 30px;
-      padding: 5px 9px;
+      min-height: 29px;
+      padding: 4px 8px;
       text-decoration: none;
-      margin: 1px 8px;
+      margin: 1px 7px;
       border-radius: var(--hi-radius-sm);
       font-size: 0.82rem;
       font-weight: 500;
-      transition: background-color 0.14s ease, color 0.14s ease, box-shadow 0.14s ease;
+      transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 16px);
+      width: calc(100% - 14px);
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       text-align: left;
 
+      span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
       .navBadge {
-        background: var(--hi-surface);
+        background: color-mix(in srgb, var(--hi-shell-surface) 58%, var(--hi-surface));
         color: var(--hi-shell-muted);
-        border: 1px solid var(--hi-border);
+        border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
         padding: 1px 6px;
-        border-radius: 12px;
+        border-radius: var(--hi-radius-sm);
         font-size: 0.75em;
         font-weight: 600;
         margin-left: auto;
@@ -124,7 +131,8 @@
       }
 
       &.linkActive {
-        background: var(--hi-shell-surface);
+        background: var(--hi-surface);
+        border-color: color-mix(in srgb, var(--hi-border) 88%, transparent);
         color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
@@ -135,13 +143,16 @@
       }
 
       &:hover {
-        background: color-mix(in srgb, var(--hi-shell-surface-hover) 74%, transparent);
+        background: color-mix(in srgb, var(--hi-surface) 74%, var(--hi-shell-surface));
+        border-color: color-mix(in srgb, var(--hi-border) 82%, transparent);
         color: var(--hi-shell-text);
       }
 
       svg {
         margin-right: 8px;
-        min-width: 18px;
+        width: 17px;
+        height: 17px;
+        min-width: 17px;
         color: color-mix(in srgb, var(--hi-shell-text) 46%, transparent);
         transition: color 0.14s ease;
       }
@@ -151,6 +162,7 @@
   .sidebarFooter {
     margin-top: auto;
     padding: 10px 11px 12px;
+    border-top: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
     flex-shrink: 0;
     position: relative;
     z-index: 2;
@@ -189,7 +201,7 @@
     &:hover {
       transform: none;
       color: var(--hi-shell-text);
-      background: var(--hi-shell-surface-hover);
+      background: var(--hi-surface);
       border-radius: var(--hi-radius-sm);
     }
 

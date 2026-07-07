@@ -111,8 +111,8 @@
     font-weight: 620;
     font-size: 0.82rem;
     transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
-    border: 1px solid var(--hi-text) !important;
-    background: var(--hi-text) !important;
+    border: 1px solid var(--hi-primary) !important;
+    background: var(--hi-primary) !important;
     color: var(--hi-color-white) !important;
 
     @if $margin-top != 0 {
@@ -124,8 +124,8 @@
     }
 
     &:hover:not(:disabled) {
-      background: var(--hi-color-black) !important;
-      border-color: var(--hi-color-black) !important;
+      background: var(--hi-primary-hover) !important;
+      border-color: var(--hi-primary-hover) !important;
       box-shadow: none;
     }
 
