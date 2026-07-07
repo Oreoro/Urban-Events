@@ -2,7 +2,7 @@
 
 .tableWrapper {
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
     overflow: hidden;
     box-shadow: none;
@@ -17,24 +17,24 @@
 .table {
     :global {
         thead tr th {
-            padding: 8px 12px;
-            font-weight: 600;
-            font-size: 12px;
+            padding: 8px 10px;
+            font-weight: 650;
+            font-size: 0.72rem;
             text-transform: none;
             letter-spacing: 0;
             color: var(--hi-text-muted);
-            background: var(--hi-surface-soft);
-            border-bottom: 1px solid var(--hi-border-strong);
+            background: var(--hi-shell-bg);
+            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
             white-space: nowrap;
             line-height: 1.25;
         }
 
         tbody tr td {
-            padding: 9px 12px;
+            padding: 9px 10px;
             vertical-align: middle;
-            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 68%, white);
+            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, var(--hi-surface));
             color: var(--hi-text-light);
-            font-size: 0.86rem;
+            font-size: 0.82rem;
             font-weight: 500;
             line-height: 1.35;
         }
@@ -50,8 +50,8 @@
 }
 
 .sortButton {
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 650;
+    font-size: 0.72rem;
     text-transform: none;
     letter-spacing: 0;
     color: var(--hi-text-muted);
@@ -69,10 +69,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 22px;
+    padding: 32px 18px;
     text-align: center;
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
     box-shadow: none;
 }

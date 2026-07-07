@@ -10,6 +10,7 @@ import {showError, showSuccess} from "../../../../utilites/notifications";
 import {IdParam} from "../../../../types";
 import {AdminEvent} from "../../../../api/admin.client";
 import {getConfig} from "../../../../utilites/config";
+import listClasses from "../AdminListPage.module.scss";
 
 const Events = () => {
     const navigate = useNavigate();
@@ -72,8 +73,8 @@ const Events = () => {
     };
 
     return (
-        <Container size="xl" p="xl">
-            <Stack gap="lg">
+        <Container size="xl" p="xl" className={listClasses.page}>
+            <Stack gap="lg" className={listClasses.stack}>
                 <Title order={1}>{t`Events`}</Title>
 
                 <TextInput

@@ -21,6 +21,7 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import classes from './Dashboard.module.scss';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -63,8 +64,8 @@ const AdminDashboard = () => {
     };
 
     return (
-        <Container size="xl" p={0}>
-            <Stack gap="lg">
+        <Container size="xl" p={0} className={classes.dashboard}>
+            <Stack gap="lg" className={classes.dashboardStack}>
                 <div>
                     <Title order={1} mb="xs">
                         <Trans>Admin Dashboard</Trans>

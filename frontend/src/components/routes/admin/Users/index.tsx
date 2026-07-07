@@ -8,6 +8,7 @@ import AdminUsersTable from "../../../common/AdminUsersTable";
 import {showError, showSuccess} from "../../../../utilites/notifications";
 import {IdParam} from "../../../../types";
 import {useNavigate} from "react-router";
+import listClasses from "../AdminListPage.module.scss";
 
 const Users = () => {
     const navigate = useNavigate();
@@ -52,8 +53,8 @@ const Users = () => {
     };
 
     return (
-        <Container size="xl" p="xl">
-            <Stack gap="lg">
+        <Container size="xl" p="xl" className={listClasses.page}>
+            <Stack gap="lg" className={listClasses.stack}>
                 <Title order={1}>{t`Users`}</Title>
 
                 <TextInput

@@ -1,0 +1,122 @@
+.dashboard {
+  color: var(--hi-text);
+
+  :global(.mantine-Title-root) {
+    color: var(--hi-text);
+    letter-spacing: 0;
+  }
+
+  :global(.mantine-Title-root[data-order="1"]) {
+    margin-bottom: 6px;
+    font-size: 1.24rem;
+    font-weight: 680;
+    line-height: 1.18;
+  }
+
+  :global(h1.mantine-Title-root) {
+    margin-bottom: 6px;
+    font-size: 1.24rem;
+    font-weight: 680;
+    line-height: 1.18;
+  }
+
+  :global(.mantine-Title-root[data-order="2"]) {
+    margin-bottom: 10px;
+    font-size: 0.96rem;
+    font-weight: 680;
+    line-height: 1.25;
+  }
+
+  :global(h2.mantine-Title-root) {
+    margin-bottom: 10px;
+    font-size: 0.96rem;
+    font-weight: 680;
+    line-height: 1.25;
+  }
+
+  :global(.mantine-Paper-root) {
+    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border-radius: var(--hi-radius-md);
+    background: var(--hi-surface);
+    box-shadow: none;
+  }
+
+  :global(.mantine-Paper-root:hover) {
+    border-color: color-mix(in srgb, var(--hi-border-strong) 72%, var(--hi-border));
+  }
+
+  :global(.mantine-Skeleton-root) {
+    --mantine-color-gray-2: var(--hi-surface-soft);
+    --mantine-color-gray-3: var(--hi-border);
+  }
+
+  :global(.mantine-Badge-root) {
+    border-radius: var(--hi-radius-sm);
+    font-size: 0.68rem;
+    font-weight: 620;
+    letter-spacing: 0;
+  }
+
+  :global(.mantine-Anchor-root) {
+    color: var(--hi-text);
+    font-size: 0.82rem;
+    font-weight: 620;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--hi-text-light);
+      text-decoration: underline;
+    }
+  }
+
+  :global(.mantine-Table-table) {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  :global(.mantine-Table-th) {
+    padding: 9px 12px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+    background: var(--hi-shell-bg);
+    color: var(--hi-text-muted);
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  :global(.mantine-Table-td) {
+    padding: 10px 12px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, var(--hi-surface));
+    color: var(--hi-text-light);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    vertical-align: middle;
+  }
+
+  :global(.mantine-Table-tr:last-child .mantine-Table-td) {
+    border-bottom: 0;
+  }
+
+  :global(.mantine-Table-tr:hover .mantine-Table-td) {
+    background: var(--hi-control-bg-hover);
+  }
+}
+
+.dashboardStack {
+  gap: 16px !important;
+
+  > div {
+    min-width: 0;
+  }
+
+  > div:first-child {
+    padding-bottom: 2px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
+  }
+
+  > div:not(:first-child) {
+    display: grid;
+    gap: 8px;
+  }
+}
