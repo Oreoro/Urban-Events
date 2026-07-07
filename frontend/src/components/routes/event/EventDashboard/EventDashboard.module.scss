@@ -5,15 +5,15 @@
 }
 
 .overviewPanel {
-  padding: 0 0 10px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 
   @media (max-width: 768px) {
-    margin-bottom: -2px;
+    margin-bottom: 0;
   }
 }
 
@@ -21,16 +21,16 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px 14px 12px;
-  border-bottom: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  gap: 18px;
+  padding: 2px 0 18px;
+  border-bottom: 0;
+  background: transparent;
 }
 
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 13px;
   min-width: 0;
   flex: 1;
 }
@@ -38,12 +38,12 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface-soft);
-  color: var(--hi-text);
+  background: var(--hi-surface);
+  color: var(--hi-text-muted);
   flex: 0 0 auto;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .kicker {
-  margin: 0 0 3px;
+  margin: 0 0 4px;
   color: var(--hi-text-muted);
   font-size: 0.74rem;
   font-weight: 560;
@@ -62,14 +62,14 @@
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.42rem;
-  font-weight: 700;
+  font-size: 1.76rem;
+  font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.14;
+  line-height: 1.08;
   overflow-wrap: anywhere;
 
   @media (max-width: 768px) {
-    font-size: 1.24rem;
+    font-size: 1.42rem;
   }
 }
 
@@ -83,20 +83,29 @@
   span {
     display: inline-flex;
     align-items: center;
-    min-height: 24px;
-    padding: 3px 8px;
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-sm);
-    background: var(--hi-control-bg-hover);
+    min-height: 21px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--hi-text-muted);
     font-size: 0.73rem;
     font-weight: 560;
     line-height: 1.2;
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 3px;
+      height: 3px;
+      margin-left: 6px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--hi-text-muted) 42%, transparent);
+    }
   }
 }
 
 .statsShell {
-  padding: 10px 10px 0;
+  padding: 0;
 }
 
 .chartCard {
@@ -158,7 +167,7 @@
 .setupCard {
   margin: 0 !important;
   position: relative;
-  padding: 14px;
+  padding: 0;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   box-shadow: none;
@@ -191,6 +200,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 12px;
 }
 
 .checklistContainer {
@@ -209,17 +219,12 @@
   }
 
   .setupDescription {
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
     color: var(--hi-text-muted);
     font-size: 0.84rem;
     line-height: 1.5;
-    max-width: 80%;
+    max-width: 640px;
   }
-}
-
-.checklistTitleIcon {
-  color: var(--hi-text-muted);
-  flex: 0 0 auto;
 }
 
 .checklistItems {
@@ -235,7 +240,7 @@
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 11px 13px;
+  padding: 12px;
   background: var(--hi-surface);
   border-radius: 0;
   border: 0;
@@ -247,7 +252,7 @@
   }
 
   h3 {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     margin: 0 0 0.45rem 0;
     color: var(--hi-text);
     font-weight: 600;
@@ -300,15 +305,15 @@
 }
 
 .checkboxComplete {
-  background-color: var(--hi-primary);
-  border-color: var(--hi-primary);
-  color: var(--hi-color-white);
+  background-color: var(--hi-text);
+  border-color: var(--hi-text);
+  color: var(--hi-surface);
 }
 
 /* Tablet and smaller desktop styles */
 @media (max-width: 1200px) {
   .setupCard {
-    padding: 16px;
+    padding: 0;
   }
 
   .checklistContainer {
@@ -331,7 +336,7 @@
   }
 
   .setupCard {
-    padding: 16px;
+    padding: 0;
   }
 
   .checklistContainer h2 {
@@ -342,7 +347,7 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .setupCard {
-    padding: 14px;
+    padding: 0;
     margin-bottom: 18px;
   }
 

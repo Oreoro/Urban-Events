@@ -2,8 +2,8 @@
 
 .statistics {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
   color: var(--hi-text);
   margin: 0;
   background: transparent;
@@ -11,11 +11,11 @@
   border-radius: 0;
   overflow: visible;
 
-  @include mixins.respond-below(lg) {
-    grid-template-columns: repeat(3, 1fr);
+  @include mixins.respond-below(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @include mixins.respond-below(md) {
+  @include mixins.respond-below(sm) {
     grid-template-columns: 1fr;
   }
 
@@ -29,10 +29,10 @@
 .statistic {
   display: flex;
   align-items: stretch;
-  padding: 13px 12px !important;
+  padding: 13px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 74px;
+  min-height: 86px;
   border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   box-shadow: none !important;
   background: var(--hi-surface) !important;

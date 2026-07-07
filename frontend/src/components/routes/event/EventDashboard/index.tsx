@@ -11,7 +11,7 @@ import {formatCurrency} from "../../../../utilites/currency.ts";
 import {formatDateWithLocale} from "../../../../utilites/dates.ts";
 import {Button, SegmentedControl, Skeleton, Tooltip} from "@mantine/core";
 import {useMediaQuery} from "@mantine/hooks";
-import {IconAlertCircle, IconCheck, IconLayoutDashboard, IconRocket, IconX} from "@tabler/icons-react";
+import {IconAlertCircle, IconCheck, IconLayoutDashboard, IconX} from "@tabler/icons-react";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../../mutations/useUpdateEventStatus.ts";
 import {confirmationDialog} from "../../../../utilites/confirmationDialog.tsx";
@@ -179,7 +179,6 @@ export const EventDashboard = () => {
                         <div className={classes.setupCardContent}>
                             <div className={classes.checklistContainer}>
                                 <h2>
-                                    <IconRocket size={18} className={classes.checklistTitleIcon}/>
                                     {t`Get your event ready`}
                                 </h2>
                                 <p className={classes.setupDescription}>
