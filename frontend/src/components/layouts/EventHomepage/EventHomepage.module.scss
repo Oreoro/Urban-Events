@@ -257,11 +257,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 28px;
   height: 28px;
   border-radius: $radius-sm;
-  background: var(--primary-color);
+  background: var(--hi-surface-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-contrast);
+  color: var(--hi-text-muted);
   font-size: 0.75rem;
   font-weight: 600;
   border: 2px solid var(--content-bg-color);
@@ -742,8 +742,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-row.selected) {
-    border-color: var(--primary-text-color);
-    background: color-mix(in srgb, var(--accent-soft) 36%, var(--content-bg-color));
+    border-color: var(--hi-primary);
+    background: var(--hi-primary-soft);
   }
 
   :global(.hi-title-row) {
@@ -919,10 +919,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     padding: 13px 18px !important;
     height: auto !important;
-    background: var(--primary-text-color) !important;
-    background-color: var(--primary-text-color) !important;
-    color: var(--content-bg-color) !important;
-    border: 1px solid var(--primary-text-color) !important;
+    background: var(--hi-primary) !important;
+    background-color: var(--hi-primary) !important;
+    color: var(--hi-color-white) !important;
+    border: 1px solid var(--hi-primary) !important;
     border-radius: $radius-md !important;
     font-family: $font-display;
     font-size: 0.92rem !important;
@@ -938,13 +938,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     // Override Mantine button internals
     :global(.mantine-Button-label) {
-      color: var(--content-bg-color) !important;
+      color: var(--hi-color-white) !important;
     }
 
     &:hover:not(:disabled) {
       filter: none;
-      background: var(--primary-text-color) !important;
-      background-color: var(--primary-text-color) !important;
+      background: var(--hi-primary-hover) !important;
+      background-color: var(--hi-primary-hover) !important;
+      border-color: var(--hi-primary-hover) !important;
     }
 
     &:disabled {
@@ -985,15 +986,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-apply-promo-code-button) {
-    background: var(--primary-text-color);
-    color: var(--content-bg-color);
-    border: 1px solid var(--primary-text-color);
+    background: var(--hi-surface);
+    color: var(--primary-text-color);
+    border: 1px solid var(--hi-border);
     border-radius: $radius-sm;
     font-weight: 600;
     padding: 9px 16px;
 
     &:hover {
       filter: none;
+      background: var(--hi-control-bg-hover);
+      border-color: var(--hi-border-strong);
     }
   }
 
@@ -1155,8 +1158,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transition: background-color $transition-fast, color $transition-fast;
 
   &:hover {
-    background: var(--primary-color);
-    color: white;
+    background: var(--hi-control-bg-hover);
+    color: var(--primary-text-color);
   }
 }
 
@@ -1180,9 +1183,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--primary-color);
-    color: var(--accent-contrast);
-    border-color: var(--primary-color);
+    background: var(--hi-control-bg-hover);
+    color: var(--primary-text-color);
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -1252,14 +1255,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--primary-color);
-  color: var(--accent-contrast);
+  background: var(--hi-surface);
+  color: var(--primary-text-color);
   font-family: $font-display;
   font-weight: 600;
   font-size: 0.875rem;
   padding: 12px 20px;
   border-radius: $radius-md;
-  border: none;
+  border: 1px solid var(--hi-border);
   cursor: pointer;
   box-shadow: none;
   transition: background-color $transition-fast, color $transition-fast;
@@ -1272,7 +1275,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    filter: brightness(1.06);
+    background: var(--hi-control-bg-hover);
+    border-color: var(--hi-border-strong);
   }
 }
 
@@ -1442,7 +1446,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-row.hi-product-highlighted),
   :global(.hi-product-row.selected) {
-    background: var(--hi-surface);
+    background: var(--hi-primary-soft);
     border-color: var(--hi-primary);
   }
 
@@ -1482,8 +1486,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-top-color: var(--hi-border);
   }
 
-  :global(.hi-continue-button),
-  :global(.hi-apply-promo-code-button) {
+  :global(.hi-continue-button) {
     background: var(--hi-primary) !important;
     background-color: var(--hi-primary) !important;
     border-color: var(--hi-primary) !important;
@@ -1491,11 +1494,25 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: var(--hi-radius-sm) !important;
   }
 
-  :global(.hi-continue-button:hover:not(:disabled)),
-  :global(.hi-apply-promo-code-button:hover:not(:disabled)) {
+  :global(.hi-continue-button:hover:not(:disabled)) {
     background: var(--hi-primary-hover) !important;
     background-color: var(--hi-primary-hover) !important;
     border-color: var(--hi-primary-hover) !important;
+  }
+
+  :global(.hi-apply-promo-code-button) {
+    background: var(--hi-surface) !important;
+    background-color: var(--hi-surface) !important;
+    border: 1px solid var(--hi-border) !important;
+    color: var(--primary-text-color) !important;
+    border-radius: var(--hi-radius-sm) !important;
+    font-weight: 600;
+  }
+
+  :global(.hi-apply-promo-code-button:hover:not(:disabled)) {
+    background: var(--hi-control-bg-hover) !important;
+    background-color: var(--hi-control-bg-hover) !important;
+    border-color: var(--hi-border-strong) !important;
   }
 
   :global(.hi-continue-button) {
@@ -1511,14 +1528,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrollToTicketsButton {
-  background: var(--hi-primary);
-  color: var(--hi-color-white);
-  border: 1px solid var(--hi-primary);
+  background: var(--hi-surface);
+  color: var(--primary-text-color);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
 }
 
 .scrollToTicketsButton:hover {
   filter: none;
-  background: var(--hi-primary-hover);
-  border-color: var(--hi-primary-hover);
+  background: var(--hi-control-bg-hover);
+  border-color: var(--hi-border-strong);
 }
