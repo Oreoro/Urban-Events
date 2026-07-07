@@ -1,15 +1,17 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 6px;
   align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  max-width: 560px;
+  width: 100%;
+  max-width: 720px;
   text-align: left;
   margin: 12px 0;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface-soft);
+  background: var(--hi-surface);
   box-shadow: none;
 
   .visual {
@@ -18,10 +20,16 @@
     justify-content: center;
     width: 34px;
     height: 34px;
+    grid-row: 1 / span 4;
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface);
+    background: var(--hi-surface-soft);
     color: var(--hi-text-muted);
+  }
+
+  > :not(.visual) {
+    grid-column: 2;
+    min-width: 0;
   }
 
   .icon {
@@ -35,7 +43,7 @@
     font-size: 0.94rem;
     font-weight: 680;
     margin-bottom: 0;
-    margin-top: 12px;
+    margin-top: 1px;
     color: var(--hi-text);
     line-height: 1.26;
     letter-spacing: 0;
@@ -45,8 +53,8 @@
     color: var(--hi-text-muted);
     font-size: 0.82rem;
     line-height: 1.48;
-    margin: 6px 0 10px;
-    max-width: 480px;
+    margin: 0 0 6px;
+    max-width: 560px;
   }
 
   strong,
@@ -92,9 +100,16 @@
 .compact {
   max-width: 100%;
   margin: 12px 0;
-  padding: 12px;
+  padding: 10px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  column-gap: 10px;
+
+  .visual {
+    width: 30px;
+    height: 30px;
+  }
 
   h2 {
-    margin-top: 10px;
+    margin-top: 0;
   }
 }
