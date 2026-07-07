@@ -123,7 +123,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                     </div>
 
                     <div className={classes.dateBadge}>
-                        <IconCalendar size={16}/>
+                        <IconCalendar size={14}/>
                         <span>{startMonth} {startDay}</span>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                         <h3 className={classes.eventTitle}>{event.title}</h3>
 
                         <div className={classes.eventDateTime}>
-                            <IconClock size={14}/>
+                            <IconClock size={13}/>
                             <span>
                                 {startTime}
                                 {endTime && (
@@ -163,9 +163,9 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                             {(location || isOnlineEvent) && (
                                 <div className={classes.location}>
                                     {isOnlineEvent ? (
-                                        <><IconWifi size={14}/><span>{t`Online Event`}</span></>
+                                        <><IconWifi size={13}/><span>{t`Online Event`}</span></>
                                     ) : (
-                                        <><IconMapPin size={14}/><span>{location}</span></>
+                                        <><IconMapPin size={13}/><span>{location}</span></>
                                     )}
                                 </div>
                             )}
@@ -173,7 +173,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
 
                         {lowestPrice !== null && (
                             <div className={classes.priceSection}>
-                                <IconTicket size={14}/>
+                                <IconTicket size={13}/>
                                 <span className={lowestPrice === 0 && highestPrice === 0 ? classes.free : classes.price}>
                                     {lowestPrice === 0 && highestPrice === 0 ? (
                                         t`Free`

@@ -62,7 +62,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Main page wrapper
 .pageWrapper {
   min-height: 100vh;
-  background: var(--bg-color, var(--ue-canvas-soft));
+  background: color-mix(in srgb, var(--bg-color, var(--ue-canvas-soft)) 88%, white);
   --background-overlay: #{rgba(white, 0.5)};
 
   &[data-mode="dark"] {
@@ -88,9 +88,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wrapper {
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 24px 24px 16px;
+  padding: 22px 24px 18px;
 
   @include mixins.respond-below(md) {
     padding: 0;
@@ -102,10 +102,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background-color: var(--content-bg-color);
   border-radius: $radius-xl;
-  border: 1px solid var(--border-color);
+  border: 1px solid color-mix(in srgb, var(--border-color) 86%, transparent);
   box-shadow: none;
   overflow: hidden;
-  margin-top: 24px;
+  margin-top: 22px;
   animation: none;
 
   @include mixins.respond-below(md) {
@@ -123,7 +123,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   aspect-ratio: var(--cover-aspect-ratio, 2.5 / 1);
   max-height: 400px;
   overflow: hidden;
-  background-color: var(--theme-surface);
+  background-color: color-mix(in srgb, var(--content-bg-color) 84%, var(--bg-color));
+  border-bottom: 1px solid var(--border-color);
 
   @include mixins.respond-below(md) {
     aspect-ratio: var(--cover-aspect-ratio, 16 / 10);
@@ -158,7 +159,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .organizerContentWrapper {
-  padding: 28px 32px;
+  padding: 24px 28px;
 
   @include mixins.respond-below(md) {
     padding: 24px 20px;
@@ -177,7 +178,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .profileMain {
   display: flex;
   align-items: flex-start;
-  gap: 18px;
+  gap: 16px;
 
   @include mixins.respond-below(sm) {
     flex-direction: column;
@@ -187,11 +188,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .logoWrapper {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: $radius-md;
   border: 1px solid var(--border-color);
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent-soft) 52%, var(--content-bg-color));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,15 +235,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nameSection {
   h1 {
     font-family: $font-display;
     font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 8px 0;
+    font-weight: 680;
+    margin: 0 0 10px 0;
     color: var(--primary-text-color);
     line-height: 1.2;
     letter-spacing: 0;
@@ -256,7 +257,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .organizerMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
 
   @include mixins.respond-below(sm) {
     gap: 12px;
@@ -267,8 +268,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--border-color) 86%, transparent);
+  border-radius: $radius-sm;
+  background: color-mix(in srgb, var(--content-bg-color) 92%, var(--bg-color));
   color: var(--secondary-color);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
 
   a {
@@ -297,9 +302,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .profileActions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .socialLinks {
@@ -309,10 +314,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .socialIcon {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: $radius-md;
-  background: var(--accent-soft);
+  background: var(--content-bg-color);
   color: var(--secondary-color);
   border: none;
   transition: background-color $transition-fast, color $transition-fast;
@@ -330,13 +335,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--primary-color);
-  color: var(--accent-contrast);
+  background: var(--primary-text-color);
+  color: var(--content-bg-color);
   font-weight: 600;
   border-radius: $radius-sm;
-  font-size: 0.9rem;
-  padding: 10px 20px;
-  border: none;
+  font-size: 0.84rem;
+  padding: 8px 14px;
+  border: 1px solid var(--primary-text-color);
   cursor: pointer;
   transition: background-color $transition-fast, color $transition-fast;
 
@@ -348,9 +353,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Description
 .description {
   color: var(--secondary-color);
-  line-height: 1.7;
-  margin: 20px 0 0 0;
-  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 18px 0 0 0;
+  font-size: 0.9rem;
 
   p {
     margin-bottom: 1em;
@@ -408,10 +413,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Events section - unified container
 .eventsSection {
-  margin-top: 24px;
+  margin-top: 18px;
   background-color: var(--content-bg-color);
   border-radius: $radius-xl;
-  border: 1px solid var(--border-color);
+  border: 1px solid color-mix(in srgb, var(--border-color) 86%, transparent);
   box-shadow: none;
   overflow: hidden;
   animation: none;
@@ -426,7 +431,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .eventsHeader {
-  padding: 24px 32px;
+  padding: 18px 24px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
@@ -446,8 +451,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .eventsTitle {
   font-family: $font-display;
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 680;
   letter-spacing: 0;
   margin: 0;
   color: var(--primary-text-color);
@@ -460,9 +465,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .filterToggle {
   display: flex;
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--content-bg-color) 86%, var(--bg-color));
+  border: 1px solid var(--border-color);
   border-radius: $radius-sm;
-  padding: 4px;
+  padding: 3px;
 
   @include mixins.respond-below(sm) {
     width: 100%;
@@ -470,12 +476,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterButton {
-  padding: 8px 20px;
+  padding: 6px 14px;
   border: none;
   background: transparent;
   color: var(--secondary-color);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 620;
   border-radius: $radius-xs;
   cursor: pointer;
   transition: background-color $transition-fast, color $transition-fast;
@@ -491,14 +497,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filterButtonActive {
-  background: var(--primary-color);
-  color: var(--accent-contrast);
+  background: var(--primary-text-color);
+  color: var(--content-bg-color);
   box-shadow: none;
 }
 
 // Events list
 .eventsList {
-  padding: 16px;
+  padding: 12px;
 
   @include mixins.respond-below(sm) {
     padding: 12px;
@@ -508,19 +514,19 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .eventsContainer {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .noEvents {
   text-align: center;
-  padding: 60px 24px;
+  padding: 42px 20px;
   color: var(--secondary-color);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
 }
 
 // Pagination inside events section
 .paginationWrapper {
-  padding: 16px 32px 24px;
+  padding: 14px 24px 20px;
   display: flex;
   justify-content: center;
   border-top: 1px solid var(--border-color);
@@ -535,12 +541,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     background: transparent;
     color: var(--primary-text-color);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 620;
     border-radius: $radius-xs;
     transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
-    min-width: 36px;
-    height: 36px;
+    min-width: 32px;
+    height: 32px;
 
     &:hover:not([data-active]) {
       background: var(--accent-soft);
@@ -563,8 +569,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Footer section
 .footerSection {
   text-align: center;
-  padding: 40px 20px;
-  padding-bottom: 32px;
+  padding: 28px 20px 30px;
   color: var(--secondary-text-color);
   font-size: 0.85rem;
 
@@ -580,14 +585,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
 .footerLink {
   color: var(--secondary-color);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   transition: color $transition-fast;
 
   &:hover {
@@ -605,7 +610,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--secondary-color);
 
   strong {
@@ -636,18 +641,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pageWrapper {
-  background: var(--hi-shell-bg);
+  background: color-mix(in srgb, var(--hi-shell-bg) 94%, white);
 }
 
 .wrapper {
-  max-width: 960px;
-  padding-top: 28px;
+  max-width: 980px;
+  padding-top: 22px;
 }
 
 .heroSection,
 .eventsSection {
   background: var(--hi-surface);
-  border-color: var(--hi-border);
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-md);
 }
 
@@ -685,11 +690,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .organizerMeta {
-  gap: 10px;
+  gap: 8px;
 }
 
 .metaItem {
-  padding: 3px 0;
+  padding: 5px 9px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-radius: var(--hi-radius-sm);
+  background: color-mix(in srgb, var(--hi-surface) 88%, var(--hi-shell-bg));
 }
 
 .logoWrapper,
@@ -745,6 +753,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-color: var(--hi-border);
 }
 
+.eventsHeader {
+  padding: 18px 24px;
+}
+
+.eventsList {
+  padding: 12px;
+}
+
+.eventsContainer {
+  gap: 8px;
+}
+
 .filterToggle {
   padding: 3px;
   border-radius: var(--hi-radius-sm);
@@ -753,6 +773,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .filterButton {
   color: var(--secondary-color);
   border-radius: var(--hi-radius-xs);
+  padding: 6px 14px;
+  font-size: 0.8rem;
 }
 
 .filterButton:hover:not(.filterButtonActive) {
