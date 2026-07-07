@@ -136,13 +136,13 @@
   }
 
   &::-webkit-progress-value {
-    background-color: var(--hi-text);
+    background-color: var(--hi-primary);
     border-radius: var(--hi-radius-sm);
     transition: width 0.3s ease;
   }
 
   &::-moz-progress-bar {
-    background-color: var(--hi-text);
+    background-color: var(--hi-primary);
     border-radius: var(--hi-radius-sm);
   }
 }
@@ -306,12 +306,12 @@
 }
 
 .categoryCardSelected {
-  border-color: var(--hi-text) !important;
+  border-color: var(--hi-primary) !important;
   background: var(--hi-control-bg-active) !important;
 
   .categoryMark {
-    background: var(--hi-text);
-    border-color: var(--hi-text);
+    background: var(--hi-primary);
+    border-color: var(--hi-primary);
     color: var(--hi-color-white);
   }
 }
@@ -457,7 +457,7 @@
     }
 
     &[data-selected] {
-      background: var(--hi-text) !important;
+      background: var(--hi-primary) !important;
       color: var(--hi-color-white) !important;
     }
   }
@@ -471,8 +471,8 @@
 
 // Clean button
 .primaryButton {
-  background: var(--hi-text) !important;
-  border: 1px solid var(--hi-text) !important;
+  background: var(--hi-primary) !important;
+  border: 1px solid var(--hi-primary) !important;
   border-radius: var(--hi-radius-md) !important;
   font-weight: 650 !important;
   font-size: 0.86rem !important;
@@ -481,8 +481,8 @@
   margin-top: 0.85em;
 
   &:hover:not(:disabled) {
-    background: var(--hi-text-light) !important;
-    border-color: var(--hi-text-light) !important;
+    background: var(--hi-primary-hover) !important;
+    border-color: var(--hi-primary-hover) !important;
     box-shadow: none !important;
   }
 

@@ -220,15 +220,15 @@
 }
 
 .primaryAction {
-  background: var(--hi-text) !important;
-  border: 1px solid var(--hi-text) !important;
+  background: var(--hi-primary) !important;
+  border: 1px solid var(--hi-primary) !important;
   border-radius: var(--hi-radius-md) !important;
   color: var(--hi-color-white) !important;
   font-weight: 600 !important;
 
   &:hover {
-    background: var(--hi-color-black) !important;
-    border-color: var(--hi-color-black) !important;
+    background: var(--hi-primary-hover) !important;
+    border-color: var(--hi-primary-hover) !important;
   }
 }
 

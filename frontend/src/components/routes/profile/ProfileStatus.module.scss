@@ -53,14 +53,14 @@
   justify-self: start;
   min-height: 36px;
   border-radius: var(--hi-radius-md);
-  background: var(--hi-text);
+  background: var(--hi-primary);
   color: var(--hi-color-white);
   font-size: 0.82rem;
   font-weight: 640;
   letter-spacing: 0;
 
   &:hover {
-    background: var(--hi-color-black);
+    background: var(--hi-primary-hover);
   }
 }
 
