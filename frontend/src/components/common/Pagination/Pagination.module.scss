@@ -1,0 +1,41 @@
+@use "../../../styles/mixins";
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  @include mixins.respond-below(sm, true) {
+    justify-content: center;
+  }
+}
+
+.pagination {
+  :global(.mantine-Pagination-control) {
+    min-width: 30px;
+    height: 30px;
+    border: 1px solid var(--hi-border) !important;
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface) !important;
+    color: var(--hi-text-muted) !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: none !important;
+
+    &:hover:not([data-disabled]):not([data-active]) {
+      background: var(--hi-control-bg-hover) !important;
+      border-color: var(--hi-border-strong) !important;
+      color: var(--hi-text) !important;
+    }
+
+    &[data-active] {
+      background: var(--hi-primary) !important;
+      border-color: var(--hi-primary) !important;
+      color: var(--hi-color-white) !important;
+    }
+  }
+
+  :global(.mantine-Pagination-dots) {
+    color: var(--hi-text-muted);
+  }
+}
