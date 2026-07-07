@@ -478,7 +478,7 @@ const Welcome = () => {
             <Container size="sm" className={classes.welcomeContent}>
                 <div className={classes.welcomeHeader}>
                     <div className={classes.logo}>
-                        <BrandWordmark tone="light" size="md"/>
+                        <BrandWordmark tone="dark" size="md"/>
                     </div>
                     <p className={classes.welcomeKicker}>{t`Workspace setup`}</p>
                     <h1 className={classes.welcomeTitle}>

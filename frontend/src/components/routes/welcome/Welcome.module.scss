@@ -6,8 +6,8 @@
   }
 
   min-height: 100vh;
-  background: color-mix(in srgb, var(--hi-shell-bg) 94%, white);
-  padding: 2.75rem 1rem;
+  background: var(--hi-surface);
+  padding: 2.25rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
 
 .welcomeContent {
   width: 100%;
-  max-width: 720px;
+  max-width: 600px;
   min-width: 0;
   margin: 0 auto;
 
@@ -34,8 +34,8 @@
 .welcomeHeader {
   text-align: left;
   display: grid;
-  gap: 0.38rem;
-  margin-bottom: 0.9rem;
+  gap: 0.32rem;
+  margin-bottom: 0.82rem;
 
   @media (max-width: 768px) {
     margin-bottom: 0.95rem;
@@ -74,14 +74,16 @@
 
 // Clean Main Card
 .welcomeCard {
-  background: var(--hi-surface);
-  border-radius: var(--hi-radius-md) !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
   overflow: hidden;
   box-shadow: none !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 0 !important;
 
   @media (max-width: 768px) {
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
   }
 }
@@ -94,16 +96,17 @@
 
 // Clean Step Layout
 .stepContainer {
-  padding: 1.15rem 1.2rem 1.2rem;
+  padding: 0.9rem 0 0;
+  border-top: 1px solid var(--hi-border);
 
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 0.85rem 0 0;
   }
 }
 
 // Progress Container
 .progressContainer {
-  margin-bottom: 1rem;
+  margin-bottom: 0.88rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -123,7 +126,7 @@
 
 .progressBar {
   width: 100%;
-  height: 5px;
+  height: 4px;
   appearance: none;
   background-color: var(--hi-surface-soft);
   border: 0;
@@ -149,7 +152,7 @@
 
 .stepHeader {
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 0.92rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -157,7 +160,7 @@
 }
 
 .stepTitle {
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   font-weight: 680;
   color: var(--hi-text);
   margin: 0 0 0.5rem 0;
@@ -195,7 +198,7 @@
 }
 
 .stepContent {
-  max-width: 640px;
+  max-width: 600px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -213,14 +216,14 @@
   :global(.mantine-DateTimePicker-input),
   :global(.mantine-TextInput-input),
   :global(.mantine-Select-input) {
-    min-height: 40px !important;
-    height: 40px !important;
+    min-height: 36px !important;
+    height: 36px !important;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     padding: 0 12px !important;
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface)) !important;
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: var(--hi-radius-sm) !important;
     background: var(--hi-surface) !important;
     font-size: 0.84rem !important;
     color: var(--hi-text) !important;
@@ -257,8 +260,8 @@
 // Clean Category Grid
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.42rem;
 
   @media (max-width: 768px) {
     display: none; // Hide grid on mobile
@@ -277,16 +280,16 @@
 .categoryCard {
   background: var(--hi-surface);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-  border-radius: var(--hi-radius-md);
-  padding: 0.58rem 0.62rem;
+  border-radius: var(--hi-radius-sm);
+  padding: 0.46rem 0.52rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.62rem;
+  gap: 0.52rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
-  min-height: 44px;
+  min-height: 38px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -317,8 +320,8 @@
 }
 
 .categoryMark {
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 23px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -353,10 +356,10 @@
 
 // Email Verification Specific
 .emailDisplay {
-  background: color-mix(in srgb, var(--hi-shell-bg) 72%, var(--hi-surface));
+  background: var(--hi-surface-soft);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: var(--hi-radius-md);
-  padding: 0.72rem;
+  border-radius: var(--hi-radius-sm);
+  padding: 0.58rem 0.66rem;
   margin-top: 0.85rem;
   margin-bottom: 0;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
@@ -379,7 +382,7 @@
   // Clean PinInput styling
   :global(.mantine-PinInput-input) {
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     font-weight: 600;
     text-align: center;
     background: var(--hi-surface);
@@ -442,7 +445,7 @@
   // Clean dropdown styling
   :global(.mantine-Select-dropdown) {
     border: 1px solid var(--hi-border) !important;
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: var(--hi-radius-sm) !important;
     box-shadow: none !important;
     padding: 4px !important;
   }
@@ -473,10 +476,10 @@
 .primaryButton {
   background: var(--hi-primary) !important;
   border: 1px solid var(--hi-primary) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   font-weight: 650 !important;
   font-size: 0.86rem !important;
-  height: 40px !important;
+  height: 36px !important;
   transition: background-color 0.15s ease, border-color 0.15s ease !important;
   margin-top: 0.85em;
 
@@ -498,14 +501,14 @@
 
 // Clean Skip Section
 .skipSection {
-  margin-top: 1.1rem;
+  margin-top: 0.9rem;
 
   :global(.mantine-Button-root) {
     color: var(--hi-text-muted) !important;
     font-size: 0.82rem !important;
     background: var(--hi-surface) !important;
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
-    border-radius: var(--hi-radius-md) !important;
+    border-radius: var(--hi-radius-sm) !important;
     padding: 7px 13px !important;
     transition: background-color 0.15s ease, color 0.15s ease !important;
 
