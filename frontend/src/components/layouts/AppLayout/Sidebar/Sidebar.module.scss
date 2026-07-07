@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   grid-area: sidebar;
-  background: var(--ue-canvas-soft);
-  color: var(--hi-shell-text);
+  background: var(--hi-surface-soft);
+  color: var(--hi-text);
   position: relative;
   border-right: 1px solid var(--hi-border);
   min-width: 0;
@@ -24,19 +24,25 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 7px 0 6px;
-    min-height: 42px;
+    padding: 5px 0;
+    min-height: 38px;
     margin-bottom: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
     flex-shrink: 0;
 
     a {
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 7px 13px;
-      color: var(--hi-shell-text);
+      padding: 6px 12px;
+      color: var(--hi-text);
       line-height: 1;
+      border-radius: var(--hi-radius-sm);
+      margin: 0 7px;
+
+      &:hover {
+        background: var(--hi-control-bg-hover);
+      }
     }
   }
 
@@ -44,12 +50,12 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 7px 0 14px;
+    padding: 6px 0 12px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
     &:hover {
-      scrollbar-color: color-mix(in srgb, var(--hi-shell-text) 18%, transparent) transparent;
+      scrollbar-color: color-mix(in srgb, var(--hi-text-muted) 24%, transparent) transparent;
     }
 
     &::-webkit-scrollbar {
@@ -64,7 +70,7 @@
     }
 
     &:hover::-webkit-scrollbar-thumb {
-      background-color: color-mix(in srgb, var(--hi-shell-text) 18%, transparent);
+      background-color: color-mix(in srgb, var(--hi-text-muted) 24%, transparent);
     }
 
     &::-webkit-scrollbar-track {
@@ -72,12 +78,12 @@
     }
 
     .sectionHeading {
-      padding: 13px 12px 4px;
-      font-size: 0.66rem;
+      padding: 11px 12px 3px;
+      font-size: 0.64rem;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
-      color: color-mix(in srgb, var(--hi-shell-muted) 74%, transparent);
+      color: color-mix(in srgb, var(--hi-text-muted) 74%, transparent);
     }
 
     a,
@@ -85,19 +91,19 @@
     .link {
       display: flex;
       align-items: center;
-      color: color-mix(in srgb, var(--hi-shell-text) 68%, transparent);
-      min-height: 28px;
-      padding: 4px 7px;
+      color: var(--hi-text-light);
+      min-height: 27px;
+      padding: 3px 7px;
       text-decoration: none;
-      margin: 1px 6px;
+      margin: 1px 5px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 12px);
+      width: calc(100% - 10px);
       background: transparent;
       border: 1px solid transparent;
       text-align: left;
@@ -110,8 +116,8 @@
       }
 
       .navBadge {
-        background: color-mix(in srgb, var(--hi-shell-surface) 58%, var(--hi-surface));
-        color: var(--hi-shell-muted);
+        background: var(--hi-surface);
+        color: var(--hi-text-muted);
         border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
         padding: 1px 6px;
         border-radius: var(--hi-radius-sm);
@@ -125,35 +131,35 @@
       }
 
       &.loading {
-        background-color: color-mix(in srgb, var(--hi-shell-surface) 70%, transparent);
+        background-color: color-mix(in srgb, var(--hi-control-bg-active) 78%, transparent);
         color: transparent;
         opacity: 0.72;
       }
 
       &.linkActive {
-        background: var(--hi-surface);
-        border-color: color-mix(in srgb, var(--hi-border) 88%, transparent);
+        background: var(--hi-control-bg-active);
+        border-color: transparent;
         color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
 
         .linkIcon {
-          color: var(--hi-text);
+          color: var(--hi-text-light);
         }
       }
 
       &:hover {
-        background: color-mix(in srgb, var(--hi-surface) 74%, var(--hi-shell-surface));
-        border-color: color-mix(in srgb, var(--hi-border) 82%, transparent);
-        color: var(--hi-shell-text);
+        background: var(--hi-control-bg-hover);
+        border-color: transparent;
+        color: var(--hi-text);
       }
 
       svg {
-        margin-right: 7px;
-        width: 16px;
-        height: 16px;
-        min-width: 16px;
-        color: color-mix(in srgb, var(--hi-shell-text) 46%, transparent);
+        margin-right: 6px;
+        width: 15px;
+        height: 15px;
+        min-width: 15px;
+        color: color-mix(in srgb, var(--hi-text-muted) 78%, transparent);
         transition: color 0.14s ease;
       }
     }
@@ -161,7 +167,7 @@
 
   .sidebarFooter {
     margin-top: auto;
-    padding: 10px 11px 12px;
+    padding: 8px 9px 10px;
     border-top: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
     flex-shrink: 0;
     position: relative;
@@ -184,15 +190,15 @@
   }
 
   .sidebarClose {
-    width: 26px;
-    height: 26px;
-    color: var(--hi-shell-muted);
+    width: 24px;
+    height: 24px;
+    color: var(--hi-text-muted);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 8px;
-    top: 11px;
+    right: 7px;
+    top: 8px;
     transform: none;
     transition: color 0.15s ease, background-color 0.15s ease;
     z-index: 5;
@@ -200,8 +206,8 @@
 
     &:hover {
       transform: none;
-      color: var(--hi-shell-text);
-      background: var(--hi-surface);
+      color: var(--hi-text);
+      background: var(--hi-control-bg-hover);
       border-radius: var(--hi-radius-sm);
     }
 

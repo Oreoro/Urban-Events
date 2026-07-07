@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: color-mix(in srgb, var(--hi-surface) 92%, var(--ue-canvas));
+  background: var(--hi-surface);
   display: flex;
   flex-direction: column;
   transition: border-color 0.15s ease;
@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 12px;
-    height: 40px;
+    padding: 0 10px;
+    height: 36px;
     border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text);
 
@@ -24,7 +24,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 6px 28px;
+    padding: 5px 24px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -34,10 +34,10 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 34px;
+    min-height: 31px;
 
     @include mixins.respond-above(xl) {
-      padding-inline: 32px;
+      padding-inline: 28px;
     }
 
     @include mixins.respond-below(md) {
@@ -64,7 +64,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.77rem;
+    font-size: 0.74rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -108,7 +108,7 @@
       transition: color 0.14s ease, background-color 0.14s ease;
       position: relative;
       border-radius: var(--hi-radius-sm);
-      padding: 3px 6px;
+      padding: 2px 5px;
       margin-left: -4px;
       @include mixins.ellipsis();
 
@@ -132,14 +132,14 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 5px;
+    gap: 4px;
   }
 
   .statusToggleContainer {
     display: flex;
     align-items: center;
     position: relative;
-    margin-left: 10px;
+    margin-left: 8px;
     margin-right: auto;
 
     @include mixins.respond-below(md) {
@@ -161,7 +161,7 @@
   .logo {
     color: var(--hi-text);
     font-weight: 650;
-    font-size: 0.96rem;
+    font-size: 0.9rem;
     display: flex;
     justify-content: center;
     padding-inline: 6px;
@@ -188,7 +188,7 @@
   }
 
   .entityPageButton {
-    margin-right: 8px;
+    margin-right: 6px;
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -229,7 +229,7 @@
   }
 
   .breadcrumbSeparator {
-    margin: 0 4px;
+    margin: 0 3px;
     color: color-mix(in srgb, var(--hi-text-muted) 54%, transparent);
   }
 }

@@ -75,7 +75,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
             <div className={classes.logo}>
                 <NavLink to={`/manage/events`}>
-                    <BrandWordmark tone="light" size="md"/>
+                    <BrandWordmark tone="dark" size="md"/>
                 </NavLink>
             </div>
             <div className={classes.nav}>
