@@ -1,6 +1,7 @@
 import {Select} from "@mantine/core";
 import classes from "./SortSelector.module.scss";
 import {SortDirectionLabel} from "../../../types.ts";
+import {IconArrowsSort} from "@tabler/icons-react";
 
 export interface SortSelectorProps {
     options: Record<string, SortDirectionLabel>,
@@ -26,6 +27,11 @@ export const SortSelector = ({options, onSortSelect, selected}: SortSelectorProp
                 size={'md'}
                 data={sortOptions}
                 className={classes.select}
+                classNames={{
+                    dropdown: classes.dropdown,
+                    option: classes.option,
+                }}
+                leftSection={<IconArrowsSort size={15}/>}
                 value={selected}
                 onChange={(value) => {
                     if (value) {

@@ -3,7 +3,7 @@
 .tableWrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 
 .toolbar {
@@ -11,17 +11,17 @@
   justify-content: flex-end;
   align-items: center;
   gap: 0.45rem;
-  min-height: 2rem;
+  min-height: 32px;
 }
 
 .tableHead {
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-surface-soft);
+    background-color: var(--hi-shell-bg);
     color: var(--hi-text-muted) !important;
     padding: 0.46rem 0.62rem !important;
-    border-bottom: 1px solid var(--hi-border);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
     font-size: 0.71rem;
     font-weight: 600;
     letter-spacing: 0;
@@ -34,7 +34,7 @@
   padding: 0 !important;
   overflow: hidden;
   border-radius: var(--hi-radius-md) !important;
-  border-color: var(--hi-border) !important;
+  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 
@@ -60,11 +60,11 @@
     transition: background-color 0.14s ease, box-shadow 0.14s ease;
 
     &:hover {
-      background: var(--hi-surface-soft);
+      background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
 
       .stickyLeft,
       .stickyRight {
-        background: var(--hi-surface-soft);
+        background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
       }
     }
 
@@ -72,7 +72,7 @@
       padding: 0.52rem 0.62rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
+      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, var(--hi-surface));
       font-size: 0.84rem;
       font-weight: 500;
       line-height: 1.35;
@@ -127,6 +127,6 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-shell-bg);
   z-index: 12;
 }
