@@ -4,7 +4,7 @@ import {t} from "@lingui/macro"
 import {Button, Group, Progress, Text} from "@mantine/core";
 import classes from "./GettingStarted.module.scss";
 import {NavLink, useParams} from "react-router";
-import {IconBolt, IconCheck, IconChecklist, IconPaint, IconRocket, IconTicket} from "@tabler/icons-react";
+import {IconBolt, IconCheck, IconChecklist, IconPaint, IconTicket} from "@tabler/icons-react";
 import {useGetEvent} from "../../../../queries/useGetEvent.ts";
 import {useGetEventImages} from "../../../../queries/useGetEventImages.ts";
 import {Tooltip} from "../../../common/Tooltip";
@@ -141,7 +141,7 @@ const GettingStarted = () => {
                     <Card className={event?.status === 'LIVE' ? classes.completedCard : ''}>
                         {event?.status === 'LIVE' && <CompletedBadge/>}
                         <h2 className={classes.cardTitle}>
-                            <IconRocket size={22}/>
+                            <IconCheck size={22}/>
                             {t`Set your event live`}
                         </h2>
                         <p>
