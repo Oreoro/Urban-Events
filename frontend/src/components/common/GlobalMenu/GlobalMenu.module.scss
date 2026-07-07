@@ -2,45 +2,90 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  border: 1px solid transparent;
+  background: transparent;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
+    border-color: var(--hi-border);
     box-shadow: none;
     transform: none;
   }
 }
 
 .avatar {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface-soft);
   color: var(--hi-text);
   border: 1px solid var(--hi-border);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 650;
 }
 
 .dropdown {
   padding: 4px !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   border: 1px solid var(--hi-border) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 }
 
+.userHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 7px 7px;
+}
+
+.headerAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface-soft);
+  color: var(--hi-text);
+  border: 1px solid var(--hi-border);
+  font-size: 0.72rem;
+  font-weight: 650;
+  flex: 0 0 auto;
+}
+
+.userMeta {
+  min-width: 0;
+}
+
+.userName {
+  color: var(--hi-text);
+  font-size: 0.82rem;
+  font-weight: 640;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userEmail {
+  margin-top: 1px;
+  color: var(--hi-text-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .menuItem {
-  min-height: 30px;
+  min-height: 29px;
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text-light);
-  font-size: 0.8rem;
+  font-size: 0.79rem;
   font-weight: 560;
 
   svg {
@@ -51,4 +96,9 @@
     background: var(--hi-control-bg-hover);
     color: var(--hi-text);
   }
+}
+
+.dropdown :global(.mantine-Menu-divider) {
+  border-color: var(--hi-border);
+  margin: 2px 0 4px;
 }
