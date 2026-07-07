@@ -114,23 +114,23 @@
 }
 
 .chartCard {
-  padding: 14px 15px 11px !important;
+  padding: 12px !important;
   margin: 0 !important;
   border-color: var(--hi-border) !important;
   box-shadow: none !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
 
   .chartCardTitle {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 12px;
+    gap: 12px;
+    margin-bottom: 10px;
 
     h2 {
       margin: 0;
-      font-size: 0.94rem;
+      font-size: 0.9rem;
       line-height: 1.25;
       font-weight: 650;
       color: var(--hi-text);
@@ -139,7 +139,7 @@
 
   .dateRange {
     color: var(--hi-text-muted);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 400;
     white-space: nowrap;
   }
@@ -152,19 +152,19 @@
 .dateRangeSelector {
   display: flex;
   justify-content: flex-end;
-  margin: -2px 0 -6px;
+  margin: -4px 0 -8px;
 
   :global(.mantine-SegmentedControl-root) {
     padding: 2px;
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
   }
 
   :global(.mantine-SegmentedControl-label) {
-    min-height: 28px;
-    padding-inline: 10px;
-    font-size: 0.8rem;
+    min-height: 26px;
+    padding-inline: 9px;
+    font-size: 0.78rem;
     font-weight: 560;
   }
 }
@@ -176,7 +176,7 @@
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   box-shadow: none;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
 }
 
 .dismissButton {
@@ -205,7 +205,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 12px;
+  padding: 10px;
 }
 
 .checklistContainer {
@@ -214,9 +214,9 @@
   h2 {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.96rem;
-    margin-bottom: 0.35rem;
+    gap: 7px;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
     margin-top: 0;
     color: var(--hi-text);
     font-weight: 600;
@@ -224,9 +224,9 @@
   }
 
   .setupDescription {
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.75rem;
     color: var(--hi-text-muted);
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     line-height: 1.5;
     max-width: 640px;
   }
@@ -238,14 +238,14 @@
   gap: 0;
   margin: 0;
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   overflow: hidden;
 }
 
 .checklistItem {
   flex: 1 1 260px;
   margin: 0;
-  padding: 12px;
+  padding: 10px;
   background: var(--hi-surface);
   border-radius: 0;
   border: 0;
@@ -257,8 +257,8 @@
   }
 
   h3 {
-    font-size: 0.88rem;
-    margin: 0 0 0.45rem 0;
+    font-size: 0.84rem;
+    margin: 0 0 0.35rem 0;
     color: var(--hi-text);
     font-weight: 600;
     display: flex;
@@ -266,9 +266,9 @@
   }
 
   p {
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.65rem 0;
     color: var(--hi-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     line-height: 1.5;
   }
 
@@ -345,7 +345,7 @@
   }
 
   .checklistContainer h2 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -358,17 +358,17 @@
 
   .checklistContainer {
     h2 {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .setupDescription {
-      font-size: 0.84rem;
-      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      margin-bottom: 0.85rem;
     }
   }
 
   .checklistItem {
-    padding: 12px;
+    padding: 10px;
   }
 
   .dismissButton {
@@ -386,7 +386,7 @@
   box-shadow: none !important;
   color: var(--hi-text);
   padding: 16px;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   position: relative;
   overflow: hidden;
 
@@ -398,13 +398,13 @@
 .stripeUpgradeContent {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
   position: relative;
   z-index: 1;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
   }
 }
 
@@ -412,10 +412,10 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 
   @media (max-width: 768px) {
-    gap: 24px;
+    gap: 16px;
   }
 }
 
@@ -441,8 +441,8 @@
   flex: 1;
 
   h3 {
-    margin: 0 0 8px 0;
-    font-size: 1rem;
+    margin: 0 0 6px 0;
+    font-size: 0.94rem;
     font-weight: 600;
     color: var(--hi-text);
     letter-spacing: 0;
@@ -450,15 +450,15 @@
 
   p {
     margin: 0;
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     line-height: 1.6;
     color: var(--hi-text-muted);
     max-width: 600px;
   }
 
   .stripeApology {
-    margin-top: 8px !important;
-    font-size: 0.875rem !important;
+    margin-top: 6px !important;
+    font-size: 0.82rem !important;
     font-style: italic;
     color: var(--hi-text-muted) !important;
   }
