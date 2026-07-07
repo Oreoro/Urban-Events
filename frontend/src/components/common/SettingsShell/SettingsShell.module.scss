@@ -1,13 +1,13 @@
 .settingsLayout {
   display: grid;
-  grid-template-columns: minmax(0, 190px) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 176px) minmax(0, 1fr);
+  gap: 14px;
   align-items: start;
 }
 
 .sideRail {
   position: sticky;
-  top: 14px;
+  top: 10px;
   align-self: start;
 }
 
@@ -19,10 +19,10 @@
 }
 
 .sideMenuTitle {
-  margin: 0 0 5px;
-  padding: 0 7px;
+  margin: 0 0 4px;
+  padding: 0 6px;
   color: var(--hi-text-muted);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 620;
   letter-spacing: 0;
   text-transform: none;
@@ -33,12 +33,12 @@
 }
 
 .navLink {
-  min-height: 28px;
+  min-height: 26px;
   color: var(--hi-text-muted);
   border-radius: var(--hi-radius-sm);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 560;
-  padding-inline: 7px;
+  padding-inline: 6px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -53,7 +53,7 @@
 
   :global(.mantine-NavLink-section) {
     color: var(--hi-text-muted);
-    margin-right: 6px;
+    margin-right: 5px;
   }
 
   &[data-active] :global(.mantine-NavLink-section) {
@@ -82,21 +82,21 @@
 
 .content {
   min-width: 0;
-  max-width: 880px;
+  max-width: 820px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .settingSection {
-  scroll-margin-top: 24px;
+  scroll-margin-top: 18px;
 
   > :global(.card.default),
   > :global(.card.lightGray),
   > :global(.card.lightAccent) {
     margin-bottom: 0;
-    padding: 12px;
-    border-color: var(--hi-border);
+    padding: 10px;
+    border-color: color-mix(in srgb, var(--hi-border) 88%, var(--hi-surface));
     border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
   }
@@ -108,21 +108,22 @@
   }
 
   :global(.mantine-Paper-root) {
-    border-color: var(--hi-border) !important;
+    border-color: color-mix(in srgb, var(--hi-border) 88%, var(--hi-surface)) !important;
     background: var(--hi-surface) !important;
     border-radius: var(--hi-radius-sm) !important;
     box-shadow: none !important;
+    padding: 10px !important;
   }
 
   :global(.mantine-InputWrapper-root),
   :global(.mantine-Switch-root) {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   :global(.mantine-InputWrapper-label),
   :global(.mantine-Switch-label) {
     color: var(--hi-text);
-    font-size: 0.81rem;
+    font-size: 0.78rem;
     font-weight: 620;
     line-height: 1.35;
   }
@@ -130,40 +131,45 @@
   :global(.mantine-InputWrapper-description),
   :global(.mantine-Switch-description) {
     color: var(--hi-text-muted);
-    font-size: 0.76rem;
+    font-size: 0.73rem;
     font-weight: 450;
     line-height: 1.42;
   }
 
   :global(.mantine-Input-input) {
-    min-height: 34px;
+    min-height: 32px;
     border-color: var(--hi-border);
     border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     font-weight: 500;
   }
 
   :global(.mantine-Checkbox-root) {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
 
   :global(.mantine-Checkbox-label) {
     color: var(--hi-text);
-    font-size: 0.81rem;
+    font-size: 0.78rem;
     font-weight: 620;
   }
 
   :global(.mantine-Checkbox-description) {
     color: var(--hi-text-muted);
-    font-size: 0.76rem;
+    font-size: 0.73rem;
     line-height: 1.42;
   }
 
+  :global(.mantine-Button-root) {
+    min-height: 32px;
+    font-size: 0.8rem;
+  }
+
   h2 {
-    margin: 0 0 8px;
+    margin: 0 0 7px;
     color: var(--hi-text);
-    font-size: 0.94rem;
+    font-size: 0.9rem;
     font-weight: 650;
     letter-spacing: 0;
     line-height: 1.32;
@@ -171,14 +177,14 @@
 
   h3 {
     color: var(--hi-text);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 620;
     letter-spacing: 0;
   }
 
   h4 {
     color: var(--hi-text);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0;
   }
@@ -187,7 +193,7 @@
 @media (max-width: 1199px) {
   .settingsLayout {
     grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
 
   .sideRail {
@@ -195,7 +201,7 @@
   }
 
   .sideMenu {
-    padding: 6px;
+    padding: 5px;
     background: var(--hi-surface);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
@@ -221,7 +227,7 @@
     > :global(.card.default),
     > :global(.card.lightGray),
     > :global(.card.lightAccent) {
-      padding: 12px;
+      padding: 10px;
     }
   }
 }
