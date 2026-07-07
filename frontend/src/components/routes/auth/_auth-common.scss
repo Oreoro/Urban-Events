@@ -3,8 +3,8 @@
 // Shared Auth Header Styles
 @mixin auth-header {
   text-align: left;
-  margin-bottom: 0.82rem;
-  padding-bottom: 0.78rem;
+  margin-bottom: 0.76rem;
+  padding-bottom: 0.72rem;
   border-bottom: 1px solid var(--hi-border);
 
   @include mixins.respond-below(sm) {
@@ -12,26 +12,26 @@
   }
 
   h1 {
-    margin: 0 0 0.36rem;
-    font-size: 1.2rem;
+    margin: 0 0 0.28rem;
+    font-size: 1.08rem;
     font-weight: 660;
     color: var(--hi-text);
     letter-spacing: 0;
     line-height: 1.2;
 
     @include mixins.respond-below(sm) {
-      font-size: 1.18rem;
+      font-size: 1.08rem;
     }
   }
 
   p {
     margin: 0;
-    font-size: 0.84rem;
+    font-size: 0.78rem;
     color: var(--hi-text-muted);
-    line-height: 1.5;
+    line-height: 1.45;
 
     @include mixins.respond-below(sm) {
-      font-size: 0.84rem;
+      font-size: 0.78rem;
     }
 
     a {
@@ -49,14 +49,14 @@
 // Shared Auth Card Base Styles
 @mixin auth-card {
   background: transparent;
-  border-radius: var(--hi-radius-md);
+  border-radius: 0;
   padding: 0;
   box-shadow: none;
   border: 0;
 
   @include mixins.respond-below(sm) {
     padding: 0;
-    border-radius: var(--hi-radius-md);
+    border-radius: 0;
   }
 }
 
@@ -67,9 +67,9 @@
   :global(.mantine-Select-input) {
     border-radius: var(--hi-radius-sm);
     border: 1px solid var(--hi-border);
-    padding: 0.52rem 0.66rem;
-    font-size: 0.84rem;
-    min-height: 34px;
+    padding: 0.47rem 0.6rem;
+    font-size: 0.8rem;
+    min-height: 32px;
     transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
     background: var(--hi-surface);
     color: var(--hi-text);
@@ -80,8 +80,8 @@
     }
 
     &:focus {
-      border-color: var(--hi-shell-accent);
-      box-shadow: 0 0 0 3px var(--hi-focus-ring);
+      border-color: var(--hi-text-muted);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
       background: var(--hi-surface);
     }
 
@@ -97,22 +97,22 @@
 
   :global(.mantine-InputWrapper-label) {
     font-weight: 600;
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     color: var(--hi-text-light);
-    margin-bottom: 0.28rem;
+    margin-bottom: 0.24rem;
   }
 }
 
 // Shared Button Styles
 @mixin auth-button($margin-top: 0) {
   :global(.mantine-Button-root) {
-    height: 34px;
+    height: 32px;
     border-radius: var(--hi-radius-sm);
     font-weight: 620;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
-    border: 1px solid var(--hi-primary) !important;
-    background: var(--hi-primary) !important;
+    border: 1px solid var(--hi-text) !important;
+    background: var(--hi-text) !important;
     color: var(--hi-color-white) !important;
 
     @if $margin-top != 0 {
@@ -124,8 +124,8 @@
     }
 
     &:hover:not(:disabled) {
-      background: var(--hi-primary-hover) !important;
-      border-color: var(--hi-primary-hover) !important;
+      background: var(--hi-text-light) !important;
+      border-color: var(--hi-text-light) !important;
       box-shadow: none;
     }
 
@@ -134,11 +134,11 @@
 
 // Shared Footer Link Styles
 @mixin auth-footer-link {
-  margin-top: 1rem;
+  margin-top: 0.82rem;
   text-align: center;
 
   a {
-    font-size: 0.875rem;
+    font-size: 0.78rem;
     color: var(--hi-text-muted);
     font-weight: 560;
     transition: color 0.16s ease;
@@ -151,11 +151,11 @@
 
 // Shared Footer with Terms (Register style)
 @mixin auth-footer-terms {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: 0.86rem;
+  padding-top: 0.82rem;
   border-top: 1px solid var(--hi-border);
-  font-size: 0.8125rem;
-  line-height: 1.6;
+  font-size: 0.72rem;
+  line-height: 1.45;
   color: var(--hi-text-muted);
   text-align: center;
 
