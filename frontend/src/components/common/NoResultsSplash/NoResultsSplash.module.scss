@@ -1,29 +1,29 @@
 .container {
   display: grid;
-  grid-template-columns: 30px minmax(0, 1fr);
-  column-gap: 10px;
-  row-gap: 5px;
+  grid-template-columns: 26px minmax(0, 1fr);
+  column-gap: 9px;
+  row-gap: 4px;
   align-items: flex-start;
   width: 100%;
   max-width: 720px;
   text-align: left;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  margin: 8px 0;
+  padding: 8px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   box-shadow: none;
 
   .visual {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     grid-row: 1 / span 4;
-    border: 1px solid var(--hi-border);
+    border: 0;
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface-soft);
+    background: transparent;
     color: var(--hi-text-muted);
   }
 
@@ -40,10 +40,10 @@
   }
 
   h2 {
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     font-weight: 680;
     margin-bottom: 0;
-    margin-top: 1px;
+    margin-top: 0;
     color: var(--hi-text);
     line-height: 1.26;
     letter-spacing: 0;
@@ -51,9 +51,9 @@
 
   p {
     color: var(--hi-text-muted);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     line-height: 1.48;
-    margin: 0 0 6px;
+    margin: 0 0 5px;
     max-width: 560px;
   }
 
@@ -64,9 +64,9 @@
   }
 
   :global(.mantine-Button-root) {
-    min-height: 30px;
+    min-height: 28px;
     border-radius: var(--hi-radius-sm);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 640;
     letter-spacing: 0;
     box-shadow: none;
@@ -99,14 +99,14 @@
 
 .compact {
   max-width: 100%;
-  margin: 8px 0;
-  padding: 9px;
-  grid-template-columns: 28px minmax(0, 1fr);
-  column-gap: 9px;
+  margin: 6px 0;
+  padding: 6px 2px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 8px;
 
   .visual {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 
   h2 {
