@@ -138,7 +138,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     enableHiding: false,
                     cell: (info: CellContext<Attendee, unknown>) => (
                         <Group gap="sm" wrap="nowrap">
-                            <Avatar size={44} radius={10} className={classes.attendeeAvatar}>
+                            <Avatar size={34} radius={6} className={classes.attendeeAvatar}>
                                 {getInitials(info.row.original.first_name + ' ' + info.row.original.last_name)}
                             </Avatar>
                             <div className={classes.attendeeDetails}>
@@ -220,7 +220,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                         }
                                                     }}
                                                 >
-                                                    <IconNote size={16}/>
+                                                    <IconNote size={14}/>
                                                 </ActionIcon>
                                             </Tooltip>
                                         )}
@@ -403,8 +403,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     </p>
                     <Button
                         size={'xs'}
-                        leftSection={<IconPlus/>}
-                        color={'green'}
+                        leftSection={<IconPlus size={16}/>}
                         onClick={() => openCreateModal()}>{t`Manually add an Attendee`}
                     </Button>
                 </>

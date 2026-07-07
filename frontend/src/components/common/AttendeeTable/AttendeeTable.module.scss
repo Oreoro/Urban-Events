@@ -3,24 +3,27 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
 .attendeeAvatar {
-  background: var(--hi-shell-bg);
-  color: var(--hi-text-muted);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  background: var(--hi-surface-soft);
+  color: var(--hi-text-light);
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
   font-weight: 650;
+  font-size: 0.74rem;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hi-surface) 70%, transparent);
 }
 
 .nameRow {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .attendeeName {
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 650;
   line-height: 1.3;
   text-decoration: none;
@@ -28,16 +31,17 @@
 
   &:hover {
     text-decoration: underline;
+    text-underline-offset: 2px;
   }
 }
 
 .attendeeId {
   width: fit-content;
-  padding: 1px 5px;
+  padding: 1px 4px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-shell-bg);
-  font-size: 0.7rem;
+  background: var(--hi-surface);
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--hi-text-muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
@@ -47,24 +51,42 @@
 .emailRow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
+  min-width: 0;
 }
 
 .attendeeEmail {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   line-height: 1.3;
   color: var(--hi-text-muted);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 250px;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--hi-text-light);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 }
 
 .emailActions {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   flex-shrink: 0;
+
+  :global(.mantine-ActionIcon-root) {
+    color: var(--hi-text-muted);
+    border-radius: var(--hi-radius-sm);
+  }
+
+  :global(.mantine-ActionIcon-root:hover) {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
 }
 
 .actionIcon {
@@ -74,11 +96,12 @@
 .orderTicketContainer {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
+  min-width: 0;
 }
 
 .ticketName {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1.3;
@@ -89,23 +112,25 @@
 
 .orderId {
   width: fit-content;
-  padding: 1px 5px;
+  padding: 1px 4px;
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-shell-bg);
-  font-size: 0.7rem;
+  background: var(--hi-surface);
+  font-size: 0.68rem;
   font-weight: 600;
-  color: var(--hi-text-muted);
+  color: var(--hi-text-light);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
   line-height: 1.3;
 
-  :hover {
+  &:hover {
+    border-color: var(--hi-border-strong);
     text-decoration: underline;
+    text-underline-offset: 2px;
   }
 }
 
 .registrationDate {
-  font-size: 0.74rem;
+  font-size: 0.71rem;
   color: var(--hi-text-muted);
   line-height: 1.3;
 }
@@ -113,15 +138,34 @@
 .checkInButton {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
+  justify-content: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 3px 7px;
   border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
   background: var(--hi-surface);
-  font-size: 0.76rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  color: var(--hi-text-muted);
+  transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    border-color: var(--hi-border-strong);
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--hi-primary) 28%, transparent);
+    outline-offset: 2px;
+  }
 
   &.checkedIn {
     border-color: var(--hi-status-success-border);
@@ -137,12 +181,17 @@
 .statusBadge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 7px;
+  gap: 3px;
+  padding: 2px 6px;
   border-radius: var(--hi-radius-sm);
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   font-weight: 600;
   white-space: nowrap;
+  line-height: 1.3;
+
+  svg {
+    flex-shrink: 0;
+  }
 
   &[data-status="ACTIVE"] {
     background: var(--hi-status-success-bg);
@@ -167,4 +216,17 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  :global(.mantine-Button-root) {
+    min-width: 26px;
+    min-height: 26px;
+    padding-inline: 0;
+    border-radius: var(--hi-radius-sm);
+    color: var(--hi-text-muted);
+  }
+
+  :global(.mantine-Button-root:hover) {
+    background: var(--hi-control-bg-hover);
+    color: var(--hi-text);
+  }
 }
