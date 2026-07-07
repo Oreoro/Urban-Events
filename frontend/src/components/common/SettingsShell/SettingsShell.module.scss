@@ -1,7 +1,7 @@
 .settingsLayout {
   display: grid;
-  grid-template-columns: minmax(0, 218px) minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 206px) minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
 }
 
@@ -12,18 +12,18 @@
 }
 
 .sideMenu {
-  padding: 7px;
-  background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  padding: 2px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 .sideMenuTitle {
-  margin: 0 0 7px;
-  padding: 0 7px;
+  margin: 0 0 6px;
+  padding: 0 8px;
   color: var(--hi-text-muted);
-  font-size: 0.74rem;
-  font-weight: 650;
+  font-size: 0.72rem;
+  font-weight: 620;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -33,10 +33,10 @@
 }
 
 .navLink {
-  min-height: 32px;
+  min-height: 30px;
   color: var(--hi-text-muted);
   border-radius: var(--hi-radius-sm);
-  font-size: 0.835rem;
+  font-size: 0.82rem;
   font-weight: 560;
   padding-inline: 8px;
 
@@ -46,9 +46,9 @@
   }
 
   &[data-active] {
-    background: color-mix(in srgb, var(--hi-text) 6%, var(--hi-surface));
+    background: var(--hi-control-bg-active);
     color: var(--hi-text);
-    font-weight: 650;
+    font-weight: 620;
   }
 
   :global(.mantine-NavLink-section) {
@@ -85,7 +85,7 @@
   max-width: 940px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .settingSection {
@@ -95,8 +95,8 @@
   > :global(.card.lightGray),
   > :global(.card.lightAccent) {
     margin-bottom: 0;
-    padding: 20px;
-    border-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+    padding: 16px;
+    border-color: var(--hi-border);
     border-radius: var(--hi-radius-md);
     background: var(--hi-surface);
   }
@@ -108,8 +108,8 @@
   }
 
   :global(.mantine-Paper-root) {
-    border-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface)) !important;
-    background: color-mix(in srgb, var(--hi-shell-bg) 58%, var(--hi-surface)) !important;
+    border-color: var(--hi-border) !important;
+    background: var(--hi-surface-soft) !important;
     border-radius: var(--hi-radius-md) !important;
     box-shadow: none !important;
   }

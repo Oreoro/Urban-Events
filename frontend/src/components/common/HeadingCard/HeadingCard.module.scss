@@ -11,7 +11,7 @@
   font-size: 0.82rem;
   color: var(--hi-text-muted);
   line-height: 1.45;
-  font-weight: 500;
+  font-weight: 450;
 }
 
 .card {
@@ -20,9 +20,9 @@
   gap: 12px;
   align-items: center;
   margin-top: 0;
-  padding: 12px 14px !important;
-  background: var(--hi-surface) !important;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  padding: 11px 12px !important;
+  background: var(--hi-surface-soft) !important;
+  border-color: var(--hi-border) !important;
   box-shadow: none !important;
 
   .button {
@@ -37,6 +37,15 @@
       font-weight: 640;
       letter-spacing: 0;
       box-shadow: none;
+      background: var(--hi-surface);
+      border: 1px solid var(--hi-border);
+      color: var(--hi-text);
+
+      &:hover {
+        background: var(--hi-control-bg-hover);
+        border-color: var(--hi-border-strong);
+        color: var(--hi-text);
+      }
     }
   }
 
