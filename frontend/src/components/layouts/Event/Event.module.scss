@@ -51,13 +51,21 @@
   margin-right: 10px;
   display: flex;
   align-items: center;
+  min-height: 30px;
+  padding: 0 10px !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface) !important;
   font-weight: 600;
-  transition: color 0.15s ease, background-color 0.15s ease;
-  color: var(--hi-text-light);
+  font-size: 0.79rem;
+  box-shadow: none !important;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  color: var(--hi-text-muted) !important;
 
   &:hover {
-    color: var(--hi-text);
-    background: var(--hi-control-bg-hover);
+    border-color: var(--hi-border-strong) !important;
+    color: var(--hi-text) !important;
+    background: var(--hi-control-bg-hover) !important;
   }
 
   .eventPageButtonText {
@@ -92,15 +100,23 @@
   display: flex;
   align-items: center;
   font-weight: 500;
-  transition: color 0.15s ease, background-color 0.15s ease;
 
   :global(.mantine-Button-root) {
-    color: var(--hi-text-light);
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface);
+    color: var(--hi-text-muted);
+    font-size: 0.79rem;
     font-weight: 600;
+    box-shadow: none;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   }
 
   &:hover {
     :global(.mantine-Button-root) {
+      border-color: var(--hi-border-strong);
       color: var(--hi-text);
       background: var(--hi-control-bg-hover);
     }

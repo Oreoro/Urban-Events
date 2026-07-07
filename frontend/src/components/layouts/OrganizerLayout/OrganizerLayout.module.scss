@@ -1,16 +1,25 @@
 @use "../../../styles/mixins.scss";
 
 .viewHomepageButton {
+  min-height: 30px;
+  padding: 0 10px !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface) !important;
   color: var(--hi-text-muted) !important;
+  font-size: 0.79rem;
   font-weight: 600;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  box-shadow: none !important;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
+    border-color: var(--hi-border-strong) !important;
     color: var(--hi-text) !important;
     background: var(--hi-control-bg-hover) !important;
   }
 
   @include mixins.respond-below(md) {
+    background: var(--hi-surface) !important;
     color: var(--hi-text-muted) !important;
 
     &:hover {
@@ -24,6 +33,25 @@
     @include mixins.respond-below(md) {
       display: none;
     }
+  }
+}
+
+.shareOrganizerButton {
+  min-height: 30px;
+  padding: 0 10px !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface) !important;
+  color: var(--hi-text-muted) !important;
+  font-size: 0.79rem;
+  font-weight: 600;
+  box-shadow: none !important;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--hi-border-strong) !important;
+    color: var(--hi-text) !important;
+    background: var(--hi-control-bg-hover) !important;
   }
 }
 

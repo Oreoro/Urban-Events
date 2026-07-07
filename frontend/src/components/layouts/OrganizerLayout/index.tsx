@@ -232,6 +232,7 @@ const OrganizerLayoutContent = () => {
                                 <Button
                                     onClick={openShareModal}
                                     variant="transparent"
+                                    className={classes.shareOrganizerButton}
                                     leftSection={<IconShare size={16} />}
                                 >
                                     <span className={classes.shareButtonTextDesktop}>
