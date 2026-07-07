@@ -10,6 +10,7 @@ import {AdminMessage} from "../../../../api/admin.client";
 import {showSuccess} from "../../../../utilites/notifications";
 import {IdParam} from "../../../../types";
 import tableStyles from "../../../../styles/admin-table.module.scss";
+import listClasses from "../AdminListPage.module.scss";
 
 const Messages = () => {
     const [page, setPage] = useState(1);
@@ -101,8 +102,8 @@ const Messages = () => {
     const totalMessages = messagesData?.meta?.total || 0;
 
     return (
-        <Container size="xl" p="xl">
-            <Stack gap="lg">
+        <Container size="xl" p="xl" className={listClasses.page}>
+            <Stack gap="lg" className={listClasses.stack}>
                 <div>
                     <Title order={1}>{t`Outgoing Messages`}</Title>
                     <Text c="dimmed" size="sm">{t`View all messages sent across the platform`}</Text>
@@ -265,6 +266,12 @@ const Messages = () => {
                 onClose={closeDetailModal}
                 title={t`Message Details`}
                 size="lg"
+                classNames={{
+                    content: listClasses.modalContent,
+                    header: listClasses.modalHeader,
+                    title: listClasses.modalTitle,
+                    body: listClasses.modalBody,
+                }}
             >
                 {selectedMessage && (
                     <Stack gap="md">

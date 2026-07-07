@@ -13,6 +13,7 @@ import {useDisclosure} from "@mantine/hooks";
 import {relativeDate} from "../../../../utilites/dates";
 import tableStyles from "../../../../styles/admin-table.module.scss";
 import {IdParam} from "../../../../types";
+import listClasses from "../AdminListPage.module.scss";
 
 const FailedJobs = () => {
     const [page, setPage] = useState(1);
@@ -107,8 +108,8 @@ const FailedJobs = () => {
     const totalJobs = jobsData?.meta?.total || 0;
 
     return (
-        <Container size="xl" p="xl">
-            <Stack gap="lg">
+        <Container size="xl" p="xl" className={listClasses.page}>
+            <Stack gap="lg" className={listClasses.stack}>
                 <Group justify="space-between">
                     <div>
                         <Title order={1}>{t`Failed Jobs`}</Title>
@@ -117,8 +118,7 @@ const FailedJobs = () => {
                     {totalJobs > 0 && (
                         <Group>
                             <Button
-                                variant="outline"
-                                color="blue"
+                                variant="default"
                                 leftSection={<IconRefresh size={16} />}
                                 onClick={handleRetryAll}
                                 loading={retryAllJobsMutation.isPending}
@@ -199,7 +199,7 @@ const FailedJobs = () => {
                                                     <Tooltip label={t`Retry`}>
                                                         <ActionIcon
                                                             variant="subtle"
-                                                            color="blue"
+                                                            color="gray"
                                                             onClick={() => handleRetryJob(job.id)}
                                                             loading={retryJobMutation.isPending}
                                                         >
@@ -241,6 +241,12 @@ const FailedJobs = () => {
                 onClose={closeDetailModal}
                 title={t`Job Details`}
                 size="xl"
+                classNames={{
+                    content: listClasses.modalContent,
+                    header: listClasses.modalHeader,
+                    title: listClasses.modalTitle,
+                    body: listClasses.modalBody,
+                }}
             >
                 {selectedJob && (
                     <Stack gap="md">
@@ -279,8 +285,7 @@ const FailedJobs = () => {
                         </div>
                         <Group justify="flex-end">
                             <Button
-                                variant="outline"
-                                color="blue"
+                                variant="default"
                                 leftSection={<IconRefresh size={16} />}
                                 onClick={() => {
                                     handleRetryJob(selectedJob.id);

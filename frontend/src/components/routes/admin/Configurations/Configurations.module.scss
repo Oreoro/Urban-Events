@@ -1,17 +1,69 @@
 .configShell {
     max-width: 1120px;
+
+    :global(.mantine-Button-root) {
+        min-height: 36px;
+        border-radius: var(--hi-radius-sm);
+        font-size: 0.82rem;
+        font-weight: 620;
+        box-shadow: none;
+    }
+
+    :global(.mantine-Alert-root) {
+        border: 1px solid color-mix(in srgb, var(--hi-warning) 34%, var(--hi-border));
+        border-radius: var(--hi-radius-md);
+        background: color-mix(in srgb, var(--hi-warning) 9%, var(--hi-surface));
+        color: var(--hi-text-light);
+        box-shadow: none;
+    }
+
+    :global(.mantine-Alert-title) {
+        color: var(--hi-text);
+        font-size: 0.84rem;
+        font-weight: 680;
+        letter-spacing: 0;
+    }
+
+    :global(.mantine-InputWrapper-label) {
+        color: var(--hi-text-muted);
+        font-size: 0.76rem;
+        font-weight: 650;
+        margin-bottom: 5px;
+    }
+
+    :global(.mantine-Input-input) {
+        min-height: 36px;
+        border-color: color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
+        border-radius: var(--hi-radius-md);
+        background: var(--hi-surface);
+        color: var(--hi-text);
+        font-size: 0.84rem;
+        font-weight: 560;
+        box-shadow: none;
+
+        &:hover {
+            border-color: color-mix(in srgb, var(--hi-border-strong) 64%, var(--hi-border));
+            background: var(--hi-control-bg-hover);
+        }
+
+        &:focus,
+        &:focus-within {
+            border-color: var(--hi-text);
+            box-shadow: 0 0 0 2px var(--hi-focus-ring);
+        }
+    }
 }
 
 .configHeader {
     align-items: flex-start;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--hi-border);
+    padding-bottom: 8px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
 }
 
 .configTitle {
     margin: 0;
-    font-size: 1.45rem;
-    font-weight: 650;
+    font-size: 1.24rem;
+    font-weight: 680;
     letter-spacing: 0;
 }
 
@@ -19,15 +71,15 @@
     margin-top: 4px;
     max-width: 660px;
     color: var(--hi-text-muted);
-    font-size: 0.92rem;
-    line-height: 1.55;
+    font-size: 0.84rem;
+    line-height: 1.48;
 }
 
 .configCard {
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
-    padding: 16px;
+    padding: 12px;
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
@@ -38,23 +90,23 @@
 
 .configName {
     color: var(--hi-text);
-    font-size: 0.98rem;
-    font-weight: 650;
+    font-size: 0.92rem;
+    font-weight: 680;
     line-height: 1.35;
 }
 
 .configMetaGrid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(128px, 1fr));
+    gap: 8px;
     margin-top: 4px;
 }
 
 .configMetaItem {
-    padding: 10px 12px;
-    border: 1px solid var(--hi-border);
+    padding: 8px 9px;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-shell-bg);
+    background: color-mix(in srgb, var(--hi-shell-bg) 74%, var(--hi-surface));
 }
 
 .configAction {
@@ -70,10 +122,10 @@
 }
 
 .emptyState {
-    padding: 24px;
-    border: 1px solid var(--hi-border);
+    padding: 32px 18px;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-shell-bg);
+    background: var(--hi-surface);
     color: var(--hi-text-muted);
     text-align: center;
 }
