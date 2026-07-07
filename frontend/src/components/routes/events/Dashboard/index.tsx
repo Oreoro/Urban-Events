@@ -32,9 +32,9 @@ import {getImageUrl} from "../../../../utilites/urlHelper.ts";
 const DashboardSkeleton = () => {
     return (
         <>
-            <Skeleton height={120} radius="l" mb="20px"/>
-            <Skeleton height={120} radius="l" mb="20px"/>
-            <Skeleton height={120} radius="l"/>
+            <Skeleton height={58} radius="sm"/>
+            <Skeleton height={58} radius="sm"/>
+            <Skeleton height={58} radius="sm"/>
         </>
     );
 }
@@ -178,12 +178,13 @@ export function Dashboard() {
                     >
                         <Menu.Target>
                             <Button
-                                leftSection={<IconPlus/>}
-                                color={'secondary'}
+                                className={classes.createButton}
+                                leftSection={<IconPlus size={14}/>}
                                 rightSection={
-                                    <IconChevronDown stroke={1.5}/>
+                                    <IconChevronDown size={14} stroke={1.5}/>
                                 }
                                 pr={12}
+                                size="xs"
                             >
                                 {t`Create new`}
                             </Button>
