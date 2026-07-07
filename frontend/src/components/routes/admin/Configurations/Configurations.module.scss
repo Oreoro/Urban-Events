@@ -48,7 +48,7 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-text);
+            border-color: var(--hi-shell-accent);
             box-shadow: 0 0 0 2px var(--hi-focus-ring);
         }
     }

@@ -88,7 +88,7 @@
 
 // Clean focus styles
 .categoryCard:focus-visible {
-  outline: 2px solid var(--hi-text);
+  outline: 2px solid var(--hi-shell-accent);
   outline-offset: 2px;
 }
 
@@ -227,7 +227,7 @@
     transition: border-color 0.15s ease !important;
 
     &:focus {
-      border-color: var(--hi-text) !important;
+      border-color: var(--hi-shell-accent) !important;
       outline: none !important;
       box-shadow: 0 0 0 2px var(--hi-focus-ring) !important;
     }
@@ -386,7 +386,7 @@
     color: var(--hi-text);
 
     &:focus {
-      border-color: var(--hi-text);
+      border-color: var(--hi-shell-accent);
       outline: none;
       box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }

@@ -80,7 +80,7 @@
     }
 
     &:focus {
-      border-color: var(--hi-text);
+      border-color: var(--hi-shell-accent);
       box-shadow: 0 0 0 3px var(--hi-focus-ring);
       background: var(--hi-surface);
     }
