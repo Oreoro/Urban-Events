@@ -9,6 +9,7 @@ import TaxSummaryReport from "../TaxSummaryReport";
 import CheckInSummaryReport from "../CheckInSummaryReport";
 import PlatformFeesReport from "../PlatformFeesReport";
 import {t} from "@lingui/macro";
+import classes from "../Reports.module.scss";
 
 const renderReport = (reportType: string) => {
     switch (reportType) {
@@ -32,12 +33,12 @@ const OrganizerReportLayout = () => {
 
     return (
         <PageBody>
-            <Button mb={20}
-                    leftSection={<IconChevronLeft/>}
-                    variant={'transparent'}
+            <Button mb={14}
+                    leftSection={<IconChevronLeft size={16}/>}
+                    variant="default"
+                    className={classes.backButton}
                     component={Link}
                     to={`/manage/organizer/${organizerId}/reports`}
-                    pl={0}
             >
                 {t`Back to Reports`}
             </Button>

@@ -6,6 +6,7 @@ import ProductSalesReport from "../ProductSalesReport";
 import {ReportTypes} from "../../../../../types.ts";
 import {DailySalesReport} from "../DailySalesReport";
 import PromoCodesReport from "../PromoCodesReport";
+import classes from "../Reports.module.scss";
 
 const renderReport = (reportType: string) => {
     switch (reportType) {
@@ -25,12 +26,12 @@ const ReportLayout = () => {
 
     return (
         <PageBody>
-            <Button mb={20}
-                    leftSection={<IconChevronLeft/>}
-                    variant={'transparent'}
+            <Button mb={14}
+                    leftSection={<IconChevronLeft size={16}/>}
+                    variant="default"
+                    className={classes.backButton}
                     component={Link}
                     to={`/manage/event/${eventId}/reports`}
-                    pl={0}
             >
                 Back to Reports
             </Button>
