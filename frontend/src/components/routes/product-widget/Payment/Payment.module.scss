@@ -83,8 +83,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover:not(:disabled) {
     filter: none;
-    background: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black)) !important;
-    border-color: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black)) !important;
+    background: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary))) !important;
+    border-color: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary))) !important;
   }
 }
 

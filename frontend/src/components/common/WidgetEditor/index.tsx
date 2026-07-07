@@ -21,11 +21,11 @@ export const WidgetEditor = () => {
     const {data: eventSettings, isFetched: isEventSettingsFetched} = useGetEventSettings(eventId);
     const form = useForm({
         initialValues: {
-            background_color: "#F8FAFC",
-            primary_color: "#111827",
-            primary_text_color: "#FFFFFF",
-            secondary_color: "#F1F5F9",
-            secondary_text_color: "#111827",
+            background_color: "#FBFBFA",
+            primary_color: "#37352F",
+            primary_text_color: "#37352F",
+            secondary_color: "#2383E2",
+            secondary_text_color: "#FFFFFF",
             continue_button_text: t`Continue`,
             padding: 20,
             autoResize: true,

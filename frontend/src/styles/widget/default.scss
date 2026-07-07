@@ -10,6 +10,7 @@
   --widget-border: color-mix(in srgb, var(--widget-fg) 14%, var(--widget-background-color, var(--hi-color-white)));
   --widget-border-strong: color-mix(in srgb, var(--widget-border) 78%, var(--widget-fg));
   --widget-soft-accent: color-mix(in srgb, var(--widget-accent) 7%, var(--widget-background-color, var(--hi-color-white)));
+  --widget-accent-hover: color-mix(in srgb, var(--widget-accent) 88%, var(--widget-fg));
   --widget-panel: color-mix(in srgb, var(--widget-fg) 2%, var(--widget-background-color, var(--hi-color-white)));
 
   background-color: var(--widget-background-color, var(--hi-color-white));
@@ -71,7 +72,7 @@
     font-weight: 620;
 
     &:hover {
-      background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
+      background: var(--widget-accent-hover);
       color: var(--widget-accent-text);
     }
   }
@@ -337,7 +338,7 @@
     white-space: nowrap;
 
     &:hover {
-      background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
+      background: var(--widget-accent-hover);
     }
   }
 
@@ -428,8 +429,8 @@
       height: 44px;
 
       &:hover:not(:disabled) {
-        background: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
-        border-color: color-mix(in srgb, var(--widget-accent) 90%, var(--hi-color-black));
+        background: var(--widget-accent-hover);
+        border-color: var(--widget-accent-hover);
       }
     }
   }

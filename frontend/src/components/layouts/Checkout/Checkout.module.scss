@@ -201,8 +201,8 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   font-weight: 620;
 
   &:hover {
-    background: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black));
-    border-color: color-mix(in srgb, var(--checkout-accent, var(--hi-primary)) 90%, var(--hi-color-black));
+    background: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary)));
+    border-color: var(--checkout-accent-hover, var(--checkout-accent, var(--hi-primary)));
   }
 }
 

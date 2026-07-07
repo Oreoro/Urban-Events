@@ -157,6 +157,7 @@ function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark')
                 // Accent colors (customizable)
                 '--checkout-accent': accentColor,
                 '--checkout-accent-contrast': accentContrast,
+                '--checkout-accent-hover': `color-mix(in srgb, ${accentColor} 88%, ${palette.textPrimary})`,
                 '--checkout-accent-soft': accentSoft,
                 '--checkout-accent-muted': accentMuted,
 
