@@ -371,9 +371,9 @@
 }
 
 .checkboxComplete {
-  background-color: var(--hi-primary-soft);
-  border-color: color-mix(in srgb, var(--hi-primary) 48%, var(--hi-border));
-  color: var(--hi-primary);
+  background-color: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+  border-color: color-mix(in srgb, var(--hi-text) 18%, var(--hi-border));
+  color: var(--hi-text);
 }
 
 /* Tablet and smaller desktop styles */

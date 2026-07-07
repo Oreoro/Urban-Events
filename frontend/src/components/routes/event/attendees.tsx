@@ -192,12 +192,11 @@ const Attendees = () => {
                         />
                     )}
                 >
-                    <Button color={'green'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
+                    <Button size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
                         {t`Create`}
                     </Button>
 
-                    <Button color={'green'}
-                            size={'sm'}
+                    <Button size={'sm'}
                             loading={downloadPending}
                             onClick={() => handleExport(eventId)}
                             rightSection={<IconDownload/>}

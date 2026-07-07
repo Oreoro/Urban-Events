@@ -23,7 +23,7 @@ export const PermissionDeniedMessage = ({
             </Trans>
 
             <div>
-                <Button color={'green'} mt={20} onClick={onClose} variant={'filled'}>
+                <Button mt={20} onClick={onClose} variant={'filled'}>
                     {t`Close`}
                 </Button>
             </div>

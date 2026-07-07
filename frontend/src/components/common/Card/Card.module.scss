@@ -26,8 +26,8 @@
   }
 
   &.lightAccent {
-    background-color: var(--hi-primary-soft);
-    border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
+    background-color: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+    border: 1px solid color-mix(in srgb, var(--hi-text) 12%, var(--hi-border));
     box-shadow: none;
   }
 }

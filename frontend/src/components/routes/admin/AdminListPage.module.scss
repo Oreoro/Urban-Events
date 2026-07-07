@@ -28,8 +28,8 @@
 
     &:focus,
     &:focus-within {
-      border-color: var(--hi-shell-accent);
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      border-color: var(--hi-text-muted);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
     }
   }
 
@@ -114,8 +114,8 @@
     }
 
     &[data-active] {
-      background: var(--hi-primary);
-      border-color: var(--hi-primary);
+      background: var(--hi-text);
+      border-color: var(--hi-text);
       color: var(--hi-color-white);
     }
   }

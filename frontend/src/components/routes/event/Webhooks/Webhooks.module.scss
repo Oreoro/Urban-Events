@@ -10,9 +10,9 @@
 
   :global(.mantine-Button-root) {
     min-height: 32px;
-    border: 1px solid var(--hi-primary);
+    border: 1px solid var(--hi-text);
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-primary);
+    background: var(--hi-text);
     color: var(--hi-color-white);
     font-size: 0.8rem;
     font-weight: 640;
@@ -20,8 +20,8 @@
     box-shadow: none;
 
     &:hover {
-      border-color: var(--hi-primary-hover);
-      background: var(--hi-primary-hover);
+      border-color: var(--hi-text-light);
+      background: var(--hi-text-light);
     }
   }
 }

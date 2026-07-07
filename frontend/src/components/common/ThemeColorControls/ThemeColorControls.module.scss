@@ -31,7 +31,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-primary);
+    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
     outline-offset: 2px;
   }
 
@@ -42,7 +42,7 @@
 
   &[data-active="true"] {
     background: var(--hi-surface);
-    border-color: var(--hi-primary);
+    border-color: var(--hi-text-muted);
     box-shadow: none;
   }
 }
@@ -86,7 +86,7 @@
   width: 18px;
   height: 18px;
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-primary);
+  background: var(--hi-text);
   color: var(--hi-color-white);
 }
 

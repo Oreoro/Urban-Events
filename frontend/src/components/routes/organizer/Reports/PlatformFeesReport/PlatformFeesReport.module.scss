@@ -53,8 +53,8 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-primary);
-            box-shadow: 0 0 0 2px var(--hi-focus-ring);
+            border-color: var(--hi-text-muted);
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
         }
     }
 }

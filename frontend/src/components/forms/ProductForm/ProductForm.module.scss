@@ -70,7 +70,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-shell-accent);
+    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
     outline-offset: 2px;
   }
 
