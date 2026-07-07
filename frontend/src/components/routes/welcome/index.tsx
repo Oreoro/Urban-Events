@@ -170,7 +170,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
 
             <div className={classes.stepContent}>
                 <form onSubmit={form.onSubmit(handleSubmit)}>
-                    <Stack gap={32}>
+                    <Stack gap={20}>
                         <Center>
                             <PinInput
                                 {...form.getInputProps('pin')}
@@ -207,7 +207,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
                         </Button>
 
                         <Center>
-                            <Stack gap="xs" align="center">
+                            <Stack gap={4} align="center">
                                 <Text size="sm" c="dimmed">
                                     {t`Didn't receive the code?`}
                                 </Text>
@@ -315,7 +315,7 @@ export const CreateEvent = ({progressInfo}: {
 
                 <div className={classes.stepContent}>
                     <form onSubmit={form.onSubmit(handleSubmit)}>
-                        <Stack gap={24}>
+                        <Stack gap={18}>
                             {/* Event Category */}
                             <div className={classes.fieldGroup}>
                                 <Text className={classes.fieldQuestion}>{t`Choose an event type`}</Text>

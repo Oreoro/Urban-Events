@@ -6,8 +6,8 @@
   }
 
   min-height: 100vh;
-  background: var(--hi-surface);
-  padding: 2.25rem 1rem;
+  background: var(--hi-surface-soft);
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,13 +20,18 @@
 
 .welcomeContent {
   width: 100%;
-  max-width: 600px;
+  max-width: 520px;
   min-width: 0;
   margin: 0 auto;
+  padding: 13px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
 
   @media (max-width: 768px) {
     max-width: 100%;
     min-width: 0;
+    padding: 12px;
   }
 }
 
@@ -34,8 +39,8 @@
 .welcomeHeader {
   text-align: left;
   display: grid;
-  gap: 0.32rem;
-  margin-bottom: 0.82rem;
+  gap: 0.26rem;
+  margin-bottom: 0.76rem;
 
   @media (max-width: 768px) {
     margin-bottom: 0.95rem;
@@ -43,7 +48,7 @@
 }
 
 .logo {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.12rem;
   opacity: 1;
 
   @media (max-width: 768px) {
@@ -54,21 +59,21 @@
 .welcomeKicker {
   margin: 0;
   color: var(--hi-text-muted);
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 650;
   line-height: 1.3;
 }
 
 .welcomeTitle {
   display: block;
-  font-size: 1.22rem;
+  font-size: 1.08rem;
   font-weight: 680;
   color: var(--hi-text);
   margin: 0;
   line-height: 1.24;
 
   @media (max-width: 768px) {
-    font-size: 1.18rem;
+    font-size: 1.08rem;
   }
 }
 
@@ -96,7 +101,7 @@
 
 // Clean Step Layout
 .stepContainer {
-  padding: 0.9rem 0 0;
+  padding: 0.76rem 0 0;
   border-top: 1px solid var(--hi-border);
 
   @media (max-width: 768px) {
@@ -106,7 +111,7 @@
 
 // Progress Container
 .progressContainer {
-  margin-bottom: 0.88rem;
+  margin-bottom: 0.76rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -117,16 +122,16 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
   color: var(--hi-text-muted);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 620;
   line-height: 1.3;
 }
 
 .progressBar {
   width: 100%;
-  height: 4px;
+  height: 3px;
   appearance: none;
   background-color: var(--hi-surface-soft);
   border: 0;
@@ -139,20 +144,20 @@
   }
 
   &::-webkit-progress-value {
-    background-color: var(--hi-primary);
+    background-color: var(--hi-text);
     border-radius: var(--hi-radius-sm);
     transition: width 0.3s ease;
   }
 
   &::-moz-progress-bar {
-    background-color: var(--hi-primary);
+    background-color: var(--hi-text);
     border-radius: var(--hi-radius-sm);
   }
 }
 
 .stepHeader {
   text-align: left;
-  margin-bottom: 0.92rem;
+  margin-bottom: 0.78rem;
 
   @media (max-width: 768px) {
     margin-bottom: 1rem;
@@ -160,7 +165,7 @@
 }
 
 .stepTitle {
-  font-size: 1.02rem;
+  font-size: 0.92rem;
   font-weight: 680;
   color: var(--hi-text);
   margin: 0 0 0.5rem 0;
@@ -168,13 +173,13 @@
   text-align: left;
 
   @media (max-width: 768px) {
-    font-size: 1.18rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 }
 
 .stepDescription {
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   color: var(--hi-text-muted);
   margin: 0;
   line-height: 1.5;
@@ -187,12 +192,12 @@
 
 .fieldGroup {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .fieldQuestion {
   color: var(--hi-text);
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   font-weight: 680;
   line-height: 1.35;
 }
@@ -212,27 +217,37 @@
     }
   }
 
+  :global(.mantine-Button-root[data-variant="subtle"]) {
+    color: var(--hi-text-muted) !important;
+    border-radius: var(--hi-radius-sm) !important;
+
+    &:hover:not(:disabled) {
+      color: var(--hi-text) !important;
+      background: var(--hi-control-bg-hover) !important;
+    }
+  }
+
   // Clean, minimal form inputs (exclude PinInput)
   :global(.mantine-DateTimePicker-input),
   :global(.mantine-TextInput-input),
   :global(.mantine-Select-input) {
-    min-height: 36px !important;
-    height: 36px !important;
+    min-height: 32px !important;
+    height: 32px !important;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding: 0 12px !important;
+    padding: 0 10px !important;
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface)) !important;
     border-radius: var(--hi-radius-sm) !important;
     background: var(--hi-surface) !important;
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     color: var(--hi-text) !important;
     transition: border-color 0.15s ease !important;
 
     &:focus {
-      border-color: var(--hi-shell-accent) !important;
+      border-color: var(--hi-text-muted) !important;
       outline: none !important;
-      box-shadow: 0 0 0 2px var(--hi-focus-ring) !important;
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent) !important;
     }
 
     &::placeholder {
@@ -251,17 +266,17 @@
   :global(.mantine-TextInput-label),
   :global(.mantine-Select-label) {
     font-weight: 650 !important;
-    font-size: 0.76rem !important;
+    font-size: 0.7rem !important;
     color: var(--hi-text-muted) !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
   }
 }
 
 // Clean Category Grid
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.42rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.36rem;
 
   @media (max-width: 768px) {
     display: none; // Hide grid on mobile
@@ -281,15 +296,15 @@
   background: var(--hi-surface);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
-  padding: 0.46rem 0.52rem;
+  padding: 0.4rem 0.48rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.52rem;
+  gap: 0.48rem;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
-  min-height: 38px;
+  min-height: 34px;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -309,19 +324,19 @@
 }
 
 .categoryCardSelected {
-  border-color: var(--hi-primary) !important;
+  border-color: var(--hi-text-muted) !important;
   background: var(--hi-control-bg-active) !important;
 
   .categoryMark {
-    background: var(--hi-primary);
-    border-color: var(--hi-primary);
+    background: var(--hi-text);
+    border-color: var(--hi-text);
     color: var(--hi-color-white);
   }
 }
 
 .categoryMark {
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -340,7 +355,7 @@
 }
 
 .categoryText {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 590;
   color: var(--hi-text);
   text-align: left;
@@ -359,11 +374,11 @@
   background: var(--hi-surface-soft);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-sm);
-  padding: 0.58rem 0.66rem;
-  margin-top: 0.85rem;
+  padding: 0.5rem 0.58rem;
+  margin-top: 0.72rem;
   margin-bottom: 0;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   color: var(--hi-text);
   font-weight: 500;
   text-align: center;
@@ -389,9 +404,9 @@
     color: var(--hi-text);
 
     &:focus {
-      border-color: var(--hi-shell-accent);
+      border-color: var(--hi-text-muted);
       outline: none;
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
     }
 
     // Force smaller size on mobile
@@ -417,7 +432,7 @@
 .dateTimeGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
+  gap: 0.7rem;
   align-items: start;
   margin-bottom: 0.8em;
 
@@ -460,7 +475,7 @@
     }
 
     &[data-selected] {
-      background: var(--hi-primary) !important;
+      background: var(--hi-text) !important;
       color: var(--hi-color-white) !important;
     }
   }
@@ -474,18 +489,18 @@
 
 // Clean button
 .primaryButton {
-  background: var(--hi-primary) !important;
-  border: 1px solid var(--hi-primary) !important;
+  background: var(--hi-text) !important;
+  border: 1px solid var(--hi-text) !important;
   border-radius: var(--hi-radius-sm) !important;
   font-weight: 650 !important;
-  font-size: 0.86rem !important;
-  height: 36px !important;
+  font-size: 0.78rem !important;
+  height: 32px !important;
   transition: background-color 0.15s ease, border-color 0.15s ease !important;
   margin-top: 0.85em;
 
   &:hover:not(:disabled) {
-    background: var(--hi-primary-hover) !important;
-    border-color: var(--hi-primary-hover) !important;
+    background: var(--hi-text-light) !important;
+    border-color: var(--hi-text-light) !important;
     box-shadow: none !important;
   }
 
@@ -501,11 +516,11 @@
 
 // Clean Skip Section
 .skipSection {
-  margin-top: 0.9rem;
+  margin-top: 0.72rem;
 
   :global(.mantine-Button-root) {
     color: var(--hi-text-muted) !important;
-    font-size: 0.82rem !important;
+    font-size: 0.76rem !important;
     background: var(--hi-surface) !important;
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
     border-radius: var(--hi-radius-sm) !important;
