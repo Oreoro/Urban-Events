@@ -15,7 +15,7 @@
       min-height: 32px;
       height: 32px;
       background: var(--hi-surface);
-      border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+      border-color: var(--hi-border);
       border-radius: var(--hi-radius-sm);
       color: var(--hi-text-light);
       font-size: 0.8rem;
@@ -30,7 +30,7 @@
 
       &:focus,
       &:focus-within {
-        border-color: var(--hi-text);
+        border-color: var(--hi-primary);
         box-shadow: 0 0 0 2px var(--hi-focus-ring);
       }
     }
@@ -43,7 +43,7 @@
 
 .dropdown {
   padding: 4px !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-border) !important;
   border-radius: var(--hi-radius-md) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;

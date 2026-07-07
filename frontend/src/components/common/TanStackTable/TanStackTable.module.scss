@@ -18,11 +18,11 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-shell-bg);
+    background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.46rem 0.62rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-    font-size: 0.71rem;
+    padding: 0.4rem 0.58rem !important;
+    border-bottom: 1px solid var(--hi-border);
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0;
     line-height: 1.25;
@@ -34,7 +34,7 @@
   padding: 0 !important;
   overflow: hidden;
   border-radius: var(--hi-radius-md) !important;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border-color: var(--hi-border) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 
@@ -60,20 +60,20 @@
     transition: background-color 0.14s ease, box-shadow 0.14s ease;
 
     &:hover {
-      background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
+      background: var(--hi-control-bg-hover);
 
       .stickyLeft,
       .stickyRight {
-        background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
+        background: var(--hi-control-bg-hover);
       }
     }
 
     td {
-      padding: 0.52rem 0.62rem !important;
+      padding: 0.48rem 0.58rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, var(--hi-surface));
-      font-size: 0.84rem;
+      border-bottom: 1px solid var(--hi-border);
+      font-size: 0.82rem;
       font-weight: 500;
       line-height: 1.35;
       vertical-align: middle;
@@ -101,7 +101,7 @@
     right: 0;
     bottom: 0;
     width: 1px;
-    background: color-mix(in srgb, var(--hi-border) 74%, transparent);
+    background: var(--hi-border);
     pointer-events: none;
   }
 }
@@ -120,13 +120,13 @@
     left: 0;
     bottom: 0;
     width: 1px;
-    background: color-mix(in srgb, var(--hi-border) 74%, transparent);
+    background: var(--hi-border);
     pointer-events: none;
   }
 }
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-shell-bg);
+  background-color: var(--hi-surface-soft);
   z-index: 12;
 }

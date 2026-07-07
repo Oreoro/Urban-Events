@@ -4,11 +4,11 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-shell-bg);
+    background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.44rem 0.58rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-    font-size: 0.71rem;
+    padding: 0.4rem 0.56rem !important;
+    border-bottom: 1px solid var(--hi-border);
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0;
     line-height: 1.25;
@@ -20,7 +20,7 @@
   padding: 0 !important;
   overflow: hidden;
   border-radius: var(--hi-radius-md) !important;
-  border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
+  border-color: var(--hi-border) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
 
@@ -42,9 +42,9 @@
   }
 
   td {
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
+    border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text-light);
-    font-size: 0.82rem;
+    font-size: 0.81rem;
     font-weight: 500;
     line-height: 1.35;
     vertical-align: middle;
@@ -54,7 +54,7 @@
     transition: background-color 0.14s ease;
 
     &:hover {
-      background-color: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface));
+      background-color: var(--hi-control-bg-hover);
     }
 
     &:last-child td {
