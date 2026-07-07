@@ -7,9 +7,9 @@
   text-align: left;
   margin: 12px 0;
   padding: 14px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  background: var(--hi-surface-soft);
   box-shadow: none;
 
   .visual {
@@ -18,9 +18,9 @@
     justify-content: center;
     width: 34px;
     height: 34px;
-    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+    border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-shell-bg);
+    background: var(--hi-surface);
     color: var(--hi-text-muted);
   }
 
@@ -77,7 +77,7 @@
     &[data-variant="subtle"],
     &[data-variant="light"],
     &[data-variant="default"] {
-      border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+      border: 1px solid var(--hi-border);
       background: var(--hi-surface);
       color: var(--hi-text);
 
