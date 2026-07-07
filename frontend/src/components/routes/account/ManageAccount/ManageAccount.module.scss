@@ -2,34 +2,45 @@
   margin-bottom: var(--hi-spacing-xl);
 
   h1 {
-    margin: 0 0 10px;
-    font-size: 1.24rem;
+    margin: 0 0 8px;
+    font-size: 1.18rem;
     font-weight: 680;
     letter-spacing: 0;
   }
 
   .tabsCard {
-    padding: 0;
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+    background: transparent !important;
+    border: 0 !important;
     box-shadow: none;
-    border-radius: var(--hi-radius-md);
-    overflow: hidden;
-    border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border-radius: 0;
+    overflow: visible;
 
     :global(.mantine-Tabs-list) {
-      border-bottom: 0;
-      background: color-mix(in srgb, var(--hi-shell-bg) 74%, var(--hi-surface));
-      padding: 4px;
-      gap: 4px;
+      border-bottom: 1px solid var(--hi-border);
+      background: transparent;
+      padding: 0 0 4px;
+      gap: 2px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     :global(.mantine-Tabs-tab) {
-      min-height: 34px;
+      min-height: 30px;
       border: 1px solid transparent;
       border-radius: var(--hi-radius-sm);
       color: var(--hi-text-muted);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 620;
+      padding: 0 9px;
       transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      white-space: nowrap;
 
       svg {
         width: 15px;
@@ -42,7 +53,7 @@
       }
 
       &[data-active] {
-        background: var(--hi-surface);
+        background: var(--hi-control-bg-active);
         border-color: var(--hi-border);
         color: var(--hi-text);
       }
@@ -55,22 +66,56 @@
 
     .tabContent {
       position: relative;
-      padding: 14px;
+      padding: 12px;
       background: var(--hi-surface);
       border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
+
+      :global(.mantine-InputWrapper-root) {
+        margin-bottom: 10px;
+      }
+
+      :global(.mantine-InputWrapper-label) {
+        color: var(--hi-text);
+        font-size: 0.81rem;
+        font-weight: 620;
+        line-height: 1.35;
+      }
+
+      :global(.mantine-InputWrapper-description) {
+        color: var(--hi-text-muted);
+        font-size: 0.76rem;
+        line-height: 1.42;
+      }
+
+      :global(.mantine-Input-input) {
+        min-height: 34px;
+        border-color: var(--hi-border);
+        border-radius: var(--hi-radius-sm);
+        background: var(--hi-surface);
+        color: var(--hi-text);
+        font-size: 0.84rem;
+        font-weight: 500;
+      }
     }
 
     .feeExample {
-      padding: 12px;
-      background: color-mix(in srgb, var(--hi-shell-bg) 76%, var(--hi-surface));
+      padding: 10px;
+      background: var(--hi-surface-soft);
       border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
     }
   }
 
   .footer {
-    margin-top: var(--hi-spacing-xl);
+    margin-top: 12px;
+
+    :global(.mantine-Button-root) {
+      min-height: 34px;
+      border-radius: var(--hi-radius-sm);
+      font-size: 0.82rem;
+      font-weight: 640;
+    }
   }
 
   .card {

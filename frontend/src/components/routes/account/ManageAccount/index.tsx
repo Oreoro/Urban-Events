@@ -19,7 +19,7 @@ export const ManageAccount = () => {
             <h1>{t`Account Settings`}</h1>
             <Card className={classes.tabsCard}>
                 <Tabs value={tabValue} onChange={(value) => navigate(`/account/${value}`)}>
-                    <Tabs.List grow>
+                    <Tabs.List>
                         <Tabs.Tab value="settings" leftSection={<IconAdjustmentsCog/>}>
                             {t`Account`}
                         </Tabs.Tab>
