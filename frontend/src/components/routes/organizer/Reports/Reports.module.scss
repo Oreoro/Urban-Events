@@ -1,16 +1,16 @@
 .reportList {
   display: grid;
-  gap: 8px;
-  margin-top: 18px;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .reportLink {
   display: block;
   width: 100%;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
 
   &:focus-visible {
-    outline: 2px solid var(--hi-focus-ring);
+    outline: 2px solid color-mix(in srgb, var(--hi-text) 12%, transparent);
     outline-offset: 2px;
   }
 }
@@ -36,13 +36,13 @@
 
 .reportType {
   display: flex;
-  gap: 10px;
-  padding: 10px 12px !important;
+  gap: 8px;
+  padding: 8px 10px !important;
   align-items: center;
-  min-height: 58px;
+  min-height: 50px;
   width: 100%;
   border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   background: var(--hi-surface) !important;
   box-shadow: none !important;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -56,10 +56,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    color: var(--hi-primary);
-    background: var(--hi-primary-soft);
+    width: 26px;
+    height: 26px;
+    color: var(--hi-text-muted);
+    background: var(--hi-surface-soft);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
     flex-shrink: 0;
@@ -72,16 +72,16 @@
       padding: 0;
     }
     h3 {
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       color: var(--hi-text);
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       font-weight: 670;
       line-height: 1.25;
       letter-spacing: 0;
     }
     p {
       color: var(--hi-text-muted);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 500;
       line-height: 1.38;
     }

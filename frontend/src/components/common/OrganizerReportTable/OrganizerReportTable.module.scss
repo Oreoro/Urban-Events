@@ -2,8 +2,8 @@
 
 .reportHeader {
   align-items: flex-start !important;
-  gap: 14px !important;
-  padding-bottom: 12px;
+  gap: 10px !important;
+  padding-bottom: 9px;
   border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
 
   > :first-child {
@@ -13,7 +13,7 @@
   h1 {
     margin-bottom: 0;
     color: var(--hi-text);
-    font-size: 1.18rem;
+    font-size: 1rem;
     font-weight: 680;
     line-height: 1.2;
     letter-spacing: 0;
@@ -21,7 +21,7 @@
 }
 
 .reportActions {
-  gap: 8px !important;
+  gap: 6px !important;
   flex-wrap: wrap;
 }
 
@@ -38,12 +38,12 @@
 .datePicker,
 .currencySelect {
   :global(.mantine-Input-input) {
-    min-height: 34px;
+    min-height: 30px;
     border-color: color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
     color: var(--hi-text);
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     font-weight: 560;
     box-shadow: none;
     transition: border-color 0.14s ease, background-color 0.14s ease;
@@ -55,8 +55,8 @@
 
     &:focus,
     &:focus-within {
-      border-color: var(--hi-primary);
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      border-color: var(--hi-text-muted);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
     }
   }
 
@@ -66,19 +66,19 @@
 }
 
 .downloadButton {
-  min-height: 34px;
-  border: 1px solid var(--hi-primary) !important;
-  border-radius: var(--hi-radius-md) !important;
-  background: var(--hi-primary) !important;
+  min-height: 30px;
+  border: 1px solid var(--hi-text) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-text) !important;
   color: white !important;
-  font-size: 0.82rem !important;
+  font-size: 0.76rem !important;
   font-weight: 650 !important;
   box-shadow: none !important;
   transition: background-color 0.14s ease, border-color 0.14s ease;
 
   &:hover:not(:disabled) {
-    border-color: var(--hi-primary-hover) !important;
-    background: var(--hi-primary-hover) !important;
+    border-color: var(--hi-text-light) !important;
+    background: var(--hi-text-light) !important;
   }
 
   :global(.mantine-Button-section) {
@@ -88,7 +88,7 @@
 
 .tableMeta {
   color: var(--hi-text-muted) !important;
-  font-size: 0.78rem !important;
+  font-size: 0.72rem !important;
   font-weight: 560 !important;
 }
 
@@ -96,9 +96,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 72px;
+  min-height: 56px;
   color: var(--hi-text-muted);
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   font-weight: 560;
 }
 
