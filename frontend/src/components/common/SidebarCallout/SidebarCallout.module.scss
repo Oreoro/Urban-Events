@@ -1,14 +1,19 @@
 @use "../../../styles/mixins.scss";
 
 .calloutBox {
-  background: var(--hi-shell-bg);
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 8px;
+  row-gap: 7px;
+  align-items: start;
+  background: color-mix(in srgb, var(--hi-surface) 70%, var(--hi-shell-bg));
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  padding: 10px 10px 11px;
+  border-radius: var(--hi-radius-sm);
+  padding: 9px;
   text-align: left;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     display: none;
   }
@@ -16,12 +21,12 @@
 
 .closeButton {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 5px;
+  right: 5px;
   z-index: 2;
   color: var(--hi-text-muted);
   transition: color 0.15s ease, background-color 0.15s ease;
-  
+
   &:hover {
     color: var(--hi-text);
     background: var(--hi-control-bg-hover);
@@ -32,48 +37,63 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: var(--hi-surface);
+  width: 24px;
+  height: 24px;
+  background: var(--hi-surface-soft);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
-  margin-bottom: 8px;
+  margin: 0;
   position: relative;
   z-index: 1;
-  
+
   svg {
+    width: 15px;
+    height: 15px;
     color: var(--hi-text-muted);
   }
 }
 
 .calloutTitle {
-  font-size: 0.84rem;
+  align-self: center;
+  padding-right: 18px;
+  font-size: 0.8rem;
   font-weight: 650;
   color: var(--hi-text);
-  margin: 0 0 6px 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  line-height: 1.25;
+}
+
+.calloutText {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--hi-text-muted);
+  margin: 0;
+  line-height: 1.42;
   position: relative;
   z-index: 1;
 }
 
-.calloutText {
-  font-size: 0.77rem;
-  color: var(--hi-text-muted);
-  margin: 0 0 10px 0;
-  line-height: 1.5;
+.calloutAction {
+  grid-column: 1 / -1;
   position: relative;
   z-index: 1;
 }
 
 .calloutButton {
+  grid-column: 1 / -1;
   background: var(--hi-surface) !important;
   border: 1px solid var(--hi-border) !important;
   color: var(--hi-text) !important;
   font-weight: 600;
-  min-height: 32px;
+  min-height: 30px;
+  border-radius: var(--hi-radius-sm);
+  font-size: 0.76rem;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   position: relative;
   z-index: 1;
-  
+
   &:hover {
     background: var(--hi-control-bg-active) !important;
     border-color: var(--hi-border-strong) !important;

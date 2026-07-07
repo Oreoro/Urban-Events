@@ -55,7 +55,7 @@ export const SidebarCallout: React.FC<SidebarCalloutProps> = ({
                     className={classes.closeButton}
                     onClick={handleClose}
                     size="sm"
-                    iconSize={16}
+                    iconSize={14}
                 />
             )}
             <div className={classes.calloutIcon}>
@@ -68,7 +68,9 @@ export const SidebarCallout: React.FC<SidebarCalloutProps> = ({
                 {description}
             </p>
             {customButton ? (
-                customButton
+                <div className={classes.calloutAction}>
+                    {customButton}
+                </div>
             ) : (
                 <Button
                     fullWidth
