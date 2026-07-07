@@ -156,7 +156,7 @@
 
         &:focus,
         &:focus-within {
-          border-color: var(--hi-text);
+          border-color: var(--hi-shell-accent);
           box-shadow: 0 0 0 2px var(--hi-focus-ring);
         }
       }
@@ -279,6 +279,16 @@
       border-radius: var(--hi-radius-md);
       overflow: hidden;
       --scale: 0.75;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 8px 8px auto;
+        height: 1px;
+        background: color-mix(in srgb, var(--hi-border) 72%, transparent);
+        z-index: 1;
+        pointer-events: none;
+      }
 
       iframe {
         transform: scale(var(--scale));

@@ -110,18 +110,27 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   height: 40px;
   border-radius: $radius-sm !important;
+  border: 1px solid var(--primary-color, var(--checkout-accent, var(--hi-shell-accent))) !important;
   font-family: $font-display;
   font-weight: 600 !important;
   font-size: 15px !important;
   margin-top: 12px;
-  background: var(--primary-color, var(--checkout-accent, var(--hi-text))) !important;
+  background: var(--primary-color, var(--checkout-accent, var(--hi-shell-accent))) !important;
   color: var(--accent-contrast, var(--checkout-accent-contrast, var(--hi-color-white))) !important;
-  transition: filter $transition-fast, background-color $transition-fast, border-color $transition-fast;
+  box-shadow: none !important;
+  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
 
   &:hover {
     transform: none;
     box-shadow: none;
-    filter: brightness(1.05);
+    filter: none;
+    border-color: var(--checkout-accent-hover, var(--hi-primary-hover)) !important;
+    background: var(--checkout-accent-hover, var(--hi-primary-hover)) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--hi-shell-accent);
+    outline-offset: 2px;
   }
 }
 
