@@ -17,7 +17,8 @@ export const BrandWordmark = ({
     onClick,
 }: BrandWordmarkProps) => {
     const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
-    const displayName = appName.replace(/\s+/g, " ").trim();
+    const normalizedName = appName.replace(/\s+/g, " ").trim();
+    const displayName = normalizedName.toLowerCase() === "urban events" ? "UrbanEvents" : normalizedName;
 
     return (
         <span

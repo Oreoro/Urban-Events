@@ -13,8 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 14px;
-    height: 42px;
+    padding: 0 12px;
+    height: 40px;
     border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text);
 
@@ -24,7 +24,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 6px 30px;
+    padding: 6px 28px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -34,10 +34,10 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 36px;
+    min-height: 34px;
 
     @include mixins.respond-above(xl) {
-      padding-inline: 34px;
+      padding-inline: 32px;
     }
 
     @include mixins.respond-below(md) {
@@ -64,7 +64,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.79rem;
+    font-size: 0.77rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;

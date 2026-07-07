@@ -17,7 +17,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 248px minmax(0, 1fr);
+    grid-template-columns: 236px minmax(0, 1fr);
 
     &.closed {
       grid-template-areas:
@@ -29,7 +29,7 @@
 
   .main {
     grid-area: main;
-    padding: 24px 30px 56px;
+    padding: 22px 28px 52px;
     overflow: auto;
     background: var(--ue-canvas);
     color: var(--hi-text);
@@ -42,7 +42,7 @@
     }
 
     @media (min-width: 1280px) {
-      padding-inline: 34px;
+      padding-inline: 32px;
     }
   }
 

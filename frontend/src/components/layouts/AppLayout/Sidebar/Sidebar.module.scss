@@ -24,8 +24,8 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 8px 0 7px;
-    min-height: 46px;
+    padding: 7px 0 6px;
+    min-height: 42px;
     margin-bottom: 0;
     border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
     flex-shrink: 0;
@@ -34,7 +34,7 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 14px;
+      padding: 7px 13px;
       color: var(--hi-shell-text);
       line-height: 1;
     }
@@ -44,7 +44,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 8px 0 16px;
+    padding: 7px 0 14px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -72,8 +72,8 @@
     }
 
     .sectionHeading {
-      padding: 14px 13px 5px;
-      font-size: 0.68rem;
+      padding: 13px 12px 4px;
+      font-size: 0.66rem;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
@@ -86,18 +86,18 @@
       display: flex;
       align-items: center;
       color: color-mix(in srgb, var(--hi-shell-text) 68%, transparent);
-      min-height: 29px;
-      padding: 4px 8px;
+      min-height: 28px;
+      padding: 4px 7px;
       text-decoration: none;
-      margin: 1px 7px;
+      margin: 1px 6px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
       transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 14px);
+      width: calc(100% - 12px);
       background: transparent;
       border: 1px solid transparent;
       text-align: left;
@@ -149,10 +149,10 @@
       }
 
       svg {
-        margin-right: 8px;
-        width: 17px;
-        height: 17px;
-        min-width: 17px;
+        margin-right: 7px;
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
         color: color-mix(in srgb, var(--hi-shell-text) 46%, transparent);
         transition: color 0.14s ease;
       }
