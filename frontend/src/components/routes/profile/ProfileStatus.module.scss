@@ -1,0 +1,73 @@
+.statusShell {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.statusCard {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-surface);
+  box-shadow: none;
+}
+
+.statusHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.statusIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-shell-bg);
+  color: var(--hi-text-muted);
+}
+
+.statusTitle {
+  margin: 0 0 5px;
+  color: var(--hi-text);
+  font-size: 1.06rem;
+  font-weight: 680;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.statusText {
+  margin: 0;
+  color: var(--hi-text-muted);
+  font-size: 0.84rem;
+  line-height: 1.48;
+}
+
+.statusAction {
+  justify-self: start;
+  min-height: 36px;
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-text);
+  color: var(--hi-color-white);
+  font-size: 0.82rem;
+  font-weight: 640;
+  letter-spacing: 0;
+
+  &:hover {
+    background: var(--hi-color-black);
+  }
+}
+
+.statusLink {
+  color: var(--hi-text);
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

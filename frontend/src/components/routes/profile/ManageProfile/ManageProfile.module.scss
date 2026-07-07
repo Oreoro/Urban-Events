@@ -1,28 +1,196 @@
 .container {
+  color: var(--hi-text);
   margin-bottom: var(--hi-spacing-xl);
 
   h1 {
-    margin: 0 0 12px;
-    font-size: 1.45rem;
-    font-weight: 650;
+    margin: 0 0 10px;
+    font-size: 1.24rem;
+    font-weight: 680;
     letter-spacing: 0;
+    line-height: 1.18;
   }
 
   .tabsCard {
     padding: 0;
+    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
+    background: var(--hi-surface);
+    box-shadow: none;
     overflow: hidden;
+
+    :global(.mantine-Tabs-list) {
+      gap: 4px;
+      padding: 4px;
+      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+      background: color-mix(in srgb, var(--hi-shell-bg) 74%, var(--hi-surface));
+    }
+
+    :global(.mantine-Tabs-tab) {
+      min-height: 34px;
+      border: 1px solid transparent;
+      border-radius: var(--hi-radius-sm);
+      color: var(--hi-text-muted);
+      font-size: 0.82rem;
+      font-weight: 620;
+      letter-spacing: 0;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      &:hover {
+        background: var(--hi-control-bg-hover);
+        color: var(--hi-text);
+      }
+
+      &[data-active] {
+        border-color: var(--hi-border);
+        background: var(--hi-surface);
+        color: var(--hi-text);
+      }
+    }
+
+    :global(.mantine-Tabs-panel) {
+      background: var(--hi-surface);
+    }
   }
 
   .emailChangeAlert {
-    margin-bottom: var(--hi-spacing-lg);
+    margin-bottom: 14px;
   }
 
   .tabWrapper {
-    padding: 18px;
+    padding: 14px;
     background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
+
+    :global(.mantine-Alert-root) {
+      border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+      border-radius: var(--hi-radius-md);
+      background: color-mix(in srgb, var(--hi-status-info-bg) 54%, var(--hi-surface));
+      color: var(--hi-text-light);
+      box-shadow: none;
+    }
+
+    :global(.mantine-Alert-title) {
+      color: var(--hi-text);
+      font-size: 0.84rem;
+      font-weight: 680;
+      letter-spacing: 0;
+    }
+
+    :global(.mantine-Alert-message) {
+      color: var(--hi-text-light);
+      font-size: 0.82rem;
+      line-height: 1.48;
+
+      p {
+        margin: 0 0 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    :global(.mantine-InputWrapper-root) {
+      margin-bottom: 10px;
+    }
+
+    :global(.mantine-InputWrapper-label) {
+      margin-bottom: 5px;
+      color: var(--hi-text-muted);
+      font-size: 0.76rem;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+
+    :global(.mantine-InputWrapper-description) {
+      color: var(--hi-text-muted);
+      font-size: 0.76rem;
+      line-height: 1.42;
+    }
+
+    :global(.mantine-TextInput-input),
+    :global(.mantine-PasswordInput-input),
+    :global(.mantine-Select-input),
+    :global(.mantine-NativeSelect-input) {
+      min-height: 36px;
+      border-color: color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
+      border-radius: var(--hi-radius-md);
+      background: var(--hi-surface);
+      color: var(--hi-text);
+      font-size: 0.84rem;
+      font-weight: 560;
+      box-shadow: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+      &:hover {
+        border-color: color-mix(in srgb, var(--hi-border-strong) 64%, var(--hi-border));
+        background: var(--hi-control-bg-hover);
+      }
+
+      &:focus,
+      &:focus-within {
+        border-color: var(--hi-text);
+        box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      }
+    }
+
+    :global(.mantine-TextInput-section),
+    :global(.mantine-PasswordInput-section),
+    :global(.mantine-Select-section),
+    :global(.mantine-NativeSelect-section) {
+      color: var(--hi-text-muted);
+    }
+
+    :global(.mantine-Checkbox-root) {
+      margin-top: 2px;
+    }
+
+    :global(.mantine-Checkbox-input) {
+      border-color: color-mix(in srgb, var(--hi-border-strong) 74%, var(--hi-border));
+      border-radius: var(--hi-radius-xs);
+      background: var(--hi-surface);
+
+      &:checked {
+        border-color: var(--hi-text);
+        background: var(--hi-text);
+      }
+    }
+
+    :global(.mantine-Checkbox-label) {
+      color: var(--hi-text-light);
+      font-size: 0.82rem;
+      line-height: 1.42;
+    }
+
+    :global(.mantine-Button-root) {
+      min-height: 36px;
+      border: 1px solid var(--hi-text);
+      border-radius: var(--hi-radius-md);
+      background: var(--hi-text);
+      color: var(--hi-color-white);
+      font-size: 0.82rem;
+      font-weight: 640;
+      letter-spacing: 0;
+      box-shadow: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+
+      &:hover {
+        border-color: var(--hi-color-black);
+        background: var(--hi-color-black);
+      }
+    }
+
+    :global(.mantine-PasswordInput-root + .mantine-PasswordInput-root) {
+      margin-top: 10px;
+    }
+
+    :global(.mantine-PasswordInput-root:last-of-type) {
+      margin-bottom: 14px;
+    }
 
     fieldset {
       min-inline-size: 0;
@@ -32,10 +200,15 @@
   .fieldsetLegend {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 7px;
     color: var(--hi-text);
+    font-size: 0.82rem;
+    font-weight: 650;
+    letter-spacing: 0;
 
     svg {
+      width: 15px;
+      height: 15px;
       color: var(--hi-text-muted);
     }
   }

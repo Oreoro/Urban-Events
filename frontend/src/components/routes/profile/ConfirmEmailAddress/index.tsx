@@ -5,6 +5,9 @@ import {showError, showSuccess} from "../../../../utilites/notifications";
 import {t} from "@lingui/macro";
 import {useConfirmEmailAddress} from "../../../../mutations/useConfirmEmailAddress";
 import {useEffect} from "react";
+import {Loader} from "@mantine/core";
+import {IconMailCheck} from "@tabler/icons-react";
+import classes from "../ProfileStatus.module.scss";
 
 const ConfirmEmailAddress = () => {
     const {token} = useParams();
@@ -32,9 +35,20 @@ const ConfirmEmailAddress = () => {
     useEffect(() => confirmEmail(), [isFetched]);
 
     return (
-        <Card style={{marginTop: 'var(--hi-spacing-lg)'}}>
-            <p>{t`Confirming email address...`}</p>
-        </Card>
+        <div className={classes.statusShell}>
+            <Card className={classes.statusCard}>
+                <div className={classes.statusHeader}>
+                    <span className={classes.statusIcon}>
+                        <IconMailCheck size={18}/>
+                    </span>
+                    <div>
+                        <h1 className={classes.statusTitle}>{t`Confirming email address`}</h1>
+                        <p className={classes.statusText}>{t`Please wait while we verify your email address.`}</p>
+                    </div>
+                </div>
+                <Loader size="sm" color="gray"/>
+            </Card>
+        </div>
     );
 };
 
