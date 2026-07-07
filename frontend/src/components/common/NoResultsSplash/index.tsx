@@ -2,7 +2,7 @@ import React from "react";
 import classes from './NoResultsSplash.module.scss';
 import {useSearchParams} from "react-router";
 import {t} from "@lingui/macro";
-import {IconInbox} from "@tabler/icons-react";
+import {IconInbox, IconSearch} from "@tabler/icons-react";
 
 interface NoResultsSplashProps {
     heading?: React.ReactNode,
@@ -17,22 +17,22 @@ export const NoResultsSplash = ({
                                     heading = t`There's nothing to show yet`,
                                     children,
                                     subHeading,
-                                    imageHref,
                                     icon,
                                     compact = false,
                                 }: NoResultsSplashProps) => {
     const [searchParams] = useSearchParams();
     const hasSearchQuery = !!searchParams.get('query');
+    const fallbackIcon = hasSearchQuery
+        ? <IconSearch size={19} stroke={1.8}/>
+        : <IconInbox size={19} stroke={1.8}/>;
 
     return (
         <div className={`${classes.container} ${compact ? classes.compact : ''}`}>
             <div className={classes.visual} aria-hidden="true">
                 {icon ? (
                     <span className={classes.icon}>{icon}</span>
-                ) : imageHref ? (
-                    <img alt="" width={300} src={imageHref}/>
                 ) : (
-                    <IconInbox size={22} stroke={1.7}/>
+                    fallbackIcon
                 )}
             </div>
 

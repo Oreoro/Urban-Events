@@ -1,4 +1,5 @@
 import {Skeleton} from "@mantine/core";
+import classes from "./TableSkeleton.module.scss";
 
 interface TableSkeletonProps {
     isVisible: boolean,
@@ -11,10 +12,12 @@ export const TableSkeleton = ({isVisible, numRows = 15}: TableSkeletonProps) => 
     }
 
     return (
-        <>
-            <Skeleton height={45} mb="md" radius={'10px'}/>
+        <div className={classes.skeletonTable} aria-hidden="true">
+            <Skeleton className={classes.skeletonHeader}/>
 
-            {[...Array(numRows)].map((_, index: number) => <Skeleton key={index} mb={20} height={20}/>)}
-        </>
+            {[...Array(numRows)].map((_, index: number) => (
+                <Skeleton key={index} className={classes.skeletonRow}/>
+            ))}
+        </div>
     )
 }

@@ -1,0 +1,15 @@
+.skeletonTable {
+  display: grid;
+  gap: 7px;
+  padding: 0;
+}
+
+.skeletonHeader {
+  height: 34px;
+  border-radius: var(--hi-radius-md);
+}
+
+.skeletonRow {
+  height: 24px;
+  border-radius: var(--hi-radius-sm);
+}
