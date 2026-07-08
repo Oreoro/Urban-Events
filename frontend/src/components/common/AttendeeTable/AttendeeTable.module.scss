@@ -168,9 +168,9 @@
   }
 
   &.checkedIn {
-    border-color: var(--hi-status-success-border);
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
+    border-color: var(--hi-border-strong);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text);
   }
 
   &.notCheckedIn {
@@ -184,6 +184,9 @@
   gap: 3px;
   padding: 2px 6px;
   border-radius: var(--hi-radius-sm);
+  background: var(--hi-status-neutral-bg);
+  color: var(--hi-status-neutral-text);
+  border: 1px solid var(--hi-status-neutral-border);
   font-size: 0.69rem;
   font-weight: 600;
   white-space: nowrap;
@@ -194,21 +197,21 @@
   }
 
   &[data-status="ACTIVE"] {
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
-    border: 1px solid var(--hi-status-success-border);
+    background: var(--hi-surface);
+    color: var(--hi-text);
+    border-color: var(--hi-border);
   }
 
   &[data-status="AWAITING_PAYMENT"] {
-    background: var(--hi-status-warning-bg);
-    color: var(--hi-status-warning-text);
-    border: 1px solid var(--hi-status-warning-border);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text-light);
+    border-color: var(--hi-border);
   }
 
   &[data-status="CANCELLED"] {
-    background: var(--hi-status-danger-bg);
-    color: var(--hi-status-danger-text);
-    border: 1px solid var(--hi-status-danger-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border-color: var(--hi-status-neutral-border);
   }
 }
 

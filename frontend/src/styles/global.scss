@@ -299,9 +299,9 @@ a {
 }
 
 .mantine-Notification-root[data-status="success"] .mantine-Notification-icon {
-  border-color: var(--hi-status-success-border);
-  background: var(--hi-status-success-bg) !important;
-  color: var(--hi-status-success-text) !important;
+  border-color: var(--hi-border);
+  background: var(--hi-surface-soft) !important;
+  color: var(--hi-text) !important;
 }
 
 .mantine-Notification-root[data-status="error"] .mantine-Notification-icon {

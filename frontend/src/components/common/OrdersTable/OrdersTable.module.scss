@@ -112,7 +112,7 @@
   align-items: center;
   gap: 3px;
   font-size: 0.71rem;
-  color: var(--hi-status-warning-text);
+  color: var(--hi-text-muted);
   line-height: 1.3;
 }
 
@@ -159,11 +159,11 @@
 
   &[data-refund-status="REFUNDED"],
   &[data-refund-status="PARTIALLY_REFUNDED"] {
-    color: var(--hi-status-warning-text);
+    color: var(--hi-text-light);
   }
 
   &[data-refund-status="REFUND_PENDING"] {
-    color: var(--hi-status-warning-text);
+    color: var(--hi-text-muted);
   }
 
   &[data-refund-status="REFUND_FAILED"] {
@@ -191,38 +191,41 @@
   gap: 3px;
   padding: 2px 6px;
   border-radius: var(--hi-radius-sm);
+  background: var(--hi-status-neutral-bg);
+  color: var(--hi-status-neutral-text);
+  border: 1px solid var(--hi-status-neutral-border);
   font-size: 0.69rem;
   font-weight: 600;
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
-    border: 1px solid var(--hi-status-success-border);
+    background: var(--hi-surface);
+    color: var(--hi-text);
+    border-color: var(--hi-border);
   }
 
   &[data-status="RESERVED"] {
-    background: var(--hi-status-info-bg);
-    color: var(--hi-status-info-text);
-    border: 1px solid var(--hi-status-info-border);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text-light);
+    border-color: var(--hi-border);
   }
 
   &[data-status="AWAITING_OFFLINE_PAYMENT"] {
-    background: var(--hi-status-warning-bg);
-    color: var(--hi-status-warning-text);
-    border: 1px solid var(--hi-status-warning-border);
+    background: var(--hi-surface-soft);
+    color: var(--hi-text-light);
+    border-color: var(--hi-border);
   }
 
   &[data-status="CANCELLED"] {
-    background: var(--hi-status-danger-bg);
-    color: var(--hi-status-danger-text);
-    border: 1px solid var(--hi-status-danger-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border-color: var(--hi-status-neutral-border);
   }
 
   &[data-status="ABANDONED"] {
     background: var(--hi-status-neutral-bg);
     color: var(--hi-status-neutral-text);
-    border: 1px solid var(--hi-status-neutral-border);
+    border-color: var(--hi-status-neutral-border);
   }
 }
 
