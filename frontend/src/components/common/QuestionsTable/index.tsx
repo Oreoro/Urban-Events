@@ -114,7 +114,7 @@ const SortableQuestion = ({
                         </Tooltip>
                     )}
                     {question.required && (
-                        <Badge size="xs" variant="light" color="red">
+                        <Badge size="xs" variant="light" color="gray">
                             {t`Required`}
                         </Badge>
                     )}
