@@ -626,16 +626,16 @@
   &[data-payment-status="AWAITING_PAYMENT"],
   &[data-status="AWAITING_OFFLINE_PAYMENT"],
   &[data-payment-status="AWAITING_OFFLINE_PAYMENT"] {
-    border-color: var(--hi-status-warning-border) !important;
-    background: var(--hi-status-warning-bg) !important;
-    color: var(--hi-status-warning-text) !important;
+    border-color: var(--hi-border) !important;
+    background: var(--hi-surface) !important;
+    color: var(--hi-text-light) !important;
   }
 
   &[data-status="CANCELLED"],
   &[data-payment-status="PAYMENT_FAILED"] {
-    border-color: var(--hi-status-danger-border) !important;
-    background: var(--hi-status-danger-bg) !important;
-    color: var(--hi-status-danger-text) !important;
+    border-color: var(--hi-status-neutral-border) !important;
+    background: var(--hi-status-neutral-bg) !important;
+    color: var(--hi-status-neutral-text) !important;
   }
 }
 

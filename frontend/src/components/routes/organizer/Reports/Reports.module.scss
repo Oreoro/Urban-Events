@@ -34,6 +34,31 @@
   }
 }
 
+.eventStatusBadge {
+  min-height: 20px;
+  padding-inline: 6px;
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface-soft) !important;
+  color: var(--hi-text-muted) !important;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+
+  &[data-event-state="ongoing"],
+  &[data-event-state="on_sale"] {
+    border-color: var(--hi-border) !important;
+    background: var(--hi-surface) !important;
+    color: var(--hi-text) !important;
+  }
+
+  &[data-event-state="past"] {
+    border-color: var(--hi-status-neutral-border) !important;
+    background: var(--hi-status-neutral-bg) !important;
+    color: var(--hi-status-neutral-text) !important;
+  }
+}
+
 .reportType {
   display: flex;
   gap: 8px;
