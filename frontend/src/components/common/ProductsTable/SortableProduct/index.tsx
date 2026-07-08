@@ -78,20 +78,20 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
 
     const getStatusInfo = (product: Product) => {
         if (product.is_sold_out) {
-            return {label: t`Sold Out`, color: 'red', variant: 'filled' as const};
+            return {label: t`Sold Out`, color: 'gray', variant: 'outline' as const};
         }
         if (product.is_before_sale_start_date) {
-            return {label: t`Scheduled`, color: 'blue', variant: 'light' as const};
+            return {label: t`Scheduled`, color: 'gray', variant: 'outline' as const};
         }
         if (product.is_after_sale_end_date) {
-            return {label: t`Ended`, color: 'gray', variant: 'light' as const};
+            return {label: t`Ended`, color: 'gray', variant: 'outline' as const};
         }
         if (product.is_hidden) {
             return {label: t`Hidden`, color: 'gray', variant: 'outline' as const};
         }
         return product.is_available
-            ? {label: t`On Sale`, color: 'green', variant: 'light' as const}
-            : {label: t`Paused`, color: 'orange', variant: 'light' as const};
+            ? {label: t`On Sale`, color: 'gray', variant: 'outline' as const}
+            : {label: t`Paused`, color: 'gray', variant: 'outline' as const};
     }
 
     const getStatusTooltip = (product: Product) => {
@@ -329,7 +329,8 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     >
                                         <Badge
                                             variant="light"
-                                            color="yellow"
+                                            color="gray"
+                                            className={classes.productMetaBadge}
                                             size="sm"
                                             leftSection={<IconSparkles size={12}/>}
                                         >
@@ -391,7 +392,7 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                         <Progress
                                             value={salesProgress.percentage}
                                             size="xs"
-                                            color={salesProgress.percentage >= 100 ? 'red' : salesProgress.isLow ? 'orange' : 'green'}
+                                            color="gray"
                                             className={classes.salesProgress}
                                         />
                                         {salesProgress.isLow && salesProgress.remaining > 0 && (

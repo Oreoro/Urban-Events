@@ -30,18 +30,18 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: none;
 
   &[data-status="success"] {
-    --message-status-bg: var(--hi-status-success-bg);
-    --message-status-text: var(--hi-status-success-text);
-    --message-status-border: var(--hi-status-success-border);
+    --message-status-bg: var(--hi-surface-soft);
+    --message-status-text: var(--hi-text);
+    --message-status-border: var(--hi-border);
   }
 
   &[data-status="warning"],
   &[data-status="processing"],
   &[data-status="awaiting_payment"],
   &[data-status="offline_payment"] {
-    --message-status-bg: var(--hi-status-warning-bg);
-    --message-status-text: var(--hi-status-warning-text);
-    --message-status-border: var(--hi-status-warning-border);
+    --message-status-bg: var(--hi-surface-soft);
+    --message-status-text: var(--hi-text-muted);
+    --message-status-border: var(--hi-border);
   }
 
   &[data-status="error"],

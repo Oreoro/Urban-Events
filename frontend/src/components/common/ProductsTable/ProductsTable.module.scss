@@ -216,6 +216,14 @@ $color-money: var(--hi-text);
   flex-wrap: wrap;
 }
 
+.productMetaBadge {
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface-soft) !important;
+  color: var(--hi-text-muted) !important;
+  font-weight: 600;
+  text-transform: none;
+}
+
 .productTitle {
   margin: 0;
   font-size: 0.82rem;
@@ -230,6 +238,9 @@ $color-money: var(--hi-text);
 
 .statusBadge {
   flex-shrink: 0;
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface-soft) !important;
+  color: var(--hi-text-muted) !important;
   font-weight: 600;
   text-transform: none;
   font-size: 0.66rem;
@@ -306,7 +317,7 @@ $color-money: var(--hi-text);
   gap: 4px;
   padding: 1px 5px;
   background-color: var(--hi-shell-bg);
-  color: var(--hi-status-warning-text);
+  color: var(--hi-text-muted);
   border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
   border-radius: var(--hi-radius-sm);
   font-size: 0.65rem;
@@ -365,6 +376,10 @@ $color-money: var(--hi-text);
 .salesProgress {
   max-width: 120px;
 
+  :global(.mantine-Progress-section) {
+    background: var(--hi-text-muted) !important;
+  }
+
   @include mixins.respond-below(sm) {
     max-width: 100%;
   }
@@ -373,7 +388,7 @@ $color-money: var(--hi-text);
 .lowStock {
   font-size: 0.68rem;
   font-weight: 600;
-  color: var(--hi-status-warning-text);
+  color: var(--hi-text-light);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -383,7 +398,7 @@ $color-money: var(--hi-text);
     width: 6px;
     height: 6px;
     border-radius: var(--hi-radius-xs);
-    background-color: var(--hi-status-warning-text);
+    background-color: var(--hi-text-light);
     opacity: 0.72;
   }
 }
