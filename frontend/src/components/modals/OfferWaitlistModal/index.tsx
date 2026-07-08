@@ -185,7 +185,7 @@ const ProductOfferTable = ({products, quantities, setQuantities, onOffer, loadin
                                 {noCapacity ? (
                                     <Badge color="red" variant="light" size="sm">{t`No capacity`}</Badge>
                                 ) : product.available === null ? (
-                                    <Badge color="teal" variant="light" size="sm">{t`Unlimited`}</Badge>
+                                    <Badge variant="light" size="sm">{t`Unlimited`}</Badge>
                                 ) : (
                                     product.available
                                 )}

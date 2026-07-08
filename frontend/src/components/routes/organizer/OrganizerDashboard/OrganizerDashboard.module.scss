@@ -622,13 +622,6 @@
   letter-spacing: 0;
   text-transform: none;
 
-  &[data-status="COMPLETED"],
-  &[data-payment-status="PAYMENT_RECEIVED"] {
-    border-color: var(--hi-status-success-border) !important;
-    background: var(--hi-status-success-bg) !important;
-    color: var(--hi-status-success-text) !important;
-  }
-
   &[data-status="RESERVED"],
   &[data-payment-status="AWAITING_PAYMENT"],
   &[data-status="AWAITING_OFFLINE_PAYMENT"],

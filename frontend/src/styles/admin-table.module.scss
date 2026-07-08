@@ -64,6 +64,26 @@
     }
 }
 
+.statusBadge {
+    border-color: var(--hi-status-neutral-border) !important;
+    background: var(--hi-status-neutral-bg) !important;
+    color: var(--hi-status-neutral-text) !important;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+
+    &[data-status="LIVE"] {
+        border-color: var(--hi-border) !important;
+        background: var(--hi-surface) !important;
+        color: var(--hi-text) !important;
+    }
+
+    &[data-status="DRAFT"] {
+        border-style: dashed;
+    }
+}
+
 .emptyState {
     display: flex;
     flex-direction: column;

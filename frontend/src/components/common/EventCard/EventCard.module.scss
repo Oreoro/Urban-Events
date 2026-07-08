@@ -120,7 +120,7 @@
 
   &.status-live {
     background: var(--hi-surface);
-    color: var(--hi-status-success-text);
+    color: var(--hi-text);
     border: 1px solid var(--hi-border);
   }
 
@@ -147,7 +147,7 @@
 .pulseDot {
   width: 5px;
   height: 5px;
-  background: var(--hi-status-success-text);
+  background: var(--hi-text);
   border-radius: 50%;
   opacity: 0.75;
 }
