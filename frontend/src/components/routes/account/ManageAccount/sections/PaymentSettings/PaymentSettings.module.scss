@@ -37,12 +37,12 @@
   transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 
   &.activePlatform {
-    border: 1px solid color-mix(in srgb, var(--hi-status-success-border) 72%, var(--hi-border));
-    background: color-mix(in srgb, var(--hi-status-success-bg) 56%, var(--hi-surface));
+    border: 1px solid var(--hi-border-strong);
+    background: var(--hi-surface);
 
     &.ca {
-      border-color: color-mix(in srgb, var(--hi-status-warning-border) 72%, var(--hi-border));
-      background: color-mix(in srgb, var(--hi-status-warning-bg) 56%, var(--hi-surface));
+      border-color: var(--hi-border);
+      background: var(--hi-surface-soft);
     }
   }
 

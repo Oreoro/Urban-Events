@@ -45,12 +45,12 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
 
             {needsVatInfo && (
                 <Alert
-                    color="orange"
+                    color="gray"
                     icon={<IconAlertCircle />}
                     mb="lg"
                     styles={{
                         root: {
-                            borderLeft: '3px solid var(--hi-status-warning-border)',
+                            borderLeft: '3px solid var(--hi-border-strong)',
                         }
                     }}
                 >
@@ -61,9 +61,9 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
                     <div style={{
                         background: 'var(--hi-surface)',
                         padding: '12px',
-                        borderRadius: 'var(--hi-radius-md)',
+                        borderRadius: 'var(--hi-radius-sm)',
                         marginBottom: '12px',
-                        border: '1px solid var(--hi-status-warning-border)'
+                        border: '1px solid var(--hi-border)'
                     }}>
                         <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`EU VAT-registered businesses: Reverse charge mechanism applies (0% - Article 196 of VAT Directive 2006/112/EC)`}</Text>
                         <Text size="xs" c="var(--hi-text-light)">• {t`Non-VAT registered businesses or individuals: Irish VAT at 23% applies`}</Text>
@@ -71,8 +71,8 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
                     <div style={{
                         background: 'var(--hi-surface)',
                         padding: '12px',
-                        borderRadius: 'var(--hi-radius-md)',
-                        border: '1px solid var(--hi-status-warning-border)'
+                        borderRadius: 'var(--hi-radius-sm)',
+                        border: '1px solid var(--hi-border)'
                     }}>
                         <Text size="sm" fw={500} mb="xs" c="var(--hi-text)">{t`What you need to do:`}</Text>
                         <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`Indicate whether you're VAT-registered in the EU`}</Text>
