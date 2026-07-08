@@ -419,6 +419,19 @@ a {
   border-color: var(--hi-text-light) !important;
 }
 
+.mantine-ActionIcon-root {
+  box-shadow: none !important;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.mantine-ActionIcon-root:not([data-variant="filled"]) {
+  border-color: transparent;
+}
+
+.mantine-ActionIcon-root:not([data-variant="filled"]):hover:not([data-disabled]) {
+  border-color: var(--hi-border) !important;
+}
+
 .mantine-Menu-dropdown {
   background: var(--hi-surface);
   border-color: var(--hi-border);
@@ -438,6 +451,14 @@ a {
 .mantine-Menu-item:hover {
   background: var(--hi-control-bg-hover) !important;
   color: var(--hi-text) !important;
+}
+
+.mantine-Menu-itemSection {
+  color: var(--hi-text-muted);
+}
+
+.mantine-Menu-item:hover .mantine-Menu-itemSection {
+  color: var(--hi-text);
 }
 
 .mantine-Menu-label {
@@ -466,6 +487,30 @@ a {
 .mantine-Popover-arrow {
   border-color: var(--hi-border) !important;
   background: var(--hi-surface) !important;
+}
+
+.mantine-Combobox-dropdown,
+.mantine-Select-dropdown {
+  padding: 4px !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-surface) !important;
+  box-shadow: none !important;
+}
+
+.mantine-Combobox-option {
+  min-height: 30px;
+  border-radius: var(--hi-radius-sm);
+  color: var(--hi-text-light);
+  font-size: 0.8rem;
+  font-weight: 560;
+}
+
+.mantine-Combobox-option:hover,
+.mantine-Combobox-option[data-combobox-selected],
+.mantine-Combobox-option[data-combobox-active] {
+  background: var(--hi-control-bg-hover) !important;
+  color: var(--hi-text) !important;
 }
 
 .mantine-Table-table {
@@ -520,24 +565,78 @@ a {
 }
 
 .mantine-SegmentedControl-root {
-  background: var(--hi-control-bg-hover);
+  padding: 2px;
   border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
+  box-shadow: none;
 }
 
 .mantine-SegmentedControl-indicator {
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
   background: var(--hi-surface);
   box-shadow: none;
 }
 
-.mantine-Pagination-root {
-  display: flex;
-  justify-content: center;
+.mantine-SegmentedControl-label {
+  min-height: 24px;
+  color: var(--hi-text-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.mantine-SegmentedControl-label:hover,
+.mantine-SegmentedControl-label[data-active] {
+  color: var(--hi-text);
+}
+
+.mantine-Checkbox-input,
+.mantine-Radio-radio {
+  border-color: var(--hi-border-strong);
+  background: var(--hi-surface);
+  box-shadow: none;
+}
+
+.mantine-Checkbox-input:checked,
+.mantine-Radio-radio:checked {
+  border-color: var(--hi-text);
+  background: var(--hi-text);
+}
+
+.mantine-Checkbox-label,
+.mantine-Radio-label,
+.mantine-Switch-label {
+  color: var(--hi-text);
+  font-weight: 560;
+}
+
+.mantine-Checkbox-description,
+.mantine-Radio-description,
+.mantine-Switch-description {
+  color: var(--hi-text-muted);
+}
+
+.mantine-Switch-track {
+  border-color: var(--hi-border);
+  background: var(--hi-surface-soft);
+}
+
+.mantine-Switch-track[data-checked] {
+  border-color: var(--hi-text);
+  background: var(--hi-text);
+}
+
+.mantine-Switch-thumb {
+  border-color: var(--hi-border-strong);
+  background: var(--hi-surface);
 }
 
 .mantine-Pagination-control {
   min-width: 30px;
   height: 30px;
-  border-color: var(--hi-border) !important;
+  border: 1px solid var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm);
   background: var(--hi-surface) !important;
   color: var(--hi-text-muted) !important;
   font-size: 0.82rem;
@@ -546,14 +645,20 @@ a {
 }
 
 .mantine-Pagination-control:hover:not([data-disabled]):not([data-active]) {
-  background: var(--hi-shell-bg) !important;
+  border-color: var(--hi-border-strong) !important;
+  background: var(--hi-control-bg-hover) !important;
   color: var(--hi-text) !important;
 }
 
 .mantine-Pagination-control[data-active] {
-  background: var(--hi-text) !important;
   border-color: var(--hi-text) !important;
+  background: var(--hi-text) !important;
   color: var(--hi-color-white) !important;
+}
+
+.mantine-Pagination-root {
+  display: flex;
+  justify-content: center;
 }
 
 .mantine-SimpleGrid-root {
