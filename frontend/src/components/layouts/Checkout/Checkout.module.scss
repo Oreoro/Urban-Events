@@ -23,7 +23,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
   // Countdown timer colors - semantic colors that don't change with theme
   .countdown {
-    color: var(--hi-status-success-text);
+    color: var(--checkout-text-primary, var(--hi-text));
     font-weight: 600;
   }
 

@@ -13,14 +13,14 @@
 .header {
   text-align: left;
   margin-bottom: 18px;
-  padding: 20px;
+  padding: 16px;
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
 
   h1 {
-    margin: 12px 0 6px;
-    font-size: 1.42rem;
+    margin: 10px 0 5px;
+    font-size: 1.22rem;
     font-weight: 650;
     color: var(--hi-text);
 
@@ -59,11 +59,11 @@
 .ordersList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   margin-top: 14px;
 
   @include mixins.respond-below(md) {
-    gap: 16px;
+    gap: 10px;
   }
 }
 
@@ -71,8 +71,8 @@
   position: relative;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   border: 1px solid var(--hi-border);
-  padding: 14px;
-  border-radius: var(--hi-radius-md);
+  padding: 12px;
+  border-radius: var(--hi-radius-sm);
 
   &:hover {
     transform: none;
@@ -121,9 +121,9 @@
   align-items: center;
   min-height: 22px;
   padding: 2px 8px;
-  color: var(--hi-status-success-text);
-  background: var(--hi-status-success-bg);
-  border: 1px solid var(--hi-status-success-border);
+  color: var(--hi-text);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-sm);
   font-size: 0.72rem;
   font-weight: 580;
@@ -141,16 +141,10 @@
 
 .detailItem {
   min-width: 0;
-  padding: 9px 11px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-
-  &:hover {
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
-  }
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 
   @include mixins.respond-below(md) {
     margin-bottom: 4px;
@@ -189,7 +183,7 @@
 .requestCard {
   margin-top: 24px;
   padding: 16px;
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
 }
 
 .requestHeader {
@@ -222,7 +216,7 @@
 .primaryAction {
   background: var(--hi-text) !important;
   border: 1px solid var(--hi-text) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
   color: var(--hi-color-white) !important;
   font-weight: 600 !important;
 
@@ -234,7 +228,7 @@
 
 .secondaryAction {
   color: var(--hi-text-muted) !important;
-  border-radius: var(--hi-radius-md) !important;
+  border-radius: var(--hi-radius-sm) !important;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
@@ -243,10 +237,10 @@
 }
 
 .successMessage {
-  text-align: center;
-  padding: 14px;
+  text-align: left;
+  padding: 10px 12px;
   background: var(--hi-surface-soft);
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   border: 1px solid var(--hi-border);
 
   p {
