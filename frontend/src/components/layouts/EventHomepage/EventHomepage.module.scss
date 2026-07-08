@@ -1321,12 +1321,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .mainCard {
   background: var(--hi-surface);
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-color: var(--hi-border);
   border-radius: var(--hi-radius-md);
 }
 
 .mainCard:hover {
-  border-color: var(--hi-border-strong);
+  border-color: var(--hi-border);
 }
 
 .coverWrapper {
@@ -1340,7 +1340,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .statusBadge,
 .organizerPill,
 .actionButton,
-.metaIconBox,
 .addToCalendarButton,
 .mapOverlayLabel,
 .socialLink,
@@ -1381,6 +1380,50 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--hi-text-muted);
 }
 
+.metaItem {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.metaItem + .metaItem {
+  border-top: 1px solid var(--hi-border);
+}
+
+.metaIconBox {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.addToCalendarButton {
+  align-self: flex-start;
+  border-color: transparent;
+  padding: 5px 8px;
+}
+
+.statusBadge {
+  padding: 5px 8px;
+  font-size: 0.72rem;
+}
+
+.organizerPill {
+  padding: 4px 7px 4px 4px;
+}
+
 .metaLink,
 .directionsLink,
 .readMoreToggle,
@@ -1413,10 +1456,6 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-color: var(--hi-border);
 }
 
-.metaItem {
-  align-items: flex-start;
-}
-
 .ticketsSection {
   :global(.hi-product-rows),
   :global(.hi-product-category-rows) {
@@ -1426,7 +1465,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-row) {
     background: var(--hi-surface);
     border-color: var(--hi-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     border-width: 1px;
     margin-bottom: 0;
 
@@ -1446,8 +1485,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-row.hi-product-highlighted),
   :global(.hi-product-row.selected) {
-    background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
-    border-color: color-mix(in srgb, var(--hi-text) 18%, var(--hi-border));
+    background: var(--hi-surface-soft);
+    border-color: var(--hi-border-strong);
   }
 
   :global(.hi-product-title) {

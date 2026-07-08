@@ -652,13 +652,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .heroSection,
 .eventsSection {
   background: var(--hi-surface);
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-color: var(--hi-border);
   border-radius: var(--hi-radius-md);
 }
 
 .heroSection:hover,
 .eventsSection:hover {
-  border-color: var(--hi-border-strong);
+  border-color: var(--hi-border);
 }
 
 .coverWrapper {
@@ -694,10 +694,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .metaItem {
-  padding: 5px 9px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: var(--hi-radius-sm);
-  background: color-mix(in srgb, var(--hi-surface) 88%, var(--hi-shell-bg));
+  padding: 2px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  gap: 6px;
 }
 
 .logoWrapper,
