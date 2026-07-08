@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
-    height: 36px;
+    height: 40px;
     border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text);
 
@@ -24,7 +24,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 5px 24px;
+    padding: 6px 24px;
     border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
@@ -34,7 +34,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 31px;
+    min-height: 34px;
 
     @include mixins.respond-above(xl) {
       padding-inline: 28px;

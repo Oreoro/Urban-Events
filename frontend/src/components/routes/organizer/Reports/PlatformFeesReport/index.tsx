@@ -113,7 +113,7 @@ const PlatformFeesReport = () => {
                 className={classes.notice}
                 icon={<IconAlertTriangle size={16} />}
                 title={t`Important Notice`}
-                color="yellow"
+                color="gray"
                 mb="lg"
             >
                 {t`This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Urban Events may be missing historical data.`}

@@ -31,14 +31,14 @@
     grid-area: main;
     padding: 18px 24px 48px;
     overflow: auto;
-    background: var(--hi-surface);
+    background: var(--hi-shell-bg);
     color: var(--hi-text);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
       padding: 16px 14px 44px;
-      background: var(--hi-surface);
+      background: var(--hi-shell-bg);
     }
 
     @media (min-width: 1280px) {

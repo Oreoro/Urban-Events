@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   grid-area: sidebar;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-surface);
   color: var(--hi-text);
   position: relative;
   border-right: 1px solid var(--hi-border);
@@ -25,7 +25,7 @@
     position: relative;
     z-index: 1;
     padding: 5px 0;
-    min-height: 38px;
+    min-height: 44px;
     margin-bottom: 0;
     border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
     flex-shrink: 0;
@@ -34,14 +34,14 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 6px 12px;
+      padding: 7px 12px;
       color: var(--hi-text);
       line-height: 1;
       border-radius: var(--hi-radius-sm);
-      margin: 0 7px;
+      margin: 0 8px;
 
       &:hover {
-        background: var(--hi-control-bg-hover);
+        background: var(--hi-surface);
       }
     }
   }
@@ -93,17 +93,17 @@
       align-items: center;
       color: var(--hi-text-light);
       min-height: 27px;
-      padding: 3px 7px;
+      padding: 5px 8px;
       text-decoration: none;
-      margin: 1px 5px;
+      margin: 2px 8px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
       transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 10px);
+      width: calc(100% - 16px);
       background: transparent;
       border: 1px solid transparent;
       text-align: left;
@@ -137,20 +137,20 @@
       }
 
       &.linkActive {
-        background: var(--hi-control-bg-active);
-        border-color: transparent;
+        background: var(--hi-surface);
+        border-color: var(--hi-border);
         color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
 
         .linkIcon {
-          color: var(--hi-text-light);
+          color: var(--hi-text);
         }
       }
 
       &:hover {
-        background: var(--hi-control-bg-hover);
-        border-color: transparent;
+        background: var(--hi-surface);
+        border-color: var(--hi-border);
         color: var(--hi-text);
       }
 

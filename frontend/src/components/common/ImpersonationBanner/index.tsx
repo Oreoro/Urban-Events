@@ -43,8 +43,7 @@ const ImpersonationBanner = () => {
                 </span>
             </div>
             <Button
-                variant="white"
-                color="orange"
+                variant="default"
                 size="sm"
                 onClick={handleStopImpersonation}
                 loading={stopImpersonationMutation.isPending}

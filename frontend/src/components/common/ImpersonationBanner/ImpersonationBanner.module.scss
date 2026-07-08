@@ -2,15 +2,15 @@
   position: sticky;
   top: 0;
   z-index: 11;
-  background: var(--hi-status-warning-bg);
+  background: var(--hi-surface);
   color: var(--hi-text);
-  padding: 0.75rem 1.5rem;
+  padding: 0.62rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   box-shadow: none;
-  border-bottom: 1px solid var(--hi-status-warning-border);
+  border-bottom: 1px solid var(--hi-border);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -33,6 +33,7 @@
 
 .icon {
   flex-shrink: 0;
+  color: var(--hi-text-muted);
 }
 
 .text {
@@ -51,6 +52,16 @@
 
 .button {
   flex-shrink: 0;
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface-soft) !important;
+  color: var(--hi-text) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  font-weight: 600 !important;
+
+  &:hover {
+    background: var(--hi-control-bg-hover) !important;
+    border-color: var(--hi-border-strong) !important;
+  }
 
   @media (max-width: 768px) {
     width: 100%;
