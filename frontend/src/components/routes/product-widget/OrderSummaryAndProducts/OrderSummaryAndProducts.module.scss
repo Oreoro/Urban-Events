@@ -4,29 +4,36 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 
 .welcomeHeader {
   margin-bottom: 16px;
-  padding: 20px 18px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  padding: 14px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 3px;
+  align-items: flex-start;
   background: var(--checkout-surface, var(--hi-surface));
-  border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-  border-radius: var(--hi-radius-md);
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
 }
 
 .statusIcon {
-  width: 36px;
-  height: 36px;
+  grid-row: 1 / span 3;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
-  background: var(--checkout-surface, var(--hi-surface));
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-md);
-  margin-bottom: 8px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .welcomeMessage {
@@ -38,6 +45,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .confirmationText {
+  grid-column: 2;
   font-size: 0.84rem;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
 
@@ -48,6 +56,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .selfServiceHint {
+  grid-column: 2;
   font-size: 0.8rem;
   color: var(--checkout-text-tertiary, var(--hi-text-muted));
   margin-top: 4px;
@@ -74,8 +83,8 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .successAlert {
-  background-color: var(--hi-status-success-bg) !important;
-  border-color: var(--hi-status-success-border) !important;
+  background-color: var(--hi-surface-soft) !important;
+  border-color: var(--checkout-border, var(--hi-border)) !important;
 }
 
 .successAlertText {
@@ -85,16 +94,10 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .detailItem {
   min-width: 0;
   overflow: hidden;
-  padding: 9px 10px;
-  border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-  border-radius: var(--hi-radius-md);
-  background: var(--checkout-surface, var(--hi-surface));
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-
-  &:hover {
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
-  }
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 
   .detailContent {
     min-width: 0;
@@ -122,7 +125,11 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .guestList {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0;
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
+  background: var(--checkout-surface, var(--hi-surface));
+  overflow: hidden;
 }
 
 .guestItem {
@@ -130,15 +137,19 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   align-items: center;
   justify-content: space-between;
   padding: 9px 10px;
-  border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-  border-radius: var(--hi-radius-md);
-  background: var(--checkout-surface, var(--hi-surface));
+  border: 0;
+  border-bottom: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: 0;
+  background: transparent;
   gap: 12px;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
+  }
+
+  &:last-child {
+    border-bottom: 0;
   }
 
   @include mixins.respond-below(sm) {

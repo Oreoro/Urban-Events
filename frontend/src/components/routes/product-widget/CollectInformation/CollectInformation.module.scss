@@ -8,22 +8,22 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .waitlistBanner {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  padding: 12px 14px;
+  gap: 10px;
+  padding: 10px 12px;
   margin-bottom: 16px;
-  border-radius: $radius-sm;
-  background: color-mix(in srgb, var(--checkout-background, var(--hi-shell-bg)) 72%, var(--checkout-surface, var(--hi-surface)));
-  border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
+  border: 1px solid var(--checkout-border, var(--hi-border));
 }
 
 .waitlistBannerIcon {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  border-radius: $radius-sm;
-  background: var(--checkout-surface, var(--hi-surface));
+  border-radius: var(--hi-radius-sm);
+  background: transparent;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
-  border: 1px solid var(--checkout-border, var(--hi-border));
+  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +60,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .validEmailIcon {
-  color: var(--hi-status-success-text);
+  color: var(--checkout-text-secondary, var(--hi-text-muted));
 }
 
 .copyDetailsSection {
@@ -126,8 +126,8 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .attendeeCard {
   position: relative;
   background: var(--checkout-surface, var(--hi-surface));
-  border-color: color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-  border-radius: var(--hi-radius-md);
+  border-color: var(--checkout-border, var(--hi-border)) !important;
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
 }
 
@@ -145,12 +145,12 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .attendeeNumber {
-  width: 28px;
-  height: 28px;
-  border-radius: $radius-sm;
-  background: var(--checkout-surface, var(--hi-surface));
+  width: 22px;
+  height: 22px;
+  border-radius: var(--hi-radius-sm);
+  background: transparent;
   color: var(--checkout-text-secondary, var(--hi-text-muted));
-  border: 1px solid var(--checkout-border, var(--hi-border));
+  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,9 +174,9 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .copiedBadge {
-  background: var(--hi-status-success-bg);
-  color: var(--hi-status-success-text);
-  border: 1px solid var(--hi-status-success-border);
+  background: var(--hi-status-neutral-bg);
+  color: var(--hi-status-neutral-text);
+  border: 1px solid var(--hi-status-neutral-border);
   font-size: 12px;
   padding: 4px 8px;
   border-radius: $radius-xs;

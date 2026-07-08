@@ -26,10 +26,10 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 5px;
-  padding: 4px;
-  border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-  border-radius: var(--hi-radius-md);
-  background: var(--checkout-surface, var(--hi-surface));
+  padding: 3px;
+  border: 1px solid var(--checkout-border, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-surface-soft);
 }
 
 .paymentMethodTab {
@@ -41,7 +41,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 7px 11px;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: $radius-sm;
+  border-radius: var(--hi-radius-sm);
   cursor: pointer;
   font-size: 0.84rem;
   font-weight: 560;
