@@ -62,7 +62,7 @@ export const EventDashboard = () => {
         if (dismissed === 'true') {
             setIsChecklistVisible(false);
         }
-    }, []);
+    }, [eventId]);
 
     const dismissChecklist = () => {
         setIsChecklistVisible(false);
@@ -88,7 +88,7 @@ export const EventDashboard = () => {
                     }
                     showSuccess(t`Event status updated`);
                 },
-                onError: (error: any) => {
+                onError: (error: { response?: { data?: { message?: string } } }) => {
                     showError(error?.response?.data?.message || t`Event status update failed. Please try again later`);
                 }
             });
@@ -128,6 +128,27 @@ export const EventDashboard = () => {
                             </div>
                         </div>
                     </div>
+
+                    {event && (
+                        <div className={classes.workspaceViews} aria-label={t`Dashboard views`}>
+                            <span className={classes.workspaceView} data-active="true">
+                                <span className={classes.viewDot} data-tone="blue"/>
+                                <Trans>Overview</Trans>
+                            </span>
+                            <span className={classes.workspaceView}>
+                                <span className={classes.viewDot} data-tone="purple"/>
+                                <Trans>Sales board</Trans>
+                            </span>
+                            <span className={classes.workspaceView}>
+                                <span className={classes.viewDot} data-tone="green"/>
+                                <Trans>Guest list</Trans>
+                            </span>
+                            <span className={classes.workspaceView}>
+                                <span className={classes.viewDot} data-tone="orange"/>
+                                <Trans>Timeline</Trans>
+                            </span>
+                        </div>
+                    )}
 
                     {!event && <DashBoardSkeleton/>}
 
@@ -256,129 +277,131 @@ export const EventDashboard = () => {
                     </Card>
                 )}
 
-                <div className={classes.analyticsToolbar}>
-                    <div className={classes.analyticsTitleGroup}>
-                        <h2>{t`Analytics`}</h2>
-                        {dateRangeLabel && <span>{dateRangeLabel}</span>}
-                    </div>
-                    <div className={classes.dateRangeSelector}>
-                        <SegmentedControl
-                            value={effectiveDateRange}
-                            onChange={setDateRange}
-                            data={[
-                                {
-                                    label: (
-                                        <Tooltip label={t`Last 30 days`} withArrow>
-                                            <span>{t`Recent`}</span>
-                                        </Tooltip>
-                                    ),
-                                    value: 'last_30_days',
-                                },
-                                {
-                                    label: (
-                                        <Tooltip label={t`First 7 days from event start`} withArrow>
-                                            <span>{t`Week`}</span>
-                                        </Tooltip>
-                                    ),
-                                    value: 'week',
-                                },
-                                {
-                                    label: (
-                                        <Tooltip label={t`First 30 days from event start`} withArrow>
-                                            <span>{t`Month`}</span>
-                                        </Tooltip>
-                                    ),
-                                    value: 'month',
-                                },
-                                {
-                                    label: (
-                                        <Tooltip label={t`First 90 days from event start`} withArrow>
-                                            <span>{t`Quarter`}</span>
-                                        </Tooltip>
-                                    ),
-                                    value: 'quarter',
-                                },
-                                {
-                                    label: (
-                                        <Tooltip label={t`Full event duration`} withArrow>
-                                            <span>{t`Event`}</span>
-                                        </Tooltip>
-                                    ),
-                                    value: 'event',
-                                },
-                            ]}
-                            size="xs"
-                        />
-                    </div>
-                </div>
-
-                <div className={classes.chartsGrid}>
-                    <Card className={classes.chartCard}>
-                        <div className={classes.chartCardTitle}>
-                            <h2>{t`Product Sales`}</h2>
-                            <span>{t`Orders, products, and attendee activity`}</span>
+                <section className={classes.analyticsBoard}>
+                    <div className={classes.analyticsToolbar}>
+                        <div className={classes.analyticsTitleGroup}>
+                            <h2>{t`Analytics`}</h2>
+                            {dateRangeLabel && <span>{dateRangeLabel}</span>}
                         </div>
-                        <div className={classes.chartCanvas}>
-                            <AreaChart
-                                h={235}
-                                data={eventStats?.daily_stats.map(stat => ({
-                                    date: formatDateWithLocale(stat.date, 'chartDate', event.timezone),
-                                    orders_created: stat.orders_created,
-                                    products_sold: stat.products_sold,
-                                    attendees_registered: stat.attendees_registered,
-                                })) || []}
-                                dataKey="date"
-                                withLegend
-                                legendProps={{verticalAlign: 'bottom', height: 50}}
-                                series={[
-                                    {name: 'orders_created', color: 'slate.5', label: t`Completed Orders`},
-                                    {name: 'products_sold', color: 'primary.6', label: t`Products Sold`},
-                                    {name: 'attendees_registered', color: 'slate.3', label: t`Attendees Registered`},
+                        <div className={classes.dateRangeSelector}>
+                            <SegmentedControl
+                                value={effectiveDateRange}
+                                onChange={setDateRange}
+                                data={[
+                                    {
+                                        label: (
+                                            <Tooltip label={t`Last 30 days`} withArrow>
+                                                <span>{t`Recent`}</span>
+                                            </Tooltip>
+                                        ),
+                                        value: 'last_30_days',
+                                    },
+                                    {
+                                        label: (
+                                            <Tooltip label={t`First 7 days from event start`} withArrow>
+                                                <span>{t`Week`}</span>
+                                            </Tooltip>
+                                        ),
+                                        value: 'week',
+                                    },
+                                    {
+                                        label: (
+                                            <Tooltip label={t`First 30 days from event start`} withArrow>
+                                                <span>{t`Month`}</span>
+                                            </Tooltip>
+                                        ),
+                                        value: 'month',
+                                    },
+                                    {
+                                        label: (
+                                            <Tooltip label={t`First 90 days from event start`} withArrow>
+                                                <span>{t`Quarter`}</span>
+                                            </Tooltip>
+                                        ),
+                                        value: 'quarter',
+                                    },
+                                    {
+                                        label: (
+                                            <Tooltip label={t`Full event duration`} withArrow>
+                                                <span>{t`Event`}</span>
+                                            </Tooltip>
+                                        ),
+                                        value: 'event',
+                                    },
                                 ]}
-                                curveType="linear"
-                                tickLine="none"
-                                areaChartProps={{syncId: 'events'}}
+                                size="xs"
                             />
                         </div>
-                    </Card>
+                    </div>
 
-                    <Card className={classes.chartCard}>
-                        <div className={classes.chartCardTitle}>
-                            <h2>{t`Revenue`}</h2>
-                            <span>{t`Gross sales, fees, tax, and refunds`}</span>
-                        </div>
-
-                        <div className={classes.chartCanvas}>
-                            <AreaChart
-                                h={235}
-                                pl={34}
-                                pr={26}
-                                data={eventStats?.daily_stats.map(stat => {
-                                    return ({
+                    <div className={classes.chartsGrid}>
+                        <Card className={classes.chartCard}>
+                            <div className={classes.chartCardTitle}>
+                                <h2>{t`Product Sales`}</h2>
+                                <span>{t`Orders, products, and attendee activity`}</span>
+                            </div>
+                            <div className={classes.chartCanvas}>
+                                <AreaChart
+                                    h={235}
+                                    data={eventStats?.daily_stats.map(stat => ({
                                         date: formatDateWithLocale(stat.date, 'chartDate', event.timezone),
-                                        total_fees: stat.total_fees,
-                                        total_sales_gross: stat.total_sales_gross,
-                                        total_tax: stat.total_tax,
-                                        total_refunded: stat.total_refunded,
-                                    });
-                                }) || []}
-                                dataKey="date"
-                                valueFormatter={(value) => formatCurrency(value, event.currency)}
-                                withLegend
-                                legendProps={{verticalAlign: 'bottom', height: 50}}
-                                series={[
-                                    {name: 'total_fees', label: t`Total Fees`, color: 'slate.5'},
-                                    {name: 'total_sales_gross', label: t`Gross Sales`, color: 'primary.6'},
-                                    {name: 'total_tax', label: t`Total Tax`, color: 'slate.3'},
-                                    {name: 'total_refunded', label: t`Total Refunded`, color: 'slate.7'},
-                                ]}
-                                curveType="linear"
-                                tickLine="none"
-                                areaChartProps={{syncId: 'events'}}
-                            />
-                        </div>
-                    </Card>
-                </div>
+                                        orders_created: stat.orders_created,
+                                        products_sold: stat.products_sold,
+                                        attendees_registered: stat.attendees_registered,
+                                    })) || []}
+                                    dataKey="date"
+                                    withLegend
+                                    legendProps={{verticalAlign: 'bottom', height: 50}}
+                                    series={[
+                                        {name: 'orders_created', color: 'slate.5', label: t`Completed Orders`},
+                                        {name: 'products_sold', color: 'primary.6', label: t`Products Sold`},
+                                        {name: 'attendees_registered', color: 'slate.3', label: t`Attendees Registered`},
+                                    ]}
+                                    curveType="linear"
+                                    tickLine="none"
+                                    areaChartProps={{syncId: 'events'}}
+                                />
+                            </div>
+                        </Card>
+
+                        <Card className={classes.chartCard}>
+                            <div className={classes.chartCardTitle}>
+                                <h2>{t`Revenue`}</h2>
+                                <span>{t`Gross sales, fees, tax, and refunds`}</span>
+                            </div>
+
+                            <div className={classes.chartCanvas}>
+                                <AreaChart
+                                    h={235}
+                                    pl={34}
+                                    pr={26}
+                                    data={eventStats?.daily_stats.map(stat => {
+                                        return ({
+                                            date: formatDateWithLocale(stat.date, 'chartDate', event.timezone),
+                                            total_fees: stat.total_fees,
+                                            total_sales_gross: stat.total_sales_gross,
+                                            total_tax: stat.total_tax,
+                                            total_refunded: stat.total_refunded,
+                                        });
+                                    }) || []}
+                                    dataKey="date"
+                                    valueFormatter={(value) => formatCurrency(value, event.currency)}
+                                    withLegend
+                                    legendProps={{verticalAlign: 'bottom', height: 50}}
+                                    series={[
+                                        {name: 'total_fees', label: t`Total Fees`, color: 'slate.5'},
+                                        {name: 'total_sales_gross', label: t`Gross Sales`, color: 'primary.6'},
+                                        {name: 'total_tax', label: t`Total Tax`, color: 'slate.3'},
+                                        {name: 'total_refunded', label: t`Total Refunded`, color: 'slate.7'},
+                                    ]}
+                                    curveType="linear"
+                                    tickLine="none"
+                                    areaChartProps={{syncId: 'events'}}
+                                />
+                            </div>
+                        </Card>
+                    </div>
+                </section>
             </>)}
             </div>
         </PageBody>

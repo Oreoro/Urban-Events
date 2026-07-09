@@ -29,16 +29,18 @@
 .statistic {
   display: flex;
   align-items: stretch;
-  padding: 8px 10px !important;
+  padding: 10px 12px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  min-height: 58px;
+  min-height: 66px;
   border: 0 !important;
   border-right: 1px solid var(--hi-app-panel-border) !important;
   border-bottom: 1px solid var(--hi-app-panel-border) !important;
   border-color: var(--hi-app-panel-border) !important;
   box-shadow: none !important;
-  background: transparent !important;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 5%, transparent), transparent 62%),
+    transparent !important;
   border-radius: 0 !important;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 
@@ -60,11 +62,11 @@
     flex-direction: column;
     justify-content: space-between;
     min-width: 0;
-    min-height: 40px;
-    gap: 5px;
+    min-height: 46px;
+    gap: 7px;
 
     .number {
-      font-size: 0.94rem;
+      font-size: 1.03rem;
       font-weight: 650;
       letter-spacing: 0;
       line-height: 1.12;
@@ -82,7 +84,7 @@
       gap: 5px;
       font-size: 0.7rem;
       color: var(--hi-text-muted);
-      font-weight: 560;
+      font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
       line-height: 1.25;
@@ -91,14 +93,16 @@
     .labelIcon {
       display: inline-grid;
       place-items: center;
-      width: 16px;
-      height: 16px;
-      color: color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 78%, transparent);
+      width: 18px;
+      height: 18px;
+      border-radius: var(--hi-radius-sm);
+      background: color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 16%, var(--hi-surface));
+      color: color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 88%, var(--hi-text));
       flex: 0 0 auto;
 
       svg {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
       }
     }
   }
