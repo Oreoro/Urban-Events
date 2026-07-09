@@ -2,21 +2,20 @@
 
 .topBar {
   grid-area: topbar;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--hi-accent-yellow-bg) 18%, var(--hi-surface)), color-mix(in srgb, var(--hi-accent-blue-bg) 22%, var(--hi-surface)));
+  background: var(--hi-shell-bg);
   display: flex;
   flex-direction: column;
   transition: border-color 0.15s ease;
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 42%, var(--hi-border));
 
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    height: 42px;
-    border-bottom: 0;
+    padding: 0 12px;
+    height: 40px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
     color: var(--hi-text);
 
     @include mixins.respond-below(md) {
@@ -25,9 +24,9 @@
   }
 
   .breadcrumbsRow {
-    padding: 7px var(--app-page-gutter, 28px);
-    border-bottom: 0;
-    background: linear-gradient(90deg, color-mix(in srgb, var(--hi-accent-yellow-bg) 14%, var(--hi-surface)), color-mix(in srgb, var(--hi-accent-blue-bg) 20%, var(--hi-surface)));
+    padding: 5px var(--app-page-gutter, 28px);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
+    background-color: var(--hi-shell-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,22 +34,10 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 38px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: var(--app-page-gutter, 28px);
-      bottom: 0;
-      left: var(--app-page-gutter, 28px);
-      height: 2px;
-      border-radius: 999px;
-      background: var(--hi-app-accent-strip);
-      opacity: 0.72;
-    }
+    min-height: 34px;
 
     @include mixins.respond-below(md) {
-      padding-block: 8px;
+      padding-block: 10px;
     }
   }
 
@@ -73,7 +60,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.78rem;
+    font-size: 0.79rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -117,13 +104,13 @@
       transition: color 0.14s ease, background-color 0.14s ease;
       position: relative;
       border-radius: var(--hi-radius-sm);
-      padding: 3px 6px;
+      padding: 2px 6px;
       margin-left: -4px;
       @include mixins.ellipsis();
 
       &:hover {
-        color: var(--hi-primary);
-        background: color-mix(in srgb, var(--hi-accent-blue-bg) 68%, var(--hi-surface));
+        color: var(--hi-text);
+        background: var(--hi-control-bg-hover);
       }
 
       &:last-child {
@@ -141,7 +128,7 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 5px;
+    gap: 4px;
   }
 
   .statusToggleContainer {
@@ -157,7 +144,7 @@
   }
 
   &.withShadow {
-    box-shadow: 0 1px 0 color-mix(in srgb, var(--hi-border) 62%, transparent);
+    box-shadow: none;
   }
 
   .burger {
@@ -192,7 +179,7 @@
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: linear-gradient(90deg, color-mix(in srgb, var(--hi-accent-yellow-bg) 18%, var(--hi-surface)), color-mix(in srgb, var(--hi-accent-blue-bg) 22%, var(--hi-surface)));
+      background: var(--hi-shell-bg);
     }
   }
 
@@ -207,8 +194,8 @@
     border-radius: var(--hi-radius-sm);
 
     &:hover {
-      color: var(--hi-primary);
-      background: color-mix(in srgb, var(--hi-accent-blue-bg) 68%, var(--hi-surface));
+      color: var(--hi-text);
+      background: var(--hi-control-bg-hover);
     }
 
     .entityPageButtonText {

@@ -31,13 +31,6 @@ export const urbanEventsColors = {
     stickerOrangeDeep: "#B24700",
     stickerTeal: "#2A9D99",
     stickerGreen: "#1AAE39",
-    pastelBlue: "#E8F3FF",
-    pastelYellow: "#FFF4CF",
-    pastelGreen: "#E9F7EF",
-    pastelPink: "#FFEAF6",
-    pastelPurple: "#F2E9FF",
-    pastelOrange: "#FFF0DF",
-    pastelTeal: "#E6F7F5",
     teal: "#2A9D99",
     tealDeep: "#1E6F6C",
     plum: "#391C57",
@@ -146,33 +139,26 @@ export const getUrbanEventsTheme = () => createTheme({
         stickerOrange: generateColors(urbanEventsColors.stickerOrange),
         stickerTeal: generateColors(urbanEventsColors.stickerTeal),
         stickerGreen: generateColors(urbanEventsColors.stickerGreen),
-        notionBlue: generateColors(urbanEventsColors.pastelBlue),
-        notionYellow: generateColors(urbanEventsColors.pastelYellow),
-        notionGreen: generateColors(urbanEventsColors.pastelGreen),
-        notionPink: generateColors(urbanEventsColors.pastelPink),
-        notionPurple: generateColors(urbanEventsColors.pastelPurple),
-        notionOrange: generateColors(urbanEventsColors.pastelOrange),
-        notionTeal: generateColors(urbanEventsColors.pastelTeal),
     },
     primaryColor: "primary",
     primaryShade: 7,
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     headings: {
         fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        fontWeight: "700",
+        fontWeight: "650",
         sizes: {
-            h1: {fontSize: "2.05rem", lineHeight: "1.06"},
-            h2: {fontSize: "1.42rem", lineHeight: "1.15"},
-            h3: {fontSize: "1.08rem", lineHeight: "1.25"},
+            h1: {fontSize: "1.75rem", lineHeight: "1.16"},
+            h2: {fontSize: "1.35rem", lineHeight: "1.2"},
+            h3: {fontSize: "1.12rem", lineHeight: "1.25"},
         },
     },
     defaultRadius: "sm",
     fontSizes: {
-        xs: "0.72rem",
-        sm: "0.8125rem",
-        md: "0.875rem",
-        lg: "1rem",
-        xl: "1.18rem",
+        xs: "0.75rem",
+        sm: "0.875rem",
+        md: "0.9375rem",
+        lg: "1.0625rem",
+        xl: "1.25rem",
     },
     lineHeights: {
         xs: "1.35",
@@ -189,11 +175,11 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "8px",
     },
     shadows: {
-        xs: "0 1px 1px rgba(15, 15, 15, 0.025)",
-        sm: "0 1px 2px rgba(15, 15, 15, 0.03), 0 10px 28px rgba(15, 15, 15, 0.035)",
-        md: "0 2px 8px rgba(15, 15, 15, 0.04), 0 22px 54px rgba(15, 15, 15, 0.055)",
-        lg: "0 4px 16px rgba(15, 15, 15, 0.05), 0 30px 76px rgba(15, 15, 15, 0.065)",
-        xl: "0 8px 30px rgba(15, 15, 15, 0.06), 0 42px 96px rgba(15, 15, 15, 0.075)",
+        xs: "0 1px 1px rgba(15, 15, 15, 0.03)",
+        sm: "0 1px 2px rgba(15, 15, 15, 0.035), 0 8px 18px rgba(15, 15, 15, 0.035)",
+        md: "0 2px 6px rgba(15, 15, 15, 0.04), 0 18px 42px rgba(15, 15, 15, 0.055)",
+        lg: "0 4px 14px rgba(15, 15, 15, 0.05), 0 26px 64px rgba(15, 15, 15, 0.065)",
+        xl: "0 8px 28px rgba(15, 15, 15, 0.06), 0 38px 90px rgba(15, 15, 15, 0.075)",
     },
     components: {
         ActionIcon: {
@@ -250,8 +236,7 @@ export const getUrbanEventsTheme = () => createTheme({
                 root: {
                     fontWeight: 600,
                     letterSpacing: 0,
-                    minHeight: "2.125rem",
-                    fontSize: "0.84rem",
+                    minHeight: "2rem",
                     transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
                 },
                 label: {
@@ -270,8 +255,7 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 root: {
-                    borderColor: "var(--hi-app-panel-border)",
-                    boxShadow: "inset 0 2px 0 color-mix(in srgb, var(--hi-accent-blue-border) 48%, transparent), var(--hi-shadow-xs)",
+                    borderColor: "var(--hi-border)",
                 },
             },
         },
@@ -305,18 +289,15 @@ export const getUrbanEventsTheme = () => createTheme({
                     borderColor: "var(--hi-border-strong)",
                     color: "var(--hi-text)",
                     fontWeight: 480,
-                    minHeight: "2.125rem",
-                    fontSize: "0.84rem",
+                    minHeight: "2rem",
                     backgroundColor: "var(--hi-control-bg)",
                 },
                 label: {
                     color: "var(--hi-text)",
-                    fontSize: "0.82rem",
-                    fontWeight: 650,
+                    fontWeight: 600,
                 },
                 description: {
                     color: "var(--hi-text-muted)",
-                    fontSize: "0.75rem",
                 },
             },
         },
@@ -327,12 +308,11 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 dropdown: {
-                    borderColor: "var(--hi-app-panel-border)",
-                    boxShadow: "var(--hi-shadow-md)",
+                    borderColor: "var(--hi-border)",
+                    boxShadow: "none",
                 },
                 item: {
-                    fontSize: "0.82rem",
-                    fontWeight: 560,
+                    fontWeight: 600,
                 },
             },
         },
@@ -353,8 +333,7 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 root: {
-                    borderColor: "var(--hi-app-panel-border)",
-                    boxShadow: "inset 0 2px 0 color-mix(in srgb, var(--hi-accent-yellow-border) 38%, transparent), var(--hi-shadow-xs)",
+                    borderColor: "var(--hi-border)",
                 },
             },
         },
@@ -365,8 +344,8 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 dropdown: {
-                    borderColor: "var(--hi-app-panel-border)",
-                    boxShadow: "var(--hi-shadow-md)",
+                    borderColor: "var(--hi-border)",
+                    boxShadow: "none",
                 },
             },
         },
@@ -390,8 +369,7 @@ export const getUrbanEventsTheme = () => createTheme({
                     borderColor: "var(--hi-border)",
                 },
                 label: {
-                    fontSize: "0.78rem",
-                    fontWeight: 620,
+                    fontWeight: 600,
                 },
             },
         },
@@ -408,11 +386,9 @@ export const getUrbanEventsTheme = () => createTheme({
                 },
                 th: {
                     fontWeight: 600,
-                    fontSize: "0.72rem",
                     color: "var(--hi-text-muted)",
                 },
                 td: {
-                    fontSize: "0.82rem",
                     color: "var(--hi-text)",
                 },
             },

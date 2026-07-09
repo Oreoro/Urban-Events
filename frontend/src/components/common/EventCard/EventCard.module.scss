@@ -4,19 +4,19 @@
   overflow: hidden;
   padding: 0 !important;
   margin-bottom: 0 !important;
-  border-color: color-mix(in srgb, var(--hi-accent-blue-border) 34%, var(--hi-app-panel-border)) !important;
+  border-color: var(--hi-border) !important;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   container-type: inline-size;
   min-width: 240px;
   position: relative;
   border-radius: var(--hi-radius-sm) !important;
-  background: linear-gradient(180deg, var(--hi-surface), color-mix(in srgb, var(--hi-accent-yellow-bg) 12%, var(--hi-surface))) !important;
-  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--hi-accent-blue-border) 44%, transparent), var(--hi-shadow-xs) !important;
+  background: var(--hi-surface) !important;
+  box-shadow: none !important;
 
   &:hover {
-    background: linear-gradient(180deg, var(--hi-surface), color-mix(in srgb, var(--hi-accent-blue-bg) 22%, var(--hi-surface))) !important;
-    border-color: color-mix(in srgb, var(--hi-primary) 28%, var(--hi-border-strong)) !important;
-    box-shadow: var(--hi-shadow-sm) !important;
+    background: var(--hi-control-bg-hover) !important;
+    border-color: var(--hi-border-strong) !important;
+    box-shadow: none !important;
 
     .title {
       color: var(--hi-text);
@@ -55,7 +55,7 @@
 
   .cardLink {
     flex-direction: column;
-    min-height: 204px;
+    min-height: 196px;
   }
 
   .imageContainer {
@@ -63,7 +63,7 @@
     min-width: 0;
     height: 78px;
     border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 42%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
   }
 
   .image {
@@ -71,7 +71,7 @@
   }
 
   .imageOverlay {
-    background: color-mix(in srgb, var(--hi-accent-yellow-bg) 42%, transparent);
+    background: color-mix(in srgb, var(--hi-shell-bg-strong) 34%, transparent);
   }
 
   .dateBadge {
@@ -83,8 +83,8 @@
   .content {
     flex-direction: column;
     align-items: stretch;
-    padding: 13px;
-    gap: 10px;
+    padding: 12px;
+    gap: 9px;
   }
 
   .titleRow {
@@ -125,8 +125,8 @@
   }
 
   .actionButton {
-    background: color-mix(in srgb, var(--hi-accent-blue-bg) 66%, transparent);
-    border-color: color-mix(in srgb, var(--hi-accent-blue-border) 70%, transparent);
+    background: color-mix(in srgb, var(--hi-surface) 88%, transparent);
+    border-color: color-mix(in srgb, var(--hi-border) 64%, transparent);
   }
 }
 
@@ -134,7 +134,7 @@
   display: flex;
   text-decoration: none;
   color: inherit;
-  min-height: 62px;
+  min-height: 58px;
   cursor: pointer;
 
   &:focus-visible {
@@ -151,11 +151,11 @@
 
 .imageContainer {
   position: relative;
-  width: 46px;
-  min-width: 46px;
+  width: 42px;
+  min-width: 42px;
   overflow: hidden;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: linear-gradient(180deg, var(--hi-accent-blue-bg), var(--hi-accent-yellow-bg));
+  background: var(--hi-shell-bg-strong);
 
   @include mixins.respond-below(md, true) {
     width: 40px;
@@ -183,7 +183,7 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--hi-surface) 58%, transparent);
+  background: color-mix(in srgb, var(--hi-shell-bg-strong) 68%, transparent);
 }
 
 .placeholderOverlay {
@@ -194,7 +194,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 20px;
+  min-height: 19px;
   padding: 1px 6px;
   border-radius: var(--hi-radius-sm);
   font-size: 0.68rem;
@@ -206,21 +206,21 @@
   white-space: nowrap;
 
   &.status-live {
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
-    border: 1px solid var(--hi-status-success-border);
+    background: var(--hi-surface);
+    color: var(--hi-text);
+    border: 1px solid var(--hi-border);
   }
 
   &.status-onsale {
-    background: var(--hi-status-info-bg);
-    color: var(--hi-status-info-text);
-    border: 1px solid var(--hi-status-info-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &.status-draft {
-    background: var(--hi-accent-purple-bg);
-    color: var(--hi-accent-purple-text);
-    border: 1px dashed var(--hi-accent-purple-border);
+    background: var(--ue-canvas-soft);
+    color: var(--hi-text-light);
+    border: 1px dashed var(--hi-border-strong);
   }
 
   &.status-ended,
@@ -234,7 +234,7 @@
 .pulseDot {
   width: 5px;
   height: 5px;
-  background: var(--hi-success);
+  background: var(--hi-text);
   border-radius: 50%;
   opacity: 0.75;
 }
@@ -244,15 +244,15 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: color-mix(in srgb, var(--hi-accent-yellow-bg) 54%, var(--hi-surface));
+  background: var(--hi-surface);
   border-radius: var(--hi-radius-sm);
-  padding: 3px 5px;
+  padding: 2px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 26px;
   box-shadow: none;
-  border: 1px solid var(--hi-accent-yellow-border);
+  border: 1px solid var(--hi-border);
 }
 
 .dateDay {
@@ -383,15 +383,15 @@
   font-weight: 600;
 
   &.ticket-available {
-    background: var(--hi-status-success-bg);
-    color: var(--hi-status-success-text);
-    border: 1px solid var(--hi-status-success-border);
+    background: var(--hi-shell-bg-strong);
+    color: var(--hi-text);
+    border: 1px solid var(--hi-border);
   }
 
   &.ticket-partial {
-    background: var(--hi-status-warning-bg);
-    color: var(--hi-status-warning-text);
-    border: 1px solid var(--hi-status-warning-border);
+    background: var(--hi-status-neutral-bg);
+    color: var(--hi-status-neutral-text);
+    border: 1px solid var(--hi-status-neutral-border);
   }
 
   &.ticket-sold-out {
@@ -423,7 +423,7 @@
     min-width: 0;
     width: 100%;
     padding: 5px 0 0;
-    border-top: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 50%, var(--hi-border));
+    border-top: 1px solid var(--hi-border);
   }
 }
 
@@ -464,7 +464,7 @@
 .statValueRevenue {
   font-size: 0.76rem;
   font-weight: 650;
-  color: var(--hi-success);
+  color: var(--hi-text);
   line-height: 1;
 
   @include mixins.respond-below(lg, true) {

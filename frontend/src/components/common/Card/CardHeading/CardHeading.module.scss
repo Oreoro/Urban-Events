@@ -1,13 +1,13 @@
 .wrapper {
-  padding: 0 0 11px;
-  margin: 0 0 13px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  padding: 0 0 10px;
+  margin: 0 0 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
 
   .heading {
     margin: 0;
     color: var(--hi-text);
-    font-size: 0.98rem;
-    font-weight: 720;
+    font-size: 1rem;
+    font-weight: 700;
     line-height: 1.28;
     letter-spacing: 0;
   }
@@ -15,7 +15,7 @@
   .description {
     margin: 3px 0 0;
     font-weight: 500;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     line-height: 1.45;
     color: var(--hi-text-muted);
   }
