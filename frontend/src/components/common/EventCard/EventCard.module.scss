@@ -5,10 +5,9 @@
   padding: 0 !important;
   margin-bottom: 0 !important;
   border-color: var(--hi-border) !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
   container-type: inline-size;
   min-width: 240px;
-  position: relative;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
@@ -16,7 +15,7 @@
   &:hover {
     background: var(--hi-control-bg-hover) !important;
     border-color: var(--hi-border-strong) !important;
-    box-shadow: none !important;
+    box-shadow: none;
 
     .title {
       color: var(--hi-text);
@@ -44,89 +43,8 @@
     }
 
     .image {
-      opacity: 0.32;
+      filter: grayscale(50%);
     }
-  }
-}
-
-.eventCard.board {
-  min-width: 0;
-  border-radius: var(--hi-radius-md) !important;
-
-  .cardLink {
-    flex-direction: column;
-    min-height: 196px;
-  }
-
-  .imageContainer {
-    width: 100%;
-    min-width: 0;
-    height: 78px;
-    border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
-  }
-
-  .image {
-    opacity: 0.48;
-  }
-
-  .imageOverlay {
-    background: color-mix(in srgb, var(--hi-shell-bg-strong) 34%, transparent);
-  }
-
-  .dateBadge {
-    top: 8px;
-    left: 8px;
-    transform: none;
-  }
-
-  .content {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 12px;
-    gap: 9px;
-  }
-
-  .titleRow {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .title {
-    font-size: 0.84rem;
-  }
-
-  .meta,
-  .footer {
-    gap: 5px;
-  }
-
-  .location {
-    max-width: 100%;
-  }
-
-  .statsPanel {
-    width: 100%;
-    justify-content: flex-start;
-    padding-top: 8px;
-    border-top: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
-  }
-
-  .stat {
-    min-width: 76px;
-    padding: 1px 10px 1px 0;
-  }
-
-  .menuButton {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    opacity: 1;
-  }
-
-  .actionButton {
-    background: color-mix(in srgb, var(--hi-surface) 88%, transparent);
-    border-color: color-mix(in srgb, var(--hi-border) 64%, transparent);
   }
 }
 
@@ -134,13 +52,7 @@
   display: flex;
   text-decoration: none;
   color: inherit;
-  min-height: 58px;
-  cursor: pointer;
-
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-primary) 34%, transparent);
-    outline-offset: -2px;
-  }
+  min-height: 56px;
 
   @include mixins.respond-below(md, true) {
     flex-direction: row;
@@ -151,11 +63,11 @@
 
 .imageContainer {
   position: relative;
-  width: 42px;
-  min-width: 42px;
+  width: 40px;
+  min-width: 40px;
   overflow: hidden;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-shell-bg-strong);
+  background: var(--hi-surface-soft);
 
   @include mixins.respond-below(md, true) {
     width: 40px;
@@ -171,7 +83,8 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.24;
+  filter: saturate(0.35) contrast(0.9);
+  opacity: 0.08;
 }
 
 .placeholderImage {
@@ -183,11 +96,11 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--hi-shell-bg-strong) 68%, transparent);
+  background: color-mix(in srgb, var(--hi-surface-soft) 76%, transparent);
 }
 
 .placeholderOverlay {
-  background: var(--hi-shell-bg-strong);
+  background: var(--hi-surface-soft);
 }
 
 .statusBadge {
@@ -273,10 +186,10 @@
 
 .content {
   flex: 1;
-  padding: 8px 10px;
+  padding: 7px 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   min-width: 0;
 
   @include mixins.respond-below(md, true) {
@@ -301,10 +214,6 @@
   gap: 6px;
   min-width: 0;
 
-  @include mixins.respond-below(md, true) {
-    padding-right: 34px;
-  }
-
   @include mixins.respond-below(sm, true) {
     align-items: flex-start;
     flex-wrap: wrap;
@@ -316,7 +225,7 @@
   flex: 1;
   min-width: 0;
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1.26;
@@ -333,7 +242,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  font-size: 0.7rem;
+  font-size: 0.69rem;
   margin-top: 1px;
 }
 
@@ -366,7 +275,7 @@
 }
 
 .organizer {
-  font-size: 0.7rem;
+  font-size: 0.69rem;
   color: var(--hi-text-muted);
   text-decoration: none;
 
@@ -383,7 +292,7 @@
   font-weight: 600;
 
   &.ticket-available {
-    background: var(--hi-shell-bg-strong);
+    background: var(--hi-surface-soft);
     color: var(--hi-text);
     border: 1px solid var(--hi-border);
   }
@@ -410,8 +319,6 @@
   border: 0;
   border-radius: 0;
   flex-shrink: 0;
-  min-width: 150px;
-  justify-content: flex-end;
 
   @include mixins.respond-below(lg, true) {
     gap: 0;
@@ -420,7 +327,6 @@
 
   @include mixins.respond-below(md, true) {
     justify-content: flex-start;
-    min-width: 0;
     width: 100%;
     padding: 5px 0 0;
     border-top: 1px solid var(--hi-border);
@@ -433,8 +339,8 @@
   align-items: flex-start;
   gap: 1px;
   cursor: default;
-  min-width: 64px;
-  padding: 1px 8px;
+  min-width: 56px;
+  padding: 1px 7px;
   border-radius: var(--hi-radius-sm);
 
   @include mixins.respond-below(lg, true) {
@@ -451,7 +357,7 @@
 }
 
 .statValue {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1;
@@ -462,7 +368,7 @@
 }
 
 .statValueRevenue {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 650;
   color: var(--hi-text);
   line-height: 1;

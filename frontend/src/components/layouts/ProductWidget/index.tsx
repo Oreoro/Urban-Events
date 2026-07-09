@@ -6,7 +6,7 @@ import {useMemo} from "react";
 import {Loader} from "@mantine/core";
 import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 
-const DEFAULT_WIDGET_TEXT_COLOR = "#1F1F1F";
+const DEFAULT_WIDGET_TEXT_COLOR = "#111111";
 
 const ProductWidget = () => {
     const {eventId} = useParams();

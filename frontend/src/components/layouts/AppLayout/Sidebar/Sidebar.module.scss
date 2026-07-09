@@ -7,7 +7,7 @@
   background: var(--hi-shell-surface);
   color: var(--hi-text);
   position: relative;
-  border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+  border-right: 1px solid var(--hi-border);
   min-width: 0;
   height: 100vh;
   height: 100dvh;
@@ -24,24 +24,24 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 8px 0 6px;
-    min-height: 50px;
+    padding: 5px 0;
+    min-height: 44px;
     margin-bottom: 0;
-    border-bottom: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
     flex-shrink: 0;
 
     a {
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 9px;
+      padding: 7px 12px;
       color: var(--hi-text);
       line-height: 1;
       border-radius: var(--hi-radius-sm);
       margin: 0 8px;
 
       &:hover {
-        background: var(--hi-control-bg-hover);
+        background: var(--hi-surface);
       }
     }
   }
@@ -50,7 +50,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 4px 0 16px;
+    padding: 6px 0 12px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -65,7 +65,7 @@
 
     &::-webkit-scrollbar-thumb {
       background-color: transparent;
-      border-radius: var(--hi-radius-sm);
+      border-radius: 10px;
       transition: background-color 0.2s ease;
     }
 
@@ -78,9 +78,9 @@
     }
 
     .sectionHeading {
-      padding: 15px 14px 4px;
-      font-size: 0.72rem;
-      font-weight: 620;
+      padding: 11px 12px 3px;
+      font-size: 0.64rem;
+      font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
       color: color-mix(in srgb, var(--hi-text-muted) 74%, transparent);
@@ -92,13 +92,13 @@
       display: flex;
       align-items: center;
       color: var(--hi-text-light);
-      min-height: 29px;
-      padding: 4px 9px;
+      min-height: 27px;
+      padding: 5px 8px;
       text-decoration: none;
-      margin: 1px 8px;
+      margin: 2px 8px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.84rem;
-      font-weight: 530;
+      font-size: 0.8rem;
+      font-weight: 500;
       transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
@@ -116,7 +116,7 @@
       }
 
       .navBadge {
-        background: var(--hi-shell-bg);
+        background: var(--hi-surface);
         color: var(--hi-text-muted);
         border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
         padding: 1px 6px;
@@ -137,8 +137,8 @@
       }
 
       &.linkActive {
-        background: var(--hi-control-bg-active);
-        border-color: transparent;
+        background: var(--hi-surface);
+        border-color: var(--hi-border);
         color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
@@ -149,16 +149,16 @@
       }
 
       &:hover {
-        background: var(--hi-control-bg-hover);
-        border-color: transparent;
+        background: var(--hi-surface);
+        border-color: var(--hi-border);
         color: var(--hi-text);
       }
 
       svg {
-        margin-right: 7px;
-        width: 16px;
-        height: 16px;
-        min-width: 16px;
+        margin-right: 6px;
+        width: 15px;
+        height: 15px;
+        min-width: 15px;
         color: color-mix(in srgb, var(--hi-text-muted) 78%, transparent);
         transition: color 0.14s ease;
       }
@@ -190,15 +190,15 @@
   }
 
   .sidebarClose {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     color: var(--hi-text-muted);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     right: 7px;
-    top: 7px;
+    top: 8px;
     transform: none;
     transition: color 0.15s ease, background-color 0.15s ease;
     z-index: 5;

@@ -1,58 +1,58 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #fff2ee;
+  --ue-powder-blush: #f7f7f5;
   --ue-eggshell: #ffffff;
-  --ue-icy-aqua: #eff8f6;
-  --ue-light-blue: #edf6ff;
-  --ue-blue-slate: #6b6b66;
+  --ue-icy-aqua: #f1f8ff;
+  --ue-light-blue: #eaf4ff;
+  --ue-blue-slate: #6b7280;
   --ue-canvas: #ffffff;
-  --ue-canvas-soft: #f6f5f4;
-  --ue-canvas-warm: #fbfaf8;
-  --ue-canvas-hover: #efeeeb;
-  --ue-canvas-active: #e8e6e1;
+  --ue-canvas-soft: #f7f7f5;
+  --ue-canvas-warm: #ffffff;
+  --ue-canvas-hover: #f1f1ef;
+  --ue-canvas-active: #ededed;
   --ue-surface: #ffffff;
-  --ue-ink: #1f1f1f;
-  --ue-ink-soft: #31302e;
-  --ue-muted: #615d59;
-  --ue-faint: #a39e98;
-  --ue-action-blue: #0075de;
-  --ue-action-blue-hover: #005bab;
-  --ue-action-blue-soft: #e8f3ff;
-  --ue-deep-indigo: #213183;
-  --ue-sticker-sky: #62aef0;
-  --ue-sticker-purple: #d6b6f6;
-  --ue-sticker-purple-deep: #391c57;
-  --ue-sticker-pink: #ff64c8;
-  --ue-sticker-orange: #dd5b00;
-  --ue-sticker-orange-deep: #b24700;
-  --ue-sticker-teal: #2a9d99;
-  --ue-sticker-green: #1aae39;
+  --ue-ink: #111111;
+  --ue-ink-soft: #2f3437;
+  --ue-muted: #6b7280;
+  --ue-faint: #9ca3af;
+  --ue-action-blue: #2383e2;
+  --ue-action-blue-hover: #1a6bc4;
+  --ue-action-blue-soft: #eaf4ff;
+  --ue-deep-indigo: #111111;
+  --ue-sticker-sky: #2383e2;
+  --ue-sticker-purple: #ededed;
+  --ue-sticker-purple-deep: #2f3437;
+  --ue-sticker-pink: #6b7280;
+  --ue-sticker-orange: #4b5563;
+  --ue-sticker-orange-deep: #111111;
+  --ue-sticker-teal: #2563eb;
+  --ue-sticker-green: #16a34a;
   --ue-slate: var(--ue-ink-soft);
   --ue-slate-deep: var(--ue-ink);
-  --ue-slate-soft: #efeeeb;
+  --ue-slate-soft: #ededed;
   --ue-aqua: var(--ue-icy-aqua);
   --ue-aqua-deep: var(--ue-ink);
   --ue-blush: var(--ue-powder-blush);
-  --ue-blush-deep: #c4554d;
-  --ue-coral: #c4554d;
-  --ue-coral-deep: #7a3b37;
-  --ue-marigold: var(--ue-sticker-orange);
+  --ue-blush-deep: var(--ue-ink);
+  --ue-coral: #d92d20;
+  --ue-coral-deep: #b42318;
+  --ue-marigold: var(--ue-action-blue);
   --ue-navy: var(--ue-deep-indigo);
-  --ue-navy-deep: #141d58;
+  --ue-navy-deep: #000000;
   --ue-teal: var(--ue-sticker-teal);
-  --ue-teal-deep: #1e6f6c;
+  --ue-teal-deep: #1d4ed8;
   --ue-plum: var(--ue-sticker-purple-deep);
-  --ue-plum-deep: #26103b;
+  --ue-plum-deep: #111111;
   --ue-forest: var(--ue-sticker-green);
-  --ue-forest-deep: #137d2a;
+  --ue-forest-deep: #166534;
   --ue-mint: var(--ue-canvas-soft);
-  --ue-sky: var(--ue-sticker-sky);
-  --ue-border: #e6e6e6;
-  --ue-border-strong: #d8d8d5;
+  --ue-sky: var(--ue-action-blue-soft);
+  --ue-border: #e5e7eb;
+  --ue-border-strong: #d1d5db;
 
-  --hi-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --hi-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --hi-font-heading: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --hi-font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
@@ -76,9 +76,9 @@
   --hi-pink: var(--hi-text);
   --hi-primary-alt: var(--hi-text);
   --hi-action-fill: var(--hi-primary);
-  --hi-shell-bg: var(--ue-canvas-soft);
+  --hi-shell-bg: var(--ue-canvas);
   --hi-shell-bg-strong: var(--ue-canvas);
-  --hi-shell-surface: color-mix(in srgb, var(--ue-canvas-soft) 82%, var(--ue-canvas));
+  --hi-shell-surface: var(--ue-canvas);
   --hi-shell-surface-hover: var(--ue-canvas-hover);
   --hi-shell-text: var(--ue-ink);
   --hi-shell-muted: var(--ue-muted);
@@ -97,30 +97,30 @@
   --hi-focus-accent: var(--hi-primary);
   --hi-focus-ring: color-mix(in srgb, var(--hi-focus-accent) 28%, transparent);
   --hi-focus-ring-soft: color-mix(in srgb, var(--hi-focus-accent) 16%, transparent);
-  --hi-danger: #c4554d;
-  --hi-success: #2f8f62;
-  --hi-warning: #cb912f;
-  --hi-status-neutral-bg: #f1f1ef;
-  --hi-status-neutral-text: #6f6e69;
-  --hi-status-neutral-border: #e1dfda;
-  --hi-status-info-bg: #edf5ff;
-  --hi-status-info-text: #24577a;
-  --hi-status-info-border: #d6e5f5;
-  --hi-status-success-bg: #edf7f0;
-  --hi-status-success-text: #2f5f46;
-  --hi-status-success-border: #d9eadf;
-  --hi-status-warning-bg: #fbf3df;
-  --hi-status-warning-text: #76561f;
-  --hi-status-warning-border: #eadfbe;
-  --hi-status-danger-bg: #faeeee;
-  --hi-status-danger-text: #7a3b37;
-  --hi-status-danger-border: #ecd5d2;
+  --hi-danger: #d92d20;
+  --hi-success: #16a34a;
+  --hi-warning: #f59e0b;
+  --hi-status-neutral-bg: #f7f7f5;
+  --hi-status-neutral-text: #6b7280;
+  --hi-status-neutral-border: #e5e7eb;
+  --hi-status-info-bg: #eaf4ff;
+  --hi-status-info-text: #1a6bc4;
+  --hi-status-info-border: #b9d9ff;
+  --hi-status-success-bg: #f0fdf4;
+  --hi-status-success-text: #166534;
+  --hi-status-success-border: #bbf7d0;
+  --hi-status-warning-bg: #fffbeb;
+  --hi-status-warning-text: #111111;
+  --hi-status-warning-border: #fde68a;
+  --hi-status-danger-bg: #fef3f2;
+  --hi-status-danger-text: #b42318;
+  --hi-status-danger-border: #fecdca;
 
-  --hi-app-column-bg: var(--hi-shell-surface);
-  --hi-app-panel-bg: color-mix(in srgb, var(--hi-surface) 94%, var(--hi-shell-bg));
-  --hi-app-panel-border: color-mix(in srgb, var(--hi-border) 86%, transparent);
-  --hi-app-card-bg: color-mix(in srgb, var(--hi-surface) 98%, var(--hi-shell-bg));
-  --hi-app-hover-bg: color-mix(in srgb, var(--hi-control-bg-hover) 74%, var(--hi-surface));
+  --hi-app-column-bg: var(--hi-surface);
+  --hi-app-panel-bg: var(--hi-surface);
+  --hi-app-panel-border: var(--hi-border);
+  --hi-app-card-bg: var(--hi-surface);
+  --hi-app-hover-bg: var(--hi-control-bg-hover);
 
   --hi-color-white: #ffffff;
   --hi-color-black: #000000;
@@ -137,10 +137,10 @@
   --hi-radius-lg: 8px;
   --hi-radius-xl: 8px;
 
-  --hi-shadow-xs: 0 1px 1px rgba(15, 15, 15, 0.03);
-  --hi-shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.035), 0 8px 18px rgba(15, 15, 15, 0.035);
-  --hi-shadow-md: 0 2px 6px rgba(15, 15, 15, 0.04), 0 18px 42px rgba(15, 15, 15, 0.055);
-  --hi-shadow-lg: 0 4px 14px rgba(15, 15, 15, 0.05), 0 26px 64px rgba(15, 15, 15, 0.065);
+  --hi-shadow-xs: none;
+  --hi-shadow-sm: none;
+  --hi-shadow-md: 0 8px 24px rgba(15, 15, 15, 0.06);
+  --hi-shadow-lg: 0 16px 48px rgba(15, 15, 15, 0.08);
 }
 
 * {
@@ -180,7 +180,7 @@ a {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--ue-icy-aqua) 78%, var(--hi-color-white));
+  background: color-mix(in srgb, var(--hi-primary-soft) 78%, var(--hi-color-white));
   color: var(--hi-text);
 }
 

@@ -15,18 +15,18 @@ import {ImageResize} from "./Extensions/ImageResizeExtension";
 import {Extension} from '@tiptap/core';
 
 const EDITOR_COLORS = [
-    '#1F1F1F',
-    '#615D59',
-    '#A39E98',
-    '#E6E6E6',
-    '#F6F5F4',
+    '#111111',
+    '#2F3437',
+    '#6B7280',
+    '#E5E7EB',
+    '#F7F7F5',
     '#FFFFFF',
-    '#C4554D',
-    '#DD5B00',
-    '#1AAE39',
-    '#0075DE',
-    '#391C57',
-    '#FF64C8',
+    '#D92D20',
+    '#F59E0B',
+    '#16A34A',
+    '#2383E2',
+    '#1A6BC4',
+    '#9CA3AF',
 ];
 
 interface EditorProps {
