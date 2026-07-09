@@ -55,13 +55,13 @@
 
   .cardLink {
     flex-direction: column;
-    min-height: 186px;
+    min-height: 196px;
   }
 
   .imageContainer {
     width: 100%;
     min-width: 0;
-    height: 72px;
+    height: 78px;
     border-right: 0;
     border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
   }
@@ -84,8 +84,8 @@
   .content {
     flex-direction: column;
     align-items: stretch;
-    padding: 10px;
-    gap: 8px;
+    padding: 12px;
+    gap: 9px;
   }
 
   .titleRow {

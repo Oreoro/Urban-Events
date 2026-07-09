@@ -1,7 +1,7 @@
 @use "../../../../styles/mixins.scss";
 
 .overviewPanel {
-  padding: 46px 0 0;
+  padding: 42px 0 0;
   margin-bottom: 0;
   background: transparent;
   border: 0;
@@ -10,7 +10,8 @@
   overflow: visible;
 
   @include mixins.respond-below(md) {
-    margin-bottom: 12px;
+    padding-top: 24px;
+    margin-bottom: 0;
   }
 }
 
@@ -28,7 +29,7 @@
   @include mixins.respond-below(md) {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 14px;
   }
 }
 
@@ -123,7 +124,7 @@
 
   @include mixins.respond-below(md) {
     justify-content: flex-start;
-    padding-left: 84px;
+    padding-left: 0;
   }
 }
 
@@ -132,7 +133,7 @@
   align-items: center;
   gap: 4px;
   min-width: 0;
-  margin: 0 0 18px 84px;
+  margin: 0 0 20px 84px;
   overflow-x: auto;
   scrollbar-width: none;
 
@@ -176,12 +177,12 @@
 
 .workspaceBoard {
   display: grid;
-  grid-template-columns: repeat(4, minmax(258px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(4, minmax(274px, 1fr));
+  gap: 16px;
   align-items: start;
   min-width: 0;
   overflow-x: auto;
-  padding-bottom: 8px;
+  padding-bottom: 12px;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--hi-text-muted) 28%, transparent) transparent;
 
@@ -195,7 +196,7 @@
   }
 
   @include mixins.respond-below(lg) {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, minmax(268px, 1fr));
   }
 
   @include mixins.respond-below(sm) {
@@ -209,7 +210,7 @@
   flex-direction: column;
   gap: 0;
   min-width: 0;
-  min-height: 520px;
+  min-height: 540px;
   background: #f7f7f5;
   border: 0;
   border-radius: 14px;
@@ -398,8 +399,8 @@
 .statCard {
   display: flex;
   align-items: stretch;
-  min-height: 84px;
-  padding: 11px;
+  min-height: 90px;
+  padding: 12px;
   background: color-mix(in srgb, var(--hi-surface) 96%, transparent);
   border: 1px solid color-mix(in srgb, var(--hi-border) 58%, transparent);
   border-radius: 10px;
@@ -479,8 +480,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 8px;
-  padding: 0 10px 10px;
+  gap: 10px;
+  padding: 0 12px 12px;
   border: 0;
   background: transparent;
 }
@@ -523,9 +524,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 42px;
-  gap: 8px;
-  padding: 8px 10px;
+  min-height: 46px;
+  gap: 10px;
+  padding: 10px 12px;
   border-bottom: 0;
   letter-spacing: 0;
   background: transparent;
@@ -565,8 +566,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 8px;
-  padding: 0 10px 10px;
+  gap: 10px;
+  padding: 0 12px 12px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -583,9 +584,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 76px;
-  gap: 10px;
-  padding: 10px 11px;
+  min-height: 80px;
+  gap: 11px;
+  padding: 11px 12px;
   border: 1px solid color-mix(in srgb, var(--hi-border) 60%, transparent) !important;
   border-radius: 10px !important;
   background: color-mix(in srgb, var(--hi-surface) 96%, transparent) !important;
@@ -727,8 +728,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 8px;
-  padding: 0 10px 10px;
+  gap: 10px;
+  padding: 0 12px 12px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -763,7 +764,7 @@
   align-items: flex-start;
   justify-content: center;
   max-width: 100%;
-  margin: 0 10px 10px;
+  margin: 0 12px 12px;
   //flex: 1;
 
   &::before {
@@ -811,6 +812,6 @@
 .skeletonStack {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 8px;
+  gap: 10px;
+  padding: 10px 12px 12px;
 }

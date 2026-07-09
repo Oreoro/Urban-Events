@@ -24,8 +24,8 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    padding: 9px 0 6px;
-    min-height: 54px;
+    padding: 10px 0 8px;
+    min-height: 58px;
     margin-bottom: 0;
     border-bottom: 0;
     flex-shrink: 0;
@@ -34,11 +34,11 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 11px;
+      padding: 9px 12px;
       color: var(--hi-text);
       line-height: 1;
       border-radius: 7px;
-      margin: 0 10px;
+      margin: 0 12px;
 
       &:hover {
         background: var(--hi-surface);
@@ -50,7 +50,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 4px 0 14px;
+    padding: 5px 0 16px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -78,7 +78,7 @@
     }
 
     .sectionHeading {
-      padding: 16px 14px 5px;
+      padding: 17px 16px 6px;
       font-size: 0.76rem;
       font-weight: 650;
       text-transform: none;
@@ -93,9 +93,9 @@
       align-items: center;
       color: var(--hi-text-light);
       min-height: 33px;
-      padding: 5px 10px;
+      padding: 5px 11px;
       text-decoration: none;
-      margin: 1px 10px;
+      margin: 2px 12px;
       border-radius: 7px;
       font-size: 0.9rem;
       font-weight: 550;
@@ -103,7 +103,7 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 20px);
+      width: calc(100% - 24px);
       background: transparent;
       border: 1px solid transparent;
       text-align: left;

@@ -24,7 +24,7 @@
   }
 
   .breadcrumbsRow {
-    padding: 7px 28px;
+    padding: 7px var(--app-page-gutter, 28px);
     border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, transparent);
     background-color: #ffffff;
     display: flex;
@@ -36,12 +36,8 @@
     z-index: 5;
     min-height: 38px;
 
-    @include mixins.respond-above(xl) {
-      padding-inline: 28px;
-    }
-
     @include mixins.respond-below(md) {
-      padding: 10px 16px;
+      padding-block: 10px;
     }
   }
 
