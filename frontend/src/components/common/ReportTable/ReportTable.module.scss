@@ -65,9 +65,9 @@
 
 .downloadButton {
   min-height: 30px;
-  border: 1px solid var(--hi-text) !important;
+  border: 1px solid var(--hi-primary) !important;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-text) !important;
+  background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
   font-size: 0.76rem !important;
   font-weight: 650 !important;
@@ -75,8 +75,8 @@
   transition: background-color 0.14s ease, border-color 0.14s ease;
 
   &:hover:not(:disabled) {
-    border-color: var(--hi-text-light) !important;
-    background: var(--hi-text-light) !important;
+    border-color: var(--hi-primary-hover) !important;
+    background: var(--hi-primary-hover) !important;
   }
 
   :global(.mantine-Button-section) {

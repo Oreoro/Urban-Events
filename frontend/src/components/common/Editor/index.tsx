@@ -22,10 +22,9 @@ const EDITOR_COLORS = [
     '#F7F7F5',
     '#FFFFFF',
     '#D92D20',
-    '#F59E0B',
     '#16A34A',
-    '#2383E2',
     '#1A6BC4',
+    '#155AA8',
     '#9CA3AF',
 ];
 

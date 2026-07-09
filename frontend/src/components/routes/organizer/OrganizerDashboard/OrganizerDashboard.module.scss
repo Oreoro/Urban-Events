@@ -126,17 +126,17 @@
   min-height: 30px;
   padding-inline: 10px;
   border-radius: var(--hi-radius-sm) !important;
-  border: 1px solid var(--hi-text) !important;
-  background: var(--hi-text) !important;
-  color: var(--hi-surface) !important;
+  border: 1px solid var(--hi-primary) !important;
+  background: var(--hi-primary) !important;
+  color: var(--hi-color-white) !important;
   box-shadow: none !important;
   font-size: 0.76rem;
   font-weight: 620;
 
   &:hover {
-    border-color: var(--hi-text-light) !important;
-    background: var(--hi-text-light) !important;
-    color: var(--hi-surface) !important;
+    border-color: var(--hi-primary-hover) !important;
+    background: var(--hi-primary-hover) !important;
+    color: var(--hi-color-white) !important;
   }
 }
 

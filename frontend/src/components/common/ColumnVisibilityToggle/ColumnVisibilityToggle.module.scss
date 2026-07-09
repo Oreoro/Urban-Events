@@ -54,8 +54,8 @@
     background: var(--hi-app-panel-bg);
 
     &:checked {
-      border-color: var(--hi-text);
-      background: var(--hi-text);
+      border-color: var(--hi-primary);
+      background: var(--hi-primary);
     }
   }
 

@@ -111,7 +111,7 @@ interface UrbanEventsTheme {
 }
 
 export const URBAN_EVENTS_THEME: UrbanEventsTheme = {
-    accent: '#2383E2',
+    accent: '#1A6BC4',
     accentContrast: '#FFFFFF',
     background: '#FFFFFF',
     darkBackground: '#111111',

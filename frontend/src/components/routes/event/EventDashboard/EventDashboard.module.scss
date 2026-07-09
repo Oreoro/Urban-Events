@@ -715,7 +715,7 @@
 .stripeButton {
   align-self: flex-start;
 
-  background: var(--hi-text) !important;
+  background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
   font-weight: 600;
   border: none !important;
@@ -727,7 +727,7 @@
 
   &:hover:not(:disabled) {
     box-shadow: none !important;
-    background: var(--hi-text-light) !important;
+    background: var(--hi-primary-hover) !important;
   }
 
   &:disabled {

@@ -18,12 +18,12 @@ export const urbanEventsColors = {
     faint: "#9CA3AF",
     border: "#E5E7EB",
     borderStrong: "#D1D5DB",
-    primaryBlue: "#2383E2",
-    primaryBlueHover: "#1A6BC4",
+    primaryBlue: "#1A6BC4",
+    primaryBlueHover: "#155AA8",
     deepIndigo: "#111111",
     navy: "#111111",
     navyDeep: "#000000",
-    stickerSky: "#2383E2",
+    stickerSky: "#1A6BC4",
     stickerPurple: "#EDEDED",
     stickerPurpleDeep: "#2F3437",
     stickerPink: "#6B7280",
@@ -39,7 +39,7 @@ export const urbanEventsColors = {
     forestDeep: "#166534",
     coral: "#D92D20",
     coralDeep: "#B42318",
-    marigold: "#2383E2",
+    marigold: "#1A6BC4",
     mint: "#F7F7F5",
     sky: "#EAF4FF",
     success: "#16A34A",
@@ -64,10 +64,10 @@ const actionBlue: MantineColorsTuple = [
     "#D7EBFF",
     "#B9D9FF",
     "#8EC2FF",
-    "#63AAFA",
-    "#3B94EF",
-    "#2383E2",
+    "#63A3F0",
+    "#347FD6",
     "#1A6BC4",
+    "#155AA8",
     "#124A8F",
 ];
 
@@ -90,11 +90,11 @@ const eventYellow: MantineColorsTuple = [
     "#FDE68A",
     "#FCD34D",
     "#FBBF24",
-    "#F59E0B",
-    "#D97706",
-    "#B45309",
-    "#92400E",
-    "#78350F",
+    "#EAB308",
+    "#A3A3A3",
+    "#6B7280",
+    "#2F3437",
+    "#111111",
 ];
 
 const eventRed: MantineColorsTuple = [
@@ -107,7 +107,7 @@ const eventRed: MantineColorsTuple = [
     "#D92D20",
     "#B42318",
     "#912018",
-    "#7A271A",
+    "#7F1D1D",
 ];
 
 export const getUrbanEventsTheme = () => createTheme({

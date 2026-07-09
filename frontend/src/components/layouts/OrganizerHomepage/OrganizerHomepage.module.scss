@@ -797,14 +797,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .submitButton {
-  background: var(--hi-text);
-  border: 1px solid var(--hi-text);
+  background: var(--hi-primary);
+  border: 1px solid var(--hi-primary);
   color: var(--hi-color-white);
   border-radius: var(--hi-radius-sm);
 
   &:hover {
     filter: none;
-    background: var(--hi-text-light);
-    border-color: var(--hi-text-light);
+    background: var(--hi-primary-hover);
+    border-color: var(--hi-primary-hover);
   }
 }

@@ -114,8 +114,8 @@
     }
 
     &[data-active] {
-      background: var(--hi-text);
-      border-color: var(--hi-text);
+      background: var(--hi-primary);
+      border-color: var(--hi-primary);
       color: var(--hi-color-white);
     }
   }

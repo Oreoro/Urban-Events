@@ -16,11 +16,11 @@
   --ue-ink-soft: #2f3437;
   --ue-muted: #6b7280;
   --ue-faint: #9ca3af;
-  --ue-action-blue: #2383e2;
-  --ue-action-blue-hover: #1a6bc4;
+  --ue-action-blue: #1a6bc4;
+  --ue-action-blue-hover: #155aa8;
   --ue-action-blue-soft: #eaf4ff;
   --ue-deep-indigo: #111111;
-  --ue-sticker-sky: #2383e2;
+  --ue-sticker-sky: #1a6bc4;
   --ue-sticker-purple: #ededed;
   --ue-sticker-purple-deep: #2f3437;
   --ue-sticker-pink: #6b7280;
@@ -99,12 +99,12 @@
   --hi-focus-ring-soft: color-mix(in srgb, var(--hi-focus-accent) 16%, transparent);
   --hi-danger: #d92d20;
   --hi-success: #16a34a;
-  --hi-warning: #f59e0b;
+  --hi-warning: #eab308;
   --hi-status-neutral-bg: #f7f7f5;
   --hi-status-neutral-text: #6b7280;
   --hi-status-neutral-border: #e5e7eb;
   --hi-status-info-bg: #eaf4ff;
-  --hi-status-info-text: #1a6bc4;
+  --hi-status-info-text: #155aa8;
   --hi-status-info-border: #b9d9ff;
   --hi-status-success-bg: #f0fdf4;
   --hi-status-success-text: #166534;
@@ -796,8 +796,8 @@ a {
 }
 
 .mantine-Pagination-control[data-active] {
-  border-color: var(--hi-text) !important;
-  background: var(--hi-text) !important;
+  border-color: var(--hi-primary) !important;
+  background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
 }
 
@@ -837,8 +837,8 @@ a {
 
 .mantine-Checkbox-input:checked,
 .mantine-Radio-radio:checked {
-  border-color: var(--hi-text);
-  background: var(--hi-text);
+  border-color: var(--hi-primary);
+  background: var(--hi-primary);
 }
 
 .mantine-Checkbox-label,
@@ -860,8 +860,8 @@ a {
 }
 
 .mantine-Switch-track[data-checked] {
-  border-color: var(--hi-text);
-  background: var(--hi-text);
+  border-color: var(--hi-primary);
+  background: var(--hi-primary);
 }
 
 .mantine-Switch-thumb {
@@ -888,8 +888,8 @@ a {
 }
 
 .mantine-Pagination-control[data-active] {
-  border-color: var(--hi-text) !important;
-  background: var(--hi-text) !important;
+  border-color: var(--hi-primary) !important;
+  background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
 }
 

@@ -78,8 +78,8 @@
 }
 
 .calloutButton {
-  background: var(--hi-text) !important;
-  border: 1px solid var(--hi-text) !important;
+  background: var(--hi-primary) !important;
+  border: 1px solid var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
   font-weight: 600;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -87,8 +87,8 @@
   z-index: 1;
 
   &:hover {
-    background: var(--hi-text-light) !important;
-    border-color: var(--hi-text-light) !important;
+    background: var(--hi-primary-hover) !important;
+    border-color: var(--hi-primary-hover) !important;
   }
 }
 

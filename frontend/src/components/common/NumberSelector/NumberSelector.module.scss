@@ -12,9 +12,9 @@
 
 
 .control {
-  background-color: var(--hi-text);
+  background-color: var(--hi-primary);
   color: var(--hi-color-white);
-  border: 1px solid var(--hi-text);
+  border: 1px solid var(--hi-primary);
   border-radius: var(--hi-radius-xs);
 
   &:disabled {
