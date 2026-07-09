@@ -5,7 +5,7 @@
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
     overflow: hidden;
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm);
 }
 
 .tableScroll {
@@ -23,7 +23,7 @@
             text-transform: none;
             letter-spacing: 0;
             color: var(--hi-text-muted);
-            background: var(--hi-shell-bg);
+            background: var(--hi-shell-bg-strong);
             border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
             white-space: nowrap;
             line-height: 1.25;
@@ -44,7 +44,7 @@
         }
 
         tbody tr:hover td {
-            background: var(--hi-control-bg-hover);
+            background: var(--hi-app-hover-bg);
         }
     }
 }
@@ -94,7 +94,7 @@
     background: var(--hi-surface);
     border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
     border-radius: var(--hi-radius-md);
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm);
 }
 
 @include respond-below('md') {

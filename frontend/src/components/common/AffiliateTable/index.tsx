@@ -97,7 +97,6 @@ export const AffiliateTable = ({affiliates, openCreateModal}: AffiliateTableProp
                                         <Button
                                             size="xs"
                                             variant="subtle"
-                                            color="gray"
                                             leftSection={<IconCopy size={12}/>}
                                             onClick={() => copyToClipboard(eventHomepageUrl(event!) + `?aff=${affiliate.code}`)}
                                             className={classes.copyButton}

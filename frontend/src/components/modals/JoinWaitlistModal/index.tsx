@@ -7,10 +7,8 @@ import {t} from "@lingui/macro";
 import {Button, Checkbox, Modal as MantineModal, Text, TextInput} from "@mantine/core";
 import {InputGroup} from "../../common/InputGroup";
 import {CheckoutThemeProvider} from "../../layouts/Checkout/CheckoutThemeProvider.tsx";
-import {detectMode} from "../../../utilites/themeUtils.ts";
+import {detectMode, URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 import {IconAlertTriangle, IconCircleCheck} from "@tabler/icons-react";
-
-const DEFAULT_ACCENT = '#37352F';
 
 interface JoinWaitlistModalProps extends GenericModalProps {
     product: Product;
@@ -29,9 +27,9 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
     const productDisplayName = priceLabel ? `${product?.title} - ${priceLabel}` : product?.title;
 
     const homepageSettings = event?.settings?.homepage_theme_settings;
-    const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
+    const accentColor = homepageSettings?.accent || URBAN_EVENTS_THEME.accent;
     const mode = useMemo(
-        () => homepageSettings?.mode || detectMode(homepageSettings?.background || '#F7F7F5'),
+        () => homepageSettings?.mode || detectMode(homepageSettings?.background || URBAN_EVENTS_THEME.background),
         [homepageSettings?.mode, homepageSettings?.background]
     );
 
@@ -91,8 +89,15 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                     overlayProps={{opacity: 0.55, blur: 3}}
                     withCloseButton={false}
                 >
-                    <div style={{textAlign: 'center', padding: '30px 20px'}}>
-                        <IconCircleCheck size={48} color="var(--checkout-accent)" stroke={1.6} style={{marginBottom: 16}}/>
+                    <div style={{
+                        textAlign: 'center',
+                        padding: '24px 18px',
+                        border: '1px solid var(--checkout-border, var(--hi-app-panel-border))',
+                        borderRadius: 'var(--hi-radius-md)',
+                        background: 'var(--checkout-surface, var(--hi-app-panel-bg))',
+                        boxShadow: 'var(--hi-shadow-sm)',
+                    }}>
+                        <IconCircleCheck size={42} color="var(--checkout-accent)" stroke={1.6} style={{marginBottom: 12}}/>
                         <Text size="xl" fw={600} mb="xs">
                             {t`You're on the waitlist!`}
                         </Text>
@@ -118,8 +123,14 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                     overlayProps={{opacity: 0.55, blur: 3}}
                     withCloseButton={false}
                 >
-                    <div style={{textAlign: 'center', padding: '30px 20px'}}>
-                        <IconAlertTriangle size={48} color="var(--hi-status-danger-text)" stroke={1.6} style={{marginBottom: 16}}/>
+                    <div style={{
+                        textAlign: 'center',
+                        padding: '24px 18px',
+                        border: '1px solid var(--hi-status-danger-border)',
+                        borderRadius: 'var(--hi-radius-md)',
+                        background: 'var(--hi-status-danger-bg)',
+                    }}>
+                        <IconAlertTriangle size={42} color="var(--hi-status-danger-text)" stroke={1.6} style={{marginBottom: 12}}/>
                         <Text size="xl" fw={600} mb="xs">
                             {t`Unable to join waitlist`}
                         </Text>
@@ -145,7 +156,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                 overlayProps={{opacity: 0.55, blur: 3}}
                 closeOnClickOutside={false}
                 styles={{
-                    title: {fontWeight: 600, fontSize: '1.25rem'},
+                    title: {fontWeight: 650, fontSize: '1rem', color: 'var(--checkout-text-primary, var(--hi-text))'},
                 }}
             >
                 <form
@@ -153,7 +164,7 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, pric
                         e.stopPropagation();
                         form.onSubmit(handleSubmit)(e);
                     }}
-                    style={{padding: '0 15px 15px'}}
+                    style={{padding: '0 4px 6px'}}
                 >
                     <InputGroup>
                         <TextInput

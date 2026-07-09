@@ -8,7 +8,7 @@
     margin-top: 30px;
     display: flex;
     justify-content: center;
-    color: var(--checkout-text-secondary, #6B7280);
+    color: var(--checkout-text-secondary, var(--hi-text-muted));
 
     .logo {
         width: 20px;

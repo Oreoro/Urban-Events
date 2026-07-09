@@ -46,7 +46,7 @@ const ConfirmEmailAddress = () => {
                         <p className={classes.statusText}>{t`Please wait while we verify your email address.`}</p>
                     </div>
                 </div>
-                <Loader size="sm" color="gray"/>
+                <Loader size="sm"/>
             </Card>
         </div>
     );

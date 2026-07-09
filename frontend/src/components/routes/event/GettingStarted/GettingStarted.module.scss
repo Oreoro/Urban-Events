@@ -126,15 +126,16 @@
     row-gap: 4px;
     align-items: center;
     padding: 13px 14px;
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
-      background: var(--hi-control-bg-hover);
+      background: var(--hi-app-hover-bg);
       border-color: var(--hi-border-strong);
-      box-shadow: none;
+      box-shadow: var(--hi-shadow-sm);
       transform: none;
     }
 
@@ -161,14 +162,14 @@
       grid-row: 1 / span 2;
       align-self: center;
       min-width: 136px;
-      background: var(--hi-surface-soft) !important;
+      background: var(--hi-surface) !important;
       color: var(--hi-text) !important;
       border: 1px solid var(--hi-border) !important;
       box-shadow: none !important;
       font-weight: 560;
 
       &:hover:not(:disabled) {
-        background: var(--hi-control-bg-active) !important;
+        background: var(--hi-control-bg-hover) !important;
         border-color: var(--hi-border-strong) !important;
         color: var(--hi-text) !important;
         box-shadow: none !important;
@@ -190,8 +191,8 @@
 }
 
 .completedCard {
-  background-color: var(--hi-surface-soft);
-  border-color: var(--hi-border);
+  background-color: var(--hi-shell-bg-strong);
+  border-color: var(--hi-app-panel-border);
   padding-left: 50px !important;
 }
 

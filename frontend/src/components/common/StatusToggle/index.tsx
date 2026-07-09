@@ -90,7 +90,7 @@ export const StatusToggle: React.FC<StatusToggleProps> = ({
                     onClick={handleToggle}
                     loading={mutation.isPending}
                     size="xs"
-                    variant="white"
+                    variant="light"
                     leftSection={<IconEye size={14}/>}
                     className={classes.publishButton}
                 >

@@ -2,15 +2,15 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.48rem;
-  padding: 0 !important;
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
+  margin-bottom: 0.55rem;
+  padding: 6px !important;
+  background: var(--hi-app-panel-bg) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
+  border-radius: var(--hi-radius-md) !important;
   box-shadow: none !important;
 
   &:hover {
-    border-color: transparent !important;
+    border-color: var(--hi-app-panel-border) !important;
   }
 
   .wrapper {
@@ -62,7 +62,7 @@
     min-height: 30px !important;
     border-radius: var(--hi-radius-sm) !important;
     font-size: 0.8rem !important;
-    font-weight: 640 !important;
+    font-weight: 620 !important;
     letter-spacing: 0;
     box-shadow: none !important;
 
@@ -109,8 +109,8 @@
 
     &:focus,
     &:focus-within {
-      border-color: var(--hi-text-muted);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
   }
 

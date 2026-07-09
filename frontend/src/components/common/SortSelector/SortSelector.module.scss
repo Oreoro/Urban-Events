@@ -30,8 +30,8 @@
 
       &:focus,
       &:focus-within {
-        border-color: var(--hi-text-muted);
-        box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+        border-color: var(--hi-focus-ring);
+        box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
       }
     }
 
@@ -43,10 +43,10 @@
 
 .dropdown {
   padding: 4px !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-md) !important;
 }
 
 .option {

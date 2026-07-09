@@ -1,0 +1,14 @@
+.copyButton {
+  color: var(--hi-text-muted) !important;
+}
+
+.copyButton:hover,
+.copied {
+  color: var(--hi-text) !important;
+  background: var(--hi-control-bg-hover) !important;
+}
+
+.copied {
+  border-color: var(--hi-status-success-border) !important;
+  background: var(--hi-status-success-bg) !important;
+}

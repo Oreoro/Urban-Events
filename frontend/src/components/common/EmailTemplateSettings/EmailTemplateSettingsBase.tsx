@@ -261,7 +261,6 @@ export const EmailTemplateSettingsBase = ({
                             <div>
                                 <Badge
                                     size="xs"
-                                    color="gray"
                                     variant="light"
                                 >
                                     {template.is_active ? t`Active` : t`Inactive`}
@@ -283,7 +282,7 @@ export const EmailTemplateSettingsBase = ({
                             </ActionIcon>
                             <ActionIcon
                                 variant="subtle"
-                                color="red"
+                                style={{color: 'var(--hi-status-danger-text)'}}
                                 onClick={() => handleDeleteTemplate(template)}
                                 loading={deleteMutation.isPending}
                                 disabled={isModifyDisabled}
@@ -338,7 +337,7 @@ export const EmailTemplateSettingsBase = ({
             />
 
             {(!isAccountVerified && isAccountFetched) && (
-                <Alert icon={<IconAlertCircle size={16}/>} variant="light" mb="lg" color="gray">
+                <Alert icon={<IconAlertCircle size={16}/>} variant="light" mb="lg">
                     <Text size="sm">
                         {t`You need to verify your account email before you can modify email templates.`}
                     </Text>
@@ -346,7 +345,7 @@ export const EmailTemplateSettingsBase = ({
             )}
 
             {accountRequiresManualVerification && (
-                <Alert icon={<IconAlertCircle size={16}/>} variant="light" mb="lg" color="gray" title={t`Connect Stripe to enable email template editing`}>
+                <Alert icon={<IconAlertCircle size={16}/>} variant="light" mb="lg" title={t`Connect Stripe to enable email template editing`}>
                     <Text size="sm">
                         {t`Due to the high risk of spam, you must connect a Stripe account before you can modify email templates. This is to ensure that all event organizers are verified and accountable.`}
                     </Text>

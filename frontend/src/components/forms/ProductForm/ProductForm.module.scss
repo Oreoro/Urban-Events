@@ -2,11 +2,11 @@
   position: relative;
   padding: 11px 12px;
   margin-bottom: 10px;
-  background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
+  border-left: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  box-shadow: none;
+  box-shadow: var(--hi-shadow-sm);
 
   h3 {
     margin: 0 0 8px;
@@ -70,7 +70,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 

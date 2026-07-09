@@ -1,7 +1,7 @@
 .card {
   box-sizing: border-box;
   border-radius: var(--hi-radius-sm);
-  padding: 10px;
+  padding: 11px;
   margin-bottom: 8px;
   color: var(--hi-text);
 
@@ -10,8 +10,9 @@
   }
 
   &.lightGray {
-    background-color: var(--checkout-surface, var(--hi-surface-soft));
-    border: 1px solid var(--checkout-border, var(--hi-border));
+    background-color: var(--checkout-surface, var(--hi-app-panel-bg));
+    border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
+    box-shadow: none;
   }
 
   &.default {
@@ -21,12 +22,12 @@
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {
-      border-color: var(--checkout-border, var(--hi-border));
+      border-color: var(--checkout-border, var(--hi-border-strong));
     }
   }
 
   &.lightAccent {
-    background-color: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+    background-color: color-mix(in srgb, var(--hi-text) 4%, var(--hi-surface));
     border: 1px solid color-mix(in srgb, var(--hi-text) 12%, var(--hi-border));
     box-shadow: none;
   }

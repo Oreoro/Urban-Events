@@ -2,7 +2,9 @@
   cursor: pointer;
   border-left: 4px solid var(--log-status-color, var(--hi-status-neutral-text)) !important;
   border-radius: var(--hi-radius-md);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  background: var(--hi-app-panel-bg);
+  box-shadow: var(--hi-shadow-sm);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
@@ -11,7 +13,7 @@
 }
 
 .logEntryExpanded {
-  box-shadow: none;
+  box-shadow: var(--hi-shadow-sm);
   border-color: var(--hi-border-strong);
 }
 
@@ -39,11 +41,17 @@
 .codeBlock {
   max-height: 300px;
   overflow: auto;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-shell-bg-strong);
 }
 
 .noLogsAlert {
   text-align: center;
+}
+
+.errorAlert {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
 }

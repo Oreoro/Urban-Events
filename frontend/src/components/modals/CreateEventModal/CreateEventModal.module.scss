@@ -92,18 +92,18 @@
   }
   
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 }
 
 // Organizer creation form
 .createOrganizerCard {
-  background: var(--hi-shell-bg);
+  background: var(--hi-shell-bg-strong);
   border-radius: var(--hi-radius-md);
   padding: 0.75rem;
   margin-bottom: 0.8rem;
-  border: 1px dashed var(--hi-border);
+  border: 1px dashed var(--hi-app-panel-border);
   
   @include mixins.respond-below(sm) {
     padding: 1.5rem;

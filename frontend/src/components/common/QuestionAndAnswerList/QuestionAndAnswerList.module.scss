@@ -24,9 +24,10 @@
 
 .questionCard {
   padding: 0.75rem;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .questionCompact {
@@ -65,8 +66,8 @@
 
 .editContainer {
   padding: 0.5rem;
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
+  background: var(--hi-shell-bg-strong);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
 }
 
@@ -103,10 +104,11 @@
 }
 
 .attendeeSection {
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
   overflow: hidden;
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .attendeeHeader {
@@ -114,8 +116,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  background-color: var(--hi-surface-soft);
-  border-bottom: 1px solid var(--hi-border);
+  background-color: var(--hi-shell-bg-strong);
+  border-bottom: 1px solid var(--hi-app-panel-border);
 }
 
 .attendeeQuestions {

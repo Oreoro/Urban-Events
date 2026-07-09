@@ -123,7 +123,7 @@ export const PaymentAndInvoicingSettings = () => {
                                 />
                             ))}
                             {form.errors["payment_providers"] && (
-                                <Text c="red">{form.errors["payment_providers"]}</Text>
+                                <Text c="var(--hi-status-danger-text)">{form.errors["payment_providers"]}</Text>
                             )}
 
                             {form.values.payment_providers?.includes("OFFLINE") && (

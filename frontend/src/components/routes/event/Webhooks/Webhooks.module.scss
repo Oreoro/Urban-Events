@@ -1,8 +1,8 @@
 .webhookToolbar {
   padding: 6px !important;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  border-color: var(--hi-app-panel-border) !important;
+  background: var(--hi-app-panel-bg) !important;
+  box-shadow: var(--hi-shadow-sm) !important;
 
   :global(.mantine-Group-root) {
     gap: 8px;
@@ -29,9 +29,9 @@
 .webhookCount {
   min-height: 26px;
   padding: 3px 8px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-shell-bg);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text-muted);
   font-size: 0.74rem;
   font-weight: 620;

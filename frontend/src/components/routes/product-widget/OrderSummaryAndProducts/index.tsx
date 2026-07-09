@@ -151,7 +151,7 @@ const DetailItem = ({icon: Icon, label, value}: { icon: any, label: string, valu
             <Icon size={20} className={classes.detailIcon}/>
             <div className={classes.detailContent}>
                 <Text size="sm" c="dimmed" className={classes.label}>{label}</Text>
-                <Text className={classes.value}>{value}</Text>
+                <Text component="div" className={classes.value}>{value}</Text>
             </div>
         </Group>
     </div>

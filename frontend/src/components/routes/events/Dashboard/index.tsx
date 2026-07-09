@@ -225,6 +225,12 @@ export function Dashboard() {
 
             {((isEventsFetching && !events) || (events && events.length > 0)) && (
                 <div className={classes.eventsListPanel} aria-label={t`Events list`}>
+                    <div className={classes.eventsListHeader} aria-hidden="true">
+                        <span>{t`Event`}</span>
+                        <span>{t`When / where`}</span>
+                        <span>{t`Performance`}</span>
+                        <span>{t`Actions`}</span>
+                    </div>
                     {(isEventsFetching && !events) && <DashboardSkeleton/>}
 
                     {events?.map((event: Event) =>

@@ -4,7 +4,7 @@ import {Modal} from "../../common/Modal";
 import {t, Trans} from "@lingui/macro";
 import {WebhookForm} from "../../forms/WebhookForm";
 import {useForm} from "@mantine/form";
-import {Alert, Button, Group, TextInput} from "@mantine/core";
+import {Alert, Button, TextInput} from "@mantine/core";
 import {useCreateWebhook} from "../../../mutations/useCreateWebhook";
 import {showSuccess} from "../../../utilites/notifications";
 import {useParams} from "react-router";
@@ -60,7 +60,7 @@ export const CreateWebhookModal = ({onClose}: GenericModalProps) => {
                 onClose={onClose}
                 heading={t`Webhook Signing Secret`}
             >
-                <Alert icon={<IconInfoCircle/>} color="gray" mb="md">
+                <Alert icon={<IconInfoCircle/>} mb="md">
                     <Trans>This is the only time the signing secret will be shown. Please copy it now and store it securely.</Trans>
                 </Alert>
                 <TextInput

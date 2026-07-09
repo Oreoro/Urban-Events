@@ -22,13 +22,13 @@
 .sidebar {
   min-width: 348px;
   max-width: 348px;
-  background: color-mix(in srgb, var(--hi-surface) 84%, var(--hi-shell-bg));
-  padding: 16px;
+  background: var(--hi-shell-surface);
+  padding: 18px 12px 12px;
   height: calc(100dvh - 82px);
   overflow-y: auto;
   position: sticky;
   top: 0;
-  border-right: 1px solid var(--hi-border);
+  border-right: 1px solid var(--hi-app-panel-border);
 
   @include mixins.respond-below(lg) {
     width: 100%;
@@ -38,20 +38,21 @@
     overflow: auto;
     height: auto;
     border-right: none;
-    border-bottom: 1px solid var(--hi-border);
+    border-bottom: 1px solid var(--hi-app-panel-border);
     padding: var(--hi-spacing-md);
+    padding-top: 16px;
   }
 }
 
 .sticky {
   position: sticky;
-  top: 0;
+  top: 18px;
 }
 
 .header {
   margin-bottom: 12px;
   padding-bottom: 11px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, var(--hi-surface));
+  border-bottom: 1px solid var(--hi-app-panel-border);
   
   h2 {
     margin: 0 0 4px 0;
@@ -70,14 +71,15 @@
 
 .accordion {
   display: grid;
-  gap: 6px;
+  gap: 2px;
   margin-bottom: 0;
   
   .accordionItem {
-    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-    border-radius: var(--hi-radius-md);
+    border: 0;
+    border-radius: var(--hi-radius-sm);
     overflow: hidden;
-    background: var(--hi-surface);
+    background: transparent;
+    box-shadow: none;
     
     &:not(:last-child) {
       margin-bottom: 0;
@@ -85,18 +87,19 @@
 
     :global(.mantine-Accordion-control) {
       min-height: 36px;
-      padding: 8px 10px;
-      background: var(--hi-surface);
+      padding: 6px 8px;
+      background: transparent;
       color: var(--hi-text);
       font-weight: 620;
+      border-radius: var(--hi-radius-sm);
       
       &:hover {
         background: var(--hi-control-bg-hover);
       }
       
       &[data-active] {
-        background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
-        border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+        background: var(--hi-control-bg-active);
+        border-bottom: 0;
       }
     }
 
@@ -107,11 +110,11 @@
 
     :global(.mantine-Accordion-panel) {
       padding: 0;
-      background: var(--hi-surface);
+      background: transparent;
     }
 
     :global(.mantine-Accordion-content) {
-      padding: 12px;
+      padding: 7px 8px 12px 30px;
     }
   }
 }
@@ -128,6 +131,7 @@
   :global(.mantine-ColorInput-label) {
     font-weight: 620;
     font-size: 0.82rem;
+    color: var(--hi-text-muted);
   }
 
   :global(.mantine-ColorInput-description) {
@@ -139,6 +143,7 @@
   :global(.mantine-TextInput-label) {
     font-weight: 620;
     font-size: 0.82rem;
+    color: var(--hi-text-muted);
   }
 
   :global(.mantine-TextInput-description) {
@@ -149,8 +154,22 @@
 
   :global(.mantine-Input-input) {
     min-height: 34px;
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface);
+    color: var(--hi-text);
     font-size: 0.82rem;
+
+    &:hover {
+      border-color: var(--hi-border-strong);
+      background: var(--hi-control-bg-hover);
+    }
+
+    &:focus,
+    &:focus-within {
+      border-color: var(--hi-focus-ring);
+      box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
+    }
   }
 
   &:disabled {
@@ -167,7 +186,8 @@
   display: flex;
   flex-direction: column;
   background: var(--hi-shell-bg);
-  border-left: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border-left: 0;
+  padding: 16px;
 
   @include mixins.respond-below(lg) {
     width: 100%;
@@ -177,7 +197,7 @@
     overflow: auto;
     height: auto;
     border-left: none;
-    border-top: 1px solid var(--hi-border);
+    border-top: 1px solid var(--hi-app-panel-border);
     padding: 0;
   }
 }
@@ -186,9 +206,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 18px;
-  background: var(--hi-surface);
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+  padding: 0 0 10px;
+  background: transparent;
+  border-bottom: 1px solid var(--hi-app-panel-border);
+  box-shadow: none;
   
   h3 {
     margin: 0;
@@ -201,7 +222,9 @@
   flex: 1;
   overflow: auto;
   display: flex;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
   min-height: 0;
   min-width: 0;
   

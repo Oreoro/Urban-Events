@@ -1,9 +1,9 @@
 .statCard {
   min-height: 88px;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border-color: var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
-  box-shadow: none;
+  background: var(--hi-app-panel-bg);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .statLabel {

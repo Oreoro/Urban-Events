@@ -102,7 +102,7 @@ const Messages = () => {
     const totalMessages = messagesData?.meta?.total || 0;
 
     return (
-        <Container size="xl" p="xl" className={listClasses.page}>
+        <Container size="xl" p="md" className={listClasses.page}>
             <Stack gap="lg" className={listClasses.stack}>
                 <div>
                     <Title order={1}>{t`Outgoing Messages`}</Title>
@@ -176,7 +176,7 @@ const Messages = () => {
                                         <Table.Tr key={message.id}>
                                             <Table.Td>
                                                 <Group gap="xs">
-                                                    <IconMail size={16} color="gray" />
+                                                    <IconMail size={16} color="var(--hi-text-muted)" />
                                                     <Text size="sm" fw={500} lineClamp={1} maw={200}>
                                                         {message.subject}
                                                     </Text>
@@ -193,13 +193,13 @@ const Messages = () => {
                                                 </Text>
                                             </Table.Td>
                                             <Table.Td>
-                                                <Badge variant="light" color="gray">
+                                                <Badge variant="light">
                                                     {getTypeLabel(message.type)}
                                                 </Badge>
                                             </Table.Td>
                                             <Table.Td>
                                                 <Group gap={4}>
-                                                    <IconUsers size={14} color="gray" />
+                                                    <IconUsers size={14} color="var(--hi-text-muted)" />
                                                     <Text size="sm" fw={500}>
                                                         {message.recipients_count}
                                                     </Text>
@@ -223,7 +223,6 @@ const Messages = () => {
                                                     <Tooltip label={t`View Message`}>
                                                         <ActionIcon
                                                             variant="subtle"
-                                                            color="gray"
                                                             onClick={() => handleViewMessage(message)}
                                                         >
                                                             <IconEye size={16} />
@@ -291,7 +290,7 @@ const Messages = () => {
                         <Group>
                             <div>
                                 <Text size="sm" fw={500} c="dimmed">{t`Type`}</Text>
-                                <Badge variant="light" color="gray">
+                                <Badge variant="light">
                                     {getTypeLabel(selectedMessage.type)}
                                 </Badge>
                             </div>

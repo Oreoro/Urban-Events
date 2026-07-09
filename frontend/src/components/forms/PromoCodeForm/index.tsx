@@ -46,7 +46,6 @@ export const PromoCodeForm = ({form}: PromoCodeFormProps) => {
                     <Button
                         variant="subtle"
                         size="xs"
-                        color="gray"
                         onClick={generateRandomCode}
                         style={{fontWeight: 400}}
                         title={t`Generate code`}

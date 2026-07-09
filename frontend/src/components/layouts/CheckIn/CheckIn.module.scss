@@ -3,7 +3,7 @@
 .container {
   min-width: 300px;
   min-height: 100dvh;
-  background: var(--hi-shell-bg);
+  background: var(--hi-shell-surface);
 }
 
 .header {
@@ -13,9 +13,9 @@
   display: flex;
   flex-direction: column;
   padding: 16px 18px;
-  background-color: var(--hi-surface);
-  border-bottom: 1px solid var(--hi-border);
-  box-shadow: none;
+  background-color: var(--hi-app-panel-bg);
+  border-bottom: 1px solid var(--hi-app-panel-border);
+  box-shadow: var(--hi-shadow-sm);
 
   .title {
     margin: 0 0 12px;
@@ -46,6 +46,8 @@
       }
 
       .scanButton {
+        min-height: 32px;
+
         @include mixins.respond-below(sm) {
           display: none;
         }
@@ -79,10 +81,11 @@
   .attendee {
     display: flex;
     align-items: center;
-    background-color: var(--hi-surface);
+    background-color: var(--hi-app-panel-bg);
     padding: 12px;
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
+    box-shadow: var(--hi-shadow-sm);
     margin-bottom: 8px;
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
@@ -117,6 +120,53 @@
       flex-grow: initial;
       margin-left: 12px;
     }
+  }
+}
+
+.checkInButton,
+.unavailableButton,
+.checkOutButton {
+  min-width: 100px;
+  min-height: 36px;
+  border-radius: var(--hi-radius-sm) !important;
+  font-size: 0.82rem !important;
+  font-weight: 650 !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+
+.checkInButton {
+  border: 1px solid var(--hi-text) !important;
+  background: var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
+
+  &:hover:not(:disabled) {
+    border-color: var(--hi-text-light) !important;
+    background: var(--hi-text-light) !important;
+  }
+}
+
+.unavailableButton {
+  border: 1px solid var(--hi-border-strong) !important;
+  background: var(--hi-control-bg-active) !important;
+  color: var(--hi-text-muted) !important;
+
+  &:hover:not(:disabled) {
+    border-color: var(--hi-border-strong) !important;
+    background: var(--hi-control-bg-active) !important;
+    color: var(--hi-text-light) !important;
+  }
+}
+
+.checkOutButton {
+  border: 1px solid var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+
+  &:hover:not(:disabled) {
+    border-color: var(--hi-status-danger-border) !important;
+    background: color-mix(in srgb, var(--hi-status-danger-bg) 82%, var(--hi-status-danger-text)) !important;
+    color: var(--hi-status-danger-text) !important;
   }
 }
 

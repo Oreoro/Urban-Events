@@ -270,7 +270,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     <Badge
                                         leftSection={<IconTicket size={12}/>}
                                         variant="light"
-                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Ticket`}
@@ -279,7 +278,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     <Badge
                                         leftSection={<IconPackage size={12}/>}
                                         variant="light"
-                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Product`}
@@ -288,7 +286,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                 {product.waitlist_enabled && (
                                     <Badge
                                         variant="light"
-                                        color="gray"
                                         size="sm"
                                         leftSection={<IconClock size={12}/>}
                                     >
@@ -298,7 +295,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                 {product.type === ProductPriceType.Donation && (
                                     <Badge
                                         variant="outline"
-                                        color="gray"
                                         size="sm"
                                     >
                                         {t`Donation`}
@@ -313,7 +309,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     >
                                         <Badge
                                             variant="light"
-                                            color="gray"
                                             size="sm"
                                             leftSection={product.is_hidden_without_promo_code ? <IconLock size={12}/> :
                                                 <IconEyeOff size={12}/>}
@@ -329,7 +324,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                     >
                                         <Badge
                                             variant="light"
-                                            color="gray"
                                             className={classes.productMetaBadge}
                                             size="sm"
                                             leftSection={<IconSparkles size={12}/>}
@@ -392,7 +386,6 @@ export const SortableProduct = ({product, currencyCode, category, categories}: S
                                         <Progress
                                             value={salesProgress.percentage}
                                             size="xs"
-                                            color="gray"
                                             className={classes.salesProgress}
                                         />
                                         {salesProgress.isLow && salesProgress.remaining > 0 && (

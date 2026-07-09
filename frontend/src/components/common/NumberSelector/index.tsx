@@ -92,7 +92,7 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
     return (
         <div className={classNames(classes.wrapper, 'button-input')}>
             <ActionIcon
-                size={28}
+                size={34}
                 onClick={decrement}
                 disabled={value <= minValue}
                 onMouseDown={(event) => event.preventDefault()}
@@ -114,7 +114,7 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
             />
 
             <ActionIcon
-                size={28}
+                size={34}
                 onClick={increment}
                 disabled={value >= maxValue || sharedVals.quantityRemaining <= 0}
                 onMouseDown={(event) => event.preventDefault()}
@@ -187,4 +187,3 @@ export class SharedValues {
         return adjustedDifference;
     }
 }
-

@@ -54,9 +54,9 @@
 .orderId {
   width: fit-content;
   padding: 1px 4px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--hi-text);
@@ -122,8 +122,8 @@
   align-items: center;
   gap: 3px;
   padding: 2px 6px;
-  background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
   font-size: 0.71rem;
   color: var(--hi-text-light);
@@ -199,21 +199,21 @@
   white-space: nowrap;
 
   &[data-status="COMPLETED"] {
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
     color: var(--hi-text);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="RESERVED"] {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text-light);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="AWAITING_OFFLINE_PAYMENT"] {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text-light);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="CANCELLED"] {

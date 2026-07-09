@@ -25,8 +25,8 @@
   .sidebar {
     min-width: 336px;
     max-width: 336px;
-    background: var(--hi-surface);
-    padding: 14px;
+    background: var(--hi-shell-surface);
+    padding: 18px 12px 12px;
     height: calc(100dvh - 82px);
     overflow-y: auto;
     position: sticky;
@@ -41,18 +41,19 @@
       overflow: auto;
       height: auto;
       border-right: none;
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+      border-bottom: 1px solid var(--hi-app-panel-border);
+      padding-top: 16px;
     }
 
     .sticky {
       position: sticky;
-      top: 0;
+      top: 18px;
     }
 
     .header {
       margin-bottom: 12px;
       padding-bottom: 11px;
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, var(--hi-surface));
+      border-bottom: 1px solid var(--hi-app-panel-border);
       
       h2 {
         margin: 0 0 4px 0;
@@ -72,14 +73,15 @@
 
     .accordion {
       display: grid;
-      gap: 6px;
+      gap: 2px;
       margin-bottom: 0;
       
       .accordionItem {
-        border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-        border-radius: var(--hi-radius-md);
+        border: 0;
+        border-radius: var(--hi-radius-sm);
         overflow: hidden;
-        background: var(--hi-surface);
+        background: transparent;
+        box-shadow: none;
         
         &:not(:last-child) {
           margin-bottom: 0;
@@ -87,19 +89,20 @@
 
         :global(.mantine-Accordion-control) {
           min-height: 34px;
-          padding: 7px 9px;
-          background: var(--hi-surface);
+          padding: 6px 8px;
+          background: transparent;
           color: var(--hi-text);
           font-weight: 620;
           font-size: 0.82rem;
+          border-radius: var(--hi-radius-sm);
           
           &:hover {
             background: var(--hi-control-bg-hover);
           }
           
           &[data-active] {
-            background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
-            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+            background: var(--hi-control-bg-active);
+            border-bottom: 0;
           }
         }
 
@@ -110,11 +113,11 @@
 
         :global(.mantine-Accordion-panel) {
           padding: 0;
-          background: var(--hi-surface);
+          background: transparent;
         }
 
         :global(.mantine-Accordion-content) {
-          padding: 10px;
+          padding: 7px 8px 12px 30px;
         }
       }
     }
@@ -154,8 +157,8 @@
 
       :global(.mantine-Input-input) {
         min-height: 34px;
-        border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
-        border-radius: var(--hi-radius-md);
+        border-color: var(--hi-app-panel-border);
+        border-radius: var(--hi-radius-sm);
         background: var(--hi-surface);
         color: var(--hi-text);
         font-size: 0.82rem;
@@ -169,8 +172,8 @@
 
         &:focus,
         &:focus-within {
-          border-color: var(--hi-text-muted);
-          box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+          border-color: var(--hi-focus-ring);
+          box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
         }
       }
     }
@@ -200,8 +203,9 @@
       height: 100%;
       min-height: 500px;
       background: var(--hi-surface);
-      border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+      border: 1px solid var(--hi-app-panel-border);
       border-radius: var(--hi-radius-md);
+      box-shadow: none;
       overflow: hidden;
       --scale: 0.75;
 
@@ -210,7 +214,7 @@
         position: absolute;
         inset: 8px 8px auto;
         height: 1px;
-        background: color-mix(in srgb, var(--hi-border) 72%, transparent);
+        background: var(--hi-app-panel-border);
         z-index: 1;
         pointer-events: none;
       }
@@ -218,8 +222,8 @@
       iframe {
         transform: scale(var(--scale));
         transform-origin: 0 0;
-        border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-        border-radius: var(--hi-radius-md);
+        border: 1px solid var(--hi-app-panel-border);
+        border-radius: var(--hi-radius-sm);
         position: absolute;
         inset: 16px;
         width: calc((100% - 32px) / var(--scale));

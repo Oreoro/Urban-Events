@@ -86,7 +86,7 @@ export const DangerZoneSettings = () => {
                 action={
                     <>
                         {!isDeletionStatusLoading && !deletionStatus?.can_delete && (
-                            <Alert icon={<IconInfoCircle size={16}/>} variant="light" color="gray" mb="sm">
+                            <Alert icon={<IconInfoCircle size={16}/>} variant="light" mb="sm">
                                 {deletionStatus?.reason}
                             </Alert>
                         )}

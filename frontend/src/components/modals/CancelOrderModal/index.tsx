@@ -78,8 +78,12 @@ export const CancelOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                 />
             )}
 
-            <Button loading={cancelOrderMutation.isPending} className={'mb20'} color={'red'} fullWidth
-                    onClick={handleCancelOrder}>
+            <Button
+                loading={cancelOrderMutation.isPending}
+                className={classes.cancelButton}
+                fullWidth
+                onClick={handleCancelOrder}
+            >
                 {t`Cancel Order`}
             </Button>
         </Modal>

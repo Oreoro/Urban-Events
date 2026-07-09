@@ -12,17 +12,17 @@
 
   .tabsCard {
     padding: 0;
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     background: var(--hi-surface);
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm);
     overflow: hidden;
 
     :global(.mantine-Tabs-list) {
       gap: 4px;
       padding: 4px;
       border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-      background: color-mix(in srgb, var(--hi-shell-bg) 74%, var(--hi-surface));
+      background: var(--hi-app-panel-bg);
     }
 
     :global(.mantine-Tabs-tab) {
@@ -133,8 +133,8 @@
 
       &:focus,
       &:focus-within {
-        border-color: var(--hi-text-muted);
-        box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+        border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+        box-shadow: 0 0 0 2px var(--hi-focus-ring);
       }
     }
 

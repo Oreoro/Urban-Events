@@ -73,7 +73,7 @@ const Events = () => {
     };
 
     return (
-        <Container size="xl" p="xl" className={listClasses.page}>
+        <Container size="xl" p="md" className={listClasses.page}>
             <Stack gap="lg" className={listClasses.stack}>
                 <Title order={1}>{t`Events`}</Title>
 

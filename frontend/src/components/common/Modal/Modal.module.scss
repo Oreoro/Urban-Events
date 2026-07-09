@@ -1,8 +1,8 @@
 .content {
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-sm) !important;
-    background: var(--hi-surface);
-    box-shadow: none;
+    border: 1px solid var(--hi-app-panel-border);
+    border-radius: var(--hi-radius-md) !important;
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-md);
     overflow: hidden;
 }
 
@@ -53,8 +53,8 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-text-muted);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+            border-color: var(--hi-focus-ring);
+            box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
         }
     }
 
@@ -68,9 +68,9 @@
     }
 
     :global(.mantine-Fieldset-root) {
-        border-color: var(--hi-border);
+        border-color: var(--hi-app-panel-border);
         border-radius: var(--hi-radius-sm);
-        background: var(--hi-surface-soft);
+        background: var(--hi-shell-bg-strong);
     }
 
     :global(.mantine-Fieldset-legend) {
@@ -81,9 +81,9 @@
     }
 
     :global(.mantine-Alert-root) {
-        border-color: var(--hi-border);
+        border-color: var(--hi-app-panel-border);
         border-radius: var(--hi-radius-sm);
-        background: var(--hi-surface-soft) !important;
+        background: var(--hi-shell-bg-strong) !important;
         color: var(--hi-text-light);
         box-shadow: none;
     }
@@ -113,8 +113,8 @@
 .header {
     min-height: 38px;
     padding: 8px 10px 7px !important;
-    border-bottom: 1px solid var(--hi-border);
-    background: var(--hi-surface);
+    border-bottom: 1px solid var(--hi-app-panel-border);
+    background: var(--hi-shell-bg-strong);
 }
 
 .modalTitle {

@@ -5,15 +5,17 @@
 }
 
 .accountCard {
-    background: var(--hi-surface);
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     padding: 12px;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    box-shadow: var(--hi-shadow-sm);
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
         background: var(--hi-control-bg-hover);
         border-color: var(--hi-border-strong);
+        box-shadow: var(--hi-shadow-md);
     }
 }
 
@@ -61,8 +63,8 @@
     gap: 8px;
     padding: 8px 9px;
     color: var(--hi-text-muted);
-    background: color-mix(in srgb, var(--hi-shell-bg) 72%, var(--hi-surface));
-    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+    background: var(--hi-shell-bg-strong);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-sm);
 
     svg {
@@ -94,9 +96,10 @@
     text-align: center;
     padding: 32px 16px;
     color: var(--hi-text-muted);
-    background: var(--hi-surface);
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
+    box-shadow: var(--hi-shadow-sm);
 }
 
 .usersSection {
@@ -115,9 +118,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 9px;
-    background: color-mix(in srgb, var(--hi-shell-bg) 74%, var(--hi-surface));
+    background: var(--hi-shell-bg-strong);
     border-radius: var(--hi-radius-sm);
-    border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+    border: 1px solid var(--hi-app-panel-border);
     transition: background-color 0.15s ease, border-color 0.15s ease;
 
     &:hover {

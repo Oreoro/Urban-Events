@@ -83,7 +83,7 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                             {order.total_refunded > 0 && (
                                 <Group justify="space-between">
                                     <Text size="sm" c="dimmed">{t`Already Refunded`}</Text>
-                                    <Text size="lg" c="red">
+                                    <Text size="lg" c="var(--hi-status-danger-text)">
                                         -<Currency currency={order.currency} price={order.total_refunded}/>
                                     </Text>
                                 </Group>

@@ -10,7 +10,7 @@
   border-radius: var(--hi-radius-sm);
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 12%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 }
@@ -42,14 +42,15 @@
   min-height: 50px;
   width: 100%;
   border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
-  border-radius: var(--hi-radius-sm);
+  border-radius: var(--hi-radius-md);
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  box-shadow: var(--hi-shadow-sm) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
     border-color: color-mix(in srgb, var(--hi-border-strong) 60%, var(--hi-border)) !important;
+    box-shadow: var(--hi-shadow-md) !important;
   }
 
   .icon {
@@ -59,7 +60,7 @@
     height: 26px;
     justify-content: center;
     color: var(--hi-text-muted);
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     border: 1px solid var(--hi-border);
     border-radius: var(--hi-radius-sm);
     flex-shrink: 0;

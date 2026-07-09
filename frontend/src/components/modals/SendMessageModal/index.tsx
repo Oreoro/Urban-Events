@@ -248,8 +248,8 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
 
                 {tierLimitError && (
                     <Alert
+                        className={classes.errorAlert}
                         variant="light"
-                        color="red"
                         icon={<IconAlertCircle size="1rem"/>}
                         mb="md"
                     >

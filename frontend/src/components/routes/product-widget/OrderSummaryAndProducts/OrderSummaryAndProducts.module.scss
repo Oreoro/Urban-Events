@@ -83,7 +83,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .successAlert {
-  background-color: var(--hi-surface-soft) !important;
+  background-color: var(--checkout-surface-strong, var(--hi-shell-bg-strong)) !important;
   border-color: var(--checkout-border, var(--hi-border)) !important;
 }
 
@@ -130,6 +130,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   border-radius: var(--hi-radius-sm);
   background: var(--checkout-surface, var(--hi-surface));
   overflow: hidden;
+  box-shadow: none;
 }
 
 .guestItem {

@@ -18,7 +18,7 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-surface);
+    background-color: var(--hi-shell-bg-strong);
     color: var(--hi-text-muted) !important;
     padding: 0.34rem 0.5rem !important;
     border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
@@ -36,7 +36,7 @@
   border-radius: var(--hi-radius-sm) !important;
   border-color: var(--hi-border) !important;
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-sm) !important;
 
   :global(.mantine-ScrollArea-viewport) {
     padding-bottom: 0;
@@ -60,11 +60,11 @@
     transition: background-color 0.14s ease, box-shadow 0.14s ease;
 
     &:hover {
-      background: color-mix(in srgb, var(--hi-control-bg-hover) 74%, var(--hi-surface));
+      background: var(--hi-app-hover-bg);
 
       .stickyLeft,
       .stickyRight {
-        background: color-mix(in srgb, var(--hi-control-bg-hover) 74%, var(--hi-surface));
+        background: var(--hi-app-hover-bg);
       }
     }
 
@@ -127,6 +127,6 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-surface);
+  background-color: var(--hi-shell-bg-strong);
   z-index: 12;
 }

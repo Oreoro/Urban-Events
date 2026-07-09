@@ -72,7 +72,7 @@ export const CheckInStatusModal = ({
         return (
             <Box key={list.id} className={classes.listItem} style={{
                 opacity: isEligible ? 1 : 0.6,
-                borderColor: isEligible ? 'var(--hi-border)' : 'color-mix(in srgb, var(--hi-border) 62%, white)'
+                borderColor: isEligible ? 'var(--hi-border)' : 'color-mix(in srgb, var(--hi-border) 62%, var(--hi-color-white))'
             }}>
                 <Group justify="space-between" wrap="nowrap">
                     <Group gap="sm" style={{flex: 1}}>
@@ -104,16 +104,16 @@ export const CheckInStatusModal = ({
                     {isEligible ? (
                         <Badge
                             variant="light"
-                            color={isCheckedIn ? 'green' : 'gray'}
                             size="sm"
+                            className={`${classes.statusBadge} ${isCheckedIn ? classes.statusChecked : classes.statusNeutral}`}
                         >
                             {isCheckedIn ? t`Checked In` : t`Not Checked In`}
                         </Badge>
                     ) : (
                         <Badge
                             variant="light"
-                            color="gray"
                             size="sm"
+                            className={`${classes.statusBadge} ${classes.statusNeutral}`}
                         >
                             {t`Not Eligible`}
                         </Badge>

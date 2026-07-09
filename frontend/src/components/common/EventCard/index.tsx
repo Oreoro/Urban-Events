@@ -14,6 +14,7 @@ import {eventHomepagePath, getImageUrl} from "../../../utilites/urlHelper.ts";
 import {useDisclosure} from "@mantine/hooks";
 import {DuplicateEventModal} from "../../modals/DuplicateEventModal";
 import {useState} from "react";
+import type {KeyboardEvent} from "react";
 import {ActionMenu, ActionMenuItemsGroup} from '../ActionMenu';
 import {confirmationDialog} from "../../../utilites/confirmationDialog.tsx";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
@@ -24,7 +25,7 @@ import {formatDateWithLocale, relativeDate} from "../../../utilites/dates.ts";
 import {Card} from "../Card";
 
 const placeholderColors = [
-    'var(--hi-surface-soft)',
+    'var(--hi-shell-bg-strong)',
     'var(--hi-control-bg-hover)',
     'var(--hi-status-neutral-bg)',
     'var(--ue-slate-soft)',
@@ -70,6 +71,21 @@ export function EventCard({event, variant = 'list'}: EventCardProps) {
             });
         })
     }
+
+    const handleCardNavigate = () => {
+        navigate(`/manage/event/${event.id}/dashboard`);
+    };
+
+    const handleCardKeyDown = (keyEvent: KeyboardEvent<HTMLDivElement>) => {
+        if (keyEvent.defaultPrevented) {
+            return;
+        }
+
+        if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+            keyEvent.preventDefault();
+            handleCardNavigate();
+        }
+    };
 
     const getStatusConfig = () => {
         if (event.status === 'ARCHIVED') {
@@ -167,7 +183,13 @@ export function EventCard({event, variant = 'list'}: EventCardProps) {
     return (
         <>
             <Card className={`${classes.eventCard} ${variant === 'board' ? classes.board : ''} ${isEnded ? classes.isEnded : ''} ${isDraft ? classes.isDraft : ''}`}>
-                <NavLink to={`/manage/event/${event.id}/dashboard`} className={classes.cardLink}>
+                <div
+                    className={classes.cardLink}
+                    role="link"
+                    tabIndex={0}
+                    onClick={handleCardNavigate}
+                    onKeyDown={handleCardKeyDown}
+                >
                     <div className={classes.imageContainer}>
                         <div
                             className={`${classes.image} ${!coverImageUrl ? classes.placeholderImage : ''}`}
@@ -236,7 +258,7 @@ export function EventCard({event, variant = 'list'}: EventCardProps) {
                             </Tooltip>
                         </div>
 
-                        <div className={classes.menuButton} onClick={(e) => e.preventDefault()}>
+                        <div className={classes.menuButton} onClick={(e) => e.stopPropagation()}>
                             <ActionMenu
                                 itemsGroups={menuItems}
                                 target={
@@ -251,7 +273,7 @@ export function EventCard({event, variant = 'list'}: EventCardProps) {
                             />
                         </div>
                     </div>
-                </NavLink>
+                </div>
             </Card>
             {isDuplicateModalOpen && <DuplicateEventModal eventId={eventId} onClose={duplicateModal.close}/>}
         </>

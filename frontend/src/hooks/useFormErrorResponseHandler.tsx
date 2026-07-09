@@ -27,11 +27,11 @@ export const useFormErrorResponseHandler = () => {
                     <p>
                         {t`There was an error processing your request. Please try again.`}
                     </p>
-                    <p style={{fontSize: '0.8rem', color: '#ccc'}}>
+                    <p style={{fontSize: '0.8rem', color: 'var(--hi-text-muted)'}}>
                         Error: {error.response.status}
                     </p>
                     {error.response.data?.message && (
-                        <p style={{fontSize: '0.8rem', color: '#ccc'}}>
+                        <p style={{fontSize: '0.8rem', color: 'var(--hi-text-muted)'}}>
                             {error.response.data.message}
                         </p>
                     )}

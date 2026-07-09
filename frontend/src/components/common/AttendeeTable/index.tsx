@@ -22,7 +22,6 @@ import {useParams} from "react-router";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {useGetEventCheckInLists} from "../../../queries/useGetCheckInLists.ts";
 import Truncate from "../Truncate";
-import {notifications} from "@mantine/notifications";
 import {useModifyAttendee} from "../../../mutations/useModifyAttendee.ts";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {t, Trans} from "@lingui/macro";
@@ -91,14 +90,11 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                 }
             }, {
                 onSuccess: () => {
-                    notifications.show({
-                        message: (
-                            <Trans>
-                                Successfully {attendee.status === 'CANCELLED' ? 'activated' : 'cancelled'} attendee
-                            </Trans>
-                        ),
-                        color: 'green',
-                    });
+                    showSuccess((
+                        <Trans>
+                            Successfully {attendee.status === 'CANCELLED' ? 'activated' : 'cancelled'} attendee
+                        </Trans>
+                    ));
                 },
                 onError: () => showError(t`Failed to cancel attendee`),
             });
@@ -189,7 +185,6 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                 <Button
                                                     fullWidth
                                                     variant="light"
-                                                    color="gray"
                                                     leftSection={<IconCopy size={16}/>}
                                                     onClick={() => handleCopyEmail(info.row.original.email)}
                                                 >

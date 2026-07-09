@@ -4,9 +4,10 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--checkout-surface, var(--hi-surface));
-  border: 1px solid var(--checkout-border, var(--hi-border));
+  background: var(--checkout-surface, var(--hi-app-panel-bg));
+  border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
   border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-sm);
   padding: 14px;
   margin-top: 22px;
   margin-bottom: 22px;
@@ -20,9 +21,9 @@
 .iconContainer {
   width: 34px;
   height: 34px;
-  background: var(--hi-shell-bg);
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-md);
+  background: var(--checkout-surface-strong, var(--hi-shell-bg-strong));
+  border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
+  border-radius: var(--hi-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;

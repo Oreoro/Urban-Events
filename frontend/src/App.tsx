@@ -67,7 +67,7 @@ export const App: FC<
                     width: "100vw",
                     height: "100vh",
                     position: "fixed",
-                    background: "#ffffff",
+                    background: "var(--hi-shell-bg, #ffffff)",
                     zIndex: 1000,
                     display: isLoadedOnBrowser ? "none" : "block",
                 }}

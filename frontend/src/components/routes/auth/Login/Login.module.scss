@@ -34,9 +34,9 @@
 // Ticket Lookup Section
 .ticketLookup {
   margin-top: 0.72rem;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-app-panel-bg);
   overflow: hidden;
 
   @include mixins.respond-below(sm) {
@@ -121,8 +121,8 @@
     }
 
     &:focus {
-      border-color: var(--hi-text-muted);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
   }
 
@@ -133,13 +133,13 @@
     font-size: 0.76rem;
     padding: 0 1rem;
     white-space: nowrap;
-    background: var(--hi-text) !important;
-    border: 1px solid var(--hi-text) !important;
+    background: var(--hi-primary) !important;
+    border: 1px solid var(--hi-primary) !important;
     color: var(--hi-surface) !important;
 
     &:hover:not(:disabled) {
-      background: var(--hi-text-light) !important;
-      border-color: var(--hi-text-light) !important;
+      background: var(--hi-primary-hover) !important;
+      border-color: var(--hi-primary-hover) !important;
     }
 
     @include mixins.respond-below(sm) {

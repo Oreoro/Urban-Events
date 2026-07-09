@@ -24,7 +24,7 @@ const Attribution = () => {
     const totalPages = paginatedData?.last_page || 1;
 
     return (
-        <Container size="xl" p="xl" className={listClasses.page}>
+        <Container size="xl" p="md" className={listClasses.page}>
             <Stack gap="xl" className={listClasses.stack}>
                 <div>
                     <Title order={1} mb="xs">

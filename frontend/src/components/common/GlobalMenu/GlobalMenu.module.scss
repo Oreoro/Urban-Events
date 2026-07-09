@@ -21,7 +21,7 @@
   width: 24px;
   height: 24px;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text);
   border: 1px solid var(--hi-border);
   font-size: 0.72rem;
@@ -31,9 +31,9 @@
 .dropdown {
   padding: 4px !important;
   border-radius: var(--hi-radius-sm) !important;
-  border: 1px solid var(--hi-border) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
+  background: var(--hi-app-panel-bg) !important;
+  box-shadow: var(--hi-shadow-md) !important;
 }
 
 .userHeader {
@@ -48,7 +48,7 @@
   width: 28px;
   height: 28px;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text);
   border: 1px solid var(--hi-border);
   font-size: 0.72rem;

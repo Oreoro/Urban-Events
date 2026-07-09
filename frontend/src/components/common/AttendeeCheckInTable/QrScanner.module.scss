@@ -12,6 +12,14 @@
   }
 }
 
+.controlIcon {
+  color: color-mix(in srgb, var(--hi-color-white) 72%, transparent);
+}
+
+.activeControlIcon {
+  color: var(--hi-warning);
+}
+
 .videoContainer {
   position: relative;
   display: flex;

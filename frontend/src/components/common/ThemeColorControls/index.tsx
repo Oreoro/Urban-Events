@@ -162,7 +162,6 @@ export const ThemeColorControls = ({
                         <ActionIcon
                             aria-label={t`Reset palette`}
                             variant="subtle"
-                            color="gray"
                             size="sm"
                             onClick={handleReset}
                             disabled={disabled}

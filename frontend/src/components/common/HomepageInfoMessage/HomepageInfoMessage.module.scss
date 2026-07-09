@@ -30,7 +30,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: none;
 
   &[data-status="success"] {
-    --message-status-bg: var(--hi-surface-soft);
+    --message-status-bg: var(--hi-shell-bg-strong);
     --message-status-text: var(--hi-text);
     --message-status-border: var(--hi-border);
   }
@@ -39,7 +39,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   &[data-status="processing"],
   &[data-status="awaiting_payment"],
   &[data-status="offline_payment"] {
-    --message-status-bg: var(--hi-surface-soft);
+    --message-status-bg: var(--hi-shell-bg-strong);
     --message-status-text: var(--hi-text-muted);
     --message-status-border: var(--hi-border);
   }
@@ -129,7 +129,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 }

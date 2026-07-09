@@ -52,8 +52,8 @@
 
 .button {
   flex-shrink: 0;
-  border-color: var(--hi-border) !important;
-  background: var(--hi-surface-soft) !important;
+  border-color: var(--hi-app-panel-border) !important;
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text) !important;
   border-radius: var(--hi-radius-sm) !important;
   font-weight: 600 !important;

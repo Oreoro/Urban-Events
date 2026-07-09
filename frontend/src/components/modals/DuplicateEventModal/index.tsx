@@ -151,7 +151,6 @@ export const DuplicateEventModal = ({onClose, eventId}: DuplicateEventModalProps
                                     size="sm"
                                     onClick={handleDeselectAll}
                                     disabled={noneSelected}
-                                    color="gray"
                                 >
                                     <IconSquare size={16} />
                                 </ActionIcon>

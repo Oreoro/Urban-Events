@@ -25,7 +25,7 @@
   .sidebar {
     min-width: 336px;
     max-width: 336px;
-    background: var(--hi-surface);
+    background: var(--hi-shell-surface);
     padding: 14px;
     height: calc(100dvh - 82px);
     overflow-y: auto;
@@ -41,7 +41,7 @@
       overflow: auto;
       height: auto;
       border-right: none;
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+      border-bottom: 1px solid var(--hi-app-panel-border);
     }
 
     .sticky {
@@ -52,7 +52,7 @@
     .header {
       margin-bottom: 12px;
       padding-bottom: 11px;
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 76%, var(--hi-surface));
+      border-bottom: 1px solid var(--hi-app-panel-border);
 
       h2 {
         margin: 0 0 4px 0;
@@ -76,10 +76,11 @@
       margin-bottom: 0;
 
       .accordionItem {
-        border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+        border: 1px solid var(--hi-app-panel-border);
         border-radius: var(--hi-radius-md);
         overflow: hidden;
-        background: var(--hi-surface);
+        background: var(--hi-app-panel-bg);
+        box-shadow: var(--hi-shadow-sm);
 
         &:not(:last-child) {
           margin-bottom: 0;
@@ -88,7 +89,7 @@
         :global(.mantine-Accordion-control) {
           min-height: 34px;
           padding: 7px 9px;
-          background: var(--hi-surface);
+          background: var(--hi-app-panel-bg);
           color: var(--hi-text);
           font-weight: 620;
           font-size: 0.82rem;
@@ -98,8 +99,8 @@
           }
 
           &[data-active] {
-            background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
-            border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+            background: var(--hi-app-hover-bg);
+            border-bottom: 1px solid var(--hi-app-panel-border);
           }
         }
 
@@ -110,7 +111,7 @@
 
         :global(.mantine-Accordion-panel) {
           padding: 0;
-          background: var(--hi-surface);
+          background: var(--hi-app-panel-bg);
         }
 
         :global(.mantine-Accordion-content) {
@@ -140,7 +141,7 @@
 
           :global(.mantine-Input-input) {
             min-height: 34px;
-            border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+            border-color: var(--hi-app-panel-border);
             border-radius: var(--hi-radius-sm);
             background: var(--hi-surface);
             color: var(--hi-text);
@@ -155,15 +156,15 @@
 
             &:focus,
             &:focus-within {
-              border-color: var(--hi-text-muted);
-              box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+              border-color: var(--hi-focus-ring);
+              box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
             }
           }
 
           :global(.mantine-Tabs-list) {
             gap: 4px;
             padding: 3px;
-            border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+            border: 1px solid var(--hi-app-panel-border);
             border-radius: var(--hi-radius-sm);
             background: var(--hi-shell-bg);
           }
@@ -178,7 +179,7 @@
             &[data-active] {
               background: var(--hi-surface);
               color: var(--hi-text);
-              border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
+              border-color: var(--hi-app-panel-border);
             }
           }
         }
@@ -214,17 +215,18 @@
   min-height: calc(100dvh - 118px);
   background-color: var(--hi-surface);
   border-radius: var(--hi-radius-md);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-app-panel-border);
+  box-shadow: var(--hi-shadow-sm);
   overflow: hidden;
 }
 
 .browserChrome {
   width: 100%;
-  background: color-mix(in srgb, var(--hi-shell-bg) 72%, var(--hi-surface));
+  background: var(--hi-shell-bg-strong);
   border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
   height: 32px;
   display: flex;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+  border-bottom: 1px solid var(--hi-app-panel-border);
 }
 
 .browserActionButtons {
@@ -250,7 +252,7 @@
 
   div {
     background-color: var(--hi-surface);
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-sm);
     margin-right: 12px;
     font-size: 0.78rem;
@@ -289,9 +291,10 @@
   .widgetWrapper {
     padding: 8px;
     margin: 12px 0;
-    border: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     background: var(--hi-shell-bg);
+    box-shadow: var(--hi-shadow-sm);
   }
 
   p.lorem {

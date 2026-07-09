@@ -20,8 +20,9 @@
     align-items: center;
     justify-content: center;
     color: var(--hi-text-muted);
-    background: var(--hi-surface-soft);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-shell-bg-strong);
+    border: 1px solid var(--hi-app-panel-border);
+    box-shadow: var(--hi-shadow-sm);
     margin-bottom: 1rem;
 
     svg {
@@ -51,7 +52,7 @@
 .urlInput {
     padding-right: 110px;
     font-size: 0.875rem;
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
 }
 
 .actions {

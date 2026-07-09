@@ -8,11 +8,11 @@
 .dropdown {
   max-width: min(360px, calc(100vw - 32px));
   padding: 8px 10px;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-md) !important;
-  background: var(--hi-surface) !important;
+  background: var(--hi-app-panel-bg) !important;
   color: var(--hi-text-light);
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-sm) !important;
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.45;

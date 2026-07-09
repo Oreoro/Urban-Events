@@ -134,7 +134,8 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
                                             c="var(--hi-text-light)"
                                             ff="monospace"
                                             style={{
-                                                backgroundColor: 'var(--hi-surface-soft)',
+                                                backgroundColor: 'var(--hi-shell-bg-strong)',
+                                                border: '1px solid var(--hi-app-panel-border)',
                                                 padding: '2px 6px',
                                                 borderRadius: 'var(--hi-radius-sm)',
                                                 display: 'inline-block',

@@ -37,21 +37,21 @@
   white-space: nowrap;
 
   &[data-status="WAITING"] {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text-light);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="OFFERED"] {
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
     color: var(--hi-text);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="PURCHASED"] {
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
     color: var(--hi-text);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="CANCELLED"] {

@@ -3,9 +3,9 @@
 }
 
 .section {
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   padding: 8px;
 }
 
@@ -31,7 +31,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 
@@ -42,8 +42,8 @@
 
   &[data-active="true"] {
     background: var(--hi-surface);
-    border-color: var(--hi-text-muted);
-    box-shadow: none;
+    border-color: var(--hi-focus-ring);
+    box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
   }
 }
 
@@ -93,10 +93,11 @@
 .previewShell {
   display: grid;
   gap: 10px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
   padding: 10px;
   min-height: 166px;
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .previewMark {

@@ -5,7 +5,7 @@
   display: flex;
   position: relative;
   overflow-x: hidden;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-surface);
   color: var(--hi-text);
 }
 
@@ -77,7 +77,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 4px;
     border-radius: var(--hi-radius-sm);
   }
@@ -87,10 +87,10 @@
   width: 100%;
   max-width: 392px;
   padding: 13px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
-  box-shadow: none;
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-app-panel-bg);
+  box-shadow: var(--hi-shadow-md);
 
   @include mixins.respond-below(sm) {
     max-width: 100%;

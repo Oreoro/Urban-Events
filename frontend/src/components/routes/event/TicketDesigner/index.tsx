@@ -16,6 +16,7 @@ import {queryClient} from "../../../../utilites/queryClient.ts";
 import {GET_EVENT_IMAGES_QUERY_KEY, useGetEventImages} from "../../../../queries/useGetEventImages.ts";
 import {LoadingMask} from "../../../common/LoadingMask";
 import {TicketPreview} from "./TicketPreview";
+import {URBAN_EVENTS_THEME} from "../../../../utilites/themeUtils.ts";
 
 interface TicketDesignSettings {
     accent_color: string;
@@ -24,8 +25,6 @@ interface TicketDesignSettings {
     date_display_mode: 'START_DATE_TIME' | 'DATE_RANGE' | 'HIDDEN';
     enabled: boolean;
 }
-
-const DEFAULT_TICKET_ACCENT_COLOR = '#37352F';
 
 const TicketDesigner = () => {
     const {eventId} = useParams();
@@ -39,7 +38,7 @@ const TicketDesigner = () => {
 
     const form = useForm<TicketDesignSettings>({
         initialValues: {
-            accent_color: DEFAULT_TICKET_ACCENT_COLOR,
+            accent_color: URBAN_EVENTS_THEME.accent,
             logo_image_id: undefined,
             footer_text: '',
             date_display_mode: 'START_DATE_TIME',
@@ -53,7 +52,7 @@ const TicketDesigner = () => {
         if (eventSettingsQuery?.isFetched && eventSettingsQuery?.data?.ticket_design_settings) {
             const settings = eventSettingsQuery.data.ticket_design_settings;
             form.setValues({
-                accent_color: settings.accent_color || DEFAULT_TICKET_ACCENT_COLOR,
+                accent_color: settings.accent_color || URBAN_EVENTS_THEME.accent,
                 logo_image_id: settings.logo_image_id || undefined,
                 footer_text: settings.footer_text || '',
                 date_display_mode: settings.date_display_mode || 'START_DATE_TIME',

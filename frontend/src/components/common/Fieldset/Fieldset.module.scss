@@ -1,8 +1,9 @@
 .fieldset {
-  background: color-mix(in srgb, var(--hi-shell-bg) 52%, var(--hi-surface)) !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
+  background: var(--hi-surface) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-md) !important;
   padding: 14px !important;
+  box-shadow: none;
 }
 
 .legend {

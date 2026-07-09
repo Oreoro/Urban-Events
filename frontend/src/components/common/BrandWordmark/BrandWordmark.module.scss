@@ -1,13 +1,13 @@
 .wordmark {
   --brand-primary: var(--hi-text);
-  --brand-font-size: 1rem;
+  --brand-font-size: 0.96rem;
 
   display: inline-flex;
   align-items: center;
   gap: 0;
   color: var(--brand-primary);
   font-family: var(--hi-font-heading);
-  font-weight: 760;
+  font-weight: 720;
   letter-spacing: 0;
   line-height: 1;
   text-decoration: none;
@@ -27,7 +27,7 @@
   position: relative;
   font-size: var(--brand-font-size);
   color: currentColor;
-  font-weight: 760;
+  font-weight: 720;
   text-transform: none;
 }
 
@@ -44,11 +44,11 @@
 }
 
 .sm {
-  --brand-font-size: 0.9rem;
+  --brand-font-size: 0.86rem;
 }
 
 .md {
-  --brand-font-size: 1rem;
+  --brand-font-size: 0.96rem;
 }
 
 .lg {

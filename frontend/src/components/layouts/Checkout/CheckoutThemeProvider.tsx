@@ -1,7 +1,13 @@
 /* eslint-disable lingui/no-unlocalized-strings */
 import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme} from "@mantine/core";
 import {PropsWithChildren, useMemo} from "react";
-import {getContrastColor, hexToRgb} from "../../../utilites/themeUtils";
+import {
+    getAccentMuted,
+    getAccentSoft,
+    getContrastColor,
+    getThemeModePalette,
+    hexToRgb,
+} from "../../../utilites/themeUtils";
 
 interface CheckoutThemeProviderProps {
     accentColor: string;
@@ -9,34 +15,12 @@ interface CheckoutThemeProviderProps {
 }
 
 /**
- * Fixed color palettes for checkout - these ensure good contrast and readability.
- * Users can only customize accent color, not the base palette.
- */
-const LIGHT_PALETTE = {
-    surface: '#ffffff',
-    background: '#F7F7F5',
-    textPrimary: '#37352F',
-    textSecondary: '#4F4D48',
-    textTertiary: '#787774',
-    border: '#E6E4DF',
-};
-
-const DARK_PALETTE = {
-    surface: '#22211F',
-    background: '#191918',
-    textPrimary: '#F7F7F5',
-    textSecondary: '#D9D7D2',
-    textTertiary: '#A7A5A0',
-    border: 'rgba(247, 247, 245, 0.16)',
-};
-
-/**
  * Creates a color palette that preserves the user's exact accent color.
  */
 function createColorPalette(accentColor: string): MantineColorsTuple {
     const rgb = hexToRgb(accentColor);
     if (!rgb) {
-        return ['#F7F7F5', '#F1F1EF', '#E6E4DF', '#D9D7D2', '#A7A5A0', '#787774', '#4F4D48', '#37352F', '#22211F', '#191918'];
+        return ['#F6FBFF', '#E8F3FF', '#DCEBFF', '#B9D6FA', '#8BC1F5', '#62A9EF', '#2C8CE5', '#0075DE', '#005BAB', '#003F78'];
     }
 
     const {r, g, b} = rgb;
@@ -84,14 +68,29 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
         fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         headings: {
             fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            fontWeight: '700',
+            fontWeight: '650',
+        },
+        defaultRadius: 'sm',
+        radius: {
+            xs: '4px',
+            sm: '6px',
+            md: '8px',
+            lg: '8px',
+            xl: '8px',
+        },
+        shadows: {
+            xs: '0 1px 1px rgba(15, 15, 15, 0.03)',
+            sm: '0 1px 2px rgba(15, 15, 15, 0.035), 0 8px 18px rgba(15, 15, 15, 0.035)',
+            md: '0 2px 6px rgba(15, 15, 15, 0.04), 0 18px 42px rgba(15, 15, 15, 0.055)',
+            lg: '0 4px 14px rgba(15, 15, 15, 0.05), 0 26px 64px rgba(15, 15, 15, 0.065)',
+            xl: '0 8px 28px rgba(15, 15, 15, 0.06), 0 38px 90px rgba(15, 15, 15, 0.075)',
         },
         primaryShade: mode === 'dark' ? 6 : 7,
         components: {
             Button: {
                 defaultProps: {
                     color: 'primary',
-                    radius: 'md',
+                    radius: 'sm',
                 },
                 vars: (_theme: MantineTheme, props: ButtonProps) => {
                     if (props.variant === 'filled' || props.variant === undefined) {
@@ -140,17 +139,10 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
  */
 function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark'): CSSVariablesResolver {
     return () => {
-        const palette = mode === 'light' ? LIGHT_PALETTE : DARK_PALETTE;
+        const palette = getThemeModePalette(mode);
         const accentContrast = getContrastColor(accentColor);
-        const rgb = hexToRgb(accentColor);
-
-        const accentSoft = rgb
-            ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${mode === 'light' ? 0.1 : 0.2})`
-            : mode === 'light' ? 'rgba(55, 53, 47, 0.1)' : 'rgba(247, 247, 245, 0.18)';
-
-        const accentMuted = rgb
-            ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${mode === 'light' ? 0.6 : 0.7})`
-            : mode === 'light' ? 'rgba(55, 53, 47, 0.62)' : 'rgba(247, 247, 245, 0.72)';
+        const accentSoft = getAccentSoft(accentColor, mode);
+        const accentMuted = getAccentMuted(accentColor, mode);
 
         return {
             variables: {
@@ -160,10 +152,14 @@ function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark')
                 '--checkout-accent-hover': `color-mix(in srgb, ${accentColor} 88%, ${palette.textPrimary})`,
                 '--checkout-accent-soft': accentSoft,
                 '--checkout-accent-muted': accentMuted,
+                '--hi-primary': accentColor,
+                '--hi-primary-hover': `color-mix(in srgb, ${accentColor} 88%, ${palette.textPrimary})`,
+                '--hi-link-color': accentColor,
 
                 // Fixed palette colors (not customizable - ensures readability)
                 '--checkout-background': palette.background,
                 '--checkout-surface': palette.surface,
+                '--checkout-surface-strong': palette.surfaceStrong,
                 '--checkout-text-primary': palette.textPrimary,
                 '--checkout-text-secondary': palette.textSecondary,
                 '--checkout-text-tertiary': palette.textTertiary,

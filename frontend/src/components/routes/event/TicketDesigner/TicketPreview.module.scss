@@ -4,14 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 2rem;
+  padding: 24px;
   width: 100%;
   height: 100%;
   overflow-x: auto;
   overflow-y: auto;
+  background: var(--hi-surface);
   
   @include mixins.respond-below(lg) {
-    padding: 1.5rem;
+    padding: 18px;
     overflow-x: auto;
     min-width: 0;
     
@@ -22,11 +23,11 @@
   }
   
   @include mixins.respond-below(md) {
-    padding: 1rem;
+    padding: 14px;
   }
   
   @include mixins.respond-below(sm) {
-    padding: 0.5rem;
+    padding: 10px;
   }
 }
 

@@ -3,16 +3,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
   gap: 12px;
   margin-bottom: 6px;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  box-shadow: var(--hi-shadow-sm);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
     background: var(--hi-control-bg-hover);
     border-color: var(--hi-border-strong);
+    box-shadow: var(--hi-shadow-md);
   }
 }
 
@@ -42,11 +44,12 @@
 .emptyState {
   text-align: center;
   padding: 24px 14px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  background: var(--hi-app-panel-bg);
   color: var(--hi-text-muted);
   font-size: 0.88rem;
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .loadingState {
@@ -61,7 +64,36 @@
   color: var(--hi-text-muted);
   margin-bottom: 10px;
   padding: 8px 10px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  background: var(--hi-shell-bg-strong);
+}
+
+.errorAlert {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.statusBadge {
+  border-radius: var(--hi-radius-sm);
+  font-weight: 600;
+}
+
+.statusSent {
+  border: 1px solid var(--hi-status-success-border) !important;
+  background: var(--hi-status-success-bg) !important;
+  color: var(--hi-status-success-text) !important;
+}
+
+.statusFailed {
+  border: 1px solid var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.statusNeutral {
+  border: 1px solid var(--hi-status-neutral-border) !important;
+  background: var(--hi-status-neutral-bg) !important;
+  color: var(--hi-status-neutral-text) !important;
 }

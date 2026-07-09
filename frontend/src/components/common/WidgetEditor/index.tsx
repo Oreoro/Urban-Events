@@ -11,6 +11,7 @@ import {useGetEventSettings} from "../../../queries/useGetEventSettings.ts";
 import {LoadingMask} from '../LoadingMask';
 import {Event} from '../../../types.ts';
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
+import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 
 export const WidgetEditor = () => {
     const {eventId} = useParams();
@@ -21,11 +22,11 @@ export const WidgetEditor = () => {
     const {data: eventSettings, isFetched: isEventSettingsFetched} = useGetEventSettings(eventId);
     const form = useForm({
         initialValues: {
-            background_color: "#FBFBFA",
-            primary_color: "#37352F",
-            primary_text_color: "#37352F",
-            secondary_color: "#37352F",
-            secondary_text_color: "#FFFFFF",
+            background_color: URBAN_EVENTS_THEME.background,
+            primary_color: URBAN_EVENTS_THEME.accent,
+            primary_text_color: URBAN_EVENTS_THEME.accent,
+            secondary_color: URBAN_EVENTS_THEME.accent,
+            secondary_text_color: URBAN_EVENTS_THEME.accentContrast,
             continue_button_text: t`Continue`,
             padding: 20,
             autoResize: true,

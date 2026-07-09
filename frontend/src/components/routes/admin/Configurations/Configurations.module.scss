@@ -48,8 +48,8 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-text-muted);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+            border-color: var(--hi-focus-ring);
+            box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
         }
     }
 }
@@ -76,11 +76,12 @@
 }
 
 .configCard {
-    background: var(--hi-surface);
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     padding: 12px;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    box-shadow: var(--hi-shadow-sm);
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
         background: var(--hi-control-bg-hover);
@@ -123,9 +124,10 @@
 
 .emptyState {
     padding: 32px 18px;
-    border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
     color: var(--hi-text-muted);
     text-align: center;
 }

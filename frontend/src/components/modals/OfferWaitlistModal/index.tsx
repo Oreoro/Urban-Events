@@ -80,8 +80,15 @@ export const OfferWaitlistModal = ({onClose, eventId, eventSettings, stats}: Off
                 onClose={onClose}
                 heading={t`Offer Tickets`}
             >
-                <div style={{textAlign: 'center', padding: '20px 0 10px'}}>
-                    <IconBolt size={48} color="var(--hi-secondary-strong)" stroke={1.6} style={{marginBottom: 16}}/>
+                <div style={{
+                    textAlign: 'center',
+                    padding: '20px 14px 14px',
+                    border: '1px solid var(--hi-app-panel-border)',
+                    borderRadius: 'var(--hi-radius-md)',
+                    background: 'var(--hi-app-panel-bg)',
+                    boxShadow: 'var(--hi-shadow-sm)',
+                }}>
+                    <IconBolt size={42} color="var(--hi-text-muted)" stroke={1.6} style={{marginBottom: 12}}/>
                     <Text size="lg" fw={600} mb="xs">
                         {t`Auto-offer is enabled`}
                     </Text>
@@ -153,7 +160,16 @@ const ProductOfferTable = ({products, quantities, setQuantities, onOffer, loadin
     loadingProductId: number | null;
     isBusy: boolean;
 }) => (
-    <Paper withBorder radius="md" style={{overflow: 'hidden'}}>
+    <Paper
+        withBorder
+        radius="md"
+        style={{
+            overflow: 'hidden',
+            background: 'var(--hi-app-panel-bg)',
+            borderColor: 'var(--hi-app-panel-border)',
+            boxShadow: 'var(--hi-shadow-sm)',
+        }}
+    >
         <Table verticalSpacing="sm" horizontalSpacing="md">
             <Table.Thead>
                 <Table.Tr>
@@ -183,7 +199,17 @@ const ProductOfferTable = ({products, quantities, setQuantities, onOffer, loadin
                             </Table.Td>
                             <Table.Td style={{textAlign: 'center'}}>
                                 {noCapacity ? (
-                                    <Badge color="red" variant="light" size="sm">{t`No capacity`}</Badge>
+                                    <Badge
+                                        variant="light"
+                                        size="sm"
+                                        style={{
+                                            color: 'var(--hi-status-danger-text)',
+                                            background: 'var(--hi-status-danger-bg)',
+                                            border: '1px solid var(--hi-status-danger-border)',
+                                        }}
+                                    >
+                                        {t`No capacity`}
+                                    </Badge>
                                 ) : product.available === null ? (
                                     <Badge variant="light" size="sm">{t`Unlimited`}</Badge>
                                 ) : (

@@ -14,7 +14,6 @@ import {
 import {IconArrowRight, IconCheck, IconCircleCheck, IconClock} from "@tabler/icons-react";
 import {t, Trans} from "@lingui/macro";
 import {useForm} from "@mantine/form";
-import {notifications} from "@mantine/notifications";
 import {useGetOrderPublic} from "../../../../queries/useGetOrderPublic.ts";
 import {useGetEventPublic} from "../../../../queries/useGetEventPublic.ts";
 import {useGetEventQuestionsPublic} from "../../../../queries/useGetEventQuestionsPublic.ts";
@@ -29,7 +28,7 @@ import {getTermsUrl} from "../../../../utilites/legalUrls.ts";
 import {HomepageInfoMessage} from "../../../common/HomepageInfoMessage";
 import {InlineOrderSummary} from "../../../common/InlineOrderSummary";
 import {eventCheckoutPath, eventHomepagePath} from "../../../../utilites/urlHelper.ts";
-import {showInfo} from "../../../../utilites/notifications.tsx";
+import {showError, showInfo} from "../../../../utilites/notifications.tsx";
 import countries from "../../../../../data/countries.json";
 import classes from "./CollectInformation.module.scss";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
@@ -226,9 +225,7 @@ export const CollectInformation = () => {
             if (error?.response?.data?.errors && Object.keys(error?.response?.data?.errors).length > 0) {
                 form.setErrors(error.response.data.errors);
             } else if (error?.response?.data?.message) {
-                notifications.show({
-                    message: error?.response?.data?.message,
-                });
+                showError(error.response.data.message);
 
                 // if it's a 409, we need to redirect to the event page as the order is no longer valid
                 if (error.response.status === 409) {
@@ -294,6 +291,14 @@ export const CollectInformation = () => {
 
     const handleSubmit = (values: any) => {
         mutation.mutate(values);
+    };
+
+    const getControlledInputProps = (path: string) => {
+        const inputProps = form.getInputProps(path);
+        return {
+            ...inputProps,
+            value: inputProps.value ?? "",
+        };
     };
 
     useEffect(() => {
@@ -520,12 +525,12 @@ export const CollectInformation = () => {
                                     withAsterisk
                                     label={t`Address Line 1`}
                                     placeholder={t`Address Line 1`}
-                                    {...form.getInputProps("order.address.address_line_1")}
+                                    {...getControlledInputProps("order.address.address_line_1")}
                                 />
                                 <TextInput
                                     label={t`Address Line 2`}
                                     placeholder={t`Address Line 2`}
-                                    {...form.getInputProps("order.address.address_line_2")}
+                                    {...getControlledInputProps("order.address.address_line_2")}
                                 />
                             </InputGroup>
 
@@ -534,13 +539,13 @@ export const CollectInformation = () => {
                                     withAsterisk
                                     label={t`City`}
                                     placeholder={t`City`}
-                                    {...form.getInputProps("order.address.city")}
+                                    {...getControlledInputProps("order.address.city")}
                                 />
                                 <TextInput
                                     withAsterisk
                                     label={t`State or Region`}
                                     placeholder={t`State or Region`}
-                                    {...form.getInputProps("order.address.state_or_region")}
+                                    {...getControlledInputProps("order.address.state_or_region")}
                                 />
                             </InputGroup>
 
@@ -549,13 +554,13 @@ export const CollectInformation = () => {
                                 <TextInput
                                     label={t`ZIP / Postal Code`}
                                     placeholder={t`ZIP or Postal Code`}
-                                    {...form.getInputProps("order.address.zip_or_postal_code")}
+                                    {...getControlledInputProps("order.address.zip_or_postal_code")}
                                 />
                                 <NativeSelect
                                     withAsterisk
                                     label={t`Country`}
                                     data={countries}
-                                    {...form.getInputProps("order.address.country")}
+                                    {...getControlledInputProps("order.address.country")}
                                 />
                             </InputGroup>
                         </>
@@ -647,13 +652,13 @@ export const CollectInformation = () => {
                                                         withAsterisk
                                                         label={t`First Name`}
                                                         placeholder={t`First name`}
-                                                        {...form.getInputProps(`products.${currentProductIndex}.first_name`)}
+                                                        {...getControlledInputProps(`products.${currentProductIndex}.first_name`)}
                                                     />
                                                     <TextInput
                                                         withAsterisk
                                                         label={t`Last Name`}
                                                         placeholder={t`Last Name`}
-                                                        {...form.getInputProps(`products.${currentProductIndex}.last_name`)}
+                                                        {...getControlledInputProps(`products.${currentProductIndex}.last_name`)}
                                                     />
                                                 </InputGroup>
 
@@ -665,7 +670,7 @@ export const CollectInformation = () => {
                                                         placeholder={t`Email Address`}
                                                         rightSection={isEmailValid(form.values.products[currentProductIndex]?.email || '') ?
                                                             <EmailCheckIcon/> : null}
-                                                        {...form.getInputProps(`products.${currentProductIndex}.email`)}
+                                                        {...getControlledInputProps(`products.${currentProductIndex}.email`)}
                                                     />
                                                     <TextInput
                                                         withAsterisk
@@ -674,7 +679,7 @@ export const CollectInformation = () => {
                                                         placeholder={t`Confirm Email Address`}
                                                         rightSection={isEmailValid(form.values.products[currentProductIndex]?.email_confirmation || '') ?
                                                             <EmailCheckIcon/> : null}
-                                                        {...form.getInputProps(`products.${currentProductIndex}.email_confirmation`)}
+                                                        {...getControlledInputProps(`products.${currentProductIndex}.email_confirmation`)}
                                                     />
                                                 </InputGroup>
                                             </>
