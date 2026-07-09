@@ -2,10 +2,10 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.55rem;
-  padding: 6px !important;
-  background: var(--hi-app-panel-bg) !important;
-  border: 1px solid var(--hi-app-panel-border) !important;
+  margin-bottom: 0.7rem;
+  padding: 7px !important;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--hi-accent-yellow-bg) 34%, var(--hi-surface)), color-mix(in srgb, var(--hi-accent-blue-bg) 42%, var(--hi-surface))) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 38%, var(--hi-app-panel-border)) !important;
   border-radius: var(--hi-radius-md) !important;
   box-shadow: none !important;
 
@@ -15,7 +15,7 @@
 
   .wrapper {
     display: flex;
-    gap: 0.42rem;
+    gap: 0.5rem;
     align-items: center;
     place-content: space-between;
 
@@ -34,7 +34,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 0.42rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
 
@@ -51,7 +51,7 @@
 
     .actions {
       display: flex;
-      gap: 0.42rem;
+      gap: 0.5rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;
@@ -59,21 +59,21 @@
   }
 
   button {
-    min-height: 30px !important;
+    min-height: 32px !important;
     border-radius: var(--hi-radius-sm) !important;
-    font-size: 0.8rem !important;
+    font-size: 0.82rem !important;
     font-weight: 620 !important;
     letter-spacing: 0;
     box-shadow: none !important;
 
     &[data-variant="filled"] {
-      border: 1px solid var(--hi-text) !important;
-      background: var(--hi-text) !important;
+      border: 1px solid var(--hi-primary) !important;
+      background: var(--hi-primary) !important;
       color: var(--hi-color-white) !important;
 
       &:hover {
-        border-color: var(--hi-text-light) !important;
-        background: var(--hi-text-light) !important;
+        border-color: var(--hi-primary-hover) !important;
+        background: var(--hi-primary-hover) !important;
       }
     }
 
@@ -81,24 +81,24 @@
     &[data-variant="light"],
     &[data-variant="outline"],
     &[data-variant="subtle"] {
-      border: 1px solid var(--hi-border) !important;
-      background: var(--hi-surface) !important;
-      color: var(--hi-text) !important;
+      border: 1px solid var(--hi-accent-blue-border) !important;
+      background: color-mix(in srgb, var(--hi-accent-blue-bg) 54%, var(--hi-surface)) !important;
+      color: var(--hi-accent-blue-text) !important;
 
       &:hover {
-        border-color: var(--hi-border-strong) !important;
-        background: var(--hi-control-bg-hover) !important;
+        border-color: color-mix(in srgb, var(--hi-primary) 34%, var(--hi-accent-blue-border)) !important;
+        background: color-mix(in srgb, var(--hi-accent-yellow-bg) 44%, var(--hi-accent-blue-bg)) !important;
       }
     }
   }
 
   :global(.mantine-Select-input) {
-    min-height: 30px;
+    min-height: 32px;
     border-color: var(--hi-border);
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface);
+    background: color-mix(in srgb, var(--hi-accent-blue-bg) 34%, var(--hi-surface));
     color: var(--hi-text);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 560;
     box-shadow: none;
 

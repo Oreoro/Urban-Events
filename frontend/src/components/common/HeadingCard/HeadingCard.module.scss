@@ -1,6 +1,6 @@
 .heading {
   font-size: 0.92rem;
-  font-weight: 680;
+  font-weight: 720;
   color: var(--hi-text);
   line-height: 1.25;
   letter-spacing: 0;
@@ -8,7 +8,7 @@
 
 .subHeading {
   margin-top: 3px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--hi-text-muted);
   line-height: 1.45;
   font-weight: 450;
@@ -23,7 +23,7 @@
   padding: 0 0 8px !important;
   background: transparent !important;
   border: 0 !important;
-  border-bottom: 1px solid var(--hi-border) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 38%, var(--hi-border)) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 
@@ -38,16 +38,16 @@
       font-size: 0.76rem;
       font-weight: 640;
       letter-spacing: 0;
-      box-shadow: var(--hi-shadow-xs);
-      background: var(--hi-app-panel-bg);
-      border: 1px solid var(--hi-app-panel-border);
-      color: var(--hi-text);
+      box-shadow: none;
+      background: color-mix(in srgb, var(--hi-accent-blue-bg) 46%, var(--hi-surface));
+      border: 1px solid var(--hi-accent-blue-border);
+      color: var(--hi-accent-blue-text);
 
       &:hover {
-        background: var(--hi-control-bg-hover);
-        border-color: var(--hi-border-strong);
-        color: var(--hi-text);
-        box-shadow: var(--hi-shadow-sm);
+        background: color-mix(in srgb, var(--hi-accent-yellow-bg) 42%, var(--hi-accent-blue-bg));
+        border-color: color-mix(in srgb, var(--hi-primary) 34%, var(--hi-accent-blue-border));
+        color: var(--hi-primary);
+        box-shadow: none;
       }
     }
   }

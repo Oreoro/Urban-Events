@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--hi-radius-sm);
   border: 1px solid transparent;
   background: transparent;
@@ -18,8 +18,8 @@
 }
 
 .avatar {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-shell-bg-strong);
   color: var(--hi-text);
@@ -29,8 +29,8 @@
 }
 
 .dropdown {
-  padding: 4px !important;
-  border-radius: var(--hi-radius-sm) !important;
+  padding: 5px !important;
+  border-radius: var(--hi-radius-md) !important;
   border: 1px solid var(--hi-app-panel-border) !important;
   background: var(--hi-app-panel-bg) !important;
   box-shadow: var(--hi-shadow-md) !important;
@@ -41,7 +41,7 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
-  padding: 6px 7px 7px;
+  padding: 7px 8px 8px;
 }
 
 .headerAvatar {
@@ -82,10 +82,10 @@
 }
 
 .menuItem {
-  min-height: 29px;
+  min-height: 31px;
   border-radius: var(--hi-radius-sm);
   color: var(--hi-text-light);
-  font-size: 0.79rem;
+  font-size: 0.8rem;
   font-weight: 560;
 
   svg {

@@ -4,10 +4,14 @@
   display: flex;
   flex-direction: column;
   grid-area: sidebar;
-  background: var(--hi-shell-surface);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--hi-accent-yellow-bg) 22%, var(--hi-surface)) 0,
+      color-mix(in srgb, var(--hi-accent-blue-bg) 26%, var(--hi-shell-surface)) 52%,
+      color-mix(in srgb, var(--hi-accent-purple-bg) 14%, var(--hi-shell-surface)) 100%);
   color: var(--hi-text);
   position: relative;
-  border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
   min-width: 0;
   height: 100vh;
   height: 100dvh;
@@ -25,7 +29,7 @@
     position: relative;
     z-index: 1;
     padding: 8px 0 6px;
-    min-height: 50px;
+    min-height: 54px;
     margin-bottom: 0;
     border-bottom: 0;
     flex-shrink: 0;
@@ -34,14 +38,14 @@
       display: flex;
       width: 100%;
       justify-content: flex-start;
-      padding: 8px 9px;
+      padding: 8px 10px;
       color: var(--hi-text);
       line-height: 1;
       border-radius: var(--hi-radius-sm);
-      margin: 0 8px;
+      margin: 0 9px;
 
       &:hover {
-        background: var(--hi-control-bg-hover);
+        background: color-mix(in srgb, var(--hi-accent-blue-bg) 58%, var(--hi-surface));
       }
     }
   }
@@ -50,7 +54,7 @@
     flex: 1 1 auto;
     overflow: auto;
     position: relative;
-    padding: 4px 0 16px;
+    padding: 5px 0 18px;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 
@@ -78,12 +82,13 @@
     }
 
     .sectionHeading {
-      padding: 15px 14px 4px;
-      font-size: 0.72rem;
-      font-weight: 620;
+      padding: 15px 15px 5px;
+      font-size: 0.69rem;
+      font-weight: 640;
       text-transform: none;
       letter-spacing: 0;
       color: color-mix(in srgb, var(--hi-text-muted) 74%, transparent);
+      border-left: 2px solid color-mix(in srgb, var(--hi-accent-yellow-border) 78%, transparent);
     }
 
     a,
@@ -92,18 +97,18 @@
       display: flex;
       align-items: center;
       color: var(--hi-text-light);
-      min-height: 29px;
+      min-height: 30px;
       padding: 4px 9px;
       text-decoration: none;
-      margin: 1px 8px;
+      margin: 1px 9px;
       border-radius: var(--hi-radius-sm);
-      font-size: 0.84rem;
-      font-weight: 530;
+      font-size: 0.82rem;
+      font-weight: 560;
       transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      width: calc(100% - 16px);
+      width: calc(100% - 18px);
       background: transparent;
       border: 1px solid transparent;
       text-align: left;
@@ -116,9 +121,9 @@
       }
 
       .navBadge {
-        background: var(--hi-shell-bg);
-        color: var(--hi-text-muted);
-        border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+        background: color-mix(in srgb, var(--hi-accent-yellow-bg) 72%, var(--hi-surface));
+        color: var(--hi-accent-yellow-text);
+        border: 1px solid var(--hi-accent-yellow-border);
         padding: 1px 6px;
         border-radius: var(--hi-radius-sm);
         font-size: 0.75em;
@@ -127,7 +132,15 @@
       }
 
       &::before {
+        content: '';
         display: none;
+        position: absolute;
+        left: 4px;
+        top: 7px;
+        bottom: 7px;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--hi-app-accent-strip);
       }
 
       &.loading {
@@ -137,25 +150,34 @@
       }
 
       &.linkActive {
-        background: var(--hi-control-bg-active);
+        background: linear-gradient(90deg, color-mix(in srgb, var(--hi-accent-blue-bg) 78%, var(--hi-surface)), color-mix(in srgb, var(--hi-accent-yellow-bg) 32%, var(--hi-surface)));
         border-color: transparent;
-        color: var(--hi-text);
-        font-weight: 600;
+        color: var(--hi-primary);
+        font-weight: 670;
         box-shadow: none;
+        padding-left: 13px;
+
+        &::before {
+          display: block;
+        }
 
         .linkIcon {
-          color: var(--hi-text);
+          color: var(--hi-primary);
         }
       }
 
       &:hover {
-        background: var(--hi-control-bg-hover);
+        background: color-mix(in srgb, var(--hi-accent-blue-bg) 60%, var(--hi-surface));
         border-color: transparent;
-        color: var(--hi-text);
+        color: var(--hi-primary);
+
+        svg {
+          color: var(--hi-primary);
+        }
       }
 
       svg {
-        margin-right: 7px;
+        margin-right: 8px;
         width: 16px;
         height: 16px;
         min-width: 16px;
@@ -167,7 +189,7 @@
 
   .sidebarFooter {
     margin-top: auto;
-    padding: 8px 9px 10px;
+    padding: 9px 10px 12px;
     border-top: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
     flex-shrink: 0;
     position: relative;

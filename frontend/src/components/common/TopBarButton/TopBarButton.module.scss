@@ -3,15 +3,15 @@
 .topBarButton {
   display: flex;
   align-items: center;
-  padding: 0 8px;
-  height: 28px;
-  font-size: 0.77rem;
+  padding: 0 9px;
+  height: 30px;
+  font-size: 0.78rem;
   font-weight: 600;
   border-radius: var(--hi-radius-sm);
-  color: var(--hi-text) !important;
-  background: var(--hi-app-panel-bg) !important;
-  border: 1px solid var(--hi-app-panel-border) !important;
-  box-shadow: var(--hi-shadow-xs);
+  color: var(--hi-accent-blue-text) !important;
+  background: color-mix(in srgb, var(--hi-accent-blue-bg) 50%, var(--hi-surface)) !important;
+  border: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 72%, var(--hi-app-panel-border)) !important;
+  box-shadow: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   position: relative;
   overflow: hidden;
@@ -22,9 +22,10 @@
 
   &:hover {
     transform: none;
-    box-shadow: var(--hi-shadow-sm);
-    background: var(--hi-control-bg-hover) !important;
-    border-color: var(--hi-border-strong) !important;
+    box-shadow: none;
+    background: color-mix(in srgb, var(--hi-accent-yellow-bg) 42%, var(--hi-accent-blue-bg)) !important;
+    border-color: color-mix(in srgb, var(--hi-primary) 34%, var(--hi-accent-blue-border)) !important;
+    color: var(--hi-primary) !important;
   }
 
   &:focus-visible {
@@ -33,7 +34,7 @@
   }
 
   @include mixins.respond-below(sm) {
-    height: 28px;
+    height: 30px;
     padding: 0 8px;
   }
 

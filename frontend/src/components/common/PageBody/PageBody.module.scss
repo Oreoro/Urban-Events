@@ -1,9 +1,9 @@
 .pageBody {
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--hi-page-max-width);
   margin: 0 auto;
 }
 
 .pageBody[data-fluid="false"] {
-  max-width: 960px;
+  max-width: var(--hi-page-readable-width);
 }
