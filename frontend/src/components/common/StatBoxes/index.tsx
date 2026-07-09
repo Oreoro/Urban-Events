@@ -16,10 +16,10 @@ interface StatBoxProps {
 
 export const StatBox = ({number, description, icon, backgroundColor}: StatBoxProps) => {
     return (
-        <Card className={classes.statistic}>
+        <Card className={classes.statistic} style={{'--stat-color': backgroundColor} as CSSProperties}>
             <div className={classes.leftPanel}>
                 <div className={classes.description}>
-                    <span className={classes.labelIcon} style={{'--stat-color': backgroundColor} as CSSProperties}>
+                    <span className={classes.labelIcon}>
                         {icon}
                     </span>
                     <span>{description}</span>
@@ -45,37 +45,37 @@ export const StatBoxes = ({event, eventStats}: StatBoxesProps = {}) => {
             number: formatNumber(toFiniteNumber(eventStats?.total_attendees_registered)),
             description: t`Attendees`,
             icon: <IconUsers size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-sticker-sky)'
         },
         {
             number: formatNumber(toFiniteNumber(eventStats?.total_products_sold)),
             description: t`Products sold`,
             icon: <IconShoppingCart size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-sticker-purple)'
         },
         {
             number: formatCurrency(toFiniteNumber(eventStats?.total_refunded), event?.currency),
             description: t`Refunded`,
             icon: <IconCreditCardRefund size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-sticker-orange)'
         },
         {
             number: formatCurrency(toFiniteNumber(eventStats?.total_gross_sales), event?.currency),
             description: t`Gross sales`,
             icon: <IconCash size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-sticker-green)'
         },
         {
             number: formatNumber(toFiniteNumber(eventStats?.total_views)),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-action-blue)'
         },
         {
             number: formatNumber(toFiniteNumber(eventStats?.total_orders)),
             description: t`Completed orders`,
             icon: <IconReceipt size={18}/>,
-            backgroundColor: 'var(--hi-text-muted)'
+            backgroundColor: 'var(--ue-sticker-teal)'
         }
     ];
 
