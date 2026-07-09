@@ -18,14 +18,12 @@ import {withLoadingNotification} from "../../../utilites/withLoadingNotification
 import {useAbandonOrderPublic} from "../../../mutations/useAbandonOrderPublic.ts";
 import {showError, showInfo} from "../../../utilites/notifications.tsx";
 import {isDateInFuture} from "../../../utilites/dates.ts";
-import {detectMode} from "../../../utilites/themeUtils.ts";
+import {detectMode, URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 import {CheckoutThemeProvider} from "./CheckoutThemeProvider.tsx";
 import {useOrganizerTrackingPixels} from "../../../hooks/useOrganizerTrackingPixels";
 import {trackPixelEvent, hasActivePixels} from "../../../utilites/trackingPixels";
 import {CookieConsentBanner} from "../../common/CookieConsentBanner";
 import {useGetEventPublic} from "../../../queries/useGetEventPublic.ts";
-
-const DEFAULT_ACCENT = '#37352F';
 
 const Checkout = () => {
     const {eventId, orderShortId} = useParams();
@@ -184,9 +182,9 @@ const Checkout = () => {
 
     // Get accent color from event settings, derive mode from homepage background
     const homepageSettings = event?.settings?.homepage_theme_settings;
-    const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
+    const accentColor = homepageSettings?.accent || URBAN_EVENTS_THEME.accent;
     // Mode is derived from the homepage background color (light homepage = light checkout)
-    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || '#F7F7F5');
+    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || URBAN_EVENTS_THEME.background);
 
     return (
         <CheckoutThemeProvider accentColor={accentColor} mode={checkoutMode}>

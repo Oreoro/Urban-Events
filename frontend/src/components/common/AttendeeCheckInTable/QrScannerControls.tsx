@@ -28,20 +28,20 @@ export const QrScannerControls = ({
     return (
         <>
             <Button onClick={onFlashToggle} variant={'transparent'} className={classes.flashToggle}>
-                {!isFlashAvailable && <IconBulbOff color={'#ffffff95'} size={30}/>}
-                {isFlashAvailable && <IconBulb color={isFlashOn ? 'yellow' : '#ffffff95'} size={30}/>}
+                {!isFlashAvailable && <IconBulbOff className={classes.controlIcon} size={30}/>}
+                {isFlashAvailable && <IconBulb className={isFlashOn ? classes.activeControlIcon : classes.controlIcon} size={30}/>}
             </Button>
             <Button onClick={onSoundToggle} variant={'transparent'} className={classes.soundToggle}>
-                {isSoundOn && <IconVolume color={'#ffffff95'} size={30}/>}
-                {!isSoundOn && <IconVolumeOff color={'#ffffff95'} size={30}/>}
+                {isSoundOn && <IconVolume className={classes.controlIcon} size={30}/>}
+                {!isSoundOn && <IconVolumeOff className={classes.controlIcon} size={30}/>}
             </Button>
             <Button onClick={onClose} variant={'transparent'} className={classes.closeButton}>
-                <IconX color={'#ffffff95'} size={30}/>
+                <IconX className={classes.controlIcon} size={30}/>
             </Button>
             <Button variant={'transparent'} className={classes.switchCameraButton}>
                 <Menu width={200}>
                     <Menu.Target>
-                        <IconCameraRotate color={'#ffffff95'} size={30}/>
+                        <IconCameraRotate className={classes.controlIcon} size={30}/>
                     </Menu.Target>
                     <Menu.Dropdown>
                         <Menu.Label>{t`Select Camera`}</Menu.Label>

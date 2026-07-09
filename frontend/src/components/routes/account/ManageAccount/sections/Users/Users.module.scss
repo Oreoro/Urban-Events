@@ -1,6 +1,10 @@
 .heading {
   padding: 10px 14px;
   margin-top: 14px;
+  border: 1px solid var(--hi-app-panel-border);
+  border-bottom: 0;
+  border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
+  background: var(--hi-app-panel-bg);
 
   h3 {
     display: flex;
@@ -17,12 +21,16 @@
 }
 
 .table {
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: 0 0 var(--hi-radius-md) var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-sm);
+  overflow: hidden;
 
   tr td, tr th {
     color: var(--hi-text-light);
     font-size: 0.82rem;
-    border-bottom-color: color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+    border-bottom-color: color-mix(in srgb, var(--hi-app-panel-border) 86%, var(--hi-surface));
 
     &:first-child {
       padding-left: 14px;
@@ -34,7 +42,7 @@
     font-size: 0.72rem;
     font-weight: 650;
     letter-spacing: 0;
-    background: var(--hi-shell-bg);
+    background: var(--hi-shell-bg-strong);
   }
 
   div:first-child {

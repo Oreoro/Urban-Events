@@ -11,6 +11,11 @@ export interface DerivedThemeColors {
     accentContrast: string;
 }
 
+export interface ThemeModePalette extends Omit<DerivedThemeColors, 'accentContrast'> {
+    background: string;
+    surfaceStrong: string;
+}
+
 export interface ThemeCSSVariables {
     '--theme-accent': string;
     '--theme-background': string;
@@ -94,39 +99,65 @@ export function isLightColor(hex: string): boolean {
 }
 
 export function getContrastColor(backgroundColor: string): string {
-    return isLightColor(backgroundColor) ? '#37352F' : '#ffffff';
+    return isLightColor(backgroundColor) ? '#1F1F1F' : '#ffffff';
 }
 
-const URBAN_EVENTS_THEME = {
-    accent: '#37352F',
-    background: '#F7F7F5',
-    darkBackground: '#191918',
+interface UrbanEventsTheme {
+    accent: string;
+    accentContrast: string;
+    background: string;
+    darkBackground: string;
+    surface: string;
+}
+
+export const URBAN_EVENTS_THEME: UrbanEventsTheme = {
+    accent: '#0075DE',
+    accentContrast: '#FFFFFF',
+    background: '#F6F5F4',
+    darkBackground: '#171614',
+    surface: '#FFFFFF',
 };
 
-export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {
+export function getThemeModePalette(mode: 'light' | 'dark'): ThemeModePalette {
     if (mode === 'light') {
         return {
+            background: '#F6F5F4',
             surface: '#FFFFFF',
-            textPrimary: '#37352F',
-            textSecondary: '#4F4D48',
-            textTertiary: '#787774',
-            border: '#E6E4DF',
+            surfaceStrong: '#FBFAF8',
+            textPrimary: '#1F1F1F',
+            textSecondary: '#31302E',
+            textTertiary: '#615D59',
+            border: '#E6E6E6',
         };
     }
 
     return {
+        background: '#171614',
         surface: '#22211F',
-        textPrimary: '#F7F7F5',
-        textSecondary: '#D9D7D2',
-        textTertiary: '#A7A5A0',
-        border: 'rgba(247, 247, 245, 0.16)',
+        surfaceStrong: '#1D1B19',
+        textPrimary: '#F6F5F4',
+        textSecondary: '#D8D3CB',
+        textTertiary: '#AAA49A',
+        border: 'rgba(246, 245, 244, 0.16)',
+    };
+}
+
+export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {
+    const {surface, textPrimary, textSecondary, textTertiary, border} = getThemeModePalette(mode);
+
+    return {
+        surface,
+        textPrimary,
+        textSecondary,
+        textTertiary,
+        border,
     };
 }
 
 export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(55, 53, 47, 0.08)' : 'rgba(247, 247, 245, 0.14)';
+        return mode === 'light' ? 'rgba(0, 117, 222, 0.1)' : 'rgba(246, 245, 244, 0.14)';
     }
     const opacity = mode === 'light' ? 0.08 : 0.15;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -135,7 +166,7 @@ export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
 export function getAccentMuted(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(55, 53, 47, 0.62)' : 'rgba(247, 247, 245, 0.72)';
+        return mode === 'light' ? 'rgba(0, 117, 222, 0.62)' : 'rgba(246, 245, 244, 0.72)';
     }
     const opacity = mode === 'light' ? 0.6 : 0.7;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -191,7 +222,7 @@ const isOverpoweringAccent = (accent: string): boolean => {
 
 const getReadableAccent = (accent: string | undefined, mode: 'light' | 'dark'): string => {
     if (!accent || isOverpoweringAccent(accent)) {
-        return mode === 'dark' ? '#F7F7F5' : URBAN_EVENTS_THEME.accent;
+        return mode === 'dark' ? '#F6F5F4' : URBAN_EVENTS_THEME.accent;
     }
 
     const derived = getDerivedColors(mode);

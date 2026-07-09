@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--hi-surface);
+  background: var(--hi-shell-surface);
   padding: var(--mantine-spacing-md);
 
   @include mixins.respond-below(md) {
@@ -43,22 +43,22 @@
   max-width: 380px;
   width: 100%;
   text-align: center;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  border: 0;
+  background: var(--hi-app-panel-bg);
+  padding: 16px;
+  border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-sm);
+  border: 1px solid var(--hi-app-panel-border);
   position: relative;
 
   @include mixins.respond-below(md) {
     max-width: 420px;
-    padding: 0;
+    padding: 16px;
     margin: 0 var(--mantine-spacing-md);
   }
 
   @include mixins.respond-below(sm) {
     max-width: 100%;
-    padding: 0;
+    padding: 14px;
     margin: 0;
     border-radius: 0;
   }

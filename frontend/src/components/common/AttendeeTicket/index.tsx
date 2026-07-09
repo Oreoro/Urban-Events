@@ -11,6 +11,7 @@ import classes from './AttendeeTicket.module.scss';
 import {imageUrl} from "../../../utilites/urlHelper.ts";
 import {formatAddress} from "../../../utilites/addressUtilities.ts";
 import {PoweredByFooter} from "../PoweredByFooter";
+import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 
 interface AttendeeTicketProps {
     event: Event;
@@ -19,8 +20,6 @@ interface AttendeeTicketProps {
     hideButtons?: boolean;
     showPoweredBy?: boolean;
 }
-
-const DEFAULT_TICKET_ACCENT_COLOR = '#37352F';
 
 export const AttendeeTicket = ({
                                    attendee,
@@ -33,7 +32,7 @@ export const AttendeeTicket = ({
     const hasVenue = event?.settings?.location_details?.venue_name || event?.settings?.location_details?.address_line_1;
 
     const ticketDesignSettings = event?.settings?.ticket_design_settings;
-    const accentColor = ticketDesignSettings?.accent_color || DEFAULT_TICKET_ACCENT_COLOR;
+    const accentColor = ticketDesignSettings?.accent_color || URBAN_EVENTS_THEME.accent;
     const footerText = ticketDesignSettings?.footer_text;
     const dateDisplayMode = ticketDesignSettings?.date_display_mode || 'START_DATE_TIME';
     const logoUrl = imageUrl('TICKET_LOGO', event?.images);

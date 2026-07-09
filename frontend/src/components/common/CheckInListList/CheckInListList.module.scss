@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -27,7 +28,8 @@
     place-content: flex-end;
 
     button {
-      height: 42px;
+      min-height: 32px;
+      border-radius: var(--hi-radius-sm);
     }
 
     @include mixins.respond-below(md) {
@@ -48,7 +50,17 @@
     justify-content: space-between;
     margin-bottom: 0 !important;
     padding: 12px !important;
-    border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
+    border-color: var(--hi-app-panel-border) !important;
+    border-radius: var(--hi-radius-md) !important;
+    background: var(--hi-app-panel-bg) !important;
+    box-shadow: var(--hi-shadow-sm) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      border-color: var(--hi-border-strong) !important;
+      background: var(--hi-control-bg-hover) !important;
+      box-shadow: var(--hi-shadow-md) !important;
+    }
 
     .checkInListHeader {
       display: flex;
@@ -66,6 +78,10 @@
           align-items: center;
           font-size: 0.74rem;
           font-weight: 560;
+          padding: 2px 6px;
+          border: 1px solid var(--hi-app-panel-border);
+          border-radius: var(--hi-radius-sm);
+          background: var(--hi-shell-bg-strong);
         }
       }
     }

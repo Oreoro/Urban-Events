@@ -19,30 +19,31 @@
 }
 
 .migrationNotice {
-  background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
   margin-bottom: 16px;
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .migrationBanner {
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-app-panel-border);
   margin-bottom: 14px;
 }
 
 .platformPanel {
   margin-bottom: 12px;
-  border-color: color-mix(in srgb, var(--hi-border) 86%, transparent);
-  box-shadow: none;
+  border-color: var(--hi-app-panel-border);
+  box-shadow: var(--hi-shadow-sm);
   transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
 
   &.activePlatform {
     border: 1px solid var(--hi-border-strong);
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
 
     &.ca {
-      border-color: var(--hi-border);
-      background: var(--hi-surface-soft);
+      border-color: var(--hi-app-panel-border);
+      background: var(--hi-shell-bg-strong);
     }
   }
 

@@ -1,7 +1,7 @@
 .header {
-  height: 54px;
-  background: var(--hi-surface);
-  border-bottom: 1px solid var(--hi-border);
+  height: 42px;
+  background: var(--hi-shell-bg);
+  border-bottom: 1px solid var(--hi-app-panel-border);
 
 
   .logo {
@@ -11,7 +11,8 @@
 }
 
 .inner {
-  height: 54px;
+  height: 42px;
+  padding-inline: clamp(12px, 2vw, 22px);
   display: flex;
   justify-content: space-between;
   align-items: center;

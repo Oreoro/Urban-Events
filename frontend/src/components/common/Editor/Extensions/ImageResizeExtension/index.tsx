@@ -71,8 +71,8 @@ export const ImageResize = Image.extend({
         position: absolute;
         bottom: -24px;
         left: 0;
-        background: rgba(0,0,0,0.7);
-        color: white;
+        background: var(--hi-text);
+        color: var(--hi-color-white);
         font-size: 11px;
         padding: 2px 4px;
         border-radius: 4px;
@@ -102,14 +102,14 @@ export const ImageResize = Image.extend({
 
             const addResizeDots = () => {
                 removeResizeDots();
-                $resizeWrapper.style.border = '1px dashed #6C6C6C';
+                $resizeWrapper.style.border = '1px dashed var(--hi-border-strong)';
                 updateSizeIndicator();
 
                 dotsPosition.forEach((pos, index) => {
                     const $dot = document.createElement('div');
                     $dot.setAttribute(
                         'style',
-                        `position: absolute; width: ${isMobile ? 16 : 9}px; height: ${isMobile ? 16 : 9}px; border: 1.5px solid #6C6C6C; border-radius: 50%; background: white; ${pos}`
+                        `position: absolute; width: ${isMobile ? 16 : 9}px; height: ${isMobile ? 16 : 9}px; border: 1.5px solid var(--hi-border-strong); border-radius: 50%; background: var(--hi-surface); ${pos}`
                     );
 
                     $dot.addEventListener('mousedown', (e: MouseEvent) => {

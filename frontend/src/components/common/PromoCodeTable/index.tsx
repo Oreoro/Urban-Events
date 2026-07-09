@@ -115,7 +115,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     <CopyCodeBadge/>
                                 </MantineTable.Td>
                                 <MantineTable.Td>
-                                    <Badge color={'gray'} variant={'light'}>
+                                    <Badge variant={'light'}>
                                         <Discount/>
                                     </Badge>
                                 </MantineTable.Td>

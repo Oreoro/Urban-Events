@@ -62,11 +62,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Main page wrapper
 .pageWrapper {
   min-height: 100vh;
-  background: color-mix(in srgb, var(--bg-color, var(--ue-canvas-soft)) 86%, white);
-  --background-overlay: #{rgba(white, 0.5)};
+  background: color-mix(in srgb, var(--bg-color, var(--ue-canvas-soft)) 86%, var(--hi-color-white));
+  --background-overlay: color-mix(in srgb, var(--hi-color-white) 50%, transparent);
 
   &[data-mode="dark"] {
-    --background-overlay: #{rgba(black, 0.6)};
+    --background-overlay: color-mix(in srgb, var(--hi-color-black) 60%, transparent);
   }
 }
 
@@ -257,7 +257,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 28px;
   height: 28px;
   border-radius: $radius-sm;
-  background: var(--hi-surface-soft);
+  background: color-mix(in srgb, var(--content-bg-color) 82%, var(--bg-color));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1296,11 +1296,11 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   color: var(--primary-text-color);
   padding: 6px 12px;
   border-radius: $radius-sm;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   font-size: 0.85rem;
   font-weight: 600;
 
@@ -1311,18 +1311,21 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pageWrapper {
-  background: color-mix(in srgb, var(--ue-canvas) 92%, white);
+  background: var(--hi-shell-bg);
 }
 
 .wrapper {
-  max-width: 980px;
-  padding-top: 22px;
+  width: min(100%, 1088px);
+  max-width: 1088px;
+  padding: clamp(28px, 4vw, 56px) clamp(18px, 4vw, 40px) 64px;
 }
 
 .mainCard {
   background: var(--hi-surface);
-  border-color: var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
+  border-color: var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-md);
 }
 
 .mainCard:hover {
@@ -1330,11 +1333,19 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .coverWrapper {
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
 }
 
 .coverImage {
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
+}
+
+.eventHeader {
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 52px) clamp(24px, 3vw, 36px);
+}
+
+.section {
+  padding: clamp(24px, 3vw, 36px) clamp(24px, 4vw, 52px);
 }
 
 .statusBadge,
@@ -1347,7 +1358,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   color: var(--primary-text-color);
-  box-shadow: none;
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .socialLink,
@@ -1370,8 +1381,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .organizerAvatar,
 .organizerAvatarPlaceholder {
   border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-border);
-  background: var(--hi-surface-soft);
+  border: 1px solid var(--hi-app-panel-border);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text-muted);
 }
 
@@ -1427,10 +1438,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .metaLink,
 .directionsLink,
 .readMoreToggle,
-.organizerName a:hover,
 .organizerBio a,
 .footerLink:hover,
 .poweredByFooter a:hover {
+  color: var(--primary-color, var(--hi-primary));
+}
+
+.organizerName a:hover {
   color: var(--primary-text-color);
 }
 
@@ -1440,7 +1454,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   blockquote {
     border-left-color: var(--hi-border-strong);
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     border-radius: var(--hi-radius-sm);
     padding: 0.85rem 1rem;
   }
@@ -1463,11 +1477,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-row) {
-    background: var(--hi-surface);
-    border-color: var(--hi-border);
+    background: var(--hi-app-panel-bg);
+    border-color: var(--hi-app-panel-border);
     border-radius: var(--hi-radius-sm);
     border-width: 1px;
     margin-bottom: 0;
+    box-shadow: var(--hi-shadow-sm);
 
     &:first-child {
       border-top-width: 1px;
@@ -1485,7 +1500,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-row.hi-product-highlighted),
   :global(.hi-product-row.selected) {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     border-color: var(--hi-border-strong);
   }
 
@@ -1506,7 +1521,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-highlight-message),
   :global(.hi-product-quantity-error),
   :global(.hi-footer-row .hi-product-page-message) {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     border-color: var(--hi-border);
     color: var(--primary-text-color);
   }
@@ -1526,17 +1541,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-continue-button) {
-    background: var(--hi-text) !important;
-    background-color: var(--hi-text) !important;
-    border-color: var(--hi-text) !important;
+    background: var(--hi-primary) !important;
+    background-color: var(--hi-primary) !important;
+    border-color: var(--hi-primary) !important;
     color: var(--hi-color-white) !important;
     border-radius: var(--hi-radius-sm) !important;
   }
 
   :global(.hi-continue-button:hover:not(:disabled)) {
-    background: var(--hi-text-light) !important;
-    background-color: var(--hi-text-light) !important;
-    border-color: var(--hi-text-light) !important;
+    background: var(--hi-primary-hover) !important;
+    background-color: var(--hi-primary-hover) !important;
+    border-color: var(--hi-primary-hover) !important;
   }
 
   :global(.hi-apply-promo-code-button) {
@@ -1577,4 +1592,23 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   filter: none;
   background: var(--hi-control-bg-hover);
   border-color: var(--hi-border-strong);
+}
+
+@include mixins.respond-below(md) {
+  .wrapper {
+    padding: 12px 12px 40px;
+  }
+
+  .mainCard {
+    border-left: 1px solid var(--hi-app-panel-border);
+    border-right: 1px solid var(--hi-app-panel-border);
+    border-radius: var(--hi-radius-md);
+    margin-bottom: 12px;
+  }
+
+  .eventHeader,
+  .section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 }

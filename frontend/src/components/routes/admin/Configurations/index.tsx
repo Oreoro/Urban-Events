@@ -46,7 +46,7 @@ const Configurations = () => {
 
     if (isLoading) {
         return (
-            <Container size="xl" p="xl">
+            <Container size="xl" p="md">
                 <Stack gap="lg">
                     <Skeleton height={40} width={200} />
                     <Skeleton height={150} radius="md" />
@@ -58,7 +58,7 @@ const Configurations = () => {
 
     return (
         <>
-            <Container size="xl" p="xl" className={classes.configShell}>
+            <Container size="xl" p="md" className={classes.configShell}>
                 <Stack gap="lg">
                     <Group justify="space-between" className={classes.configHeader}>
                         <div>
@@ -117,10 +117,13 @@ const Configurations = () => {
                                         </ActionIcon>
                                         <ActionIcon
                                             variant="light"
-                                            color="red"
                                             className={classes.configAction}
                                             onClick={() => handleDelete(config)}
                                             disabled={config.is_system_default}
+                                            style={{
+                                                color: 'var(--hi-status-danger-text)',
+                                                borderColor: 'var(--hi-status-danger-border)',
+                                            }}
                                         >
                                             <IconTrash size={16} />
                                         </ActionIcon>

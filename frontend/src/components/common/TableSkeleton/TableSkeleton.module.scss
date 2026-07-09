@@ -1,15 +1,15 @@
 .skeletonTable {
   display: grid;
-  gap: 7px;
+  gap: 6px;
   padding: 0;
 }
 
 .skeletonHeader {
-  height: 34px;
-  border-radius: var(--hi-radius-md);
+  height: 32px;
+  border-radius: var(--hi-radius-sm);
 }
 
 .skeletonRow {
-  height: 24px;
+  height: 25px;
   border-radius: var(--hi-radius-sm);
 }

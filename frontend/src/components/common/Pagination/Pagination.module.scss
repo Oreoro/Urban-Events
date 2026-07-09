@@ -14,9 +14,9 @@
   :global(.mantine-Pagination-control) {
     min-width: 30px;
     height: 30px;
-    border: 1px solid var(--hi-border) !important;
+    border: 1px solid var(--hi-app-panel-border) !important;
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface) !important;
+    background: var(--hi-app-panel-bg) !important;
     color: var(--hi-text-muted) !important;
     font-size: 0.8rem;
     font-weight: 600;

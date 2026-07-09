@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: #ffffff;
+  background: var(--hi-shell-bg);
   display: flex;
   flex-direction: column;
   transition: border-color 0.15s ease;
@@ -14,8 +14,8 @@
     display: flex;
     align-items: center;
     padding: 0 12px;
-    height: 42px;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, transparent);
+    height: 40px;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
     color: var(--hi-text);
 
     @include mixins.respond-below(md) {
@@ -24,9 +24,9 @@
   }
 
   .breadcrumbsRow {
-    padding: 7px var(--app-page-gutter, 28px);
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, transparent);
-    background-color: #ffffff;
+    padding: 5px var(--app-page-gutter, 28px);
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, transparent);
+    background-color: var(--hi-shell-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +34,7 @@
     box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 38px;
+    min-height: 34px;
 
     @include mixins.respond-below(md) {
       padding-block: 10px;
@@ -60,7 +60,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
@@ -100,11 +100,11 @@
 
     a {
       color: var(--hi-text-muted);
-      font-weight: 500;
+      font-weight: 520;
       transition: color 0.14s ease, background-color 0.14s ease;
       position: relative;
       border-radius: var(--hi-radius-sm);
-      padding: 3px 6px;
+      padding: 2px 6px;
       margin-left: -4px;
       @include mixins.ellipsis();
 
@@ -157,7 +157,7 @@
   .logo {
     color: var(--hi-text);
     font-weight: 650;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     display: flex;
     justify-content: center;
     padding-inline: 6px;
@@ -179,7 +179,7 @@
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: #ffffff;
+      background: var(--hi-shell-bg);
     }
   }
 
@@ -188,6 +188,7 @@
     display: flex;
     align-items: center;
     font-weight: 600;
+    min-height: 28px;
     transition: color 0.15s ease, background-color 0.15s ease;
     color: var(--hi-text-muted);
     border-radius: var(--hi-radius-sm);

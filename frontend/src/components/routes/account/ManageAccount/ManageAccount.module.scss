@@ -68,8 +68,9 @@
       position: relative;
       padding: 12px;
       background: var(--hi-surface);
-      border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-      border-radius: var(--hi-radius-sm);
+      border: 1px solid var(--hi-app-panel-border);
+      border-radius: var(--hi-radius-md);
+      box-shadow: var(--hi-shadow-sm);
 
       :global(.mantine-InputWrapper-root) {
         margin-bottom: 10px;
@@ -101,9 +102,9 @@
 
     .feeExample {
       padding: 10px;
-      background: var(--hi-surface-soft);
-      border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-      border-radius: var(--hi-radius-sm);
+      background: var(--hi-app-panel-bg);
+      border: 1px solid var(--hi-app-panel-border);
+      border-radius: var(--hi-radius-md);
     }
   }
 

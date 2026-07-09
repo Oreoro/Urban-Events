@@ -7,9 +7,9 @@
 }
 
 .attendeeAvatar {
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text-light);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   font-weight: 650;
   font-size: 0.74rem;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hi-surface) 70%, transparent);
@@ -38,9 +38,9 @@
 .attendeeId {
   width: fit-content;
   padding: 1px 4px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--hi-text-muted);
@@ -113,9 +113,9 @@
 .orderId {
   width: fit-content;
   padding: 1px 4px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--hi-text-light);
@@ -142,9 +142,9 @@
   gap: 4px;
   min-height: 24px;
   padding: 3px 7px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  background: var(--hi-app-panel-bg);
   font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
@@ -163,13 +163,13 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+    outline: 2px solid var(--hi-focus-ring-soft);
     outline-offset: 2px;
   }
 
   &.checkedIn {
     border-color: var(--hi-border-strong);
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text);
   }
 
@@ -197,15 +197,15 @@
   }
 
   &[data-status="ACTIVE"] {
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
     color: var(--hi-text);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="AWAITING_PAYMENT"] {
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text-light);
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
   }
 
   &[data-status="CANCELLED"] {

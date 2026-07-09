@@ -13,7 +13,7 @@ $color-text-primary: var(--hi-text);
 $color-text-secondary: var(--hi-text-light);
 $color-text-muted: var(--hi-text-muted);
 $color-border: color-mix(in srgb, var(--hi-border) 86%, transparent);
-$color-border-light: var(--hi-surface-soft);
+$color-border-light: var(--hi-shell-bg-strong);
 $color-success: var(--hi-text);
 $color-money: var(--hi-text);
 
@@ -28,6 +28,7 @@ $color-money: var(--hi-text);
   padding: 6px;
   border: 1px solid var(--hi-border);
   background: var(--hi-surface);
+  box-shadow: var(--hi-shadow-sm);
 
   &:hover {
     border-color: color-mix(in srgb, var(--hi-border-strong) 74%, var(--hi-border));
@@ -130,12 +131,13 @@ $color-money: var(--hi-text);
   overflow: hidden;
   transition:
           background-color $transition-fast,
-          border-color $transition-fast;
+          border-color $transition-fast,
+          box-shadow $transition-fast;
   grid-template-areas: "sort content action";
   grid-template-columns: 26px 1fr auto;
 
   &:hover {
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm);
     border-color: color-mix(in srgb, var(--hi-border-strong) 74%, var(--hi-border));
     background-color: color-mix(in srgb, var(--hi-control-bg-hover) 72%, var(--hi-surface));
 
@@ -176,7 +178,7 @@ $color-money: var(--hi-text);
   align-items: center;
   padding: 6px 0;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
 }
 
 // Main content area
@@ -218,7 +220,7 @@ $color-money: var(--hi-text);
 
 .productMetaBadge {
   border-color: var(--hi-border) !important;
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text-muted) !important;
   font-weight: 600;
   text-transform: none;
@@ -239,7 +241,7 @@ $color-money: var(--hi-text);
 .statusBadge {
   flex-shrink: 0;
   border-color: var(--hi-border) !important;
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text-muted) !important;
   font-weight: 600;
   text-transform: none;
@@ -444,7 +446,7 @@ $color-money: var(--hi-text);
   justify-content: center;
   padding: 0 6px;
   border-left: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
 
   @include mixins.respond-below(lg) {
     border-left: none;
@@ -496,7 +498,7 @@ $color-money: var(--hi-text);
   border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
   border-radius: var(--hi-radius-sm);
   padding: 10px 12px;
-  box-shadow: none;
+  box-shadow: var(--hi-shadow-md);
 
   h3 {
     margin: 0 0 4px;

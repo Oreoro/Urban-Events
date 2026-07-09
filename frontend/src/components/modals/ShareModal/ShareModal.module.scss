@@ -23,8 +23,8 @@
     gap: 0.65rem;
     min-height: 40px;
     padding: 0.45rem 0.6rem;
-    background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     cursor: pointer;
     transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
@@ -55,8 +55,8 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--hi-radius-sm);
-    background: var(--hi-shell-bg);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-shell-bg-strong);
+    border: 1px solid var(--hi-app-panel-border);
     color: var(--hi-text-muted);
     transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -77,11 +77,11 @@
 }
 
 .qrCodeWrapper {
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
     padding: 1rem;
     border-radius: var(--hi-radius-md);
-    box-shadow: none;
-    border: 1px solid var(--hi-border);
+    box-shadow: var(--hi-shadow-sm);
+    border: 1px solid var(--hi-app-panel-border);
 }
 
 .urlSection {

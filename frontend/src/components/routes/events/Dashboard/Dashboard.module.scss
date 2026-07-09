@@ -3,15 +3,15 @@
 .eventsContainer {
   margin-top: 0;
   margin-bottom: 1rem;
-  max-width: 1040px;
+  max-width: 1180px;
 }
 
 .pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  margin: 0 0 0.62rem;
+  gap: 1rem;
+  margin: 0 0 1rem;
   
   @include mixins.respond-below(md) {
     flex-direction: column;
@@ -25,20 +25,25 @@
   min-width: 0;
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 14px;
 }
 
 .pageIcon {
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 30px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
-  color: var(--hi-text-muted);
+  flex: 0 0 48px;
+  border: 0;
+  border-radius: var(--hi-radius-md);
+  background: var(--hi-shell-bg-strong);
+  color: var(--hi-text);
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .headerContent {
@@ -47,23 +52,23 @@
 }
 
 .pageKicker {
-  margin-bottom: 1px;
+  margin-bottom: 4px;
   color: var(--hi-text-muted);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   line-height: 1.2;
 }
 
 .pageTitle {
   color: var(--hi-text);
-  font-size: 1.18rem;
-  font-weight: 650;
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 730;
   margin: 0;
   letter-spacing: 0;
-  line-height: 1.2;
+  line-height: 1.06;
   
   @include mixins.respond-below(sm) {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
   }
 }
 
@@ -72,8 +77,8 @@
   align-items: center;
   gap: 0.42rem;
   background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
   min-height: 30px;
   padding: 0.24rem 0.42rem;
   cursor: pointer;
@@ -102,7 +107,7 @@
   border-radius: var(--hi-radius-sm);
   overflow: hidden;
   flex-shrink: 0;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   border: 1px solid var(--hi-border);
   
   img {
@@ -118,7 +123,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text-muted);
 }
 
@@ -159,7 +164,7 @@
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--hi-text-light);
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   
   &:first-child {
     margin-left: 0;
@@ -178,6 +183,13 @@
 
 .toolbarCard {
   margin-bottom: 0.42rem !important;
+  padding: 0 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+
+  :global(.mantine-InputWrapper-root) {
+    margin-bottom: 0;
+  }
 }
 
 .createButton {
@@ -199,11 +211,12 @@
 }
 
 .eventsListPanel {
-  margin-top: 0.42rem;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
+  margin-top: 0.5rem;
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
   overflow: hidden;
+  box-shadow: var(--hi-shadow-sm);
 
   :global(.card) {
     margin-bottom: 0 !important;
@@ -221,5 +234,36 @@
     margin: 0 !important;
     border-radius: 0 !important;
     border-bottom: 1px solid var(--hi-border);
+  }
+}
+
+.eventsListHeader {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(220px, 0.72fr) minmax(150px, 0.38fr) 54px;
+  gap: 12px;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px 0 52px;
+  border-bottom: 1px solid var(--hi-border);
+  background: var(--hi-shell-bg-strong);
+  color: var(--hi-text-muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  line-height: 1.2;
+
+  span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  span:nth-child(3),
+  span:nth-child(4) {
+    text-align: right;
+  }
+
+  @include mixins.respond-below(md, true) {
+    display: none;
   }
 }

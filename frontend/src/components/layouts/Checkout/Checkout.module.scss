@@ -18,7 +18,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   // --checkout-text-primary, --checkout-text-secondary, --checkout-text-tertiary
   // --checkout-border
 
-  background-color: color-mix(in srgb, var(--checkout-background, var(--hi-shell-bg)) 92%, white);
+  background-color: color-mix(in srgb, var(--checkout-background, var(--hi-shell-bg)) 92%, var(--hi-color-white));
   color: var(--checkout-text-primary, var(--hi-text));
 
   // Countdown timer colors - semantic colors that don't change with theme
@@ -33,6 +33,10 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
   .timerGroup {
     flex-shrink: 0;
+
+    @include mixins.respond-below(sm) {
+      display: none !important;
+    }
   }
 
   .timerLabel {
@@ -52,6 +56,8 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 
   .mainContent {
     flex: 1;
+    min-width: 0;
+    max-width: 100%;
 
     .header {
       min-height: 56px;
@@ -71,6 +77,28 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
         width: min(100%, 880px);
         padding: 8px 18px;
         margin: 0 auto;
+
+        @include mixins.respond-below(sm) {
+          padding: 8px 12px;
+
+          > :global(.mantine-Group-root) {
+            display: grid;
+            grid-template-columns: minmax(32px, auto) minmax(0, 1fr) minmax(32px, auto);
+            gap: 6px;
+            align-items: center;
+            min-width: 0;
+          }
+
+          > :global(.mantine-Group-root) > :global(.mantine-Button-root:first-child) {
+            justify-self: start;
+            min-width: 32px;
+            padding-inline: 6px;
+          }
+
+          > :global(.mantine-Group-root) > * {
+            min-width: 0;
+          }
+        }
 
         :global(.mantine-Button-root),
         :global(.mantine-ActionIcon-root) {
@@ -129,15 +157,15 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
   :global(.mantine-NativeSelect-input) {
     background: var(--checkout-surface, var(--hi-surface));
     border-color: var(--checkout-border, var(--hi-border));
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     color: var(--checkout-text-primary, var(--hi-text));
-    min-height: 38px;
+    min-height: 44px;
     font-size: 0.88rem;
 
     &:focus,
     &:focus-within {
-      border-color: var(--checkout-text-primary, var(--hi-text));
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--checkout-border, var(--hi-border-strong)));
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
   }
 
@@ -152,7 +180,7 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 .checkoutModalContent {
   background: var(--checkout-surface, var(--hi-surface));
   border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-md);
+  border-radius: var(--hi-radius-sm);
   box-shadow: none;
 }
 
@@ -193,23 +221,23 @@ $font-body: var(--hi-font-body, Inter, -apple-system, BlinkMacSystemFont, 'Segoe
 }
 
 .checkoutModalPrimary {
-  min-height: 42px;
-  background: var(--hi-text);
-  border: 1px solid var(--hi-text);
-  border-radius: var(--hi-radius-md);
+  min-height: 44px;
+  background: var(--hi-primary);
+  border: 1px solid var(--hi-primary);
+  border-radius: var(--hi-radius-sm);
   color: var(--hi-color-white);
   font-weight: 620;
 
   &:hover {
-    background: var(--hi-text-light);
-    border-color: var(--hi-text-light);
+    background: var(--hi-primary-hover);
+    border-color: var(--hi-primary-hover);
   }
 }
 
 .checkoutModalSecondary,
 .checkoutModalDanger {
-  min-height: 40px;
-  border-radius: var(--hi-radius-md);
+  min-height: 44px;
+  border-radius: var(--hi-radius-sm);
   font-weight: 580;
 }
 

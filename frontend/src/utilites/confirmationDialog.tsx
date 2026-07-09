@@ -19,16 +19,16 @@ export const confirmationDialog = (
 
     const checkoutStyles = options?.useCheckoutColors ? {
         header: {
-            backgroundColor: 'var(--checkout-surface, #FFFFFF)',
+            backgroundColor: 'var(--checkout-surface, var(--hi-app-panel-bg))',
         },
         title: {
-            color: 'var(--checkout-text-primary, #1a1a1a)',
+            color: 'var(--checkout-text-primary, var(--hi-text))',
         },
         content: {
-            backgroundColor: 'var(--checkout-surface, #FFFFFF)',
+            backgroundColor: 'var(--checkout-surface, var(--hi-app-panel-bg))',
         },
         body: {
-            color: 'var(--checkout-text-primary, #1a1a1a)',
+            color: 'var(--checkout-text-primary, var(--hi-text))',
         },
     } : undefined;
 

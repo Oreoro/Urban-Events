@@ -2,8 +2,9 @@
 .responseBody {
   max-height: 260px;
   overflow-y: auto;
-  background-color: var(--hi-shell-bg);
-  border-color: color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface)) !important;
+  background-color: var(--hi-shell-bg-strong);
+  border-color: var(--hi-app-panel-border) !important;
+  border-radius: var(--hi-radius-sm);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.74rem;
 
@@ -12,6 +13,25 @@
     white-space: pre-wrap;
     word-break: break-all;
   }
+}
+
+.responseStatusBadge {
+  border-radius: var(--hi-radius-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.responseStatusSuccess {
+  border: 1px solid var(--hi-status-success-border) !important;
+  background: var(--hi-status-success-bg) !important;
+  color: var(--hi-status-success-text) !important;
+}
+
+.responseStatusError {
+  border: 1px solid var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
 }
 
 .tooltipContent {

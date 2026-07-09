@@ -3,7 +3,7 @@ import SelectProducts from "../../routes/product-widget/SelectProducts";
 import "../../../styles/widget/default.scss";
 import React, {useEffect, useRef, useState} from "react";
 import {EventDocumentHead} from "../../common/EventDocumentHead";
-import {eventCoverImage, eventHomepageUrl, getImageUrl, imageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
+import {eventCoverImage, eventHomepageUrl, getImageUrl, organizerHomepageUrl} from "../../../utilites/urlHelper.ts";
 import {Event, OrganizerStatus} from "../../../types.ts";
 import {EventNotAvailable} from "./EventNotAvailable";
 import {
@@ -70,8 +70,6 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     }, [event?.id, consentGranted]);
 
     useEffect(() => {
-        let showTimer: NodeJS.Timeout;
-
         const checkTicketsPosition = () => {
             if (ticketsSectionRef.current) {
                 const rect = ticketsSectionRef.current.getBoundingClientRect();
@@ -82,7 +80,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
             }
         };
 
-        showTimer = setTimeout(() => {
+        const showTimer = setTimeout(() => {
             checkTicketsPosition();
         }, 500);
 
@@ -108,10 +106,6 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
         ticketsSectionRef.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
     };
 
-    if (!event) {
-        return <EventNotAvailable/>;
-    }
-
     const rawThemeSettings = event?.settings?.homepage_theme_settings;
     const themeSettings = validateThemeSettings(rawThemeSettings);
     const cssVars = computeThemeVariables(themeSettings);
@@ -120,6 +114,10 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     useEffect(() => {
         ensureHomepageFontLoaded(themeSettings.font_family);
     }, [themeSettings.font_family]);
+
+    if (!event) {
+        return <EventNotAvailable/>;
+    }
 
     const themeStyles = {
         '--event-bg-color': themeSettings.background,
@@ -140,7 +138,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     const coverImage = getImageUrl(coverImageData);
     const organizer = event.organizer!;
     const organizerSocials = organizer?.settings?.social_media_handles;
-    const organizerLogo = imageUrl('ORGANIZER_LOGO', organizer?.images);
+    const organizerLogo = getImageUrl(organizer?.images?.find((image) => image.type === 'ORGANIZER_LOGO'));
     const organizerLocation = organizer?.settings?.location_details;
     const websiteUrl = organizer?.website;
     const locationDetails = event.settings?.location_details;

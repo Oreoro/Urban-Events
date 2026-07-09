@@ -33,15 +33,24 @@ const AdminDashboard = () => {
     const {data: upcomingEvents, isLoading: isLoadingEvents} = useGetUpcomingEvents(10);
     const {data: dashboardData, isLoading: isLoadingDashboard} = useGetAdminDashboardData({days: 14, limit: 10});
 
+    const toFiniteNumber = (value: unknown): number => {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : 0;
+    };
+
     const formatEventDate = (dateString: string, eventTimezone?: string) => {
         const eventDate = dayjs.utc(dateString);
+        if (!eventDate.isValid()) {
+            return t`Date unavailable`;
+        }
+
         const now = dayjs();
         const diffMinutes = eventDate.diff(now, 'minute');
         const diffHours = eventDate.diff(now, 'hour');
 
-        if (diffMinutes < 60) {
+        if (diffMinutes >= 0 && diffMinutes < 60) {
             return t`In ${diffMinutes} minutes`;
-        } else if (diffHours < 24) {
+        } else if (diffHours >= 0 && diffHours < 24) {
             return t`In ${diffHours} hours`;
         }
 
@@ -50,17 +59,17 @@ const AdminDashboard = () => {
             : eventDate.format('MMM D, h:mma');
     };
 
-    const formatCurrency = (amount: number, currency?: string) => {
+    const formatCurrency = (amount: number | null | undefined, currency?: string) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: currency || 'USD',
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
-        }).format(amount);
+        }).format(toFiniteNumber(amount));
     };
 
-    const formatNumber = (num: number) => {
-        return new Intl.NumberFormat().format(num);
+    const formatNumber = (num: number | null | undefined) => {
+        return new Intl.NumberFormat().format(toFiniteNumber(num));
     };
 
     return (

@@ -151,7 +151,7 @@ export const WebhookLogsModal = ({onClose, webhookId}: WebhookLogsModalProps) =>
 
             {!!logsQuery.error && (
                 <Alert
-                    color="red"
+                    className={classes.errorAlert}
                     title={t`Error loading logs`}
                     icon={<IconX size={18}/>}
                     radius="md"

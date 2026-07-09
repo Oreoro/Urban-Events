@@ -1,13 +1,13 @@
 .trigger {
   min-height: 32px !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface) !important;
+  background: var(--hi-app-panel-bg) !important;
   color: var(--hi-text) !important;
   font-size: 0.78rem !important;
   font-weight: 640 !important;
   letter-spacing: 0;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-xs) !important;
 
   &:hover {
     border-color: var(--hi-border-strong) !important;
@@ -17,10 +17,10 @@
 
 .dropdown {
   padding: 4px !important;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  background: var(--hi-app-panel-bg) !important;
+  box-shadow: var(--hi-shadow-sm) !important;
 }
 
 .label {
@@ -51,7 +51,7 @@
   :global(.mantine-Checkbox-input) {
     border-color: color-mix(in srgb, var(--hi-border-strong) 74%, var(--hi-border));
     border-radius: var(--hi-radius-xs);
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
 
     &:checked {
       border-color: var(--hi-text);

@@ -106,9 +106,17 @@ const FailedJobs = () => {
     };
 
     const totalJobs = jobsData?.meta?.total || 0;
+    const codeBlockStyle = {
+        whiteSpace: 'pre-wrap' as const,
+        fontSize: '12px',
+        border: '1px solid var(--hi-app-panel-border)',
+        borderRadius: 'var(--hi-radius-sm)',
+        background: 'var(--hi-shell-bg-strong)',
+        color: 'var(--hi-text-light)',
+    };
 
     return (
-        <Container size="xl" p="xl" className={listClasses.page}>
+        <Container size="xl" p="md" className={listClasses.page}>
             <Stack gap="lg" className={listClasses.stack}>
                 <Group justify="space-between">
                     <div>
@@ -127,7 +135,10 @@ const FailedJobs = () => {
                             </Button>
                             <Button
                                 variant="outline"
-                                color="red"
+                                style={{
+                                    color: 'var(--hi-status-danger-text)',
+                                    borderColor: 'var(--hi-status-danger-border)',
+                                }}
                                 leftSection={<IconTrash size={16} />}
                                 onClick={handleDeleteAll}
                                 loading={deleteAllJobsMutation.isPending}
@@ -190,7 +201,6 @@ const FailedJobs = () => {
                                                     <Tooltip label={t`View Details`}>
                                                         <ActionIcon
                                                             variant="subtle"
-                                                            color="gray"
                                                             onClick={() => handleViewDetails(job)}
                                                         >
                                                             <IconEye size={16} />
@@ -199,7 +209,6 @@ const FailedJobs = () => {
                                                     <Tooltip label={t`Retry`}>
                                                         <ActionIcon
                                                             variant="subtle"
-                                                            color="gray"
                                                             onClick={() => handleRetryJob(job.id)}
                                                             loading={retryJobMutation.isPending}
                                                         >
@@ -209,7 +218,7 @@ const FailedJobs = () => {
                                                     <Tooltip label={t`Delete`}>
                                                         <ActionIcon
                                                             variant="subtle"
-                                                            color="red"
+                                                            style={{color: 'var(--hi-status-danger-text)'}}
                                                             onClick={() => handleDeleteJob(job.id)}
                                                             loading={deleteJobMutation.isPending}
                                                         >
@@ -270,7 +279,7 @@ const FailedJobs = () => {
                         <div>
                             <Text size="sm" fw={500} c="dimmed">{t`Exception`}</Text>
                             <ScrollArea h={300}>
-                                <Code block style={{whiteSpace: 'pre-wrap', fontSize: '12px'}}>
+                                <Code block style={codeBlockStyle}>
                                     {selectedJob.exception}
                                 </Code>
                             </ScrollArea>
@@ -278,7 +287,7 @@ const FailedJobs = () => {
                         <div>
                             <Text size="sm" fw={500} c="dimmed">{t`Payload`}</Text>
                             <ScrollArea h={200}>
-                                <Code block style={{whiteSpace: 'pre-wrap', fontSize: '12px'}}>
+                                <Code block style={codeBlockStyle}>
                                     {formatPayloadForDisplay(selectedJob.payload)}
                                 </Code>
                             </ScrollArea>
@@ -296,7 +305,10 @@ const FailedJobs = () => {
                             </Button>
                             <Button
                                 variant="outline"
-                                color="red"
+                                style={{
+                                    color: 'var(--hi-status-danger-text)',
+                                    borderColor: 'var(--hi-status-danger-border)',
+                                }}
                                 leftSection={<IconTrash size={16} />}
                                 onClick={() => {
                                     handleDeleteJob(selectedJob.id);

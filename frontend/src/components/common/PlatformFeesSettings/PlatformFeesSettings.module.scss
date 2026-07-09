@@ -45,5 +45,6 @@
 
 .activeCard {
     border: 1px solid var(--hi-border-strong);
-    background: var(--hi-surface-soft);
+    background: var(--hi-shell-bg-strong);
+    box-shadow: var(--hi-shadow-sm);
 }

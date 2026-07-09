@@ -8,10 +8,10 @@
   display: grid;
   gap: 14px;
   padding: 16px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
-  box-shadow: none;
+  background: var(--hi-app-panel-bg);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 .statusHeader {
@@ -27,9 +27,9 @@
   width: 34px;
   height: 34px;
   flex: 0 0 auto;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text-muted);
 }
 

@@ -1,14 +1,14 @@
 .content {
-    border-left: 1px solid var(--hi-border);
-    background: var(--hi-surface);
-    box-shadow: none;
+    border-left: 1px solid var(--hi-app-panel-border);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-md);
 }
 
 .header {
     min-height: 42px;
     padding: 10px 12px 8px;
-    border-bottom: 1px solid var(--hi-border);
-    background: var(--hi-surface);
+    border-bottom: 1px solid var(--hi-app-panel-border);
+    background: var(--hi-shell-bg-strong);
 }
 
 .body {
@@ -58,8 +58,8 @@
 
         &:focus,
         &:focus-within {
-            border-color: var(--hi-text-muted);
-            box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+            border-color: var(--hi-focus-ring);
+            box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
         }
     }
 

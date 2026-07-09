@@ -1,9 +1,10 @@
 .editor {
   .editorHeader {
     padding: 12px;
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-shell-bg);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
   }
 
   .editorTitle {
@@ -23,21 +24,28 @@
     :global(.mantine-Tabs-list) {
       gap: 4px;
       padding: 4px;
-      border: 1px solid var(--hi-border);
+      border: 1px solid var(--hi-app-panel-border);
       border-radius: var(--hi-radius-md);
-      background: var(--hi-shell-bg);
+      background: var(--hi-shell-bg-strong);
     }
 
     :global(.mantine-Tabs-tab) {
       min-height: 32px;
       border: 0;
+      border-radius: var(--hi-radius-sm);
+
+      &[data-active] {
+        background: var(--hi-surface);
+        box-shadow: var(--hi-shadow-sm);
+      }
     }
   }
 
   .ctaCard {
-    border-color: var(--hi-border);
+    border-color: var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-shell-bg);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
   }
 
   .sectionDivider {
@@ -45,14 +53,15 @@
   }
 
   .templatePreview {
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
     
     .previewHeader {
       padding: 10px 12px;
-      background: var(--hi-shell-bg);
-      border-bottom: 1px solid var(--hi-border);
+      background: var(--hi-shell-bg-strong);
+      border-bottom: 1px solid var(--hi-app-panel-border);
       border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
     }
 
@@ -109,9 +118,9 @@
         }
         
         code {
-          background: var(--hi-surface-soft);
+          background: var(--hi-shell-bg-strong);
           padding: 0.125rem 0.25rem;
-          border: 1px solid var(--hi-border);
+          border: 1px solid var(--hi-app-panel-border);
           border-radius: var(--hi-radius-xs);
           font-size: 0.875em;
         }
@@ -123,26 +132,34 @@
 
       svg {
         padding: 10px;
-        border: 1px solid var(--hi-border);
+        border: 1px solid var(--hi-app-panel-border);
         border-radius: var(--hi-radius-md);
-        background: var(--hi-shell-bg);
+        background: var(--hi-shell-bg-strong);
       }
     }
   }
 
   .previewNote {
     padding: 10px 12px;
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
-    background: var(--hi-shell-bg);
+    background: var(--hi-app-panel-bg);
+    box-shadow: var(--hi-shadow-sm);
     color: var(--hi-text-muted);
     font-style: normal;
   }
+
+  .errorAlert {
+    border-color: var(--hi-status-danger-border) !important;
+    background: var(--hi-status-danger-bg) !important;
+    color: var(--hi-status-danger-text) !important;
+  }
   
   .tokenReference {
-    background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
+    box-shadow: var(--hi-shadow-sm);
     
     .tokenItem {
       padding: 0.5rem 0.75rem;
@@ -155,7 +172,7 @@
       .tokenName {
         font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
         font-size: 0.8rem;
-        background: var(--hi-surface-soft);
+        background: var(--hi-shell-bg-strong);
         padding: 0.125rem 0.375rem;
         border-radius: 0.25rem;
         display: inline-block;

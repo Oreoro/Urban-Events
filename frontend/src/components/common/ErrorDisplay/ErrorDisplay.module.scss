@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--hi-surface);
+    background: var(--hi-shell-surface);
     padding: 20px;
 }
 
@@ -27,12 +27,12 @@
 .content {
     max-width: 380px;
     text-align: center;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
+    background-color: var(--hi-app-panel-bg);
+    padding: 16px;
+    border-radius: var(--hi-radius-md);
+    box-shadow: var(--hi-shadow-sm);
     backdrop-filter: none;
-    border: 0;
+    border: 1px solid var(--hi-app-panel-border);
 }
 
 .title {

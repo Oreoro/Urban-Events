@@ -13,7 +13,6 @@ import {
 } from "@mantine/core";
 import {useNavigate, useParams} from "react-router";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {notifications} from "@mantine/notifications";
 import {
     orderClientPublic,
     ProductFormPayload,
@@ -132,14 +131,14 @@ const SelectProducts = (props: SelectProductsProps) => {
     }, [eventId]);
 
     useEffect(() => {
-        form.setFieldValue('affiliate_code', affiliateCode || null);
+        form.setFieldValue('affiliate_code', affiliateCode || "");
     }, [affiliateCode]);
 
     const form = useForm<ProductFormPayload>({
         initialValues: {
             products: undefined,
-            promo_code: props.promoCodeValid ? props.promoCode || null : null,
-            affiliate_code: affiliateCode || null,
+            promo_code: props.promoCodeValid ? props.promoCode || "" : "",
+            affiliate_code: affiliateCode || "",
             session_identifier: undefined,
         },
     });
@@ -167,10 +166,7 @@ const SelectProducts = (props: SelectProductsProps) => {
                 form.setErrors(error.response.data.errors);
             }
 
-            notifications.show({
-                message: error.response.data.errors?.products[0] || t`Unable to create product. Please check your details`,
-                color: 'red',
-            });
+            showError(error.response.data.errors?.products[0] || t`Unable to create product. Please check your details`);
         }
     });
 
@@ -198,7 +194,7 @@ const SelectProducts = (props: SelectProductsProps) => {
             if (promoCode) {
                 form.setFieldValue("promo_code", promoCode);
             } else {
-                form.setFieldValue("promo_code", null);
+                form.setFieldValue("promo_code", "");
                 setShowPromoCodeInput(false)
                 removeQueryStringFromUrl('promo_code');
             }
@@ -281,6 +277,8 @@ const SelectProducts = (props: SelectProductsProps) => {
         if (values && selectedProductQuantitySum > 0) {
             productMutation.mutate({
                 ...values,
+                promo_code: values.promo_code || null,
+                affiliate_code: values.affiliate_code || null,
                 session_identifier: getSessionIdentifier()
             });
         } else {

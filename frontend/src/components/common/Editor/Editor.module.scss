@@ -1,5 +1,21 @@
 .inputWrapper {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+}
+
+.description {
+  margin-bottom: 5px;
+  color: var(--hi-text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.45;
+
+  p {
+    margin: 0 0 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .error {
@@ -7,15 +23,15 @@
 }
 
 .toolbar {
-  background: var(--hi-shell-bg) !important;
-  border-bottom: 1px solid var(--hi-border) !important;
-  padding: 6px !important;
+  background: var(--hi-surface) !important;
+  border-bottom: 1px solid var(--hi-app-panel-border) !important;
+  padding: 5px !important;
 
   :global(.mantine-RichTextEditor-controlsGroup) {
-    border: 1px solid var(--hi-border);
+    border: 1px solid var(--hi-app-panel-border);
     border-radius: var(--hi-radius-sm);
     overflow: hidden;
-    background: var(--hi-surface);
+    background: var(--hi-shell-bg-strong);
   }
 
   :global(.mantine-RichTextEditor-control) {
@@ -36,20 +52,21 @@
 
 .editorRoot {
   overflow: hidden;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
   background: var(--hi-surface);
+  box-shadow: none;
 
   :global(.mantine-RichTextEditor-content) {
     background: var(--hi-surface);
   }
 
   :global(.ProseMirror) {
-    min-height: 180px;
-    padding: 14px;
+    min-height: 160px;
+    padding: 12px;
     color: var(--hi-text-light);
-    font-size: 0.92rem;
-    line-height: 1.65;
+    font-size: 0.88rem;
+    line-height: 1.6;
 
     &:focus {
       outline: none;

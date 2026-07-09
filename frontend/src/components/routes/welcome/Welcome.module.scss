@@ -6,7 +6,7 @@
   }
 
   min-height: 100vh;
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-surface);
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -24,9 +24,10 @@
   min-width: 0;
   margin: 0 auto;
   padding: 13px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
+  background: var(--hi-app-panel-bg);
+  border: 1px solid var(--hi-app-panel-border);
+  border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-md);
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -95,7 +96,7 @@
 
 // Clean focus styles
 .categoryCard:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+  outline: 2px solid var(--hi-focus-ring-soft);
   outline-offset: 2px;
 }
 
@@ -133,13 +134,13 @@
   width: 100%;
   height: 3px;
   appearance: none;
-  background-color: var(--hi-surface-soft);
+  background-color: var(--hi-shell-bg-strong);
   border: 0;
   border-radius: var(--hi-radius-sm);
   overflow: hidden;
 
   &::-webkit-progress-bar {
-    background-color: var(--hi-surface-soft);
+    background-color: var(--hi-shell-bg-strong);
     border-radius: var(--hi-radius-sm);
   }
 
@@ -245,13 +246,13 @@
     transition: border-color 0.15s ease !important;
 
     &:focus {
-      border-color: var(--hi-text-muted) !important;
+      border-color: var(--hi-focus-ring) !important;
       outline: none !important;
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent) !important;
+      box-shadow: 0 0 0 2px var(--hi-focus-ring-soft) !important;
     }
 
     &::placeholder {
-      color: color-mix(in srgb, var(--hi-text-muted) 72%, white) !important;
+      color: color-mix(in srgb, var(--hi-text-muted) 72%, var(--hi-color-white)) !important;
     }
 
     @media (max-width: 768px) {
@@ -324,7 +325,7 @@
 }
 
 .categoryCardSelected {
-  border-color: var(--hi-text-muted) !important;
+  border-color: var(--hi-focus-ring) !important;
   background: var(--hi-control-bg-active) !important;
 
   .categoryMark {
@@ -371,8 +372,8 @@
 
 // Email Verification Specific
 .emailDisplay {
-  background: var(--hi-surface-soft);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  background: var(--hi-shell-bg-strong);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
   padding: 0.5rem 0.58rem;
   margin-top: 0.72rem;
@@ -404,9 +405,9 @@
     color: var(--hi-text);
 
     &:focus {
-      border-color: var(--hi-text-muted);
+      border-color: var(--hi-focus-ring);
       outline: none;
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
     }
 
     // Force smaller size on mobile
@@ -459,9 +460,10 @@
 
   // Clean dropdown styling
   :global(.mantine-Select-dropdown) {
-    border: 1px solid var(--hi-border) !important;
+    border: 1px solid var(--hi-app-panel-border) !important;
     border-radius: var(--hi-radius-sm) !important;
-    box-shadow: none !important;
+    background: var(--hi-app-panel-bg) !important;
+    box-shadow: var(--hi-shadow-sm) !important;
     padding: 4px !important;
   }
 
@@ -471,7 +473,7 @@
     font-size: 0.84rem !important;
 
     &:hover {
-      background: var(--hi-color-gray) !important;
+      background: var(--hi-control-bg-hover) !important;
     }
 
     &[data-selected] {
@@ -505,8 +507,11 @@
   }
 
   &:disabled {
-    background: var(--hi-color-gray-dark) !important;
-    opacity: 0.7 !important;
+    background: var(--hi-control-bg-active) !important;
+    border-color: var(--hi-border-strong) !important;
+    color: var(--hi-text-muted) !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
   }
 
   @media (max-width: 768px) {

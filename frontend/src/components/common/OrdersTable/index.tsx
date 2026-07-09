@@ -255,7 +255,6 @@ export const OrdersTable = ({orders, event}: OrdersTableProps) => {
                                         <Button
                                             fullWidth
                                             variant="light"
-                                            color="gray"
                                             leftSection={<IconCopy size={16}/>}
                                             onClick={() => handleCopyEmail(order.email)}
                                         >

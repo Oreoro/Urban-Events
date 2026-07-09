@@ -1,48 +1,64 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #fbf2f0;
+  --ue-powder-blush: #fff2ee;
   --ue-eggshell: #ffffff;
-  --ue-icy-aqua: #f1f9f7;
-  --ue-light-blue: #edf5ff;
-  --ue-blue-slate: #6f6e69;
+  --ue-icy-aqua: #eff8f6;
+  --ue-light-blue: #edf6ff;
+  --ue-blue-slate: #6b6b66;
   --ue-canvas: #ffffff;
-  --ue-canvas-soft: #f7f7f5;
+  --ue-canvas-soft: #f6f5f4;
+  --ue-canvas-warm: #fbfaf8;
+  --ue-canvas-hover: #efeeeb;
+  --ue-canvas-active: #e8e6e1;
   --ue-surface: #ffffff;
-  --ue-ink: #2f2d27;
-  --ue-ink-soft: #504d47;
-  --ue-muted: #74706a;
+  --ue-ink: #1f1f1f;
+  --ue-ink-soft: #31302e;
+  --ue-muted: #615d59;
+  --ue-faint: #a39e98;
+  --ue-action-blue: #0075de;
+  --ue-action-blue-hover: #005bab;
+  --ue-action-blue-soft: #e8f3ff;
+  --ue-deep-indigo: #213183;
+  --ue-sticker-sky: #62aef0;
+  --ue-sticker-purple: #d6b6f6;
+  --ue-sticker-purple-deep: #391c57;
+  --ue-sticker-pink: #ff64c8;
+  --ue-sticker-orange: #dd5b00;
+  --ue-sticker-orange-deep: #b24700;
+  --ue-sticker-teal: #2a9d99;
+  --ue-sticker-green: #1aae39;
   --ue-slate: var(--ue-ink-soft);
   --ue-slate-deep: var(--ue-ink);
-  --ue-slate-soft: #e8e6df;
+  --ue-slate-soft: #efeeeb;
   --ue-aqua: var(--ue-icy-aqua);
   --ue-aqua-deep: var(--ue-ink);
   --ue-blush: var(--ue-powder-blush);
   --ue-blush-deep: #c4554d;
-  --ue-coral: var(--ue-ink);
+  --ue-coral: #c4554d;
   --ue-coral-deep: #7a3b37;
-  --ue-marigold: var(--ue-muted);
-  --ue-navy: #37352f;
-  --ue-navy-deep: #191918;
-  --ue-teal: var(--ue-ink);
-  --ue-teal-deep: var(--ue-ink-soft);
-  --ue-plum: var(--ue-navy);
-  --ue-plum-deep: var(--ue-navy-deep);
-  --ue-forest: var(--ue-ink);
-  --ue-forest-deep: var(--ue-ink-soft);
+  --ue-marigold: var(--ue-sticker-orange);
+  --ue-navy: var(--ue-deep-indigo);
+  --ue-navy-deep: #141d58;
+  --ue-teal: var(--ue-sticker-teal);
+  --ue-teal-deep: #1e6f6c;
+  --ue-plum: var(--ue-sticker-purple-deep);
+  --ue-plum-deep: #26103b;
+  --ue-forest: var(--ue-sticker-green);
+  --ue-forest-deep: #137d2a;
   --ue-mint: var(--ue-canvas-soft);
-  --ue-sky: var(--ue-canvas-soft);
-  --ue-border: #e3e2dd;
-  --ue-border-strong: #d4d1ca;
+  --ue-sky: var(--ue-sticker-sky);
+  --ue-border: #e6e6e6;
+  --ue-border-strong: #d8d8d5;
 
   --hi-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
-  --hi-primary: var(--ue-ink);
-  --hi-primary-hover: var(--ue-ink-soft);
-  --hi-primary-soft: color-mix(in srgb, var(--ue-ink) 7%, white);
+  --hi-primary: var(--ue-action-blue);
+  --hi-primary-hover: var(--ue-action-blue-hover);
+  --hi-primary-soft: color-mix(in srgb, var(--ue-action-blue) 10%, var(--hi-color-white));
   --hi-secondary: var(--ue-sky);
   --hi-secondary-strong: var(--ue-ink);
   --hi-secondary-text: var(--ue-ink);
@@ -56,22 +72,31 @@
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--hi-text);
   --hi-color-blue: var(--ue-light-blue);
-  --hi-link-color: var(--hi-shell-accent);
+  --hi-link-color: var(--hi-primary);
   --hi-pink: var(--hi-text);
   --hi-primary-alt: var(--hi-text);
-  --hi-action-fill: var(--hi-text);
-  --hi-shell-bg: #ffffff;
-  --hi-shell-bg-strong: #fbfbfa;
-  --hi-shell-surface: #f7f7f5;
-  --hi-shell-surface-hover: #efefec;
+  --hi-action-fill: var(--hi-primary);
+  --hi-shell-bg: var(--ue-canvas-soft);
+  --hi-shell-bg-strong: var(--ue-canvas);
+  --hi-shell-surface: color-mix(in srgb, var(--ue-canvas-soft) 82%, var(--ue-canvas));
+  --hi-shell-surface-hover: var(--ue-canvas-hover);
   --hi-shell-text: var(--ue-ink);
   --hi-shell-muted: var(--ue-muted);
-  --hi-shell-accent: var(--ue-ink);
+  --hi-shell-accent: var(--hi-primary);
+  --hi-decorative-indigo: var(--ue-deep-indigo);
+  --hi-decorative-sky: var(--ue-sticker-sky);
+  --hi-decorative-purple: var(--ue-sticker-purple);
+  --hi-decorative-pink: var(--ue-sticker-pink);
+  --hi-decorative-orange: var(--ue-sticker-orange);
+  --hi-decorative-teal: var(--ue-sticker-teal);
+  --hi-decorative-green: var(--ue-sticker-green);
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
-  --hi-control-bg: #ffffff;
-  --hi-control-bg-hover: #f1f1ef;
-  --hi-control-bg-active: #e9e9e6;
-  --hi-focus-ring: color-mix(in srgb, var(--hi-text) 12%, transparent);
+  --hi-control-bg: var(--ue-surface);
+  --hi-control-bg-hover: var(--ue-canvas-hover);
+  --hi-control-bg-active: var(--ue-canvas-active);
+  --hi-focus-accent: var(--hi-primary);
+  --hi-focus-ring: color-mix(in srgb, var(--hi-focus-accent) 28%, transparent);
+  --hi-focus-ring-soft: color-mix(in srgb, var(--hi-focus-accent) 16%, transparent);
   --hi-danger: #c4554d;
   --hi-success: #2f8f62;
   --hi-warning: #cb912f;
@@ -91,24 +116,31 @@
   --hi-status-danger-text: #7a3b37;
   --hi-status-danger-border: #ecd5d2;
 
+  --hi-app-column-bg: var(--hi-shell-surface);
+  --hi-app-panel-bg: color-mix(in srgb, var(--hi-surface) 94%, var(--hi-shell-bg));
+  --hi-app-panel-border: color-mix(in srgb, var(--hi-border) 86%, transparent);
+  --hi-app-card-bg: color-mix(in srgb, var(--hi-surface) 98%, var(--hi-shell-bg));
+  --hi-app-hover-bg: color-mix(in srgb, var(--hi-control-bg-hover) 74%, var(--hi-surface));
+
   --hi-color-white: #ffffff;
   --hi-color-black: #000000;
 
-  --hi-spacing-xs: 3px;
-  --hi-spacing-sm: 5px;
-  --hi-spacing-md: 10px;
-  --hi-spacing-lg: 20px;
-  --hi-spacing-xl: 25px;
+  --hi-spacing-xs: 4px;
+  --hi-spacing-sm: 8px;
+  --hi-spacing-md: 12px;
+  --hi-spacing-lg: 24px;
+  --hi-spacing-xl: 32px;
 
-  --hi-radius-xs: 3px;
-  --hi-radius-sm: 5px;
-  --hi-radius-md: 6px;
-  --hi-radius-lg: 6px;
-  --hi-radius-xl: 6px;
+  --hi-radius-xs: 4px;
+  --hi-radius-sm: 6px;
+  --hi-radius-md: 8px;
+  --hi-radius-lg: 8px;
+  --hi-radius-xl: 8px;
 
-  --hi-shadow-sm: none;
-  --hi-shadow-md: none;
-  --hi-shadow-lg: none;
+  --hi-shadow-xs: 0 1px 1px rgba(15, 15, 15, 0.03);
+  --hi-shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.035), 0 8px 18px rgba(15, 15, 15, 0.035);
+  --hi-shadow-md: 0 2px 6px rgba(15, 15, 15, 0.04), 0 18px 42px rgba(15, 15, 15, 0.055);
+  --hi-shadow-lg: 0 4px 14px rgba(15, 15, 15, 0.05), 0 26px 64px rgba(15, 15, 15, 0.065);
 }
 
 * {
@@ -124,7 +156,7 @@ body {
   font-size: 15px;
   line-height: 1.48;
   color: var(--hi-text);
-  background: var(--checkout-background, var(--ue-canvas)) !important;
+  background: var(--checkout-background, var(--hi-shell-bg)) !important;
   height: auto;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -148,12 +180,12 @@ a {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--ue-icy-aqua) 78%, white);
+  background: color-mix(in srgb, var(--ue-icy-aqua) 78%, var(--hi-color-white));
   color: var(--hi-text);
 }
 
 :focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--hi-text) 14%, transparent);
+  outline: 2px solid var(--hi-focus-ring);
   outline-offset: 2px;
 }
 
@@ -198,8 +230,8 @@ a {
 
 .mantine-Input-input:focus,
 .mantine-Input-input:focus-within {
-  border-color: var(--hi-text-muted);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hi-text) 12%, transparent);
+  border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+  box-shadow: 0 0 0 3px var(--hi-focus-ring);
 }
 
 .mantine-Input-input {
@@ -211,13 +243,37 @@ a {
 }
 
 .mantine-Input-input::placeholder {
-  color: color-mix(in srgb, var(--hi-text-muted) 68%, white);
+  color: color-mix(in srgb, var(--hi-text-muted) 68%, var(--hi-color-white));
 }
 
 .mantine-Card-root,
 .mantine-Paper-root {
   background-color: var(--hi-surface-raised);
   border-color: var(--hi-border);
+  box-shadow: var(--hi-shadow-sm);
+}
+
+.mantine-Accordion-root {
+  --accordion-radius: var(--hi-radius-sm);
+}
+
+.mantine-Accordion-item {
+  border-color: var(--hi-border) !important;
+  background: var(--hi-surface);
+}
+
+.mantine-Accordion-control {
+  color: var(--hi-text);
+  font-size: 0.84rem;
+  font-weight: 620;
+}
+
+.mantine-Accordion-control:hover {
+  background: var(--hi-control-bg-hover);
+}
+
+.mantine-Accordion-panel {
+  color: var(--hi-text-light);
 }
 
 .mantine-Badge-root {
@@ -237,6 +293,31 @@ a {
   color: var(--hi-status-neutral-text) !important;
 }
 
+.mantine-Badge-root[style*="--mantine-color-red"] {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-Badge-root[style*="--mantine-color-orange"],
+.mantine-Badge-root[style*="--mantine-color-yellow"] {
+  border-color: var(--hi-status-warning-border) !important;
+  background: var(--hi-status-warning-bg) !important;
+  color: var(--hi-status-warning-text) !important;
+}
+
+.mantine-Badge-root[style*="--mantine-color-green"] {
+  border-color: var(--hi-status-success-border) !important;
+  background: var(--hi-status-success-bg) !important;
+  color: var(--hi-status-success-text) !important;
+}
+
+.mantine-Badge-root[style*="--mantine-color-blue"] {
+  border-color: var(--hi-status-info-border) !important;
+  background: var(--hi-status-info-bg) !important;
+  color: var(--hi-status-info-text) !important;
+}
+
 .mantine-Badge-root[data-variant="filled"] {
   border: 1px solid var(--hi-text);
   background: var(--hi-text) !important;
@@ -249,7 +330,7 @@ a {
 
 .mantine-Alert-root {
   border: 1px solid var(--hi-border);
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-app-panel-bg) !important;
   color: var(--hi-text) !important;
   box-shadow: none;
 }
@@ -263,14 +344,39 @@ a {
   color: var(--hi-text-muted) !important;
 }
 
+.mantine-Alert-root[style*="--mantine-color-red"] {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-Alert-root[style*="--mantine-color-red"] .mantine-Alert-icon,
+.mantine-Alert-root[style*="--mantine-color-red"] .mantine-Alert-title {
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-Alert-root[style*="--mantine-color-orange"],
+.mantine-Alert-root[style*="--mantine-color-yellow"] {
+  border-color: var(--hi-status-warning-border) !important;
+  background: var(--hi-status-warning-bg) !important;
+  color: var(--hi-status-warning-text) !important;
+}
+
+.mantine-Alert-root[style*="--mantine-color-orange"] .mantine-Alert-icon,
+.mantine-Alert-root[style*="--mantine-color-orange"] .mantine-Alert-title,
+.mantine-Alert-root[style*="--mantine-color-yellow"] .mantine-Alert-icon,
+.mantine-Alert-root[style*="--mantine-color-yellow"] .mantine-Alert-title {
+  color: var(--hi-status-warning-text) !important;
+}
+
 .mantine-Notification-root {
   width: min(420px, calc(100vw - 28px));
   padding: 11px 12px;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-md) !important;
-  background: var(--hi-surface) !important;
+  background: var(--hi-app-panel-bg) !important;
   color: var(--hi-text) !important;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-md) !important;
 }
 
 .mantine-Notification-title {
@@ -292,15 +398,15 @@ a {
   width: 24px;
   height: 24px;
   margin-inline-end: 10px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text-muted) !important;
 }
 
 .mantine-Notification-root[data-status="success"] .mantine-Notification-icon {
-  border-color: var(--hi-border);
-  background: var(--hi-surface-soft) !important;
+  border-color: var(--hi-app-panel-border);
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text) !important;
 }
 
@@ -328,14 +434,14 @@ a {
 .mantine-ThemeIcon-root[data-variant="light"],
 .mantine-ThemeIcon-root[data-variant="outline"],
 .mantine-Avatar-root {
-  border: 1px solid var(--hi-border);
-  background: var(--hi-surface-soft) !important;
+  border: 1px solid var(--hi-app-panel-border);
+  background: var(--hi-shell-bg-strong) !important;
   color: var(--hi-text-muted) !important;
   box-shadow: none;
 }
 
 .mantine-Progress-root {
-  background: var(--hi-surface-soft) !important;
+  background: var(--hi-shell-bg-strong) !important;
 }
 
 .mantine-Progress-section {
@@ -343,19 +449,56 @@ a {
 }
 
 .mantine-Skeleton-root {
-  --mantine-color-placeholder: var(--hi-surface-soft);
+  --mantine-color-placeholder: var(--hi-shell-bg-strong);
+  --skeleton-radius: var(--hi-radius-sm);
+  background-color: var(--hi-shell-bg-strong);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hi-border) 34%, transparent);
+}
+
+.mantine-Skeleton-root:where([data-visible])::before {
+  background-color: var(--hi-surface) !important;
+}
+
+.mantine-Skeleton-root:where([data-visible])::after {
+  background-color: color-mix(in srgb, var(--hi-shell-muted) 18%, var(--hi-surface)) !important;
+}
+
+.mantine-Overlay-root,
+.mantine-Modal-overlay,
+.mantine-Drawer-overlay,
+.mantine-LoadingOverlay-overlay {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.mantine-Modal-overlay,
+.mantine-Drawer-overlay {
+  background: color-mix(in srgb, var(--hi-color-black) 18%, transparent) !important;
+}
+
+.mantine-LoadingOverlay-root {
+  border-radius: inherit;
+}
+
+.mantine-LoadingOverlay-overlay {
+  background: color-mix(in srgb, var(--hi-shell-bg) 76%, transparent) !important;
+}
+
+.mantine-LoadingOverlay-loader {
+  --loader-color: var(--hi-text-muted);
+  color: var(--hi-text-muted);
 }
 
 .mantine-Button-root[data-variant="filled"] {
-  box-shadow: none;
-  background-color: var(--hi-text) !important;
+  box-shadow: var(--hi-shadow-sm);
+  background-color: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
-  border: 1px solid var(--hi-text) !important;
+  border: 1px solid var(--hi-primary) !important;
 }
 
 .mantine-Button-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-text-light) !important;
-  border-color: var(--hi-text-light) !important;
+  background-color: var(--hi-primary-hover) !important;
+  border-color: var(--hi-primary-hover) !important;
 }
 
 .mantine-Button-root[data-variant="light"] {
@@ -376,7 +519,7 @@ a {
 
 .mantine-Button-root[data-variant="subtle"]:hover:not([data-disabled]),
 .mantine-ActionIcon-root[data-variant="subtle"]:hover:not([data-disabled]) {
-  background-color: var(--hi-surface-soft) !important;
+  background-color: var(--hi-control-bg-hover) !important;
   color: var(--hi-text) !important;
 }
 
@@ -409,14 +552,14 @@ a {
 }
 
 .mantine-ActionIcon-root[data-variant="filled"] {
-  background-color: var(--hi-text) !important;
+  background-color: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
-  border-color: var(--hi-text) !important;
+  border-color: var(--hi-primary) !important;
 }
 
 .mantine-ActionIcon-root[data-variant="filled"]:hover:not([data-disabled]) {
-  background-color: var(--hi-text-light) !important;
-  border-color: var(--hi-text-light) !important;
+  background-color: var(--hi-primary-hover) !important;
+  border-color: var(--hi-primary-hover) !important;
 }
 
 .mantine-ActionIcon-root {
@@ -433,9 +576,9 @@ a {
 }
 
 .mantine-Menu-dropdown {
-  background: var(--hi-surface);
-  border-color: var(--hi-border);
-  box-shadow: none;
+  background: var(--hi-app-panel-bg);
+  border-color: var(--hi-app-panel-border);
+  box-shadow: var(--hi-shadow-md);
   border-radius: var(--hi-radius-md);
   padding: 5px;
 }
@@ -453,12 +596,26 @@ a {
   color: var(--hi-text) !important;
 }
 
+.mantine-Menu-item[style*="--mantine-color-red"] {
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-Menu-item[style*="--mantine-color-red"]:hover {
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
 .mantine-Menu-itemSection {
   color: var(--hi-text-muted);
 }
 
 .mantine-Menu-item:hover .mantine-Menu-itemSection {
   color: var(--hi-text);
+}
+
+.mantine-Menu-item[style*="--mantine-color-red"] .mantine-Menu-itemSection,
+.mantine-Menu-item[style*="--mantine-color-red"]:hover .mantine-Menu-itemSection {
+  color: var(--hi-status-danger-text);
 }
 
 .mantine-Menu-label {
@@ -470,32 +627,93 @@ a {
 }
 
 .mantine-Menu-divider {
-  border-color: var(--hi-border) !important;
+  border-color: var(--hi-app-panel-border) !important;
 }
 
 .mantine-Popover-dropdown {
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-md) !important;
-  background: var(--hi-surface) !important;
+  background: var(--hi-app-panel-bg) !important;
   color: var(--hi-text-light) !important;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-md) !important;
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.45;
 }
 
 .mantine-Popover-arrow {
-  border-color: var(--hi-border) !important;
+  border-color: var(--hi-app-panel-border) !important;
+  background: var(--hi-app-panel-bg) !important;
+}
+
+.mantine-Tooltip-tooltip {
+  border: 1px solid var(--hi-text);
+  border-radius: var(--hi-radius-sm) !important;
+  background: var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
+  font-size: 0.75rem;
+  font-weight: 560;
+  letter-spacing: 0;
+  box-shadow: none !important;
+}
+
+.mantine-Tooltip-arrow {
+  border-color: var(--hi-text) !important;
+  background: var(--hi-text) !important;
+}
+
+.mantine-Drawer-content {
+  border-left: 1px solid var(--hi-border);
   background: var(--hi-surface) !important;
+  color: var(--hi-text) !important;
+  box-shadow: var(--hi-shadow-md) !important;
+}
+
+.mantine-Drawer-header {
+  min-height: 48px;
+  border-bottom: 1px solid var(--hi-border);
+  background: var(--hi-surface) !important;
+}
+
+.mantine-Drawer-title {
+  color: var(--hi-text);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.mantine-Loader-root {
+  --loader-color: var(--hi-text-muted);
+}
+
+.mantine-Button-root[style*="--mantine-color-red"] {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-Button-root[style*="--mantine-color-red"]:hover:not([data-disabled]) {
+  border-color: var(--hi-status-danger-border) !important;
+  background: color-mix(in srgb, var(--hi-status-danger-bg) 78%, var(--hi-status-danger-text)) !important;
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-ActionIcon-root[style*="--mantine-color-red"] {
+  color: var(--hi-status-danger-text) !important;
+}
+
+.mantine-ActionIcon-root[style*="--mantine-color-red"]:hover:not([data-disabled]) {
+  border-color: var(--hi-status-danger-border) !important;
+  background: var(--hi-status-danger-bg) !important;
+  color: var(--hi-status-danger-text) !important;
 }
 
 .mantine-Combobox-dropdown,
 .mantine-Select-dropdown {
   padding: 4px !important;
-  border: 1px solid var(--hi-border) !important;
+  border: 1px solid var(--hi-app-panel-border) !important;
   border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  background: var(--hi-app-panel-bg) !important;
+  box-shadow: var(--hi-shadow-sm) !important;
 }
 
 .mantine-Combobox-option {
@@ -518,7 +736,7 @@ a {
 }
 
 .mantine-Table-table th {
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg-strong);
   border-bottom: 1px solid var(--hi-border);
   color: var(--hi-text-muted);
   font-size: 0.75rem;
@@ -529,7 +747,7 @@ a {
 }
 
 .mantine-Table-table td {
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, white);
+  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, var(--hi-color-white));
   color: var(--hi-text-light);
   font-size: 0.87rem;
   font-weight: 500;
@@ -541,7 +759,7 @@ a {
 }
 
 .mantine-Table-table tbody tr:hover {
-  background: var(--hi-control-bg-hover);
+  background: var(--hi-app-hover-bg);
 }
 
 .mantine-Tabs-list {
@@ -555,7 +773,7 @@ a {
 }
 
 .mantine-Tabs-tab:hover {
-  background: var(--hi-surface-soft);
+  background: var(--hi-control-bg-hover);
   color: var(--hi-text);
 }
 
@@ -564,11 +782,30 @@ a {
   color: var(--hi-text);
 }
 
+.mantine-Pagination-control {
+  border-color: var(--hi-border) !important;
+  border-radius: var(--hi-radius-sm) !important;
+  color: var(--hi-text-light) !important;
+  background: var(--hi-surface) !important;
+  font-weight: 560;
+}
+
+.mantine-Pagination-control:hover {
+  background: var(--hi-control-bg-hover) !important;
+  color: var(--hi-text) !important;
+}
+
+.mantine-Pagination-control[data-active] {
+  border-color: var(--hi-text) !important;
+  background: var(--hi-text) !important;
+  color: var(--hi-color-white) !important;
+}
+
 .mantine-SegmentedControl-root {
   padding: 2px;
-  border: 1px solid var(--hi-border);
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
   box-shadow: none;
 }
 
@@ -618,8 +855,8 @@ a {
 }
 
 .mantine-Switch-track {
-  border-color: var(--hi-border);
-  background: var(--hi-surface-soft);
+  border-color: var(--hi-app-panel-border);
+  background: var(--hi-shell-bg-strong);
 }
 
 .mantine-Switch-track[data-checked] {

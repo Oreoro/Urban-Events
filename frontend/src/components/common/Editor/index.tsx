@@ -6,7 +6,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import React, {useEffect, useState} from "react";
-import {InputDescription, InputError, InputLabel, MantineFontSize} from "@mantine/core";
+import {InputError, InputLabel, MantineFontSize} from "@mantine/core";
 import classes from "./Editor.module.scss";
 import classNames from "classnames";
 import {Trans} from "@lingui/macro";
@@ -15,16 +15,18 @@ import {ImageResize} from "./Extensions/ImageResizeExtension";
 import {Extension} from '@tiptap/core';
 
 const EDITOR_COLORS = [
-    '#37352F',
-    '#787774',
-    '#9B9A97',
-    '#D9D7D2',
-    '#F1F1EF',
+    '#1F1F1F',
+    '#615D59',
+    '#A39E98',
+    '#E6E6E6',
+    '#F6F5F4',
     '#FFFFFF',
-    '#7A3B37',
-    '#76561F',
-    '#2F5F46',
-    '#24577A',
+    '#C4554D',
+    '#DD5B00',
+    '#1AAE39',
+    '#0075DE',
+    '#391C57',
+    '#FF64C8',
 ];
 
 interface EditorProps {
@@ -114,8 +116,8 @@ export const Editor = ({
             {label && <InputLabel size={size} required={required}
                                   onClick={() => editor?.commands.focus()}>{label}</InputLabel>}
             {description && (
-                <div style={{marginBottom: 5}}>
-                    <InputDescription size={size}>{description}</InputDescription>
+                <div className={classes.description}>
+                    {description}
                 </div>
             )}
             <RichTextEditor variant={'subtle'} editor={editor} className={classes.editorRoot}>

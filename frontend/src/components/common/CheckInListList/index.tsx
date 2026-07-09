@@ -108,8 +108,7 @@ export const CheckInListList = ({checkInLists, openCreateModal}: CheckInListList
                                 </div>
                                 <div className={classes.capacityAssignmentStatus}>
                                     <Popover title={statusMessage} position={'bottom'} withArrow>
-                                        <Badge variant={'light'}
-                                               color={'gray'}>
+                                        <Badge variant={'light'}>
                                             {!list.is_expired && list.is_active ? t`Active` : t`Inactive`}
                                         </Badge>
                                     </Popover>
@@ -126,10 +125,10 @@ export const CheckInListList = ({checkInLists, openCreateModal}: CheckInListList
                                 <div className={classes.checkInListCapacity}>
                                     <Progress
                                         value={checkInLists.length === 0 ? 0 : (list.checked_in_attendees / list.total_attendees) * 100}
-                                        radius={'xl'}
+                                        radius={'sm'}
                                         color={'slate'}
-                                        size={'xl'}
-                                        style={{marginTop: '10px'}}
+                                        size={'sm'}
+                                        style={{marginTop: '8px'}}
                                     />
                                     <div className={classes.capacityText}>
                                         <IconUsers size={18}/> {list.checked_in_attendees} / {list.total_attendees}

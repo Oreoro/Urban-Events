@@ -1,13 +1,11 @@
 import classes from "./StatBoxes.module.scss";
 import {IconCash, IconCreditCardRefund, IconEye, IconReceipt, IconShoppingCart, IconUsers} from "@tabler/icons-react";
 import {Card} from "../Card";
-import {useGetEventStats} from "../../../queries/useGetEventStats.ts";
-import {useParams} from "react-router";
 import {t} from "@lingui/macro";
-import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {formatCurrency} from "../../../utilites/currency.ts";
 import {formatNumber} from "../../../utilites/helpers.ts";
 import {CSSProperties, ReactNode} from "react";
+import type {Event, EventStats} from "../../../types.ts";
 
 interface StatBoxProps {
     number: string | number;
@@ -32,46 +30,49 @@ export const StatBox = ({number, description, icon, backgroundColor}: StatBoxPro
     );
 };
 
-export const StatBoxes = () => {
-    const {eventId} = useParams();
-    const eventStatsQuery = useGetEventStats(eventId);
-    const eventQuery = useGetEvent(eventId);
-    const event = eventQuery?.data;
-    const {data: eventStats} = eventStatsQuery;
+interface StatBoxesProps {
+    event?: Event;
+    eventStats?: EventStats;
+}
 
+const toFiniteNumber = (value: number | undefined | null): number => {
+    return Number.isFinite(value) ? Number(value) : 0;
+};
+
+export const StatBoxes = ({event, eventStats}: StatBoxesProps = {}) => {
     const data = [
         {
-            number: formatNumber(eventStats?.total_attendees_registered as number),
+            number: formatNumber(toFiniteNumber(eventStats?.total_attendees_registered)),
             description: t`Attendees`,
             icon: <IconUsers size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'
         },
         {
-            number: formatNumber(eventStats?.total_products_sold as number),
+            number: formatNumber(toFiniteNumber(eventStats?.total_products_sold)),
             description: t`Products sold`,
             icon: <IconShoppingCart size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'
         },
         {
-            number: formatCurrency(eventStats?.total_refunded as number || 0, event?.currency),
+            number: formatCurrency(toFiniteNumber(eventStats?.total_refunded), event?.currency),
             description: t`Refunded`,
             icon: <IconCreditCardRefund size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'
         },
         {
-            number: formatCurrency(eventStats?.total_gross_sales || 0, event?.currency),
+            number: formatCurrency(toFiniteNumber(eventStats?.total_gross_sales), event?.currency),
             description: t`Gross sales`,
             icon: <IconCash size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'
         },
         {
-            number: formatNumber(eventStats?.total_views as number),
+            number: formatNumber(toFiniteNumber(eventStats?.total_views)),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'
         },
         {
-            number: formatNumber(eventStats?.total_orders as number),
+            number: formatNumber(toFiniteNumber(eventStats?.total_orders)),
             description: t`Completed orders`,
             icon: <IconReceipt size={18}/>,
             backgroundColor: 'var(--hi-text-muted)'

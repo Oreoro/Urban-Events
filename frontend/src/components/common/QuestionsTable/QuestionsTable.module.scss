@@ -18,12 +18,13 @@
   gap: 10px;
   padding: 9px 10px;
   background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-md);
-  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+  box-shadow: var(--hi-shadow-sm);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 
   &:hover {
-    background: color-mix(in srgb, var(--hi-shell-bg) 42%, var(--hi-surface));
+    background: var(--hi-app-hover-bg);
     border-color: var(--hi-border);
   }
 
@@ -96,6 +97,7 @@
   background: var(--hi-surface);
   border: 1px dashed var(--hi-border);
   border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-sm);
 }
 
 // Preview Card
@@ -187,7 +189,7 @@
 
 .defaultFields {
   padding: 6px 8px;
-  background: var(--hi-shell-bg);
+  background: var(--hi-app-panel-bg);
   border-radius: var(--hi-radius-md);
   border: 1px dashed var(--hi-border);
 }

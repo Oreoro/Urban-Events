@@ -27,7 +27,7 @@
 
   &:focus-visible {
     background-color: var(--hi-control-bg-hover);
-    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+    box-shadow: inset 0 0 0 2px var(--hi-focus-ring-soft);
   }
 
   &.selected {

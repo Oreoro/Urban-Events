@@ -6,9 +6,9 @@
     max-width: 390px;
     padding: 12px;
     border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
-    border: 1px solid var(--hi-border);
-    box-shadow: none;
+    background: var(--hi-app-panel-bg);
+    border: 1px solid var(--hi-app-panel-border);
+    box-shadow: var(--hi-shadow-md);
     backdrop-filter: none;
 
     @media (max-width: 480px) {
@@ -55,8 +55,8 @@
     width: 28px;
     height: 28px;
     border-radius: var(--hi-radius-sm);
-    border: 1px solid var(--hi-border);
-    background: var(--hi-shell-bg);
+    border: 1px solid var(--hi-app-panel-border);
+    background: var(--hi-shell-bg-strong);
     color: var(--hi-text-muted);
     display: flex;
     align-items: center;

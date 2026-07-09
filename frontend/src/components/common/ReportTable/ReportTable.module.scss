@@ -53,8 +53,8 @@
 
     &:focus,
     &:focus-within {
-      border-color: var(--hi-text-muted);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
     }
   }
 
@@ -68,7 +68,7 @@
   border: 1px solid var(--hi-text) !important;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-text) !important;
-  color: white !important;
+  color: var(--hi-color-white) !important;
   font-size: 0.76rem !important;
   font-weight: 650 !important;
   box-shadow: none !important;

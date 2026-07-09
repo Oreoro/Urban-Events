@@ -35,12 +35,12 @@
     }
 
     a {
-      color: var(--hi-text);
+      color: var(--hi-link-color);
       font-weight: 600;
       transition: color 0.16s ease;
 
       &:hover {
-        color: var(--hi-text-light);
+        color: var(--hi-primary-hover);
       }
     }
   }
@@ -80,13 +80,13 @@
     }
 
     &:focus {
-      border-color: var(--hi-text-muted);
-      box-shadow: 0 0 0 2px color-mix(in srgb, var(--hi-text) 12%, transparent);
+      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
+      box-shadow: 0 0 0 2px var(--hi-focus-ring);
       background: var(--hi-surface);
     }
 
     &::placeholder {
-      color: color-mix(in srgb, var(--hi-text-muted) 72%, white);
+      color: color-mix(in srgb, var(--hi-text-muted) 72%, var(--hi-color-white));
     }
 
     &:disabled {
@@ -111,8 +111,8 @@
     font-weight: 620;
     font-size: 0.78rem;
     transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
-    border: 1px solid var(--hi-text) !important;
-    background: var(--hi-text) !important;
+    border: 1px solid var(--hi-primary) !important;
+    background: var(--hi-primary) !important;
     color: var(--hi-color-white) !important;
 
     @if $margin-top != 0 {
@@ -124,8 +124,8 @@
     }
 
     &:hover:not(:disabled) {
-      background: var(--hi-text-light) !important;
-      border-color: var(--hi-text-light) !important;
+      background: var(--hi-primary-hover) !important;
+      border-color: var(--hi-primary-hover) !important;
       box-shadow: none;
     }
 
@@ -166,12 +166,12 @@
   }
 
   a {
-    color: var(--hi-text);
+    color: var(--hi-link-color);
     font-weight: 500;
     transition: color 0.2s ease;
 
     &:hover {
-      color: var(--hi-text-muted);
+      color: var(--hi-primary-hover);
     }
   }
 }

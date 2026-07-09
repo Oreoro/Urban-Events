@@ -1,9 +1,9 @@
 .statusGroup {
   width: fit-content;
   padding: 2px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+  border: 1px solid var(--hi-app-panel-border);
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
 }
 
 .statusButton {
@@ -20,8 +20,9 @@
   }
 
   &[data-active="true"] {
-    background: var(--hi-surface) !important;
+    background: var(--hi-app-panel-bg) !important;
     color: var(--hi-text) !important;
     border-color: transparent !important;
+    box-shadow: var(--hi-shadow-sm) !important;
   }
 }

@@ -36,7 +36,7 @@ export const EmailTemplatePreviewPane = ({
                     <LoadingOverlay visible={isLoading}/>
 
                     {error && (
-                        <Alert color="red" icon={<IconAlertCircle size={16}/>}>
+                        <Alert className={classes.errorAlert} icon={<IconAlertCircle size={16}/>}>
                             {error}
                         </Alert>
                     )}

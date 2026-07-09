@@ -26,7 +26,7 @@
   .hi-embedded-checkout-modal-content {
     background: var(--widget-background-color, var(--hi-surface));
     border: 1px solid var(--widget-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     box-shadow: none;
   }
 
@@ -68,8 +68,9 @@
     background: var(--widget-accent);
     color: var(--widget-accent-text);
     border: 1px solid var(--widget-accent);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     font-weight: 620;
+    min-height: 44px;
 
     &:hover {
       background: var(--widget-accent-hover);
@@ -108,17 +109,18 @@
   .hi-product-rows {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
     margin-bottom: 16px;
 
     .hi-product-row {
       display: flex;
       flex-flow: column;
       border: 1px solid var(--widget-border);
-      border-radius: var(--hi-radius-md);
-      background: var(--widget-background-color, var(--hi-color-white));
+      border-radius: var(--hi-radius-sm);
+      background: var(--widget-panel);
       position: relative;
       overflow: hidden;
+      box-shadow: none;
       transition: background-color 140ms ease, border-color 140ms ease;
 
       &.hi-product-highlighted {
@@ -129,6 +131,7 @@
       &:hover {
         border-color: color-mix(in srgb, var(--widget-border) 68%, var(--widget-fg));
         background: color-mix(in srgb, var(--widget-soft-accent) 58%, var(--widget-background-color, var(--hi-color-white)));
+        box-shadow: none;
       }
 
       .hi-product-highlight-message {
@@ -162,7 +165,8 @@
 
         .hi-product-title {
           flex: 1;
-          padding: 11px 12px;
+          min-height: 44px;
+          padding: 10px 12px;
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
@@ -233,7 +237,7 @@
         border: 1px solid var(--hi-status-danger-border);
         padding: 9px 12px;
         margin: 10px 0;
-        border-radius: var(--hi-radius-md);
+        border-radius: var(--hi-radius-sm);
         font-size: 0.82rem;
       }
 
@@ -274,7 +278,7 @@
                 color: var(--widget-fg);
                 background-color: var(--widget-background-color, var(--hi-color-white));
                 border: 1px solid var(--widget-border);
-                border-radius: var(--hi-radius-md);
+                border-radius: var(--hi-radius-sm);
               }
             }
           }
@@ -299,7 +303,7 @@
               background-color: var(--widget-accent);
               color: var(--widget-accent-text);
               border: 1px solid var(--widget-accent);
-              border-radius: var(--hi-radius-md);
+              border-radius: var(--hi-radius-sm);
 
               &:disabled {
                 background-color: transparent;
@@ -314,7 +318,7 @@
             input {
               background-color: var(--widget-background-color, var(--hi-color-white));
               border: 1px solid var(--widget-border);
-              border-radius: var(--hi-radius-md);
+              border-radius: var(--hi-radius-sm);
               color: var(--widget-fg);
             }
 
@@ -333,7 +337,7 @@
     border: 1px solid var(--widget-accent);
     font-size: 0.75rem;
     padding: 4px 10px;
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     cursor: pointer;
     white-space: nowrap;
 
@@ -372,7 +376,7 @@
       margin-right: 10px;
       background: var(--widget-background-color, var(--hi-color-white));
       border: 1px solid var(--widget-border);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
       color: var(--widget-fg);
     }
 
@@ -381,14 +385,15 @@
       background-color: var(--widget-accent);
       color: var(--widget-accent-text);
       border: 1px solid var(--widget-accent);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
+      min-height: 40px;
     }
 
     .hi-close-promo-code-input-button {
       background-color: var(--widget-accent);
       color: var(--widget-accent-text);
       border: 1px solid var(--widget-accent);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
     }
 
     .hi-promo-code-applied {
@@ -412,10 +417,11 @@
     .hi-product-page-message {
       margin-bottom: 12px;
       padding: 10px 12px;
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
       border: 1px solid var(--widget-border);
       background-color: var(--widget-panel);
       color: var(--widget-muted-fg);
+      box-shadow: none;
       font-size: 0.88rem;
       line-height: 1.5;
     }
@@ -424,7 +430,7 @@
       background-color: var(--widget-accent);
       color: var(--widget-accent-text);
       border: 1px solid var(--widget-accent);
-      border-radius: var(--hi-radius-md);
+      border-radius: var(--hi-radius-sm);
       font-weight: 620;
       height: 44px;
 
@@ -438,8 +444,9 @@
   .hi-no-products {
     padding: 16px;
     border: 1px solid var(--widget-border);
-    border-radius: var(--hi-radius-md);
+    border-radius: var(--hi-radius-sm);
     background: var(--widget-panel);
+    box-shadow: none;
   }
 
   .hi-no-products-message {

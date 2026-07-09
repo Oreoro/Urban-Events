@@ -50,7 +50,13 @@ const ValidationStatusAlert = ({
     switch (status) {
         case 'VALID':
             return (
-                <Alert color="gray" icon={<IconCheck />}>
+                <Alert
+                    icon={<IconCheck />}
+                    style={{
+                        borderColor: 'var(--hi-status-success-border)',
+                        background: 'var(--hi-status-success-bg)',
+                    }}
+                >
                     <Text size="sm" fw={500}>
                         {t`VAT number validated successfully`}
                     </Text>
@@ -65,7 +71,7 @@ const ValidationStatusAlert = ({
         case 'PENDING':
         case 'VALIDATING':
             return (
-                <Alert color="gray" icon={status === 'VALIDATING' ? <Loader size="xs" /> : <IconClock />}>
+                <Alert icon={status === 'VALIDATING' ? <Loader size="xs" /> : <IconClock />}>
                     <Text size="sm" fw={500}>
                         {status === 'VALIDATING'
                             ? t`Validating your VAT number...`
@@ -79,7 +85,13 @@ const ValidationStatusAlert = ({
 
         case 'INVALID':
             return (
-                <Alert color="red" icon={<IconAlertCircle />}>
+                <Alert
+                    icon={<IconAlertCircle />}
+                    style={{
+                        borderColor: 'var(--hi-status-danger-border)',
+                        background: 'var(--hi-status-danger-bg)',
+                    }}
+                >
                     <Text size="sm" fw={500}>
                         {t`VAT number validation failed`}
                     </Text>
@@ -91,7 +103,7 @@ const ValidationStatusAlert = ({
 
         case 'FAILED':
             return (
-                <Alert color="gray" icon={<IconRefresh />}>
+                <Alert icon={<IconRefresh />}>
                     <Text size="sm" fw={500}>
                         {t`VAT validation service temporarily unavailable`}
                     </Text>
