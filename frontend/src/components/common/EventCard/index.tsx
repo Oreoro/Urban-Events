@@ -32,9 +32,10 @@ const placeholderColors = [
 
 interface EventCardProps {
     event: Event;
+    variant?: 'list' | 'board';
 }
 
-export function EventCard({event}: EventCardProps) {
+export function EventCard({event, variant = 'list'}: EventCardProps) {
     const navigate = useNavigate();
     const [isDuplicateModalOpen, duplicateModal] = useDisclosure(false);
     const [eventId, setEventId] = useState<IdParam>();
@@ -165,7 +166,7 @@ export function EventCard({event}: EventCardProps) {
 
     return (
         <>
-            <Card className={`${classes.eventCard} ${isEnded ? classes.isEnded : ''} ${isDraft ? classes.isDraft : ''}`}>
+            <Card className={`${classes.eventCard} ${variant === 'board' ? classes.board : ''} ${isEnded ? classes.isEnded : ''} ${isDraft ? classes.isDraft : ''}`}>
                 <NavLink to={`/manage/event/${event.id}/dashboard`} className={classes.cardLink}>
                     <div className={classes.imageContainer}>
                         <div

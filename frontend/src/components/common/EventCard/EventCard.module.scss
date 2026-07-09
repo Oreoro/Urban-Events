@@ -8,6 +8,7 @@
   transition: background-color 0.15s ease, border-color 0.15s ease;
   container-type: inline-size;
   min-width: 240px;
+  position: relative;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
   box-shadow: none !important;
@@ -45,6 +46,88 @@
     .image {
       filter: grayscale(50%);
     }
+  }
+}
+
+.eventCard.board {
+  min-width: 0;
+  border-radius: 10px !important;
+
+  .cardLink {
+    flex-direction: column;
+    min-height: 186px;
+  }
+
+  .imageContainer {
+    width: 100%;
+    min-width: 0;
+    height: 72px;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 72%, transparent);
+  }
+
+  .image {
+    filter: saturate(0.62) contrast(0.94);
+    opacity: 0.2;
+  }
+
+  .imageOverlay {
+    background: color-mix(in srgb, var(--hi-surface-soft) 38%, transparent);
+  }
+
+  .dateBadge {
+    top: 8px;
+    left: 8px;
+    transform: none;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .titleRow {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .title {
+    font-size: 0.86rem;
+  }
+
+  .meta,
+  .footer {
+    gap: 5px;
+  }
+
+  .location {
+    max-width: 100%;
+  }
+
+  .statsPanel {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 8px;
+    border-top: 1px solid color-mix(in srgb, var(--hi-border) 76%, transparent);
+  }
+
+  .stat {
+    min-width: 76px;
+    padding: 1px 10px 1px 0;
+  }
+
+  .menuButton {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    opacity: 1;
+  }
+
+  .actionButton {
+    background: color-mix(in srgb, var(--hi-surface) 88%, transparent);
+    border-color: color-mix(in srgb, var(--hi-border) 64%, transparent);
   }
 }
 

@@ -6,6 +6,8 @@ import {
     IconCash,
     IconChevronDown,
     IconChevronRight,
+    IconLayoutKanban,
+    IconListDetails,
     IconPlus,
     IconReceiptTax,
     IconReportMoney,
@@ -42,23 +44,28 @@ interface OrganizerStatDisplayItem {
 export const DashboardSkeleton = () => {
     return (
         <PageBody>
-            <Group justify="space-between" mb="xl">
-                <Skeleton height={40} radius="md" width="60%"/>
-                <Skeleton height={36} radius="md" width="150px"/>
-            </Group>
+            <section className={classes.overviewPanel}>
+                <Group justify="space-between" mb="xl">
+                    <Skeleton height={72} radius="md" width="48%"/>
+                    <Skeleton height={32} radius="sm" width="128px"/>
+                </Group>
+                <div className={classes.databaseTabs}>
+                    <Skeleton height={30} radius="sm" width="128px"/>
+                    <Skeleton height={30} radius="sm" width="92px"/>
+                    <Skeleton height={30} radius="sm" width="112px"/>
+                </div>
+            </section>
 
-            <div className={classes.statisticsSkeletonContainer}>
-                {[...Array(6)].map((_, index) => (
-                    <Skeleton key={index} height={58} radius="sm"/>
-                ))}
-            </div>
-            <div className={classes.recentItemsGrid}>
-                {[...Array(2)].map((_, colIndex) => (
-                    <div key={colIndex} className={classes.recentSection}>
-                        <Skeleton height={30} radius="sm" mb="lg" width="40%"/>
+            <div className={classes.workspaceBoard}>
+                {[...Array(4)].map((_, colIndex) => (
+                    <div key={colIndex} className={classes.boardColumn}>
+                        <div className={classes.sectionHeader}>
+                            <Skeleton height={24} radius="xl" width="42%"/>
+                            <Skeleton height={19} radius="sm" width="24px"/>
+                        </div>
                         <div className={classes.skeletonStack}>
-                            {[...Array(3)].map((_, itemIndex) => (
-                                <Skeleton key={itemIndex} height={100} radius="md"/>
+                            {[...Array(4)].map((_, itemIndex) => (
+                                <Skeleton key={itemIndex} height={78} radius="md"/>
                             ))}
                         </div>
                     </div>
@@ -146,6 +153,19 @@ export const OrganizerDashboard = () => {
             },
         );
     }
+    const headlineStats = organizerStatItems.slice(0, 3);
+    const financeStats = organizerStatItems.slice(3);
+    const renderStatCard = (item: OrganizerStatDisplayItem) => (
+        <div className={classes.statCard} key={item.description}>
+            <div className={classes.statContent}>
+                <span className={classes.statLabel}>
+                    <span className={classes.statIcon}>{item.icon}</span>
+                    {item.description}
+                </span>
+                <span className={classes.statValue}>{item.value}</span>
+            </div>
+        </div>
+    );
 
     return (
         <PageBody>
@@ -156,18 +176,14 @@ export const OrganizerDashboard = () => {
                             <IconBuildingStore size={20} stroke={1.7}/>
                         </div>
                         <div className={classes.titleBlock}>
-                            <p className={classes.kicker}><Trans>Workspace overview</Trans></p>
+                            <p className={classes.kicker}><Trans>Dashboard</Trans></p>
                             <h1 className={classes.pageTitle}>
                                 {organizer ? organizer.name : t`Organizer Dashboard`}
                             </h1>
                             <div className={classes.metaPills} aria-label={t`Dashboard summary`}>
                                 <span>{selectedCurrency}</span>
-                                <span>
-                                    <Trans>{recentEvents.length} events</Trans>
-                                </span>
-                                <span>
-                                    <Trans>{recentOrders.length} recent orders</Trans>
-                                </span>
+                                <span><Trans>Events</Trans></span>
+                                <span><Trans>Orders</Trans></span>
                             </div>
                         </div>
                     </div>
@@ -218,142 +234,150 @@ export const OrganizerDashboard = () => {
                     </div>
                 </div>
 
-                {/* Stats Section */}
-                {organizerStatsQuery.isLoading && !stats && (
-                    <div className={classes.statisticsContainer}>
-                        {[...Array(6)].map((_, index) => (
-                            <Skeleton key={index} height={58} radius="sm"/>
-                        ))}
-                    </div>
-                )}
-                {stats && organizerStatItems.length > 0 && (
-                    <div className={classes.statisticsContainer}>
-                        {organizerStatItems.map((item) => (
-                            <div className={classes.statCard} key={item.description}>
-                                <div className={classes.statContent}>
-                                    <span className={classes.statLabel}>
-                                        <span className={classes.statIcon}>{item.icon}</span>
-                                        {item.description}
-                                    </span>
-                                    <span className={classes.statValue}>{item.value}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                <div className={classes.databaseTabs} aria-label={t`Dashboard views`}>
+                    <span className={classes.databaseTabActive}>
+                        <IconLayoutKanban size={15} stroke={1.7}/>
+                        <Trans>Dashboard</Trans>
+                    </span>
+                    <span>
+                        <IconListDetails size={15} stroke={1.7}/>
+                        <Trans>Orders</Trans>
+                    </span>
+                    <span><Trans>Events</Trans></span>
+                    <span><Trans>Revenue</Trans></span>
+                    <span className={classes.databaseTabAdd} aria-hidden="true">+</span>
+                </div>
+
                 {!stats && !organizerStatsQuery.isLoading && (
                     <Card className={classes.noticeCard}>
                         <Trans>Organizer statistics are not available for the selected currency or an error
                             occurred.</Trans>
                     </Card>
                 )}
-            </section>
 
-            {/* Recent Orders and Events Lists */}
-            <div className={classes.recentItemsGrid}>
-                {/* Events Section - First on mobile, second on desktop */}
-                <div className={`${classes.recentSection} ${classes.eventsSection}`}>
-                    <div className={classes.sectionHeader}>
-                        <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
-                        <span className={classes.sectionCount}>{recentEvents.length}</span>
+                <div className={classes.workspaceBoard}>
+                    <div className={`${classes.boardColumn} ${classes.overviewColumn}`}>
+                        <div className={classes.sectionHeader}>
+                            <h3 className={classes.sectionTitle}><Trans>Dashboard</Trans></h3>
+                            <span className={classes.sectionCount}>{headlineStats.length}</span>
+                        </div>
+                        <div className={classes.statStack}>
+                            {headlineStats.map(renderStatCard)}
+                        </div>
                     </div>
-                    {isLoadingEvents && (
-                        <div className={classes.skeletonStack}>
-                            {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
-                        </div>
-                    )}
-                    {!isLoadingEvents && recentEvents && recentEvents.length > 0 && (
-                        <div className={classes.eventsList}>
-                            {recentEvents.map((event: Event) => (
-                                <EventCard key={event.id} event={event}/>
-                            ))}
-                        </div>
-                    )}
-                    {!isLoadingEvents && (!recentEvents || recentEvents.length === 0) && (
-                        <div className={classes.emptyState}>
-                            <IconTicket className={classes.emptyStateIcon} size={46} stroke={1.5}/>
-                            <h4><Trans>No events yet</Trans></h4>
-                            <p><Trans>Create your first event to start selling tickets and managing attendees.</Trans>
-                            </p>
-                            <Button
-                                onClick={() => setShowCreateEventModal(true)}
-                                variant="light"
-                                size="sm"
-                                mt="md"
-                            >
-                                <Trans>Create Event</Trans>
-                            </Button>
-                        </div>
-                    )}
-                </div>
 
-                {/* Orders Section - Second on mobile, first on desktop */}
-                <div className={`${classes.recentSection} ${classes.ordersSection}`}>
-                    <div className={classes.sectionHeader}>
-                        <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
-                        <span className={classes.sectionCount}>{recentOrders.length}</span>
-                    </div>
-                    {isLoadingOrders && (
-                        <div className={classes.skeletonStack}>
-                            {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
+                    <div className={`${classes.boardColumn} ${classes.ordersSection}`}>
+                        <div className={classes.sectionHeader}>
+                            <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
+                            <span className={classes.sectionCount}>{recentOrders.length}</span>
                         </div>
-                    )}
-                    {!isLoadingOrders && recentOrders && recentOrders.length > 0 && (
-                        <div className={classes.ordersList}>
-                            {recentOrders.map((order: Order) => (
-                                <NavLink
-                                    key={order.id}
-                                    to={`/manage/event/${order.event_id}/orders#order-${order.id}`}
-                                    className={classes.orderCardLink}
+                        {isLoadingOrders && (
+                            <div className={classes.skeletonStack}>
+                                {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
+                            </div>
+                        )}
+                        {!isLoadingOrders && recentOrders && recentOrders.length > 0 && (
+                            <div className={classes.ordersList}>
+                                {recentOrders.map((order: Order) => (
+                                    <NavLink
+                                        key={order.id}
+                                        to={`/manage/event/${order.event_id}/orders#order-${order.id}`}
+                                        className={classes.orderCardLink}
+                                    >
+                                        <Card className={classes.orderCard}>
+                                            <div className={classes.orderMain}>
+                                                <div className={classes.orderAvatar}>
+                                                    <IconUserCircle size={16} stroke={1.7}/>
+                                                </div>
+                                                <div className={classes.orderDetails}>
+                                                    <div className={classes.orderCustomer}>
+                                                        <span className={classes.customerName}>
+                                                            {order.first_name} {order.last_name}
+                                                        </span>
+                                                        <Badge
+                                                            className={classes.orderStatusBadge}
+                                                            data-status={order.status}
+                                                            data-payment-status={order.payment_status}
+                                                            variant="outline"
+                                                            radius="sm"
+                                                            size="xs"
+                                                        >
+                                                            {formatOrderStatus(order.status, order.payment_status)}
+                                                        </Badge>
+                                                    </div>
+                                                    <div className={classes.orderMeta}>
+                                                        <span className={classes.orderAmount}>
+                                                            {formatCurrency(order.total_gross, order.currency)}
+                                                        </span>
+                                                        <span className={classes.orderSeparator}>·</span>
+                                                        <span className={classes.orderTime}>
+                                                            {relativeDate(order.created_at)}
+                                                        </span>
+                                                    </div>
+                                                    <span className={classes.orderId}>#{order.public_id}</span>
+                                                </div>
+                                            </div>
+                                            <IconChevronRight size={18} className={classes.orderArrow}/>
+                                        </Card>
+                                    </NavLink>
+                                ))}
+                            </div>
+                        )}
+                        {!isLoadingOrders && (!recentOrders || recentOrders.length === 0) && (
+                            <div className={classes.emptyState}>
+                                <IconReceiptTax className={classes.emptyStateIcon} size={46} stroke={1.5}/>
+                                <h4><Trans>No orders yet</Trans></h4>
+                                <p><Trans>When customers purchase tickets, their orders will appear here.</Trans></p>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className={`${classes.boardColumn} ${classes.eventsSection}`}>
+                        <div className={classes.sectionHeader}>
+                            <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
+                            <span className={classes.sectionCount}>{recentEvents.length}</span>
+                        </div>
+                        {isLoadingEvents && (
+                            <div className={classes.skeletonStack}>
+                                {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
+                            </div>
+                        )}
+                        {!isLoadingEvents && recentEvents && recentEvents.length > 0 && (
+                            <div className={classes.eventsList}>
+                                {recentEvents.map((event: Event) => (
+                                    <EventCard key={event.id} event={event} variant="board"/>
+                                ))}
+                            </div>
+                        )}
+                        {!isLoadingEvents && (!recentEvents || recentEvents.length === 0) && (
+                            <div className={classes.emptyState}>
+                                <IconTicket className={classes.emptyStateIcon} size={46} stroke={1.5}/>
+                                <h4><Trans>No events yet</Trans></h4>
+                                <p><Trans>Create your first event to start selling tickets and managing attendees.</Trans>
+                                </p>
+                                <Button
+                                    onClick={() => setShowCreateEventModal(true)}
+                                    variant="light"
+                                    size="sm"
+                                    mt="md"
                                 >
-                                    <Card className={classes.orderCard}>
-                                        <div className={classes.orderMain}>
-                                            <div className={classes.orderAvatar}>
-                                                <IconUserCircle size={16} stroke={1.7}/>
-                                            </div>
-                                            <div className={classes.orderDetails}>
-                                                <div className={classes.orderCustomer}>
-                                                    <span className={classes.customerName}>
-                                                        {order.first_name} {order.last_name}
-                                                    </span>
-                                                    <Badge
-                                                        className={classes.orderStatusBadge}
-                                                        data-status={order.status}
-                                                        data-payment-status={order.payment_status}
-                                                        variant="outline"
-                                                        radius="sm"
-                                                        size="xs"
-                                                    >
-                                                        {formatOrderStatus(order.status, order.payment_status)}
-                                                    </Badge>
-                                                </div>
-                                                <div className={classes.orderMeta}>
-                                                    <span className={classes.orderAmount}>
-                                                        {formatCurrency(order.total_gross, order.currency)}
-                                                    </span>
-                                                    <span className={classes.orderSeparator}>·</span>
-                                                    <span className={classes.orderTime}>
-                                                        {relativeDate(order.created_at)}
-                                                    </span>
-                                                </div>
-                                                <span className={classes.orderId}>#{order.public_id}</span>
-                                            </div>
-                                        </div>
-                                        <IconChevronRight size={18} className={classes.orderArrow}/>
-                                    </Card>
-                                </NavLink>
-                            ))}
+                                    <Trans>Create Event</Trans>
+                                </Button>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className={`${classes.boardColumn} ${classes.financeColumn}`}>
+                        <div className={classes.sectionHeader}>
+                            <h3 className={classes.sectionTitle}><Trans>Revenue</Trans></h3>
+                            <span className={classes.sectionCount}>{financeStats.length}</span>
                         </div>
-                    )}
-                    {!isLoadingOrders && (!recentOrders || recentOrders.length === 0) && (
-                        <div className={classes.emptyState}>
-                            <IconReceiptTax className={classes.emptyStateIcon} size={46} stroke={1.5}/>
-                            <h4><Trans>No orders yet</Trans></h4>
-                            <p><Trans>When customers purchase tickets, their orders will appear here.</Trans></p>
+                        <div className={classes.statStack}>
+                            {financeStats.map(renderStatCard)}
                         </div>
-                    )}
+                    </div>
                 </div>
-            </div>
+            </section>
             {showCreateEventModal && (
                 <CreateEventModal
                     onClose={() => setShowCreateEventModal(false)}
