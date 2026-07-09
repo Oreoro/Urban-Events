@@ -3,7 +3,7 @@
 .tableWrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .toolbar {
@@ -18,12 +18,12 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-shell-bg-strong);
+    background: var(--hi-database-header-bg);
     color: var(--hi-text-muted) !important;
-    padding: 0.34rem 0.5rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-    font-size: 0.68rem;
-    font-weight: 600;
+    padding: 0.42rem 0.6rem !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-accent-blue-border) 56%, var(--hi-border));
+    font-size: 0.7rem;
+    font-weight: 650;
     letter-spacing: 0;
     line-height: 1.25;
     vertical-align: middle;
@@ -34,9 +34,9 @@
   padding: 0 !important;
   overflow: hidden;
   border-radius: var(--hi-radius-sm) !important;
-  border-color: var(--hi-border) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: var(--hi-shadow-sm) !important;
+  border-color: color-mix(in srgb, var(--hi-accent-blue-border) 32%, var(--hi-border)) !important;
+  background: linear-gradient(180deg, var(--hi-surface), color-mix(in srgb, var(--hi-accent-blue-bg) 14%, var(--hi-surface))) !important;
+  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--hi-accent-yellow-border) 50%, transparent), var(--hi-shadow-sm) !important;
 
   :global(.mantine-ScrollArea-viewport) {
     padding-bottom: 0;
@@ -69,11 +69,11 @@
     }
 
     td {
-      padding: 0.42rem 0.5rem !important;
+      padding: 0.48rem 0.6rem !important;
       white-space: nowrap;
       color: var(--hi-text-light);
       border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
       line-height: 1.35;
       vertical-align: middle;
@@ -127,6 +127,6 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-shell-bg-strong);
+  background: var(--hi-database-header-bg);
   z-index: 12;
 }

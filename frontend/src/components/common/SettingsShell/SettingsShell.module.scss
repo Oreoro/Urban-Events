@@ -1,7 +1,7 @@
 .settingsLayout {
   display: grid;
-  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 214px) minmax(0, 1fr);
+  gap: 22px;
   align-items: start;
 }
 
@@ -19,11 +19,11 @@
 }
 
 .sideMenuTitle {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   padding: 0 8px;
   color: var(--hi-text-muted);
-  font-size: 0.7rem;
-  font-weight: 620;
+  font-size: 0.69rem;
+  font-weight: 640;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -33,7 +33,7 @@
 }
 
 .navLink {
-  min-height: 30px;
+  min-height: 31px;
   color: var(--hi-text-muted);
   border-radius: var(--hi-radius-sm);
   font-size: 0.8rem;
@@ -46,9 +46,9 @@
   }
 
   &[data-active] {
-    background: var(--hi-control-bg-active);
+    background: color-mix(in srgb, var(--hi-text) 7%, var(--hi-surface));
     color: var(--hi-text);
-    font-weight: 650;
+    font-weight: 670;
   }
 
   :global(.mantine-NavLink-section) {
@@ -82,10 +82,10 @@
 
 .content {
   min-width: 0;
-  max-width: 900px;
+  max-width: 880px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .settingSection {
@@ -95,7 +95,7 @@
   > :global(.card.lightGray),
   > :global(.card.lightAccent) {
     margin-bottom: 0;
-    padding: 14px 16px;
+    padding: 16px 18px;
     border-color: var(--hi-app-panel-border);
     border-radius: var(--hi-radius-md);
     background: var(--hi-surface);
@@ -113,7 +113,7 @@
     background: var(--hi-surface) !important;
     border-radius: var(--hi-radius-md) !important;
     box-shadow: none !important;
-    padding: 14px 16px !important;
+    padding: 16px 18px !important;
   }
 
   :global(form fieldset) {
@@ -125,13 +125,13 @@
 
   :global(.mantine-InputWrapper-root),
   :global(.mantine-Switch-root) {
-    margin-bottom: 9px;
+    margin-bottom: 10px;
   }
 
   :global(.mantine-InputWrapper-label),
   :global(.mantine-Switch-label) {
     color: var(--hi-text);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 650;
     line-height: 1.35;
   }
@@ -139,7 +139,7 @@
   :global(.mantine-InputWrapper-description),
   :global(.mantine-Switch-description) {
     color: var(--hi-text-muted);
-    font-size: 0.73rem;
+    font-size: 0.75rem;
     font-weight: 450;
     line-height: 1.42;
   }
@@ -149,7 +149,7 @@
     border-color: var(--hi-border);
     border-radius: var(--hi-radius-sm);
     background: var(--hi-surface);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 500;
   }
 
@@ -177,8 +177,8 @@
   h2 {
     margin: 0 0 8px;
     color: var(--hi-text);
-    font-size: 0.98rem;
-    font-weight: 680;
+    font-size: 1rem;
+    font-weight: 720;
     letter-spacing: 0;
     line-height: 1.32;
   }

@@ -1,6 +1,6 @@
 .header {
-  height: 42px;
-  background: var(--hi-shell-bg);
+  height: 44px;
+  background: color-mix(in srgb, var(--hi-surface) 96%, var(--hi-shell-bg));
   border-bottom: 1px solid var(--hi-app-panel-border);
 
 
@@ -11,8 +11,8 @@
 }
 
 .inner {
-  height: 42px;
-  padding-inline: clamp(12px, 2vw, 22px);
+  height: 44px;
+  padding-inline: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;

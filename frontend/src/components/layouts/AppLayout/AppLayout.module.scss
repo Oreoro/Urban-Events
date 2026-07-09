@@ -1,8 +1,9 @@
 @use "../../../styles/mixins";
 
 .container {
-  --app-page-gutter: 16px;
-  --app-page-bottom: 48px;
+  --app-page-gutter: 18px;
+  --app-page-top: 18px;
+  --app-page-bottom: 52px;
 
   display: grid;
   grid-template-areas:
@@ -12,18 +13,23 @@
   grid-template-columns: 1fr;
   min-height: 100vh;
   height: 100dvh;
-  background: var(--hi-shell-bg);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--hi-accent-yellow-bg) 20%, var(--hi-shell-bg)) 0,
+      color-mix(in srgb, var(--hi-accent-blue-bg) 26%, var(--hi-shell-bg)) 48%,
+      color-mix(in srgb, var(--hi-accent-green-bg) 12%, var(--hi-shell-bg)) 100%);
   transition: grid-template-columns 160ms ease;
 
   @media (min-width: 768px) {
-    --app-page-gutter: 32px;
-    --app-page-bottom: 60px;
+    --app-page-gutter: 30px;
+    --app-page-top: 20px;
+    --app-page-bottom: 64px;
 
     grid-template-areas:
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 248px minmax(0, 1fr);
+    grid-template-columns: 238px minmax(0, 1fr);
 
     &.closed {
       grid-template-areas:
@@ -34,25 +40,25 @@
   }
 
   @media (min-width: 1200px) {
-    --app-page-gutter: 44px;
+    --app-page-gutter: 42px;
   }
 
   @media (min-width: 1600px) {
-    --app-page-gutter: 56px;
+    --app-page-gutter: 52px;
   }
 
   .main {
     grid-area: main;
-    padding: 0 var(--app-page-gutter) var(--app-page-bottom);
+    padding: var(--app-page-top) var(--app-page-gutter) var(--app-page-bottom);
     overflow: auto;
-    background: var(--hi-shell-bg);
+    background: transparent;
     color: var(--hi-text);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
-      padding: 16px var(--app-page-gutter) var(--app-page-bottom);
-      background: var(--hi-shell-bg);
+      padding: var(--app-page-top) var(--app-page-gutter) var(--app-page-bottom);
+      background: transparent;
     }
   }
 
