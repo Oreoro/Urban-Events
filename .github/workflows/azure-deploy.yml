@@ -32,19 +32,16 @@ jobs:
       - name: 'Build and Push Docker image'
         env:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
-          IMAGE_TAG: ${{ github.sha }}
         run: |
           echo "Building and pushing Docker image..."
           # Build the Docker image. The compose service tags it as urban-events:v1.
           docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
           
-          # Tag the locally built image with both the stable tag and immutable commit tag.
+          # Tag the locally built image with the full ACR registry path.
           docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
-          docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:${IMAGE_TAG}
           
-          # Push both tags to ACR. Azure deploys the immutable tag to avoid stale cached images.
+          # Push the newly tagged image to ACR.
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:${IMAGE_TAG}
           echo "✅ Docker image built and pushed."
 
       # Upload application settings to the Azure Web App.
@@ -129,8 +126,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          # Deploy the immutable image tag from this commit so App Service pulls the new build.
-          images: '${{ secrets.ACR_LOGIN_SERVER }}/urban-events:${{ github.sha }}'
+          # This image name MUST match the one pushed in the previous step.
+          images: '${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1'
 
       # Log out of Azure as a security best practice.
       - name: 'Log out of Azure'
