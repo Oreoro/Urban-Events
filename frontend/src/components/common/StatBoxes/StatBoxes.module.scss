@@ -3,7 +3,7 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 8px;
   color: var(--hi-text);
   margin: 0;
   background: transparent;
@@ -20,9 +20,9 @@
   }
 
   > * {
-    border-radius: 0 !important;
+    border-radius: var(--hi-radius-md) !important;
     border-width: 1px !important;
-    border-color: var(--hi-app-panel-border) !important;
+    border-color: color-mix(in srgb, var(--stat-color, var(--hi-primary)) 10%, var(--hi-app-panel-border)) !important;
   }
 }
 
@@ -33,27 +33,17 @@
   margin-bottom: 0 !important;
   height: 100%;
   min-height: 66px;
-  border: 0 !important;
-  border-right: 1px solid var(--hi-app-panel-border) !important;
-  border-bottom: 1px solid var(--hi-app-panel-border) !important;
-  border-color: var(--hi-app-panel-border) !important;
-  box-shadow: none !important;
+  border: 1px solid color-mix(in srgb, var(--stat-color, var(--hi-primary)) 10%, var(--hi-app-panel-border)) !important;
+  box-shadow: var(--hi-shadow-xs) !important;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--stat-color, var(--hi-text-muted)) 5%, transparent), transparent 62%),
-    transparent !important;
-  border-radius: 0 !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+    linear-gradient(90deg, color-mix(in srgb, var(--stat-color, var(--hi-primary)) 9%, transparent), transparent 52%),
+    var(--hi-surface) !important;
+  border-radius: var(--hi-radius-md) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
-    background: var(--hi-app-hover-bg) !important;
-  }
-
-  &:nth-child(3n) {
-    border-right: 0 !important;
-  }
-
-  &:nth-last-child(-n + 3) {
-    border-bottom: 0 !important;
+    border-color: color-mix(in srgb, var(--stat-color, var(--hi-primary)) 22%, var(--hi-border-strong)) !important;
+    box-shadow: var(--hi-shadow-sm) !important;
   }
 
   .leftPanel {
@@ -109,57 +99,8 @@
 
   @include mixins.respond-below(sm) {
     padding: 8px 10px !important;
-    border-right: 0 !important;
-
     .leftPanel {
       min-height: 38px;
-    }
-
-    &:nth-last-child(-n + 3) {
-      border-bottom: 1px solid var(--hi-app-panel-border) !important;
-    }
-
-    &:last-child {
-      border-bottom: 0 !important;
-    }
-  }
-}
-
-@include mixins.respond-below(md) {
-  .statistic {
-    &:nth-child(3n) {
-      border-right: 1px solid var(--hi-app-panel-border) !important;
-    }
-
-    &:nth-child(2n) {
-      border-right: 0 !important;
-    }
-
-    &:nth-last-child(-n + 3) {
-      border-bottom: 1px solid var(--hi-app-panel-border) !important;
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: 0 !important;
-    }
-  }
-}
-
-@include mixins.respond-below(sm) {
-  .statistic {
-    border-right: 0 !important;
-
-    &:nth-child(3n),
-    &:nth-child(2n) {
-      border-right: 0 !important;
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: 1px solid var(--hi-app-panel-border) !important;
-    }
-
-    &:last-child {
-      border-bottom: 0 !important;
     }
   }
 }

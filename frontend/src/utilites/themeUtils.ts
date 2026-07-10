@@ -99,7 +99,7 @@ export function isLightColor(hex: string): boolean {
 }
 
 export function getContrastColor(backgroundColor: string): string {
-    return isLightColor(backgroundColor) ? '#111111' : '#ffffff';
+    return isLightColor(backgroundColor) ? '#37352F' : '#FFFFFF';
 }
 
 interface UrbanEventsTheme {
@@ -111,33 +111,33 @@ interface UrbanEventsTheme {
 }
 
 export const URBAN_EVENTS_THEME: UrbanEventsTheme = {
-    accent: '#1A6BC4',
+    accent: '#37352F',
     accentContrast: '#FFFFFF',
-    background: '#FFFFFF',
-    darkBackground: '#111111',
+    background: '#F7F6F3',
+    darkBackground: '#191919',
     surface: '#FFFFFF',
 };
 
 export function getThemeModePalette(mode: 'light' | 'dark'): ThemeModePalette {
     if (mode === 'light') {
         return {
-            background: '#FFFFFF',
+            background: '#F7F6F3',
             surface: '#FFFFFF',
-            surfaceStrong: '#F7F7F5',
-            textPrimary: '#111111',
-            textSecondary: '#2F3437',
-            textTertiary: '#6B7280',
-            border: '#E5E7EB',
+            surfaceStrong: '#F1F1EF',
+            textPrimary: '#37352F',
+            textSecondary: '#5F5E5B',
+            textTertiary: '#787774',
+            border: '#E4E4E1',
         };
     }
 
     return {
-        background: '#111111',
-        surface: '#181818',
-        surfaceStrong: '#222222',
-        textPrimary: '#FFFFFF',
-        textSecondary: '#D1D5DB',
-        textTertiary: '#9CA3AF',
+        background: '#191919',
+        surface: '#202020',
+        surfaceStrong: '#252525',
+        textPrimary: '#E8E8E6',
+        textSecondary: '#CFCFCA',
+        textTertiary: '#9B9A97',
         border: 'rgba(255, 255, 255, 0.16)',
     };
 }
@@ -157,7 +157,7 @@ export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColor
 export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(35, 131, 226, 0.1)' : 'rgba(255, 255, 255, 0.14)';
+        return mode === 'light' ? 'rgba(55, 53, 47, 0.08)' : 'rgba(255, 255, 255, 0.14)';
     }
     const opacity = mode === 'light' ? 0.08 : 0.15;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
@@ -166,7 +166,7 @@ export function getAccentSoft(accent: string, mode: 'light' | 'dark'): string {
 export function getAccentMuted(accent: string, mode: 'light' | 'dark'): string {
     const rgb = hexToRgb(accent);
     if (!rgb) {
-        return mode === 'light' ? 'rgba(35, 131, 226, 0.62)' : 'rgba(255, 255, 255, 0.72)';
+        return mode === 'light' ? 'rgba(55, 53, 47, 0.62)' : 'rgba(255, 255, 255, 0.72)';
     }
     const opacity = mode === 'light' ? 0.6 : 0.7;
     return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;

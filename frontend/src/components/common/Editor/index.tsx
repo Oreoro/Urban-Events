@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {Link, RichTextEditor} from "@mantine/tiptap";
 import {useEditor} from "@tiptap/react";
 import StarterKit from '@tiptap/starter-kit';
@@ -15,17 +16,19 @@ import {ImageResize} from "./Extensions/ImageResizeExtension";
 import {Extension} from '@tiptap/core';
 
 const EDITOR_COLORS = [
-    '#111111',
-    '#2F3437',
-    '#6B7280',
-    '#E5E7EB',
-    '#F7F7F5',
+    '#37352F',
+    '#787774',
+    '#9B9A97',
+    '#E4E4E1',
+    '#F7F6F3',
     '#FFFFFF',
-    '#D92D20',
-    '#16A34A',
-    '#1A6BC4',
-    '#155AA8',
-    '#9CA3AF',
+    '#E03E3E',
+    '#D9730D',
+    '#DFAB01',
+    '#0F7B6C',
+    '#0B6E99',
+    '#6940A5',
+    '#AD1A72',
 ];
 
 interface EditorProps {

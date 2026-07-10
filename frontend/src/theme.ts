@@ -3,142 +3,223 @@ import {createTheme, type MantineColorsTuple} from "@mantine/core";
 import {generateColors} from "@mantine/colors-generator";
 
 export const urbanEventsColors = {
-    powderBlush: "#F7F7F5",
+    powderBlush: "#F7F6F3",
     eggshell: "#FFFFFF",
-    icyAqua: "#F1F8FF",
-    lightBlue: "#EAF4FF",
-    blueSlate: "#6B7280",
-    canvas: "#FFFFFF",
-    canvasSoft: "#F7F7F5",
+    icyAqua: "#DDEBF1",
+    lightBlue: "#DDEBF1",
+    blueSlate: "#787774",
+    canvas: "#F7F6F3",
+    canvasSoft: "#F1F1EF",
     surface: "#FFFFFF",
-    surfaceWarm: "#FFFFFF",
-    ink: "#111111",
-    inkSoft: "#2F3437",
-    muted: "#6B7280",
-    faint: "#9CA3AF",
-    border: "#E5E7EB",
-    borderStrong: "#D1D5DB",
-    primaryBlue: "#1A6BC4",
-    primaryBlueHover: "#155AA8",
-    deepIndigo: "#111111",
-    navy: "#111111",
-    navyDeep: "#000000",
-    stickerSky: "#1A6BC4",
-    stickerPurple: "#EDEDED",
-    stickerPurpleDeep: "#2F3437",
-    stickerPink: "#6B7280",
-    stickerOrange: "#4B5563",
-    stickerOrangeDeep: "#111111",
-    stickerTeal: "#2563EB",
-    stickerGreen: "#16A34A",
-    teal: "#2563EB",
-    tealDeep: "#1D4ED8",
-    plum: "#2F3437",
-    plumDeep: "#111111",
-    forest: "#16A34A",
-    forestDeep: "#166534",
-    coral: "#D92D20",
-    coralDeep: "#B42318",
-    marigold: "#1A6BC4",
-    mint: "#F7F7F5",
-    sky: "#EAF4FF",
-    success: "#16A34A",
+    surfaceWarm: "#FBFAF8",
+    ink: "#37352F",
+    inkSoft: "#5F5E5B",
+    muted: "#787774",
+    faint: "#9B9A97",
+    border: "#E4E4E1",
+    borderStrong: "#D9D9D6",
+    primaryBlue: "#37352F",
+    primaryBlueHover: "#2F2E2B",
+    deepIndigo: "#191919",
+    navy: "#37352F",
+    navyDeep: "#191919",
+    stickerSky: "#0B6E99",
+    stickerPurple: "#EAE4F2",
+    stickerPurpleDeep: "#6940A5",
+    stickerPink: "#AD1A72",
+    stickerOrange: "#D9730D",
+    stickerOrangeDeep: "#B95C00",
+    stickerTeal: "#0F7B6C",
+    stickerGreen: "#0F7B6C",
+    teal: "#0F7B6C",
+    tealDeep: "#0C6258",
+    plum: "#6940A5",
+    plumDeep: "#56358A",
+    forest: "#0F7B6C",
+    forestDeep: "#0C6258",
+    coral: "#E03E3E",
+    coralDeep: "#C73535",
+    marigold: "#DFAB01",
+    mint: "#DDEDEA",
+    sky: "#DDEBF1",
+    success: "#0F7B6C",
 } as const;
 
 const workspaceGray: MantineColorsTuple = [
     "#FFFFFF",
-    "#F7F7F5",
+    "#FBFAF8",
+    "#F7F6F3",
     "#F1F1EF",
-    "#EDEDED",
-    "#E5E7EB",
-    "#D1D5DB",
-    "#6B7280",
-    "#2F3437",
-    "#111111",
-    "#000000",
+    "#E9E9E7",
+    "#DEDEDB",
+    "#9B9A97",
+    "#787774",
+    "#37352F",
+    "#191919",
+];
+
+const notionInk: MantineColorsTuple = [
+    "#FFFFFF",
+    "#FBFAF8",
+    "#F7F6F3",
+    "#E9E9E7",
+    "#D9D9D6",
+    "#B8B8B4",
+    "#787774",
+    "#37352F",
+    "#2F2E2B",
+    "#191919",
+];
+
+const workspaceDark: MantineColorsTuple = [
+    "#F4F4F2",
+    "#E8E8E6",
+    "#CFCFCA",
+    "#A8A7A1",
+    "#787774",
+    "#5F5E5B",
+    "#37352F",
+    "#252525",
+    "#202020",
+    "#191919",
 ];
 
 const actionBlue: MantineColorsTuple = [
-    "#F1F8FF",
-    "#E7F3FF",
-    "#D7EBFF",
-    "#B9D9FF",
-    "#8EC2FF",
-    "#63A3F0",
-    "#347FD6",
-    "#1A6BC4",
-    "#155AA8",
-    "#124A8F",
+    "#F4FAFC",
+    "#DDEBF1",
+    "#C9E0E9",
+    "#A8CDD9",
+    "#75AEC2",
+    "#3F8FAE",
+    "#0B6E99",
+    "#095E83",
+    "#074D6B",
+    "#05384E",
 ];
 
 const eventGreen: MantineColorsTuple = [
-    "#F0FDF4",
-    "#DCFCE7",
-    "#BBF7D0",
-    "#86EFAC",
-    "#4ADE80",
-    "#22C55E",
-    "#16A34A",
-    "#15803D",
-    "#166534",
-    "#14532D",
+    "#F4FAF8",
+    "#DDEDEA",
+    "#C9E3DE",
+    "#A9D2CA",
+    "#76B6AA",
+    "#3E9A8A",
+    "#0F7B6C",
+    "#0C6258",
+    "#094D45",
+    "#063B35",
+];
+
+const eventCyan: MantineColorsTuple = [
+    "#F4FAFC",
+    "#DDEBF1",
+    "#C9E0E9",
+    "#A8CDD9",
+    "#75AEC2",
+    "#3F8FAE",
+    "#0B6E99",
+    "#095E83",
+    "#074D6B",
+    "#05384E",
+];
+
+const eventViolet: MantineColorsTuple = [
+    "#FBF8FE",
+    "#EAE4F2",
+    "#DDD3EA",
+    "#C4B0DC",
+    "#A78ACB",
+    "#8865B9",
+    "#6940A5",
+    "#56358A",
+    "#422B68",
+    "#31204F",
 ];
 
 const eventYellow: MantineColorsTuple = [
-    "#FFFBEB",
-    "#FEF3C7",
-    "#FDE68A",
-    "#FCD34D",
-    "#FBBF24",
-    "#EAB308",
-    "#A3A3A3",
-    "#6B7280",
-    "#2F3437",
-    "#111111",
+    "#FFFDF5",
+    "#FBF3DB",
+    "#F6E8B8",
+    "#EDD483",
+    "#E6C353",
+    "#DFAB01",
+    "#B58B00",
+    "#8A6A00",
+    "#604900",
+    "#3E3000",
 ];
 
 const eventRed: MantineColorsTuple = [
-    "#FEF3F2",
-    "#FEE4E2",
-    "#FECDCA",
-    "#FDA29B",
-    "#F97066",
-    "#F04438",
-    "#D92D20",
-    "#B42318",
-    "#912018",
-    "#7F1D1D",
+    "#FFF8F8",
+    "#FBE4E4",
+    "#F7CECE",
+    "#F0AAAA",
+    "#E98282",
+    "#E65E5E",
+    "#E03E3E",
+    "#C73535",
+    "#982A2A",
+    "#6F1F1F",
+];
+
+const eventOrange: MantineColorsTuple = [
+    "#FFF9F3",
+    "#FAEBDD",
+    "#F4D8BD",
+    "#EAB783",
+    "#E19A50",
+    "#D9730D",
+    "#B95C00",
+    "#944900",
+    "#6E3600",
+    "#4A2400",
+];
+
+const eventPink: MantineColorsTuple = [
+    "#FEF8FB",
+    "#F4DFEB",
+    "#EEC8DC",
+    "#DE9BC1",
+    "#CC6EA5",
+    "#BD408A",
+    "#AD1A72",
+    "#8F155E",
+    "#6E1048",
+    "#510C35",
 ];
 
 export const getUrbanEventsTheme = () => createTheme({
     colors: {
         gray: workspaceGray,
-        dark: workspaceGray,
+        dark: workspaceDark,
         blue: actionBlue,
-        cyan: actionBlue,
+        cyan: eventCyan,
         teal: eventGreen,
         green: eventGreen,
         lime: eventGreen,
         yellow: eventYellow,
-        orange: eventYellow,
+        orange: eventOrange,
         red: eventRed,
-        primary: generateColors(urbanEventsColors.primaryBlue),
-        secondary: generateColors(urbanEventsColors.inkSoft),
-        blush: generateColors(urbanEventsColors.powderBlush),
-        aqua: generateColors(urbanEventsColors.icyAqua),
+        pink: eventPink,
+        grape: eventViolet,
+        violet: eventViolet,
+        primary: notionInk,
+        secondary: workspaceGray,
+        blush: workspaceGray,
+        aqua: actionBlue,
         eggshell: generateColors(urbanEventsColors.eggshell),
-        slate: generateColors(urbanEventsColors.blueSlate),
-        coral: generateColors(urbanEventsColors.coral),
-        marigold: generateColors(urbanEventsColors.marigold),
-        mint: generateColors(urbanEventsColors.canvasSoft),
-        sky: generateColors(urbanEventsColors.sky),
-        indigoNight: generateColors(urbanEventsColors.deepIndigo),
-        stickerSky: generateColors(urbanEventsColors.stickerSky),
-        stickerPurple: generateColors(urbanEventsColors.stickerPurple),
-        stickerPink: generateColors(urbanEventsColors.stickerPink),
-        stickerOrange: generateColors(urbanEventsColors.stickerOrange),
-        stickerTeal: generateColors(urbanEventsColors.stickerTeal),
-        stickerGreen: generateColors(urbanEventsColors.stickerGreen),
+        slate: workspaceGray,
+        coral: eventRed,
+        marigold: eventYellow,
+        mint: eventGreen,
+        sky: actionBlue,
+        indigoNight: notionInk,
+        stickerSky: actionBlue,
+        stickerPurple: eventViolet,
+        stickerPink: eventPink,
+        stickerOrange: eventOrange,
+        stickerTeal: eventGreen,
+        stickerGreen: eventGreen,
     },
     primaryColor: "primary",
     primaryShade: 7,
@@ -168,29 +249,37 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "1.6",
     },
     radius: {
-        xs: "4px",
-        sm: "6px",
-        md: "8px",
-        lg: "8px",
+        xs: "2px",
+        sm: "3px",
+        md: "4px",
+        lg: "6px",
         xl: "8px",
     },
+    spacing: {
+        xs: "4px",
+        sm: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "24px",
+    },
     shadows: {
-        xs: "none",
-        sm: "none",
-        md: "0 8px 24px rgba(15, 15, 15, 0.06)",
-        lg: "0 16px 48px rgba(15, 15, 15, 0.08)",
-        xl: "0 24px 80px rgba(15, 15, 15, 0.10)",
+        xs: "0 1px 2px rgba(15, 15, 15, 0.04)",
+        sm: "0 2px 6px rgba(15, 15, 15, 0.06)",
+        md: "0 8px 24px rgba(15, 15, 15, 0.08)",
+        lg: "0 16px 48px rgba(15, 15, 15, 0.12)",
+        xl: "0 24px 80px rgba(15, 15, 15, 0.16)",
     },
     components: {
         ActionIcon: {
             defaultProps: {
                 radius: "sm",
                 variant: "subtle",
+                size: "sm",
             },
             styles: {
                 root: {
                     borderWidth: "1px",
-                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
+                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease, box-shadow 140ms ease",
                 },
             },
         },
@@ -231,14 +320,15 @@ export const getUrbanEventsTheme = () => createTheme({
         Button: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
             styles: {
                 root: {
-                    fontWeight: 600,
+                    fontWeight: 560,
                     letterSpacing: 0,
                     minHeight: "2.125rem",
-                    paddingInline: "0.875rem",
-                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease",
+                    paddingInline: "0.8125rem",
+                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease, box-shadow 140ms ease",
                 },
                 label: {
                     whiteSpace: "normal",
@@ -284,6 +374,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Input: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
             styles: {
                 input: {
@@ -295,7 +386,7 @@ export const getUrbanEventsTheme = () => createTheme({
                 },
                 label: {
                     color: "var(--hi-text)",
-                    fontWeight: 600,
+                    fontWeight: 560,
                 },
                 description: {
                     color: "var(--hi-text-muted)",
@@ -305,21 +396,21 @@ export const getUrbanEventsTheme = () => createTheme({
         Menu: {
             defaultProps: {
                 radius: "sm",
-                shadow: "none",
+                shadow: "md",
             },
             styles: {
                 dropdown: {
                     borderColor: "var(--hi-border)",
-                    boxShadow: "none",
+                    boxShadow: "var(--hi-shadow-md)",
                 },
                 item: {
-                    fontWeight: 600,
+                    fontWeight: 560,
                 },
             },
         },
         Modal: {
             defaultProps: {
-                radius: "sm",
+                radius: "lg",
                 overlayProps: {
                     backgroundOpacity: 0.34,
                     blur: 0,
@@ -329,7 +420,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Paper: {
             defaultProps: {
                 radius: "sm",
-                shadow: "none",
+                shadow: "xs",
                 withBorder: true,
             },
             styles: {
@@ -341,12 +432,12 @@ export const getUrbanEventsTheme = () => createTheme({
         Popover: {
             defaultProps: {
                 radius: "sm",
-                shadow: "none",
+                shadow: "md",
             },
             styles: {
                 dropdown: {
                     borderColor: "var(--hi-border)",
-                    boxShadow: "none",
+                    boxShadow: "var(--hi-shadow-md)",
                 },
             },
         },
@@ -378,6 +469,7 @@ export const getUrbanEventsTheme = () => createTheme({
             defaultProps: {
                 radius: "sm",
                 color: "primary",
+                variant: "default",
             },
         },
         Table: {
@@ -397,36 +489,43 @@ export const getUrbanEventsTheme = () => createTheme({
         TextInput: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         NumberInput: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         MultiSelect: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         NativeSelect: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         PasswordInput: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         PinInput: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         Select: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         Switch: {
@@ -444,6 +543,7 @@ export const getUrbanEventsTheme = () => createTheme({
         Textarea: {
             defaultProps: {
                 radius: "sm",
+                size: "sm",
             },
         },
         Tooltip: {

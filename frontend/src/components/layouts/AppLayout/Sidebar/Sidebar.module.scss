@@ -41,7 +41,7 @@
       margin: 0 8px;
 
       &:hover {
-        background: var(--hi-surface);
+        background: var(--hi-control-bg-hover);
       }
     }
   }
@@ -83,7 +83,7 @@
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
-      color: color-mix(in srgb, var(--hi-text-muted) 74%, transparent);
+      color: var(--hi-text-faint, var(--hi-text-muted));
     }
 
     a,
@@ -116,9 +116,9 @@
       }
 
       .navBadge {
-        background: var(--hi-surface);
+        background: var(--hi-shell-bg-strong);
         color: var(--hi-text-muted);
-        border: 1px solid color-mix(in srgb, var(--hi-border) 82%, transparent);
+        border: 1px solid var(--hi-border);
         padding: 1px 6px;
         border-radius: var(--hi-radius-sm);
         font-size: 0.75em;
@@ -127,7 +127,14 @@
       }
 
       &::before {
-        display: none;
+        content: "";
+        position: absolute;
+        inset: 6px auto 6px 4px;
+        display: block;
+        width: 3px;
+        border-radius: 999px;
+        background: transparent;
+        transition: background-color 0.14s ease;
       }
 
       &.loading {
@@ -137,11 +144,15 @@
       }
 
       &.linkActive {
-        background: var(--hi-surface);
+        background: var(--hi-control-bg-active);
         border-color: var(--hi-border);
         color: var(--hi-text);
         font-weight: 600;
         box-shadow: none;
+
+        &::before {
+          background: var(--hi-text);
+        }
 
         .linkIcon {
           color: var(--hi-text);
@@ -149,7 +160,7 @@
       }
 
       &:hover {
-        background: var(--hi-surface);
+        background: var(--hi-control-bg-hover);
         border-color: var(--hi-border);
         color: var(--hi-text);
       }

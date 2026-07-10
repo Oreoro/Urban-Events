@@ -1,9 +1,7 @@
 .main {
   min-height: calc(100dvh - 42px);
   padding: clamp(20px, 3vw, 38px) clamp(16px, 4vw, 48px) 64px;
-  background:
-    linear-gradient(180deg, var(--hi-shell-bg-strong) 0, var(--hi-shell-bg) 220px),
-    var(--hi-shell-bg);
+  background: var(--hi-shell-bg);
   color: var(--hi-text);
 }
 

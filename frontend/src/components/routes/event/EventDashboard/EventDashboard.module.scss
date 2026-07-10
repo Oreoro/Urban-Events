@@ -5,41 +5,19 @@
   gap: 16px;
   width: min(100%, 1188px);
   margin: 18px auto 0;
-  padding: 34px 34px 38px;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--hi-surface) 94%, var(--ue-canvas-soft)) 0, var(--hi-surface) 120px),
-    var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: var(--hi-radius-lg);
-  box-shadow:
-    0 1px 1px color-mix(in srgb, var(--hi-color-black) 4%, transparent),
-    0 18px 48px color-mix(in srgb, var(--hi-color-black) 5%, transparent);
+  padding: 22px 24px 30px;
+  background: var(--hi-surface);
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
+  box-shadow: var(--hi-shadow-xs);
   overflow: hidden;
 
   &::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 28px;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 70%, transparent);
-    background: color-mix(in srgb, var(--ue-canvas-soft) 74%, var(--hi-surface));
-    pointer-events: none;
+    display: none;
   }
 
   &::after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 16px;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: var(--ue-sticker-pink);
-    box-shadow:
-      15px 0 0 var(--ue-sticker-orange),
-      30px 0 0 var(--ue-sticker-sky);
-    opacity: 0.66;
-    pointer-events: none;
+    display: none;
   }
 
   @media (max-width: 768px) {
@@ -88,14 +66,12 @@
   place-items: center;
   width: 58px;
   height: 58px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 84%, transparent);
-  border-radius: var(--hi-radius-md);
-  background:
-    radial-gradient(circle at 70% 24%, color-mix(in srgb, var(--ue-sticker-sky) 28%, transparent) 0 18%, transparent 19%),
-    color-mix(in srgb, var(--ue-canvas-soft) 74%, var(--hi-surface));
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-sm);
+  background: var(--hi-shell-bg-strong);
   color: var(--hi-text);
   flex: 0 0 58px;
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hi-surface) 92%, transparent);
+  box-shadow: none;
 
   svg {
     width: 27px;
@@ -171,15 +147,15 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--ue-sticker-sky);
+  background: var(--notion-blue);
   box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 5%, transparent);
 
   &[data-tone="blue"] {
-    background: var(--ue-action-blue);
+    background: var(--notion-blue);
   }
 
   &[data-tone="purple"] {
-    background: var(--ue-sticker-purple);
+    background: var(--notion-purple);
   }
 
   &[data-tone="green"] {
@@ -242,11 +218,9 @@
   flex-direction: column;
   gap: 12px;
   padding: 12px;
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+  border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--ue-sticker-purple) 8%, transparent), transparent 38%),
-    linear-gradient(180deg, color-mix(in srgb, var(--ue-sticker-sky) 10%, var(--ue-canvas-soft)) 0, var(--hi-surface) 150px);
+  background: var(--hi-surface);
 }
 
 .chartCard {

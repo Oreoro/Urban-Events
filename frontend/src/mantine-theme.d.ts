@@ -14,6 +14,13 @@ type ExtendedCustomColors =
     | 'marigold'
     | 'mint'
     | 'sky'
+    | 'indigoNight'
+    | 'stickerSky'
+    | 'stickerPurple'
+    | 'stickerPink'
+    | 'stickerOrange'
+    | 'stickerTeal'
+    | 'stickerGreen'
     | DefaultMantineColor;
 
 declare module '@mantine/core' {

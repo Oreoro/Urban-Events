@@ -17,7 +17,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 218px minmax(0, 1fr);
+    grid-template-columns: 240px minmax(0, 1fr);
 
     &.closed {
       grid-template-areas:

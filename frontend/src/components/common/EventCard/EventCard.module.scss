@@ -5,17 +5,17 @@
   padding: 0 !important;
   margin-bottom: 0 !important;
   border-color: var(--hi-border) !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   container-type: inline-size;
   min-width: 240px;
   border-radius: var(--hi-radius-sm) !important;
   background: var(--hi-surface) !important;
-  box-shadow: none !important;
+  box-shadow: var(--hi-shadow-xs) !important;
 
   &:hover {
     background: var(--hi-control-bg-hover) !important;
     border-color: var(--hi-border-strong) !important;
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm) !important;
 
     .title {
       color: var(--hi-text);
@@ -67,7 +67,7 @@
   min-width: 40px;
   overflow: hidden;
   border-right: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-  background: var(--hi-surface-soft);
+  background: var(--hi-shell-bg-strong);
 
   @include mixins.respond-below(md, true) {
     width: 40px;
@@ -83,8 +83,8 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: saturate(0.35) contrast(0.9);
-  opacity: 0.08;
+  filter: saturate(0.72) contrast(0.94);
+  opacity: 0.14;
 }
 
 .placeholderImage {
@@ -96,7 +96,7 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--hi-surface-soft) 76%, transparent);
+  background: color-mix(in srgb, var(--hi-surface-soft) 58%, transparent);
 }
 
 .placeholderOverlay {
@@ -119,15 +119,15 @@
   white-space: nowrap;
 
   &.status-live {
-    background: var(--hi-surface);
-    color: var(--hi-text);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
+    border: 1px solid var(--hi-status-success-border);
   }
 
   &.status-onsale {
-    background: var(--hi-status-neutral-bg);
-    color: var(--hi-text);
-    border: 1px solid var(--hi-status-neutral-border);
+    background: var(--hi-status-info-bg);
+    color: var(--hi-status-info-text);
+    border: 1px solid var(--hi-status-info-border);
   }
 
   &.status-draft {
@@ -292,15 +292,15 @@
   font-weight: 600;
 
   &.ticket-available {
-    background: var(--hi-surface-soft);
-    color: var(--hi-text);
-    border: 1px solid var(--hi-border);
+    background: var(--hi-status-success-bg);
+    color: var(--hi-status-success-text);
+    border: 1px solid var(--hi-status-success-border);
   }
 
   &.ticket-partial {
-    background: var(--hi-status-neutral-bg);
-    color: var(--hi-status-neutral-text);
-    border: 1px solid var(--hi-status-neutral-border);
+    background: var(--hi-status-info-bg);
+    color: var(--hi-status-info-text);
+    border: 1px solid var(--hi-status-info-border);
   }
 
   &.ticket-sold-out {
@@ -419,7 +419,7 @@
   }
 
   &:hover {
-    background: var(--hi-surface);
+    background: var(--hi-control-bg-hover);
     border-color: var(--hi-border);
     color: var(--hi-text);
   }

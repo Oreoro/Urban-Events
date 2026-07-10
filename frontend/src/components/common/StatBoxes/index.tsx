@@ -69,7 +69,7 @@ export const StatBoxes = ({event, eventStats}: StatBoxesProps = {}) => {
             number: formatNumber(toFiniteNumber(eventStats?.total_views)),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
-            backgroundColor: 'var(--ue-action-blue)'
+            backgroundColor: 'var(--notion-blue)'
         },
         {
             number: formatNumber(toFiniteNumber(eventStats?.total_orders)),

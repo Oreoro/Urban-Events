@@ -2,7 +2,7 @@
 
 .overviewPanel {
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -18,10 +18,10 @@
 .headerSection {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 0;
-  padding: 0 0 14px;
+  padding: 2px 0 18px;
   border-bottom: 0;
   background: transparent;
 
@@ -35,7 +35,7 @@
 .dashboardIdentity {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 11px;
   min-width: 0;
   flex: 1;
 }
@@ -43,12 +43,12 @@
 .pageIcon {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--hi-border);
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 24%, var(--hi-border));
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
-  color: var(--hi-text-muted);
+  background: color-mix(in srgb, var(--hi-primary) 7%, var(--hi-surface));
+  color: var(--hi-primary);
   flex: 0 0 auto;
 }
 
@@ -57,24 +57,24 @@
 }
 
 .kicker {
-  margin: 0 0 3px;
+  margin: 0 0 4px;
   color: var(--hi-text-muted);
-  font-size: 0.71rem;
-  font-weight: 560;
+  font-size: 0.72rem;
+  font-weight: 620;
   line-height: 1.2;
 }
 
 .pageTitle {
   margin: 0;
   color: var(--hi-text);
-  font-size: 1.34rem;
-  font-weight: 650;
+  font-size: 1.58rem;
+  font-weight: 720;
   letter-spacing: 0;
-  line-height: 1.12;
+  line-height: 1.08;
   overflow-wrap: anywhere;
 
   @include mixins.respond-below(md) {
-    font-size: 1.24rem;
+    font-size: 1.34rem;
   }
 }
 
@@ -82,29 +82,24 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 6px;
+  gap: 6px;
+  margin-top: 8px;
 
   span {
     display: inline-flex;
     align-items: center;
-    min-height: 21px;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+    min-height: 22px;
+    padding: 2px 7px;
+    border: 1px solid var(--hi-border);
+    border-radius: var(--hi-radius-sm);
+    background: var(--hi-surface);
     color: var(--hi-text-muted);
-    font-size: 0.7rem;
-    font-weight: 560;
+    font-size: 0.72rem;
+    font-weight: 600;
     line-height: 1.2;
 
     &:not(:last-child)::after {
-      content: "";
-      width: 3px;
-      height: 3px;
-      margin-left: 5px;
-      border-radius: 50%;
-      background: color-mix(in srgb, var(--hi-text-muted) 42%, transparent);
+      display: none;
     }
   }
 }
@@ -113,25 +108,25 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 
   @include mixins.respond-below(md) {
     justify-content: flex-start;
-    padding-left: 39px;
+    padding-left: 0;
   }
 }
 
 .createEventButton {
-  min-height: 30px;
-  padding-inline: 10px;
+  min-height: 34px;
+  padding-inline: 13px;
   border-radius: var(--hi-radius-sm) !important;
   border: 1px solid var(--hi-primary) !important;
   background: var(--hi-primary) !important;
   color: var(--hi-color-white) !important;
   box-shadow: none !important;
-  font-size: 0.76rem;
-  font-weight: 620;
+  font-size: 0.82rem;
+  font-weight: 650;
 
   &:hover {
     border-color: var(--hi-primary-hover) !important;
@@ -260,12 +255,12 @@
 .statisticsContainer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 8px;
   margin: 0;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
 
   > * {
     min-width: 0;
@@ -282,85 +277,47 @@
 
 .statisticsSkeletonContainer {
   @extend .statisticsContainer;
-  gap: 8px;
   margin: 0;
 }
 
 .statCard {
   display: flex;
   align-items: stretch;
-  min-height: 68px;
-  padding: 11px 12px;
+  min-height: 78px;
+  padding: 13px 14px;
   background: var(--hi-surface);
-  border: 0;
-  border-right: 1px solid var(--hi-border);
-  border-bottom: 1px solid var(--hi-border);
-  border-radius: 0;
+  border: 1px solid var(--hi-border);
+  border-radius: var(--hi-radius-md);
   color: var(--hi-text);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--hi-color-black) 3%, transparent);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:hover {
-    background: color-mix(in srgb, var(--hi-control-bg-hover) 70%, var(--hi-surface));
+    background: color-mix(in srgb, var(--hi-primary) 3%, var(--hi-surface));
+    border-color: color-mix(in srgb, var(--hi-primary) 22%, var(--hi-border));
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--hi-color-black) 5%, transparent);
   }
 
-  &:nth-child(3n) {
-    border-right: 0;
-  }
-
-  &:nth-last-child(-n + 3) {
-    border-bottom: 0;
-  }
-
-  @include mixins.respond-below(md) {
-    &:nth-child(3n) {
-      border-right: 1px solid var(--hi-border);
-    }
-
-    &:nth-child(2n) {
-      border-right: 0;
-    }
-
-    &:nth-last-child(-n + 3) {
-      border-bottom: 1px solid var(--hi-border);
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: 0;
-    }
-  }
-
-  @include mixins.respond-below(sm) {
-    border-right: 0;
-
-    &:nth-child(3n),
-    &:nth-child(2n) {
-      border-right: 0;
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: 1px solid var(--hi-border);
-    }
-
-    &:last-child {
-      border-bottom: 0;
-    }
+  &:first-child {
+    border-color: color-mix(in srgb, var(--hi-primary) 28%, var(--hi-border));
+    background: var(--hi-surface);
   }
 }
 
 .statContent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   min-width: 0;
-  gap: 5px;
+  gap: 8px;
   width: 100%;
 }
 
 .statValue {
   color: var(--hi-text);
-  font-size: 1rem;
-  font-weight: 650;
-  line-height: 1.12;
+  font-size: 1.12rem;
+  font-weight: 720;
+  line-height: 1.08;
   letter-spacing: 0;
   overflow-wrap: anywhere;
 }
@@ -368,27 +325,27 @@
 .statLabel {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   color: var(--hi-text-muted);
-  font-size: 0.7rem;
-  font-weight: 560;
+  font-size: 0.72rem;
+  font-weight: 650;
   line-height: 1.2;
 }
 
 .statIcon {
   display: inline-grid;
   place-items: center;
-  width: 16px;
-  height: 16px;
-  color: color-mix(in srgb, var(--hi-text-muted) 72%, transparent);
-  background: transparent;
-  border: 0;
-  border-radius: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--hi-primary);
+  background: color-mix(in srgb, var(--hi-primary) 8%, var(--hi-surface));
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 14%, var(--hi-border));
+  border-radius: var(--hi-radius-sm);
   flex: 0 0 auto;
 
   svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
 }
 
@@ -402,11 +359,11 @@
 .recentItemsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 12px;
 
   @include mixins.respond-above(lg) {
-    grid-template-columns: minmax(288px, 0.72fr) 1.28fr;
-    gap: 10px;
+    grid-template-columns: minmax(320px, 0.82fr) 1.18fr;
+    gap: 12px;
     align-items: stretch;
   }
 }
@@ -419,7 +376,7 @@
   background: var(--hi-surface);
   border: 1px solid var(--hi-border);
   border-radius: var(--hi-radius-md);
-  box-shadow: none;
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--hi-color-black) 3%, transparent);
   padding: 0;
   overflow: hidden;
 }
@@ -447,17 +404,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 36px;
+  min-height: 42px;
   gap: 8px;
-  padding: 7px 10px;
+  padding: 9px 12px;
   border-bottom: 1px solid var(--hi-border);
   letter-spacing: 0;
-  background: var(--hi-surface-soft);
+  background: color-mix(in srgb, var(--hi-surface-soft) 72%, var(--hi-surface));
 }
 
 .sectionTitle {
-  font-size: 0.78rem;
-  font-weight: 650;
+  font-size: 0.84rem;
+  font-weight: 700;
   color: var(--hi-text);
   margin: 0;
 }
@@ -467,14 +424,14 @@
   align-items: center;
   justify-content: center;
   min-width: 22px;
-  height: 19px;
+  height: 21px;
   padding: 0 6px;
   border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-border);
-  background: var(--hi-surface);
-  color: var(--hi-text-muted);
-  font-size: 0.68rem;
-  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 16%, var(--hi-border));
+  background: color-mix(in srgb, var(--hi-primary) 6%, var(--hi-surface));
+  color: var(--hi-text);
+  font-size: 0.7rem;
+  font-weight: 650;
 }
 
 // Orders list
@@ -482,8 +439,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 0;
-  padding: 0;
+  gap: 4px;
+  padding: 5px;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -500,18 +457,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 56px;
-  gap: 8px;
-  padding: 8px 9px;
-  border: 0 !important;
-  border-bottom: 1px solid var(--hi-border) !important;
-  border-radius: 0 !important;
+  min-height: 62px;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid transparent !important;
+  border-radius: var(--hi-radius-sm) !important;
+  background: transparent !important;
   transition: background-color 0.15s ease, border-color 0.15s ease;
   cursor: pointer;
   margin-bottom: 0 !important;
 
   &:hover {
-    background: var(--hi-control-bg-hover);
+    background: var(--hi-control-bg-hover) !important;
     border-color: var(--hi-border) !important;
     box-shadow: none;
 
@@ -530,34 +487,34 @@
 }
 
 .orderCardLink:last-child .orderCard {
-  border-bottom: 0 !important;
+  border-bottom-color: transparent !important;
 }
 
 .orderMain {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   min-width: 0;
   flex: 1;
 }
 
 .orderAvatar {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
+  background: color-mix(in srgb, var(--hi-primary) 7%, var(--hi-surface));
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 12%, var(--hi-border));
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--hi-text-muted);
+  color: var(--hi-primary);
 }
 
 .orderDetails {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   min-width: 0;
   flex: 1;
 }
@@ -570,8 +527,8 @@
 }
 
 .customerName {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 650;
   color: var(--hi-text);
   transition: color 0.15s ease;
   @include mixins.ellipsis;
@@ -581,12 +538,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--hi-text-muted);
 }
 
 .orderAmount {
-  font-weight: 600;
+  font-weight: 650;
   color: var(--hi-text);
 }
 
@@ -599,7 +556,7 @@
 }
 
 .orderId {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--hi-text-muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   letter-spacing: 0;
@@ -609,16 +566,17 @@
   flex-shrink: 0;
   color: var(--hi-text-muted);
   transition: color 0.15s ease;
+  opacity: 0.72;
 }
 
 .orderStatusBadge {
   min-height: 18px;
-  padding-inline: 5px;
-  border-color: var(--hi-border) !important;
-  background: var(--hi-surface-soft) !important;
-  color: var(--hi-text-muted) !important;
+  padding-inline: 6px;
+  border-color: var(--hi-status-success-border) !important;
+  background: var(--hi-status-success-bg) !important;
+  color: var(--hi-status-success-text) !important;
   font-size: 0.66rem;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: 0;
   text-transform: none;
 
@@ -644,32 +602,40 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 0;
+  gap: 4px;
+  padding: 5px;
   border: 0;
   border-radius: 0;
   background: transparent;
   overflow: visible;
 
   :global(.card) {
-    border-radius: 0 !important;
-    border-width: 0 0 1px !important;
+    border-radius: var(--hi-radius-sm) !important;
+    border-width: 1px !important;
     margin-bottom: 0 !important;
-    border-color: var(--hi-border) !important;
+    border-color: transparent !important;
     box-shadow: none !important;
+    background: transparent !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      background: var(--hi-control-bg-hover) !important;
+      border-color: var(--hi-border) !important;
+    }
   }
 
   :global(.card:last-child) {
-    border-bottom: 0 !important;
+    border-bottom-width: 1px !important;
   }
 }
 
 // Empty states
 .emptyState {
-  background: var(--hi-surface);
-  border-radius: 0;
-  padding: 14px;
+  background: color-mix(in srgb, var(--hi-surface-soft) 44%, var(--hi-surface));
+  border-radius: var(--hi-radius-sm);
+  padding: 18px;
   text-align: left;
-  border: 0;
+  border: 1px dashed var(--hi-border);
   position: relative;
   overflow: hidden;
   min-height: 140px;
@@ -678,7 +644,7 @@
   align-items: flex-start;
   justify-content: center;
   max-width: 100%;
-  margin: 0;
+  margin: 5px;
   //flex: 1;
 
   &::before {
@@ -711,9 +677,9 @@
 }
 
 .emptyStateIcon {
-  color: var(--hi-text-muted);
-  background: var(--hi-surface-soft);
-  border: 1px solid var(--hi-border);
+  color: var(--hi-primary);
+  background: color-mix(in srgb, var(--hi-primary) 8%, var(--hi-surface));
+  border: 1px solid color-mix(in srgb, var(--hi-primary) 14%, var(--hi-border));
   border-radius: var(--hi-radius-sm);
   padding: 5px;
   position: relative;

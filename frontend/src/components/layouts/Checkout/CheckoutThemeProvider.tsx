@@ -1,5 +1,5 @@
 /* eslint-disable lingui/no-unlocalized-strings */
-import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme} from "@mantine/core";
+import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, MantineTheme} from "@mantine/core";
 import {PropsWithChildren, useMemo} from "react";
 import {
     getAccentMuted,
@@ -20,7 +20,7 @@ interface CheckoutThemeProviderProps {
 function createColorPalette(accentColor: string): MantineColorsTuple {
     const rgb = hexToRgb(accentColor);
     if (!rgb) {
-        return ['#F6FBFF', '#E8F3FF', '#DCEBFF', '#B9D6FA', '#8BC1F5', '#62A9EF', '#2C8CE5', '#0075DE', '#005BAB', '#003F78'];
+        return ['#FFFFFF', '#FBFAF8', '#F7F6F3', '#E9E9E7', '#D9D9D6', '#B8B8B4', '#787774', '#37352F', '#2F2E2B', '#191919'];
     }
 
     const {r, g, b} = rgb;
@@ -72,18 +72,18 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
         },
         defaultRadius: 'sm',
         radius: {
-            xs: '4px',
-            sm: '6px',
-            md: '8px',
-            lg: '8px',
+            xs: '2px',
+            sm: '3px',
+            md: '4px',
+            lg: '6px',
             xl: '8px',
         },
         shadows: {
-            xs: '0 1px 1px rgba(15, 15, 15, 0.03)',
-            sm: '0 1px 2px rgba(15, 15, 15, 0.035), 0 8px 18px rgba(15, 15, 15, 0.035)',
-            md: '0 2px 6px rgba(15, 15, 15, 0.04), 0 18px 42px rgba(15, 15, 15, 0.055)',
-            lg: '0 4px 14px rgba(15, 15, 15, 0.05), 0 26px 64px rgba(15, 15, 15, 0.065)',
-            xl: '0 8px 28px rgba(15, 15, 15, 0.06), 0 38px 90px rgba(15, 15, 15, 0.075)',
+            xs: '0 1px 2px rgba(15, 15, 15, 0.04)',
+            sm: '0 2px 6px rgba(15, 15, 15, 0.06)',
+            md: '0 8px 24px rgba(15, 15, 15, 0.08)',
+            lg: '0 16px 48px rgba(15, 15, 15, 0.12)',
+            xl: '0 24px 80px rgba(15, 15, 15, 0.16)',
         },
         primaryShade: mode === 'dark' ? 6 : 7,
         components: {
@@ -91,6 +91,7 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
                 defaultProps: {
                     color: 'primary',
                     radius: 'sm',
+                    size: 'sm',
                 },
                 vars: (_theme: MantineTheme, props: ButtonProps) => {
                     if (props.variant === 'filled' || props.variant === undefined) {
@@ -107,7 +108,7 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
                 defaultProps: {
                     color: 'primary',
                 },
-                vars: (_theme: MantineTheme, _props: CheckboxProps) => ({
+                vars: () => ({
                     root: {
                         '--checkbox-icon-color': contrastColor,
                     },

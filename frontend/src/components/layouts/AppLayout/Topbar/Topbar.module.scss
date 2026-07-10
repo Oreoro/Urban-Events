@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
-    height: 40px;
+    height: 44px;
     border-bottom: 1px solid var(--hi-border);
     color: var(--hi-text);
 
@@ -26,7 +26,7 @@
   .breadcrumbsRow {
     padding: 6px 24px;
     border-bottom: 1px solid var(--hi-border);
-    background-color: var(--hi-surface);
+    background-color: var(--hi-shell-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -118,8 +118,8 @@
       }
 
       &:last-child {
-        color: var(--hi-text-light);
-        font-weight: 560;
+        color: var(--hi-text);
+        font-weight: 620;
       }
 
       &::after {

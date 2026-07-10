@@ -18,17 +18,19 @@
   &.default {
     background-color: var(--checkout-surface, var(--hi-surface));
     border: 1px solid var(--checkout-border, var(--hi-border));
-    box-shadow: none;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    box-shadow: var(--hi-shadow-xs);
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
+      background-color: var(--checkout-surface, var(--hi-control-bg-hover));
       border-color: var(--checkout-border, var(--hi-border-strong));
+      box-shadow: var(--hi-shadow-sm);
     }
   }
 
   &.lightAccent {
-    background-color: color-mix(in srgb, var(--hi-text) 4%, var(--hi-surface));
-    border: 1px solid color-mix(in srgb, var(--hi-text) 12%, var(--hi-border));
-    box-shadow: none;
+    background-color: var(--hi-secondary);
+    border: 1px solid color-mix(in srgb, var(--hi-secondary-strong) 18%, var(--hi-secondary));
+    box-shadow: var(--hi-shadow-xs);
   }
 }

@@ -5,7 +5,7 @@
   display: flex;
   position: relative;
   overflow-x: hidden;
-  background: var(--hi-shell-surface);
+  background: var(--hi-shell-bg);
   color: var(--hi-text);
 }
 
@@ -64,9 +64,10 @@
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 
-  &:hover {
-    background: var(--hi-control-bg-hover);
-  }
+    &:hover {
+      background: color-mix(in srgb, var(--hi-primary) 6%, var(--hi-surface));
+      color: var(--hi-text);
+    }
 
   @include mixins.respond-below(md) {
     margin-bottom: 0.9rem;
@@ -88,9 +89,19 @@
   max-width: 392px;
   padding: 13px;
   border: 1px solid var(--hi-app-panel-border);
+  position: relative;
+  overflow: hidden;
   border-radius: var(--hi-radius-md);
   background: var(--hi-app-panel-bg);
   box-shadow: var(--hi-shadow-md);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--hi-border);
+  }
 
   @include mixins.respond-below(sm) {
     max-width: 100%;
