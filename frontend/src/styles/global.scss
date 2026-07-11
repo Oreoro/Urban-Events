@@ -1,42 +1,42 @@
 @use "mixins";
 
 :root {
-  --ue-powder-blush: #e9897e;
-  --ue-eggshell: #f6f8fa;
-  --ue-icy-aqua: #e3f8f3;
-  --ue-light-blue: #eaf4ff;
-  --ue-blue-slate: #475467;
-  --ue-canvas: #f6f8fa;
-  --ue-canvas-soft: #eef2f6;
+  --ue-powder-blush: #f4eeee;
+  --ue-eggshell: #fbfbfa;
+  --ue-icy-aqua: #eef6ff;
+  --ue-light-blue: #edf5ff;
+  --ue-blue-slate: #787774;
+  --ue-canvas: #ffffff;
+  --ue-canvas-soft: #f7f7f5;
   --ue-surface: #ffffff;
-  --ue-ink: #111827;
-  --ue-ink-soft: #344054;
-  --ue-muted: #667085;
+  --ue-ink: #37352f;
+  --ue-ink-soft: #4f4d48;
+  --ue-muted: #787774;
   --ue-slate: var(--ue-ink-soft);
   --ue-slate-deep: var(--ue-ink);
-  --ue-slate-soft: #edf1f5;
+  --ue-slate-soft: #eeeeec;
   --ue-aqua: var(--ue-icy-aqua);
-  --ue-aqua-deep: #0e7c70;
+  --ue-aqua-deep: #2383e2;
   --ue-blush: var(--ue-powder-blush);
-  --ue-blush-deep: #d9705f;
-  --ue-coral: #d9705f;
-  --ue-coral-deep: #b9564a;
-  --ue-marigold: #b7791f;
-  --ue-navy: #253044;
-  --ue-navy-deep: #101828;
-  --ue-teal: #0e7c70;
-  --ue-teal-deep: #0b5f58;
+  --ue-blush-deep: #d97367;
+  --ue-coral: #d97367;
+  --ue-coral-deep: #b6534b;
+  --ue-marigold: #cb912f;
+  --ue-navy: #37352f;
+  --ue-navy-deep: #191918;
+  --ue-teal: #2383e2;
+  --ue-teal-deep: #0b6bcb;
   --ue-plum: var(--ue-navy);
   --ue-plum-deep: var(--ue-navy-deep);
   --ue-forest: var(--ue-teal);
   --ue-forest-deep: var(--ue-teal-deep);
-  --ue-mint: #e6f7f2;
-  --ue-sky: #eaf4ff;
-  --ue-border: #d7dee8;
-  --ue-border-strong: #b8c2cc;
+  --ue-mint: #eef6ff;
+  --ue-sky: #edf5ff;
+  --ue-border: #e6e4df;
+  --ue-border-strong: #d9d7d2;
 
-  --hi-font-heading: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
-  --hi-font-body: 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  --hi-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --hi-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --hi-text: var(--ue-ink);
   --hi-text-light: var(--ue-ink-soft);
   --hi-text-muted: var(--ue-muted);
@@ -51,7 +51,7 @@
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
   --hi-color-gray-dark: var(--hi-text-muted);
-  --hi-border: color-mix(in srgb, var(--ue-border) 82%, white);
+  --hi-border: color-mix(in srgb, var(--ue-border) 88%, white);
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);
@@ -59,13 +59,13 @@
   --hi-pink: var(--ue-coral-deep);
   --hi-primary-alt: var(--ue-coral-deep);
   --hi-action-fill: var(--hi-secondary-strong);
-  --hi-shell-bg: var(--ue-navy-deep);
-  --hi-shell-bg-strong: #0b1220;
-  --hi-shell-surface: #1d2939;
-  --hi-shell-surface-hover: #253044;
-  --hi-shell-text: #f8fafc;
-  --hi-shell-muted: #b7c3d0;
-  --hi-shell-accent: #8adfd0;
+  --hi-shell-bg: #f7f7f5;
+  --hi-shell-bg-strong: #eeeeec;
+  --hi-shell-surface: #eeeeec;
+  --hi-shell-surface-hover: #e8e8e5;
+  --hi-shell-text: #37352f;
+  --hi-shell-muted: #85837f;
+  --hi-shell-accent: #2383e2;
   --hi-scrollbar-thumb: color-mix(in srgb, var(--ue-blue-slate) 40%, transparent);
 
   --hi-color-white: #ffffff;
@@ -83,9 +83,9 @@
   --hi-radius-lg: 10px;
   --hi-radius-xl: 14px;
 
-  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 8%, transparent), 0 8px 18px color-mix(in srgb, var(--ue-ink) 6%, transparent);
-  --hi-shadow-md: 0 4px 10px color-mix(in srgb, var(--ue-ink) 8%, transparent), 0 14px 30px color-mix(in srgb, var(--ue-ink) 8%, transparent);
-  --hi-shadow-lg: 0 10px 22px color-mix(in srgb, var(--ue-ink) 10%, transparent), 0 24px 48px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent);
+  --hi-shadow-md: 0 2px 8px color-mix(in srgb, var(--ue-ink) 8%, transparent);
+  --hi-shadow-lg: 0 8px 24px color-mix(in srgb, var(--ue-ink) 10%, transparent);
 }
 
 * {
@@ -148,7 +148,7 @@ a {
 }
 
 .mantine-Button-root:hover:not([data-disabled]) {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .mantine-Button-root:active:not([data-disabled]) {
@@ -180,7 +180,7 @@ a {
 }
 
 .mantine-Button-root[data-variant="filled"] {
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-ink) 12%, transparent), 0 6px 14px color-mix(in srgb, var(--hi-action-fill) 12%, transparent);
+  box-shadow: none;
 }
 
 .mantine-Button-root[data-variant="light"] {

@@ -15,7 +15,7 @@
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 244px 1fr;
 
     &.closed {
       grid-template-areas:
@@ -27,8 +27,7 @@
 
   .main {
     grid-area: main;
-    padding: var(--hi-spacing-lg);
-    padding-bottom: calc(var(--hi-spacing-lg) + 40px);
+    padding: 32px 34px 56px;
     overflow: auto;
     background: var(--ue-canvas);
 

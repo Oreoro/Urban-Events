@@ -7,8 +7,8 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--brand-primary);
-  font-family: 'Space Grotesk', var(--hi-font-heading);
-  font-weight: 800;
+  font-family: var(--hi-font-heading);
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1;
   text-decoration: none;
@@ -23,15 +23,7 @@
 }
 
 .wordmarkText::after {
-  content: '';
-  position: absolute;
-  left: 0.04em;
-  right: 0.04em;
-  bottom: -0.2em;
-  height: 0.12em;
-  border-radius: 999px;
-  background: var(--brand-accent);
-  opacity: 1;
+  display: none;
 }
 
 .primary {
@@ -39,27 +31,27 @@
 }
 
 .accent {
-  color: var(--brand-accent);
+  color: var(--brand-primary);
 }
 
 .light {
   --brand-primary: var(--hi-shell-text);
-  --brand-accent: var(--hi-shell-accent);
-  --brand-subtle: rgba(255, 255, 255, 0.72);
+  --brand-accent: var(--hi-shell-text);
+  --brand-subtle: var(--hi-shell-muted);
 }
 
 .dark {
   --brand-primary: var(--hi-text);
-  --brand-accent: var(--ue-forest);
+  --brand-accent: var(--hi-text);
   --brand-subtle: var(--hi-text-muted);
 }
 
 .sm {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
 }
 
 .md {
-  font-size: 1.35rem;
+  font-size: 1.08rem;
 }
 
 .lg {

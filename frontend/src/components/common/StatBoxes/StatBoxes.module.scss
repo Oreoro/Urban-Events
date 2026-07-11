@@ -3,9 +3,9 @@
 .statistics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 12px;
   color: var(--hi-text);
-  margin: 0.5rem 0;
+  margin: 1rem 0 1.25rem;
 
   @include mixins.respond-below(lg) {
     grid-template-columns: repeat(2, 1fr);
@@ -19,21 +19,23 @@
 .statistic {
   display: flex;
   align-items: center;
-  padding: 1.25rem !important;
+  padding: 14px 15px !important;
   margin-bottom: 0 !important;
   height: 100%;
-  border-color: var(--hi-border-strong) !important;
+  min-height: 96px;
+  border-color: var(--hi-border) !important;
+  box-shadow: none !important;
 
   .leftPanel {
     flex: 1;
     display: grid;
     grid-template-rows: auto auto;
-    min-height: 65px;
+    min-height: 50px;
     gap: 2px;
 
     .number {
-      font-size: 1.75rem;
-      font-weight: 800;
+      font-size: 1.38rem;
+      font-weight: 700;
       letter-spacing: 0;
       line-height: 1.2;
       align-self: end;
@@ -45,9 +47,9 @@
     }
 
     .description {
-      font-size: 0.85rem;
-      color: var(--hi-color-gray-dark);
-      font-weight: 800;
+      font-size: 0.72rem;
+      color: var(--hi-text-muted);
+      font-weight: 600;
       align-self: start;
       text-transform: uppercase;
       letter-spacing: 0;
@@ -55,23 +57,25 @@
   }
 
   .rightPanel {
-    margin-left: 1rem;
+    margin-left: 0.9rem;
     align-self: flex-start;
 
     .icon {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: var(--hi-radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      box-shadow: 0 8px 16px color-mix(in srgb, var(--ue-ink) 12%, transparent);
+      color: var(--stat-color);
+      background: color-mix(in srgb, var(--stat-color) 12%, white);
+      border: 1px solid color-mix(in srgb, var(--stat-color) 18%, var(--hi-border));
+      box-shadow: none;
 
       @include mixins.respond-below(md) {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: var(--hi-radius-md);
       }
     }
   }

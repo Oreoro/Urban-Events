@@ -325,7 +325,7 @@ export const EventDashboard = () => {
                         </div>
                     </div>
                     <AreaChart
-                        h={300}
+                        h={260}
                         data={eventStats?.daily_stats.map(stat => ({
                             date: formatDateWithLocale(stat.date, 'chartDate', event.timezone),
                             orders_created: stat.orders_created,
@@ -337,9 +337,9 @@ export const EventDashboard = () => {
                         legendProps={{verticalAlign: 'bottom', height: 50}}
 
                         series={[
-                            {name: 'orders_created', color: 'blue.6', label: t`Completed Orders`},
-                            {name: 'products_sold', color: 'blue.2', label: t`Products Sold`},
-                            {name: 'attendees_registered', color: 'blue.4', label: t`Attendees Registered`},
+                            {name: 'orders_created', color: 'secondary.7', label: t`Completed Orders`},
+                            {name: 'products_sold', color: 'primary.6', label: t`Products Sold`},
+                            {name: 'attendees_registered', color: 'coral.5', label: t`Attendees Registered`},
                         ]}
                         curveType="bump"
                         tickLine="none"
@@ -358,7 +358,7 @@ export const EventDashboard = () => {
                     </div>
 
                     <AreaChart
-                        h={300}
+                        h={260}
                         pl={40}
                         pr={40}
                         data={eventStats?.daily_stats.map(stat => {
@@ -375,10 +375,10 @@ export const EventDashboard = () => {
                         withLegend
                         legendProps={{verticalAlign: 'bottom', height: 50}}
                         series={[
-                            {name: 'total_fees', label: t`Total Fees`, color: 'primary.3'},
-                            {name: 'total_sales_gross', label: t`Gross Sales`, color: 'grape.5'},
-                            {name: 'total_tax', label: t`Total Tax`, color: 'grape.7'},
-                            {name: 'total_refunded', label: t`Total Refunded`, color: 'red.6'},
+                            {name: 'total_fees', label: t`Total Fees`, color: 'slate.5'},
+                            {name: 'total_sales_gross', label: t`Gross Sales`, color: 'secondary.7'},
+                            {name: 'total_tax', label: t`Total Tax`, color: 'marigold.5'},
+                            {name: 'total_refunded', label: t`Total Refunded`, color: 'coral.6'},
                         ]}
                         curveType="natural"
                         tickLine="none"

@@ -2,7 +2,7 @@
 
 .topBar {
   grid-area: topbar;
-  background: var(--hi-shell-bg);
+  background: var(--hi-surface);
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease;
@@ -14,7 +14,8 @@
     display: flex;
     align-items: center;
     padding: 0 16px;
-    height: 60px;
+    height: 46px;
+    border-bottom: 1px solid var(--hi-border);
 
     @include mixins.respond-below(md) {
       padding: 0 12px;
@@ -22,21 +23,19 @@
   }
 
   .breadcrumbsRow {
-    padding: 10px 20px;
-    border-top: 1px solid var(--hi-border);
+    padding: 8px 34px;
+    border-bottom: 1px solid var(--hi-border);
     background-color: var(--hi-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    border-top-left-radius: var(--hi-radius-md);
-    box-shadow: 3px 0 12px color-mix(in srgb, var(--ue-ink) 8%, transparent);
+    box-shadow: none;
     position: relative;
     z-index: 5;
-    min-height: 44px;
+    min-height: 40px;
 
     @include mixins.respond-below(md) {
-      border-top-left-radius: 0;
       padding: 10px 16px;
     }
   }
@@ -60,8 +59,8 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.85rem;
-    color: var(--hi-text-light);
+    font-size: 0.82rem;
+    color: var(--hi-text-muted);
     flex: 1;
     min-width: 0;
     overflow-x: auto;
@@ -99,8 +98,8 @@
     }
 
     a {
-      color: var(--hi-text-light);
-      font-weight: 650;
+      color: var(--hi-text-muted);
+      font-weight: 500;
       transition: color 0.2s ease;
       position: relative;
       @include mixins.ellipsis();
@@ -121,7 +120,7 @@
         left: 0;
         width: 0;
         height: 1px;
-        background-color: var(--hi-secondary-strong);
+        background-color: var(--hi-shell-accent);
         transition: width 0.2s ease;
       }
 
@@ -150,20 +149,20 @@
   }
 
   &.withShadow {
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent);
   }
 
   .burger {
-    --burger-color: var(--hi-color-white);
+    --burger-color: var(--hi-text);
     @include mixins.respond-above(md) {
       display: none;
     }
   }
 
   .logo {
-    color: var(--hi-shell-text);
+    color: var(--hi-text);
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     padding-inline: 5px;
@@ -180,12 +179,12 @@
   .menu {
     display: flex;
     align-items: center;
-    color: var(--hi-shell-text);
+    color: var(--hi-text);
   }
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: var(--hi-shell-bg);
+      background: var(--hi-surface);
     }
   }
 
@@ -193,9 +192,9 @@
     margin-right: 8px;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 650;
     transition: transform 0.2s ease;
-    color: var(--hi-shell-text);
+    color: var(--hi-text-muted);
 
     &:hover {
       transform: translateY(-1px);
