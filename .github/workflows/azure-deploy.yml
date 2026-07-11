@@ -94,6 +94,13 @@ jobs:
                 "VITE_FRONTEND_URL": os.environ["PUBLIC_FRONTEND_URL"],
                 "ENV_VITE_API_URL_CLIENT": os.environ["PUBLIC_API_URL_CLIENT"],
                 "ENV_VITE_FRONTEND_URL": os.environ["PUBLIC_FRONTEND_URL"],
+                # Keep production independent of Redis unless a Redis service is restored.
+                "CACHE_DRIVER": "file",
+                "CACHE_STORE": "file",
+                "SESSION_DRIVER": "file",
+                "QUEUE_CONNECTION": "sync",
+                "WEBHOOK_QUEUE_NAME": "default",
+                "REDIS_SCHEME": "tcp",
             }
 
             settings_by_name = {setting["name"]: setting for setting in settings}
