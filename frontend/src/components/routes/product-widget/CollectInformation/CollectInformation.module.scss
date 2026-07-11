@@ -1,30 +1,27 @@
 @use "../../../../styles/mixins";
 
-$font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-$radius-sm: var(--hi-radius-sm);
-$radius-xs: var(--hi-radius-sm);
+$font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$radius-sm: 10px;
 $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .waitlistBanner {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 10px 12px;
-  margin-bottom: 16px;
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
-  box-shadow: none;
+  gap: 14px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border-radius: $radius-sm;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
 }
 
 .waitlistBannerIcon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--hi-radius-sm);
-  background: transparent;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #059669;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,41 +30,36 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .waitlistBannerTitle {
   font-family: $font-display;
-  font-size: 0.88rem;
-  font-weight: 650;
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-size: 15px;
+  font-weight: 600;
+  color: #065f46;
   margin: 0 0 4px 0;
 }
 
 .waitlistBannerText {
   font-size: 13px;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  color: #047857;
   margin: 0;
   line-height: 1.5;
 }
 
 .sectionHeading {
   font-family: $font-display;
-  font-size: 0.96rem;
-  font-weight: 680;
-  margin: 22px 0 6px;
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--checkout-text-primary, #111827);
 }
 
 .sectionHelper {
-  font-size: 0.82rem;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  margin: 0 0 14px;
-}
-
-.validEmailIcon {
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  font-size: 14px;
+  color: var(--checkout-text-secondary, #6B7280);
+  margin-bottom: 20px;
 }
 
 .copyDetailsSection {
-  margin-top: 4px;
-  padding-top: 14px;
-  border-top: 1px solid var(--checkout-border, var(--hi-border));
+  padding-top: 16px;
+  border-top: 1px solid var(--checkout-border, #F3F4F6);
 }
 
 .copyDetailsMultiple {
@@ -79,64 +71,47 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .copyLabel {
   flex-shrink: 0;
-  color: var(--checkout-text-primary, var(--hi-text));
-}
-
-.tooltipTarget {
-  display: inline-block;
-}
-
-.billingHeading {
-  margin: 22px 0 8px;
-  color: var(--checkout-text-primary, var(--hi-text));
-  font-family: $font-display;
-  font-size: 0.98rem;
-  font-weight: 680;
-  line-height: 1.35;
+  color: var(--checkout-text-primary, #111827);
 }
 
 .ticketSection {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .ticketTypeHeader {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 9px;
+  margin-bottom: 16px;
+  margin-top: 24px;
 
   h3 {
     font-family: $font-display;
     margin: 0;
-    font-size: 0.92rem;
-    font-weight: 680;
-    color: var(--checkout-text-primary, var(--hi-text));
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--checkout-text-primary, #111827);
   }
 }
 
 .ticketCountBadge {
-  background: var(--checkout-surface, var(--hi-surface));
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  font-size: 0.74rem;
+  background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
+  color: var(--checkout-accent, var(--mantine-primary-color-filled));
+  font-size: 12px;
   padding: 2px 10px;
-  border-radius: $radius-xs;
+  border-radius: 12px;
   font-weight: 500;
 }
 
 .attendeeCard {
   position: relative;
-  background: var(--checkout-surface, var(--hi-app-panel-bg));
-  border-color: var(--checkout-border, var(--hi-app-panel-border)) !important;
-  border-radius: var(--hi-radius-sm);
-  box-shadow: none;
 }
 
 .attendeeCardHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .attendeeHeaderLeft {
@@ -146,12 +121,11 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .attendeeNumber {
-  width: 22px;
-  height: 22px;
-  border-radius: var(--hi-radius-sm);
-  background: transparent;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  border: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
+  color: var(--checkout-accent, var(--mantine-primary-color-filled));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,49 +137,49 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 .attendeeInfo {
   h4 {
     margin: 0 0 2px 0;
-    font-size: 0.92rem;
-    font-weight: 650;
-    color: var(--checkout-text-primary, var(--hi-text));
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--checkout-text-primary, #111827);
   }
 }
 
 .attendeeTicketType {
-  font-size: 0.8rem;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  font-size: 13px;
+  color: var(--checkout-text-secondary, #6B7280);
 }
 
 .copiedBadge {
-  background: var(--hi-status-neutral-bg);
-  color: var(--hi-status-neutral-text);
-  border: 1px solid var(--hi-status-neutral-border);
+  background: var(--checkout-accent-soft, #D1FAE5);
+  color: var(--checkout-accent, #065F46);
   font-size: 12px;
   padding: 4px 8px;
-  border-radius: $radius-xs;
+  border-radius: 12px;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .checkoutActions {
-  margin-top: 24px;
-  margin-bottom: 22px;
+  margin-top: 32px;
+  margin-bottom: 24px;
 }
 
 .continueButton {
   width: 100%;
-  min-height: 44px;
+  height: 48px;
   border-radius: $radius-sm;
   font-family: $font-display;
   font-weight: 600;
-  font-size: 0.88rem;
-  background: var(--hi-primary) !important;
-  border: 1px solid var(--hi-primary) !important;
-  color: var(--hi-color-white) !important;
-  transition: background-color $transition-fast, border-color $transition-fast;
+  font-size: 16px;
+  transition: transform $transition-fast, box-shadow $transition-fast;
 
   &:hover:not(:disabled) {
-    filter: none;
-    background: var(--hi-primary-hover) !important;
-    border-color: var(--hi-primary-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--checkout-accent-soft, rgba(0, 0, 0, 0.15));
+    filter: brightness(1.05);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
   }
 }
 
@@ -213,10 +187,10 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   margin-top: 12px;
   font-size: 12px;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  color: var(--checkout-text-secondary, #6B7280);
 
   a {
-    color: var(--checkout-text-primary, var(--hi-text));
+    color: var(--checkout-accent, var(--mantine-primary-color-filled));
     text-decoration: none;
 
     &:hover {

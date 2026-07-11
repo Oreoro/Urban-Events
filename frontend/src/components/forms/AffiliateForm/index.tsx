@@ -47,6 +47,7 @@ export const AffiliateForm = ({form, isEditing = false, existingCode, onGenerate
                             <Button
                                 variant="subtle"
                                 size="xs"
+                                color="gray"
                                 onClick={onGenerateCode}
                                 style={{fontWeight: 400}}
                                 title={t`Generate code`}

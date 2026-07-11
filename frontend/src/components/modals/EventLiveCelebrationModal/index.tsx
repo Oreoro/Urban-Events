@@ -40,7 +40,7 @@ export const EventLiveCelebrationModal = ({
                 className={classes.modal}
             >
                 <div className={classes.content}>
-                    <div className={classes.statusIcon}>
+                    <div className={classes.celebrationEmoji}>
                         <IconCheck size={46} stroke={1.8}/>
                     </div>
 
@@ -49,7 +49,7 @@ export const EventLiveCelebrationModal = ({
                     </Text>
 
                     <Text className={classes.subtitle}>
-                        {t`Your public event page is now available.`}
+                        {t`Congratulations! Your event is now visible to the public.`}
                     </Text>
 
                     <div className={classes.urlSection}>
@@ -67,6 +67,7 @@ export const EventLiveCelebrationModal = ({
                                         <Tooltip label={copied ? t`Copied!` : t`Copy link`}>
                                             <Button
                                                 variant="light"
+                                                color={copied ? 'teal' : 'gray'}
                                                 onClick={copy}
                                                 size="sm"
                                                 leftSection={copied ? <IconCheck size={14}/> : <IconCopy size={14}/>}

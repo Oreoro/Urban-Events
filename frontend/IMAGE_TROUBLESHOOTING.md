@@ -15,12 +15,12 @@ export VITE_AZURE_STORAGE_CONTAINER=urbanevents
 export VITE_AZURE_STORAGE_PUBLIC_ACCESS=true
 
 # App Configuration
-export VITE_APP_NAME="Urban Events"
-export VITE_APP_PRIMARY_COLOR=#37352F
-export VITE_APP_SECONDARY_COLOR=#FBFBFA
-export VITE_APP_FAVICON=/manifest-icons/favicon.svg
-export VITE_APP_LOGO_DARK=/logos/urban-events-text-dark.svg
-export VITE_APP_LOGO_LIGHT=/logos/urban-events-text-light.svg
+export VITE_APP_NAME=Hi.Events
+export VITE_APP_PRIMARY_COLOR=#0D9488
+export VITE_APP_SECONDARY_COLOR=#F8FFFF
+export VITE_APP_FAVICON=/favicon.svg
+export VITE_APP_LOGO_DARK=/images/balloons.svg
+export VITE_APP_LOGO_LIGHT=/images/balloons.svg
 export VITE_DEFAULT_IMAGE_URL=/images/event-thumb-1.jpg
 export VITE_API_URL_CLIENT=http://localhost:8000/api
 export VITE_API_URL_SERVER=http://localhost:8000/api
@@ -126,4 +126,4 @@ npm run dev:csr
 - **Container is already public** - no authentication complexity
 - **Connection strings** - only needed for backend uploads
 - **Frontend only needs** - URL, container, and public access flag
-- **Simple setup** - just 3 environment variables for Azure Storage
+- **Simple setup** - just 3 environment variables for Azure Storage 

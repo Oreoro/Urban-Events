@@ -15,17 +15,17 @@
 
   // Forgot password link
   p {
-    margin: 0.62rem 0 0;
-    text-align: left;
+    margin: 1rem 0 0;
+    text-align: center;
 
     a {
-      font-size: 0.76rem;
-      color: var(--hi-text-muted);
-      font-weight: 560;
-      transition: color 0.16s ease;
+      font-size: 0.8125rem;
+      color: var(--hi-color-gray-dark);
+      font-weight: 500;
+      transition: color 0.2s ease;
 
       &:hover {
-        color: var(--hi-text);
+        color: var(--hi-secondary-strong);
       }
     }
   }
@@ -33,30 +33,28 @@
 
 // Ticket Lookup Section
 .ticketLookup {
-  margin-top: 0.72rem;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-app-panel-bg);
-  overflow: hidden;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hi-color-gray-2);
 
   @include mixins.respond-below(sm) {
-    margin-top: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
   }
 }
 
 .ticketLookupTrigger {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  min-height: 32px;
-  padding: 0.42rem 0.58rem;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--hi-text-muted);
-  transition: background-color 0.16s ease, color 0.16s ease;
-  background: transparent;
+  padding: 0.5rem 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--hi-color-gray-dark);
+  transition: color 0.2s ease;
+  background: none;
   border: none;
   cursor: pointer;
 
@@ -65,8 +63,7 @@
   }
 
   &:hover {
-    background: var(--hi-control-bg-hover);
-    color: var(--hi-text);
+    color: var(--hi-secondary-strong);
   }
 
   &[data-expanded="true"] {
@@ -79,7 +76,6 @@
 }
 
 .chevron {
-  margin-left: auto;
   transition: transform 0.25s ease;
   opacity: 0.5;
 
@@ -89,9 +85,7 @@
 }
 
 .ticketLookupContent {
-  padding: 0.58rem;
-  border-top: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  padding-top: 1rem;
 }
 
 .ticketLookupForm {
@@ -109,38 +103,29 @@
   }
 
   :global(.mantine-TextInput-input) {
-    border-radius: var(--hi-radius-sm);
-    border: 1px solid var(--hi-border);
-    padding: 0.47rem 0.6rem;
-    font-size: 0.8rem;
-    background: var(--hi-surface);
-    min-height: 32px;
+    border-radius: var(--hi-radius-md);
+    border: 1.5px solid var(--hi-color-gray-2);
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    background: white;
 
     @include mixins.respond-below(sm) {
       font-size: 1rem;
     }
 
     &:focus {
-      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
+      border-color: var(--hi-secondary-strong);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--hi-secondary-strong) 18%, transparent);
     }
   }
 
   :global(.mantine-Button-root) {
-    height: 32px;
-    border-radius: var(--hi-radius-sm);
-    font-weight: 620;
-    font-size: 0.76rem;
-    padding: 0 1rem;
+    height: 38px;
+    border-radius: var(--hi-radius-md);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    padding: 0 1.25rem;
     white-space: nowrap;
-    background: var(--hi-primary) !important;
-    border: 1px solid var(--hi-primary) !important;
-    color: var(--hi-surface) !important;
-
-    &:hover:not(:disabled) {
-      background: var(--hi-primary-hover) !important;
-      border-color: var(--hi-primary-hover) !important;
-    }
 
     @include mixins.respond-below(sm) {
       height: 44px;
@@ -154,22 +139,22 @@
 }
 
 .successMessage {
-  text-align: left;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  border: 0;
+  text-align: center;
+  padding: 1.25rem;
+  background: var(--hi-color-gray);
+  border-radius: var(--hi-radius-lg);
+  border: 1px solid var(--hi-color-gray-2);
 
   @include mixins.respond-below(sm) {
     padding: 1rem;
   }
 
   p {
-    margin: 0 0 0.65rem;
-    font-size: 0.78rem;
-    line-height: 1.5;
+    margin: 0 0 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: var(--hi-text);
-    text-align: left;
+    text-align: center;
 
     @include mixins.respond-below(sm) {
       font-size: 0.8125rem;
@@ -178,8 +163,8 @@
 }
 
 .resetLink {
-  font-size: 0.76rem;
-  color: var(--hi-text-muted);
+  font-size: 0.8125rem;
+  color: var(--hi-color-gray-dark);
   text-decoration: underline;
   text-underline-offset: 2px;
   background: none;
@@ -188,6 +173,6 @@
   font-family: inherit;
 
   &:hover {
-    color: var(--hi-text);
+    color: var(--hi-secondary-strong);
   }
 }

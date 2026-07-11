@@ -2,15 +2,15 @@
   position: sticky;
   top: 0;
   z-index: 11;
-  background: var(--hi-surface);
-  color: var(--hi-text);
-  padding: 0.62rem 1.25rem;
+  background: #f57c00;
+  color: white;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: none;
-  border-bottom: 1px solid var(--hi-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid #e65100;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -33,7 +33,6 @@
 
 .icon {
   flex-shrink: 0;
-  color: var(--hi-text-muted);
 }
 
 .text {
@@ -52,16 +51,6 @@
 
 .button {
   flex-shrink: 0;
-  border-color: var(--hi-app-panel-border) !important;
-  background: var(--hi-shell-bg-strong) !important;
-  color: var(--hi-text) !important;
-  border-radius: var(--hi-radius-sm) !important;
-  font-weight: 600 !important;
-
-  &:hover {
-    background: var(--hi-control-bg-hover) !important;
-    border-color: var(--hi-border-strong) !important;
-  }
 
   @media (max-width: 768px) {
     width: 100%;

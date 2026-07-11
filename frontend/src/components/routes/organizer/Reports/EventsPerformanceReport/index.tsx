@@ -6,7 +6,6 @@ import {formatDateWithLocale} from "../../../../../utilites/dates.ts";
 import OrganizerReportTable from "../../../../common/OrganizerReportTable";
 import {t} from "@lingui/macro";
 import {Badge} from "@mantine/core";
-import classes from "../Reports.module.scss";
 
 const EventsPerformanceReport = () => {
     const {organizerId} = useParams();
@@ -21,17 +20,19 @@ const EventsPerformanceReport = () => {
     }
 
     const getStatusBadge = (eventState: string) => {
+        const colors: Record<string, string> = {
+            'past': 'gray',
+            'ongoing': 'green',
+            'on_sale': 'blue',
+            'upcoming': 'orange',
+        };
         const labels: Record<string, string> = {
             'past': t`Past`,
             'ongoing': t`Ongoing`,
             'on_sale': t`On Sale`,
             'upcoming': t`Upcoming`,
         };
-        return (
-            <Badge className={classes.eventStatusBadge} data-event-state={eventState} variant="outline" radius="sm">
-                {labels[eventState] || eventState}
-            </Badge>
-        );
+        return <Badge color={colors[eventState] || 'gray'}>{labels[eventState] || eventState}</Badge>;
     };
 
     const columns = [

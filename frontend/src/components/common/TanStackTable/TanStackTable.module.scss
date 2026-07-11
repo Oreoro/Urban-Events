@@ -3,40 +3,29 @@
 .tableWrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 1rem;
 }
 
 .toolbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 0.45rem;
-  min-height: 30px;
+  gap: 0.5rem;
 }
 
 .tableHead {
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-shell-bg-strong);
-    color: var(--hi-text-muted) !important;
-    padding: 0.34rem 0.5rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 1.25;
-    vertical-align: middle;
+    background-color: #f2f0f5;
+    color: var(--hi-secondary-text) !important;
+    padding: 20px !important;
   }
 }
 
 .card {
   padding: 0 !important;
   overflow: hidden;
-  border-radius: var(--hi-radius-sm) !important;
-  border-color: var(--hi-border) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: var(--hi-shadow-sm) !important;
 
   :global(.mantine-ScrollArea-viewport) {
     padding-bottom: 0;
@@ -48,39 +37,15 @@
 }
 
 .table {
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 100%;
-
   th {
     white-space: nowrap;
   }
 
   tbody tr {
-    transition: background-color 0.14s ease, box-shadow 0.14s ease;
-
-    &:hover {
-      background: var(--hi-app-hover-bg);
-
-      .stickyLeft,
-      .stickyRight {
-        background: var(--hi-app-hover-bg);
-      }
-    }
 
     td {
-      padding: 0.42rem 0.5rem !important;
+      padding: 20px !important;
       white-space: nowrap;
-      color: var(--hi-text-light);
-      border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
-      font-size: 0.78rem;
-      font-weight: 500;
-      line-height: 1.35;
-      vertical-align: middle;
-    }
-
-    &:last-child td {
-      border-bottom: none;
     }
   }
 
@@ -91,8 +56,7 @@
   position: sticky;
   left: 0;
   z-index: 10;
-  background: var(--hi-surface);
-  transition: background-color 0.14s ease;
+  background: var(--mantine-color-body);
 
   &::after {
     content: '';
@@ -110,8 +74,7 @@
   position: sticky;
   right: 0;
   z-index: 2;
-  background: var(--hi-surface);
-  transition: background-color 0.14s ease;
+  background: var(--mantine-color-body);
 
   &::before {
     content: '';
@@ -127,6 +90,5 @@
 
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: var(--hi-shell-bg-strong);
-  z-index: 12;
+  background-color: #f2f0f5;
 }

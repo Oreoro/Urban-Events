@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import {useNavigate, useParams} from "react-router";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {notifications} from "@mantine/notifications";
 import {
     orderClientPublic,
     ProductFormPayload,
@@ -131,14 +132,14 @@ const SelectProducts = (props: SelectProductsProps) => {
     }, [eventId]);
 
     useEffect(() => {
-        form.setFieldValue('affiliate_code', affiliateCode || "");
+        form.setFieldValue('affiliate_code', affiliateCode || null);
     }, [affiliateCode]);
 
     const form = useForm<ProductFormPayload>({
         initialValues: {
             products: undefined,
-            promo_code: props.promoCodeValid ? props.promoCode || "" : "",
-            affiliate_code: affiliateCode || "",
+            promo_code: props.promoCodeValid ? props.promoCode || null : null,
+            affiliate_code: affiliateCode || null,
             session_identifier: undefined,
         },
     });
@@ -166,7 +167,10 @@ const SelectProducts = (props: SelectProductsProps) => {
                 form.setErrors(error.response.data.errors);
             }
 
-            showError(error.response.data.errors?.products[0] || t`Unable to create product. Please check your details`);
+            notifications.show({
+                message: error.response.data.errors?.products[0] || t`Unable to create product. Please check your details`,
+                color: 'red',
+            });
         }
     });
 
@@ -194,7 +198,7 @@ const SelectProducts = (props: SelectProductsProps) => {
             if (promoCode) {
                 form.setFieldValue("promo_code", promoCode);
             } else {
-                form.setFieldValue("promo_code", "");
+                form.setFieldValue("promo_code", null);
                 setShowPromoCodeInput(false)
                 removeQueryStringFromUrl('promo_code');
             }
@@ -277,8 +281,6 @@ const SelectProducts = (props: SelectProductsProps) => {
         if (values && selectedProductQuantitySum > 0) {
             productMutation.mutate({
                 ...values,
-                promo_code: values.promo_code || null,
-                affiliate_code: values.affiliate_code || null,
                 session_identifier: getSessionIdentifier()
             });
         } else {
@@ -324,21 +326,42 @@ const SelectProducts = (props: SelectProductsProps) => {
             {orderInProcessOverlayVisible && (
                 <Modal
                     withCloseButton={false}
-                    withinPortal={false}
                     opened={true}
                     onClose={() => setOrderInProcessOverlayVisible(false)}
-                    classNames={{
-                        content: 'hi-embedded-checkout-modal-content',
-                        body: 'hi-embedded-checkout-modal-body',
+                    styles={{
+                        body: {
+                            padding: '30px 24px'
+                        },
+                        content: {
+                            borderRadius: '8px',
+                            backgroundColor: props.colors?.background || 'white'
+                        }
                     }}
                 >
-                    <div className={'hi-embedded-checkout-modal'}>
-                        <div className={'hi-embedded-checkout-modal-inner'}>
-                            <h3 className={'hi-embedded-checkout-modal-title'}>
+                    <div style={{
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '16px',
+                        color: props.colors?.primaryText || 'inherit'
+                    }}>
+                        <div style={{width: '100%'}}>
+                            <h3 style={{
+                                margin: '0 0 12px 0',
+                                fontSize: '20px',
+                                fontWeight: '600',
+                                color: props.colors?.primaryText || 'inherit'
+                            }}>
                                 {t`Please continue in the new tab`}
                             </h3>
 
-                            <p className={'hi-embedded-checkout-modal-text'}>
+                            <p style={{
+                                margin: '0 0 20px 0',
+                                fontSize: '15px',
+                                lineHeight: '1.5',
+                                color: props.colors?.primaryText || 'inherit'
+                            }}>
                                 {t`If a new tab did not open automatically, please click the button below to continue to checkout.`}
                             </p>
 
@@ -349,7 +372,18 @@ const SelectProducts = (props: SelectProductsProps) => {
                                 rel={'noopener noreferrer'}
                                 fullWidth
                                 size="md"
-                                className={'hi-embedded-checkout-modal-primary'}
+                                styles={{
+                                    root: {
+                                        backgroundColor: props.colors?.secondary || 'var(--primary-color, #228be6)',
+                                        color: props.colors?.secondaryText || 'var(--accent-contrast, white)',
+                                        fontWeight: 600,
+                                        marginBottom: '12px',
+                                        '&:hover': {
+                                            backgroundColor: props.colors?.secondary || 'var(--primary-color, #1c7ed6)',
+                                            filter: 'brightness(0.95)',
+                                        }
+                                    }
+                                }}
                             >
                                 {t`Continue to Checkout`}
                             </Button>
@@ -358,7 +392,15 @@ const SelectProducts = (props: SelectProductsProps) => {
                                 onClick={() => setOrderInProcessOverlayVisible(false)}
                                 variant={'subtle'}
                                 size={'sm'}
-                                className={'hi-embedded-checkout-modal-secondary'}
+                                styles={{
+                                    root: {
+                                        color: props.colors?.primaryText || 'var(--primary-color, #228be6)',
+                                        '&:hover': {
+                                            backgroundColor: 'transparent',
+                                            textDecoration: 'underline'
+                                        }
+                                    }
+                                }}
                             >
                                 {t`Dismiss this message`}
                             </Button>
@@ -374,9 +416,9 @@ const SelectProducts = (props: SelectProductsProps) => {
                         {productCategories && productCategories.map((category) => {
                             return (
                                 <div className={'hi-product-category-row'} key={category.id}>
-                                    <h2 className={classNames('hi-product-category-title', {
-                                        'hi-product-category-title-with-description': !!category.description,
-                                    })}>
+                                    <h2 className={'hi-product-category-title'} style={category.description ? {
+                                        marginBottom: '0px'
+                                    } : {}}>
                                         {category.name}
                                     </h2>
                                     {category.description && (
@@ -580,7 +622,9 @@ const SelectProducts = (props: SelectProductsProps) => {
                  */
             }
             {(props.showPoweredBy ?? true) && (
-                <PoweredByFooter className={'hi-widget-powered-by'}/>
+                <PoweredByFooter style={{
+                    'color': props.colors?.primaryText || '#000',
+                }}/>
             )}
         </div>
     );

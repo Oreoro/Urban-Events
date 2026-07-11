@@ -48,6 +48,7 @@ const MessagePreview = ({message, eventId, onBack, eventTimezone}: { message: Me
                 <div className={classes.previewHeaderTop}>
                     <ActionIcon
                         variant="subtle"
+                        color="gray"
                         className={classes.backButton}
                         onClick={onBack}
                         title={t`Back to messages`}
@@ -71,14 +72,10 @@ const MessagePreview = ({message, eventId, onBack, eventTimezone}: { message: Me
                         {message.status === 'SCHEDULED' && (
                             <Button
                                 variant="light"
+                                color="red"
                                 size="compact-xs"
                                 onClick={handleCancel}
                                 loading={cancelMutation.isPending}
-                                style={{
-                                    color: 'var(--hi-status-danger-text)',
-                                    borderColor: 'var(--hi-status-danger-border)',
-                                    background: 'var(--hi-status-danger-bg)',
-                                }}
                             >
                                 <IconX size={12}/> {t`Cancel`}
                             </Button>
@@ -87,7 +84,7 @@ const MessagePreview = ({message, eventId, onBack, eventTimezone}: { message: Me
                 </div>
                 <div className={classes.previewSubject}>{message.subject}</div>
                 <div className={classes.previewMeta}>
-                    <Avatar className={classes.previewAvatar} size={34} radius="md">
+                    <Avatar color="grape" size={36} radius="xl">
                         {getInitials(senderName)}
                     </Avatar>
                     <div className={classes.previewSenderInfo}>

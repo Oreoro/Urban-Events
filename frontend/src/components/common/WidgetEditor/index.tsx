@@ -11,7 +11,6 @@ import {useGetEventSettings} from "../../../queries/useGetEventSettings.ts";
 import {LoadingMask} from '../LoadingMask';
 import {Event} from '../../../types.ts';
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
-import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 
 export const WidgetEditor = () => {
     const {eventId} = useParams();
@@ -22,11 +21,11 @@ export const WidgetEditor = () => {
     const {data: eventSettings, isFetched: isEventSettingsFetched} = useGetEventSettings(eventId);
     const form = useForm({
         initialValues: {
-            background_color: URBAN_EVENTS_THEME.background,
-            primary_color: URBAN_EVENTS_THEME.accent,
-            primary_text_color: URBAN_EVENTS_THEME.accent,
-            secondary_color: URBAN_EVENTS_THEME.accent,
-            secondary_text_color: URBAN_EVENTS_THEME.accentContrast,
+            background_color: "#ffffff",
+            primary_color: "#828282",
+            primary_text_color: "#ffffff",
+            secondary_color: "#f5f5f5",
+            secondary_text_color: "#828282",
             continue_button_text: t`Continue`,
             padding: 20,
             autoResize: true,
@@ -337,9 +336,9 @@ export default App;
                         </div>
                     </div>
                     <div className={classes.websitePlaceholder}>
-                        <h1>{t`Event page`}</h1>
+                        <h1>{t`Your awesome website`}</h1>
                         <p className={classes.lorem}>
-                            {t`Event details, schedule, and organizer notes.`}
+                            {t`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat elementum...`}
                         </p>
 
                         <div className={classes.widgetWrapper}>
@@ -362,7 +361,7 @@ export default App;
                         </div>
 
                         <p className={classes.lorem}>
-                            {t`More event context and FAQs.`}
+                            {t`Nam placerat elementum...`}
                         </p>
                     </div>
                 </section>

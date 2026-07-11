@@ -62,7 +62,7 @@ export const CancelOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
 
             {products && <AttendeeList order={order} products={products}/>}
 
-            <Alert className={classes.alert} variant="light" title={t`Please Note`}
+            <Alert className={classes.alert} variant="light" color="blue" title={t`Please Note`}
                    icon={<IconInfoCircle/>}>
                 {t`Canceling will cancel all attendees associated with this order, and release the tickets back into the available pool.`}
             </Alert>
@@ -78,12 +78,8 @@ export const CancelOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                 />
             )}
 
-            <Button
-                loading={cancelOrderMutation.isPending}
-                className={classes.cancelButton}
-                fullWidth
-                onClick={handleCancelOrder}
-            >
+            <Button loading={cancelOrderMutation.isPending} className={'mb20'} color={'red'} fullWidth
+                    onClick={handleCancelOrder}>
                 {t`Cancel Order`}
             </Button>
         </Modal>

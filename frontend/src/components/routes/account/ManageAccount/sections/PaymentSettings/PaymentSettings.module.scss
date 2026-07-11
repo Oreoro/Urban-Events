@@ -1,16 +1,11 @@
 .stripeInfo {
-  padding: 8px;
-
+  padding: 10px;
   h2 {
     margin: 0;
-    color: var(--hi-text);
-    font-size: 1rem;
-    font-weight: 680;
   }
 
   p {
-    color: var(--hi-text-muted);
-    font-size: 0.84rem;
+    color: var(--hi-color-gray-dark);
 
     &:last-child {
       margin-bottom: 0;
@@ -19,31 +14,28 @@
 }
 
 .migrationNotice {
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  margin-bottom: 16px;
-  box-shadow: var(--hi-shadow-sm);
+  background: var(--mantine-color-blue-0);
+  border: 1px solid var(--mantine-color-blue-2);
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .migrationBanner {
-  border: 1px solid var(--hi-app-panel-border);
-  margin-bottom: 14px;
+  border: 2px solid var(--mantine-color-blue-4);
+  margin-bottom: 16px;
 }
 
 .platformPanel {
-  margin-bottom: 12px;
-  border-color: var(--hi-app-panel-border);
-  box-shadow: var(--hi-shadow-sm);
-  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
 
   &.activePlatform {
-    border: 1px solid var(--hi-border-strong);
-    background: var(--hi-app-panel-bg);
+    border: 2px solid var(--mantine-color-green-5);
+    background: var(--mantine-color-green-0);
 
     &.ca {
-      border-color: var(--hi-app-panel-border);
-      background: var(--hi-shell-bg-strong);
+      border-color: var(--mantine-color-orange-5);
+      background: var(--mantine-color-orange-0);
     }
   }
 

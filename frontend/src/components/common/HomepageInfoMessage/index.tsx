@@ -60,7 +60,7 @@ export const HomepageInfoMessage = ({
 
     return (
         <div className={classes.container}>
-            <div className={classes.card} data-status={status}>
+            <div className={classes.card}>
                 <div className={classes.iconContainer}>
                     <StatusIcon className={classes.icon} stroke={1.7}/>
                 </div>

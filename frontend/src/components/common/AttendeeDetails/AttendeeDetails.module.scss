@@ -5,16 +5,10 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
 
   .block {
-    width: calc(50% - 4px);
-    margin-bottom: 0;
-    padding: 9px 10px;
-    border: 1px solid var(--hi-app-panel-border);
-    border-radius: var(--hi-radius-sm);
-    background: var(--hi-shell-bg-strong);
-    color: var(--hi-text-light);
+    width: 50%;
+    margin-bottom: var(--hi-spacing-md);
   }
 
   @include mixins.respond-below(md) {
@@ -22,7 +16,7 @@
     flex-wrap: nowrap;
 
     .block {
-      margin-bottom: 0;
+      margin-bottom: 10px;
       width: auto;
 
       &:last-of-type {
@@ -32,10 +26,6 @@
   }
 
   .title {
-    display: block;
-    margin-bottom: 3px;
-    color: var(--hi-text-muted);
-    font-size: 0.72rem;
-    font-weight: 620;
+    font-weight: bold;
   }
 }

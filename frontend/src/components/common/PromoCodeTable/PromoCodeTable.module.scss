@@ -5,25 +5,18 @@
 
 .items {
   width: 100%;
-  display: grid;
-  gap: 6px;
 }
 
 .itemRow {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-  padding: 9px 10px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-app-panel-bg);
-  box-shadow: var(--hi-shadow-xs);
+  padding: 1em;
+  border-bottom: 1px solid #eee;
 }
 
 .itemName {
   flex: 1;
-  color: var(--hi-text);
-  font-weight: 650;
+  font-weight: bold;
 }
 
 .itemValue {
@@ -42,11 +35,7 @@
 }
 
 .noCodes {
-  padding: 16px;
+  padding: 1em;
   text-align: center;
-  color: var(--hi-text-muted);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-app-panel-bg);
-  box-shadow: var(--hi-shadow-sm);
+  color: #999;
 }

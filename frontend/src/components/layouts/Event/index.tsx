@@ -189,16 +189,10 @@ const EventLayoutContent = () => {
                             rightSection={<IconChevronRight size={14}/>}
                         >
                             {event?.status === 'DRAFT'
-                                ? <span className={classes.statusLabel}>
-                                    <span className={classes.statusDot} data-status="draft"/>
-                                    {t`Draft`}
-                                    <span className={classes.statusAction}>{t`Publish`}</span>
-                                </span>
-                                : <span className={classes.statusLabel}>
-                                    <span className={classes.statusDot} data-status="live"/>
-                                    {t`Live`}
-                                    <span className={classes.statusAction}>{t`Unpublish`}</span>
-                                </span>
+                                ? <span>{t`Draft`} <span
+                                    className={classes.statusAction}>{t`- Click to Publish`}</span></span>
+                                : <span>{t`Live`} <span
+                                    className={classes.statusAction}>{t`- Click to Unpublish`}</span></span>
                             }
                         </TopBarButton>
                     )}

@@ -6,7 +6,6 @@ import {
     IconCash,
     IconChevronDown,
     IconChevronRight,
-    IconPlus,
     IconReceiptTax,
     IconReportMoney,
     IconTicket,
@@ -15,6 +14,7 @@ import {
 } from '@tabler/icons-react';
 import {t, Trans} from '@lingui/macro';
 
+import {PageTitle} from "../../../common/PageTitle";
 import {PageBody} from "../../../common/PageBody";
 import {useGetOrganizerStats} from "../../../../queries/useGetOrganizerStats.ts";
 import {useGetEvents} from "../../../../queries/useGetEvents.ts";
@@ -24,6 +24,7 @@ import {formatNumber} from "../../../../utilites/helpers.ts";
 import {Event, Order, QueryFilters} from '../../../../types';
 import {useGetOrganizerOrders} from "../../../../queries/useGetOrganizerOrders.ts";
 import classes from './OrganizerDashboard.module.scss';
+import {StatBox} from "../../../common/StatBoxes";
 import {useGetOrganizer} from "../../../../queries/useGetOrganizer.ts";
 import {EventCard} from "../../../common/EventCard";
 import {currenciesMap} from "../../../../../data/currencies.ts";
@@ -37,6 +38,7 @@ interface OrganizerStatDisplayItem {
     value: string | number;
     description: string;
     icon: ReactNode;
+    backgroundColor: string;
 }
 
 export const DashboardSkeleton = () => {
@@ -49,7 +51,7 @@ export const DashboardSkeleton = () => {
 
             <div className={classes.statisticsSkeletonContainer}>
                 {[...Array(6)].map((_, index) => (
-                    <Skeleton key={index} height={58} radius="sm"/>
+                    <Skeleton key={index} height={105} radius="md"/>
                 ))}
             </div>
             <div className={classes.recentItemsGrid}>
@@ -105,9 +107,9 @@ export const OrganizerDashboard = () => {
     } = useGetEvents(getEventQueryFilters({}) as QueryFilters);
     const recentEvents = eventsResponse?.data;
 
-    const showOverallSkeleton = (organizerStatsQuery.isLoading && !stats) || isLoadingOrders || isLoadingEvents;
+    const showOverallSkeleton = organizerStatsQuery.isLoading || isLoadingOrders || isLoadingEvents;
 
-    if (showOverallSkeleton || !recentOrders || !recentEvents || !organizer) {
+    if (showOverallSkeleton || !stats || !recentOrders || !recentEvents || !organizer) {
         return <DashboardSkeleton/>;
     }
 
@@ -118,138 +120,118 @@ export const OrganizerDashboard = () => {
                 value: formatCurrency(stats.total_gross_sales, selectedCurrency),
                 description: t`Gross Sales`,
                 icon: <IconCash size={18}/>,
+                backgroundColor: 'var(--ue-forest)'
             },
             {
                 value: formatNumber(stats.total_products_sold),
                 description: t`Products Sold`,
                 icon: <IconTicket size={18}/>,
+                backgroundColor: 'var(--ue-plum)'
             },
             {
                 value: formatNumber(stats.total_attendees_registered),
                 description: t`Attendees`,
                 icon: <IconUsers size={18}/>,
+                backgroundColor: 'var(--ue-coral)'
             },
             {
                 value: formatNumber(stats.total_orders),
                 description: t`Total Orders`,
                 icon: <IconBuildingStore size={18}/>,
+                backgroundColor: 'var(--ue-marigold)'
             },
             {
                 value: formatCurrency(stats.total_tax, selectedCurrency),
                 description: t`Total Tax`,
                 icon: <IconReceiptTax size={18}/>,
+                backgroundColor: 'var(--ue-blue-slate)'
             },
             {
                 value: formatCurrency(stats.total_fees, selectedCurrency),
                 description: t`Total Fees`,
                 icon: <IconReportMoney size={18}/>,
+                backgroundColor: 'var(--ue-forest-deep)'
             },
         );
     }
 
     return (
         <PageBody>
-            <section className={classes.overviewPanel}>
-                <div className={classes.headerSection}>
-                    <div className={classes.dashboardIdentity}>
-                        <div className={classes.pageIcon} aria-hidden="true">
-                            <IconBuildingStore size={20} stroke={1.7}/>
-                        </div>
-                        <div className={classes.titleBlock}>
-                            <p className={classes.kicker}><Trans>Workspace overview</Trans></p>
-                            <h1 className={classes.pageTitle}>
-                                {organizer ? organizer.name : t`Organizer Dashboard`}
-                            </h1>
-                            <div className={classes.metaPills} aria-label={t`Dashboard summary`}>
-                                <span>{selectedCurrency}</span>
-                                <span>
-                                    <Trans>{recentEvents.length} events</Trans>
-                                </span>
-                                <span>
-                                    <Trans>{recentOrders.length} recent orders</Trans>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.headerActions}>
-                        {currencies?.length > 1 && (
-                            <Menu
-                                width={240}
-                                position="bottom-end"
-                                disabled={organizerStatsQuery.isLoading}
-                                withinPortal
-                            >
-                                <Menu.Target>
-                                    <UnstyledButton className={classes.currencySelector}
-                                                    disabled={organizerStatsQuery.isLoading}>
-                                    <span className={classes.currencyText}>
-                                        {selectedCurrency}
+            <div className={classes.headerSection}>
+                <PageTitle className={classes.pageTitle}>
+                    {organizer ? `${organizer.name} - ${t`Dashboard`}` : t`Organizer Dashboard`}
+                </PageTitle>
+                {currencies?.length > 1 && (
+                    <Menu
+                        shadow="md"
+                        width={240}
+                        position="bottom-end"
+                        disabled={organizerStatsQuery.isLoading}
+                        withinPortal
+                    >
+                        <Menu.Target>
+                            <UnstyledButton className={classes.currencySelector}
+                                            disabled={organizerStatsQuery.isLoading}>
+                            <span className={classes.currencyText}>
+                                {selectedCurrency}
+                            </span>
+                                <IconChevronDown size={14} className={classes.currencyIcon}/>
+                            </UnstyledButton>
+                        </Menu.Target>
+                        <Menu.Dropdown className={classes.currencyDropdown}>
+                            <div className={classes.currencyScrollArea}>
+                                {currencies
+                                    .map((currency) => (
+                                        <Menu.Item
+                                            key={currency.value}
+                                            onClick={() => setSelectedCurrency(currency.value)}
+                                            className={selectedCurrency === currency.value ? classes.selectedCurrency : ''}
+                                        >
+                                    <span className={classes.currencyOption}>
+                                        <span className={classes.currencyCode}>{currency.value}</span>
+                                        <span className={classes.currencyLabel}>{currency.label}</span>
                                     </span>
-                                        <IconChevronDown size={14} className={classes.currencyIcon}/>
-                                    </UnstyledButton>
-                                </Menu.Target>
-                                <Menu.Dropdown className={classes.currencyDropdown}>
-                                    <div className={classes.currencyScrollArea}>
-                                        {currencies
-                                            .map((currency) => (
-                                                <Menu.Item
-                                                    key={currency.value}
-                                                    onClick={() => setSelectedCurrency(currency.value)}
-                                                    className={selectedCurrency === currency.value ? classes.selectedCurrency : ''}
-                                                >
-                                            <span className={classes.currencyOption}>
-                                                <span className={classes.currencyCode}>{currency.value}</span>
-                                                <span className={classes.currencyLabel}>{currency.label}</span>
-                                            </span>
-                                                </Menu.Item>
-                                            ))}
-                                    </div>
-                                </Menu.Dropdown>
-                            </Menu>
-                        )}
-                        <Button
-                            className={classes.createEventButton}
-                            size="xs"
-                            leftSection={<IconPlus size={14}/>}
-                            onClick={() => setShowCreateEventModal(true)}
-                        >
-                            <Trans>New event</Trans>
-                        </Button>
-                    </div>
-                </div>
+                                        </Menu.Item>
+                                    ))}
+                            </div>
+                        </Menu.Dropdown>
+                    </Menu>
+                )}
+            </div>
 
-                {/* Stats Section */}
-                {stats && organizerStatItems.length > 0 && (
-                    <div className={classes.statisticsContainer}>
-                        {organizerStatItems.map((item) => (
-                            <div className={classes.statCard} key={item.description}>
-                                <div className={classes.statContent}>
-                                    <span className={classes.statLabel}>
-                                        <span className={classes.statIcon}>{item.icon}</span>
-                                        {item.description}
-                                    </span>
-                                    <span className={classes.statValue}>{item.value}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {!stats && !organizerStatsQuery.isLoading && (
-                    <Card className={classes.noticeCard}>
-                        <Trans>Organizer statistics are not available for the selected currency or an error
-                            occurred.</Trans>
-                    </Card>
-                )}
-            </section>
+            {/* Stats Section */}
+            {organizerStatsQuery.isLoading && !stats && (
+                <div className={classes.statisticsContainer}>
+                    {[...Array(4)].map((_, index) => ( // Show 4 skeleton StatBoxes
+                        <Skeleton key={index} height={105} radius="md"/>
+                    ))}
+                </div>
+            )}
+            {stats && organizerStatItems.length > 0 && (
+                <div className={classes.statisticsContainer}>
+                    {organizerStatItems.map((item) => (
+                        <StatBox
+                            key={item.description}
+                            number={String(item.value)}
+                            description={item.description}
+                            icon={item.icon}
+                            backgroundColor={item.backgroundColor}
+                        />
+                    ))}
+                </div>
+            )}
+            {!stats && !organizerStatsQuery.isLoading && (
+                <Card>
+                    <Trans>Organizer statistics are not available for the selected currency or an error
+                        occurred.</Trans>
+                </Card>
+            )}
 
             {/* Recent Orders and Events Lists */}
             <div className={classes.recentItemsGrid}>
                 {/* Events Section - First on mobile, second on desktop */}
                 <div className={`${classes.recentSection} ${classes.eventsSection}`}>
-                    <div className={classes.sectionHeader}>
-                        <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
-                        <span className={classes.sectionCount}>{recentEvents.length}</span>
-                    </div>
+                    <h3 className={classes.sectionTitle}><Trans>Upcoming Events</Trans></h3>
                     {isLoadingEvents && (
                         <div className={classes.skeletonStack}>
                             {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
@@ -282,10 +264,7 @@ export const OrganizerDashboard = () => {
 
                 {/* Orders Section - Second on mobile, first on desktop */}
                 <div className={`${classes.recentSection} ${classes.ordersSection}`}>
-                    <div className={classes.sectionHeader}>
-                        <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
-                        <span className={classes.sectionCount}>{recentOrders.length}</span>
-                    </div>
+                    <h3 className={classes.sectionTitle}><Trans>Recent Orders</Trans></h3>
                     {isLoadingOrders && (
                         <div className={classes.skeletonStack}>
                             {[...Array(3)].map((_, i) => <Skeleton key={i} height={100} radius="md"/>)}
@@ -302,7 +281,7 @@ export const OrganizerDashboard = () => {
                                     <Card className={classes.orderCard}>
                                         <div className={classes.orderMain}>
                                             <div className={classes.orderAvatar}>
-                                                <IconUserCircle size={16} stroke={1.7}/>
+                                                <IconUserCircle size={24} stroke={1.5}/>
                                             </div>
                                             <div className={classes.orderDetails}>
                                                 <div className={classes.orderCustomer}>
@@ -310,10 +289,8 @@ export const OrganizerDashboard = () => {
                                                         {order.first_name} {order.last_name}
                                                     </span>
                                                     <Badge
-                                                        className={classes.orderStatusBadge}
-                                                        data-status={order.status}
-                                                        data-payment-status={order.payment_status}
-                                                        variant="outline"
+                                                        color={getOrderStatusColor(order.status, order.payment_status)}
+                                                        variant="light"
                                                         radius="sm"
                                                         size="xs"
                                                     >
@@ -340,7 +317,7 @@ export const OrganizerDashboard = () => {
                     )}
                     {!isLoadingOrders && (!recentOrders || recentOrders.length === 0) && (
                         <div className={classes.emptyState}>
-                            <IconReceiptTax className={classes.emptyStateIcon} size={46} stroke={1.5}/>
+                            <div className={classes.emptyStateIcon}>📦</div>
                             <h4><Trans>No orders yet</Trans></h4>
                             <p><Trans>When customers purchase tickets, their orders will appear here.</Trans></p>
                         </div>
@@ -355,6 +332,19 @@ export const OrganizerDashboard = () => {
             )}
         </PageBody>
     );
+};
+
+const getOrderStatusColor = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {
+    if (status === 'CANCELLED' || paymentStatus === 'PAYMENT_FAILED') {
+        return 'red';
+    }
+    if (status === 'COMPLETED' || paymentStatus === 'PAYMENT_RECEIVED') {
+        return 'teal';
+    }
+    if (status === 'AWAITING_OFFLINE_PAYMENT' || paymentStatus === 'AWAITING_OFFLINE_PAYMENT' || status === 'RESERVED' || paymentStatus === 'AWAITING_PAYMENT') {
+        return 'orange';
+    }
+    return 'gray';
 };
 
 const formatOrderStatus = (status: Order['status'], paymentStatus?: Order['payment_status']): string => {

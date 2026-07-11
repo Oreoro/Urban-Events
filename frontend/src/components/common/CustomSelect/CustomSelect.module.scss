@@ -4,27 +4,15 @@
 }
 
 :global {
-  .mantine-Combobox-dropdown {
-    border-color: var(--hi-app-panel-border);
-    background: var(--hi-app-panel-bg);
-    box-shadow: var(--hi-shadow-sm);
-    padding: 4px;
-  }
-
   .mantine-Combobox-option[data-active] {
-    background-color: var(--hi-shell-bg);
+    background-color: var(--mantine-color-blue-light);
   }
 
   .mantine-Combobox-option[data-selected] {
-    background-color: var(--hi-shell-bg);
+    background-color: var(--mantine-color-blue-light);
 
     &[data-active] {
-      background-color: var(--hi-shell-surface);
+      background-color: var(--mantine-color-blue-light-hover);
     }
-  }
-
-  .mantine-Combobox-option {
-    border-radius: var(--hi-radius-sm);
-    color: var(--hi-text);
   }
 }

@@ -248,8 +248,8 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
 
                 {tierLimitError && (
                     <Alert
-                        className={classes.errorAlert}
                         variant="light"
+                        color="red"
                         icon={<IconAlertCircle size="1rem"/>}
                         mb="md"
                     >
@@ -266,6 +266,7 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                 {!formIsDisabled && !tierLimitError && supportEmail && (
                     <Alert
                         variant="light"
+                        color="blue"
                         icon={<IconInfoCircle size="1rem"/>}
                         mb="md"
                     >
@@ -448,7 +449,7 @@ export const SendMessageModal = (props: EventMessageModalProps) => {
                                 >
                                     {isScheduled ? t`Schedule Message` : (form.values.is_test ? t`Send Test` : t`Send Message`)}
                                 </Button>
-                                <Menu width={220} position="bottom-end">
+                                <Menu shadow="md" width={220} position="bottom-end">
                                     <Menu.Target>
                                         <Button
                                             type="button"

@@ -1,25 +1,23 @@
 .dangerZone {
-  border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-md);
-  padding: 16px;
-  margin-bottom: 16px;
-  background: var(--hi-app-panel-bg);
-  box-shadow: var(--hi-shadow-sm);
+  border: 1px solid var(--mantine-color-red-3);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .heading {
-  color: var(--hi-status-danger-text);
-  font-size: 0.94rem;
-  font-weight: 620;
-  margin: 0 0 10px 0;
+  color: var(--mantine-color-red-7);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .section {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--hi-border);
+  padding: 15px 0;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
 
   &:last-child {
     border-bottom: none;
@@ -32,53 +30,13 @@
 }
 
 .sectionTitle {
-  color: var(--hi-text);
-  font-weight: 620;
-  font-size: 0.86rem;
+  font-weight: 500;
+  font-size: 14px;
   margin: 0 0 4px 0;
 }
 
 .sectionDescription {
-  color: var(--hi-text-muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
+  color: var(--mantine-color-gray-6);
+  font-size: 13px;
   margin: 0 0 12px 0;
-}
-
-.notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-shell-bg-strong);
-}
-
-.noticeIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
-  color: var(--hi-text);
-}
-
-.noticeTitle {
-  color: var(--hi-text);
-  font-size: 0.9rem;
-  font-weight: 620;
-  line-height: 1.35;
-  margin: 1px 0 4px;
-}
-
-.noticeDescription {
-  color: var(--hi-text-muted);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin: 0;
 }

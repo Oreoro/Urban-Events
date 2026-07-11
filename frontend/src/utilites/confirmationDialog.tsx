@@ -19,39 +19,22 @@ export const confirmationDialog = (
 
     const checkoutStyles = options?.useCheckoutColors ? {
         header: {
-            backgroundColor: 'var(--checkout-surface, var(--hi-app-panel-bg))',
+            backgroundColor: 'var(--checkout-surface, #FFFFFF)',
         },
         title: {
-            color: 'var(--checkout-text-primary, var(--hi-text))',
+            color: 'var(--checkout-text-primary, #1a1a1a)',
         },
         content: {
-            backgroundColor: 'var(--checkout-surface, var(--hi-app-panel-bg))',
+            backgroundColor: 'var(--checkout-surface, #FFFFFF)',
         },
         body: {
-            color: 'var(--checkout-text-primary, var(--hi-text))',
+            color: 'var(--checkout-text-primary, #1a1a1a)',
         },
     } : undefined;
 
     modals.openConfirmModal({
-        title: t`Confirm action`,
-        children: message,
+        title: message,
         labels,
-        centered: true,
-        radius: "md",
-        size: "sm",
-        overlayProps: {
-            blur: 3,
-            opacity: 0.28,
-        },
-        cancelProps: {
-            variant: "default",
-        },
-        confirmProps: {
-            variant: "filled",
-        },
-        groupProps: {
-            gap: "xs",
-        },
         styles: checkoutStyles,
         onConfirm: () => onConfirm(),
     });

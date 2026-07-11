@@ -2,35 +2,25 @@
 
 namespace HiEvents\Http\Actions\Orders\Payment\Neem;
 
-use HiEvents\DomainObjects\Generated\OrderDomainObjectAbstract;
 use HiEvents\Http\Actions\BaseAction;
-use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
+use HiEvents\Services\Application\Handlers\Order\Payment\Stripe\GetPaymentIntentHandler;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class GetPaymentIntentActionPublic extends BaseAction
 {
     public function __construct(
-        private readonly OrderRepositoryInterface $orderRepository,
+        private readonly GetPaymentIntentHandler $getPaymentIntentHandler,
     )
     {
     }
 
     public function __invoke(int $eventId, string $orderShortId): JsonResponse
     {
-        $order = $this->orderRepository->findFirstWhere([
-            OrderDomainObjectAbstract::EVENT_ID => $eventId,
-            OrderDomainObjectAbstract::SHORT_ID => $orderShortId,
-        ]);
+        $createIntent = $this->getPaymentIntentHandler->handle(
+            eventId: $eventId,
+            orderShortId: $orderShortId
+        );
 
-        if ($order === null) {
-            return $this->errorResponse("Order Not Found", Response::HTTP_NOT_FOUND);
-        }
-
-        return $this->jsonResponse([
-            'status' => $order->getStatus(),
-            'payment_status' => $order->getPaymentStatus(),
-            'payment_provider' => $order->getPaymentProvider(),
-        ]);
+        return new JsonResponse($createIntent->toArray());
     }
 }

@@ -10,29 +10,27 @@
 .dropzone {
   width: 100%;
   cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.2s ease;
 
   &:hover {
-    border-color: var(--hi-border-strong);
-    background: var(--hi-control-bg-hover);
+    border-color: var(--mantine-color-blue-6);
   }
 }
 
 .dropzoneRoot {
-  border: 1px dashed var(--hi-app-panel-border);
-  background-color: var(--hi-surface);
-  border-radius: var(--hi-radius-sm);
-  box-shadow: none;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  border: 2px dashed var(--mantine-color-gray-4);
+  background-color: var(--mantine-color-gray-0);
+  border-radius: 8px;
+  transition: border 0.2s ease;
 }
 
 .dropzoneInner {
-  min-height: 118px;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 14px;
+  padding: 16px;
 }
 
 .emptyDropzone {
@@ -40,12 +38,11 @@
 }
 
 .iconWrapper {
-  background-color: var(--hi-shell-bg-strong);
-  color: var(--hi-text-muted);
-  width: 44px;
-  height: 44px;
-  border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-app-panel-border);
+  background-color: var(--mantine-color-blue-0);
+  color: var(--mantine-color-blue-6);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,13 +60,11 @@
   max-width: 100%;
   max-height: 240px;
   object-fit: contain;
-  border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-app-panel-border);
+  border-radius: 4px;
 }
 
 .replaceButton {
   margin-top: 0.25rem;
-  min-height: 28px;
 }
 
 .loadingContainer {
@@ -83,8 +78,8 @@
 // Compact mode styles
 .compact {
   .dropzoneInner {
-    min-height: 54px;
-    padding: 10px;
+    min-height: 60px;
+    padding: 12px;
   }
   
   .previewImage {
@@ -110,11 +105,11 @@
 
 // Error states
 .dropzoneError {
-  border-color: var(--hi-border-strong) !important;
-  background-color: var(--hi-status-danger-bg);
+  border-color: var(--mantine-color-red-3) !important;
+  background-color: var(--mantine-color-red-0);
   
   &:hover {
-    border-color: var(--hi-border-strong) !important;
+    border-color: var(--mantine-color-red-4) !important;
   }
 }
 

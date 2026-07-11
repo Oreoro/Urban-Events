@@ -4,9 +4,6 @@ import {useGetEventPublic} from "../../../queries/useGetEventPublic.ts";
 import SelectProducts from "../../routes/product-widget/SelectProducts";
 import {useMemo} from "react";
 import {Loader} from "@mantine/core";
-import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
-
-const DEFAULT_WIDGET_TEXT_COLOR = "#111111";
 
 const ProductWidget = () => {
     const {eventId} = useParams();
@@ -18,12 +15,12 @@ const ProductWidget = () => {
 
         return {
             colors: {
-                background: searchParams.get("BackgroundColor") || URBAN_EVENTS_THEME.background,
-                primary: searchParams.get("PrimaryColor") || DEFAULT_WIDGET_TEXT_COLOR,
-                primaryText: searchParams.get("PrimaryTextColor") || DEFAULT_WIDGET_TEXT_COLOR,
-                secondary: searchParams.get("SecondaryColor") || URBAN_EVENTS_THEME.accent,
-                secondaryText: searchParams.get("SecondaryTextColor") || URBAN_EVENTS_THEME.accentContrast,
-                bodyBackground: searchParams.get("BackgroundColor") || URBAN_EVENTS_THEME.background,
+                background: searchParams.get("BackgroundColor") || '#ffffff',
+                primary: searchParams.get("PrimaryColor") || '#7b5db8',
+                primaryText: searchParams.get("PrimaryTextColor") || '#000000',
+                secondary: searchParams.get("SecondaryColor") || '#7b5eb9',
+                secondaryText: searchParams.get("SecondaryTextColor") || '#ffffff',
+                bodyBackground: searchParams.get("BackgroundColor") || '#ffffff',
             },
             continueButtonText: searchParams.get("ContinueButtonText") || 'Continue',
             padding: searchParams.get("Padding") || '10px',

@@ -22,6 +22,7 @@ import {useParams} from "react-router";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {useGetEventCheckInLists} from "../../../queries/useGetCheckInLists.ts";
 import Truncate from "../Truncate";
+import {notifications} from "@mantine/notifications";
 import {useModifyAttendee} from "../../../mutations/useModifyAttendee.ts";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {t, Trans} from "@lingui/macro";
@@ -90,11 +91,14 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                 }
             }, {
                 onSuccess: () => {
-                    showSuccess((
-                        <Trans>
-                            Successfully {attendee.status === 'CANCELLED' ? 'activated' : 'cancelled'} attendee
-                        </Trans>
-                    ));
+                    notifications.show({
+                        message: (
+                            <Trans>
+                                Successfully {attendee.status === 'CANCELLED' ? 'activated' : 'cancelled'} attendee
+                            </Trans>
+                        ),
+                        color: 'green',
+                    });
                 },
                 onError: () => showError(t`Failed to cancel attendee`),
             });
@@ -134,7 +138,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     enableHiding: false,
                     cell: (info: CellContext<Attendee, unknown>) => (
                         <Group gap="sm" wrap="nowrap">
-                            <Avatar size={34} radius={6} className={classes.attendeeAvatar}>
+                            <Avatar size={44} radius={10} color="primary" variant="light">
                                 {getInitials(info.row.original.first_name + ' ' + info.row.original.last_name)}
                             </Avatar>
                             <div className={classes.attendeeDetails}>
@@ -162,6 +166,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                         width={200}
                                         position="bottom"
                                         withArrow
+                                        shadow="md"
                                     >
                                         <Popover.Target>
                                             <Anchor
@@ -185,6 +190,7 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                 <Button
                                                     fullWidth
                                                     variant="light"
+                                                    color="gray"
                                                     leftSection={<IconCopy size={16}/>}
                                                     onClick={() => handleCopyEmail(info.row.original.email)}
                                                 >
@@ -209,13 +215,14 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                                                     className={classes.actionIcon}
                                                     size="xs"
                                                     variant="subtle"
+                                                    color="green"
                                                     onClick={() => {
                                                         if (info.row.original.notes && info.row.original.notes.length > 100) {
                                                             handleModalClick(info.row.original, viewModalOpen);
                                                         }
                                                     }}
                                                 >
-                                                    <IconNote size={14}/>
+                                                    <IconNote size={16}/>
                                                 </ActionIcon>
                                             </Tooltip>
                                         )}
@@ -398,7 +405,8 @@ export const AttendeeTable = ({attendees, openCreateModal}: AttendeeTableProps) 
                     </p>
                     <Button
                         size={'xs'}
-                        leftSection={<IconPlus size={16}/>}
+                        leftSection={<IconPlus/>}
+                        color={'green'}
                         onClick={() => openCreateModal()}>{t`Manually add an Attendee`}
                     </Button>
                 </>

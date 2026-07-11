@@ -1,117 +1,28 @@
+@use "../../../styles/mixins";
+
 .container {
-  display: grid;
-  grid-template-columns: 26px minmax(0, 1fr);
-  column-gap: 9px;
-  row-gap: 4px;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 720px;
-  text-align: left;
-  margin: 8px 0;
-  padding: 12px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-app-panel-bg);
-  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 500px;
+  text-align: center;
+  margin: 50px auto;
 
-  .visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    grid-row: 1 / span 4;
-    border: 0;
-    border-radius: var(--hi-radius-sm);
-    background: transparent;
-    color: var(--hi-text-muted);
-  }
+  img {
+    max-width: 500px;
+    width: 240px;
+    height: 240px;
 
-  > :not(.visual) {
-    grid-column: 2;
-    min-width: 0;
-  }
-
-  .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: currentColor;
+    @include mixins.respond-below(md) {
+      width: 170px;
+      height: 170px;
+    }
   }
 
   h2 {
-    font-size: 0.84rem;
-    font-weight: 680;
+    font-size: 1.3em;
     margin-bottom: 0;
-    margin-top: 0;
-    color: var(--hi-text);
-    line-height: 1.26;
-    letter-spacing: 0;
-  }
-
-  p {
-    color: var(--hi-text-muted);
-    font-size: 0.76rem;
-    line-height: 1.48;
-    margin: 0 0 5px;
-    max-width: 560px;
-  }
-
-  strong,
-  b {
-    color: var(--hi-text);
-    font-weight: 650;
-  }
-
-  :global(.mantine-Button-root) {
-    min-height: 28px;
-    border-radius: var(--hi-radius-sm);
-    font-size: 0.76rem;
-    font-weight: 640;
-    letter-spacing: 0;
-    box-shadow: none;
-
-    &[data-variant="filled"] {
-      border: 1px solid var(--hi-primary);
-      background: var(--hi-primary);
-      color: var(--hi-color-white);
-
-      &:hover {
-        border-color: var(--hi-primary-hover);
-        background: var(--hi-primary-hover);
-      }
-    }
-
-    &[data-variant="subtle"],
-    &[data-variant="light"],
-    &[data-variant="default"] {
-      border: 1px solid var(--hi-border);
-      background: var(--hi-surface);
-      color: var(--hi-text);
-
-      &:hover {
-        border-color: var(--hi-border-strong);
-        background: var(--hi-control-bg-hover);
-      }
-    }
-  }
-}
-
-.compact {
-  max-width: 100%;
-  margin: 6px 0;
-  padding: 6px 2px;
-  border-color: transparent;
-  background: transparent;
-  grid-template-columns: 24px minmax(0, 1fr);
-  column-gap: 8px;
-
-  .visual {
-    width: 24px;
-    height: 24px;
-  }
-
-  h2 {
-    margin-top: 0;
+    margin-top: 5px;
   }
 }

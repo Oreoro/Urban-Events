@@ -24,10 +24,10 @@ import {formatDateWithLocale, relativeDate} from "../../../utilites/dates.ts";
 import {Card} from "../Card";
 
 const placeholderColors = [
-    'var(--hi-surface-soft)',
-    'var(--hi-control-bg-hover)',
-    'var(--hi-status-neutral-bg)',
-    'var(--ue-slate-soft)',
+    'var(--ue-slate)',
+    'var(--hi-secondary-strong)',
+    'var(--ue-blush-deep)',
+    'var(--ue-blue-slate)',
 ];
 
 interface EventCardProps {
@@ -177,6 +177,11 @@ export function EventCard({event}: EventCardProps) {
                         />
                         <div className={`${classes.imageOverlay} ${!coverImageUrl ? classes.placeholderOverlay : ''}`}/>
 
+                        <div className={`${classes.statusBadge} ${classes[`status-${statusConfig.status}`]}`}>
+                            {statusConfig.pulse && <span className={classes.pulseDot}/>}
+                            {statusConfig.label}
+                        </div>
+
                         <div className={classes.dateBadge}>
                             <span className={classes.dateDay}>{dayOfMonth}</span>
                             <span className={classes.dateMonth}>{monthShort}</span>
@@ -185,13 +190,7 @@ export function EventCard({event}: EventCardProps) {
 
                     <div className={classes.content}>
                         <div className={classes.contentMain}>
-                            <div className={classes.titleRow}>
-                                <h3 className={classes.title}>{event.title}</h3>
-                                <span className={`${classes.statusBadge} ${classes[`status-${statusConfig.status}`]}`}>
-                                    {statusConfig.pulse && <span className={classes.pulseDot}/>}
-                                    {statusConfig.label}
-                                </span>
-                            </div>
+                            <h3 className={classes.title}>{event.title}</h3>
                             <div className={classes.meta}>
                                 <span className={classes.eventDate}>{shortDateTime}</span>
                                 <span className={classes.relativeDate}>({relativeDateStr})</span>

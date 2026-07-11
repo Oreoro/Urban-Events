@@ -2,39 +2,29 @@ import {notifications} from "@mantine/notifications";
 import {IconCheck, IconInfoSmall, IconX} from "@tabler/icons-react";
 import React, {ReactNode} from "react";
 
-const notificationDefaults = {
-    autoClose: 2600,
-    position: 'top-center' as const,
-    withCloseButton: true,
-};
-
-export const showSuccess = (message: ReactNode, icon: ReactNode = <IconCheck size={16}/>) => {
+export const showSuccess = (message: ReactNode, icon: ReactNode = <IconCheck/>) => {
     notifications.show({
-        ...notificationDefaults,
-        message,
-        color: 'primary',
-        icon,
-        'data-status': 'success',
+        message: message,
+        color: '#0d9488', // Changed to teal color
+        icon: icon,
+        position: 'top-center',
     })
 }
 
-export const showInfo = (message: ReactNode, icon: ReactNode = <IconInfoSmall size={17}/>) => {
+export const showInfo = (message: ReactNode, icon: ReactNode = <IconInfoSmall/>) => {
     notifications.show({
-        ...notificationDefaults,
-        message,
-        color: 'primary',
-        icon,
-        'data-status': 'info',
+        message: message,
+        color: 'blue',
+        icon: icon,
+        position: 'top-center',
     })
 }
 
-export const showError = (message: React.ReactNode, icon: ReactNode = <IconX size={16}/>) => {
+export const showError = (message: React.ReactNode, icon: ReactNode = <IconX/>) => {
     notifications.show({
-        ...notificationDefaults,
-        message,
+        message: message,
         color: 'red',
-        icon,
-        autoClose: 4200,
-        'data-status': 'error',
+        icon: icon,
+        position: 'top-center',
     })
 }

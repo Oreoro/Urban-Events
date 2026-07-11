@@ -2,8 +2,6 @@
 
 .container {
   min-width: 300px;
-  min-height: 100dvh;
-  background: var(--hi-shell-surface);
 }
 
 .header {
@@ -12,16 +10,14 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  padding: 16px 18px;
-  background-color: var(--hi-app-panel-bg);
-  border-bottom: 1px solid var(--hi-app-panel-border);
-  box-shadow: var(--hi-shadow-sm);
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
 
   .title {
-    margin: 0 0 12px;
-    font-size: 1rem;
-    font-weight: 650;
-    color: var(--hi-text);
+    margin-bottom: 10px;
+    margin-top: 0px;
   }
 
   .search {
@@ -46,8 +42,6 @@
       }
 
       .scanButton {
-        min-height: 32px;
-
         @include mixins.respond-below(sm) {
           display: none;
         }
@@ -76,23 +70,12 @@
 }
 
 .attendees {
-  padding: 12px;
-
   .attendee {
     display: flex;
     align-items: center;
-    background-color: var(--hi-app-panel-bg);
-    padding: 12px;
-    border: 1px solid var(--hi-app-panel-border);
-    border-radius: var(--hi-radius-md);
-    box-shadow: var(--hi-shadow-sm);
-    margin-bottom: 8px;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
-
-    &:hover {
-      background: var(--hi-control-bg-hover);
-      border-color: var(--hi-border-strong);
-    }
+    background-color: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
 
     .details {
       flex: 1;
@@ -102,12 +85,12 @@
 
       .awaitingPayment {
         margin: 3px 0;
-        color: var(--hi-text-light);
-        font-weight: 600;
+        color: #e09300;
+        font-weight: 900;
       }
 
       .product {
-        color: var(--hi-text-muted);
+        color: #999;
         font-size: 1em;
         display: flex;
         align-items: center;
@@ -118,55 +101,7 @@
 
     .actions {
       flex-grow: initial;
-      margin-left: 12px;
     }
-  }
-}
-
-.checkInButton,
-.unavailableButton,
-.checkOutButton {
-  min-width: 100px;
-  min-height: 36px;
-  border-radius: var(--hi-radius-sm) !important;
-  font-size: 0.82rem !important;
-  font-weight: 650 !important;
-  box-shadow: none !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
-}
-
-.checkInButton {
-  border: 1px solid var(--hi-primary) !important;
-  background: var(--hi-primary) !important;
-  color: var(--hi-color-white) !important;
-
-  &:hover:not(:disabled) {
-    border-color: var(--hi-primary-hover) !important;
-    background: var(--hi-primary-hover) !important;
-  }
-}
-
-.unavailableButton {
-  border: 1px solid var(--hi-border-strong) !important;
-  background: var(--hi-control-bg-active) !important;
-  color: var(--hi-text-muted) !important;
-
-  &:hover:not(:disabled) {
-    border-color: var(--hi-border-strong) !important;
-    background: var(--hi-control-bg-active) !important;
-    color: var(--hi-text-light) !important;
-  }
-}
-
-.checkOutButton {
-  border: 1px solid var(--hi-status-danger-border) !important;
-  background: var(--hi-status-danger-bg) !important;
-  color: var(--hi-status-danger-text) !important;
-
-  &:hover:not(:disabled) {
-    border-color: var(--hi-status-danger-border) !important;
-    background: color-mix(in srgb, var(--hi-status-danger-bg) 82%, var(--hi-status-danger-text)) !important;
-    color: var(--hi-status-danger-text) !important;
   }
 }
 
@@ -176,7 +111,7 @@
 
   .checkInCount {
     font-size: 1em;
-    color: var(--hi-text-muted);
+    color: #999;
     margin-bottom: 10px;
 
     h4 {

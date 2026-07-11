@@ -21,7 +21,6 @@ import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import classes from './Dashboard.module.scss';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -33,24 +32,15 @@ const AdminDashboard = () => {
     const {data: upcomingEvents, isLoading: isLoadingEvents} = useGetUpcomingEvents(10);
     const {data: dashboardData, isLoading: isLoadingDashboard} = useGetAdminDashboardData({days: 14, limit: 10});
 
-    const toFiniteNumber = (value: unknown): number => {
-        const parsed = Number(value);
-        return Number.isFinite(parsed) ? parsed : 0;
-    };
-
     const formatEventDate = (dateString: string, eventTimezone?: string) => {
         const eventDate = dayjs.utc(dateString);
-        if (!eventDate.isValid()) {
-            return t`Date unavailable`;
-        }
-
         const now = dayjs();
         const diffMinutes = eventDate.diff(now, 'minute');
         const diffHours = eventDate.diff(now, 'hour');
 
-        if (diffMinutes >= 0 && diffMinutes < 60) {
+        if (diffMinutes < 60) {
             return t`In ${diffMinutes} minutes`;
-        } else if (diffHours >= 0 && diffHours < 24) {
+        } else if (diffHours < 24) {
             return t`In ${diffHours} hours`;
         }
 
@@ -59,38 +49,38 @@ const AdminDashboard = () => {
             : eventDate.format('MMM D, h:mma');
     };
 
-    const formatCurrency = (amount: number | null | undefined, currency?: string) => {
+    const formatCurrency = (amount: number, currency?: string) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: currency || 'USD',
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
-        }).format(toFiniteNumber(amount));
+        }).format(amount);
     };
 
-    const formatNumber = (num: number | null | undefined) => {
-        return new Intl.NumberFormat().format(toFiniteNumber(num));
+    const formatNumber = (num: number) => {
+        return new Intl.NumberFormat().format(num);
     };
 
     return (
-        <Container size="xl" p={0} className={classes.dashboard}>
-            <Stack gap="lg" className={classes.dashboardStack}>
+        <Container size="xl" p="xl">
+            <Stack gap="xl">
                 <div>
                     <Title order={1} mb="xs">
                         <Trans>Admin Dashboard</Trans>
                     </Title>
                     {user && (
-                        <Text size="sm" c="dimmed">
+                        <Text size="lg" c="dimmed">
                             <Trans>Hello {user.full_name}, manage your platform from here.</Trans>
                         </Text>
                     )}
                 </div>
 
                 {/* Main Stats */}
-                <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="sm">
-                    <Paper shadow="none" p="md" radius="md" withBorder>
+                <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="md">
+                    <Paper shadow="sm" p="md" radius="md" withBorder>
                         <Group gap="xs">
-                            <IconUsers size={24} color="var(--hi-text-muted)" />
+                            <IconUsers size={32} color="var(--mantine-color-blue-6)" />
                             <div style={{flex: 1}}>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Total Users`}
@@ -106,9 +96,9 @@ const AdminDashboard = () => {
                         </Group>
                     </Paper>
 
-                    <Paper shadow="none" p="md" radius="md" withBorder>
+                    <Paper shadow="sm" p="md" radius="md" withBorder>
                         <Group gap="xs">
-                            <IconBuildingBank size={24} color="var(--hi-text-muted)" />
+                            <IconBuildingBank size={32} color="var(--mantine-color-green-6)" />
                             <div style={{flex: 1}}>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Total Accounts`}
@@ -124,9 +114,9 @@ const AdminDashboard = () => {
                         </Group>
                     </Paper>
 
-                    <Paper shadow="none" p="md" radius="md" withBorder>
+                    <Paper shadow="sm" p="md" radius="md" withBorder>
                         <Group gap="xs">
-                            <IconCalendarEvent size={24} color="var(--hi-text-muted)" />
+                            <IconCalendarEvent size={32} color="var(--mantine-color-orange-6)" />
                             <div style={{flex: 1}}>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Live Events`}
@@ -142,9 +132,9 @@ const AdminDashboard = () => {
                         </Group>
                     </Paper>
 
-                    <Paper shadow="none" p="md" radius="md" withBorder>
+                    <Paper shadow="sm" p="md" radius="md" withBorder>
                         <Group gap="xs">
-                            <IconTicket size={24} color="var(--hi-text-muted)" />
+                            <IconTicket size={32} color="var(--mantine-color-violet-6)" />
                             <div style={{flex: 1}}>
                                 <Text size="xs" c="dimmed" fw={500}>
                                     {t`Tickets Sold`}
@@ -165,17 +155,17 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="xs">
                         <Group gap="xs">
-                            <IconTrendingUp size={18} color="var(--hi-text-muted)" />
+                            <IconTrendingUp size={24} />
                             <Trans>Last 14 Days</Trans>
                         </Group>
                     </Title>
                     <Text size="xs" c="dimmed" mb="md">
                         <Trans>Monetary values are approximate totals across all currencies</Trans>
                     </Text>
-                    <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="sm">
-                        <Paper shadow="none" p="md" radius="md" withBorder>
+                    <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="md">
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <Group gap="xs">
-                                <IconCurrencyDollar size={24} color="var(--hi-text-muted)" />
+                                <IconCurrencyDollar size={32} color="var(--mantine-color-teal-6)" />
                                 <div style={{flex: 1}}>
                                     <Text size="xs" c="dimmed" fw={500}>
                                         {t`Platform Revenue`}
@@ -191,9 +181,9 @@ const AdminDashboard = () => {
                             </Group>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <Group gap="xs">
-                                <IconShoppingCart size={24} color="var(--hi-text-muted)" />
+                                <IconShoppingCart size={32} color="var(--mantine-color-cyan-6)" />
                                 <div style={{flex: 1}}>
                                     <Text size="xs" c="dimmed" fw={500}>
                                         {t`Orders Completed`}
@@ -209,9 +199,9 @@ const AdminDashboard = () => {
                             </Group>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <Group gap="xs">
-                                <IconCurrencyDollar size={24} color="var(--hi-text-muted)" />
+                                <IconCurrencyDollar size={32} color="var(--mantine-color-lime-6)" />
                                 <div style={{flex: 1}}>
                                     <Text size="xs" c="dimmed" fw={500}>
                                         {t`Orders Total`}
@@ -227,9 +217,9 @@ const AdminDashboard = () => {
                             </Group>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <Group gap="xs">
-                                <IconUserPlus size={24} color="var(--hi-text-muted)" />
+                                <IconUserPlus size={32} color="var(--mantine-color-pink-6)" />
                                 <div style={{flex: 1}}>
                                     <Text size="xs" c="dimmed" fw={500}>
                                         {t`New Signups`}
@@ -251,7 +241,7 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="md">
                         <Group gap="xs">
-                            <IconTrendingUp size={18} color="var(--hi-text-muted)" />
+                            <IconTrendingUp size={24} />
                             <Trans>Popular Events (Last 14 Days)</Trans>
                         </Group>
                     </Title>
@@ -259,7 +249,7 @@ const AdminDashboard = () => {
                     {isLoadingDashboard ? (
                         <Skeleton height={200} radius="md" />
                     ) : dashboardData?.popular_events && dashboardData.popular_events.length > 0 ? (
-                        <Paper shadow="none" radius="md" withBorder>
+                        <Paper shadow="sm" radius="md" withBorder>
                             <Table striped highlightOnHover>
                                 <Table.Thead>
                                     <Table.Tr>
@@ -285,10 +275,10 @@ const AdminDashboard = () => {
                             </Table>
                         </Paper>
                     ) : (
-                        <Paper shadow="none" p="lg" radius="md" withBorder>
+                        <Paper shadow="sm" p="xl" radius="md" withBorder>
                             <Stack align="center" gap="xs">
-                                <IconTrendingUp size={32} color="var(--hi-text-muted)" />
-                                <Text size="sm" c="dimmed">
+                                <IconTrendingUp size={48} color="var(--mantine-color-dimmed)" />
+                                <Text size="lg" c="dimmed">
                                     <Trans>No popular events in the last 14 days</Trans>
                                 </Text>
                             </Stack>
@@ -300,7 +290,7 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="md">
                         <Group gap="xs">
-                            <IconEye size={18} color="var(--hi-text-muted)" />
+                            <IconEye size={24} />
                             <Trans>Most Viewed Events (Last 14 Days)</Trans>
                         </Group>
                     </Title>
@@ -308,7 +298,7 @@ const AdminDashboard = () => {
                     {isLoadingDashboard ? (
                         <Skeleton height={200} radius="md" />
                     ) : dashboardData?.most_viewed_events && dashboardData.most_viewed_events.length > 0 ? (
-                        <Paper shadow="none" radius="md" withBorder>
+                        <Paper shadow="sm" radius="md" withBorder>
                             <Table striped highlightOnHover>
                                 <Table.Thead>
                                     <Table.Tr>
@@ -332,10 +322,10 @@ const AdminDashboard = () => {
                             </Table>
                         </Paper>
                     ) : (
-                        <Paper shadow="none" p="lg" radius="md" withBorder>
+                        <Paper shadow="sm" p="xl" radius="md" withBorder>
                             <Stack align="center" gap="xs">
-                                <IconEye size={32} color="var(--hi-text-muted)" />
-                                <Text size="sm" c="dimmed">
+                                <IconEye size={48} color="var(--mantine-color-dimmed)" />
+                                <Text size="lg" c="dimmed">
                                     <Trans>No viewed events in the last 14 days</Trans>
                                 </Text>
                             </Stack>
@@ -347,7 +337,7 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="md">
                         <Group gap="xs">
-                            <IconBuildingBank size={18} color="var(--hi-text-muted)" />
+                            <IconBuildingBank size={24} />
                             <Trans>Top Organizers (Last 14 Days)</Trans>
                         </Group>
                     </Title>
@@ -355,7 +345,7 @@ const AdminDashboard = () => {
                     {isLoadingDashboard ? (
                         <Skeleton height={200} radius="md" />
                     ) : dashboardData?.top_organizers && dashboardData.top_organizers.length > 0 ? (
-                        <Paper shadow="none" radius="md" withBorder>
+                        <Paper shadow="sm" radius="md" withBorder>
                             <Table striped highlightOnHover>
                                 <Table.Thead>
                                     <Table.Tr>
@@ -380,10 +370,10 @@ const AdminDashboard = () => {
                             </Table>
                         </Paper>
                     ) : (
-                        <Paper shadow="none" p="lg" radius="md" withBorder>
+                        <Paper shadow="sm" p="xl" radius="md" withBorder>
                             <Stack align="center" gap="xs">
-                                <IconBuildingBank size={32} color="var(--hi-text-muted)" />
-                                <Text size="sm" c="dimmed">
+                                <IconBuildingBank size={48} color="var(--mantine-color-dimmed)" />
+                                <Text size="lg" c="dimmed">
                                     <Trans>No organizer activity in the last 14 days</Trans>
                                 </Text>
                             </Stack>
@@ -395,7 +385,7 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="md">
                         <Group gap="xs">
-                            <IconUserPlus size={18} color="var(--hi-text-muted)" />
+                            <IconUserPlus size={24} />
                             <Trans>Recent Account Signups</Trans>
                         </Group>
                     </Title>
@@ -403,7 +393,7 @@ const AdminDashboard = () => {
                     {isLoadingDashboard ? (
                         <Skeleton height={200} radius="md" />
                     ) : dashboardData?.recent_accounts && dashboardData.recent_accounts.length > 0 ? (
-                        <Paper shadow="none" radius="md" withBorder>
+                        <Paper shadow="sm" radius="md" withBorder>
                             <Table striped highlightOnHover>
                                 <Table.Thead>
                                     <Table.Tr>
@@ -428,10 +418,10 @@ const AdminDashboard = () => {
                                             <Table.Td>
                                                 <Group gap="xs">
                                                     {account.account_verified_at && (
-                                                        <Badge size="xs" variant="light">{t`Verified`}</Badge>
+                                                        <Badge size="xs" color="green" variant="light">{t`Verified`}</Badge>
                                                     )}
                                                     {account.stripe_connect_setup_complete && (
-                                                        <Badge size="xs" variant="light">{t`Stripe`}</Badge>
+                                                        <Badge size="xs" color="blue" variant="light">{t`Stripe`}</Badge>
                                                     )}
                                                 </Group>
                                             </Table.Td>
@@ -441,10 +431,10 @@ const AdminDashboard = () => {
                             </Table>
                         </Paper>
                     ) : (
-                        <Paper shadow="none" p="lg" radius="md" withBorder>
+                        <Paper shadow="sm" p="xl" radius="md" withBorder>
                             <Stack align="center" gap="xs">
-                                <IconUserPlus size={32} color="var(--hi-text-muted)" />
-                                <Text size="sm" c="dimmed">
+                                <IconUserPlus size={48} color="var(--mantine-color-dimmed)" />
+                                <Text size="lg" c="dimmed">
                                     <Trans>No recent account signups</Trans>
                                 </Text>
                             </Stack>
@@ -456,25 +446,25 @@ const AdminDashboard = () => {
                 <div>
                     <Title order={2} mb="md">
                         <Group gap="xs">
-                            <IconClock size={18} color="var(--hi-text-muted)" />
+                            <IconClock size={24} />
                             <Trans>Events Starting in Next 24 Hours</Trans>
                         </Group>
                     </Title>
 
                     {isLoadingEvents ? (
                         <Stack gap="md">
-                            <Skeleton height={82} radius="md" />
-                            <Skeleton height={82} radius="md" />
-                            <Skeleton height={82} radius="md" />
+                            <Skeleton height={100} radius="md" />
+                            <Skeleton height={100} radius="md" />
+                            <Skeleton height={100} radius="md" />
                         </Stack>
                     ) : upcomingEvents?.data && upcomingEvents.data.length > 0 ? (
                         <Stack gap="md">
                             {upcomingEvents.data.map((event: any) => (
-                                <Paper key={event.id} shadow="none" p="sm" radius="md" withBorder>
+                                <Paper key={event.id} shadow="sm" p="md" radius="md" withBorder>
                                     <Group justify="space-between" align="center">
                                         <div style={{flex: 1}}>
                                             <Group gap="xs">
-                                                <Text fw={650} size="sm">{event.title}</Text>
+                                                <Text fw={600} size="lg">{event.title}</Text>
                                                 <Badge color="orange" variant="light">
                                                     {formatEventDate(event.start_date, event.timezone)}
                                                 </Badge>
@@ -492,10 +482,10 @@ const AdminDashboard = () => {
                             ))}
                         </Stack>
                     ) : (
-                        <Paper shadow="none" p="lg" radius="md" withBorder>
+                        <Paper shadow="sm" p="xl" radius="md" withBorder>
                             <Stack align="center" gap="xs">
-                                <IconCalendarEvent size={32} color="var(--hi-text-muted)" />
-                                <Text size="sm" c="dimmed">
+                                <IconCalendarEvent size={48} color="var(--mantine-color-dimmed)" />
+                                <Text size="lg" c="dimmed">
                                     <Trans>No events starting in the next 24 hours</Trans>
                                 </Text>
                             </Stack>

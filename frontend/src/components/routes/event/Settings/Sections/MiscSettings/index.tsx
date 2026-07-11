@@ -82,7 +82,7 @@ export const MiscSettings = () => {
                         required
                     />
                     {form.errors['price_display_mode'] && (
-                        <div style={{color: 'var(--hi-status-danger-text)'}}>
+                        <div style={{color: 'red'}}>
                             {form.errors['price_display_mode']}
                         </div>
                     )}

@@ -1,13 +1,12 @@
 import {Event, QueryFilters} from "../../../../types.ts";
 import {useGetEvents} from "../../../../queries/useGetEvents.ts";
 import {EventCard} from "../../../common/EventCard";
-import {t} from "@lingui/macro";
+import {t, Trans} from "@lingui/macro";
 import {SearchBarWrapper} from "../../../common/SearchBar";
 import {Button, Menu, Skeleton} from "@mantine/core";
 import {
     IconArrowRight,
     IconBuilding,
-    IconCalendarEvent,
     IconCalendarPlus,
     IconChevronDown,
     IconPlus,
@@ -27,14 +26,15 @@ import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper
 import {EventsDashboardStatusButtons} from "../../../common/EventsDashboardStatusButtons";
 import {NoEventsBlankSlate} from "../../../common/NoEventsBlankSlate";
 import {useState} from "react";
+import {getConfig} from "../../../../utilites/config.ts";
 import {getImageUrl} from "../../../../utilites/urlHelper.ts";
 
 const DashboardSkeleton = () => {
     return (
         <>
-            <Skeleton height={58} radius="sm"/>
-            <Skeleton height={58} radius="sm"/>
-            <Skeleton height={58} radius="sm"/>
+            <Skeleton height={120} radius="l" mb="20px"/>
+            <Skeleton height={120} radius="l" mb="20px"/>
+            <Skeleton height={120} radius="l"/>
         </>
     );
 }
@@ -82,14 +82,11 @@ export function Dashboard() {
     return (
         <div className={classes.eventsContainer}>
             <div className={classes.pageHeader}>
-                <div className={classes.headerIdentity}>
-                    <div className={classes.pageIcon}>
-                        <IconCalendarEvent size={18} stroke={1.8}/>
-                    </div>
-                    <div className={classes.headerContent}>
-                        <div className={classes.pageKicker}>{t`Events database`}</div>
-                        <h1 className={classes.pageTitle}>{getHeading()}</h1>
-                    </div>
+                <div className={classes.headerContent}>
+                    <h1 className={classes.pageTitle}>{getHeading()}</h1>
+                    <p className={classes.welcomeMessage}>
+                        <Trans>Welcome to {getConfig('VITE_APP_NAME', 'Urban Events')}, here's a listing of all your events</Trans>
+                    </p>
                 </div>
 
                 {/* Organizer Navigation */}
@@ -161,7 +158,7 @@ export function Dashboard() {
                 ) : null}
             </div>
 
-            <ToolBar className={classes.toolbarCard} searchComponent={() => (
+            <ToolBar searchComponent={() => (
                 <SearchBarWrapper
                     placeholder={t`Search by event name...`}
                     setSearchParams={setSearchParams}
@@ -178,13 +175,12 @@ export function Dashboard() {
                     >
                         <Menu.Target>
                             <Button
-                                className={classes.createButton}
-                                leftSection={<IconPlus size={14}/>}
+                                leftSection={<IconPlus/>}
+                                color={'secondary'}
                                 rightSection={
-                                    <IconChevronDown size={14} stroke={1.5}/>
+                                    <IconChevronDown stroke={1.5}/>
                                 }
                                 pr={12}
-                                size="xs"
                             >
                                 {t`Create new`}
                             </Button>
@@ -223,22 +219,14 @@ export function Dashboard() {
             {(events?.length === 0 && isEventsFetched)
                 && <NoEventsBlankSlate openCreateModal={openCreateModal} eventsState={eventsState}/>}
 
-            {((isEventsFetching && !events) || (events && events.length > 0)) && (
-                <div className={classes.eventsListPanel} aria-label={t`Events list`}>
-                    <div className={classes.eventsListHeader} aria-hidden="true">
-                        <span>{t`Event`}</span>
-                        <span>{t`When / where`}</span>
-                        <span>{t`Performance`}</span>
-                        <span>{t`Actions`}</span>
-                    </div>
-                    {(isEventsFetching && !events) && <DashboardSkeleton/>}
+            <div>
+                {(isEventsFetching && !events) && <DashboardSkeleton/>}
 
-                    {events?.map((event: Event) =>
-                        (
-                            <EventCard key={event.id} event={event}/>
-                        ))}
-                </div>
-            )}
+                {events?.map((event: Event) =>
+                    (
+                        <EventCard key={event.id} event={event}/>
+                    ))}
+            </div>
             {events && events.length > 0
                 && <Pagination value={searchParams.pageNumber}
                                onChange={(value) => setSearchParams({pageNumber: value})}

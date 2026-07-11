@@ -5,9 +5,10 @@
 }
 
 .submitButton {
-  border-radius: var(--hi-radius-md);
+  border-radius: 10px;
 
   &:hover {
     opacity: 0.9;
+    transform: translateY(-1px);
   }
 }

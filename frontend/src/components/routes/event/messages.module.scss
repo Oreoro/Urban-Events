@@ -2,7 +2,7 @@
 
 .mailLayout {
   display: flex;
-  background: var(--hi-shell-bg);
+  background: #ffffff;
   overflow: hidden;
   margin: calc(var(--hi-spacing-lg) * -1);
   margin-bottom: calc((var(--hi-spacing-lg) + 40px) * -1);
@@ -23,8 +23,8 @@
   min-width: 360px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--hi-border);
-  background: var(--hi-shell-surface);
+  border-right: 1px solid var(--mantine-color-gray-2);
+  background: #ffffff;
 
   @media (max-width: 991px) {
     width: 300px;
@@ -42,8 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 14px 10px;
-  border-bottom: 1px solid var(--hi-border);
+  padding: 16px 16px 10px;
   flex-shrink: 0;
 }
 
@@ -54,27 +53,25 @@
 }
 
 .listHeading {
-  font-size: 1.02rem;
-  font-weight: 650;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
-  color: var(--hi-text);
+  color: var(--mantine-color-dark-8);
 }
 
 .messageCount {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--hi-text-muted);
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  color: var(--mantine-color-gray-6);
+  background: var(--mantine-color-gray-1);
   padding: 1px 7px;
-  border-radius: var(--hi-radius-sm);
+  border-radius: 10px;
   line-height: 1.5;
 }
 
 .searchBar {
-  padding: 10px 14px 8px;
+  padding: 0 16px 8px;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--hi-border);
 }
 
 .listBody {
@@ -89,7 +86,7 @@
 
 .listFooter {
   padding: 8px 16px;
-  border-top: 1px solid var(--hi-border);
+  border-top: 1px solid var(--mantine-color-gray-2);
   display: flex;
   justify-content: center;
   flex-shrink: 0;
@@ -102,7 +99,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--hi-shell-bg);
+  background: var(--mantine-color-gray-0);
   min-width: 0;
 }
 
@@ -118,7 +115,7 @@
 
   svg {
     opacity: 0.3;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-5);
   }
 
   p {
@@ -126,14 +123,14 @@
     margin: 0;
     max-width: 320px;
     line-height: 1.5;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-6);
   }
 }
 
 .previewHeader {
-  padding: 16px 22px 18px;
-  border-bottom: 1px solid var(--hi-border);
-  background: var(--hi-shell-bg);
+  padding: 16px 24px 18px;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+  background: #ffffff;
   flex-shrink: 0;
 }
 
@@ -141,7 +138,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .backButton {
@@ -160,9 +157,9 @@
 }
 
 .previewSubject {
-  font-size: 1.08rem;
-  font-weight: 680;
-  color: var(--hi-text);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--mantine-color-dark-8);
   margin-bottom: 14px;
   line-height: 1.35;
   overflow-wrap: break-word;
@@ -172,15 +169,7 @@
 .previewMeta {
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.previewAvatar {
-  background: var(--hi-shell-bg) !important;
-  border: 1px solid var(--hi-border);
-  color: var(--hi-text-muted) !important;
-  font-size: 0.74rem;
-  font-weight: 650;
+  gap: 12px;
 }
 
 .previewSenderInfo {
@@ -190,18 +179,18 @@
 
 .previewSenderName {
   font-size: 0.88rem;
-  font-weight: 620;
-  color: var(--hi-text);
+  font-weight: 600;
+  color: var(--mantine-color-dark-7);
 }
 
 .previewRecipientType {
   font-size: 0.78rem;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-gray-6);
   margin-top: 2px;
 }
 
 .recipientLink {
-  color: var(--hi-text-light);
+  color: var(--mantine-color-primary-6);
   text-decoration: underline dotted;
   cursor: pointer;
 
@@ -211,38 +200,37 @@
 }
 
 .recipientLinkDisabled {
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-gray-6);
   text-decoration: underline dotted;
   cursor: default;
 }
 
 .previewDate {
   font-size: 0.78rem;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-gray-6);
   white-space: nowrap;
 }
 
 .previewBody {
   flex: 1;
   overflow-y: auto;
-  padding: 22px;
+  padding: 24px;
 
   @include mixins.scrollbar;
 }
 
 .previewCard {
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  padding: 20px;
-  box-shadow: var(--hi-shadow-sm);
-  max-width: 860px;
+  background: #ffffff;
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--hi-radius-lg);
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .previewContent {
   font-size: 0.92rem;
   line-height: 1.7;
-  color: var(--hi-text-light);
+  color: var(--mantine-color-dark-7);
   word-break: break-word;
 
   img {
@@ -251,14 +239,14 @@
   }
 
   a {
-    color: var(--hi-link-color);
+    color: var(--mantine-color-primary-6);
   }
 }
 
 .previewActions {
   padding: 14px 24px;
-  border-top: 1px solid var(--hi-border);
-  background: var(--hi-surface);
+  border-top: 1px solid var(--mantine-color-gray-2);
+  background: #ffffff;
   flex-shrink: 0;
 }
 
@@ -281,12 +269,12 @@
   justify-content: center;
   gap: 10px;
   z-index: 1;
-  background: color-mix(in srgb, var(--hi-shell-bg) 92%, transparent);
+  background: rgba(255, 255, 255, 0.92);
 
   p {
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-6);
     margin: 0;
   }
 }
@@ -295,16 +283,15 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--hi-border);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--mantine-color-gray-1);
 }
 
 .ghostAvatar {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--mantine-color-gray-2);
   flex-shrink: 0;
 }
 
@@ -320,21 +307,21 @@
   width: 45%;
   height: 9px;
   border-radius: 4px;
-  background: var(--hi-border);
+  background: var(--mantine-color-gray-2);
 }
 
 .ghostLineLong {
   width: 85%;
   height: 10px;
   border-radius: 4px;
-  background: var(--hi-shell-bg-strong);
+  background: var(--mantine-color-gray-1);
 }
 
 .ghostLineMed {
   width: 65%;
   height: 8px;
   border-radius: 4px;
-  background: var(--hi-shell-bg-strong);
+  background: var(--mantine-color-gray-1);
 }
 
 .loadingState {
@@ -350,7 +337,7 @@
   align-items: center;
   gap: 5px;
   font-size: 0.78rem;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-blue-6);
 }
 
 // ── Mobile: show one panel at a time ────────────────

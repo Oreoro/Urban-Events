@@ -1,9 +1,9 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-  max-width: 820px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 34px 20px;
+  padding: 40px 20px;
 
   @include mixins.respond-below(md) {
     padding: 20px 16px;
@@ -11,18 +11,13 @@
 }
 
 .header {
-  text-align: left;
-  margin-bottom: 18px;
-  padding: 16px;
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
+  text-align: center;
+  margin-bottom: 40px;
 
   h1 {
-    margin: 10px 0 5px;
-    font-size: 1.22rem;
-    font-weight: 650;
+    margin: 20px 0 12px;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--hi-text);
 
     @include mixins.respond-below(md) {
@@ -33,11 +28,10 @@
 }
 
 .headerIcon {
-  color: var(--hi-text-muted);
-  padding: 8px;
-  background: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
+  color: var(--mantine-color-secondary-5);
+  padding: 16px;
+  background: var(--mantine-color-primary-0);
+  border-radius: 50%;
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -47,7 +41,7 @@
 }
 
 .subtitle {
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   font-size: 1rem;
   margin: 0;
   line-height: 1.6;
@@ -60,31 +54,40 @@
 .ordersList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 20px;
 
   @include mixins.respond-below(md) {
-    gap: 10px;
+    gap: 16px;
   }
 }
 
 .orderCard {
   position: relative;
-  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-  border: 1px solid var(--hi-app-panel-border);
-  padding: 12px;
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--mantine-color-gray-2);
+
+  @media (prefers-color-scheme: dark) {
+    border-color: var(--mantine-color-dark-4);
+  }
 
   &:hover {
-    transform: none;
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
-    box-shadow: var(--hi-shadow-md);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
   }
 
   &::before {
-    display: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--hi-secondary-strong);
+    border-radius: var(--mantine-radius-md) var(--mantine-radius-md) 0 0;
   }
 }
 
@@ -92,7 +95,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 12px;
 
@@ -104,77 +107,43 @@
 .eventInfo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .eventTitle {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 640;
-  color: var(--hi-text);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--mantine-color-text);
 
   @include mixins.respond-below(md) {
     font-size: 1.125rem;
   }
 }
 
-.statusBadge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 22px;
-  padding: 2px 8px;
-  color: var(--hi-text);
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  font-size: 0.72rem;
-  font-weight: 580;
-  line-height: 1;
-}
-
-.orderMeta {
-  color: var(--hi-text-muted);
-}
-
 .orderDetails {
-  padding-top: 14px;
-  border-top: 1px solid var(--hi-border);
+  padding-top: 16px;
+  border-top: 1px solid var(--mantine-color-gray-2);
+
+  @media (prefers-color-scheme: dark) {
+    border-color: var(--mantine-color-dark-4);
+  }
 }
 
 .detailItem {
   min-width: 0;
-  padding: 8px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
 
   @include mixins.respond-below(md) {
     margin-bottom: 4px;
   }
 }
 
-.detailIcon {
-  flex-shrink: 0;
-  color: var(--hi-text-muted);
-}
-
-.detailLabel {
-  color: var(--hi-text-muted);
-  font-weight: 540;
-}
-
-.detailValue {
-  color: var(--hi-text);
-  font-weight: 540;
-}
-
 .headerIconError {
-  color: var(--hi-status-danger-text);
-  padding: 10px;
-  background: var(--hi-status-danger-bg);
-  border: 1px solid var(--hi-status-danger-border);
-  border-radius: var(--hi-radius-md);
+  color: var(--mantine-color-red-6);
+  padding: 16px;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 50%;
 
   @include mixins.respond-below(md) {
     padding: 12px;
@@ -185,11 +154,6 @@
 
 .requestCard {
   margin-top: 24px;
-  padding: 16px;
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  box-shadow: var(--hi-shadow-sm);
 }
 
 .requestHeader {
@@ -197,10 +161,10 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
-  color: var(--hi-text);
+  color: var(--mantine-color-text);
 
   svg {
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-secondary-5);
   }
 }
 
@@ -219,40 +183,22 @@
   flex: 1;
 }
 
-.primaryAction {
-  background: var(--hi-primary) !important;
-  border: 1px solid var(--hi-primary) !important;
-  border-radius: var(--hi-radius-sm) !important;
-  color: var(--hi-color-white) !important;
-  font-weight: 600 !important;
-
-  &:hover {
-    background: var(--hi-primary-hover) !important;
-    border-color: var(--hi-primary-hover) !important;
-  }
-}
-
-.secondaryAction {
-  color: var(--hi-text-muted) !important;
-  border-radius: var(--hi-radius-sm) !important;
-
-  &:hover {
-    background: var(--hi-control-bg-hover) !important;
-    color: var(--hi-text) !important;
-  }
-}
-
 .successMessage {
-  text-align: left;
-  padding: 10px 12px;
-  background: var(--hi-shell-bg-strong);
-  border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-app-panel-border);
+  text-align: center;
+  padding: 16px;
+  background: var(--mantine-color-primary-0);
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-primary-1);
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--mantine-color-primary-1);
+    border-color: var(--mantine-color-primary-2);
+  }
 
   p {
     margin: 0 0 8px;
     font-size: 0.875rem;
     line-height: 1.5;
-    color: var(--hi-text);
+    color: var(--mantine-color-text);
   }
 }

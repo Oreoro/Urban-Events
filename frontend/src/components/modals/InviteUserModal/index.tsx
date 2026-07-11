@@ -51,7 +51,7 @@ export const InviteUserModal = ({onClose}: GenericModalProps) => {
     ];
 
     return (
-        <Modal heading={t`Invite a team member`} onClose={onClose} opened>
+        <Modal heading={t`Invite a team member`} onClose={onClose} opened modalHeader={'branded'}>
             <form onSubmit={form.onSubmit(values => handleCreate(values))}>
                 <SimpleGrid cols={2}>
                     <TextInput required {...form.getInputProps('first_name')} label={t`First Name`}/>

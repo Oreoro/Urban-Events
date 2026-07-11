@@ -12,7 +12,7 @@ interface CalendarOptionsPopoverProps {
 
 export const CalendarOptionsPopover = ({event, children}: CalendarOptionsPopoverProps) => {
     return (
-        <Popover width={200} position="bottom" withArrow>
+        <Popover width={200} position="bottom" withArrow shadow="md">
             <Popover.Target>
                 {children}
             </Popover.Target>

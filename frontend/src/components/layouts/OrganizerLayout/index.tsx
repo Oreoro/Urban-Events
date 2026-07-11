@@ -210,16 +210,10 @@ const OrganizerLayoutContent = () => {
                                 rightSection={<IconChevronRight size={14} />}
                             >
                                 {organizer?.status === 'DRAFT'
-                                    ? <span className={classes.statusLabel}>
-                                        <span className={classes.statusDot} data-status="draft" />
-                                        {t`Draft`}
-                                        <span className={classes.statusAction}>{t`Publish`}</span>
-                                    </span>
-                                    : <span className={classes.statusLabel}>
-                                        <span className={classes.statusDot} data-status="live" />
-                                        {t`Live`}
-                                        <span className={classes.statusAction}>{t`Unpublish`}</span>
-                                    </span>
+                                    ? <span>{t`Draft`} <span
+                                        className={classes.statusAction}>{t`- Click to Publish`}</span></span>
+                                    : <span>{t`Live`} <span
+                                        className={classes.statusAction}>{t`- Click to Unpublish`}</span></span>
                                 }
                             </TopBarButton>
                         )}
@@ -232,7 +226,6 @@ const OrganizerLayoutContent = () => {
                                 <Button
                                     onClick={openShareModal}
                                     variant="transparent"
-                                    className={classes.shareOrganizerButton}
                                     leftSection={<IconShare size={16} />}
                                 >
                                     <span className={classes.shareButtonTextDesktop}>

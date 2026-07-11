@@ -34,7 +34,7 @@ export const LiquidTokenControl = ({templateType}: LiquidTokenControlProps) => {
     const tokens = tokensData.tokens.filter(token => !token.token.startsWith('{% if'));
 
     return (
-        <Menu width={380} position="bottom-start" withinPortal>
+        <Menu shadow="md" width={380} position="bottom-start" withinPortal>
             <Menu.Target>
                 <RichTextEditor.Control
                     title={t`Insert Liquid Token`}
@@ -60,6 +60,7 @@ export const LiquidTokenControl = ({templateType}: LiquidTokenControlProps) => {
                                 <Badge
                                     size="xs"
                                     variant="light"
+                                    color="blue"
                                     style={{fontFamily: 'monospace', marginBottom: '4px'}}
                                 >
                                     {token.token}

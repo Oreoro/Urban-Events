@@ -85,7 +85,7 @@ export const OrganizerWebhookTable = ({ webhooks, openCreateModal }: OrganizerWe
 
     const ActionMenu = ({ webhook }: { webhook: Webhook }) => (
         <Group wrap="nowrap" gap={0} justify="flex-end">
-            <Menu width={200}>
+            <Menu shadow="md" width={200}>
                 <Menu.Target>
                     <Button size="xs" variant="transparent">
                         <IconDotsVertical />
@@ -219,6 +219,7 @@ export const OrganizerWebhookTable = ({ webhooks, openCreateModal }: OrganizerWe
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus />}
+                            color={'green'}
                             onClick={() => openCreateModal()}>{t`Add Webhook`}
                         </Button>
                     </>

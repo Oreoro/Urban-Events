@@ -1,6 +1,6 @@
 import {t} from "@lingui/macro";
 import {Button} from "@mantine/core";
-import {IconCalendarEvent, IconPlus} from "@tabler/icons-react";
+import {IconPlus} from "@tabler/icons-react";
 import {NoResultsSplash} from "../NoResultsSplash";
 
 interface NoEventsBlankSlateProps {
@@ -12,7 +12,7 @@ export const NoEventsBlankSlate = ({eventsState, openCreateModal}: NoEventsBlank
     return (
         <NoResultsSplash
             heading={t`No events to show`}
-            icon={<IconCalendarEvent size={24} stroke={1.8}/>}
+            imageHref={'/blank-slate/events.svg'}
             subHeading={(
                 <>
                     <p>
@@ -21,8 +21,9 @@ export const NoEventsBlankSlate = ({eventsState, openCreateModal}: NoEventsBlank
                         {eventsState === 'archived' && t`No archived events to show.`}
                     </p>
                     <Button
-                        size={'sm'}
-                        leftSection={<IconPlus size={16}/>}
+                        size={'xs'}
+                        leftSection={<IconPlus/>}
+                        color={'#0d9488'}
                         onClick={openCreateModal}>{t`Create Event`}
                     </Button>
                 </>

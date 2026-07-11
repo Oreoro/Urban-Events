@@ -1,19 +1,14 @@
 .priceTierCard {
   position: relative;
-  padding: 11px 12px;
-  margin-bottom: 10px;
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-left: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
+  padding: var(--hi-spacing-md) var(--hi-spacing-lg);
+  margin-bottom: var(--hi-spacing-md);
+  border-left: 3px solid var(--mantine-color-blue-5);
 
   h3 {
-    margin: 0 0 8px;
-    font-size: 0.9rem;
-    font-weight: 680;
-    color: var(--hi-text);
-    letter-spacing: 0;
+    margin: 0 0 var(--hi-spacing-sm) 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--mantine-color-gray-7);
   }
 }
 
@@ -26,7 +21,7 @@
 
   &.disabled {
     svg {
-      color: var(--hi-text-muted);
+      color: #b4b4b4;
     }
   }
 }
@@ -47,40 +42,40 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px 9px;
-  margin-top: 8px;
-  margin-bottom: 14px;
+  padding: var(--hi-spacing-sm) var(--hi-spacing-md);
+  margin-top: var(--hi-spacing-sm);
+  margin-bottom: var(--hi-spacing-xl);
   cursor: pointer;
-  background: var(--hi-surface);
-  border: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
-  border-radius: var(--hi-radius-md);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  background: var(--mantine-color-gray-0);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-md);
+  transition: all 0.15s ease;
 
   &:hover {
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
+    background: var(--mantine-color-gray-1);
+    border-color: var(--mantine-color-gray-3);
 
     .toggleLabel {
-      color: var(--hi-text);
+      color: var(--mantine-color-gray-8);
     }
 
     svg {
-      color: var(--hi-text-light);
+      color: var(--mantine-color-gray-6);
     }
   }
 
   &:focus-visible {
-    outline: 2px solid var(--hi-focus-ring-soft);
+    outline: 2px solid var(--mantine-color-violet-4);
     outline-offset: 2px;
   }
 
   &.hasReminder {
-    border-color: var(--hi-border);
-    background: var(--hi-shell-bg);
+    border-color: var(--mantine-color-orange-3);
+    background: var(--mantine-color-orange-0);
 
     &:hover {
-      background: var(--hi-control-bg-hover);
-      border-color: var(--hi-border-strong);
+      background: var(--mantine-color-orange-1);
+      border-color: var(--mantine-color-orange-4);
     }
   }
 
@@ -91,15 +86,15 @@
 
     svg {
       flex-shrink: 0;
-      color: var(--hi-text-muted);
+      color: var(--mantine-color-gray-5);
       transition: color 0.15s ease;
     }
   }
 
   .toggleLabel {
-    font-size: 0.84rem;
-    font-weight: 650;
-    color: var(--hi-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--mantine-color-gray-7);
     transition: color 0.15s ease;
   }
 
@@ -108,8 +103,8 @@
   }
 
   .toggleDescription {
-    font-size: 0.78rem;
-    color: var(--hi-text-muted);
+    font-size: 0.8rem;
+    color: var(--mantine-color-gray-5);
   }
 
   .taxReminder {
@@ -118,10 +113,10 @@
     gap: 6px;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-orange-7);
 
     svg {
-      color: var(--hi-text-muted);
+      color: var(--mantine-color-orange-5);
     }
   }
 }

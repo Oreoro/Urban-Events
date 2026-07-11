@@ -123,7 +123,7 @@ export const PaymentAndInvoicingSettings = () => {
                                 />
                             ))}
                             {form.errors["payment_providers"] && (
-                                <Text c="var(--hi-status-danger-text)">{form.errors["payment_providers"]}</Text>
+                                <Text c="red">{form.errors["payment_providers"]}</Text>
                             )}
 
                             {form.values.payment_providers?.includes("OFFLINE") && (
@@ -132,7 +132,7 @@ export const PaymentAndInvoicingSettings = () => {
                                         marginTop: '5px',
                                         marginBottom: '10px'
                                     }}>{t`Offline Payments Settings`}</h4>
-                                    <MantineCard shadow="none" padding="lg" radius="md" withBorder mb="md">
+                                    <MantineCard shadow="sm" padding="lg" radius="md" withBorder mb="md">
                                         <h4 style={{
                                             margin: 0,
                                             fontWeight: 'normal'

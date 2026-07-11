@@ -1,22 +1,19 @@
 .wrapper {
-  padding: 0 0 10px;
-  margin: 0 0 12px;
-  border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, var(--hi-surface));
+  background: #ffffff;
+  padding: var(--hi-spacing-md) var(--hi-spacing-lg);
+  margin: calc(var(--hi-spacing-lg) * -1);
+  border-bottom: 1px solid #e3e3e3;
+  border-radius: var(--hi-radius-lg) var(--hi-radius-lg) 0 0;
+  margin-bottom: var(--hi-spacing-lg);
 
   .heading {
     margin: 0;
-    color: var(--hi-text);
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.28;
-    letter-spacing: 0;
+    font-weight: 100;
   }
 
   .description {
-    margin: 3px 0 0;
-    font-weight: 500;
-    font-size: 0.8rem;
-    line-height: 1.45;
-    color: var(--hi-text-muted);
+    margin: 0;
+    font-weight: 300;
+    color: #666;
   }
 }

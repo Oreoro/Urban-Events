@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Urban Events">
-  <rect x="4" y="4" width="40" height="40" rx="8" fill="none" stroke="#111827" stroke-width="3"/>
-  <text x="24" y="30"
-        font-family="Inter, system-ui, -apple-system, sans-serif"
-        font-size="16"
-        font-weight="700"
-        fill="#111827"
+  <rect width="48" height="48" rx="10" fill="#4A5262"/>
+  <text x="24" y="31"
+        font-family="Manrope, system-ui, -apple-system, sans-serif"
+        font-size="18"
+        font-weight="800"
+        fill="#FFF9EA"
         text-anchor="middle">UE</text>
+  <rect x="12" y="35" width="24" height="3" rx="1.5" fill="#B8F2E6"/>
 </svg>

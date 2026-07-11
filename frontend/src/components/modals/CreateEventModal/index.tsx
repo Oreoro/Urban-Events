@@ -9,14 +9,13 @@ import {hasLength, useForm} from "@mantine/form";
 import {useCreateEvent} from "../../../mutations/useCreateEvent.ts";
 import {Editor} from "../../common/Editor";
 import {useGetOrganizers} from "../../../queries/useGetOrganizers.ts";
-import {IconCalendarEvent, IconFileText, IconUsers} from "@tabler/icons-react";
+import {IconCalendarEvent, IconSparkles, IconUsers, IconX} from "@tabler/icons-react";
 import classes from "./CreateEventModal.module.scss";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
 import dayjs from "dayjs";
 import {DateTimePicker} from "@mantine/dates";
 import {EventCategories} from "../../../constants/eventCategories.ts";
 import {getDateTimePickerFormat} from "../../../utilites/dates.ts";
-import {Modal} from "../../common/Modal";
 
 interface CreateEventModalProps extends GenericModalProps {
     organizerId?: IdParam;
@@ -89,157 +88,185 @@ export const CreateEventModal = ({onClose, organizerId}: CreateEventModalProps) 
         eventMutation.mutateAsync({
             eventData: values,
         }).then((data) => {
-            navigate(`/manage/event/${data.data.id}/getting-started`)
+            navigate(`/manage/event/${data.data.id}/getting-started?new_event=true`)
         }).catch((error) => {
             errorHandler(form, error);
         });
     }
 
     return (
-        <Modal
-            opened
-            onClose={onClose}
-            heading={t`Create event`}
-            size="lg"
-        >
-            <div className={classes.formContainer}>
-                <p className={classes.modalDescription}>
-                    {t`Add the basics now. Tickets, page design, checkout, and publishing come next.`}
-                </p>
-
-                {showCreateOrganizer && (
-                    <div className={classes.createOrganizerCard}>
-                        <h3 className={classes.createOrganizerHeading}>
-                            <IconUsers size={20}/>
-                            {t`Create Organizer`}
-                        </h3>
-                        <OrganizerCreateForm
-                            onCancel={() => setShowCreateOrganizer(false)}
-                            onSuccess={(organizer: Organizer) => {
-                                setShowCreateOrganizer(false);
-                                form.setFieldValue('organizer_id', String(organizer.id));
-                            }}/>
-                    </div>
-                )}
-
-                {!showCreateOrganizer && !organizerId && (
-                    <>
-                        <Select
-                            {...form.getInputProps('organizer_id')}
-                            label={t`Who is organizing this event?`}
-                            required
-                            leftSection={<IconUsers size={18}/>}
-                            placeholder={t`Select organizer`}
-                            data={organizersQuery.data?.data?.map((organizer) => ({
-                                value: String(organizer.id),
-                                label: organizer.name,
-                            }))}
-                            mb={0}
-                        />
-                        <div className={classes.createOrganizerLink}>
-                            {t`or`} {'  '}
-                            <Anchor href={'#'} variant={'transparent'}
-                                    onClick={() => setShowCreateOrganizer(true)}>
-                                {t`create an organizer`}
-                            </Anchor>
-                        </div>
-                    </>
-                )}
-
-                <form onSubmit={form.onSubmit(handleCreate)}>
-                    <TextInput
-                        {...form.getInputProps('title')}
-                        label={t`Event Name`}
-                        placeholder={t`Summer Music Festival ${new Date().getFullYear()}`}
-                        required
-                        size="lg"
-                        leftSection={<IconFileText size={18}/>}
-                    />
-
-                    <Select
-                        {...form.getInputProps('category')}
-                        label={t`Event Category`}
-                        placeholder={t`Select a category`}
-                        data={EventCategories.map((category) => ({
-                            value: category.id,
-                            label: category.name,
-                        }))}
-                        size="lg"
-                        searchable
-                    />
-
-                    <div className={classes.editorField}>
-                        <Editor
-                            label={t`Event Description`}
-                            description={t`Tell people what to expect at your event`}
-                            value={form.values.description || ''}
-                            onChange={(value) => form.setFieldValue('description', value)}
-                            error={form.errors.description as string}
-                            editorType="simple"
-                            maxLength={2000}
-                            size="lg"
-                        />
-                    </div>
-
-                    <div className={classes.dateTimeGrid}>
-                        <DateTimePicker
-                            label={t`Start Date & Time`}
-                            {...form.getInputProps('start_date')}
-                            required
-                            size="md"
-                            placeholder={t`Select start date and time`}
-                            valueFormat={getDateTimePickerFormat()}
-                            clearable
-                            dropdownType="modal"
-                            timePickerProps={{
-                                format: '12h',
-                                withDropdown: true,
-                            }}
-                            onChange={(value) => {
-                                form.setFieldValue('start_date', value);
-
-                                // Auto-adjust end date if it's before new start date
-                                if (form.values.end_date && value && dayjs(form.values.end_date).isBefore(dayjs(value))) {
-                                    form.setFieldValue('end_date', dayjs(value).add(2, 'hours').toISOString());
-                                }
-                            }}
-                        />
-                        <DateTimePicker
-                            label={t`End Date & Time (optional)`}
-                            {...form.getInputProps('end_date')}
-                            size="md"
-                            placeholder={t`Select end date and time`}
-                            valueFormat={getDateTimePickerFormat()}
-                            clearable
-                            dropdownType="modal"
-                            timePickerProps={{
-                                format: '12h',
-                                withDropdown: true,
-                            }}
-                            minDate={form.values.start_date ?? undefined}
-                            onFocus={
-                                () => {
-                                    if (!form.values.end_date && form.values.start_date) {
-                                        // Set default end date to 2 hours after start date
-                                        form.setFieldValue('end_date', dayjs(form.values.start_date).add(2, 'hours').toISOString());
-                                    }
-                                }
-                            }
-                        />
-                    </div>
-
-                    <Button
-                        loading={eventMutation.isPending}
-                        fullWidth
-                        type={'submit'}
-                        size="xl"
-                        className={classes.createButton}
-                        leftSection={<IconCalendarEvent size={18}/>}
-                    >
-                        {t`Continue Setup`}
-                    </Button>
-                </form>
+        <div className={classes.modalOverlay} onClick={onClose}>
+            <div className={classes.floatingIcons}>
+                <IconCalendarEvent className={classes.floatingIcon} style={{top: '10%', left: '15%', animationDelay: '0s'}}/>
+                <IconSparkles className={classes.floatingIcon}
+                              style={{top: '20%', right: '20%', animationDelay: '2s'}}/>
+                <IconUsers className={classes.floatingIcon} style={{top: '60%', left: '10%', animationDelay: '4s'}}/>
+                <IconCalendarEvent className={classes.floatingIcon}
+                                   style={{bottom: '30%', right: '15%', animationDelay: '1s'}}/>
+                <IconSparkles className={classes.floatingIcon}
+                              style={{bottom: '15%', left: '25%', animationDelay: '3s'}}/>
+                <IconUsers className={classes.floatingIcon} style={{top: '40%', right: '8%', animationDelay: '5s'}}/>
+                <IconSparkles className={classes.floatingIcon}
+                              style={{top: '70%', left: '70%', animationDelay: '2.5s'}}/>
+                <IconCalendarEvent className={classes.floatingIcon}
+                                   style={{top: '25%', left: '60%', animationDelay: '1.5s'}}/>
             </div>
-        </Modal>
+
+            <div className={classes.modalContainer} onClick={(e) => e.stopPropagation()}>
+                <button
+                    className={classes.closeButton}
+                    onClick={onClose}
+                    aria-label={t`Close modal`}
+                >
+                    <IconX size={20}/>
+                </button>
+
+                <div className={classes.modalHeader}>
+                    <div className={classes.headerContent}>
+                        <div className={classes.magicWand}><IconSparkles size={28}/></div>
+                        <h1 className={classes.headerTitle}>{t`Create Your Event`}</h1>
+                        <p className={classes.headerSubtitle}>{t`Tell us about your event`}</p>
+                    </div>
+                </div>
+
+                <div className={classes.modalContent}>
+                    <div className={classes.formContainer}>
+                        {showCreateOrganizer && (
+                            <div className={classes.createOrganizerCard}>
+                                <h3 className={classes.createOrganizerHeading}>
+                                    <IconUsers size={20}/>
+                                    {t`Create Organizer`}
+                                </h3>
+                                <OrganizerCreateForm
+                                    onCancel={() => setShowCreateOrganizer(false)}
+                                    onSuccess={(organizer: Organizer) => {
+                                        setShowCreateOrganizer(false);
+                                        form.setFieldValue('organizer_id', String(organizer.id));
+                                    }}/>
+                            </div>
+                        )}
+
+                        {!showCreateOrganizer && !organizerId && (
+                            <>
+                                <Select
+                                    {...form.getInputProps('organizer_id')}
+                                    label={t`Who is organizing this event?`}
+                                    required
+                                    leftSection={<IconUsers size={18}/>}
+                                    placeholder={t`Select organizer`}
+                                    data={organizersQuery.data?.data?.map((organizer) => ({
+                                        value: String(organizer.id),
+                                        label: organizer.name,
+                                    }))}
+                                    mb={0}
+                                />
+                                <div className={classes.createOrganizerLink}>
+                                    {t`or`} {'  '}
+                                    <Anchor href={'#'} variant={'transparent'}
+                                            onClick={() => setShowCreateOrganizer(true)}>
+                                        {t`create an organizer`}
+                                    </Anchor>
+                                </div>
+                            </>
+                        )}
+
+                        <form onSubmit={form.onSubmit(handleCreate)}>
+                            <TextInput
+                                {...form.getInputProps('title')}
+                                label={t`Event Name`}
+                                placeholder={t`Summer Music Festival ${new Date().getFullYear()}`}
+                                required
+                                size="lg"
+                                leftSection={<IconSparkles size={18}/>}
+                            />
+
+                            <Select
+                                {...form.getInputProps('category')}
+                                label={t`Event Category`}
+                                placeholder={t`Select a category`}
+                                data={EventCategories.map((category) => ({
+                                    value: category.id,
+                                    label: `${category.emoji} ${category.name}`,
+                                }))}
+                                size="lg"
+                                searchable
+                            />
+
+                            <div className={classes.editorField}>
+                                <Editor
+                                    label={t`Event Description`}
+                                    description={t`Tell people what to expect at your event`}
+                                    value={form.values.description || ''}
+                                    onChange={(value) => form.setFieldValue('description', value)}
+                                    error={form.errors.description as string}
+                                    editorType="simple"
+                                    maxLength={2000}
+                                    size="lg"
+                                />
+                            </div>
+
+                            <div className={classes.dateTimeGrid}>
+                                <DateTimePicker
+                                    label={t`Start Date & Time`}
+                                    {...form.getInputProps('start_date')}
+                                    required
+                                    size="md"
+                                    placeholder={t`Select start date and time`}
+                                    valueFormat={getDateTimePickerFormat()}
+                                    clearable
+                                    dropdownType="modal"
+                                    timePickerProps={{
+                                        format: '12h',
+                                        withDropdown: true,
+                                    }}
+                                    onChange={(value) => {
+                                        form.setFieldValue('start_date', value);
+
+                                        // Auto-adjust end date if it's before new start date
+                                        if (form.values.end_date && value && dayjs(form.values.end_date).isBefore(dayjs(value))) {
+                                            form.setFieldValue('end_date', dayjs(value).add(2, 'hours').toISOString());
+                                        }
+                                    }}
+                                />
+                                <DateTimePicker
+                                    label={t`End Date & Time (optional)`}
+                                    {...form.getInputProps('end_date')}
+                                    size="md"
+                                    placeholder={t`Select end date and time`}
+                                    valueFormat={getDateTimePickerFormat()}
+                                    clearable
+                                    dropdownType="modal"
+                                    timePickerProps={{
+                                        format: '12h',
+                                        withDropdown: true,
+                                    }}
+                                    minDate={form.values.start_date ?? undefined}
+                                    onFocus={
+                                        () => {
+                                            if (!form.values.end_date && form.values.start_date) {
+                                                // Set default end date to 2 hours after start date
+                                                form.setFieldValue('end_date', dayjs(form.values.start_date).add(2, 'hours').toISOString());
+                                            }
+                                        }
+                                    }
+
+                                />
+                            </div>
+
+                            <Button
+                                loading={eventMutation.isPending}
+                                fullWidth
+                                type={'submit'}
+                                size="xl"
+                                className={classes.createButton}
+                                leftSection={<IconCalendarEvent size={24}/>}
+                            >
+                                {t`Continue Setup`}
+                            </Button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }

@@ -60,7 +60,7 @@ export const CreateOrganizerWebhookModal = ({ onClose }: GenericModalProps) => {
                 onClose={onClose}
                 heading={t`Webhook Signing Secret`}
             >
-                <Alert icon={<IconInfoCircle/>} color="gray" mb="md">
+                <Alert icon={<IconInfoCircle/>} color="yellow" mb="md">
                     <Trans>This is the only time the signing secret will be shown. Please copy it now and store it securely.</Trans>
                 </Alert>
                 <TextInput

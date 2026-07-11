@@ -148,10 +148,10 @@ const GuestListItem = ({
 const DetailItem = ({icon: Icon, label, value}: { icon: any, label: string, value: React.ReactNode }) => (
     <div className={classes.detailItem}>
         <Group gap="xs" wrap="nowrap">
-            <Icon size={20} className={classes.detailIcon}/>
+            <Icon size={20} style={{color: 'var(--checkout-accent, var(--mantine-color-gray-6))', flexShrink: 0}}/>
             <div className={classes.detailContent}>
                 <Text size="sm" c="dimmed" className={classes.label}>{label}</Text>
-                <Text component="div" className={classes.value}>{value}</Text>
+                <Text className={classes.value}>{value}</Text>
             </div>
         </Group>
     </div>
@@ -175,17 +175,17 @@ const WelcomeHeader = ({order, event, allowSelfEdit}: { order: Order; event: Eve
     return (
         <div className={classes.welcomeHeader}>
             {isCompleted && (
-                <div className={classes.statusIcon}>
+                <div className={classes.confettiIcon}>
                     <IconCheck size={34}/>
                 </div>
             )}
             {isAwaitingPayment && (
-                <div className={classes.statusIcon}>
+                <div className={classes.confettiIcon}>
                     <IconClock size={34}/>
                 </div>
             )}
             {isCancelled && (
-                <div className={classes.statusIcon}>
+                <div className={classes.confettiIcon}>
                     <IconX size={34}/>
                 </div>
             )}
@@ -222,7 +222,7 @@ const OrderDetails = ({
     onEditClick: () => void;
     onResendClick: () => void;
 }) => (
-    <Card className={classes.sectionCard}>
+    <Card style={{marginBottom: '40px'}}>
         <SimpleGrid cols={{base: 1, sm: 2}} spacing="md">
             <DetailItem
                 icon={IconUser}
@@ -250,7 +250,7 @@ const OrderDetails = ({
                 label={t`Email`}
                 value={
                     <Group gap="xs" wrap="nowrap">
-                        <span className={classes.breakableValue}>{order.email}</span>
+                        <span style={{wordBreak: 'break-all'}}>{order.email}</span>
                         {allowSelfEdit && order.status !== 'CANCELLED' && (
                             <Tooltip label={t`Resend Confirmation`}>
                                 <ActionIcon size="xs" variant="subtle" onClick={onResendClick}>
@@ -375,7 +375,7 @@ const OrderStatus = ({order}: { order: Order }) => {
 };
 
 const PostCheckoutMessage = ({ message }: { message: string }) => (
-    <div className={classes.contentSection}>
+    <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h1 className={classes.heading}>{t`Additional Information`}</h1>
         <Card>
             <div dangerouslySetInnerHTML={{ __html: message }} />
@@ -384,8 +384,8 @@ const PostCheckoutMessage = ({ message }: { message: string }) => (
 );
 
 const OfflinePaymentInstructions = ({ event }: { event: Event }) => (
-    <div className={classes.contentSection}>
-        <h2 className={classes.heading}>{t`Payment Instructions`}</h2>
+    <div style={{ marginTop: '20px', marginBottom: '40px' }}>
+        <h2>{t`Payment Instructions`}</h2>
         <Card>
             <div
                 dangerouslySetInnerHTML={{
@@ -564,12 +564,15 @@ export const OrderSummaryAndProducts = () => {
                 {emailUpdated && (
                     <Alert
                         icon={<IconCheck size={16}/>}
-                        color="primary"
+                        color="green"
                         mb="lg"
-                        radius="md"
-                        className={classes.successAlert}
+                        radius="lg"
+                        style={{
+                            backgroundColor: 'var(--checkout-surface, #ECFDF5)',
+                            borderColor: 'var(--checkout-border, #D1FAE5)',
+                        }}
                     >
-                        <Text size="sm" className={classes.successAlertText}>
+                        <Text size="sm" style={{color: 'var(--checkout-text-primary, #065F46)'}}>
                             {t`Your order details have been updated. A confirmation email has been sent to the new email address.`}
                         </Text>
                     </Alert>

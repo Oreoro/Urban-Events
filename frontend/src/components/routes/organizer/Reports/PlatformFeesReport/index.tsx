@@ -110,10 +110,9 @@ const PlatformFeesReport = () => {
     return (
         <>
             <Alert
-                className={classes.notice}
                 icon={<IconAlertTriangle size={16} />}
                 title={t`Important Notice`}
-                color="gray"
+                color="yellow"
                 mb="lg"
             >
                 {t`This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Urban Events may be missing historical data.`}
@@ -121,7 +120,6 @@ const PlatformFeesReport = () => {
 
             <div className={classes.eventFilter}>
                 <Select
-                    className={classes.eventSelect}
                     label={t`Filter by Event`}
                     placeholder={t`Select an event`}
                     data={eventOptions}

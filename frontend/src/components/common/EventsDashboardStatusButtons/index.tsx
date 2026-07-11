@@ -1,7 +1,6 @@
 import {Button, Group} from "@mantine/core";
 import {t} from "@lingui/macro";
 import {useNavigate} from "react-router";
-import classes from './EventsDashboardStatusButtons.module.scss';
 
 interface EventsDashboardStatusButtonsProps {
     baseUrl: string;
@@ -10,31 +9,24 @@ interface EventsDashboardStatusButtonsProps {
 
 export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashboardStatusButtonsProps) => {
     const navigate = useNavigate();
-    const isUpcoming = eventsState === 'upcoming' || !eventsState;
 
     return (
-        <Group className={classes.statusGroup} mt={8} mb={12} gap={4}>
+        <Group mt={10} mb={15}>
             <Button
-                className={classes.statusButton}
                 size={'compact-sm'}
-                variant={isUpcoming ? 'light' : 'subtle'}
-                data-active={isUpcoming}
+                variant={eventsState === 'upcoming' || !eventsState ? 'light' : 'transparent'}
                 onClick={() => navigate(baseUrl + '/upcoming' + window.location.search)}
             >
                 {t`Upcoming`}
             </Button>
             <Button size={'compact-sm'}
-                    className={classes.statusButton}
-                    variant={eventsState === 'ended' ? 'light' : 'subtle'}
-                    data-active={eventsState === 'ended'}
+                    variant={eventsState === 'ended' ? 'light' : 'transparent'}
                     onClick={() => navigate(baseUrl + '/ended' + window.location.search)}
             >
                 {t`Ended`}
             </Button>
             <Button size={'compact-sm'}
-                    className={classes.statusButton}
-                    variant={eventsState === 'archived' ? 'light' : 'subtle'}
-                    data-active={eventsState === 'archived'}
+                    variant={eventsState === 'archived' ? 'light' : 'transparent'}
                     onClick={() => navigate(baseUrl + '/archived' + window.location.search)}
             >
                 {t`Archived`}

@@ -2,33 +2,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 114px;
-  min-height: 44px;
-  padding: 3px;
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-surface);
+  width: 100px;
 }
 
 
 .control {
-  background-color: var(--hi-primary);
-  color: var(--hi-color-white);
-  border: 1px solid var(--hi-primary);
-  border-radius: var(--hi-radius-xs);
+  background-color:#6319ff;
+  color: #fff;
 
   &:disabled {
-    border-color: var(--hi-app-panel-border);
-    background-color: var(--hi-shell-bg-strong);
-    color: var(--hi-text-muted);
+    border-color: #ddd;
+    background-color: transparent;
   }
 }
 
 .input {
   padding-right: 10px !important;
   padding-left: 10px !important;
-  height: 28px !important;
+  height: 20px !important;
   flex: 1 !important;
   text-align: center !important;
-  color: var(--hi-text) !important;
 }

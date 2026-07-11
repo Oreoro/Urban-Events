@@ -11,7 +11,6 @@ import classes from './AttendeeTicket.module.scss';
 import {imageUrl} from "../../../utilites/urlHelper.ts";
 import {formatAddress} from "../../../utilites/addressUtilities.ts";
 import {PoweredByFooter} from "../PoweredByFooter";
-import {URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
 
 interface AttendeeTicketProps {
     event: Event;
@@ -32,7 +31,7 @@ export const AttendeeTicket = ({
     const hasVenue = event?.settings?.location_details?.venue_name || event?.settings?.location_details?.address_line_1;
 
     const ticketDesignSettings = event?.settings?.ticket_design_settings;
-    const accentColor = ticketDesignSettings?.accent_color || URBAN_EVENTS_THEME.accent;
+    const accentColor = ticketDesignSettings?.accent_color || '#6B46C1';
     const footerText = ticketDesignSettings?.footer_text;
     const dateDisplayMode = ticketDesignSettings?.date_display_mode || 'START_DATE_TIME';
     const logoUrl = imageUrl('TICKET_LOGO', event?.images);
@@ -147,9 +146,9 @@ export const AttendeeTicket = ({
                                 <div className={classes.qrPlaceholderContent}>
                                     <div className={`${classes.statusIconCircle} ${isCancelled ? classes.statusIconCancelled : classes.statusIconPending}`}>
                                         {isCancelled ? (
-                                            <IconX size={20} stroke={2} />
+                                            <IconX size={20} stroke={2} color="white" />
                                         ) : (
-                                            <IconLock size={20} stroke={2} />
+                                            <IconLock size={20} stroke={2} color="white" />
                                         )}
                                     </div>
                                     <span className={`${classes.statusText} ${isCancelled ? classes.statusTextCancelled : classes.statusTextPending}`}>
@@ -160,19 +159,23 @@ export const AttendeeTicket = ({
                         ) : (
                             <div
                                 className={classes.qrContainer}
+                                style={{borderColor: accentColor}}
                             >
                                 <QRCode
                                     value={String(attendee.public_id)}
                                     size={180}
                                     level="M"
-                                    className={classes.qrCode}
+                                    style={{height: "auto", maxWidth: "100%", width: "100%"}}
                                 />
                             </div>
                         )}
 
                         <div className={classes.ticketId}>
                             <div className={classes.detailLabel}>{t`Ticket ID`}</div>
-                            <div className={classes.ticketIdValue}>{attendee.public_id}</div>
+                            <div
+                                className={classes.ticketIdValue}
+                                style={{color: accentColor}}
+                            >{attendee.public_id}</div>
                         </div>
                     </div>
                 </div>

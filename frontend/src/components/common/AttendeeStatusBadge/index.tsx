@@ -9,21 +9,17 @@ interface AttendeeStatusBadgeProps {
 
 export const AttendeeStatusBadge = ({attendee, noStyle = false}: AttendeeStatusBadgeProps) => {
     let color;
-    let textColor;
 
     switch (attendee.status) {
         case 'AWAITING_PAYMENT':
             color = 'orange';
-            textColor = 'var(--hi-status-warning-text)';
             break;
         case 'CANCELLED':
             color = 'red';
-            textColor = 'var(--hi-status-danger-text)';
             break;
         case 'ACTIVE':
         default:
             color = 'green';
-            textColor = 'var(--hi-status-success-text)';
             break;
     }
 
@@ -36,7 +32,7 @@ export const AttendeeStatusBadge = ({attendee, noStyle = false}: AttendeeStatusB
     const status = statusLabels[attendee.status] || attendee.status.replace('_', ' ');
 
     if (noStyle) {
-        return <span style={{color: textColor}}>{status}</span>;
+        return <span style={{color: color}}>{status}</span>;
     }
 
     return (

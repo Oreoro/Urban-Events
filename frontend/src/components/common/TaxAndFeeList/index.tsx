@@ -55,7 +55,7 @@ export const TaxAndFeeList = () => {
                                 {tax.type.toLocaleLowerCase()}
                             </div>
                             <div className={classes.action}>
-                                <Menu width={200}>
+                                <Menu shadow="md" width={200}>
                                     <Menu.Target>
                                         <Button size={'compact-xs'} variant={'transparent'} className={classes.menuButton}>
                                             <IconDotsVertical size={14}/>

@@ -1,11 +1,13 @@
 import classes from "./StatBoxes.module.scss";
 import {IconCash, IconCreditCardRefund, IconEye, IconReceipt, IconShoppingCart, IconUsers} from "@tabler/icons-react";
 import {Card} from "../Card";
+import {useGetEventStats} from "../../../queries/useGetEventStats.ts";
+import {useParams} from "react-router";
 import {t} from "@lingui/macro";
+import {useGetEvent} from "../../../queries/useGetEvent.ts";
 import {formatCurrency} from "../../../utilites/currency.ts";
 import {formatNumber} from "../../../utilites/helpers.ts";
-import {CSSProperties, ReactNode} from "react";
-import type {Event, EventStats} from "../../../types.ts";
+import {ReactNode} from "react";
 
 interface StatBoxProps {
     number: string | number;
@@ -16,66 +18,63 @@ interface StatBoxProps {
 
 export const StatBox = ({number, description, icon, backgroundColor}: StatBoxProps) => {
     return (
-        <Card className={classes.statistic} style={{'--stat-color': backgroundColor} as CSSProperties}>
+        <Card className={classes.statistic}>
             <div className={classes.leftPanel}>
-                <div className={classes.description}>
-                    <span className={classes.labelIcon}>
-                        {icon}
-                    </span>
-                    <span>{description}</span>
-                </div>
                 <div className={classes.number}>{number}</div>
+                <div className={classes.description}>{description}</div>
+            </div>
+            <div className={classes.rightPanel}>
+                <div className={classes.icon} style={{backgroundColor}}>
+                    {icon}
+                </div>
             </div>
         </Card>
     );
 };
 
-interface StatBoxesProps {
-    event?: Event;
-    eventStats?: EventStats;
-}
+export const StatBoxes = () => {
+    const {eventId} = useParams();
+    const eventStatsQuery = useGetEventStats(eventId);
+    const eventQuery = useGetEvent(eventId);
+    const event = eventQuery?.data;
+    const {data: eventStats} = eventStatsQuery;
 
-const toFiniteNumber = (value: number | undefined | null): number => {
-    return Number.isFinite(value) ? Number(value) : 0;
-};
-
-export const StatBoxes = ({event, eventStats}: StatBoxesProps = {}) => {
     const data = [
         {
-            number: formatNumber(toFiniteNumber(eventStats?.total_attendees_registered)),
+            number: formatNumber(eventStats?.total_attendees_registered as number),
             description: t`Attendees`,
             icon: <IconUsers size={18}/>,
-            backgroundColor: 'var(--ue-sticker-sky)'
+            backgroundColor: 'var(--ue-coral)'
         },
         {
-            number: formatNumber(toFiniteNumber(eventStats?.total_products_sold)),
+            number: formatNumber(eventStats?.total_products_sold as number),
             description: t`Products sold`,
             icon: <IconShoppingCart size={18}/>,
-            backgroundColor: 'var(--ue-sticker-purple)'
+            backgroundColor: 'var(--ue-plum)'
         },
         {
-            number: formatCurrency(toFiniteNumber(eventStats?.total_refunded), event?.currency),
+            number: formatCurrency(eventStats?.total_refunded as number || 0, event?.currency),
             description: t`Refunded`,
             icon: <IconCreditCardRefund size={18}/>,
-            backgroundColor: 'var(--ue-sticker-orange)'
+            backgroundColor: 'var(--ue-blue-slate)'
         },
         {
-            number: formatCurrency(toFiniteNumber(eventStats?.total_gross_sales), event?.currency),
+            number: formatCurrency(eventStats?.total_gross_sales || 0, event?.currency),
             description: t`Gross sales`,
             icon: <IconCash size={18}/>,
-            backgroundColor: 'var(--ue-sticker-green)'
+            backgroundColor: 'var(--ue-forest)'
         },
         {
-            number: formatNumber(toFiniteNumber(eventStats?.total_views)),
+            number: formatNumber(eventStats?.total_views as number),
             description: t`Page views`,
             icon: <IconEye size={18}/>,
-            backgroundColor: 'var(--notion-blue)'
+            backgroundColor: 'var(--ue-forest-deep)'
         },
         {
-            number: formatNumber(toFiniteNumber(eventStats?.total_orders)),
+            number: formatNumber(eventStats?.total_orders as number),
             description: t`Completed orders`,
             icon: <IconReceipt size={18}/>,
-            backgroundColor: 'var(--ue-sticker-teal)'
+            backgroundColor: 'var(--ue-marigold)'
         }
     ];
 

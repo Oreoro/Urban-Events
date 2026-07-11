@@ -1,51 +1,28 @@
 .heading {
-  padding: 10px 14px;
-  margin-top: 14px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-bottom: 0;
-  border-radius: var(--hi-radius-md) var(--hi-radius-md) 0 0;
-  background: var(--hi-app-panel-bg);
+  padding: 10px 20px;
+  margin-top: 20px;
 
   h3 {
     display: flex;
     align-items: center;
     margin-top: 0;
-    color: var(--hi-text);
-    font-size: 0.94rem;
-    font-weight: 680;
 
     button:first-child {
-      margin-left: 8px;
+      margin-left: 10px;
     }
   }
 }
 
 .table {
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: 0 0 var(--hi-radius-md) var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
-  overflow: hidden;
-
   tr td, tr th {
-    color: var(--hi-text-light);
-    font-size: 0.82rem;
-    border-bottom-color: color-mix(in srgb, var(--hi-app-panel-border) 86%, var(--hi-surface));
 
     &:first-child {
-      padding-left: 14px;
+      padding-left: 20px;
     }
-  }
-
-  tr th {
-    color: var(--hi-text-muted);
-    font-size: 0.72rem;
-    font-weight: 650;
-    letter-spacing: 0;
-    background: var(--hi-shell-bg-strong);
   }
 
   div:first-child {
     padding-bottom: 0 !important;
   }
 }
+

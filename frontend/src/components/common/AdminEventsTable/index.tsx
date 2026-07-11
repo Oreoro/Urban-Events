@@ -43,6 +43,19 @@ const AdminEventsTable = ({events, onSort, sortBy, sortDirection, onViewEvent, o
         return new Intl.NumberFormat('en-US').format(num);
     };
 
+    const getStatusBadgeColor = (status: string) => {
+        switch (status.toUpperCase()) {
+            case 'LIVE':
+                return 'green';
+            case 'DRAFT':
+                return 'yellow';
+            case 'ARCHIVED':
+                return 'gray';
+            default:
+                return 'blue';
+        }
+    };
+
     const handleSort = (column: string) => {
         if (onSort) {
             onSort(column);
@@ -135,11 +148,7 @@ const AdminEventsTable = ({events, onSort, sortBy, sortDirection, onViewEvent, o
                                     )}
                                 </Table.Td>
                                 <Table.Td>
-                                    <Badge
-                                        className={tableStyles.statusBadge}
-                                        data-status={event.status.toUpperCase()}
-                                        variant="outline"
-                                    >
+                                    <Badge color={getStatusBadgeColor(event.status)} variant="light">
                                         {event.status}
                                     </Badge>
                                 </Table.Td>
@@ -148,6 +157,7 @@ const AdminEventsTable = ({events, onSort, sortBy, sortDirection, onViewEvent, o
                                         <Tooltip label={t`View Event`}>
                                             <ActionIcon
                                                 variant="subtle"
+                                                color="blue"
                                                 onClick={() => onViewEvent?.(event)}
                                             >
                                                 <IconEye size={18} />
@@ -156,6 +166,7 @@ const AdminEventsTable = ({events, onSort, sortBy, sortDirection, onViewEvent, o
                                         <Tooltip label={t`Impersonate User`}>
                                             <ActionIcon
                                                 variant="subtle"
+                                                color="grape"
                                                 onClick={() => onImpersonate?.(event.user_id, event.account_id)}
                                                 disabled={isImpersonating}
                                             >

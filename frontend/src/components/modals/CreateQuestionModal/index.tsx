@@ -2,6 +2,7 @@ import {Button} from "@mantine/core";
 import {GenericModalProps, Question, QuestionRequestData, QuestionType} from "../../../types.ts";
 import {useForm} from "@mantine/form";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {notifications} from "@mantine/notifications";
 import {useParams} from "react-router";
 import {questionClient} from "../../../api/question.client.ts";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
@@ -9,7 +10,7 @@ import {GET_EVENT_QUESTIONS_QUERY_KEY} from "../../../queries/useGetEventQuestio
 import {Modal} from "../../common/Modal";
 import {t} from "@lingui/macro";
 import {QuestionForm} from "../../forms/QuestionForm";
-import {showError, showSuccess} from "../../../utilites/notifications.tsx";
+import {showError} from "../../../utilites/notifications.tsx";
 
 interface CreateQuestionModalProps extends GenericModalProps {
     onCompleted: (question: Question) => void;
@@ -41,7 +42,11 @@ export const CreateQuestionModal = ({onClose, onCompleted, defaultBelongsTo = 'O
         mutationFn: (questionData: Question) => questionClient.create(eventId, questionData as QuestionRequestData),
 
         onSuccess: ({data: question}) => {
-            showSuccess(t`Successfully Created Question`);
+            notifications.show({
+                message: t`Successfully Created Question`,
+                color: '#0d9488',
+                position: 'top-center',
+            });
             queryClient.invalidateQueries({queryKey: [GET_EVENT_QUESTIONS_QUERY_KEY]}).then(() => {
                 onCompleted(question);
                 onClose();

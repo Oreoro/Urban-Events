@@ -157,6 +157,7 @@ export const ImageUploadDropzone = ({
                     <img src={previewImage} alt="Uploaded preview" className={classes.previewImage}/>
                     <Button
                         variant="light"
+                        color="blue"
                         size="xs"
                         leftSection={<IconReplace size={14}/>}
                         onClick={handleReplace}
@@ -239,7 +240,7 @@ export const ImageUploadDropzone = ({
             {errors.length > 0 && (
                 <div className={classes.errorContainer}>
                     {errors.map((error, index) => (
-                        <Text key={index} size="xs" c="var(--hi-status-danger-text)">
+                        <Text key={index} size="xs" c="red">
                             {error}
                         </Text>
                     ))}
@@ -250,7 +251,7 @@ export const ImageUploadDropzone = ({
                 <Group justify="end" mt="xs">
                     <ActionIcon
                         variant="outline"
-                        style={{color: 'var(--hi-status-danger-text)', borderColor: 'var(--hi-status-danger-border)'}}
+                        color="red"
                         title={t`Delete image`}
                         onClick={handleDelete}
                         disabled={loading}

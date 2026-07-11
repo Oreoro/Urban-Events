@@ -7,7 +7,6 @@ import { Alert, Badge, Code, Collapse, Group, Loader, Paper, Stack, Text } from 
 import { IconCheck, IconChevronRight, IconX } from '@tabler/icons-react';
 import { GenericModalProps, IdParam } from "../../../types.ts";
 import { useState } from "react";
-import type { CSSProperties } from "react";
 import { relativeDate } from "../../../utilites/dates.ts";
 import classes from "./OrganizerWebhookLogsModal.module.scss";
 
@@ -35,13 +34,6 @@ const LogEntry = ({ log }: { log: WebhookLog }) => {
         return 'red';
     };
 
-    const getStatusTone = (code?: number) => {
-        if (!code) return 'neutral';
-        if (code >= 200 && code < 300) return 'success';
-        if (code >= 300 && code < 400) return 'info';
-        return 'danger';
-    };
-
     const formatContent = (content?: string) => {
         if (!content) return '';
 
@@ -53,12 +45,6 @@ const LogEntry = ({ log }: { log: WebhookLog }) => {
     };
 
     const statusColor = getStatusColor(log.response_code);
-    const statusTone = getStatusTone(log.response_code);
-    const logStyle = {
-        '--log-status-color': `var(--hi-status-${statusTone}-text)`,
-        '--log-status-bg': `var(--hi-status-${statusTone}-bg)`,
-        '--log-status-border': `var(--hi-status-${statusTone}-border)`,
-    } as CSSProperties;
 
     return (
         <Paper
@@ -67,12 +53,15 @@ const LogEntry = ({ log }: { log: WebhookLog }) => {
             mb="md"
             onClick={() => setDetailsOpen(!detailsOpen)}
             className={`${classes.logEntry} ${detailsOpen ? classes.logEntryExpanded : ''}`}
-            style={logStyle}
+            style={{
+                borderLeft: `4px solid var(--mantine-color-${statusColor}-6)`
+            }}
         >
             <Group justify="space-between" wrap="nowrap">
                 <Group wrap="nowrap" gap="md">
                     <div
                         className={`${classes.chevronIcon} ${detailsOpen ? classes.chevronIconExpanded : ''}`}
+                        style={{ color: `var(--mantine-color-${statusColor}-6)` }}
                     >
                         <IconChevronRight size={20} />
                     </div>
@@ -96,7 +85,13 @@ const LogEntry = ({ log }: { log: WebhookLog }) => {
                     </div>
                 </Group>
                 {log.response_code && (
-                    <div className={classes.statusIcon}>
+                    <div
+                        className={classes.statusIcon}
+                        style={{
+                            background: `var(--mantine-color-${statusColor}-0)`,
+                            color: `var(--mantine-color-${statusColor}-6)`,
+                        }}
+                    >
                         {log.response_code >= 200 && log.response_code < 300 ?
                             <IconCheck size={18} /> :
                             <IconX size={18} />

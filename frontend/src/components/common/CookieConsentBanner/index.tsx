@@ -3,7 +3,6 @@ import {t} from '@lingui/macro';
 import {getConfig} from '../../../utilites/config';
 import classes from './CookieConsentBanner.module.scss';
 import {IconCookie, IconX} from '@tabler/icons-react';
-import {getPrivacyUrl} from '../../../utilites/legalUrls';
 
 interface CookieConsentBannerProps {
     onConsent: (granted: boolean) => void;
@@ -18,7 +17,7 @@ export const CookieConsentBanner = ({onConsent}: CookieConsentBannerProps) => {
         'VITE_COOKIE_CONSENT_TEXT',
         t`We use cookies to help us understand how the site is used and to improve your experience.`
     );
-    const privacyUrl = getPrivacyUrl();
+    const privacyUrl = getConfig('VITE_PRIVACY_URL', 'https://hi.events/privacy-policy?utm_source=app-cookie-banner');
 
     const handleAccept = () => {
         onConsent(true);

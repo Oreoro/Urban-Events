@@ -21,17 +21,17 @@
 }
 
 .ticket {
-  background: var(--hi-app-panel-bg);
-  border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-app-panel-border);
-  box-shadow: var(--hi-shadow-sm);
-  max-width: 760px;
+  background: #ffffff;
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-gray-3);
+  max-width: 750px;
   margin: 0 auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 
   @media print {
+    box-shadow: none;
     border: none;
     border-radius: 0;
     max-width: 100%;
@@ -48,17 +48,17 @@
 
 // Header
 .header {
-  background: var(--hi-shell-bg-strong);
-  border-bottom: 1px solid var(--hi-app-panel-border);
-  padding: 18px 22px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 24px 32px;
 
   @include mixins.respond-below(sm) {
     padding: 20px;
   }
 
   @media print {
-    background: var(--hi-color-white);
-    border-bottom: 2px solid var(--hi-border);
+    background: #ffffff;
+    border-bottom: 2px solid #e0e0e0;
     padding: 8px 0;
     margin-bottom: 30px;
     display: flex;
@@ -83,9 +83,9 @@
 }
 
 .eventTitle {
-  font-size: 22px;
-  font-weight: 650;
-  color: var(--hi-text);
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
   margin: 0;
   line-height: 1.3;
   letter-spacing: 0;
@@ -105,13 +105,9 @@
 }
 
 .priceDisplay {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  color: var(--hi-text);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  padding: 6px 10px;
-  background: var(--hi-app-panel-bg);
+  color: var(--accent);
   white-space: nowrap;
 
   @include mixins.respond-below(sm) {
@@ -120,7 +116,7 @@
 
   @media print {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -128,8 +124,8 @@
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  padding: 22px;
+  gap: 32px;
+  padding: 32px;
   flex: 1;
   align-items: start;
 
@@ -152,7 +148,7 @@
 .contentLeft {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 28px;
 
   @include mixins.respond-below(sm) {
     gap: 20px;
@@ -168,7 +164,7 @@
 .eventDetails {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
 
   @include mixins.respond-below(sm) {
     gap: 18px;
@@ -183,30 +179,18 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 9px 11px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-shell-bg-strong);
-
-  @media print {
-    padding: 7px 0;
-    border: 0;
-    border-bottom: 1px solid var(--hi-border);
-    border-radius: 0;
-    background: transparent;
-  }
 }
 
 .detailLabel {
   font-size: 12px;
-  font-weight: 600;
-  text-transform: none;
+  font-weight: 500;
+  text-transform: uppercase;
   letter-spacing: 0;
-  color: var(--hi-text-muted);
+  color: #64748b;
 
   @media print {
     font-size: 11px;
-    color: var(--hi-text-muted);
+    color: #666666;
     font-weight: 600;
   }
 }
@@ -214,7 +198,7 @@
 .detailValue {
   font-size: 16px;
   font-weight: 500;
-  color: var(--hi-text);
+  color: #1e293b;
   line-height: 1.4;
 
   @include mixins.respond-below(sm) {
@@ -229,10 +213,9 @@
 
 // Attendee Section
 .attendeeSection {
-  background: var(--hi-shell-bg-strong);
-  padding: 16px;
-  border-radius: var(--hi-radius-md);
-  border: 1px solid var(--hi-app-panel-border);
+  background: #f1f5f9;
+  padding: 24px;
+  border-radius: 4px;
   margin-top: auto;
 
   @include mixins.respond-below(sm) {
@@ -240,17 +223,17 @@
   }
 
   @media print {
-    background: var(--hi-color-white);
+    background: #ffffff;
     padding: 20px;
-    border-radius: var(--hi-radius-md);
-    border: 1px solid var(--hi-border);
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
   }
 }
 
 .attendeeName {
   font-size: 18px;
   font-weight: 600;
-  color: var(--hi-text);
+  color: #1e293b;
   margin: 8px 0 4px;
 
   @include mixins.respond-below(sm) {
@@ -260,7 +243,7 @@
   @media print {
     font-size: 18px;
     margin: 8px 0 4px;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -270,7 +253,7 @@
 
   @media print {
     font-size: 14px;
-    color: var(--hi-text-muted);
+    color: #666666;
   }
 }
 
@@ -286,7 +269,7 @@
   }
 
   @media print {
-    color: var(--hi-text-muted);
+    color: #555555;
     font-size: 13px;
     line-height: 1.5;
   }
@@ -332,10 +315,10 @@
 
 .qrContainer {
   position: relative;
-  padding: 14px;
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
+  padding: 16px;
+  background: #ffffff;
+  border: 3px solid var(--accent);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,16 +332,10 @@
   }
 
   @media print {
-    border-color: var(--hi-border);
+    border-color: var(--accent);
     padding: 15px;
-    border-width: 1px;
+    border-width: 3px;
   }
-}
-
-.qrCode {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
 }
 
 // QR Placeholder States (Awaiting Payment / Cancelled)
@@ -366,8 +343,8 @@
   position: relative;
   width: 160px;
   height: 160px;
-  border-radius: var(--hi-radius-md);
-  border: 1px solid;
+  border-radius: 12px;
+  border: 2px solid;
   overflow: hidden;
 
   @include mixins.respond-below(sm) {
@@ -382,13 +359,13 @@
 }
 
 .qrPlaceholderPending {
-  border-color: var(--hi-status-info-border);
-  background-color: var(--hi-status-info-bg);
+  border-color: var(--mantine-primary-color-light-hover);
+  background-color: var(--mantine-primary-color-light);
 }
 
 .qrPlaceholderCancelled {
-  border-color: var(--hi-status-danger-border);
-  background-color: var(--hi-status-danger-bg);
+  border-color: var(--mantine-color-red-3);
+  background-color: var(--mantine-color-red-0);
 }
 
 // Faded QR pattern background
@@ -407,11 +384,11 @@
 }
 
 .qrPlaceholderPending .qrPatternCellFilled {
-  background-color: var(--hi-status-info-text);
+  background-color: var(--mantine-primary-color-filled);
 }
 
 .qrPlaceholderCancelled .qrPatternCellFilled {
-  background-color: var(--hi-status-danger-text);
+  background-color: var(--mantine-color-red-9);
 }
 
 // Status content overlay
@@ -428,11 +405,10 @@
 .statusIconCircle {
   width: 44px;
   height: 44px;
-  border-radius: var(--hi-radius-md);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--hi-color-white);
 
   @include mixins.respond-below(sm) {
     width: 40px;
@@ -441,16 +417,16 @@
 }
 
 .statusIconPending {
-  background-color: var(--hi-status-info-text);
+  background-color: var(--mantine-primary-color-filled);
 }
 
 .statusIconCancelled {
-  background-color: var(--hi-status-danger-text);
+  background-color: var(--mantine-color-red-6);
 }
 
 .statusText {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 
   @include mixins.respond-below(sm) {
     font-size: 13px;
@@ -458,11 +434,11 @@
 }
 
 .statusTextPending {
-  color: var(--hi-status-info-text);
+  color: var(--mantine-primary-color-filled);
 }
 
 .statusTextCancelled {
-  color: var(--hi-status-danger-text);
+  color: var(--mantine-color-red-7);
 }
 
 .ticketId {
@@ -476,11 +452,10 @@
   font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
   font-size: 14px;
   font-weight: 600;
-  color: var(--hi-text);
-  background: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-app-panel-border);
-  padding: 7px 12px;
-  border-radius: var(--hi-radius-sm);
+  color: var(--accent);
+  background: #f8fafc;
+  padding: 8px 16px;
+  border-radius: 4px;
   letter-spacing: 0;
 
   @include mixins.respond-below(sm) {
@@ -489,27 +464,27 @@
   }
 
   @media print {
-    color: var(--hi-text);
-    background: var(--hi-shell-bg-strong);
+    color: var(--accent);
+    background: #f0f0f0;
     font-size: 14px;
     padding: 8px 16px;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
 // Footer
 .footer {
-  background: var(--hi-shell-bg-strong);
-  border-top: 1px solid var(--hi-app-panel-border);
-  padding: 18px 22px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 20px 32px;
 
   @include mixins.respond-below(sm) {
     padding: 16px 20px;
   }
 
   @media print {
-    background: var(--hi-color-white);
-    border-top: 2px solid var(--hi-border);
+    background: #ffffff;
+    border-top: 2px solid #e0e0e0;
     padding: 12px 0;
     margin-top: 12px;
     page-break-inside: avoid;

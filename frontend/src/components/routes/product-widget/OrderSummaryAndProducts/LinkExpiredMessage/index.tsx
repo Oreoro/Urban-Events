@@ -3,7 +3,6 @@ import {Stack, Text, Button, ThemeIcon} from "@mantine/core";
 import {IconLinkOff} from "@tabler/icons-react";
 import {useNavigate} from "react-router";
 import {Card} from "../../../../common/Card";
-import classes from "./LinkExpiredMessage.module.scss";
 
 export const LinkExpiredMessage = () => {
     const navigate = useNavigate();
@@ -13,21 +12,21 @@ export const LinkExpiredMessage = () => {
     };
 
     return (
-        <Card className={classes.expiredCard}>
+        <Card style={{textAlign: 'center', padding: '48px 24px'}}>
             <Stack align="center" gap="lg">
                 <ThemeIcon
-                    size={48}
-                    radius="md"
+                    size={64}
+                    radius="xl"
                     variant="light"
-                    className={classes.expiredIcon}
+                    color="red"
                 >
-                    <IconLinkOff size={26}/>
+                    <IconLinkOff size={32}/>
                 </ThemeIcon>
                 <div>
-                    <Text className={classes.expiredTitle} mb="xs">
+                    <Text size="xl" fw={600} mb="xs">
                         {t`This link is no longer valid`}
                     </Text>
-                    <Text size="sm" className={classes.expiredText}>
+                    <Text size="sm" c="dimmed">
                         {t`The link you are trying to access has expired or is no longer valid. Please check your email for an updated link to manage your order.`}
                     </Text>
                 </div>

@@ -60,31 +60,31 @@ const MigrationNotice = ({stripeData}: { stripeData: StripeConnectAccountsRespon
                 <ThemeIcon
                     size="lg"
                     variant="light"
-                    radius="md"
-                    color="slate"
+                    radius="xl"
+                    color="blue"
                     style={{marginTop: '2px'}}
                 >
                     <IconInfoCircle size={20}/>
                 </ThemeIcon>
 
                 <div style={{flex: 1}}>
-                    <Title order={3} mb="sm" c="var(--hi-text)">{t`Action Required: Reconnect Your Stripe Account`}</Title>
+                    <Title order={3} mb="sm" c="blue.8">{t`Action Required: Reconnect Your Stripe Account`}</Title>
 
-                    <Text size="sm" mb="md" lh={1.5} c="var(--hi-text-light)">
+                    <Text size="sm" mb="md" lh={1.5} c="dark.6">
                         {t`We've officially moved our headquarters to Ireland 🇮🇪. As part of this transition, we're now using Stripe Ireland instead of Stripe Canada. To keep your payouts running smoothly, you'll need to reconnect your Stripe account.`}
                     </Text>
 
                     <div style={{
-                        background: 'var(--hi-surface)',
+                        background: 'var(--mantine-color-gray-0)',
                         padding: '16px',
-                        borderRadius: 'var(--hi-radius-md)',
+                        borderRadius: '6px',
                         marginBottom: '16px',
-                        border: '1px solid var(--hi-border)'
+                        border: '1px solid var(--mantine-color-gray-2)'
                     }}>
-                        <Text size="sm" fw={500} mb="sm" c="var(--hi-text)">{t`Here's what to expect:`}</Text>
-                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`Takes just a few minutes`}</Text>
-                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`No impact on your current or past transactions`}</Text>
-                        <Text size="xs" c="var(--hi-text-light)">• {t`Payments will continue to flow without interruption`}</Text>
+                        <Text size="sm" fw={500} mb="sm" c="dark.7">{t`Here's what to expect:`}</Text>
+                        <Text size="xs" mb="xs" c="dark.6">• {t`Takes just a few minutes`}</Text>
+                        <Text size="xs" mb="xs" c="dark.6">• {t`No impact on your current or past transactions`}</Text>
+                        <Text size="xs" c="dark.6">• {t`Payments will continue to flow without interruption`}</Text>
                     </div>
 
                     <Text size="xs" c="dimmed" fs="italic">
@@ -108,7 +108,7 @@ const MigrationBanner = ({stripeData}: { stripeData: StripeConnectAccountsRespon
     return (
         <Card variant="lightGray" className={paymentClasses.migrationBanner}>
             <Group gap="sm" mb="md">
-                <ThemeIcon size="lg" variant="light" radius="md" color="slate">
+                <ThemeIcon size="lg" variant="light" radius="xl" color="blue">
                     <IconInfoCircle size={20}/>
                 </ThemeIcon>
                 <div>
@@ -139,8 +139,8 @@ const PlatformPanel = ({
     isMigrationComplete?: boolean;
 }) => {
     const platformColors = {
-        ca: 'slate',
-        ie: 'slate'
+        ca: 'orange',
+        ie: 'green'
     };
 
     return (
@@ -153,7 +153,7 @@ const PlatformPanel = ({
                     <ThemeIcon
                         size="md"
                         variant="light"
-                        radius="sm"
+                        radius="xl"
                         color={platformColors[platform]}
                     >
                         {account?.is_setup_complete ? <IconCheck size={16}/> : <IconAlertCircle size={16}/>}
@@ -166,7 +166,7 @@ const PlatformPanel = ({
                     </div>
                 </Group>
                 {!hideLabels && platform === 'ca' && isActive && (
-                    <Text size="xs" c="dimmed" fw={500}>
+                    <Text size="xs" c="orange" fw={500}>
                         {t`Upgrade Available`}
                     </Text>
                 )}
@@ -385,7 +385,7 @@ const HiEventsConnectStatus = ({account}: { account: Account }) => {
             content = (
                 <>
                     <Group gap="xs" mb="md">
-                        <ThemeIcon size="sm" variant="light" radius="sm" color="slate">
+                        <ThemeIcon size="sm" variant="light" radius="xl" color="green">
                             <IconCheck size={16}/>
                         </ThemeIcon>
                         <Text size="sm" fw={500}>
@@ -622,7 +622,7 @@ const OpenSourceConnectStatus = ({account}: { account: Account }) => {
             {stripeDetails?.is_connect_setup_complete ? (
                 <>
                     <Group gap="xs" mb="md">
-                        <ThemeIcon size="sm" variant="light" radius="sm">
+                        <ThemeIcon size="sm" variant="light" radius="xl" color="#0d9488">
                             <IconCheck size={16}/>
                         </ThemeIcon>
                         <Text size="sm" fw={500}>

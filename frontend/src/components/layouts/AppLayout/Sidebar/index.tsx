@@ -60,10 +60,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             : ""} ${classes.link}`
                     }
                 >
-                    {item.icon && <item.icon size={18} className={classes.linkIcon} stroke={1.7}/>}
+                    {item.icon && <item.icon size={20} className={classes.linkIcon} stroke={1.5}/>}
                     <span>{item.label}</span>
                     {item.badge !== undefined &&
-                        <Badge size="xs" radius="sm" className={classes.navBadge}>{item.badge}</Badge>}
+                        <Badge size="xs" radius="xl" className={classes.navBadge}>{item.badge}</Badge>}
                     {item.comingSoon &&
                         <Badge ml={'4px'} size={'xs'} className={classes.comingSoonBadge}>{t`Coming Soon`}</Badge>}
                 </NavLink>
@@ -75,7 +75,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
             <div className={classes.logo}>
                 <NavLink to={`/manage/events`}>
-                    <BrandWordmark tone="dark" size="md"/>
+                    <BrandWordmark tone="light" size="md"/>
                 </NavLink>
             </div>
             <div className={classes.nav}>

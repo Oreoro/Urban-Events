@@ -1,122 +1,25 @@
 .container {
-  margin-bottom: var(--hi-spacing-xl);
-
-  h1 {
-    margin: 0 0 8px;
-    font-size: 1.18rem;
-    font-weight: 680;
-    letter-spacing: 0;
-  }
-
   .tabsCard {
-    padding: 0 !important;
-    margin-bottom: 10px !important;
-    background: transparent !important;
-    border: 0 !important;
+    padding: 0;
     box-shadow: none;
-    border-radius: 0;
-    overflow: visible;
-
-    :global(.mantine-Tabs-list) {
-      border-bottom: 1px solid var(--hi-border);
-      background: transparent;
-      padding: 0 0 4px;
-      gap: 2px;
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    :global(.mantine-Tabs-tab) {
-      min-height: 30px;
-      border: 1px solid transparent;
-      border-radius: var(--hi-radius-sm);
-      color: var(--hi-text-muted);
-      font-size: 0.8rem;
-      font-weight: 620;
-      padding: 0 9px;
-      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-      white-space: nowrap;
-
-      svg {
-        width: 15px;
-        height: 15px;
-      }
-
-      &:hover {
-        background: var(--hi-control-bg-hover);
-        color: var(--hi-text);
-      }
-
-      &[data-active] {
-        background: var(--hi-control-bg-active);
-        border-color: var(--hi-border);
-        color: var(--hi-text);
-      }
-    }
   }
 
   .tabWrapper {
     position: relative;
-    margin-bottom: 14px;
+    margin-bottom: var(--hi-spacing-lg);
 
     .tabContent {
       position: relative;
-      padding: 12px;
-      background: var(--hi-surface);
-      border: 1px solid var(--hi-app-panel-border);
-      border-radius: var(--hi-radius-md);
-      box-shadow: var(--hi-shadow-sm);
-
-      :global(.mantine-InputWrapper-root) {
-        margin-bottom: 10px;
-      }
-
-      :global(.mantine-InputWrapper-label) {
-        color: var(--hi-text);
-        font-size: 0.81rem;
-        font-weight: 620;
-        line-height: 1.35;
-      }
-
-      :global(.mantine-InputWrapper-description) {
-        color: var(--hi-text-muted);
-        font-size: 0.76rem;
-        line-height: 1.42;
-      }
-
-      :global(.mantine-Input-input) {
-        min-height: 34px;
-        border-color: var(--hi-border);
-        border-radius: var(--hi-radius-sm);
-        background: var(--hi-surface);
-        color: var(--hi-text);
-        font-size: 0.84rem;
-        font-weight: 500;
-      }
+      padding: var(--hi-spacing-lg);
     }
 
     .feeExample {
-      padding: 10px;
-      background: var(--hi-app-panel-bg);
-      border: 1px solid var(--hi-app-panel-border);
-      border-radius: var(--hi-radius-md);
+      padding: var(--hi-spacing-lg);
     }
   }
 
   .footer {
-    margin-top: 12px;
-
-    :global(.mantine-Button-root) {
-      min-height: 34px;
-      border-radius: var(--hi-radius-sm);
-      font-size: 0.82rem;
-      font-weight: 640;
-    }
+    margin-top: var(--hi-spacing-xl);
   }
 
   .card {
@@ -124,13 +27,13 @@
   }
 
   .heading {
-    font-size: 0.94rem;
-    font-weight: 680;
-    color: var(--hi-text);
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--hi-primary);
   }
 
   .subHeading {
-    font-size: 0.82rem;
-    color: var(--hi-text-muted);
+    font-size: 0.9em;
   }
 }
+

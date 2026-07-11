@@ -6,23 +6,23 @@
 
 .title {
   color: var(--hi-text);
-  font-size: clamp(1.85rem, 3vw, 2.35rem);
-  font-weight: 730;
-  line-height: 1.06;
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-weight: 850;
+  line-height: 1.16;
   letter-spacing: 0;
-  margin-bottom: 0.36rem !important;
+  margin-bottom: 0.4rem !important;
   margin-top: 0;
 
   @include mixins.respond-below(md) {
-    font-size: 1.65rem !important;
+    font-size: 1.45rem !important;
   }
 }
 
 .subheading {
-  max-width: 720px;
-  font-size: 0.86rem;
+  max-width: 760px;
+  font-size: 0.95rem;
   color: var(--hi-text-muted);
   font-weight: 500;
-  line-height: 1.48;
-  margin-bottom: 0;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
 }

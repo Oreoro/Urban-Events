@@ -18,7 +18,7 @@ interface EventCardProps {
 
 const placeholderIcons = [IconTicket, IconCalendar, IconMusic, IconPalette, IconSparkles];
 
-export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#37352F'}) => {
+export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#0E7C70'}) => {
     const iconIndex = event.id ? Number(event.id) % placeholderIcons.length : 0;
     const PlaceholderIcon = placeholderIcons[iconIndex];
 
@@ -123,7 +123,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                     </div>
 
                     <div className={classes.dateBadge}>
-                        <IconCalendar size={14}/>
+                        <IconCalendar size={16}/>
                         <span>{startMonth} {startDay}</span>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                         <h3 className={classes.eventTitle}>{event.title}</h3>
 
                         <div className={classes.eventDateTime}>
-                            <IconClock size={13}/>
+                            <IconClock size={14}/>
                             <span>
                                 {startTime}
                                 {endTime && (
@@ -163,9 +163,9 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
                             {(location || isOnlineEvent) && (
                                 <div className={classes.location}>
                                     {isOnlineEvent ? (
-                                        <><IconWifi size={13}/><span>{t`Online Event`}</span></>
+                                        <><IconWifi size={14}/><span>{t`Online Event`}</span></>
                                     ) : (
-                                        <><IconMapPin size={13}/><span>{location}</span></>
+                                        <><IconMapPin size={14}/><span>{location}</span></>
                                     )}
                                 </div>
                             )}
@@ -173,7 +173,7 @@ export const EventCard: React.FC<EventCardProps> = ({event, primaryColor = '#373
 
                         {lowestPrice !== null && (
                             <div className={classes.priceSection}>
-                                <IconTicket size={13}/>
+                                <IconTicket size={14}/>
                                 <span className={lowestPrice === 0 && highestPrice === 0 ? classes.free : classes.price}>
                                     {lowestPrice === 0 && highestPrice === 0 ? (
                                         t`Free`

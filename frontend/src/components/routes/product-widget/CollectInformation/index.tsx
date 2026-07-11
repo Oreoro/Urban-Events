@@ -14,6 +14,7 @@ import {
 import {IconArrowRight, IconCheck, IconCircleCheck, IconClock} from "@tabler/icons-react";
 import {t, Trans} from "@lingui/macro";
 import {useForm} from "@mantine/form";
+import {notifications} from "@mantine/notifications";
 import {useGetOrderPublic} from "../../../../queries/useGetOrderPublic.ts";
 import {useGetEventPublic} from "../../../../queries/useGetEventPublic.ts";
 import {useGetEventQuestionsPublic} from "../../../../queries/useGetEventQuestionsPublic.ts";
@@ -24,11 +25,10 @@ import {InputGroup} from "../../../common/InputGroup";
 import {Card} from "../../../common/Card";
 import {CheckoutContent} from "../../../layouts/Checkout/CheckoutContent";
 import {getConfig} from "../../../../utilites/config.ts";
-import {getTermsUrl} from "../../../../utilites/legalUrls.ts";
 import {HomepageInfoMessage} from "../../../common/HomepageInfoMessage";
 import {InlineOrderSummary} from "../../../common/InlineOrderSummary";
 import {eventCheckoutPath, eventHomepagePath} from "../../../../utilites/urlHelper.ts";
-import {showError, showInfo} from "../../../../utilites/notifications.tsx";
+import {showInfo} from "../../../../utilites/notifications.tsx";
 import countries from "../../../../../data/countries.json";
 import classes from "./CollectInformation.module.scss";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
@@ -80,7 +80,7 @@ export const CollectInformation = () => {
     };
 
     const EmailCheckIcon = () => (
-        <IconCircleCheck size={18} className={classes.validEmailIcon}/>
+        <IconCircleCheck size={18} style={{color: 'var(--primary-color, #10B981)'}}/>
     );
 
     let productIndex = 0;
@@ -225,7 +225,9 @@ export const CollectInformation = () => {
             if (error?.response?.data?.errors && Object.keys(error?.response?.data?.errors).length > 0) {
                 form.setErrors(error.response.data.errors);
             } else if (error?.response?.data?.message) {
-                showError(error.response.data.message);
+                notifications.show({
+                    message: error?.response?.data?.message,
+                });
 
                 // if it's a 409, we need to redirect to the event page as the order is no longer valid
                 if (error.response.status === 409) {
@@ -291,14 +293,6 @@ export const CollectInformation = () => {
 
     const handleSubmit = (values: any) => {
         mutation.mutate(values);
-    };
-
-    const getControlledInputProps = (path: string) => {
-        const inputProps = form.getInputProps(path);
-        return {
-            ...inputProps,
-            value: inputProps.value ?? "",
-        };
     };
 
     useEffect(() => {
@@ -478,7 +472,7 @@ export const CollectInformation = () => {
                                     position="right"
                                     withArrow
                                 >
-                                    <div className={classes.tooltipTarget}>
+                                    <div style={{display: 'inline-block'}}>
                                         <Checkbox
                                             size="sm"
                                             label={t`Copy details to first attendee`}
@@ -516,7 +510,7 @@ export const CollectInformation = () => {
 
                     {requireBillingAddress && (
                         <>
-                            <h3 className={classes.billingHeading}>
+                            <h3 style={{marginBottom: 5}}>
                                 {t`Billing Address`}
                             </h3>
 
@@ -525,12 +519,12 @@ export const CollectInformation = () => {
                                     withAsterisk
                                     label={t`Address Line 1`}
                                     placeholder={t`Address Line 1`}
-                                    {...getControlledInputProps("order.address.address_line_1")}
+                                    {...form.getInputProps("order.address.address_line_1")}
                                 />
                                 <TextInput
                                     label={t`Address Line 2`}
                                     placeholder={t`Address Line 2`}
-                                    {...getControlledInputProps("order.address.address_line_2")}
+                                    {...form.getInputProps("order.address.address_line_2")}
                                 />
                             </InputGroup>
 
@@ -539,13 +533,13 @@ export const CollectInformation = () => {
                                     withAsterisk
                                     label={t`City`}
                                     placeholder={t`City`}
-                                    {...getControlledInputProps("order.address.city")}
+                                    {...form.getInputProps("order.address.city")}
                                 />
                                 <TextInput
                                     withAsterisk
                                     label={t`State or Region`}
                                     placeholder={t`State or Region`}
-                                    {...getControlledInputProps("order.address.state_or_region")}
+                                    {...form.getInputProps("order.address.state_or_region")}
                                 />
                             </InputGroup>
 
@@ -554,13 +548,13 @@ export const CollectInformation = () => {
                                 <TextInput
                                     label={t`ZIP / Postal Code`}
                                     placeholder={t`ZIP or Postal Code`}
-                                    {...getControlledInputProps("order.address.zip_or_postal_code")}
+                                    {...form.getInputProps("order.address.zip_or_postal_code")}
                                 />
                                 <NativeSelect
                                     withAsterisk
                                     label={t`Country`}
                                     data={countries}
-                                    {...getControlledInputProps("order.address.country")}
+                                    {...form.getInputProps("order.address.country")}
                                 />
                             </InputGroup>
                         </>
@@ -652,13 +646,13 @@ export const CollectInformation = () => {
                                                         withAsterisk
                                                         label={t`First Name`}
                                                         placeholder={t`First name`}
-                                                        {...getControlledInputProps(`products.${currentProductIndex}.first_name`)}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.first_name`)}
                                                     />
                                                     <TextInput
                                                         withAsterisk
                                                         label={t`Last Name`}
                                                         placeholder={t`Last Name`}
-                                                        {...getControlledInputProps(`products.${currentProductIndex}.last_name`)}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.last_name`)}
                                                     />
                                                 </InputGroup>
 
@@ -670,7 +664,7 @@ export const CollectInformation = () => {
                                                         placeholder={t`Email Address`}
                                                         rightSection={isEmailValid(form.values.products[currentProductIndex]?.email || '') ?
                                                             <EmailCheckIcon/> : null}
-                                                        {...getControlledInputProps(`products.${currentProductIndex}.email`)}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.email`)}
                                                     />
                                                     <TextInput
                                                         withAsterisk
@@ -679,7 +673,7 @@ export const CollectInformation = () => {
                                                         placeholder={t`Confirm Email Address`}
                                                         rightSection={isEmailValid(form.values.products[currentProductIndex]?.email_confirmation || '') ?
                                                             <EmailCheckIcon/> : null}
-                                                        {...getControlledInputProps(`products.${currentProductIndex}.email_confirmation`)}
+                                                        {...form.getInputProps(`products.${currentProductIndex}.email_confirmation`)}
                                                     />
                                                 </InputGroup>
                                             </>
@@ -723,7 +717,7 @@ export const CollectInformation = () => {
                             <Trans>
                                 By continuing, you agree to the{' '}
                                 <a
-                                    href={getTermsUrl()}
+                                    href={getConfig('VITE_TOS_URL', 'https://hi.events/terms-of-service') as string}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

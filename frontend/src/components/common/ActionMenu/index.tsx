@@ -1,7 +1,6 @@
 import React from 'react';
-import {ActionIcon, Menu} from '@mantine/core';
+import {Button, Group, Menu} from '@mantine/core';
 import {IconDotsVertical} from '@tabler/icons-react';
-import classes from './ActionMenu.module.scss';
 
 export interface MenuItem {
     label: string;
@@ -23,9 +22,9 @@ interface ActionMenuProps {
 }
 
 const DefaultTarget = () => (
-    <ActionIcon variant="subtle" size="sm" radius="sm" className={classes.defaultTarget}>
-        <IconDotsVertical size={16}/>
-    </ActionIcon>
+    <Button variant="transparent">
+        <IconDotsVertical/>
+    </Button>
 );
 
 export const ActionMenu: React.FC<ActionMenuProps> = ({
@@ -34,23 +33,22 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
                                                       }) => {
     return (
         <>
-            <Menu shadow="none" width={196} offset={5}>
+            <Menu shadow="md" width={200}>
                 <Menu.Target>
-                    <div className={classes.target}>
+                    <div style={{cursor: 'pointer'}}>
                         {target}
                     </div>
                 </Menu.Target>
 
-                <Menu.Dropdown className={classes.dropdown}>
+                <Menu.Dropdown>
                     {itemsGroups.map((group, groupIndex) => (
                         <React.Fragment key={groupIndex}>
                             {group.showDividerAbove && <Menu.Divider/>}
-                            {group.label && <Menu.Label className={classes.label}>{group.label}</Menu.Label>}
+                            <Menu.Label>{group.label}</Menu.Label>
                             {group.items.map((item, itemIndex) => item.visible !== false && (
                                 <Menu.Item
                                     key={itemIndex}
                                     color={item.color}
-                                    className={`${classes.item} ${item.color === 'red' ? classes.dangerItem : ''}`}
                                     leftSection={item.icon}
                                     onClick={item.onClick}
                                 >

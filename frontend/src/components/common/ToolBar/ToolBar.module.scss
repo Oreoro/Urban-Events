@@ -2,20 +2,12 @@
 
 .card {
   container-type: inline-size;
-  margin-bottom: 0.55rem;
-  padding: 6px !important;
-  background: var(--hi-app-panel-bg) !important;
-  border: 1px solid var(--hi-app-panel-border) !important;
-  border-radius: var(--hi-radius-md) !important;
-  box-shadow: none !important;
-
-  &:hover {
-    border-color: var(--hi-app-panel-border) !important;
-  }
+  margin-bottom: 1rem;
+  padding: 0.875rem !important;
 
   .wrapper {
     display: flex;
-    gap: 0.42rem;
+    gap: 0.875rem;
     align-items: center;
     place-content: space-between;
 
@@ -34,7 +26,7 @@
 
     .filterAndActions {
       display: flex;
-      gap: 0.42rem;
+      gap: 0.625rem;
       align-items: center;
       place-self: flex-end;
 
@@ -51,7 +43,7 @@
 
     .actions {
       display: flex;
-      gap: 0.42rem;
+      gap: 0.625rem;
       align-items: center;
       place-self: flex-end;
       flex-wrap: wrap;
@@ -59,62 +51,6 @@
   }
 
   button {
-    min-height: 30px !important;
-    border-radius: var(--hi-radius-sm) !important;
-    font-size: 0.8rem !important;
-    font-weight: 620 !important;
-    letter-spacing: 0;
-    box-shadow: none !important;
-
-    &[data-variant="filled"] {
-      border: 1px solid var(--hi-primary) !important;
-      background: var(--hi-primary) !important;
-      color: var(--hi-color-white) !important;
-
-      &:hover {
-        border-color: var(--hi-primary-hover) !important;
-        background: var(--hi-primary-hover) !important;
-      }
-    }
-
-    &[data-variant="default"],
-    &[data-variant="light"],
-    &[data-variant="outline"],
-    &[data-variant="subtle"] {
-      border: 1px solid var(--hi-border) !important;
-      background: var(--hi-surface) !important;
-      color: var(--hi-text) !important;
-
-      &:hover {
-        border-color: var(--hi-border-strong) !important;
-        background: var(--hi-control-bg-hover) !important;
-      }
-    }
-  }
-
-  :global(.mantine-Select-input) {
-    min-height: 30px;
-    border-color: var(--hi-border);
-    border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface);
-    color: var(--hi-text);
-    font-size: 0.8rem;
-    font-weight: 560;
-    box-shadow: none;
-
-    &:hover {
-      border-color: var(--hi-border-strong);
-      background: var(--hi-control-bg-hover);
-    }
-
-    &:focus,
-    &:focus-within {
-      border-color: color-mix(in srgb, var(--hi-focus-accent) 48%, var(--hi-border-strong));
-      box-shadow: 0 0 0 2px var(--hi-focus-ring);
-    }
-  }
-
-  :global(.mantine-Select-section) {
-    color: var(--hi-text-muted);
+    min-height: 40px !important;
   }
 }

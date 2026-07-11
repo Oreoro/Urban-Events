@@ -1,19 +1,17 @@
 .orderSummary {
   padding: 10px;
-  background-color: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
+  background-color: #f7f7f7;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
 }
 
 .attendee {
   display: flex;
   padding: 10px;
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
+  border: 1px solid #dddddd;
+  border-radius: 5px;
   margin-bottom: 10px;
   align-items: center;
-  background: var(--hi-app-panel-bg);
 
   .attendeeName {
     margin-left: 10px;

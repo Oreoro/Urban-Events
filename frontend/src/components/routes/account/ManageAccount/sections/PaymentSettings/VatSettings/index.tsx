@@ -28,7 +28,7 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
         return (
             <div className={classes.vatSettings}>
                 <Title mb={10} order={3}>{t`VAT Information`}</Title>
-                <Alert icon={<IconInfoCircle />} mb="lg">
+                <Alert color="blue" icon={<IconInfoCircle />} mb="lg">
                     <Text size="sm" fw={500} mb="xs">{t`VAT Treatment for Platform Fees`}</Text>
                     <Text size="sm" lh={1.6}>
                         {t`As your business is based in Ireland, Irish VAT at 23% applies automatically to all platform fees.`}
@@ -45,11 +45,12 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
 
             {needsVatInfo && (
                 <Alert
+                    color="orange"
                     icon={<IconAlertCircle />}
                     mb="lg"
                     styles={{
                         root: {
-                            borderLeft: '3px solid var(--hi-border-strong)',
+                            borderLeft: '4px solid var(--mantine-color-orange-6)',
                         }
                     }}
                 >
@@ -58,24 +59,24 @@ export const VatSettings = ({account, stripeCountry}: VatSettingsProps) => {
                         {t`As your business is based in the EU, we need to determine the correct VAT treatment for our platform fees:`}
                     </Text>
                     <div style={{
-                        background: 'var(--hi-app-panel-bg)',
+                        background: 'var(--mantine-color-gray-0)',
                         padding: '12px',
-                        borderRadius: 'var(--hi-radius-sm)',
+                        borderRadius: '6px',
                         marginBottom: '12px',
-                        border: '1px solid var(--hi-app-panel-border)'
+                        border: '1px solid var(--mantine-color-orange-2)'
                     }}>
-                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`EU VAT-registered businesses: Reverse charge mechanism applies (0% - Article 196 of VAT Directive 2006/112/EC)`}</Text>
-                        <Text size="xs" c="var(--hi-text-light)">• {t`Non-VAT registered businesses or individuals: Irish VAT at 23% applies`}</Text>
+                        <Text size="xs" mb="xs" c="dark.6">• {t`EU VAT-registered businesses: Reverse charge mechanism applies (0% - Article 196 of VAT Directive 2006/112/EC)`}</Text>
+                        <Text size="xs" c="dark.6">• {t`Non-VAT registered businesses or individuals: Irish VAT at 23% applies`}</Text>
                     </div>
                     <div style={{
-                        background: 'var(--hi-app-panel-bg)',
+                        background: 'var(--mantine-color-white)',
                         padding: '12px',
-                        borderRadius: 'var(--hi-radius-sm)',
-                        border: '1px solid var(--hi-app-panel-border)'
+                        borderRadius: '6px',
+                        border: '1px solid var(--mantine-color-orange-2)'
                     }}>
-                        <Text size="sm" fw={500} mb="xs" c="var(--hi-text)">{t`What you need to do:`}</Text>
-                        <Text size="xs" mb="xs" c="var(--hi-text-light)">• {t`Indicate whether you're VAT-registered in the EU`}</Text>
-                        <Text size="xs" c="var(--hi-text-light)">• {t`If registered, provide your VAT number for validation`}</Text>
+                        <Text size="sm" fw={500} mb="xs" c="dark.7">{t`What you need to do:`}</Text>
+                        <Text size="xs" mb="xs" c="dark.6">• {t`Indicate whether you're VAT-registered in the EU`}</Text>
+                        <Text size="xs" c="dark.6">• {t`If registered, provide your VAT number for validation`}</Text>
                     </div>
                 </Alert>
             )}

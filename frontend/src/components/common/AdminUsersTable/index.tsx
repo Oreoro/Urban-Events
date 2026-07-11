@@ -84,7 +84,7 @@ const AdminUsersTable = ({users, onImpersonate, isLoading}: AdminUsersTableProps
                                                 {t`Impersonate`}
                                             </Button>
                                         ) : (
-                                            <Menu width={200}>
+                                            <Menu shadow="md" width={200}>
                                                 <Menu.Target>
                                                     <Button
                                                         size="xs"

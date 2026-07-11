@@ -97,30 +97,18 @@ export const GlobalMenu = () => {
         },
     });
 
-    const userDisplayName = me ? `${me.first_name} ${me.last_name}`.trim() || me.email : t`Loading`;
-
     return (
         <>
-            <Menu width={236} position="bottom-end" offset={6} shadow="none">
+            <Menu shadow="md" width={220} position="bottom-end" offset={10}>
                 <Menu.Target>
                     <UnstyledButton className={classes.menuButton}>
-                        <Avatar className={classes.avatar} radius="sm" fw={800}>
+                        <Avatar className={classes.avatar} radius="xl" fw={800}>
                             {me ? getInitials(me.first_name + " " + me.last_name) : ".."}
                         </Avatar>
                     </UnstyledButton>
                 </Menu.Target>
 
                 <Menu.Dropdown className={classes.dropdown}>
-                    <div className={classes.userHeader}>
-                        <Avatar className={classes.headerAvatar} radius="sm" fw={800}>
-                            {me ? getInitials(me.first_name + " " + me.last_name) : ".."}
-                        </Avatar>
-                        <div className={classes.userMeta}>
-                            <div className={classes.userName}>{userDisplayName}</div>
-                            {me?.email && <div className={classes.userEmail}>{me.email}</div>}
-                        </div>
-                    </div>
-                    <Menu.Divider/>
                     {links.map((link) => {
                         const Icon = link.icon;
 

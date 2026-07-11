@@ -30,7 +30,7 @@ export const AuthGuard = ({
     if (!me.isFetched) {
         return (
             <Center mih="100vh">
-                <Loader size="sm"/>
+                <Loader color="secondary" size="sm"/>
             </Center>
         );
     }

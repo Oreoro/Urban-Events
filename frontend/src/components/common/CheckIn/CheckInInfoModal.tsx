@@ -44,6 +44,7 @@ export const CheckInInfoModal = ({
 
                             <Progress
                                 value={checkInList.checked_in_attendees / checkInList.total_attendees * 100}
+                                color={'teal'}
                                 size={'xl'}
                                 className={classes.progressBar}
                             />

@@ -16,7 +16,6 @@ import {queryClient} from "../../../../utilites/queryClient.ts";
 import {GET_EVENT_IMAGES_QUERY_KEY, useGetEventImages} from "../../../../queries/useGetEventImages.ts";
 import {LoadingMask} from "../../../common/LoadingMask";
 import {TicketPreview} from "./TicketPreview";
-import {URBAN_EVENTS_THEME} from "../../../../utilites/themeUtils.ts";
 
 interface TicketDesignSettings {
     accent_color: string;
@@ -38,7 +37,7 @@ const TicketDesigner = () => {
 
     const form = useForm<TicketDesignSettings>({
         initialValues: {
-            accent_color: URBAN_EVENTS_THEME.accent,
+            accent_color: '#333333',
             logo_image_id: undefined,
             footer_text: '',
             date_display_mode: 'START_DATE_TIME',
@@ -52,7 +51,7 @@ const TicketDesigner = () => {
         if (eventSettingsQuery?.isFetched && eventSettingsQuery?.data?.ticket_design_settings) {
             const settings = eventSettingsQuery.data.ticket_design_settings;
             form.setValues({
-                accent_color: settings.accent_color || URBAN_EVENTS_THEME.accent,
+                accent_color: settings.accent_color || '#333333',
                 logo_image_id: settings.logo_image_id || undefined,
                 footer_text: settings.footer_text || '',
                 date_display_mode: settings.date_display_mode || 'START_DATE_TIME',
@@ -143,7 +142,7 @@ const TicketDesigner = () => {
                                                     <Text fw={500} size="sm">{t`Logo`}</Text>
                                                     <Tooltip
                                                         label={t`We recommend a square logo with minimum dimensions of 200x200px`}>
-                                                        <IconHelp size={16} style={{ color: 'var(--hi-text-muted)' }}/>
+                                                        <IconHelp size={16} style={{ color: 'var(--mantine-color-gray-6)' }}/>
                                                     </Tooltip>
                                                 </Group>
                                                 <ImageUploadDropzone

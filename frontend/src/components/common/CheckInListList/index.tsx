@@ -55,6 +55,7 @@ export const CheckInListList = ({checkInLists, openCreateModal}: CheckInListList
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus/>}
+                            color={'#0d9488'}
                             onClick={() => openCreateModal()}>{t`Create Check-In List`}
                         </Button>
                     </>
@@ -108,7 +109,8 @@ export const CheckInListList = ({checkInLists, openCreateModal}: CheckInListList
                                 </div>
                                 <div className={classes.capacityAssignmentStatus}>
                                     <Popover title={statusMessage} position={'bottom'} withArrow>
-                                        <Badge variant={'light'}>
+                                        <Badge variant={'light'}
+                                               color={(!list.is_expired && list.is_active) ? '#0d9488' : 'gray'}>
                                             {!list.is_expired && list.is_active ? t`Active` : t`Inactive`}
                                         </Badge>
                                     </Popover>
@@ -125,10 +127,10 @@ export const CheckInListList = ({checkInLists, openCreateModal}: CheckInListList
                                 <div className={classes.checkInListCapacity}>
                                     <Progress
                                         value={checkInLists.length === 0 ? 0 : (list.checked_in_attendees / list.total_attendees) * 100}
-                                        radius={'sm'}
-                                        color={'slate'}
-                                        size={'sm'}
-                                        style={{marginTop: '8px'}}
+                                        radius={'xl'}
+                                        color={list.checked_in_attendees === list.total_attendees ? 'primary' : '#0d9488'}
+                                        size={'xl'}
+                                        style={{marginTop: '10px'}}
                                     />
                                     <div className={classes.capacityText}>
                                         <IconUsers size={18}/> {list.checked_in_attendees} / {list.total_attendees}

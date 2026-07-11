@@ -2,22 +2,14 @@
 
 @keyframes colorfulBorder {
   0% {
-    border-color: color-mix(in srgb, var(--hi-color-white) 42%, transparent);
+    border-color: #ffffff50;
   }
   50% {
-    border-color: color-mix(in srgb, var(--hi-text) 22%, transparent);
+    border-color: #00000050;
   }
   100% {
-    border-color: color-mix(in srgb, var(--hi-color-white) 42%, transparent);
+    border-color: #ffffff50;
   }
-}
-
-.controlIcon {
-  color: color-mix(in srgb, var(--hi-color-white) 72%, transparent);
-}
-
-.activeControlIcon {
-  color: var(--hi-warning);
 }
 
 .videoContainer {
@@ -31,12 +23,12 @@
     width: 100vw;
     padding: 20px;
     text-align: center;
-    background-color: var(--hi-text);
-    color: var(--hi-color-white);
+    background-color: #000000;
+    color: #fff;
     z-index: 3;
 
     a {
-      color: var(--hi-color-white);
+      color: #dddddd;
       text-decoration: underline;
     }
   }
@@ -73,11 +65,11 @@
   .scannerOverlay {
     width: 60vw;
     height: 60vw;
-    border: 4px solid color-mix(in srgb, var(--hi-color-white) 48%, transparent);
+    border: 5px solid #ffffff50;
     position: absolute;
     animation: colorfulBorder 10s infinite;
-    border-radius: var(--hi-radius-md);
-    outline: solid 50vmax color-mix(in srgb, var(--hi-text) 54%, transparent);
+    border-radius: 10px;
+    outline: solid 50vmax rgb(71 46 120 / 50%);
     transition: outline-color 0.2s ease-out;
     min-width: 200px;
     min-height: 200px;
@@ -89,15 +81,15 @@
   }
 
   .scannerOverlay.success {
-    outline: solid 50vmax color-mix(in srgb, var(--hi-status-success-text) 76%, transparent);
+    outline: solid 50vmax rgb(80 148 80 / 75%);
   }
 
   .scannerOverlay.failure {
-    outline: solid 50vmax color-mix(in srgb, var(--hi-status-danger-text) 76%, transparent);
+    outline: solid 50vmax rgb(193 72 72 / 75%);
   }
 
   .scannerOverlay.checkingIn {
-    outline: solid 50vmax color-mix(in srgb, var(--hi-status-warning-text) 62%, transparent);
+    outline: solid 50vmax rgb(172 158 85 / 60%);
   }
 
   video {

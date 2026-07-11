@@ -67,6 +67,7 @@ export const Products = () => {
                     <Menu.Target>
                         <Button
                             leftSection={<IconPlus/>}
+                            color={'#0d9488'}
                             rightSection={
                                 <IconChevronDown stroke={1.5}/>
                             }

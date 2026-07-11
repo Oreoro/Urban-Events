@@ -159,7 +159,7 @@ const QuestionItem = ({ qa, isEditing, toggleEditMode, onEditAnswer, compact = f
                     <Tooltip label={t`Edit Answer`} position="bottom" withArrow>
                         <ActionIcon
                             variant="subtle"
-                            radius="sm"
+                            radius="xl"
                             size="sm"
                             onClick={() => toggleEditMode(qa.question_id)}
                         >
@@ -185,7 +185,7 @@ const QuestionItem = ({ qa, isEditing, toggleEditMode, onEditAnswer, compact = f
                         <NavLink to={`../attendees?query=${qa.attendee_public_id}`}>
                             <ActionIcon
                                 variant="subtle"
-                                radius="sm"
+                                radius="xl"
                                 size="xs"
                             >
                                 <IconExternalLink size={12}/>
@@ -293,7 +293,7 @@ export const AttendeeQuestionsList = ({attendeeQuestions, onEditAnswer, compact 
                                     <NavLink to={`../attendees?query=${attendeeInfo.attendee_public_id}`}>
                                         <ActionIcon
                                             variant="subtle"
-                                            radius="sm"
+                                            radius="xl"
                                             size="xs"
                                         >
                                             <IconExternalLink size={14}/>

@@ -1,7 +1,6 @@
 import { Stack, TextInput, Paper, Text } from '@mantine/core';
 import { Trans, t } from '@lingui/macro';
 import React from "react";
-import classes from './EmailTemplateEditor.module.scss';
 
 interface CTAConfigurationProps {
     label: string;
@@ -15,7 +14,7 @@ export const CTAConfiguration = ({
     error
 }: CTAConfigurationProps) => {
     return (
-        <Paper p="md" withBorder className={classes.ctaCard}>
+        <Paper p="md" withBorder>
             <Stack gap="sm">
                 <Text fw={500} size="sm">
                     <Trans>Call-to-Action Button</Trans>

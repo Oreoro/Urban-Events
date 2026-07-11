@@ -29,7 +29,7 @@ export const OrderAmountPopover = ({event, order}: OrderAmountPopoverProps) => {
     }
 
     return (
-        <Popover width={350} position="bottom" withArrow opened={isPopoverOpen}>
+        <Popover width={350} position="bottom" withArrow shadow="md" opened={isPopoverOpen}>
             <Popover.Target>
                 <Badge variant={'light'} style={{cursor: 'help', border: '1px solid'}} rightSection={
                     <Flex align={"center"}>

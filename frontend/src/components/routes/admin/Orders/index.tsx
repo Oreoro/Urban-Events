@@ -4,7 +4,6 @@ import {IconSearch} from "@tabler/icons-react";
 import {useState, useEffect} from "react";
 import {useGetAllAdminOrders} from "../../../../queries/useGetAllAdminOrders.ts";
 import AdminOrdersTable from "../../../common/AdminOrdersTable";
-import listClasses from "../AdminListPage.module.scss";
 
 const Orders = () => {
     const [page, setPage] = useState(1);
@@ -40,8 +39,8 @@ const Orders = () => {
     };
 
     return (
-        <Container size="xl" p="md" className={listClasses.page}>
-            <Stack gap="lg" className={listClasses.stack}>
+        <Container size="xl" p="xl">
+            <Stack gap="lg">
                 <Title order={1}>{t`Orders`}</Title>
 
                 <TextInput

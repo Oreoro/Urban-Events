@@ -71,39 +71,39 @@ export const ThemeColorControls = ({
 
     const presets: ThemePreset[] = [
         {
-            label: t`Workspace`,
-            description: t`Ink actions on a clean white workspace`,
-            accent: urbanEventsColors.ink,
+            label: t`SaaS`,
+            description: t`Teal actions on a neutral workspace`,
+            accent: urbanEventsColors.teal,
             background: urbanEventsColors.canvas,
             mode: 'light',
         },
         {
-            label: t`Graphite`,
-            description: t`Executive graphite with quiet panels`,
-            accent: urbanEventsColors.ink,
+            label: t`Navy`,
+            description: t`Executive graphite with cool panels`,
+            accent: urbanEventsColors.navy,
             background: urbanEventsColors.canvasSoft,
             mode: 'light',
         },
         {
-            label: t`Notebook`,
-            description: t`Dark ink with a soft paper surface`,
-            accent: urbanEventsColors.inkSoft,
-            background: urbanEventsColors.eggshell,
+            label: t`Teal`,
+            description: t`Deep teal with mint surface`,
+            accent: urbanEventsColors.tealDeep,
+            background: urbanEventsColors.mint,
             mode: 'light',
         },
         {
-            label: t`Slate`,
-            description: t`Muted slate accent with white canvas`,
-            accent: urbanEventsColors.inkSoft,
+            label: t`Coral`,
+            description: t`Coral accent with white canvas`,
+            accent: urbanEventsColors.coralDeep,
             background: urbanEventsColors.surface,
             mode: 'light',
         },
         {
-            label: t`Ledger`,
-            description: t`Warm neutral canvas with ink controls`,
-            accent: urbanEventsColors.ink,
-            background: urbanEventsColors.surfaceWarm,
-            mode: 'light',
+            label: t`Night`,
+            description: t`Mint accent on deep navy`,
+            accent: urbanEventsColors.icyAqua,
+            background: urbanEventsColors.navyDeep,
+            mode: 'dark',
         },
     ];
 
@@ -162,6 +162,7 @@ export const ThemeColorControls = ({
                         <ActionIcon
                             aria-label={t`Reset palette`}
                             variant="subtle"
+                            color="gray"
                             size="sm"
                             onClick={handleReset}
                             disabled={disabled}
@@ -339,13 +340,13 @@ export const ThemeColorControls = ({
                 {hasIssues ? (
                     <Tooltip label={t`Use a stronger accent or calmer background for better readability`} multiline w={230}>
                         <Group gap={6} style={{cursor: 'help'}} wrap="nowrap">
-                            <IconEyeExclamation size={22} color="var(--hi-status-warning-text)" />
-                            <Text size="xs" c="var(--hi-status-warning-text)">{t`Needs contrast review`}</Text>
+                            <IconEyeExclamation size={22} color="var(--mantine-color-yellow-7)" />
+                            <Text size="xs" c="yellow.8">{t`Needs contrast review`}</Text>
                         </Group>
                     </Tooltip>
                 ) : (
                     <Group gap={6} wrap="nowrap">
-                        <IconEyeCheck size={22} color="var(--hi-status-success-text)" />
+                        <IconEyeCheck size={22} color="var(--mantine-color-secondary-7)" />
                         <Text size="xs" c="dimmed">{t`Readable colors`}</Text>
                     </Group>
                 )}

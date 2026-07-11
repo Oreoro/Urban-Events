@@ -1,12 +1,10 @@
 
 .responseBody {
-  max-height: 260px;
+  max-height: 300px;
   overflow-y: auto;
-  background-color: var(--hi-shell-bg-strong);
-  border-color: var(--hi-app-panel-border) !important;
-  border-radius: var(--hi-radius-sm);
+  background-color: var(--mantine-color-gray-0);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.74rem;
+  font-size: var(--mantine-font-size-xs);
 
   pre {
     margin: 0;
@@ -15,29 +13,8 @@
   }
 }
 
-.responseStatusBadge {
-  border-radius: var(--hi-radius-sm);
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.responseStatusSuccess {
-  border: 1px solid var(--hi-status-success-border) !important;
-  background: var(--hi-status-success-bg) !important;
-  color: var(--hi-status-success-text) !important;
-}
-
-.responseStatusError {
-  border: 1px solid var(--hi-status-danger-border) !important;
-  background: var(--hi-status-danger-bg) !important;
-  color: var(--hi-status-danger-text) !important;
-}
-
 .tooltipContent {
-  padding: 0.35rem;
-  color: var(--hi-text-light);
-  font-size: 0.78rem;
+  padding: 0.5rem;
 
   > div {
     margin-bottom: 0.25rem;

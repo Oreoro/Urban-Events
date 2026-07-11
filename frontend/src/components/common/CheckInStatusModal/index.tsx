@@ -72,18 +72,18 @@ export const CheckInStatusModal = ({
         return (
             <Box key={list.id} className={classes.listItem} style={{
                 opacity: isEligible ? 1 : 0.6,
-                borderColor: isEligible ? 'var(--hi-border)' : 'color-mix(in srgb, var(--hi-border) 62%, var(--hi-color-white))'
+                borderColor: isEligible ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-gray-1)'
             }}>
                 <Group justify="space-between" wrap="nowrap">
                     <Group gap="sm" style={{flex: 1}}>
                         {isEligible ? (
                             isCheckedIn ? (
-                                <IconCheck size={20} color="var(--hi-status-success-text)"/>
+                                <IconCheck size={20} color="var(--mantine-color-green-6)"/>
                             ) : (
-                                <IconX size={20} color="var(--hi-text-muted)"/>
+                                <IconX size={20} color="var(--mantine-color-gray-5)"/>
                             )
                         ) : (
-                            <IconX size={20} color="var(--hi-text-muted)"/>
+                            <IconX size={20} color="var(--mantine-color-gray-4)"/>
                         )}
                         <Box style={{flex: 1}}>
                             <Text size="sm" fw={500}>
@@ -104,16 +104,16 @@ export const CheckInStatusModal = ({
                     {isEligible ? (
                         <Badge
                             variant="light"
+                            color={isCheckedIn ? 'green' : 'gray'}
                             size="sm"
-                            className={`${classes.statusBadge} ${isCheckedIn ? classes.statusChecked : classes.statusNeutral}`}
                         >
                             {isCheckedIn ? t`Checked In` : t`Not Checked In`}
                         </Badge>
                     ) : (
                         <Badge
                             variant="light"
+                            color="gray"
                             size="sm"
-                            className={`${classes.statusBadge} ${classes.statusNeutral}`}
                         >
                             {t`Not Eligible`}
                         </Badge>

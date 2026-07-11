@@ -93,10 +93,9 @@ use HiEvents\Http\Actions\Orders\MarkOrderAsPaidAction;
 use HiEvents\Http\Actions\Orders\MessageOrderAction;
 use HiEvents\Http\Actions\Orders\Payment\Neem\CreateNeemPaymentConfirmationActionPublic;
 use HiEvents\Http\Actions\Orders\Payment\Neem\CreateNeemPaymentIntentActionPublic;
-use HiEvents\Http\Actions\Orders\Payment\Neem\GetPaymentIntentActionPublic as GetNeemPaymentIntentActionPublic;
 use HiEvents\Http\Actions\Orders\Payment\RefundOrderAction;
 use HiEvents\Http\Actions\Orders\Payment\Stripe\CreatePaymentIntentActionPublic;
-use HiEvents\Http\Actions\Orders\Payment\Stripe\GetPaymentIntentActionPublic as GetStripePaymentIntentActionPublic;
+use HiEvents\Http\Actions\Orders\Payment\Stripe\GetPaymentIntentActionPublic;
 use HiEvents\Http\Actions\Orders\Public\AbandonOrderActionPublic;
 use HiEvents\Http\Actions\Orders\Public\CompleteOrderActionPublic;
 use HiEvents\Http\Actions\Orders\Public\CreateOrderActionPublic;
@@ -528,11 +527,11 @@ $router->prefix('/public')->group(
 
         // Stripe payment gateway
         $router->post('/events/{event_id}/order/{order_short_id}/stripe/payment_intent', CreatePaymentIntentActionPublic::class);
-        $router->get('/events/{event_id}/order/{order_short_id}/stripe/payment_intent', GetStripePaymentIntentActionPublic::class);
+        $router->get('/events/{event_id}/order/{order_short_id}/stripe/payment_intent', GetPaymentIntentActionPublic::class);
 
         $router->post('/events/{event_id}/order/{order_short_id}/neem/generate_token', CreateNeemPaymentIntentActionPublic::class);
         $router->post('/events/{event_id}/order/{order_short_id}/neem/confirm_payment', CreateNeemPaymentConfirmationActionPublic::class);
-        $router->get('/events/{event_id}/order/{order_short_id}/neem/confirm_order', GetNeemPaymentIntentActionPublic::class);
+        $router->get('/events/{event_id}/order/{order_short_id}/neem/confirm_order', GetPaymentIntentActionPublic::class);
 
         // Questions
         $router->get('/events/{event_id}/questions', GetQuestionsPublicAction::class);

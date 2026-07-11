@@ -7,7 +7,7 @@ import {PageTitle} from "../../../common/PageTitle";
 import {t} from "@lingui/macro";
 import {SeoSettings} from "./Sections/SeoSettings";
 import {MiscSettings} from "./Sections/MiscSettings";
-import {NavLink as MantineNavLink, Stack} from "@mantine/core";
+import {Box, Group, NavLink as MantineNavLink, Stack} from "@mantine/core";
 import {
     IconAdjustments,
     IconAlertTriangle,
@@ -20,13 +20,14 @@ import {
     IconMapPin,
     IconPercentage,
 } from "@tabler/icons-react";
+import {useMediaQuery} from "@mantine/hooks";
 import {useEffect, useMemo, useState} from "react";
+import {Card} from "../../../common/Card";
 import {PaymentAndInvoicingSettings} from "./Sections/PaymentSettings";
 import {PlatformFeesSettings} from "./Sections/PlatformFeesSettings";
 import {WaitlistSettings} from "./Sections/WaitlistSettings";
 import {DangerZoneSettings} from "./Sections/DangerZoneSettings";
 import {useGetAccount} from "../../../../queries/useGetAccount.ts";
-import classes from "../../../common/SettingsShell/SettingsShell.module.scss";
 
 export const Settings = () => {
     const {data: account} = useGetAccount();
@@ -87,7 +88,7 @@ export const Settings = () => {
                 label: t`Danger Zone`,
                 icon: IconAlertTriangle,
                 component: DangerZoneSettings,
-                tone: 'danger',
+                color: 'red',
             }
         ];
 
@@ -103,6 +104,7 @@ export const Settings = () => {
         return baseSections;
     }, [isSaasMode]);
 
+    const isLargeScreen = useMediaQuery('(min-width: 1200px)', true);
     const [activeSection, setActiveSection] = useState(() => {
         if (typeof window === 'undefined') return 'event-details';
         const hash = window.location.hash.replace('#', '');
@@ -127,31 +129,27 @@ export const Settings = () => {
     };
 
     const sideMenu = (
-        <nav className={classes.sideMenu} aria-label={t`Event settings sections`}>
-            <div className={classes.sideMenuTitle}>{t`Settings`}</div>
-            <Stack className={classes.navList} gap={0}>
-                {SECTIONS.map((section) => {
-                    const isDanger = 'tone' in section && section.tone === 'danger';
-
-                    return (
-                        <MantineNavLink
-                            key={section.id}
-                            active={activeSection === section.id}
-                            label={section.label}
-                            className={`${classes.navLink} ${isDanger ? classes.navLinkDanger : ''}`}
-                            leftSection={<section.icon className={classes.navIcon} size={16} stroke={1.6}/>}
-                            onClick={() => handleClick(section.id)}
-                        />
-                    );
-                })}
+        <Card style={{padding: '15px', marginBottom: 0}}>
+            <Stack gap="xs">
+                {SECTIONS.map((section) => (
+                    <MantineNavLink
+                        style={{borderRadius: '5px'}}
+                        key={section.id}
+                        active={activeSection === section.id}
+                        label={section.label}
+                        color={'color' in section ? section.color as string : undefined}
+                        leftSection={<section.icon size={16} stroke={1.5}/>}
+                        onClick={() => handleClick(section.id)}
+                    />
+                ))}
             </Stack>
-        </nav>
+        </Card>
     );
 
     const content = SECTIONS.map(({id, component: Component}) => (
-        <section key={id} id={id} className={classes.settingSection}>
+        <div key={id} id={id} style={{scrollMarginTop: '20px'}}>
             <Component/>
-        </section>
+        </div>
     ));
 
     return (
@@ -160,12 +158,19 @@ export const Settings = () => {
                 subheading={t`Configure event details, location, checkout options, and email notifications.`}
             >{t`Event Settings`}</PageTitle>
 
-            <div className={classes.settingsLayout}>
-                <aside className={classes.sideRail}>
+            {isLargeScreen ? (
+                <Group align="flex-start" gap="md">
+                    <Box w={240} style={{position: 'sticky', top: 20}}>
+                        {sideMenu}
+                    </Box>
+                    <Box style={{flex: 1}}>{content}</Box>
+                </Group>
+            ) : (
+                <Stack>
                     {sideMenu}
-                </aside>
-                <main className={classes.content}>{content}</main>
-            </div>
+                    {content}
+                </Stack>
+            )}
         </PageBody>
     );
 };

@@ -27,7 +27,7 @@ export const CheckInListForm = ({form, productCategories}: CheckInListFormProps)
 
     return (
         <>
-            <Alert mb={20} icon={<IconInfoCircle size={16}/>} variant="light">
+            <Alert mb={20} icon={<IconInfoCircle size={16}/>} color="blue" variant="light">
                 {t`Check-in lists let you control entry across days, areas, or ticket types. You can share a secure check-in link with staff — no account required.`}
             </Alert>
 

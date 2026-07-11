@@ -205,7 +205,7 @@ export const ManageAttendeeModal = ({onClose, attendeeId}: ManageAttendeeModalPr
                 <div className={classes.header}>
                     <Group justify="center" align="center">
                         <Group gap="sm" align="center">
-                            <Avatar size="md" radius="sm">
+                            <Avatar size="md" radius="xl">
                                 {getInitials(fullName)}
                             </Avatar>
                             <div className={classes.attendeeInfo}>

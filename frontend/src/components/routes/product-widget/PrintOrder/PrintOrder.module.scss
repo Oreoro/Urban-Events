@@ -1,24 +1,22 @@
 .container {
-  padding: 24px;
+  padding: 20px;
   max-width: 900px;
   margin: 0 auto;
   height: 99%;
-  background: var(--checkout-surface, var(--hi-surface));
 
   @media print {
     padding: 0;
     max-width: none;
-    background: var(--hi-color-white);
   }
 }
 
 .title {
   text-align: center;
-  color: var(--checkout-text-primary, var(--hi-text));
-  font-family: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-  font-size: 1.1rem;
-  font-weight: 650;
-  margin-bottom: 20px;
+  color: var(--checkout-text-primary, #111827);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
 
   @media print {
     display: none;
@@ -26,7 +24,7 @@
 }
 
 .ticketPage {
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 
   @media print {
     margin-bottom: 0;
@@ -43,12 +41,6 @@
       margin-bottom: 0;
     }
   }
-}
-
-.onlineEventDetails {
-  width: 100%;
-  max-width: 900px;
-  margin-top: 32px;
 }
 
 .poweredBy {

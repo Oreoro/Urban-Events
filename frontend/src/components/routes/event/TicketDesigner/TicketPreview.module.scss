@@ -4,15 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px;
+  padding: 2rem;
   width: 100%;
   height: 100%;
   overflow-x: auto;
   overflow-y: auto;
-  background: var(--hi-surface);
   
   @include mixins.respond-below(lg) {
-    padding: 18px;
+    padding: 1.5rem;
     overflow-x: auto;
     min-width: 0;
     
@@ -23,11 +22,11 @@
   }
   
   @include mixins.respond-below(md) {
-    padding: 14px;
+    padding: 1rem;
   }
   
   @include mixins.respond-below(sm) {
-    padding: 10px;
+    padding: 0.5rem;
   }
 }
 
@@ -36,7 +35,7 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  color: var(--hi-text-muted);
+  color: #6c757d;
   font-style: italic;
 
   p {

@@ -30,7 +30,7 @@ export const Topbar: React.FC<TopbarProps> = ({
             <div className={classes.topBarMain}>
                 <div className={classes.burger}>
                     <Burger
-                        color={'var(--hi-text)'}
+                        color={'var(--hi-shell-text)'}
                         opened={sidebarOpen}
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                         size={'sm'}
@@ -38,7 +38,7 @@ export const Topbar: React.FC<TopbarProps> = ({
                 </div>
                 <div className={classes.logo}>
                     <NavLink to={ `/manage/events` }>
-                        <BrandWordmark tone="dark" size="sm"/>
+                        <BrandWordmark tone="light" size="sm"/>
                     </NavLink>
                 </div>
 

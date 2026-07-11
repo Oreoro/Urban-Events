@@ -4,8 +4,6 @@ import {useGetUtmAttributionStats} from "../../../../queries/useGetUtmAttributio
 import {useState} from "react";
 import {formatCurrency} from "../../../../utilites/currency";
 import tableStyles from "../../../../styles/admin-table.module.scss";
-import listClasses from "../AdminListPage.module.scss";
-import classes from "./Attribution.module.scss";
 
 const Attribution = () => {
     const [groupBy, setGroupBy] = useState<'source' | 'campaign' | 'medium' | 'source_type'>('source');
@@ -24,13 +22,13 @@ const Attribution = () => {
     const totalPages = paginatedData?.last_page || 1;
 
     return (
-        <Container size="xl" p="md" className={listClasses.page}>
-            <Stack gap="xl" className={listClasses.stack}>
+        <Container size="xl" p="xl">
+            <Stack gap="xl">
                 <div>
                     <Title order={1} mb="xs">
                         <Trans>Attribution Analytics</Trans>
                     </Title>
-                    <Text size="sm" c="dimmed">
+                    <Text size="lg" c="dimmed">
                         <Trans>Track account growth and performance by attribution source</Trans>
                     </Text>
                     <Text size="sm" c="dimmed" mt="xs">
@@ -47,45 +45,45 @@ const Attribution = () => {
                     </SimpleGrid>
                 ) : summary && (
                     <SimpleGrid cols={{base: 1, sm: 2, md: 4}} spacing="md">
-                        <Paper shadow="none" p="md" radius="md" withBorder className={classes.statCard}>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <div>
-                                <Text className={classes.statLabel}>
+                                <Text size="xs" c="dimmed" fw={500}>
                                     {t`Paid Accounts`}
                                 </Text>
-                                <Text className={classes.statValue}>
+                                <Text size="xl" fw={700} mt={4}>
                                     {summary.paid_accounts.toLocaleString()}
                                 </Text>
                             </div>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder className={classes.statCard}>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <div>
-                                <Text className={classes.statLabel}>
+                                <Text size="xs" c="dimmed" fw={500}>
                                     {t`Organic Accounts`}
                                 </Text>
-                                <Text className={classes.statValue}>
+                                <Text size="xl" fw={700} mt={4}>
                                     {summary.organic_accounts.toLocaleString()}
                                 </Text>
                             </div>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder className={classes.statCard}>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <div>
-                                <Text className={classes.statLabel}>
+                                <Text size="xs" c="dimmed" fw={500}>
                                     {t`Referral Accounts`}
                                 </Text>
-                                <Text className={classes.statValue}>
+                                <Text size="xl" fw={700} mt={4}>
                                     {summary.referral_accounts.toLocaleString()}
                                 </Text>
                             </div>
                         </Paper>
 
-                        <Paper shadow="none" p="md" radius="md" withBorder className={classes.statCard}>
+                        <Paper shadow="sm" p="md" radius="md" withBorder>
                             <div>
-                                <Text className={classes.statLabel}>
+                                <Text size="xs" c="dimmed" fw={500}>
                                     {t`Unattributed Accounts`}
                                 </Text>
-                                <Text className={classes.statValue}>
+                                <Text size="xl" fw={700} mt={4}>
                                     {summary.unattributed_accounts.toLocaleString()}
                                 </Text>
                             </div>
@@ -93,8 +91,8 @@ const Attribution = () => {
                     </SimpleGrid>
                 )}
 
-                <div className={classes.breakdown}>
-                    <Group justify="space-between" className={classes.breakdownHeader}>
+                <div>
+                    <Group justify="space-between" mb="md">
                         <Title order={2}>
                             <Trans>Attribution Breakdown</Trans>
                         </Title>

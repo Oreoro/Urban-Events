@@ -77,7 +77,7 @@ const Users = () => {
             <Table.Td>
                 <Group gap="sm">
                     <Avatar
-                        size={34} radius="sm">{getInitials(user.first_name + ' ' + user.last_name)}</Avatar>
+                        size={40} radius={40}>{getInitials(user.first_name + ' ' + user.last_name)}</Avatar>
                     <div>
                         <Text fz="sm" fw={500}>
                             {user.first_name + ' ' + user.last_name}
@@ -106,7 +106,7 @@ const Users = () => {
                 </Badge>
             </Table.Td>
             <Table.Td width={'60px'}>
-                <Menu width={200}>
+                <Menu shadow="md" width={200}>
                     <Menu.Target>
                         <Button variant={'transparent'}>
                             <IconDotsVertical size={18}/>

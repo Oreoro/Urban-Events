@@ -1,4 +1,3 @@
-/* eslint-disable lingui/no-unlocalized-strings */
 import {Link, RichTextEditor} from "@mantine/tiptap";
 import {useEditor} from "@tiptap/react";
 import StarterKit from '@tiptap/starter-kit';
@@ -7,29 +6,13 @@ import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
 import Color from '@tiptap/extension-color';
 import React, {useEffect, useState} from "react";
-import {InputError, InputLabel, MantineFontSize} from "@mantine/core";
+import {InputDescription, InputError, InputLabel, MantineFontSize} from "@mantine/core";
 import classes from "./Editor.module.scss";
 import classNames from "classnames";
 import {Trans} from "@lingui/macro";
 import {InsertImageControl} from "./Controls/InsertImageControl";
 import {ImageResize} from "./Extensions/ImageResizeExtension";
 import {Extension} from '@tiptap/core';
-
-const EDITOR_COLORS = [
-    '#37352F',
-    '#787774',
-    '#9B9A97',
-    '#E4E4E1',
-    '#F7F6F3',
-    '#FFFFFF',
-    '#E03E3E',
-    '#D9730D',
-    '#DFAB01',
-    '#0F7B6C',
-    '#0B6E99',
-    '#6940A5',
-    '#AD1A72',
-];
 
 interface EditorProps {
     onChange: (value: string) => void;
@@ -118,11 +101,11 @@ export const Editor = ({
             {label && <InputLabel size={size} required={required}
                                   onClick={() => editor?.commands.focus()}>{label}</InputLabel>}
             {description && (
-                <div className={classes.description}>
-                    {description}
+                <div style={{marginBottom: 5}}>
+                    <InputDescription size={size}>{description}</InputDescription>
                 </div>
             )}
-            <RichTextEditor variant={'subtle'} editor={editor} className={classes.editorRoot}>
+            <RichTextEditor variant={'subtle'} editor={editor}>
                 <RichTextEditor.Toolbar sticky className={classes.toolbar}>
                     {editorType === 'full' && (
                         <>
@@ -132,7 +115,22 @@ export const Editor = ({
                                 <RichTextEditor.Underline/>
                                 <RichTextEditor.ClearFormatting/>
                                 <RichTextEditor.ColorPicker
-                                    colors={EDITOR_COLORS}
+                                    colors={[
+                                        '#25262b',
+                                        '#868e96',
+                                        '#fa5252',
+                                        '#e64980',
+                                        '#be4bdb',
+                                        '#7950f2',
+                                        '#4c6ef5',
+                                        '#228be6',
+                                        '#15aabf',
+                                        '#12b886',
+                                        '#40c057',
+                                        '#82c91e',
+                                        '#fab005',
+                                        '#fd7e14',
+                                    ]}
                                 />
                             </RichTextEditor.ControlsGroup>
 
@@ -173,7 +171,22 @@ export const Editor = ({
                                 <RichTextEditor.Underline/>
                                 <RichTextEditor.ClearFormatting/>
                                 <RichTextEditor.ColorPicker
-                                    colors={EDITOR_COLORS}
+                                    colors={[
+                                        '#25262b',
+                                        '#868e96',
+                                        '#fa5252',
+                                        '#e64980',
+                                        '#be4bdb',
+                                        '#7950f2',
+                                        '#4c6ef5',
+                                        '#228be6',
+                                        '#15aabf',
+                                        '#12b886',
+                                        '#40c057',
+                                        '#82c91e',
+                                        '#fab005',
+                                        '#fd7e14',
+                                    ]}
                                 />
                             </RichTextEditor.ControlsGroup>
 

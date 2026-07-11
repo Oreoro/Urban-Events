@@ -1,7 +1,7 @@
 @use "../../../styles/mixins";
 
 // Design tokens
-$font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .stepper {
@@ -9,11 +9,6 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   justify-content: center;
   gap: 0;
-  padding: 5px 7px;
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-sm);
-  background: var(--checkout-surface, var(--hi-surface));
-  box-shadow: none;
 }
 
 .stepContainer {
@@ -28,31 +23,29 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .circle {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--hi-radius-sm);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: $font-display;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  background-color: var(--checkout-surface, var(--hi-surface));
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  background-color: var(--checkout-border, #E5E7EB);
+  color: var(--checkout-text-secondary, #6B7280);
+  transition: all $transition-fast;
 
   &.active {
-    background-color: var(--checkout-text-primary, var(--hi-text));
-    border-color: var(--checkout-text-primary, var(--hi-text));
-    color: var(--checkout-surface, var(--hi-color-white));
+    background-color: var(--checkout-accent, var(--mantine-primary-color-filled));
+    color: var(--checkout-accent-contrast, #ffffff);
   }
 }
 
 .label {
-  font-size: 13px;
-  font-weight: 560;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--checkout-text-secondary, #6B7280);
   transition: color $transition-fast;
 
   @include mixins.respond-below(sm) {
@@ -60,14 +53,14 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.activeLabel {
-    color: var(--checkout-text-primary, var(--hi-text));
+    color: var(--checkout-text-primary, #111827);
   }
 }
 
 .connector {
-  width: 38px;
-  height: 1px;
-  background-color: var(--checkout-border, var(--hi-border));
+  width: 40px;
+  height: 2px;
+  background-color: var(--checkout-border, #D1D5DB);
   margin: 0 8px;
   border-radius: 1px;
   transition: background-color $transition-fast;
@@ -78,6 +71,6 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &.activeConnector {
-    background-color: var(--checkout-text-primary, var(--hi-text));
+    background-color: var(--checkout-accent, var(--mantine-primary-color-filled));
   }
 }

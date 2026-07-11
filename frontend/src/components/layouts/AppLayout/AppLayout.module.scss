@@ -7,17 +7,15 @@
     "main";
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  min-height: 100vh;
-  height: 100dvh;
-  background: var(--hi-shell-bg);
-  transition: grid-template-columns 160ms ease;
+  height: 100vh;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     grid-template-areas:
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 240px minmax(0, 1fr);
+    grid-template-columns: 280px 1fr;
 
     &.closed {
       grid-template-areas:
@@ -29,45 +27,38 @@
 
   .main {
     grid-area: main;
-    padding: 18px 24px 48px;
+    padding: var(--hi-spacing-lg);
+    padding-bottom: calc(var(--hi-spacing-lg) + 40px);
     overflow: auto;
-    background: var(--hi-shell-bg);
-    color: var(--hi-text);
+    background: var(--ue-canvas);
 
     @include mixins.scrollbar;
 
     @media (max-width: 767px) {
-      padding: 16px 14px 44px;
-      background: var(--hi-shell-bg);
-    }
-
-    @media (min-width: 1280px) {
-      padding-inline: 28px;
+      padding: 16px 16px 56px;
     }
   }
 
   .sidebarOpen {
-    width: 26px;
-    height: 26px;
-    background: var(--hi-surface-soft);
-    color: var(--hi-text-muted);
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-sm);
+    width: 28px;
+    height: 28px;
+    background: var(--ue-plum);
+    color: var(--hi-shell-text);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 9px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: none;
+    box-shadow: var(--hi-shadow-sm);
     z-index: 5;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-      color: var(--hi-text);
-      background: var(--hi-control-bg-active);
-      border-color: var(--hi-border-strong);
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: var(--hi-shadow-md);
     }
 
     @media (max-width: 767px) {
@@ -85,7 +76,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: color-mix(in srgb, var(--ue-ink) 36%, transparent);
+    background: color-mix(in srgb, var(--ue-plum-deep) 68%, transparent);
     z-index: 150;
     display: none;
 

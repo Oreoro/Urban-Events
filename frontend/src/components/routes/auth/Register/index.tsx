@@ -128,7 +128,7 @@ export const Register = () => {
                     </SimpleGrid>
 
                     <TextInput
-                        className={classes.hiddenField}
+                        style={{display: 'none'}}
                         {...form.getInputProps('timezone')}
                         type="hidden"
                     />
@@ -139,7 +139,7 @@ export const Register = () => {
                         label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
                     />
 
-                    <Button type="submit" fullWidth disabled={mutate.isPending}>
+                    <Button color="secondary.8" type="submit" fullWidth disabled={mutate.isPending}>
                         {mutate.isPending ? t`Working...` : t`Register`}
                     </Button>
                 </form>

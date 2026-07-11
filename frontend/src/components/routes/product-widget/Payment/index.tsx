@@ -18,7 +18,6 @@ import {Card} from "../../../common/Card";
 import {InlineOrderSummary} from "../../../common/InlineOrderSummary";
 import {showError} from "../../../../utilites/notifications.tsx";
 import {getConfig} from "../../../../utilites/config.ts";
-import {getTermsUrl} from "../../../../utilites/legalUrls.ts";
 import classes from "./Payment.module.scss";
 import {trackEvent, AnalyticsEvents} from "../../../../utilites/analytics.ts";
 
@@ -89,12 +88,8 @@ const Payment = () => {
     if (!isNeemEnabled && !isStripeEnabled && !isOfflineEnabled && isOrderFetched && isEventFetched) {
         return (
             <CheckoutContent>
-                <Card className={classes.emptyState}>
-                    <IconCreditCard size={22} className={classes.emptyStateIcon}/>
-                    <h2 className={classes.emptyStateTitle}>{t`Payments are unavailable`}</h2>
-                    <p className={classes.emptyStateText}>
-                        {t`No payment methods are currently available. Please contact the event organizer for assistance.`}
-                    </p>
+                <Card>
+                    {t`No payment methods are currently available. Please contact the event organizer for assistance.`}
                 </Card>
             </CheckoutContent>
         );
@@ -106,23 +101,22 @@ const Payment = () => {
                 {(event && order) && (
                     <InlineOrderSummary event={event} order={order} defaultExpanded={false}/>
                 )}
-
-                {isNeemEnabled && activePaymentMethod === 'NEEM' && (
-                    <section className={classes.paymentMethodPanel}>
+                {isNeemEnabled && (
+                    <div style={{display: activePaymentMethod === 'NEEM' ? 'block' : 'none'}}>
                         <NeemPaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
-                    </section>
+                    </div>
                 )}
 
-                {isStripeEnabled && activePaymentMethod === 'STRIPE' && (
-                    <section className={classes.paymentMethodPanel}>
+                {isStripeEnabled && (
+                    <div style={{display: activePaymentMethod === 'STRIPE' ? 'block' : 'none'}}>
                         <StripePaymentMethod enabled={true} setSubmitHandler={setSubmitHandler}/>
-                    </section>
+                    </div>
                 )}
 
-                {isOfflineEnabled && activePaymentMethod === 'OFFLINE' && (
-                    <section className={classes.paymentMethodPanel}>
+                {isOfflineEnabled && (
+                    <div style={{display: activePaymentMethod === 'OFFLINE' ? 'block' : 'none'}}>
                         <OfflinePaymentMethod event={event as Event}/>
-                    </section>
+                    </div>
                 )}
 
                 {availablePaymentMethodCount > 1 && (
@@ -183,7 +177,7 @@ const Payment = () => {
                             <Trans>
                                 By continuing, you agree to the{' '}
                                 <a
-                                    href={getTermsUrl()}
+                                    href={getConfig('VITE_TOS_URL', 'https://hi.events/terms-of-service') as string}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

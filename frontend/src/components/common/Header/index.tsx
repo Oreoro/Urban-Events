@@ -13,7 +13,7 @@ export const Header = ({rightContent, fullWidth = false}: HeaderProps) => {
         <header className={classes.header}>
             <Container size="md" className={classes.inner} fluid={fullWidth}>
                 <NavLink className={classes.logo} to={'/manage/events'}>
-                    <BrandWordmark tone="dark" size="sm"/>
+                    <BrandWordmark tone="light" size="sm"/>
                 </NavLink>
 
                 <div className={classes.rightContent}>

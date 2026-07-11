@@ -1,140 +1,44 @@
-.content {
-    border: 1px solid var(--hi-app-panel-border);
-    border-radius: var(--hi-radius-md) !important;
-    background: var(--hi-app-panel-bg);
-    box-shadow: var(--hi-shadow-md);
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+// Branded modal header styles
+.brandedHeader {
+    background: var(--hi-secondary-strong) !important;
+    padding: 30px 24px !important;
+    margin-bottom: 20px;
+    position: relative;
     overflow: hidden;
 }
 
-.body {
-    padding: 0 !important;
-}
-
-.inner {
-    padding: 0 10px 10px;
-
-    :global(.mantine-InputWrapper-root),
-    :global(.mantine-Switch-root),
-    :global(.mantine-Checkbox-root),
-    :global(.mantine-Radio-root) {
-        margin-bottom: 8px;
-    }
-
-    :global(.mantine-InputWrapper-label) {
-        margin-bottom: 4px;
-        color: var(--hi-text-muted);
-        font-size: 0.74rem;
-        font-weight: 650;
-        letter-spacing: 0;
-    }
-
-    :global(.mantine-InputWrapper-description) {
-        color: var(--hi-text-muted);
-        font-size: 0.74rem;
-        line-height: 1.42;
-    }
-
-    :global(.mantine-Input-input),
-    :global(.mantine-Textarea-input) {
-        min-height: 32px;
-        border-color: var(--hi-border);
-        border-radius: var(--hi-radius-sm);
-        background: var(--hi-surface);
-        color: var(--hi-text);
-        font-size: 0.8rem;
-        font-weight: 560;
-        box-shadow: none;
-        transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-
-        &:hover {
-            border-color: var(--hi-border-strong);
-            background: var(--hi-control-bg-hover);
-        }
-
-        &:focus,
-        &:focus-within {
-            border-color: var(--hi-focus-ring);
-            box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
-        }
-    }
-
-    :global(.mantine-Textarea-input) {
-        padding-top: 7px;
-        line-height: 1.45;
-    }
-
-    :global(.mantine-Input-section) {
-        color: var(--hi-text-muted);
-    }
-
-    :global(.mantine-Fieldset-root) {
-        border-color: var(--hi-app-panel-border);
-        border-radius: var(--hi-radius-sm);
-        background: var(--hi-shell-bg-strong);
-    }
-
-    :global(.mantine-Fieldset-legend) {
-        color: var(--hi-text);
-        font-size: 0.8rem;
-        font-weight: 650;
-        letter-spacing: 0;
-    }
-
-    :global(.mantine-Alert-root) {
-        border-color: var(--hi-app-panel-border);
-        border-radius: var(--hi-radius-sm);
-        background: var(--hi-shell-bg-strong) !important;
-        color: var(--hi-text-light);
-        box-shadow: none;
-    }
-
-    :global(.mantine-Alert-title) {
-        color: var(--hi-text);
-        font-size: 0.8rem;
-        font-weight: 680;
-    }
-
-    :global(.mantine-Alert-message) {
-        color: var(--hi-text-muted);
-        font-size: 0.78rem;
-        line-height: 1.48;
-    }
-
-    :global(.mantine-Button-root) {
-        min-height: 32px;
-        border-radius: var(--hi-radius-sm);
-        font-size: 0.8rem;
-        font-weight: 640;
-        letter-spacing: 0;
-        box-shadow: none;
-    }
-}
-
-.header {
-    min-height: 38px;
-    padding: 8px 10px 7px !important;
-    border-bottom: 1px solid var(--hi-app-panel-border);
-    background: var(--hi-shell-bg-strong);
-}
-
-.modalTitle {
-    color: var(--hi-text);
-    font-size: 0.9rem;
-    font-weight: 680;
-    margin-top: 0;
-    margin-bottom: 0;
+.brandedTitle {
+    color: white !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
     letter-spacing: 0;
-    line-height: 1.25;
 }
 
-.close {
-    color: var(--hi-text-muted) !important;
-    border-radius: var(--hi-radius-sm) !important;
-    width: 26px !important;
-    height: 26px !important;
-
+.brandedClose {
+    color: white !important;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
     &:hover {
-        background: var(--hi-control-bg-hover) !important;
-        color: var(--hi-text) !important;
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    
+    svg {
+        stroke-width: 2.5;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
     }
 }

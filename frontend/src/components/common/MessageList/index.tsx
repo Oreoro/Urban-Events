@@ -62,7 +62,7 @@ const MessageItem = ({message, isSelected, onSelect}: {
                 }
             }}
         >
-            <Avatar className={classes.messageAvatar} size={34} radius="md">
+            <Avatar color="grape" size={36} radius="xl">
                 {getInitials(senderName)}
             </Avatar>
             <div className={classes.itemContent}>

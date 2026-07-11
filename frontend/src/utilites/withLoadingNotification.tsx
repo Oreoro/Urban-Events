@@ -29,7 +29,6 @@ export const withLoadingNotification = async <T, >(
         autoClose: false,
         withCloseButton: false,
         position: 'top-center',
-        'data-status': 'loading',
     });
 
     try {
@@ -39,13 +38,11 @@ export const withLoadingNotification = async <T, >(
             id: notificationId,
             title: messages.success.title,
             message: messages.success.message,
-            color: 'primary',
+            color: '#0d9488', // Changed to teal color
             icon: <IconCheck size="1rem"/>,
             autoClose: 2000,
             loading: false,
             position: 'top-center',
-            withCloseButton: true,
-            'data-status': 'success',
         });
 
         if (messages.success.onRun) {
@@ -60,11 +57,9 @@ export const withLoadingNotification = async <T, >(
             message: messages.error.message,
             color: 'red',
             icon: <IconX size="1rem"/>,
-            autoClose: 4200,
+            autoClose: 2000,
             loading: false,
             position: 'top-center',
-            withCloseButton: true,
-            'data-status': 'error',
         });
 
         if (messages.error.onRun) {

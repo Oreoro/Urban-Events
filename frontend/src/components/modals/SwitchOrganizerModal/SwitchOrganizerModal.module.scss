@@ -13,17 +13,19 @@
     gap: 12px;
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
-    background: var(--hi-surface);
+    border: 1px solid var(--mantine-color-gray-3);
+    border-radius: 8px;
+    background: white;
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition: all 0.2s ease;
     text-align: left;
     position: relative;
 
     &:hover {
-        background: var(--hi-surface-soft);
-        border-color: var(--hi-border-strong);
+        background: var(--mantine-color-gray-0);
+        border-color: var(--mantine-color-primary-9);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
         .selectIcon {
             opacity: 1;
@@ -31,17 +33,17 @@
     }
 
     &:active {
-        background: var(--hi-control-bg-active);
+        transform: translateY(0);
     }
 }
 
 .organizerLogo {
     width: 40px;
     height: 40px;
-    border-radius: var(--hi-radius-md);
+    border-radius: 8px;
     overflow: hidden;
     flex-shrink: 0;
-    background: var(--hi-surface-soft);
+    background: var(--mantine-color-gray-1);
 
     img {
         width: 100%;
@@ -56,8 +58,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--hi-control-bg-active);
-    color: var(--hi-text-muted);
+    background: var(--mantine-color-gray-2);
+    color: var(--mantine-color-gray-6);
 }
 
 .organizerInfo {
@@ -68,7 +70,7 @@
 .organizerName {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--hi-text);
+    color: var(--mantine-color-gray-9);
     margin: 0 0 2px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -76,53 +78,24 @@
 }
 
 .selectIcon {
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-primary-9);
     opacity: 0;
-    transition: opacity 0.15s ease;
+    transition: opacity 0.2s ease;
 }
 
 .emptyState {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    text-align: left;
-    padding: 12px;
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-md);
-    background: var(--hi-surface-soft);
-    color: var(--hi-text-muted);
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--mantine-color-gray-6);
+
+    svg {
+        margin-bottom: 16px;
+        opacity: 0.5;
+    }
 
     p {
         margin: 0;
-        color: var(--hi-text);
         font-size: 0.875rem;
-        font-weight: 600;
-        line-height: 1.35;
-    }
-
-    span {
-        display: block;
-        margin-top: 3px;
-        font-size: 0.78rem;
-        line-height: 1.45;
-    }
-}
-
-.emptyIcon {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 32px;
-    height: 32px;
-    margin-top: 0 !important;
-    border: 1px solid var(--hi-border);
-    border-radius: var(--hi-radius-sm);
-    background: var(--hi-surface);
-    color: var(--hi-text);
-
-    svg {
-        opacity: 1;
     }
 }
 
@@ -133,19 +106,19 @@
     gap: 8px;
     width: 100%;
     padding: 10px 16px;
-    border: 1px dashed var(--hi-border-strong);
-    border-radius: var(--hi-radius-md);
+    border: 1px dashed var(--mantine-color-gray-4);
+    border-radius: 8px;
     background: transparent;
     cursor: pointer;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-6);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-        border-color: var(--hi-border-strong);
-        color: var(--hi-text);
-        background: var(--hi-surface-soft);
+        border-color: var(--mantine-color-primary-5);
+        color: var(--mantine-color-primary-6);
+        background: var(--mantine-color-primary-0);
     }
 }
 
@@ -158,25 +131,25 @@
     border: none;
     background: transparent;
     cursor: pointer;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-6);
     font-size: 0.8rem;
     font-weight: 500;
     margin-top: 4px;
 
     &:hover {
-        color: var(--hi-text);
+        color: var(--mantine-color-gray-8);
     }
 }
 
 .archivedCount {
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-5);
     font-weight: 400;
 }
 
 .archivedItem {
     composes: organizerItem;
     opacity: 0.6;
-    border-color: var(--hi-border);
+    border-color: var(--mantine-color-gray-2);
 
     &:hover {
         opacity: 0.85;
@@ -186,5 +159,5 @@
 .archiveBadge {
     display: flex;
     align-items: center;
-    color: var(--hi-text-muted);
+    color: var(--mantine-color-gray-5);
 }

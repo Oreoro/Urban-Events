@@ -1,103 +1,85 @@
 @use "../../../../styles/mixins";
 
-$font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
 .welcomeHeader {
-  margin-bottom: 16px;
-  padding: 14px;
-  text-align: left;
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  column-gap: 10px;
-  row-gap: 3px;
-  align-items: flex-start;
-  background: var(--checkout-surface, var(--hi-surface));
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-sm);
-  box-shadow: none;
+  margin-bottom: 24px;
+  padding: 32px 20px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.statusIcon {
-  grid-row: 1 / span 3;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  margin: 0;
+.confettiIcon {
+  color: var(--checkout-accent, var(--hi-primary));
+  margin-bottom: 8px;
+  animation: bounceIn 0.6s ease-out, subtleBounce 2s ease-in-out 0.6s infinite;
+}
 
-  svg {
-    width: 22px;
-    height: 22px;
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes subtleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
 
 .welcomeMessage {
   font-family: $font-display;
-  font-size: 1.08rem;
-  font-weight: 680;
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--checkout-text-primary, #111827);
   margin-bottom: 4px;
 }
 
 .confirmationText {
-  grid-column: 2;
-  font-size: 0.84rem;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  font-size: 15px;
+  color: var(--checkout-text-secondary, #6B7280);
 
   strong {
     font-weight: 500;
-    color: var(--checkout-text-primary, var(--hi-text));
+    color: var(--checkout-text-primary, #374151);
   }
 }
 
 .selfServiceHint {
-  grid-column: 2;
-  font-size: 0.8rem;
-  color: var(--checkout-text-tertiary, var(--hi-text-muted));
+  font-size: 13px;
+  color: var(--checkout-text-tertiary, #9CA3AF);
   margin-top: 4px;
 }
 
 .heading {
   font-family: $font-display;
-  font-size: 0.96rem;
-  font-weight: 680;
-  margin: 22px 0 9px;
-  color: var(--checkout-text-primary, var(--hi-text));
-}
-
-.contentSection {
-  margin: 16px 0 28px;
-}
-
-.sectionCard {
-  margin-bottom: 28px;
-}
-
-.breakableValue {
-  word-break: break-all;
-}
-
-.successAlert {
-  background-color: var(--checkout-surface-strong, var(--hi-shell-bg-strong)) !important;
-  border-color: var(--checkout-border, var(--hi-border)) !important;
-}
-
-.successAlertText {
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 5px;
+  color: var(--checkout-text-primary, #111827);
 }
 
 .detailItem {
   min-width: 0;
   overflow: hidden;
-  padding: 8px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
 
   .detailContent {
     min-width: 0;
@@ -105,57 +87,38 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   }
 
   .label {
-    margin-bottom: 0.2rem;
-    color: var(--checkout-text-secondary, var(--hi-text-muted));
+    margin-bottom: 0.25rem;
+    color: var(--checkout-text-secondary, #6B7280);
   }
 
   .value {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-    color: var(--checkout-text-primary, var(--hi-text));
+    color: var(--checkout-text-primary, #111827);
   }
-}
-
-.detailIcon {
-  flex-shrink: 0;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
 }
 
 .guestList {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: var(--hi-radius-sm);
-  background: var(--checkout-surface, var(--hi-surface));
-  overflow: hidden;
-  box-shadow: none;
 }
 
 .guestItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 10px;
-  border: 0;
-  border-bottom: 1px solid var(--checkout-border, var(--hi-border));
-  border-radius: 0;
-  background: transparent;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--checkout-border, #e5e7eb);
   gap: 12px;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-
-  &:hover {
-    background: var(--hi-control-bg-hover);
-  }
 
   &:last-child {
-    border-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
-  @include mixins.respond-below(sm) {
-    align-items: flex-start;
-    flex-direction: column;
+  &:first-child {
+    padding-top: 0;
   }
 }
 
@@ -173,8 +136,8 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 }
 
 .guestName {
-  font-weight: 610;
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-weight: 500;
+  color: var(--checkout-text-primary, #111827);
   margin-bottom: 4px;
   display: flex;
   align-items: center;
@@ -185,11 +148,10 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
 .cancelledBadge {
   font-size: 11px;
   font-weight: 500;
-  color: var(--hi-status-danger-text);
-  background: var(--hi-status-danger-bg);
-  border: 1px solid var(--hi-status-danger-border);
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
   padding: 2px 8px;
-  border-radius: var(--hi-radius-sm);
+  border-radius: 4px;
   text-decoration: none;
 }
 
@@ -197,8 +159,8 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 0.76rem;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  font-size: 13px;
+  color: var(--checkout-text-secondary, #6B7280);
 }
 
 .guestEmail {
@@ -209,7 +171,7 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   &::before {
     content: '•';
     margin-right: 8px;
-    color: var(--checkout-text-tertiary, var(--hi-text-muted));
+    color: var(--checkout-text-tertiary, #9CA3AF);
   }
 
   @include mixins.respond-below(sm) {
@@ -225,14 +187,4 @@ $font-display: var(--hi-font-heading, Inter, -apple-system, BlinkMacSystemFont, 
   display: flex;
   gap: 4px;
   flex-shrink: 0;
-
-  :global(.mantine-ActionIcon-root) {
-    border: 1px solid color-mix(in srgb, var(--checkout-border, var(--hi-border)) 86%, transparent);
-    background: var(--checkout-surface, var(--hi-surface));
-
-    &:hover {
-      border-color: var(--checkout-border, var(--hi-border));
-      background: var(--hi-control-bg-hover);
-    }
-  }
 }

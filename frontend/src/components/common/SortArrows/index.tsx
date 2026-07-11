@@ -26,7 +26,7 @@ export const SortArrows = ({
                 onClick={upArrowEnabled ? onSortUp : undefined}
                 variant="transparent"
                 aria-label="Sort Up"
-                color={upArrowEnabled ? 'currentColor' : 'gray'}
+                color={upArrowEnabled ? 'currentColor' : '#ddd'}
             >
                 <IconCaretUpFilled size={18}/>
             </ActionIcon>
@@ -34,7 +34,7 @@ export const SortArrows = ({
                 onClick={downArrowEnabled ? onSortDown : undefined}
                 variant="transparent"
                 aria-label="Sort Down"
-                color={downArrowEnabled ? 'currentColor' : 'gray'}
+                color={downArrowEnabled ? 'currentColor' : '#ddd'}
             >
                 <IconCaretDownFilled size={18}/>
             </ActionIcon>

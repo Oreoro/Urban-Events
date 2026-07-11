@@ -43,7 +43,7 @@ const ActionMenu = ({entry, onOffer, onRemove, onViewOrder}: {
 
     return (
         <Group wrap="nowrap" gap={0} justify="flex-end">
-            <Menu width={200}>
+            <Menu shadow="md" width={200}>
                 <Menu.Target>
                     <div className={classes.actionsMenu}>
                         <Button size="xs" variant="transparent">

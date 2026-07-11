@@ -13,14 +13,14 @@ interface MessageRecipientsModalProps extends GenericModalProps {
     messageId: IdParam;
 }
 
-const statusClassName = (status: string) => {
+const statusColor = (status: string) => {
     switch (status?.toUpperCase()) {
         case 'SENT':
-            return classes.statusSent;
+            return 'green';
         case 'FAILED':
-            return classes.statusFailed;
+            return 'red';
         default:
-            return classes.statusNeutral;
+            return 'gray';
     }
 };
 
@@ -44,7 +44,7 @@ export const MessageRecipientsModal = ({onClose, eventId, messageId}: MessageRec
             )}
 
             {!!recipientsQuery.error && (
-                <Alert className={classes.errorAlert} radius="md">
+                <Alert color="red" radius="md">
                     {t`Failed to load recipients`}
                 </Alert>
             )}
@@ -66,11 +66,7 @@ export const MessageRecipientsModal = ({onClose, eventId, messageId}: MessageRec
                         <div key={recipient.id} className={classes.recipientRow}>
                             <span className={classes.recipientEmail}>{recipient.recipient}</span>
                             <div className={classes.recipientRight}>
-                                <Badge
-                                    size="xs"
-                                    variant="filled"
-                                    className={`${classes.statusBadge} ${statusClassName(recipient.status)}`}
-                                >
+                                <Badge size="xs" color={statusColor(recipient.status)} variant="filled">
                                     {recipient.status}
                                 </Badge>
                                 {recipient.created_at && (

@@ -142,14 +142,7 @@ export const InsertImageControl = () => {
                                             <Button onClick={handleImageInsert} loading={loading}>
                                                 {t`Insert Image`}
                                             </Button>
-                                            <Button
-                                                variant="outline"
-                                                onClick={resetState}
-                                                style={{
-                                                    color: 'var(--hi-status-danger-text)',
-                                                    borderColor: 'var(--hi-status-danger-border)',
-                                                }}
-                                            >
+                                            <Button variant="outline" color="red" onClick={resetState}>
                                                 {t`Remove`}
                                             </Button>
                                         </Group>
@@ -167,7 +160,7 @@ export const InsertImageControl = () => {
                                             )}
                                         </FileButton>
                                         {uploadError && (
-                                            <Text c="var(--hi-status-danger-text)" size="sm">
+                                            <Text c="red" size="sm">
                                                 {uploadError}
                                             </Text>
                                         )}

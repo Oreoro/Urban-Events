@@ -70,8 +70,8 @@ const AccountDetail = () => {
 
     if (isLoading) {
         return (
-            <Container size="xl" p="md" className={classes.accountDetail}>
-                <Stack gap="lg" className={classes.accountStack}>
+            <Container size="xl" p="xl">
+                <Stack gap="lg">
                     <Skeleton height={40} width={200} />
                     <Skeleton height={200} radius="md" />
                     <Skeleton height={150} radius="md" />
@@ -83,7 +83,7 @@ const AccountDetail = () => {
 
     if (!account) {
         return (
-            <Container size="xl" p="md" className={classes.accountDetail}>
+            <Container size="xl" p="xl">
                 <Text c="dimmed">{t`Account not found`}</Text>
             </Container>
         );
@@ -103,8 +103,8 @@ const AccountDetail = () => {
 
     return (
         <>
-            <Container size="xl" p="md" className={classes.accountDetail}>
-                <Stack gap="lg" className={classes.accountStack}>
+            <Container size="xl" p="xl">
+                <Stack gap="lg">
                     <Group>
                         <Button
                             variant="subtle"

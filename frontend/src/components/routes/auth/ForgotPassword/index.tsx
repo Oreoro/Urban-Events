@@ -66,7 +66,7 @@ export const ForgotPassword = () => {
                         placeholder="you@example.com"
                         required
                     />
-                    <Button type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
+                    <Button color="secondary.8" type="submit" fullWidth loading={mutate.isPending} disabled={mutate.isPending}>
                         {mutate.isPending ? t`Sending...` : t`Send reset link`}
                     </Button>
                 </form>

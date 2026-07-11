@@ -1,239 +1,63 @@
 /* eslint-disable lingui/no-unlocalized-strings */
-import {createTheme, type MantineColorsTuple} from "@mantine/core";
+import {createTheme} from "@mantine/core";
 import {generateColors} from "@mantine/colors-generator";
 
 export const urbanEventsColors = {
-    powderBlush: "#F7F6F3",
-    eggshell: "#FFFFFF",
-    icyAqua: "#DDEBF1",
-    lightBlue: "#DDEBF1",
-    blueSlate: "#787774",
-    canvas: "#F7F6F3",
-    canvasSoft: "#F1F1EF",
+    powderBlush: "#E9897E",
+    eggshell: "#F6F8FA",
+    icyAqua: "#E3F8F3",
+    lightBlue: "#EAF4FF",
+    blueSlate: "#475467",
+    canvas: "#F6F8FA",
+    canvasSoft: "#EEF2F6",
     surface: "#FFFFFF",
-    surfaceWarm: "#FBFAF8",
-    ink: "#37352F",
-    inkSoft: "#5F5E5B",
-    muted: "#787774",
-    faint: "#9B9A97",
-    border: "#E4E4E1",
-    borderStrong: "#D9D9D6",
-    primaryBlue: "#37352F",
-    primaryBlueHover: "#2F2E2B",
-    deepIndigo: "#191919",
-    navy: "#37352F",
-    navyDeep: "#191919",
-    stickerSky: "#0B6E99",
-    stickerPurple: "#EAE4F2",
-    stickerPurpleDeep: "#6940A5",
-    stickerPink: "#AD1A72",
-    stickerOrange: "#D9730D",
-    stickerOrangeDeep: "#B95C00",
-    stickerTeal: "#0F7B6C",
-    stickerGreen: "#0F7B6C",
-    teal: "#0F7B6C",
-    tealDeep: "#0C6258",
-    plum: "#6940A5",
-    plumDeep: "#56358A",
-    forest: "#0F7B6C",
-    forestDeep: "#0C6258",
-    coral: "#E03E3E",
-    coralDeep: "#C73535",
-    marigold: "#DFAB01",
-    mint: "#DDEDEA",
-    sky: "#DDEBF1",
-    success: "#0F7B6C",
+    ink: "#111827",
+    inkSoft: "#344054",
+    muted: "#667085",
+    border: "#D7DEE8",
+    borderStrong: "#B8C2CC",
+    navy: "#253044",
+    navyDeep: "#101828",
+    teal: "#0E7C70",
+    tealDeep: "#0B5F58",
+    plum: "#253044",
+    plumDeep: "#101828",
+    forest: "#0E7C70",
+    forestDeep: "#0B5F58",
+    coral: "#D9705F",
+    coralDeep: "#B9564A",
+    marigold: "#B7791F",
+    mint: "#E6F7F2",
+    sky: "#EAF4FF",
+    success: "#0F7B5F",
 } as const;
-
-const workspaceGray: MantineColorsTuple = [
-    "#FFFFFF",
-    "#FBFAF8",
-    "#F7F6F3",
-    "#F1F1EF",
-    "#E9E9E7",
-    "#DEDEDB",
-    "#9B9A97",
-    "#787774",
-    "#37352F",
-    "#191919",
-];
-
-const notionInk: MantineColorsTuple = [
-    "#FFFFFF",
-    "#FBFAF8",
-    "#F7F6F3",
-    "#E9E9E7",
-    "#D9D9D6",
-    "#B8B8B4",
-    "#787774",
-    "#37352F",
-    "#2F2E2B",
-    "#191919",
-];
-
-const workspaceDark: MantineColorsTuple = [
-    "#F4F4F2",
-    "#E8E8E6",
-    "#CFCFCA",
-    "#A8A7A1",
-    "#787774",
-    "#5F5E5B",
-    "#37352F",
-    "#252525",
-    "#202020",
-    "#191919",
-];
-
-const actionBlue: MantineColorsTuple = [
-    "#F4FAFC",
-    "#DDEBF1",
-    "#C9E0E9",
-    "#A8CDD9",
-    "#75AEC2",
-    "#3F8FAE",
-    "#0B6E99",
-    "#095E83",
-    "#074D6B",
-    "#05384E",
-];
-
-const eventGreen: MantineColorsTuple = [
-    "#F4FAF8",
-    "#DDEDEA",
-    "#C9E3DE",
-    "#A9D2CA",
-    "#76B6AA",
-    "#3E9A8A",
-    "#0F7B6C",
-    "#0C6258",
-    "#094D45",
-    "#063B35",
-];
-
-const eventCyan: MantineColorsTuple = [
-    "#F4FAFC",
-    "#DDEBF1",
-    "#C9E0E9",
-    "#A8CDD9",
-    "#75AEC2",
-    "#3F8FAE",
-    "#0B6E99",
-    "#095E83",
-    "#074D6B",
-    "#05384E",
-];
-
-const eventViolet: MantineColorsTuple = [
-    "#FBF8FE",
-    "#EAE4F2",
-    "#DDD3EA",
-    "#C4B0DC",
-    "#A78ACB",
-    "#8865B9",
-    "#6940A5",
-    "#56358A",
-    "#422B68",
-    "#31204F",
-];
-
-const eventYellow: MantineColorsTuple = [
-    "#FFFDF5",
-    "#FBF3DB",
-    "#F6E8B8",
-    "#EDD483",
-    "#E6C353",
-    "#DFAB01",
-    "#B58B00",
-    "#8A6A00",
-    "#604900",
-    "#3E3000",
-];
-
-const eventRed: MantineColorsTuple = [
-    "#FFF8F8",
-    "#FBE4E4",
-    "#F7CECE",
-    "#F0AAAA",
-    "#E98282",
-    "#E65E5E",
-    "#E03E3E",
-    "#C73535",
-    "#982A2A",
-    "#6F1F1F",
-];
-
-const eventOrange: MantineColorsTuple = [
-    "#FFF9F3",
-    "#FAEBDD",
-    "#F4D8BD",
-    "#EAB783",
-    "#E19A50",
-    "#D9730D",
-    "#B95C00",
-    "#944900",
-    "#6E3600",
-    "#4A2400",
-];
-
-const eventPink: MantineColorsTuple = [
-    "#FEF8FB",
-    "#F4DFEB",
-    "#EEC8DC",
-    "#DE9BC1",
-    "#CC6EA5",
-    "#BD408A",
-    "#AD1A72",
-    "#8F155E",
-    "#6E1048",
-    "#510C35",
-];
 
 export const getUrbanEventsTheme = () => createTheme({
     colors: {
-        gray: workspaceGray,
-        dark: workspaceDark,
-        blue: actionBlue,
-        cyan: eventCyan,
-        teal: eventGreen,
-        green: eventGreen,
-        lime: eventGreen,
-        yellow: eventYellow,
-        orange: eventOrange,
-        red: eventRed,
-        pink: eventPink,
-        grape: eventViolet,
-        violet: eventViolet,
-        primary: notionInk,
-        secondary: workspaceGray,
-        blush: workspaceGray,
-        aqua: actionBlue,
+        primary: generateColors(urbanEventsColors.navy),
+        secondary: generateColors(urbanEventsColors.teal),
+        blush: generateColors(urbanEventsColors.coral),
+        aqua: generateColors(urbanEventsColors.teal),
         eggshell: generateColors(urbanEventsColors.eggshell),
-        slate: workspaceGray,
-        coral: eventRed,
-        marigold: eventYellow,
-        mint: eventGreen,
-        sky: actionBlue,
-        indigoNight: notionInk,
-        stickerSky: actionBlue,
-        stickerPurple: eventViolet,
-        stickerPink: eventPink,
-        stickerOrange: eventOrange,
-        stickerTeal: eventGreen,
-        stickerGreen: eventGreen,
+        slate: generateColors(urbanEventsColors.blueSlate),
+        coral: generateColors(urbanEventsColors.coral),
+        marigold: generateColors(urbanEventsColors.marigold),
+        mint: generateColors(urbanEventsColors.mint),
+        sky: generateColors(urbanEventsColors.sky),
     },
     primaryColor: "primary",
     primaryShade: 7,
-    fontFamily: "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamily: "'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
     headings: {
-        fontFamily: "Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        fontWeight: "650",
+        fontFamily: "'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
+        fontWeight: "800",
         sizes: {
-            h1: {fontSize: "1.75rem", lineHeight: "1.16"},
-            h2: {fontSize: "1.35rem", lineHeight: "1.2"},
-            h3: {fontSize: "1.12rem", lineHeight: "1.25"},
+            h1: {fontSize: "2rem", lineHeight: "1.18"},
+            h2: {fontSize: "1.55rem", lineHeight: "1.22"},
+            h3: {fontSize: "1.2rem", lineHeight: "1.28"},
         },
     },
-    defaultRadius: "sm",
+    defaultRadius: "md",
     fontSizes: {
         xs: "0.75rem",
         sm: "0.875rem",
@@ -249,66 +73,40 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "1.6",
     },
     radius: {
-        xs: "2px",
-        sm: "3px",
-        md: "4px",
-        lg: "6px",
-        xl: "8px",
-    },
-    spacing: {
-        xs: "4px",
-        sm: "8px",
-        md: "12px",
-        lg: "16px",
-        xl: "24px",
+        xs: "3px",
+        sm: "5px",
+        md: "8px",
+        lg: "10px",
+        xl: "14px",
     },
     shadows: {
-        xs: "0 1px 2px rgba(15, 15, 15, 0.04)",
-        sm: "0 2px 6px rgba(15, 15, 15, 0.06)",
-        md: "0 8px 24px rgba(15, 15, 15, 0.08)",
-        lg: "0 16px 48px rgba(15, 15, 15, 0.12)",
-        xl: "0 24px 80px rgba(15, 15, 15, 0.16)",
+        xs: "0 1px 2px rgba(16, 24, 40, 0.06)",
+        sm: "0 1px 3px rgba(16, 24, 40, 0.08), 0 8px 18px rgba(16, 24, 40, 0.06)",
+        md: "0 4px 10px rgba(16, 24, 40, 0.08), 0 14px 30px rgba(16, 24, 40, 0.08)",
+        lg: "0 10px 22px rgba(16, 24, 40, 0.10), 0 24px 48px rgba(16, 24, 40, 0.10)",
+        xl: "0 18px 36px rgba(16, 24, 40, 0.12), 0 32px 70px rgba(16, 24, 40, 0.12)",
     },
     components: {
         ActionIcon: {
             defaultProps: {
-                radius: "sm",
+                radius: "md",
                 variant: "subtle",
-                size: "sm",
             },
             styles: {
                 root: {
-                    borderWidth: "1px",
-                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease, box-shadow 140ms ease",
+                    transition: "background-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
                 },
             },
         },
         Alert: {
             defaultProps: {
-                radius: "sm",
-                variant: "light",
-            },
-        },
-        Anchor: {
-            defaultProps: {
-                underline: "never",
-            },
-            styles: {
-                root: {
-                    color: "var(--hi-link-color)",
-                    fontWeight: 560,
-                },
-            },
-        },
-        Avatar: {
-            defaultProps: {
-                radius: "sm",
+                radius: "md",
             },
         },
         Badge: {
             defaultProps: {
                 radius: "sm",
-                fw: 600,
+                fw: 700,
             },
             styles: {
                 root: {
@@ -319,16 +117,14 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Button: {
             defaultProps: {
-                radius: "sm",
-                size: "sm",
+                radius: "md",
             },
             styles: {
                 root: {
-                    fontWeight: 560,
+                    fontWeight: 800,
                     letterSpacing: 0,
-                    minHeight: "2.125rem",
-                    paddingInline: "0.8125rem",
-                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease, box-shadow 140ms ease",
+                    minHeight: "2.5rem",
+                    transition: "background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
                 },
                 label: {
                     whiteSpace: "normal",
@@ -340,8 +136,8 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Card: {
             defaultProps: {
-                radius: "sm",
-                shadow: "none",
+                radius: "lg",
+                shadow: "xs",
                 withBorder: true,
             },
             styles: {
@@ -353,40 +149,23 @@ export const getUrbanEventsTheme = () => createTheme({
         Checkbox: {
             defaultProps: {
                 radius: "sm",
-                color: "primary",
-            },
-        },
-        ColorInput: {
-            defaultProps: {
-                radius: "sm",
-            },
-        },
-        DatePickerInput: {
-            defaultProps: {
-                radius: "sm",
-            },
-        },
-        FileInput: {
-            defaultProps: {
-                radius: "sm",
+                color: "secondary",
             },
         },
         Input: {
             defaultProps: {
-                radius: "sm",
-                size: "sm",
+                radius: "md",
             },
             styles: {
                 input: {
                     borderColor: "var(--hi-border-strong)",
                     color: "var(--hi-text)",
                     fontWeight: 500,
-                    minHeight: "2.125rem",
-                    backgroundColor: "var(--hi-control-bg)",
+                    minHeight: "2.625rem",
                 },
                 label: {
                     color: "var(--hi-text)",
-                    fontWeight: 560,
+                    fontWeight: 700,
                 },
                 description: {
                     color: "var(--hi-text-muted)",
@@ -395,16 +174,15 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Menu: {
             defaultProps: {
-                radius: "sm",
+                radius: "md",
                 shadow: "md",
             },
             styles: {
                 dropdown: {
                     borderColor: "var(--hi-border)",
-                    boxShadow: "var(--hi-shadow-md)",
                 },
                 item: {
-                    fontWeight: 560,
+                    fontWeight: 600,
                 },
             },
         },
@@ -412,151 +190,44 @@ export const getUrbanEventsTheme = () => createTheme({
             defaultProps: {
                 radius: "lg",
                 overlayProps: {
-                    backgroundOpacity: 0.34,
-                    blur: 0,
+                    blur: 4,
+                    opacity: 0.45,
                 },
             },
         },
         Paper: {
             defaultProps: {
-                radius: "sm",
-                shadow: "xs",
-                withBorder: true,
-            },
-            styles: {
-                root: {
-                    borderColor: "var(--hi-border)",
-                },
-            },
-        },
-        Popover: {
-            defaultProps: {
-                radius: "sm",
-                shadow: "md",
-            },
-            styles: {
-                dropdown: {
-                    borderColor: "var(--hi-border)",
-                    boxShadow: "var(--hi-shadow-md)",
-                },
-            },
-        },
-        Progress: {
-            defaultProps: {
-                color: "primary",
-                radius: "sm",
-            },
-        },
-        Radio: {
-            defaultProps: {
-                color: "primary",
+                radius: "lg",
             },
         },
         SegmentedControl: {
             defaultProps: {
-                radius: "sm",
+                radius: "md",
             },
             styles: {
                 root: {
                     borderColor: "var(--hi-border)",
                 },
                 label: {
-                    fontWeight: 600,
+                    fontWeight: 700,
                 },
             },
         },
         Tabs: {
             defaultProps: {
-                radius: "sm",
-                color: "primary",
-                variant: "default",
-            },
-        },
-        Table: {
-            styles: {
-                table: {
-                    color: "var(--hi-text)",
-                },
-                th: {
-                    fontWeight: 600,
-                    color: "var(--hi-text-muted)",
-                },
-                td: {
-                    color: "var(--hi-text)",
-                },
+                radius: "md",
+                color: "secondary",
             },
         },
         TextInput: {
             defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        NumberInput: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        MultiSelect: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        NativeSelect: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        PasswordInput: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        PinInput: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        Select: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
-            },
-        },
-        Switch: {
-            defaultProps: {
-                color: "primary",
-            },
-        },
-        ThemeIcon: {
-            defaultProps: {
-                color: "primary",
-                radius: "sm",
-                variant: "light",
-            },
-        },
-        Textarea: {
-            defaultProps: {
-                radius: "sm",
-                size: "sm",
+                radius: "md",
             },
         },
         Tooltip: {
             defaultProps: {
                 radius: "sm",
                 withArrow: true,
-            },
-            styles: {
-                tooltip: {
-                    backgroundColor: "var(--hi-text)",
-                    color: "var(--hi-color-white)",
-                    fontWeight: 500,
-                },
             },
         },
     },

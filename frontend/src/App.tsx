@@ -67,7 +67,7 @@ export const App: FC<
                     width: "100vw",
                     height: "100vh",
                     position: "fixed",
-                    background: "var(--hi-shell-bg, #ffffff)",
+                    background: "#ffffff",
                     zIndex: 1000,
                     display: isLoadedOnBrowser ? "none" : "block",
                 }}
@@ -90,12 +90,7 @@ export const App: FC<
                                     </Helmet>
                                     {props.children}
                                 </ModalsProvider>
-                                <Notifications
-                                    position="top-center"
-                                    limit={3}
-                                    containerWidth={420}
-                                    notificationMaxHeight={160}
-                                />
+                                <Notifications/>
                                 {showGlobalConsentBanner && (
                                     <CookieConsentBanner onConsent={handleGlobalConsent}/>
                                 )}

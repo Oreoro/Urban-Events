@@ -1,5 +1,5 @@
 import {t} from "@lingui/macro";
-import {Button, Group, Modal, Text, TextInput} from "@mantine/core";
+import {Alert, Button, Group, Modal, Text, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {IconInfoCircle} from "@tabler/icons-react";
 import {Order} from "../../../../../types";
@@ -73,12 +73,11 @@ export const EditOrderModal = ({
                     />
 
                     {emailChanged && (
-                        <div className={classes.notice}>
-                            <IconInfoCircle size={16} className={classes.noticeIcon}/>
+                        <Alert mb={20} icon={<IconInfoCircle size={16}/>} color="orange">
                             <Text size="sm" fw={500}>
                                 {t`Important: Changing your email address will update the link to access this order. You will be redirected to the new order link after saving.`}
                             </Text>
-                        </div>
+                        </Alert>
                     )}
 
                     <Group justify="flex-end" gap="sm" mt="md">

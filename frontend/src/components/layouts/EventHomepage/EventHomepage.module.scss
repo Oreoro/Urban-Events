@@ -1,13 +1,13 @@
 @use "../../../styles/mixins.scss";
 
 // Design tokens
-$font-display: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-$font-body: var(--theme-font-family, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-display: var(--theme-font-family, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+$font-body:  var(--theme-font-family, 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
-$radius-xl: 6px;
-$radius-lg: 6px;
-$radius-md: 6px;
-$radius-sm: 5px;
+$radius-xl: 16px;
+$radius-lg: 12px;
+$radius-md: 8px;
+$radius-sm: 6px;
 $radius-xs: 4px;
 
 $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,10 +22,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: none;
-  opacity: 0;
+  filter: blur(24px) saturate(1.3);
   z-index: -1;
-  transform: none;
+  transform: scale(1.08);
   left: 0;
   right: 0;
   top: 0;
@@ -54,19 +53,24 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
   }
 
+  // Noise texture
   &::before {
-    content: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    z-index: 1;
   }
 }
 
 // Main page wrapper
 .pageWrapper {
   min-height: 100vh;
-  background: color-mix(in srgb, var(--bg-color, var(--ue-canvas-soft)) 86%, var(--hi-color-white));
-  --background-overlay: color-mix(in srgb, var(--hi-color-white) 50%, transparent);
+  --background-overlay: #{rgba(white, 0.5)};
 
   &[data-mode="dark"] {
-    --background-overlay: color-mix(in srgb, var(--hi-color-black) 60%, transparent);
+    --background-overlay: #{rgba(black, 0.6)};
   }
 }
 
@@ -88,9 +92,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wrapper {
-  max-width: 980px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 22px 24px 18px;
+  padding: 24px 24px 16px;
 
   @include mixins.respond-below(md) {
     padding: 0;
@@ -101,11 +105,14 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .mainCard {
   background-color: var(--content-bg-color);
   border-radius: $radius-xl;
-  border: 1px solid color-mix(in srgb, var(--border-color) 86%, transparent);
-  box-shadow: none;
+  border: 1px solid var(--border-color);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 20px 40px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-bottom: 16px;
-  animation: none;
+  animation: fadeInUp 0.5s ease-out backwards;
 
   @include mixins.respond-below(md) {
     border-radius: 0;
@@ -127,8 +134,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-height: 560px;
   overflow: hidden;
-  background-color: color-mix(in srgb, var(--content-bg-color) 84%, var(--bg-color));
-  border-bottom: 1px solid var(--border-color);
+  background-color: var(--theme-surface);
 
   // When aspect ratio is provided via CSS custom property, use it
   // Otherwise fall back to auto sizing based on image
@@ -148,8 +154,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: none;
-  opacity: 0.22;
+  filter: blur(20px);
+  transform: scale(1.1);
   z-index: 0;
 }
 
@@ -180,14 +186,19 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--primary-text-color) 5%, transparent);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.12) 42%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
   pointer-events: none;
 }
 
 .statusBadges {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 20px;
+  left: 20px;
   display: flex;
   gap: 8px;
   z-index: 2;
@@ -197,23 +208,25 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--content-bg-color);
-  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
   border-radius: $radius-sm;
-  padding: 6px 10px;
-  font-size: 0.76rem;
+  padding: 8px 14px;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--primary-text-color);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
   svg {
     width: 0.7rem;
     height: 0.7rem;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
   }
 }
 
 // Event header section
 .eventHeader {
-  padding: 24px 28px 22px;
+  padding: 28px 32px 24px;
 
   @include mixins.respond-below(md) {
     padding: 24px 20px;
@@ -224,31 +237,29 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .organizerPill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: color-mix(in srgb, var(--accent-soft) 58%, var(--content-bg-color));
-  border: 1px solid var(--border-color);
-  border-radius: $radius-md;
-  padding: 5px 12px 5px 5px;
+  background: var(--accent-soft);
+  border-radius: 100px;
+  padding: 6px 14px 6px 6px;
   text-decoration: none;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  transition: all $transition-fast;
   cursor: pointer;
 
   &:hover {
-    background: color-mix(in srgb, var(--accent-soft) 72%, var(--content-bg-color));
-    border-color: color-mix(in srgb, var(--border-color) 62%, var(--primary-text-color));
+    transform: translateY(-1px) scale(1.02);
   }
 }
 
 .organizerPillAvatar {
   width: 28px;
   height: 28px;
-  border-radius: $radius-sm;
+  border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--content-bg-color);
 }
@@ -256,19 +267,19 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .organizerPillAvatarPlaceholder {
   width: 28px;
   height: 28px;
-  border-radius: $radius-sm;
-  background: color-mix(in srgb, var(--content-bg-color) 82%, var(--bg-color));
+  border-radius: 50%;
+  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--hi-text-muted);
+  color: var(--accent-contrast);
   font-size: 0.75rem;
   font-weight: 600;
   border: 2px solid var(--content-bg-color);
 }
 
 .organizerPillName {
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--primary-text-color);
 }
@@ -279,9 +290,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .actionButton {
-  width: 36px;
-  height: 36px;
-  border-radius: $radius-md;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   background: var(--content-bg-color);
   border: 1px solid var(--border-color);
   display: flex;
@@ -289,7 +300,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
   cursor: pointer;
   color: var(--secondary-color);
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  transition: all $transition-fast;
 
   svg {
     width: 1rem;
@@ -297,59 +308,51 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--content-bg-color);
-    border-color: var(--border-color);
+    background: var(--accent-soft);
     color: var(--primary-text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   &.favoriteButton:hover {
-    color: var(--primary-text-color);
-    background: var(--content-bg-color);
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
   }
 }
 
 .eventTitle {
   font-family: $font-display;
-  font-size: 1.66rem;
-  font-weight: 680;
-  line-height: 1.18;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
   letter-spacing: 0;
   color: var(--primary-text-color);
-  margin: 0 0 18px;
-
-  @include mixins.respond-below(sm) {
-    font-size: 1.34rem;
-  }
+  margin: 0 0 20px;
 }
 
 .eventMeta {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 14px;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 9px 10px;
-  border: 1px solid color-mix(in srgb, var(--border-color) 84%, transparent);
-  border-radius: $radius-md;
-  background: color-mix(in srgb, var(--content-bg-color) 92%, var(--bg-color));
+  gap: 14px;
 }
 
 .metaIconBox {
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   border-radius: $radius-md;
-  background: color-mix(in srgb, var(--accent-soft) 48%, var(--content-bg-color));
-  border: 1px solid var(--border-color);
+  background: var(--accent-soft);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--secondary-color);
-  transition: background-color $transition-fast, color $transition-fast;
+  color: var(--primary-color);
+  transition: all $transition-fast;
 
   svg {
     width: 1.1rem;
@@ -357,8 +360,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--content-bg-color);
-    color: var(--primary-text-color);
+    background: var(--primary-color);
+    color: var(--accent-contrast);
+    transform: scale(1.05);
   }
 }
 
@@ -368,15 +372,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .metaPrimary {
-  font-weight: 610;
+  font-weight: 600;
   color: var(--primary-text-color);
-  font-size: 0.88rem;
+  font-size: 1rem;
   margin-bottom: 2px;
 }
 
 .metaSecondary {
   color: var(--secondary-color);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .metaLink {
@@ -401,18 +405,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .addToCalendarButton {
   margin-left: auto;
-  padding: 6px 11px;
+  padding: 8px 16px;
   background: transparent;
   border: 1px solid var(--border-color);
   border-radius: $radius-sm;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--secondary-color);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  transition: all $transition-fast;
 
   svg {
     width: 0.9rem;
@@ -420,9 +424,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--content-bg-color);
+    background: var(--accent-soft);
     color: var(--primary-text-color);
-    border-color: var(--border-color);
+    border-color: var(--primary-color);
   }
 
   @include mixins.respond-below(md) {
@@ -432,7 +436,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 // Section dividers
 .section {
-  padding: 24px 28px;
+  padding: 28px 32px;
   border-top: 1px solid var(--border-color);
 
   @include mixins.respond-below(md) {
@@ -444,13 +448,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .sectionTitle {
   font-family: $font-display;
-  font-size: 1rem;
-  font-weight: 680;
+  font-size: 1.35rem;
+  font-weight: 700;
   letter-spacing: 0;
   color: var(--primary-text-color);
   margin: 0;
@@ -459,8 +463,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Description / About section
 .description {
   color: var(--secondary-color);
-  line-height: 1.65;
-  font-size: 0.92rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
 
   p {
     margin-bottom: 1em;
@@ -598,7 +602,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 120px;
   cursor: pointer;
   position: relative;
-  transition: border-color $transition-fast;
+  transition: all $transition-fast;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -608,7 +612,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    outline: 1px solid var(--border-color);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   img {
@@ -622,6 +627,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--primary-color);
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transition: opacity $transition-fast;
 
   .mapContainer:hover & {
@@ -632,7 +638,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .mapOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--primary-text-color) 8%, transparent);
+  background: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -651,7 +657,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--primary-text-color);
-  box-shadow: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -674,7 +680,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   :global(.hi-product-category-rows) {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   :global(.hi-product-category-row) {
@@ -683,67 +689,66 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-category-title) {
     font-family: $font-display;
-    font-size: 1rem;
-    font-weight: 680;
+    font-size: 1.35rem;
+    font-weight: 700;
     letter-spacing: 0;
     color: var(--primary-text-color);
-    margin: 0 0 12px;
+    margin: 0 0 18px;
   }
 
   :global(.hi-product-category-description) {
     color: var(--secondary-color);
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   :global(.hi-product-rows) {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 12px;
     margin-bottom: 0;
   }
 
   :global(.hi-product-row) {
-    background: color-mix(in srgb, var(--content-bg-color) 94%, var(--bg-color));
-    border-radius: $radius-md;
-    border: 1px solid color-mix(in srgb, var(--border-color) 88%, transparent);
+    background: var(--content-bg-color);
+    border-radius: $radius-lg;
+    border: 2px solid var(--border-color);
     padding: 0;
-    transition: background-color $transition-fast, border-color $transition-fast;
+    transition: all $transition-fast;
     cursor: pointer;
     position: relative;
     overflow: hidden;
 
     &:hover {
-      background: color-mix(in srgb, var(--accent-soft) 34%, var(--content-bg-color));
-      border-color: color-mix(in srgb, var(--border-color) 62%, var(--primary-text-color));
+      border-color: color-mix(in srgb, var(--border-color) 150%, transparent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
   }
 
   :global(.hi-product-row.hi-product-highlighted) {
-    background: color-mix(in srgb, var(--accent-soft) 24%, var(--content-bg-color));
-    border-color: color-mix(in srgb, var(--primary-color) 22%, var(--border-color));
+    background: var(--accent-soft);
+    border-color: var(--primary-color);
 
     &:hover {
-      background: color-mix(in srgb, var(--accent-soft) 34%, var(--content-bg-color));
-      border-color: color-mix(in srgb, var(--primary-color) 28%, var(--border-color));
+      background: color-mix(in srgb, var(--accent-soft) 80%, var(--content-bg-color));
+      border-color: var(--primary-color);
     }
   }
 
   :global(.hi-product-highlight-message) {
-    background: color-mix(in srgb, var(--accent-soft) 50%, var(--content-bg-color));
-    color: var(--secondary-color);
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.72rem;
+    background: var(--primary-color);
+    color: var(--accent-contrast);
+    font-size: 0.75rem;
     font-weight: 600;
-    padding: 6px 14px;
+    padding: 6px 16px;
     text-align: center;
     letter-spacing: 0;
   }
 
   :global(.hi-product-row.selected) {
-    border-color: color-mix(in srgb, var(--hi-text) 18%, var(--hi-border));
-    background: color-mix(in srgb, var(--hi-text) 5%, var(--hi-surface));
+    border-color: var(--primary-color);
+    background: var(--accent-soft);
   }
 
   :global(.hi-title-row) {
@@ -751,7 +756,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-title) {
-    padding: 14px 16px;
+    padding: 20px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -759,15 +764,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     h3 {
       font-family: $font-display;
-      font-weight: 600;
-      font-size: 0.96rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       color: var(--primary-text-color);
       margin: 0;
     }
   }
 
   :global(.hi-product-title-metadata) {
-    font-size: 0.76rem;
+    font-size: 0.8rem;
     color: var(--secondary-text-color);
     display: flex;
     align-items: center;
@@ -783,17 +788,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-product-content) {
-    padding: 0 16px 14px;
+    padding: 0 24px 20px;
     border-top: 1px solid var(--border-color);
     margin-top: 0;
   }
 
   :global(.hi-price-tiers-rows) {
-    padding-top: 12px;
+    padding-top: 16px;
   }
 
   :global(.hi-price-tier-row) {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 
     &:last-child {
       margin-bottom: 0;
@@ -809,15 +814,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-price-tier-label) {
-    font-weight: 590;
+    font-weight: 600;
     color: var(--primary-text-color);
-    font-size: 0.86rem;
+    font-size: 0.95rem;
   }
 
   :global(.hi-price-tier-price) {
     font-family: $font-display;
-    font-weight: 600;
-    font-size: 0.94rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--primary-text-color);
   }
 
@@ -832,8 +837,8 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       border: 1px solid var(--border-color);
 
       button {
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         border-radius: $radius-xs;
         border: none;
         background: transparent;
@@ -843,10 +848,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         justify-content: center;
         font-size: 0.9rem;
         cursor: pointer;
-        transition: background-color $transition-fast, color $transition-fast;
+        transition: all $transition-fast;
 
         &:hover:not(:disabled) {
-          background: var(--content-bg-color);
+          background: var(--accent-soft);
           color: var(--primary-text-color);
         }
 
@@ -858,10 +863,10 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
       input {
         font-family: $font-display;
-        font-weight: 600;
-        min-width: 28px;
+        font-weight: 700;
+        min-width: 32px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: var(--primary-text-color);
         border: none;
         background: transparent;
@@ -871,17 +876,17 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-product-description-row) {
     color: var(--secondary-color);
-    font-size: 0.82rem;
-    line-height: 1.55;
-    margin-top: 10px;
-    padding-top: 10px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-top: 12px;
+    padding-top: 12px;
     border-top: 1px solid var(--border-color);
   }
 
   :global(.hi-product-quantity-error) {
-    background: var(--content-bg-color);
-    border: 1px solid var(--border-color);
-    color: var(--primary-text-color);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #dc2626;
     border-radius: $radius-sm;
     padding: 12px 16px;
     font-size: 0.875rem;
@@ -900,52 +905,52 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :global(.hi-footer-row) {
-    margin-top: 18px;
-    padding-top: 18px;
+    margin-top: 24px;
+    padding-top: 24px;
     border-top: 1px solid var(--border-color);
 
     .hi-product-page-message {
-      background: color-mix(in srgb, var(--accent-soft) 42%, var(--content-bg-color));
-      border: 1px solid var(--border-color);
+      background: var(--accent-soft);
       border-radius: $radius-sm;
       padding: 12px 16px;
       margin-bottom: 16px;
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       color: var(--primary-text-color);
     }
   }
 
   :global(.hi-continue-button) {
     width: 100%;
-    padding: 13px 18px !important;
+    padding: 18px 24px !important;
     height: auto !important;
-    background: var(--hi-primary) !important;
-    background-color: var(--hi-primary) !important;
-    color: var(--hi-color-white) !important;
-    border: 1px solid var(--hi-primary) !important;
+    background: var(--primary-color) !important;
+    background-color: var(--primary-color) !important;
+    color: var(--accent-contrast) !important;
+    border: none !important;
     border-radius: $radius-md !important;
     font-family: $font-display;
-    font-size: 0.92rem !important;
-    font-weight: 600 !important;
-    text-transform: none;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
     letter-spacing: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+    transition: all $transition-fast;
 
     // Override Mantine button internals
     :global(.mantine-Button-label) {
-      color: var(--hi-color-white) !important;
+      color: var(--accent-contrast) !important;
     }
 
     &:hover:not(:disabled) {
-      filter: none;
-      background: var(--hi-text-light) !important;
-      background-color: var(--hi-text-light) !important;
-      border-color: var(--hi-text-light) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--accent-soft);
+      filter: brightness(1.1);
+      background: var(--primary-color) !important;
+      background-color: var(--primary-color) !important;
     }
 
     &:disabled {
@@ -963,7 +968,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   :global(.hi-have-a-promo-code-link) {
     color: var(--secondary-color);
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     text-align: center;
     display: block;
     width: 100%;
@@ -982,21 +987,19 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     border-radius: $radius-sm;
     color: var(--primary-text-color);
-    padding: 9px 12px;
+    padding: 10px 14px;
   }
 
   :global(.hi-apply-promo-code-button) {
-    background: var(--hi-surface);
-    color: var(--primary-text-color);
-    border: 1px solid var(--hi-border);
+    background: var(--primary-color);
+    color: var(--accent-contrast);
+    border: none;
     border-radius: $radius-sm;
     font-weight: 600;
-    padding: 9px 16px;
+    padding: 10px 20px;
 
     &:hover {
-      filter: none;
-      background: var(--hi-control-bg-hover);
-      border-color: var(--hi-border-strong);
+      filter: brightness(1.1);
     }
   }
 
@@ -1005,7 +1008,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.9rem;
 
     b {
-      color: var(--primary-text-color);
+      color: var(--primary-color);
     }
   }
 }
@@ -1035,14 +1038,13 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 72px;
   height: 72px;
   border-radius: $radius-md;
-  background: var(--content-bg-color);
-  border: 1px solid var(--border-color);
+  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--secondary-color);
+  color: var(--accent-contrast);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
@@ -1066,7 +1068,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .organizerName {
   font-family: $font-display;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.15rem;
   color: var(--primary-text-color);
   margin: 0 0 4px;
@@ -1147,7 +1149,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 .socialLink {
   width: 38px;
   height: 38px;
-  border-radius: $radius-md;
+  border-radius: 50%;
   background: var(--accent-soft);
   display: flex;
   align-items: center;
@@ -1155,11 +1157,12 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--secondary-color);
   text-decoration: none;
   font-size: 1rem;
-  transition: background-color $transition-fast, color $transition-fast;
+  transition: all $transition-fast;
 
   &:hover {
-    background: var(--hi-control-bg-hover);
-    color: var(--primary-text-color);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
   }
 }
 
@@ -1175,7 +1178,7 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  transition: all $transition-fast;
 
   svg {
     width: 0.9rem;
@@ -1183,9 +1186,9 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--hi-control-bg-hover);
-    color: var(--primary-text-color);
-    border-color: var(--hi-border-strong);
+    background: var(--primary-color);
+    color: var(--accent-contrast);
+    border-color: var(--primary-color);
   }
 }
 
@@ -1255,17 +1258,18 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--hi-surface);
-  color: var(--primary-text-color);
+  background: var(--primary-color);
+  color: var(--accent-contrast);
   font-family: $font-display;
   font-weight: 600;
   font-size: 0.875rem;
   padding: 12px 20px;
-  border-radius: $radius-md;
-  border: 1px solid var(--hi-border);
+  border-radius: 50px;
+  border: none;
   cursor: pointer;
-  box-shadow: none;
-  transition: background-color $transition-fast, color $transition-fast;
+  box-shadow: 0 4px 20px var(--accent-soft);
+  animation: fadeInUp 0.4s ease-out;
+  transition: all $transition-fast;
 
   @include mixins.respond-below(sm) {
     bottom: 16px;
@@ -1275,9 +1279,35 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    background: var(--hi-control-bg-hover);
-    border-color: var(--hi-border-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--accent-soft);
   }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animate sections
+.section {
+  animation: fadeInUp 0.4s ease-out backwards;
+
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.15s; }
+  &:nth-child(4) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.25s; }
 }
 
 // No cover image adjustments
@@ -1296,319 +1326,15 @@ $transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--hi-shell-bg-strong);
-  color: var(--primary-text-color);
+  background: var(--accent-soft);
+  color: var(--primary-color);
   padding: 6px 12px;
   border-radius: $radius-sm;
-  border: 1px solid var(--hi-app-panel-border);
   font-size: 0.85rem;
   font-weight: 600;
 
   svg {
     width: 0.9rem;
     height: 0.9rem;
-  }
-}
-
-.pageWrapper {
-  background: var(--hi-shell-bg);
-}
-
-.wrapper {
-  width: min(100%, 1088px);
-  max-width: 1088px;
-  padding: clamp(28px, 4vw, 56px) clamp(18px, 4vw, 40px) 64px;
-}
-
-.mainCard {
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-app-panel-border);
-  border-color: var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-md);
-}
-
-.mainCard:hover {
-  border-color: var(--hi-border);
-}
-
-.coverWrapper {
-  background: var(--hi-shell-bg-strong);
-}
-
-.coverImage {
-  background: var(--hi-shell-bg-strong);
-}
-
-.eventHeader {
-  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 52px) clamp(24px, 3vw, 36px);
-}
-
-.section {
-  padding: clamp(24px, 3vw, 36px) clamp(24px, 4vw, 52px);
-}
-
-.statusBadge,
-.organizerPill,
-.actionButton,
-.addToCalendarButton,
-.mapOverlayLabel,
-.socialLink,
-.contactButton {
-  background: var(--hi-surface);
-  border: 1px solid var(--hi-border);
-  color: var(--primary-text-color);
-  box-shadow: var(--hi-shadow-sm);
-}
-
-.socialLink,
-.contactButton {
-  border-radius: var(--hi-radius-sm);
-}
-
-.organizerPill:hover,
-.actionButton:hover,
-.addToCalendarButton:hover,
-.socialLink:hover,
-.contactButton:hover {
-  background: var(--hi-control-bg-hover);
-  border-color: var(--hi-border-strong);
-  color: var(--primary-text-color);
-}
-
-.organizerPillAvatar,
-.organizerPillAvatarPlaceholder,
-.organizerAvatar,
-.organizerAvatarPlaceholder {
-  border-radius: var(--hi-radius-sm);
-  border: 1px solid var(--hi-app-panel-border);
-  background: var(--hi-shell-bg-strong);
-  color: var(--hi-text-muted);
-}
-
-.metaIconBox,
-.organizerLocation svg {
-  color: var(--hi-text-muted);
-}
-
-.metaItem {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: flex-start;
-  padding: 8px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-.metaItem + .metaItem {
-  border-top: 1px solid var(--hi-border);
-}
-
-.metaIconBox {
-  width: 20px;
-  height: 20px;
-  margin-top: 1px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-
-  svg {
-    width: 1rem;
-    height: 1rem;
-  }
-}
-
-.addToCalendarButton {
-  align-self: flex-start;
-  border-color: transparent;
-  padding: 5px 8px;
-}
-
-.statusBadge {
-  padding: 5px 8px;
-  font-size: 0.72rem;
-}
-
-.organizerPill {
-  padding: 4px 7px 4px 4px;
-}
-
-.metaLink,
-.directionsLink,
-.readMoreToggle,
-.organizerBio a,
-.footerLink:hover,
-.poweredByFooter a:hover {
-  color: var(--primary-color, var(--hi-primary));
-}
-
-.organizerName a:hover {
-  color: var(--primary-text-color);
-}
-
-.description,
-.organizerBio {
-  color: var(--secondary-color);
-
-  blockquote {
-    border-left-color: var(--hi-border-strong);
-    background: var(--hi-shell-bg-strong);
-    border-radius: var(--hi-radius-sm);
-    padding: 0.85rem 1rem;
-  }
-
-  img {
-    border-radius: var(--hi-radius-sm);
-    border: 1px solid var(--hi-border);
-  }
-}
-
-.section,
-.eventHeader {
-  border-color: var(--hi-border);
-}
-
-.ticketsSection {
-  :global(.hi-product-rows),
-  :global(.hi-product-category-rows) {
-    gap: 7px;
-  }
-
-  :global(.hi-product-row) {
-    background: var(--hi-app-panel-bg);
-    border-color: var(--hi-app-panel-border);
-    border-radius: var(--hi-radius-sm);
-    border-width: 1px;
-    margin-bottom: 0;
-    box-shadow: var(--hi-shadow-sm);
-
-    &:first-child {
-      border-top-width: 1px;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &:hover {
-      background: var(--hi-control-bg-hover);
-      border-color: var(--hi-border-strong);
-    }
-  }
-
-  :global(.hi-product-row.hi-product-highlighted),
-  :global(.hi-product-row.selected) {
-    background: var(--hi-shell-bg-strong);
-    border-color: var(--hi-border-strong);
-  }
-
-  :global(.hi-product-title) {
-    padding: 14px 16px;
-  }
-
-  :global(.hi-product-content) {
-    padding: 0 16px 14px;
-    border-top-color: var(--hi-border);
-  }
-
-  :global(.hi-price-tier-row:not(:last-child)) {
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--hi-border);
-  }
-
-  :global(.hi-product-highlight-message),
-  :global(.hi-product-quantity-error),
-  :global(.hi-footer-row .hi-product-page-message) {
-    background: var(--hi-shell-bg-strong);
-    border-color: var(--hi-border);
-    color: var(--primary-text-color);
-  }
-
-  :global(.hi-product-quantity-selector .button-input) {
-    background: var(--hi-surface);
-    border-color: var(--hi-border);
-    border-radius: var(--hi-radius-sm);
-  }
-
-  :global(.hi-product-quantity-selector .button-input button:hover:not(:disabled)) {
-    background: var(--hi-control-bg-hover);
-  }
-
-  :global(.hi-product-description-row) {
-    border-top-color: var(--hi-border);
-  }
-
-  :global(.hi-continue-button) {
-    background: var(--hi-primary) !important;
-    background-color: var(--hi-primary) !important;
-    border-color: var(--hi-primary) !important;
-    color: var(--hi-color-white) !important;
-    border-radius: var(--hi-radius-sm) !important;
-  }
-
-  :global(.hi-continue-button:hover:not(:disabled)) {
-    background: var(--hi-primary-hover) !important;
-    background-color: var(--hi-primary-hover) !important;
-    border-color: var(--hi-primary-hover) !important;
-  }
-
-  :global(.hi-apply-promo-code-button) {
-    background: var(--hi-surface) !important;
-    background-color: var(--hi-surface) !important;
-    border: 1px solid var(--hi-border) !important;
-    color: var(--primary-text-color) !important;
-    border-radius: var(--hi-radius-sm) !important;
-    font-weight: 600;
-  }
-
-  :global(.hi-apply-promo-code-button:hover:not(:disabled)) {
-    background: var(--hi-control-bg-hover) !important;
-    background-color: var(--hi-control-bg-hover) !important;
-    border-color: var(--hi-border-strong) !important;
-  }
-
-  :global(.hi-continue-button) {
-    padding: 13px 18px !important;
-    min-height: 42px !important;
-  }
-
-  :global(.hi-promo-code-input) {
-    background: var(--hi-surface);
-    border-color: var(--hi-border);
-    border-radius: var(--hi-radius-sm);
-  }
-}
-
-.scrollToTicketsButton {
-  background: var(--hi-surface);
-  color: var(--primary-text-color);
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-sm);
-}
-
-.scrollToTicketsButton:hover {
-  filter: none;
-  background: var(--hi-control-bg-hover);
-  border-color: var(--hi-border-strong);
-}
-
-@include mixins.respond-below(md) {
-  .wrapper {
-    padding: 12px 12px 40px;
-  }
-
-  .mainCard {
-    border-left: 1px solid var(--hi-app-panel-border);
-    border-right: 1px solid var(--hi-app-panel-border);
-    border-radius: var(--hi-radius-md);
-    margin-bottom: 12px;
-  }
-
-  .eventHeader,
-  .section {
-    padding-left: 18px;
-    padding-right: 18px;
   }
 }

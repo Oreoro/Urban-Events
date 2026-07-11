@@ -7,9 +7,7 @@ import {Alert, Badge, Code, Collapse, Group, Loader, Paper, Stack, Text} from "@
 import {IconCheck, IconChevronRight, IconX} from '@tabler/icons-react';
 import {GenericModalProps, IdParam} from "../../../types.ts";
 import {useState} from "react";
-import type {CSSProperties} from "react";
 import {relativeDate} from "../../../utilites/dates.ts";
-import classes from "./WebhookLogsModal.module.scss";
 
 interface WebhookLog {
     id: IdParam;
@@ -35,13 +33,6 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
         return 'red';
     };
 
-    const getStatusTone = (code?: number) => {
-        if (!code) return 'neutral';
-        if (code >= 200 && code < 300) return 'success';
-        if (code >= 300 && code < 400) return 'info';
-        return 'danger';
-    };
-
     const formatContent = (content?: string) => {
         if (!content) return '';
 
@@ -52,26 +43,27 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
         }
     };
 
-    const statusColor = getStatusColor(log.response_code);
-    const statusTone = getStatusTone(log.response_code);
-    const logStyle = {
-        '--log-status-color': `var(--hi-status-${statusTone}-text)`,
-        '--log-status-bg': `var(--hi-status-${statusTone}-bg)`,
-        '--log-status-border': `var(--hi-status-${statusTone}-border)`,
-    } as CSSProperties;
-
     return (
         <Paper
             withBorder
             p="md"
             mb="md"
             onClick={() => setDetailsOpen(!detailsOpen)}
-            className={`${classes.logEntry} ${detailsOpen ? classes.logEntryExpanded : ''}`}
-            style={logStyle}
+            style={{
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: detailsOpen ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none',
+                borderRadius: '8px',
+                borderLeft: `4px solid var(--mantine-color-${getStatusColor(log.response_code)}-6)`
+            }}
         >
             <Group justify="space-between" wrap="nowrap">
                 <Group wrap="nowrap" gap="md">
-                    <div className={`${classes.chevronIcon} ${detailsOpen ? classes.chevronIconExpanded : ''}`}>
+                    <div style={{
+                        color: `var(--mantine-color-${getStatusColor(log.response_code)}-6)`,
+                        transition: 'transform 0.2s ease',
+                        transform: detailsOpen ? 'rotate(90deg)' : 'rotate(0deg)'
+                    }}>
                         <IconChevronRight size={20}/>
                     </div>
                     <div>
@@ -80,7 +72,7 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                                 {log.event_type}
                             </Text>
                             <Badge
-                                color={statusColor}
+                                color={getStatusColor(log.response_code)}
                                 variant="filled"
                                 size="sm"
                                 radius="sm"
@@ -94,7 +86,16 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                     </div>
                 </Group>
                 {log.response_code && (
-                    <div className={classes.statusIcon}>
+                    <div style={{
+                        background: `var(--mantine-color-${getStatusColor(log.response_code)}-0)`,
+                        color: `var(--mantine-color-${getStatusColor(log.response_code)}-6)`,
+                        borderRadius: '50%',
+                        width: '28px',
+                        height: '28px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
                         {log.response_code >= 200 && log.response_code < 300 ?
                             <IconCheck size={18}/> :
                             <IconX size={18}/>
@@ -108,7 +109,12 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                     {log.payload && (
                         <div>
                             <Text size="sm" fw={500} mb={8} c="dimmed">Payload:</Text>
-                            <Code block p="md" className={classes.codeBlock}>
+                            <Code block p="md" style={{
+                                borderRadius: '6px',
+                                maxHeight: '300px',
+                                overflow: 'auto',
+                                backgroundColor: 'var(--mantine-color-gray-0)'
+                            }}>
                                 {formatContent(log.payload)}
                             </Code>
                         </div>
@@ -117,7 +123,12 @@ const LogEntry = ({log}: { log: WebhookLog }) => {
                     {log.response_body && (
                         <div>
                             <Text size="sm" fw={500} mb={8} c="dimmed">Response:</Text>
-                            <Code block p="md" className={classes.codeBlock}>
+                            <Code block p="md" style={{
+                                borderRadius: '6px',
+                                maxHeight: '300px',
+                                overflow: 'auto',
+                                backgroundColor: 'var(--mantine-color-gray-0)'
+                            }}>
                                 {formatContent(log.response_body)}
                             </Code>
                         </div>
@@ -151,7 +162,7 @@ export const WebhookLogsModal = ({onClose, webhookId}: WebhookLogsModalProps) =>
 
             {!!logsQuery.error && (
                 <Alert
-                    className={classes.errorAlert}
+                    color="red"
                     title={t`Error loading logs`}
                     icon={<IconX size={18}/>}
                     radius="md"
@@ -161,7 +172,7 @@ export const WebhookLogsModal = ({onClose, webhookId}: WebhookLogsModalProps) =>
             )}
 
             {logs && logs.length === 0 && !logsQuery.isLoading && (
-                <Alert className={classes.noLogsAlert} radius="md">
+                <Alert style={{textAlign: 'center'}} radius="md">
                     <h2>
                         {t`No logs found`}
                     </h2>

@@ -29,15 +29,14 @@
 
     :global(.mantine-Switch-label) {
       font-size: 0.875rem;
-      color: var(--hi-text-muted);
+      color: var(--hi-color-gray-dark);
 
       a {
-        color: var(--hi-text);
-        font-weight: 600;
-        transition: color 0.16s ease;
+        color: var(--hi-secondary-strong);
+        font-weight: 500;
 
         &:hover {
-          color: var(--hi-text-light);
+          color: var(--ue-forest-deep);
         }
       }
     }

@@ -1,36 +1,41 @@
 @use "../../../styles/mixins.scss";
 
 .calloutBox {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  column-gap: 8px;
-  row-gap: 7px;
-  align-items: start;
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  box-shadow: var(--hi-shadow-sm);
-  padding: 9px;
-  text-align: left;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
   position: relative;
   overflow: hidden;
-
+  
   &::before {
     display: none;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(0.9);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.6;
+    }
   }
 }
 
 .closeButton {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 8px;
+  right: 8px;
   z-index: 2;
-  color: var(--hi-text-muted);
-  transition: color 0.15s ease, background-color 0.15s ease;
-
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  
   &:hover {
-    color: var(--hi-text);
-    background: var(--hi-control-bg-hover);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -38,65 +43,50 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-sm);
-  margin: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-bottom: 12px;
   position: relative;
   z-index: 1;
-
+  
   svg {
-    width: 15px;
-    height: 15px;
-    color: var(--hi-text-muted);
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 }
 
 .calloutTitle {
-  align-self: center;
-  padding-right: 18px;
-  font-size: 0.8rem;
-  font-weight: 650;
-  color: var(--hi-text);
-  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
   position: relative;
   z-index: 1;
-  line-height: 1.25;
 }
 
 .calloutText {
-  grid-column: 1 / -1;
-  font-size: 0.75rem;
-  color: var(--hi-text-muted);
-  margin: 0;
-  line-height: 1.42;
-  position: relative;
-  z-index: 1;
-}
-
-.calloutAction {
-  grid-column: 1 / -1;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
   position: relative;
   z-index: 1;
 }
 
 .calloutButton {
-  grid-column: 1 / -1;
-  background: var(--hi-surface) !important;
-  border: 1px solid var(--hi-app-panel-border) !important;
-  color: var(--hi-text) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
   font-weight: 600;
-  min-height: 30px;
-  border-radius: var(--hi-radius-sm);
-  font-size: 0.76rem;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   z-index: 1;
-
+  
   &:hover {
-    background: var(--hi-control-bg-active) !important;
-    border-color: var(--hi-border-strong) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 }

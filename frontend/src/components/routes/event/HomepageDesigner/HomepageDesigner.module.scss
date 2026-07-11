@@ -10,9 +10,6 @@
   display: flex;
   flex-direction: row;
   margin: calc(var(--hi-spacing-lg) * -1);
-  min-height: calc(100dvh - 82px);
-  background: var(--hi-shell-bg);
-  color: var(--hi-text);
 
   h2 {
     margin-bottom: 0;
@@ -23,15 +20,15 @@
   }
 
   .sidebar {
-    min-width: 336px;
-    max-width: 336px;
-    background: var(--hi-shell-surface);
-    padding: 18px 12px 12px;
-    height: calc(100dvh - 82px);
+    min-width: 380px;
+    max-width: 380px;
+    background-color: #ffffff;
+    padding: var(--hi-spacing-lg);
+    height: calc(100vh - 55px);
     overflow-y: auto;
     position: sticky;
     top: 0;
-    border-right: 1px solid color-mix(in srgb, var(--hi-border) 86%, transparent);
+    border-right: 1px solid var(--mantine-color-gray-2);
 
     @include mixins.respond-below(sm) {
       width: 100%;
@@ -41,83 +38,59 @@
       overflow: auto;
       height: auto;
       border-right: none;
-      border-bottom: 1px solid var(--hi-app-panel-border);
-      padding-top: 16px;
+      border-bottom: 1px solid var(--mantine-color-gray-2);
     }
 
     .sticky {
       position: sticky;
-      top: 18px;
+      top: 0;
     }
 
     .header {
-      margin-bottom: 12px;
-      padding-bottom: 11px;
-      border-bottom: 1px solid var(--hi-app-panel-border);
+      margin-bottom: var(--hi-spacing-lg);
+      padding-bottom: var(--hi-spacing-md);
+      border-bottom: 1px solid var(--mantine-color-gray-2);
       
       h2 {
-        margin: 0 0 4px 0;
-        font-size: 0.94rem;
-        font-weight: 680;
-        color: var(--hi-text);
-        line-height: 1.25;
-        letter-spacing: 0;
-      }
-
-      :global(.mantine-Text-root) {
-        color: var(--hi-text-muted) !important;
-        font-size: 0.82rem;
-        line-height: 1.42;
+        margin: 0 0 var(--hi-spacing-xs) 0;
+        font-size: 1.375rem;
+        font-weight: 600;
+        color: var(--mantine-color-gray-9);
       }
     }
 
     .accordion {
-      display: grid;
-      gap: 2px;
       margin-bottom: 0;
       
       .accordionItem {
-        border: 0;
-        border-radius: var(--hi-radius-sm);
+        border: 1px solid var(--mantine-color-gray-3);
+        border-radius: var(--mantine-radius-md);
         overflow: hidden;
-        background: transparent;
-        box-shadow: none;
         
         &:not(:last-child) {
-          margin-bottom: 0;
+          margin-bottom: var(--hi-spacing-md);
         }
 
         :global(.mantine-Accordion-control) {
-          min-height: 34px;
-          padding: 6px 8px;
-          background: transparent;
-          color: var(--hi-text);
-          font-weight: 620;
-          font-size: 0.82rem;
-          border-radius: var(--hi-radius-sm);
+          padding: var(--hi-spacing-md);
+          background: var(--mantine-color-gray-0);
           
           &:hover {
-            background: var(--hi-control-bg-hover);
+            background: var(--mantine-color-gray-1);
           }
           
           &[data-active] {
-            background: var(--hi-control-bg-active);
-            border-bottom: 0;
+            border-bottom: 1px solid var(--mantine-color-gray-2);
           }
-        }
-
-        :global(.mantine-Accordion-icon) {
-          color: var(--hi-text-muted);
-          margin-inline-end: 8px;
         }
 
         :global(.mantine-Accordion-panel) {
           padding: 0;
-          background: transparent;
+          background: white;
         }
 
         :global(.mantine-Accordion-content) {
-          padding: 7px 8px 12px 30px;
+          padding: var(--hi-spacing-lg);
         }
       }
     }
@@ -127,65 +100,39 @@
       padding: 0;
       margin: 0;
 
+      // Fix large margins on ColorInput components
       :global(.mantine-ColorInput-root) {
         margin-bottom: 0;
       }
 
       :global(.mantine-ColorInput-label) {
-        font-weight: 620;
-        font-size: 0.76rem;
-        color: var(--hi-text-muted);
+        font-weight: 500;
+        font-size: 0.875rem;
       }
 
       :global(.mantine-ColorInput-description) {
-        color: var(--hi-text-muted);
-        font-size: 0.76rem;
+        font-size: 0.8125rem;
         margin-top: 0.25rem;
       }
 
+      // TextInput styling
       :global(.mantine-TextInput-label) {
-        font-weight: 620;
-        font-size: 0.76rem;
-        color: var(--hi-text-muted);
+        font-weight: 500;
+        font-size: 0.875rem;
       }
 
       :global(.mantine-TextInput-description) {
-        color: var(--hi-text-muted);
-        font-size: 0.76rem;
+        font-size: 0.8125rem;
         margin-top: 0.25rem;
-      }
-
-      :global(.mantine-Input-input) {
-        min-height: 34px;
-        border-color: var(--hi-app-panel-border);
-        border-radius: var(--hi-radius-sm);
-        background: var(--hi-surface);
-        color: var(--hi-text);
-        font-size: 0.82rem;
-        font-weight: 560;
-        box-shadow: none;
-
-        &:hover {
-          border-color: var(--hi-border-strong);
-          background: var(--hi-control-bg-hover);
-        }
-
-        &:focus,
-        &:focus-within {
-          border-color: var(--hi-focus-ring);
-          box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
-        }
       }
     }
   }
 
   .previewContainer {
-    height: calc(100dvh - 82px);
+    height: calc(100vh - 55px);
     width: 100%;
     overflow: hidden;
     min-width: 400px;
-    background: var(--hi-shell-bg);
-    padding: 16px;
 
     @include mixins.respond-below(sm) {
       padding: 20px;
@@ -202,32 +149,16 @@
       width: 100%;
       height: 100%;
       min-height: 500px;
-      background: var(--hi-surface);
-      border: 1px solid var(--hi-app-panel-border);
-      border-radius: var(--hi-radius-md);
-      box-shadow: none;
-      overflow: hidden;
       --scale: 0.75;
-
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 8px 8px auto;
-        height: 1px;
-        background: var(--hi-app-panel-border);
-        z-index: 1;
-        pointer-events: none;
-      }
 
       iframe {
         transform: scale(var(--scale));
         transform-origin: 0 0;
-        border: 1px solid var(--hi-app-panel-border);
-        border-radius: var(--hi-radius-sm);
+        width: calc(100% / var(--scale));
+        height: calc(100% / var(--scale));
+        border: none;
         position: absolute;
-        inset: 16px;
-        width: calc((100% - 32px) / var(--scale));
-        height: calc((100% - 32px) / var(--scale));
+        inset: 0;
       }
     }
 

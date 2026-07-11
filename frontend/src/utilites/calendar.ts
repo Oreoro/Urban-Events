@@ -40,7 +40,7 @@ export const createICSContent = (event: Event): string => {
         `DESCRIPTION:${stripHtml(event.description_preview || '').replace(/\n/g, '\\n')}`,
         `LOCATION:${getEventLocation(event)}`,
         `DTSTAMP:${formatICSDate(new Date().toISOString())}`,
-        `UID:${crypto.randomUUID()}@urbanevents.pk`,
+        `UID:${crypto.randomUUID()}@hi.events`,
         'END:VEVENT',
         'END:VCALENDAR'
     ].join('\r\n');

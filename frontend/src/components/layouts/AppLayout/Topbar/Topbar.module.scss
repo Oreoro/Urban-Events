@@ -2,10 +2,10 @@
 
 .topBar {
   grid-area: topbar;
-  background: var(--hi-surface);
+  background: var(--hi-shell-bg);
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s ease;
+  transition: box-shadow 0.3s ease;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -13,10 +13,8 @@
   .topBarMain {
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    height: 44px;
-    border-bottom: 1px solid var(--hi-border);
-    color: var(--hi-text);
+    padding: 0 16px;
+    height: 60px;
 
     @include mixins.respond-below(md) {
       padding: 0 12px;
@@ -24,23 +22,21 @@
   }
 
   .breadcrumbsRow {
-    padding: 6px 24px;
-    border-bottom: 1px solid var(--hi-border);
-    background-color: var(--hi-shell-bg);
+    padding: 10px 20px;
+    border-top: 1px solid var(--hi-border);
+    background-color: var(--hi-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    box-shadow: none;
+    border-top-left-radius: var(--hi-radius-md);
+    box-shadow: 3px 0 12px color-mix(in srgb, var(--ue-ink) 8%, transparent);
     position: relative;
     z-index: 5;
-    min-height: 34px;
-
-    @include mixins.respond-above(xl) {
-      padding-inline: 28px;
-    }
+    min-height: 44px;
 
     @include mixins.respond-below(md) {
+      border-top-left-radius: 0;
       padding: 10px 16px;
     }
   }
@@ -64,8 +60,8 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    font-size: 0.74rem;
-    color: var(--hi-text-muted);
+    font-size: 0.85rem;
+    color: var(--hi-text-light);
     flex: 1;
     min-width: 0;
     overflow-x: auto;
@@ -103,27 +99,34 @@
     }
 
     a {
-      color: var(--hi-text-muted);
-      font-weight: 500;
-      transition: color 0.14s ease, background-color 0.14s ease;
+      color: var(--hi-text-light);
+      font-weight: 650;
+      transition: color 0.2s ease;
       position: relative;
-      border-radius: var(--hi-radius-sm);
-      padding: 2px 5px;
-      margin-left: -4px;
       @include mixins.ellipsis();
 
       &:hover {
         color: var(--hi-text);
-        background: var(--hi-control-bg-hover);
       }
 
       &:last-child {
         color: var(--hi-text);
-        font-weight: 620;
+        font-weight: 600;
       }
 
       &::after {
-        display: none;
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--hi-secondary-strong);
+        transition: width 0.2s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
       }
     }
   }
@@ -132,14 +135,13 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 4px;
   }
 
   .statusToggleContainer {
     display: flex;
     align-items: center;
     position: relative;
-    margin-left: 8px;
+    margin-left: 16px;
     margin-right: auto;
 
     @include mixins.respond-below(md) {
@@ -148,23 +150,23 @@
   }
 
   &.withShadow {
-    box-shadow: none;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--ue-ink) 10%, transparent);
   }
 
   .burger {
-    --burger-color: var(--hi-text);
+    --burger-color: var(--hi-color-white);
     @include mixins.respond-above(md) {
       display: none;
     }
   }
 
   .logo {
-    color: var(--hi-text);
-    font-weight: 650;
-    font-size: 0.9rem;
+    color: var(--hi-shell-text);
+    font-weight: bold;
+    font-size: 1.2em;
     display: flex;
     justify-content: center;
-    padding-inline: 6px;
+    padding-inline: 5px;
 
     a {
       display: flex;
@@ -178,27 +180,25 @@
   .menu {
     display: flex;
     align-items: center;
-    color: var(--hi-text);
+    color: var(--hi-shell-text);
   }
 
   @include mixins.respond-below(md) {
     .topBarMain {
-      background: var(--hi-surface);
+      background: var(--hi-shell-bg);
     }
   }
 
   .entityPageButton {
-    margin-right: 6px;
+    margin-right: 8px;
     display: flex;
     align-items: center;
-    font-weight: 600;
-    transition: color 0.15s ease, background-color 0.15s ease;
-    color: var(--hi-text-muted);
-    border-radius: var(--hi-radius-sm);
+    font-weight: 500;
+    transition: transform 0.2s ease;
+    color: var(--hi-shell-text);
 
     &:hover {
-      color: var(--hi-text);
-      background: var(--hi-control-bg-hover);
+      transform: translateY(-1px);
     }
 
     .entityPageButtonText {
@@ -229,7 +229,7 @@
   }
 
   .breadcrumbSeparator {
-    margin: 0 3px;
-    color: color-mix(in srgb, var(--hi-text-muted) 54%, transparent);
+    margin: 0 4px;
+    color: var(--hi-text-muted);
   }
 }

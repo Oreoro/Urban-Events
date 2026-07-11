@@ -135,6 +135,7 @@ export const Orders: React.FC = () => {
                 <Button
                     onClick={() => handleExport(eventId)}
                     rightSection={<IconDownload size={14}/>}
+                    color="#0d9488"
                     loading={downloadPending}
                     size="sm"
                 >

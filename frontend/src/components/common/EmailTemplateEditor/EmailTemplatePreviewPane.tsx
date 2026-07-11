@@ -23,10 +23,10 @@ export const EmailTemplatePreviewPane = ({
             <div className={classes.templatePreview}>
                 <div className={classes.previewHeader}>
                     <Stack gap="xs">
-                        <Text className={classes.previewLabel}>
+                        <Text size="sm" fw={500} c="dimmed">
                             <Trans>Email Preview</Trans>
                         </Text>
-                        <Text className={classes.previewSubject}>
+                        <Text size="lg" fw={600}>
                             {previewData?.subject || subject || <Trans>Subject will appear here</Trans>}
                         </Text>
                     </Stack>
@@ -36,7 +36,7 @@ export const EmailTemplatePreviewPane = ({
                     <LoadingOverlay visible={isLoading}/>
 
                     {error && (
-                        <Alert className={classes.errorAlert} icon={<IconAlertCircle size={16}/>}>
+                        <Alert color="red" icon={<IconAlertCircle size={16}/>}>
                             {error}
                         </Alert>
                     )}
@@ -52,8 +52,8 @@ export const EmailTemplatePreviewPane = ({
                     )}
 
                     {!error && !hasContent && !isLoading && (
-                        <Stack gap="md" align="center" py="xl" className={classes.previewEmpty}>
-                            <IconEye size={48} color="var(--hi-text-muted)"/>
+                        <Stack gap="md" align="center" py="xl">
+                            <IconEye size={48} color="var(--mantine-color-gray-5)"/>
                             <Text c="dimmed" ta="center">
                                 <Trans>Enter a subject and body to see the preview</Trans>
                             </Text>
@@ -65,7 +65,7 @@ export const EmailTemplatePreviewPane = ({
             {previewData && (
                 <>
                     <Divider/>
-                    <Text size="xs" className={classes.previewNote}>
+                    <Text size="xs" c="dimmed" fs="italic">
                         <Trans>This preview shows how your email will look with sample data. Actual emails will use real
                             values.</Trans>
                     </Text>

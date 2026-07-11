@@ -46,7 +46,7 @@ const Configurations = () => {
 
     if (isLoading) {
         return (
-            <Container size="xl" p="md">
+            <Container size="xl" p="xl">
                 <Stack gap="lg">
                     <Skeleton height={40} width={200} />
                     <Skeleton height={150} radius="md" />
@@ -58,15 +58,10 @@ const Configurations = () => {
 
     return (
         <>
-            <Container size="xl" p="md" className={classes.configShell}>
+            <Container size="xl" p="xl">
                 <Stack gap="lg">
-                    <Group justify="space-between" className={classes.configHeader}>
-                        <div>
-                            <Title order={1} className={classes.configTitle}>{t`Configurations`}</Title>
-                            <Text className={classes.configSubtitle}>
-                                {t`Manage fee presets used across accounts. Keep names clear because they can appear in customer-facing payment flows.`}
-                            </Text>
-                        </div>
+                    <Group justify="space-between">
+                        <Title order={1}>{t`Configurations`}</Title>
                         <Button
                             leftSection={<IconPlus size={16} />}
                             onClick={() => setShowCreateModal(true)}
@@ -85,45 +80,40 @@ const Configurations = () => {
                                 <Group justify="space-between" align="flex-start">
                                     <Stack gap="xs">
                                         <Group gap="sm">
-                                            <Text className={classes.configName}>{config.name}</Text>
+                                            <Text fw={600}>{config.name}</Text>
                                             {config.is_system_default && (
-                                                <Badge size="sm">{t`System Default`}</Badge>
+                                                <Badge color="blue" size="sm">{t`System Default`}</Badge>
                                             )}
                                             {config.bypass_application_fees && (
                                                 <Badge color="orange" size="sm">{t`Fees Bypassed`}</Badge>
                                             )}
                                         </Group>
-                                        <div className={classes.configMetaGrid}>
-                                            <div className={classes.configMetaItem}>
+                                        <Group gap="xl">
+                                            <div>
                                                 <Text size="xs" c="dimmed">{t`Fixed Fee`}</Text>
                                                 <Text size="sm" fw={500}>
                                                     {getCurrencySymbol(config.application_fees?.currency || 'USD')}
                                                     {config.application_fees?.fixed || 0} {config.application_fees?.currency || 'USD'}
                                                 </Text>
                                             </div>
-                                            <div className={classes.configMetaItem}>
+                                            <div>
                                                 <Text size="xs" c="dimmed">{t`Percentage Fee`}</Text>
                                                 <Text size="sm" fw={500}>{config.application_fees?.percentage || 0}%</Text>
                                             </div>
-                                        </div>
+                                        </Group>
                                     </Stack>
                                     <Group gap="xs">
                                         <ActionIcon
                                             variant="light"
-                                            className={classes.configAction}
                                             onClick={() => setEditingConfig(config)}
                                         >
                                             <IconEdit size={16} />
                                         </ActionIcon>
                                         <ActionIcon
                                             variant="light"
-                                            className={classes.configAction}
+                                            color="red"
                                             onClick={() => handleDelete(config)}
                                             disabled={config.is_system_default}
-                                            style={{
-                                                color: 'var(--hi-status-danger-text)',
-                                                borderColor: 'var(--hi-status-danger-border)',
-                                            }}
                                         >
                                             <IconTrash size={16} />
                                         </ActionIcon>
@@ -133,7 +123,7 @@ const Configurations = () => {
                         ))}
 
                         {configurations.length === 0 && (
-                            <Text className={classes.emptyState}>{t`No configurations found`}</Text>
+                            <Text c="dimmed" ta="center">{t`No configurations found`}</Text>
                         )}
                     </Stack>
                 </Stack>

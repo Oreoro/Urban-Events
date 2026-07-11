@@ -2,7 +2,7 @@ import {t} from "@lingui/macro";
 import {Button, Alert, TextInput, Stack, Text} from "@mantine/core";
 import {useNavigate, useParams} from "react-router";
 import {useState} from "react";
-import {DangerZone, DangerZoneNotice, DangerZoneSection} from "../../../../../common/DangerZone";
+import {DangerZone, DangerZoneSection} from "../../../../../common/DangerZone";
 import {useGetOrganizerDeletionStatus} from "../../../../../../queries/useGetOrganizerDeletionStatus.ts";
 import {useDeleteOrganizer} from "../../../../../../mutations/useDeleteOrganizer.ts";
 import {useUpdateOrganizerStatus} from "../../../../../../mutations/useUpdateOrganizerStatus.ts";
@@ -11,8 +11,9 @@ import {useGetOrganizers} from "../../../../../../queries/useGetOrganizers.ts";
 import {showSuccess, showError} from "../../../../../../utilites/notifications.tsx";
 import {confirmationDialog} from "../../../../../../utilites/confirmationDialog.tsx";
 import {OrganizerStatus} from "../../../../../../types.ts";
-import {IconArrowBackUp, IconArchive, IconInfoCircle, IconLock, IconTrash} from "@tabler/icons-react";
+import {IconInfoCircle, IconTrash, IconArchive, IconArrowBackUp} from "@tabler/icons-react";
 import {useIsCurrentUserAdmin} from "../../../../../../hooks/useIsCurrentUserAdmin.ts";
+import {BouncingEmoji} from "../../../../../common/BouncingEmoji";
 
 export const DangerZoneSettings = () => {
     const {organizerId} = useParams();
@@ -71,11 +72,13 @@ export const DangerZoneSettings = () => {
     if (!isAdmin) {
         return (
             <DangerZone>
-                <DangerZoneNotice
-                    icon={<IconLock size={18}/>}
-                    title={t`Admin access required`}
-                    description={t`Only account administrators can delete or archive organizers. Contact your account admin for assistance.`}
-                />
+                <div style={{textAlign: 'center', padding: '20px 0'}}>
+                    <BouncingEmoji emoji="✋"/>
+                    <h3>{t`Admin Access Required`}</h3>
+                    <Text size="sm" c="dimmed">
+                        {t`Only account administrators can delete or archive organizers. Contact your account admin for assistance.`}
+                    </Text>
+                </div>
             </DangerZone>
         );
     }

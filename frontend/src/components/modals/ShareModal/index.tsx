@@ -57,48 +57,56 @@ export const ShareModal = ({
         {
             name: 'X',
             icon: IconBrandX,
+            color: '#000000',
             shareUrl: (text: string, shareUrl: string) => 
                 `https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`
         },
         {
             name: 'LinkedIn',
             icon: IconBrandLinkedin,
+            color: '#0077b5',
             shareUrl: (_text: string, shareUrl: string) => 
                 `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`
         },
         {
             name: 'Facebook',
             icon: IconBrandFacebook,
+            color: '#1877f2',
             shareUrl: (_text: string, shareUrl: string) => 
                 `https://www.facebook.com/sharer.php?u=${shareUrl}`
         },
         {
             name: 'WhatsApp',
             icon: IconBrandWhatsapp,
+            color: '#25d366',
             shareUrl: (text: string, shareUrl: string) => 
                 `https://api.whatsapp.com/send?text=${text}%20${shareUrl}`
         },
         {
             name: 'Telegram',
             icon: IconBrandTelegram,
+            color: '#0088cc',
             shareUrl: (text: string, shareUrl: string) => 
                 `https://t.me/share/url?url=${shareUrl}&text=${text}`
         },
         {
             name: 'Reddit',
             icon: IconBrandReddit,
+            color: '#ff4500',
             shareUrl: (text: string, shareUrl: string) => 
                 `https://reddit.com/submit?url=${shareUrl}&title=${text}`
         },
         {
             name: 'Pinterest',
             icon: IconBrandPinterest,
+            color: '#bd081c',
             shareUrl: (_text: string, shareUrl: string) => 
                 `https://pinterest.com/pin/create/button/?url=${shareUrl}`
         },
         {
             name: 'Email',
             icon: IconMail,
+            color: '#6b7280',
             shareUrl: (text: string, shareUrl: string) => 
                 `mailto:?subject=${text}&body=${shareUrl}`,
             isEmail: true
@@ -186,7 +194,10 @@ export const ShareModal = ({
                                         onClick={() => handleSocialShare(platform)}
                                         className={classes.socialButton}
                                     >
-                                        <div className={classes.socialIcon}>
+                                        <div 
+                                            className={classes.socialIcon}
+                                            style={{ color: platform.color }}
+                                        >
                                             <platform.icon size={24} stroke={1.5}/>
                                         </div>
                                         <Text className={classes.socialLabel}>
@@ -237,6 +248,7 @@ export const ShareModal = ({
                                             <Tooltip label={copied ? t`Copied!` : t`Copy to clipboard`}>
                                                 <Button
                                                     variant="light"
+                                                    color={copied ? 'teal' : 'gray'}
                                                     onClick={copy}
                                                     leftSection={copied ? <IconCheck size={16}/> : <IconCopy size={16}/>}
                                                 >

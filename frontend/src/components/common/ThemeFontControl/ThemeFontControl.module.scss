@@ -13,34 +13,32 @@
 
 .optionLabel {
   font-size: 14px;
-  font-weight: 600;
-  color: var(--hi-text);
+  font-weight: 500;
 }
 
 .optionSample {
   font-size: 13px;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   letter-spacing: 0;
 }
 
 .preview {
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  background: var(--hi-app-panel-bg);
-  box-shadow: var(--hi-shadow-sm);
-  padding: 10px;
+  border: 1px solid var(--hi-border, #ded4bf);
+  border-radius: var(--mantine-radius-md);
+  background: #fffdf6;
+  padding: 12px;
 }
 
 .previewLabel {
-  color: var(--hi-text-muted);
+  color: var(--hi-text-muted, #6d7784);
   letter-spacing: 0;
   margin-bottom: 4px;
 }
 
 .previewSample {
-  color: var(--hi-text);
+  color: var(--hi-text, #27313c);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 650;
   line-height: 1.45;
   letter-spacing: 0;
 }

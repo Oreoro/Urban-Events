@@ -241,7 +241,7 @@ export const TrackingPixelSettings = () => {
 
                     {hasAnyPixels && (
                         <>
-                            <Alert variant="light" color="gray" mt="lg" mb="md">
+                            <Alert variant="light" color="yellow" mt="lg" mb="md">
                                 {t`By adding tracking pixels, you acknowledge that you and this platform are joint controllers of the data collected. You are responsible for ensuring you have a lawful basis for this processing under applicable privacy laws (GDPR, CCPA, etc.).`}
                             </Alert>
                             <Checkbox

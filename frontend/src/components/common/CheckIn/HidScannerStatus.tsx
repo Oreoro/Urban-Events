@@ -16,21 +16,10 @@ export const HidScannerStatus = ({
 }: HidScannerStatusProps) => {
     if (!isActive) return null;
 
-    const statusStyle = pageHasFocus
-        ? {
-            backgroundColor: 'var(--hi-app-panel-bg)',
-            color: 'var(--hi-text)',
-            borderBottom: '1px solid var(--hi-app-panel-border)',
-        }
-        : {
-            backgroundColor: 'var(--hi-status-warning-bg)',
-            color: 'var(--hi-status-warning-text)',
-            borderBottom: '1px solid var(--hi-status-warning-border)',
-        };
-
     return (
         <div style={{
-            ...statusStyle,
+            backgroundColor: pageHasFocus ? '#12b886' : '#ffa94d',
+            color: 'white',
             padding: '8px 16px',
             display: 'flex',
             alignItems: 'center',
@@ -39,7 +28,6 @@ export const HidScannerStatus = ({
             fontWeight: 500,
             transition: 'background-color 0.2s ease',
             marginTop: '-1px',
-            boxShadow: 'var(--hi-shadow-sm)',
         }}>
             <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
                 <IconScan size={18}/>
@@ -51,7 +39,8 @@ export const HidScannerStatus = ({
             </div>
             <Button
                 size="xs"
-                variant="light"
+                variant="white"
+                color={pageHasFocus ? "teal" : "orange"}
                 leftSection={<IconX size={14}/>}
                 miw={95}
                 onClick={() => {

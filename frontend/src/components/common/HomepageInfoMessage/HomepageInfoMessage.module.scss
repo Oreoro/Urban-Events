@@ -2,9 +2,9 @@
 
 // Design tokens
 $font-display: var(--hi-font-heading);
-$radius-lg: var(--hi-radius-md);
-$radius-md: var(--hi-radius-md);
-$radius-sm: var(--hi-radius-sm);
+$radius-lg: 12px;
+$radius-md: 8px;
+$radius-sm: 6px;
 $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
 .container {
@@ -12,136 +12,99 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 220px);
-  padding: 16px;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
 }
 
 .card {
   width: 100%;
-  max-width: 360px;
-  --message-status-bg: var(--hi-status-neutral-bg);
-  --message-status-text: var(--hi-status-neutral-text);
-  --message-status-border: var(--hi-status-neutral-border);
-  background: var(--content-bg-color, var(--checkout-surface, var(--hi-surface)));
-  border: 1px solid var(--border-color, var(--checkout-border, var(--hi-border)));
-  border-radius: $radius-sm;
-  padding: 18px;
+  max-width: 420px;
+  background: var(--content-bg-color, var(--checkout-surface, #FFFFFF));
+  border: 1px solid var(--border-color, var(--checkout-border, #E5E7EB));
+  border-radius: $radius-lg;
+  padding: 40px 32px;
   text-align: center;
-  box-shadow: none;
-
-  &[data-status="success"] {
-    --message-status-bg: var(--hi-shell-bg-strong);
-    --message-status-text: var(--hi-text);
-    --message-status-border: var(--hi-border);
-  }
-
-  &[data-status="warning"],
-  &[data-status="processing"],
-  &[data-status="awaiting_payment"],
-  &[data-status="offline_payment"] {
-    --message-status-bg: var(--hi-shell-bg-strong);
-    --message-status-text: var(--hi-text-muted);
-    --message-status-border: var(--hi-border);
-  }
-
-  &[data-status="error"],
-  &[data-status="expired"],
-  &[data-status="cancelled"],
-  &[data-status="not_found"] {
-    --message-status-bg: var(--hi-status-danger-bg);
-    --message-status-text: var(--hi-status-danger-text);
-    --message-status-border: var(--hi-status-danger-border);
-  }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 
   @include mixins.respond-below(sm) {
-    padding: 16px;
+    padding: 32px 24px;
   }
 }
 
 .iconContainer {
-  width: 40px;
-  height: 40px;
-  border-radius: $radius-sm;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px;
-  background: var(--message-status-bg);
-  border: 1px solid var(--message-status-border);
+  margin: 0 auto 24px;
+  background: var(--accent-soft, var(--checkout-accent-soft, var(--mantine-primary-color-light)));
 
   @include mixins.respond-below(sm) {
-    width: 40px;
-    height: 40px;
+    width: 64px;
+    height: 64px;
   }
 }
 
 .icon {
-  width: 22px;
-  height: 22px;
-  color: var(--message-status-text);
+  width: 36px;
+  height: 36px;
+  color: var(--primary-color, var(--checkout-accent, var(--hi-primary)));
 
   @include mixins.respond-below(sm) {
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
   }
 }
 
 .title {
   font-family: $font-display;
-  font-size: 17px;
-  font-weight: 650;
-  color: var(--primary-text-color, var(--checkout-text-primary, var(--hi-text)));
-  margin: 0 0 7px 0;
-  line-height: 1.35;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-text-color, var(--checkout-text-primary, #111827));
+  margin: 0 0 8px 0;
+  line-height: 1.4;
 
   @include mixins.respond-below(sm) {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 .subtitle {
-  font-size: 13px;
-  color: var(--secondary-color, var(--checkout-text-secondary, var(--hi-text-muted)));
-  margin: 0 0 16px 0;
+  font-size: 15px;
+  color: var(--secondary-color, var(--checkout-text-secondary, #6B7280));
+  margin: 0 0 24px 0;
   line-height: 1.5;
 }
 
 .button {
   width: 100%;
-  height: 36px;
+  height: 44px;
   border-radius: $radius-sm !important;
-  border: 1px solid var(--hi-primary) !important;
   font-family: $font-display;
   font-weight: 600 !important;
-  font-size: 13px !important;
-  margin-top: 8px;
-  background: var(--hi-primary) !important;
-  color: var(--hi-color-white) !important;
-  box-shadow: none !important;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  font-size: 15px !important;
+  margin-top: 16px;
+  background: var(--primary-color, var(--checkout-accent, var(--mantine-primary-color-filled))) !important;
+  color: var(--accent-contrast, var(--checkout-accent-contrast, #FFFFFF)) !important;
+  transition: transform $transition-fast, box-shadow $transition-fast;
 
   &:hover {
-    transform: none;
-    box-shadow: none;
-    filter: none;
-    border-color: var(--hi-primary-hover) !important;
-    background: var(--hi-primary-hover) !important;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--hi-focus-ring-soft);
-    outline-offset: 2px;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--accent-soft, var(--checkout-accent-soft, rgba(0, 0, 0, 0.15)));
+    filter: brightness(1.05);
   }
 }
 
 .helpText {
-  margin-top: 16px;
-  font-size: 13px;
-  color: var(--secondary-color, var(--checkout-text-secondary, var(--hi-text-muted)));
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--secondary-color, var(--checkout-text-secondary, #6B7280));
 }
 
 .helpLink {
-  color: var(--hi-text);
+  color: var(--primary-color, var(--checkout-accent, var(--mantine-primary-color-filled)));
   text-decoration: none;
 
   &:hover {

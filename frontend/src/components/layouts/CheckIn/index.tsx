@@ -410,7 +410,7 @@ const CheckIn = () => {
                         <ActionIcon
                             display={'flex'}
                             variant={'transparent'}
-                            c="var(--hi-text)"
+                            color={'white'}
                             onClick={() => infoModalHandlers.open()}
                         >
                             <IconInfoCircle/>
@@ -438,22 +438,22 @@ const CheckIn = () => {
                             onClear={() => setSearchQuery('')}
                             placeholder={t`Search by name, order #, attendee # or email...`}
                         />
-                        <Button variant={'light'} size={'sm'} className={classes.scanButton}
-                                onClick={() => setScannerSelectionOpen(true)} leftSection={<IconQrcode size={16}/>}>
+                        <Button variant={'light'} size={'md'} className={classes.scanButton}
+                                onClick={() => setScannerSelectionOpen(true)} leftSection={<IconQrcode/>}>
                             {t`Scan`}
                         </Button>
                         <ActionIcon 
                             aria-label={isSoundOn ? t`Turn sound off` : t`Turn sound on`} 
                             variant={'light'} 
-                            size={'lg'}
+                            size={'xl'}
                             onClick={() => setIsSoundOn(!isSoundOn)}
                         >
-                            {isSoundOn ? <IconVolume size={18}/> : <IconVolumeOff size={18}/>}
+                            {isSoundOn ? <IconVolume size={24}/> : <IconVolumeOff size={24}/>}
                         </ActionIcon>
-                        <ActionIcon aria-label={t`Scan`} variant={'light'} size={'lg'}
+                        <ActionIcon aria-label={t`Scan`} variant={'light'} size={'xl'}
                                     className={classes.scanIcon}
                                     onClick={() => setScannerSelectionOpen(true)}>
-                            <IconQrcode size={20}/>
+                            <IconQrcode size={32}/>
                         </ActionIcon>
                     </div>
                 </div>

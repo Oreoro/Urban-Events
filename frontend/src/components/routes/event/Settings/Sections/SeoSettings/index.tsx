@@ -28,10 +28,10 @@ export const SeoSettings = () => {
     useEffect(() => {
         if (eventSettingsQuery?.isFetched && eventSettingsQuery?.data) {
             form.setValues({
-                allow_search_engine_indexing: eventSettingsQuery.data.allow_search_engine_indexing ?? true,
-                seo_title: eventSettingsQuery.data.seo_title ?? '',
-                seo_description: eventSettingsQuery.data.seo_description ?? '',
-                seo_keywords: eventSettingsQuery.data.seo_keywords ?? '',
+                allow_search_engine_indexing: eventSettingsQuery.data.allow_search_engine_indexing,
+                seo_title: eventSettingsQuery.data.seo_title,
+                seo_description: eventSettingsQuery.data.seo_description,
+                seo_keywords: eventSettingsQuery.data.seo_keywords,
             });
         }
     }, [eventSettingsQuery.isFetched]);

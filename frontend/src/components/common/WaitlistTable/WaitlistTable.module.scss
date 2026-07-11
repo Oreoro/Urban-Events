@@ -2,20 +2,20 @@
 .contactDetails {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .contactName {
-  font-size: 0.84rem;
-  font-weight: 650;
+  font-size: 15px;
+  font-weight: 600;
   line-height: 1.3;
-  color: var(--hi-text);
+  color: var(--mantine-color-text);
 }
 
 .contactEmail {
-  font-size: 0.75rem;
+  font-size: 13px;
   line-height: 1.3;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -27,43 +27,35 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 3px 7px;
-  border-radius: var(--hi-radius-sm);
-  background: var(--hi-status-neutral-bg);
-  color: var(--hi-status-neutral-text);
-  border: 1px solid var(--hi-status-neutral-border);
-  font-size: 0.72rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 
   &[data-status="WAITING"] {
-    background: var(--hi-shell-bg-strong);
-    color: var(--hi-text-light);
-    border-color: var(--hi-app-panel-border);
+    background: var(--mantine-color-blue-1);
+    color: var(--mantine-color-blue-9);
   }
 
   &[data-status="OFFERED"] {
-    background: var(--hi-app-panel-bg);
-    color: var(--hi-text);
-    border-color: var(--hi-app-panel-border);
+    background: var(--mantine-color-yellow-1);
+    color: var(--mantine-color-yellow-9);
   }
 
   &[data-status="PURCHASED"] {
-    background: var(--hi-app-panel-bg);
-    color: var(--hi-text);
-    border-color: var(--hi-app-panel-border);
+    background: var(--mantine-color-green-1);
+    color: var(--mantine-color-green-9);
   }
 
   &[data-status="CANCELLED"] {
-    background: var(--hi-status-neutral-bg);
-    color: var(--hi-status-neutral-text);
-    border-color: var(--hi-status-neutral-border);
+    background: var(--mantine-color-gray-1);
+    color: var(--mantine-color-gray-9);
   }
 
   &[data-status="OFFER_EXPIRED"] {
-    background: var(--hi-status-neutral-bg);
-    color: var(--hi-status-neutral-text);
-    border-color: var(--hi-status-neutral-border);
+    background: var(--mantine-color-red-1);
+    color: var(--mantine-color-red-9);
   }
 }
 
@@ -72,16 +64,4 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  :global(.mantine-Button-root) {
-    min-width: 28px;
-    min-height: 28px;
-    padding-inline: 0;
-    color: var(--hi-text-muted);
-  }
-
-  :global(.mantine-Button-root:hover) {
-    background: var(--hi-control-bg-hover);
-    color: var(--hi-text);
-  }
 }

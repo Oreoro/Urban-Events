@@ -104,7 +104,7 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
     }, {} as Record<string, TemplateVariable[]>);
 
     return (
-        <Menu width={380}>
+        <Menu shadow="md" width={380}>
             <Menu.Target>
                 <RichTextEditor.Control
                     title={t`Insert Variable`}
@@ -131,13 +131,12 @@ export function InsertLiquidVariableControl({templateType = 'order_confirmation'
                                         </Text>
                                         <Text 
                                             size="xs" 
-                                            c="var(--hi-text-light)"
+                                            c="blue" 
                                             ff="monospace"
                                             style={{
-                                                backgroundColor: 'var(--hi-shell-bg-strong)',
-                                                border: '1px solid var(--hi-app-panel-border)',
+                                                backgroundColor: 'var(--mantine-color-gray-0)',
                                                 padding: '2px 6px',
-                                                borderRadius: 'var(--hi-radius-sm)',
+                                                borderRadius: '4px',
                                                 display: 'inline-block',
                                                 width: 'fit-content'
                                             }}

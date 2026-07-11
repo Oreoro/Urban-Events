@@ -15,7 +15,7 @@ import {LoadingContainer} from "../../common/LoadingContainer";
 import {OrganizerCreateForm} from "../../forms/OrganizerForm";
 import {useConfirmEmailWithCode} from "../../../mutations/useConfirmEmailWithCode.ts";
 import {useResendEmailConfirmation} from "../../../mutations/useResendEmailConfirmation.ts";
-import {IconArrowRight, IconClock, IconMailCheck} from "@tabler/icons-react";
+import {IconClock, IconMailCheck, IconSparkles} from "@tabler/icons-react";
 import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 import {DateTimePicker} from "@mantine/dates";
 import dayjs from "dayjs";
@@ -25,44 +25,20 @@ import {trackEvent, AnalyticsEvents} from "../../../utilites/analytics.ts";
 import {getDateTimePickerFormat} from "../../../utilites/dates.ts";
 import {BrandWordmark} from "../../common/BrandWordmark";
 
-type ProgressInfo = { currentStep: number, totalSteps: number, progressPercentage: number };
-
-const getCategoryMark = (name: string) => name
-    .split(/\s|&/)
-    .filter(Boolean)
-    .map((part) => part[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase();
-
-const StepProgress = ({progressInfo}: { progressInfo?: ProgressInfo }) => {
-    if (!progressInfo) {
-        return null;
-    }
-
-    return (
-        <div className={classes.progressContainer}>
-            <div className={classes.progressMeta}>
-                <span>{t`Step ${progressInfo.currentStep} of ${progressInfo.totalSteps}`}</span>
-                <span>{Math.round(progressInfo.progressPercentage)}%</span>
-            </div>
-            <progress
-                className={classes.progressBar}
-                value={progressInfo.progressPercentage}
-                max={100}
-                aria-label={t`Onboarding progress`}
-            />
-        </div>
-    );
-};
-
 export const CreateOrganizer = ({progressInfo}: {
-    progressInfo?: ProgressInfo
+    progressInfo?: { currentStep: number, totalSteps: number, progressPercentage: number }
 }) => {
     return (
         <div className={classes.stepContainer}>
             <div className={classes.stepHeader}>
-                <StepProgress progressInfo={progressInfo}/>
+                {progressInfo && (
+                    <div className={classes.progressContainer}>
+                        <div className={classes.progressBar}>
+                            <div className={classes.progressFill}
+                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                        </div>
+                    </div>
+                )}
                 <h2 className={classes.stepTitle}>
                     {t`Set up your organization`}
                 </h2>
@@ -78,7 +54,7 @@ export const CreateOrganizer = ({progressInfo}: {
 }
 
 const ConfirmVerificationPin = ({progressInfo}: {
-    progressInfo: ProgressInfo
+    progressInfo: { currentStep: number, totalSteps: number, progressPercentage: number }
 }) => {
     const {data: userData} = useGetMe();
     const confirmEmailMutation = useConfirmEmailWithCode();
@@ -156,7 +132,14 @@ const ConfirmVerificationPin = ({progressInfo}: {
     return (
         <div className={classes.stepContainer}>
             <div className={classes.stepHeader}>
-                <StepProgress progressInfo={progressInfo}/>
+                {progressInfo && (
+                    <div className={classes.progressContainer}>
+                        <div className={classes.progressBar}>
+                            <div className={classes.progressFill}
+                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                        </div>
+                    </div>
+                )}
                 <h2 className={classes.stepTitle}>
                     {t`Check your email`}
                 </h2>
@@ -170,7 +153,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
 
             <div className={classes.stepContent}>
                 <form onSubmit={form.onSubmit(handleSubmit)}>
-                    <Stack gap={20}>
+                    <Stack gap={32}>
                         <Center>
                             <PinInput
                                 {...form.getInputProps('pin')}
@@ -207,7 +190,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
                         </Button>
 
                         <Center>
-                            <Stack gap={4} align="center">
+                            <Stack gap="xs" align="center">
                                 <Text size="sm" c="dimmed">
                                     {t`Didn't receive the code?`}
                                 </Text>
@@ -237,7 +220,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
 }
 
 export const CreateEvent = ({progressInfo}: {
-    progressInfo?: ProgressInfo
+    progressInfo?: { currentStep: number, totalSteps: number, progressPercentage: number }
 }) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const form = useForm({
@@ -276,7 +259,7 @@ export const CreateEvent = ({progressInfo}: {
         }, {
             onSuccess: (values) => {
                 trackEvent(AnalyticsEvents.FIRST_EVENT_CREATED);
-                navigate(`/manage/event/${values.data.id}/getting-started`)
+                navigate(`/manage/event/${values.data.id}/getting-started?new_event=true`)
             }
         });
     }
@@ -292,6 +275,11 @@ export const CreateEvent = ({progressInfo}: {
     const handleCategorySelect = (categoryId: string) => {
         setSelectedCategory(categoryId);
         form.setFieldValue('category', categoryId);
+
+        // Add haptic feedback on mobile
+        if ('vibrate' in navigator) {
+            navigator.vibrate(50);
+        }
     };
 
     useEffect(() => {
@@ -304,21 +292,25 @@ export const CreateEvent = ({progressInfo}: {
         <LoadingContainer>
             <div className={classes.stepContainer}>
                 <div className={classes.stepHeader}>
-                    <StepProgress progressInfo={progressInfo}/>
+                    {progressInfo && (
+                        <div className={classes.progressContainer}>
+                            <div className={classes.progressBar}>
+                                <div className={classes.progressFill}
+                                     style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                            </div>
+                        </div>
+                    )}
                     <h2 className={classes.stepTitle}>
                         {t`Create your first event`}
                     </h2>
-                    <p className={classes.stepDescription}>
-                        {t`Start with the basics. You can refine tickets, branding, and checkout after the event is created.`}
-                    </p>
                 </div>
 
                 <div className={classes.stepContent}>
                     <form onSubmit={form.onSubmit(handleSubmit)}>
-                        <Stack gap={18}>
+                        <Stack gap={24}>
                             {/* Event Category */}
-                            <div className={classes.fieldGroup}>
-                                <Text className={classes.fieldQuestion}>{t`Choose an event type`}</Text>
+                            <div>
+                                <Text size="lg" fw={600} mb="lg">{t`What type of event?`}</Text>
 
                                 {/* Desktop Grid */}
                                 <div className={classes.categoryGrid}>
@@ -331,9 +323,8 @@ export const CreateEvent = ({progressInfo}: {
                                             }`}
                                             onClick={() => handleCategorySelect(category.id)}
                                             disabled={eventMutation.isPending}
-                                            aria-pressed={selectedCategory === category.id}
                                         >
-                                            <div className={classes.categoryMark}>{getCategoryMark(category.name)}</div>
+                                            <div className={classes.categoryEmoji}>{category.emoji}</div>
                                             <div className={classes.categoryText}>{category.name}</div>
                                         </button>
                                     ))}
@@ -346,7 +337,7 @@ export const CreateEvent = ({progressInfo}: {
                                         onChange={(value) => handleCategorySelect(value || '')}
                                         data={EventCategories.map((category) => ({
                                             value: category.id,
-                                            label: category.name,
+                                            label: `${category.emoji} ${category.name}`,
                                         }))}
                                         placeholder={t`Select event category`}
                                         size="lg"
@@ -413,7 +404,7 @@ export const CreateEvent = ({progressInfo}: {
                             fullWidth
                             size="lg"
                             loading={eventMutation.isPending}
-                            rightSection={eventMutation.isPending ? null : <IconArrowRight size={18}/>}
+                            leftSection={eventMutation.isPending ? null : <IconSparkles size={20}/>}
                             className={classes.primaryButton}
                             disabled={eventMutation.isPending || !selectedCategory}
                             aria-label={eventMutation.isPending ? t`Creating your event, please wait` : t`Continue to next step`}
@@ -478,13 +469,13 @@ const Welcome = () => {
             <Container size="sm" className={classes.welcomeContent}>
                 <div className={classes.welcomeHeader}>
                     <div className={classes.logo}>
-                        <BrandWordmark tone="dark" size="md"/>
+                        <BrandWordmark tone="light" size="md"/>
                     </div>
-                    <p className={classes.welcomeKicker}>{t`Workspace setup`}</p>
                     <h1 className={classes.welcomeTitle}>
                         <Trans>
                             Welcome to {getConfig("VITE_APP_NAME", "Urban Events")}, {userData?.first_name}
                         </Trans>
+                        <IconSparkles size={24} aria-hidden className={classes.welcomeTitleIcon}/>
                     </h1>
                 </div>
 

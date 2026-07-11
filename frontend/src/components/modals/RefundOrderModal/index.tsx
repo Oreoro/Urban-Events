@@ -83,7 +83,7 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                             {order.total_refunded > 0 && (
                                 <Group justify="space-between">
                                     <Text size="sm" c="dimmed">{t`Already Refunded`}</Text>
-                                    <Text size="lg" c="var(--hi-status-danger-text)">
+                                    <Text size="lg" c="red">
                                         -<Currency currency={order.currency} price={order.total_refunded}/>
                                     </Text>
                                 </Group>
@@ -135,7 +135,7 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
                     </Stack>
 
                     {(isPartialRefund && Number(form.values.amount) > 0) && (
-                        <Alert icon={<IconInfoCircle/>} variant="light">
+                        <Alert icon={<IconInfoCircle/>} color="blue" variant="light">
                             {t`You are issuing a partial refund. The customer will be refunded ${Number(form.values.amount).toFixed(2)} ${order.currency}.`}
                         </Alert>
                     )}
@@ -158,6 +158,7 @@ export const RefundOrderModal = ({onClose, orderId}: RefundOrderModalProps) => {
             <Stack gap="md">
                 <Alert
                     icon={<IconInfoCircle size={24}/>}
+                    color={'blue'}
                     variant="light"
                     styles={{
                         message: {fontSize: '0.95rem'}

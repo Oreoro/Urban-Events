@@ -18,12 +18,14 @@ import {withLoadingNotification} from "../../../utilites/withLoadingNotification
 import {useAbandonOrderPublic} from "../../../mutations/useAbandonOrderPublic.ts";
 import {showError, showInfo} from "../../../utilites/notifications.tsx";
 import {isDateInFuture} from "../../../utilites/dates.ts";
-import {detectMode, URBAN_EVENTS_THEME} from "../../../utilites/themeUtils.ts";
+import {detectMode} from "../../../utilites/themeUtils.ts";
 import {CheckoutThemeProvider} from "./CheckoutThemeProvider.tsx";
 import {useOrganizerTrackingPixels} from "../../../hooks/useOrganizerTrackingPixels";
 import {trackPixelEvent, hasActivePixels} from "../../../utilites/trackingPixels";
 import {CookieConsentBanner} from "../../common/CookieConsentBanner";
 import {useGetEventPublic} from "../../../queries/useGetEventPublic.ts";
+
+const DEFAULT_ACCENT = '#0E7C70';
 
 const Checkout = () => {
     const {eventId, orderShortId} = useParams();
@@ -182,9 +184,9 @@ const Checkout = () => {
 
     // Get accent color from event settings, derive mode from homepage background
     const homepageSettings = event?.settings?.homepage_theme_settings;
-    const accentColor = homepageSettings?.accent || URBAN_EVENTS_THEME.accent;
+    const accentColor = homepageSettings?.accent || DEFAULT_ACCENT;
     // Mode is derived from the homepage background color (light homepage = light checkout)
-    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || URBAN_EVENTS_THEME.background);
+    const checkoutMode = homepageSettings?.mode || detectMode(homepageSettings?.background || '#ffffff');
 
     return (
         <CheckoutThemeProvider accentColor={accentColor} mode={checkoutMode}>
@@ -280,22 +282,18 @@ const Checkout = () => {
                 withCloseButton={false}
                 centered
                 size="m"
-                classNames={{
-                    content: classes.checkoutModalContent,
-                    body: classes.checkoutModalBody,
-                }}
             >
-                <div className={classes.checkoutModal}>
-                    <h3 className={classes.checkoutModalTitle}>
+                <div style={{textAlign: 'center', padding: '20px 0'}}>
+                    <h3 style={{color: 'var(--checkout-text-primary)', margin: '0 0 8px 0'}}>
                         {t`You have run out of time to complete your order.`}
                     </h3>
-                    <p className={classes.checkoutModalText}>
+                    <p style={{color: 'var(--checkout-text-secondary)', margin: '0'}}>
                         {t`Please return to the event page to start over.`}
                     </p>
                     <Button
                         onClick={handleReturn}
                         variant="filled"
-                        className={classes.checkoutModalPrimary}
+                        mt="xl"
                     >
                         {t`Return to Event Page`}
                     </Button>
@@ -308,31 +306,26 @@ const Checkout = () => {
                 withCloseButton={false}
                 centered
                 size="m"
-                classNames={{
-                    content: classes.checkoutModalContent,
-                    body: classes.checkoutModalBody,
-                }}
             >
-                <div className={classes.checkoutModal}>
-                    <h3 className={classes.checkoutModalTitle}>
+                <div style={{textAlign: 'center', padding: '20px 0'}}>
+                    <h3 style={{color: 'var(--checkout-text-primary)', margin: '0 0 8px 0'}}>
                         {t`Are you sure you want to leave?`}
                     </h3>
-                    <p className={classes.checkoutModalText}>
+                    <p style={{color: 'var(--checkout-text-secondary)', margin: '0'}}>
                         {t`Your current order will be lost.`}
                     </p>
-                    <Group justify="center" gap="sm" className={classes.checkoutModalActions}>
+                    <Group justify="center" gap="md" mt="xl">
                         <Button
                             onClick={handleAbandonCancel}
                             variant="subtle"
-                            className={classes.checkoutModalSecondary}
                         >
                             {t`No, keep me here`}
                         </Button>
                         <Button
                             onClick={handleAbandonConfirm}
                             variant="outline"
+                            color="gray"
                             loading={abandonOrderMutation.isPending}
-                            className={classes.checkoutModalDanger}
                         >
                             {t`Yes, cancel my order`}
                         </Button>

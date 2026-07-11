@@ -1,5 +1,5 @@
 import {t} from "@lingui/macro";
-import {IconAlertTriangle, IconLock} from "@tabler/icons-react";
+import {IconAlertTriangle} from "@tabler/icons-react";
 import classes from './DangerZone.module.scss';
 
 interface DangerZoneSectionProps {
@@ -30,26 +30,6 @@ export const DangerZone = ({children}: DangerZoneProps) => {
                 {t`Danger Zone`}
             </h3>
             {children}
-        </div>
-    );
-};
-
-interface DangerZoneNoticeProps {
-    title: string;
-    description: string;
-    icon?: React.ReactNode;
-}
-
-export const DangerZoneNotice = ({title, description, icon}: DangerZoneNoticeProps) => {
-    return (
-        <div className={classes.notice}>
-            <div className={classes.noticeIcon} aria-hidden="true">
-                {icon || <IconLock size={18}/>}
-            </div>
-            <div>
-                <p className={classes.noticeTitle}>{title}</p>
-                <p className={classes.noticeDescription}>{description}</p>
-            </div>
         </div>
     );
 };

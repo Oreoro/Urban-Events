@@ -12,35 +12,46 @@
     text-align: center;
 }
 
-.statusIcon {
-    width: 52px;
-    height: 52px;
-    border-radius: var(--hi-radius-md);
+.celebrationEmoji {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--hi-text-muted);
-    background: var(--hi-shell-bg-strong);
-    border: 1px solid var(--hi-app-panel-border);
-    box-shadow: var(--hi-shadow-sm);
+    color: var(--hi-color-white);
+    background: var(--hi-secondary-strong);
     margin-bottom: 1rem;
+    animation: celebrate 0.6s ease-out;
+}
 
-    svg {
-        width: 28px;
-        height: 28px;
+@keyframes celebrate {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
 .title {
-    font-size: 1.22rem;
-    font-weight: 650;
+    font-size: 1.5rem;
+    font-weight: 800;
     color: var(--hi-text);
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    color: var(--hi-text-muted);
-    font-size: 0.9rem;
+    color: var(--mantine-color-dimmed);
+    font-size: 0.95rem;
     margin-bottom: 1.5rem;
 }
 
@@ -52,7 +63,7 @@
 .urlInput {
     padding-right: 110px;
     font-size: 0.875rem;
-    background: var(--hi-shell-bg-strong);
+    background: var(--mantine-color-gray-0);
 }
 
 .actions {

@@ -7,11 +7,11 @@ interface PageTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 }
 
 export const PageTitle = (props: PageTitleProps) => {
-    const { children, subheading, className, ...rest } = props;
+    const { children, subheading, ...rest } = props;
 
     return (
         <div className={classes.container}>
-            <h1 className={`${classes.title} ${className ?? ''}`} {...rest}>
+            <h1 className={classes.title} {...rest}>
                 {children}
             </h1>
             {subheading && (

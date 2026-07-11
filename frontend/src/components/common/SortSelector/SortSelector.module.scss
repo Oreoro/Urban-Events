@@ -6,60 +6,12 @@
 
   .select {
     margin-bottom: 0 !important;
-
     @include mixins.respond-above(lg) {
-      max-width: 170px;
+      max-width: 180px;
     }
 
     input {
-      min-height: 30px;
-      height: 30px;
-      background: var(--hi-surface);
-      border-color: var(--hi-border);
-      border-radius: var(--hi-radius-sm);
-      color: var(--hi-text-light);
-      font-size: 0.8rem;
-      font-weight: 560;
-      box-shadow: none;
-      transition: background-color 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
-
-      &:hover {
-        background: var(--hi-control-bg-hover);
-        border-color: var(--hi-border-strong);
-      }
-
-      &:focus,
-      &:focus-within {
-        border-color: var(--hi-focus-ring);
-        box-shadow: 0 0 0 2px var(--hi-focus-ring-soft);
-      }
+      font-size: 0.9em;
     }
-
-    :global(.mantine-Select-section) {
-      color: var(--hi-text-muted);
-    }
-  }
-}
-
-.dropdown {
-  padding: 4px !important;
-  border: 1px solid var(--hi-app-panel-border) !important;
-  border-radius: var(--hi-radius-sm) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: var(--hi-shadow-md) !important;
-}
-
-.option {
-  min-height: 30px;
-  border-radius: var(--hi-radius-sm);
-  color: var(--hi-text-light);
-  font-size: 0.8rem;
-  font-weight: 560;
-
-  &:hover,
-  &[data-combobox-selected],
-  &[data-combobox-active] {
-    background: var(--hi-control-bg-hover);
-    color: var(--hi-text);
   }
 }

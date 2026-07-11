@@ -5,22 +5,11 @@ import {Anchor, Button} from "@mantine/core";
 import {Card} from "../../../common/Card";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import {t, Trans} from "@lingui/macro";
-import {IconAlertCircle, IconMailCheck} from "@tabler/icons-react";
-import classes from "../ProfileStatus.module.scss";
 
 const MessageCard = ({message, linkText, linkHref}: { message: string, linkText: string, linkHref: string }) => (
-    <div className={classes.statusShell}>
-        <Card className={classes.statusCard}>
-            <div className={classes.statusHeader}>
-                <span className={classes.statusIcon}>
-                    <IconAlertCircle size={18}/>
-                </span>
-                <p className={classes.statusText}>
-                    {message} <Anchor href={linkHref} className={classes.statusLink}>{linkText}</Anchor>.
-                </p>
-            </div>
-        </Card>
-    </div>
+    <Card style={{marginTop: 'var(--hi-spacing-lg)'}}>
+        {message} <Anchor href={linkHref}>{linkText}</Anchor>.
+    </Card>
 );
 
 export const ConfirmEmailChange = () => {
@@ -58,24 +47,17 @@ export const ConfirmEmailChange = () => {
     return (
         <>
             {isFetched && (
-                <div className={classes.statusShell}>
-                    <Card className={classes.statusCard}>
-                        <div className={classes.statusHeader}>
-                            <span className={classes.statusIcon}>
-                                <IconMailCheck size={18}/>
-                            </span>
-                            <div>
-                                <h1 className={classes.statusTitle}>{t`Confirm Email Change`}</h1>
-                                <p className={classes.statusText}>
-                                    <Trans>You are changing your email to <b>{userData?.pending_email}</b>.</Trans>
-                                </p>
-                            </div>
-                        </div>
-                        <Button onClick={confirmChange} className={classes.statusAction}>
-                            {t`Confirm Email Change`}
-                        </Button>
+                <>
+                    <h2>{t`Confirm Email Change`}</h2>
+                    <Card style={{marginTop: 'var(--hi-spacing-lg)'}}>
+                        <Trans>You are changing your email to <b>{userData?.pending_email}</b>.</Trans>
+                        <p>
+                            <Button onClick={confirmChange}>
+                                {t`Confirm Email Change`}
+                            </Button>
+                        </p>
                     </Card>
-                </div>
+                </>
             )}
         </>
     );

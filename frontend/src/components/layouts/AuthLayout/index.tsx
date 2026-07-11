@@ -8,7 +8,6 @@ import {useCallback, useRef} from "react";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 import {BrandWordmark} from "../../common/BrandWordmark";
-import {getConfig} from "../../../utilites/config.ts";
 
 const AuthLayout = () => {
     const me = useGetMe();
@@ -22,12 +21,11 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            const appName = getConfig("VITE_APP_NAME", "Urban Events") || "Urban Events";
-            showInfo(`${appName} v${__APP_VERSION__}`);
+            showInfo(t`HiEvents v${__APP_VERSION__}`);
         }
     }, []);
 
-    if (me.data) {
+    if (me.isSuccess) {
         return <Navigate to={'/manage/events'} />
     }
 
@@ -36,14 +34,9 @@ const AuthLayout = () => {
             <div className={classes.splitLayout}>
                 <div className={classes.leftPanel}>
                     <main className={classes.container}>
-                        <button
-                            type="button"
-                            className={classes.logoButton}
-                            onClick={handleLogoClick}
-                            aria-label={t`Show application version`}
-                        >
-                            <BrandWordmark tone="dark" size="md"/>
-                        </button>
+                        <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
+                            <BrandWordmark tone="dark" size="lg"/>
+                        </div>
                         <div className={classes.wrapper}>
                             <Outlet />
                             {/*

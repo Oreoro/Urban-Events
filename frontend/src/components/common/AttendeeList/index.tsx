@@ -61,7 +61,7 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
                             <div className={classes.attendeeInfo}>
                                 <Avatar
                                     size="md"
-                                    radius="sm"
+                                    radius="xl"
                                     className={classes.avatar}
                                 >
                                     {getInitials(fullName)}
@@ -87,7 +87,7 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
                                         >
                                             <ActionIcon
                                                 variant="subtle"
-                                                radius="sm"
+                                                radius="xl"
                                                 size="sm"
                                                 className={classes.actionButton}
                                                 onClick={() => toggleExpanded(attendee.id)}
@@ -107,7 +107,7 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
                                         <NavLink to={`../attendees?query=${attendee.public_id}`}>
                                             <ActionIcon
                                                 variant="subtle"
-                                                radius="sm"
+                                                radius="xl"
                                                 size="sm"
                                                 className={classes.actionButton}
                                             >

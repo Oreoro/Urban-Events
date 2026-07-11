@@ -1,35 +1,33 @@
 .accordionItem {
-  border: 1px solid var(--hi-border);
-  border-radius: var(--hi-radius-md);
-  background-color: var(--hi-surface);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-sm);
+  background-color: var(--mantine-color-white);
   overflow: hidden;
 
   & + & {
-    margin-top: 0.6rem;
+    margin-top: 0.75rem;
   }
 }
 
 .accordionControl {
-  background-color: var(--hi-surface);
+  background-color: var(--mantine-color-gray-0);
   border-bottom: none;
-  color: var(--hi-text);
-  font-weight: 600;
 
   &:hover {
-    background-color: var(--hi-control-bg-hover);
+    background-color: var(--mantine-color-gray-1);
   }
 
   &[data-expanded] {
-    background-color: var(--hi-surface);
-    border-bottom: 1px solid var(--hi-border);
+    background-color: var(--mantine-color-white);
+    border-bottom: 1px solid var(--mantine-color-gray-2);
   }
 }
 
 .accordionContent {
-  padding: 0.85rem;
+  padding: 1.25rem;
 
   @media (max-width: 768px) {
-    padding: 0.85rem;
+    padding: 1rem;
   }
 }
 

@@ -10,7 +10,6 @@ import {AdminMessage} from "../../../../api/admin.client";
 import {showSuccess} from "../../../../utilites/notifications";
 import {IdParam} from "../../../../types";
 import tableStyles from "../../../../styles/admin-table.module.scss";
-import listClasses from "../AdminListPage.module.scss";
 
 const Messages = () => {
     const [page, setPage] = useState(1);
@@ -102,8 +101,8 @@ const Messages = () => {
     const totalMessages = messagesData?.meta?.total || 0;
 
     return (
-        <Container size="xl" p="md" className={listClasses.page}>
-            <Stack gap="lg" className={listClasses.stack}>
+        <Container size="xl" p="xl">
+            <Stack gap="lg">
                 <div>
                     <Title order={1}>{t`Outgoing Messages`}</Title>
                     <Text c="dimmed" size="sm">{t`View all messages sent across the platform`}</Text>
@@ -176,7 +175,7 @@ const Messages = () => {
                                         <Table.Tr key={message.id}>
                                             <Table.Td>
                                                 <Group gap="xs">
-                                                    <IconMail size={16} color="var(--hi-text-muted)" />
+                                                    <IconMail size={16} color="gray" />
                                                     <Text size="sm" fw={500} lineClamp={1} maw={200}>
                                                         {message.subject}
                                                     </Text>
@@ -193,13 +192,13 @@ const Messages = () => {
                                                 </Text>
                                             </Table.Td>
                                             <Table.Td>
-                                                <Badge variant="light">
+                                                <Badge variant="light" color="gray">
                                                     {getTypeLabel(message.type)}
                                                 </Badge>
                                             </Table.Td>
                                             <Table.Td>
                                                 <Group gap={4}>
-                                                    <IconUsers size={14} color="var(--hi-text-muted)" />
+                                                    <IconUsers size={14} color="gray" />
                                                     <Text size="sm" fw={500}>
                                                         {message.recipients_count}
                                                     </Text>
@@ -223,6 +222,7 @@ const Messages = () => {
                                                     <Tooltip label={t`View Message`}>
                                                         <ActionIcon
                                                             variant="subtle"
+                                                            color="gray"
                                                             onClick={() => handleViewMessage(message)}
                                                         >
                                                             <IconEye size={16} />
@@ -232,6 +232,7 @@ const Messages = () => {
                                                         <Tooltip label={t`Approve Message`}>
                                                             <ActionIcon
                                                                 variant="subtle"
+                                                                color="green"
                                                                 onClick={() => handleApprove(message.id)}
                                                                 loading={approveMutation.isPending}
                                                             >
@@ -264,12 +265,6 @@ const Messages = () => {
                 onClose={closeDetailModal}
                 title={t`Message Details`}
                 size="lg"
-                classNames={{
-                    content: listClasses.modalContent,
-                    header: listClasses.modalHeader,
-                    title: listClasses.modalTitle,
-                    body: listClasses.modalBody,
-                }}
             >
                 {selectedMessage && (
                     <Stack gap="md">
@@ -290,7 +285,7 @@ const Messages = () => {
                         <Group>
                             <div>
                                 <Text size="sm" fw={500} c="dimmed">{t`Type`}</Text>
-                                <Badge variant="light">
+                                <Badge variant="light" color="gray">
                                     {getTypeLabel(selectedMessage.type)}
                                 </Badge>
                             </div>
@@ -317,7 +312,7 @@ const Messages = () => {
                         </Group>
                         <div>
                             <Text size="sm" fw={500} c="dimmed" mb="xs">{t`Message Content`}</Text>
-                            <ScrollArea h={300} style={{border: '1px solid var(--hi-border)', borderRadius: 'var(--hi-radius-md)'}}>
+                            <ScrollArea h={300} style={{border: '1px solid var(--mantine-color-gray-3)', borderRadius: '4px'}}>
                                 <div
                                     style={{padding: '12px'}}
                                     dangerouslySetInnerHTML={{__html: selectedMessage.message}}

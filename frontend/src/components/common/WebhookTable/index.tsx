@@ -85,7 +85,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
 
     const ActionMenu = ({webhook}: { webhook: Webhook }) => (
         <Group wrap="nowrap" gap={0} justify="flex-end">
-            <Menu width={200}>
+            <Menu shadow="md" width={200}>
                 <Menu.Target>
                     <Button size="xs" variant="transparent">
                         <IconDotsVertical/>
@@ -145,8 +145,8 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
         }
 
         const isSuccess = (webhook.last_response_code >= 200 && webhook.last_response_code < 300) && webhook.last_response_code !== 0;
+        const statusColor = isSuccess ? '#0d9488' : 'red';
         const statusText = isSuccess ? 'Success' : 'Error';
-        const statusClassName = `${classes.responseStatusBadge} ${isSuccess ? classes.responseStatusSuccess : classes.responseStatusError}`;
 
         return (
             <Popover width={400} position="bottom" withArrow>
@@ -154,7 +154,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
                     <Group gap="xs" wrap="nowrap">
                         <Badge
                             variant="light"
-                            className={statusClassName}
+                            color={statusColor}
                             leftSection={<IconBolt size={12}/>}
                         >
                             {statusText} {webhook.last_response_code > 0 ? `- ${webhook.last_response_code}` : ''}
@@ -168,7 +168,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
                             <Text fw={500} size="sm">Response Details</Text>
                             <Badge
                                 variant="light"
-                                className={statusClassName}
+                                color={statusColor}
                                 size="sm"
                             >
                                 {webhook.last_response_code > 0 ? webhook.last_response_code : t`No response`}
@@ -219,6 +219,7 @@ export const WebhookTable = ({webhooks, openCreateModal}: WebhookTableProps) => 
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus/>}
+                            color={'#0d9488'}
                             onClick={() => openCreateModal()}>{t`Add Webhook`}
                         </Button>
                     </>

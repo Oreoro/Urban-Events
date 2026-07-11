@@ -4,25 +4,16 @@
   white-space: nowrap;
 
   th {
-    background-color: var(--hi-shell-bg-strong);
+    background-color: var(--hi-surface-soft);
     color: var(--hi-text-muted) !important;
-    padding: 0.34rem 0.5rem !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 86%, var(--hi-surface));
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 1.25;
-    vertical-align: middle;
+    padding: 0.8rem 0.875rem !important;
+    border-bottom: 1px solid var(--hi-border-strong);
   }
 }
 
 .card {
   padding: 0 !important;
   overflow: hidden;
-  border-radius: var(--hi-radius-sm) !important;
-  border-color: var(--hi-border) !important;
-  background: var(--hi-surface) !important;
-  box-shadow: var(--hi-shadow-sm) !important;
 
   .mantine-ScrollArea-viewport {
     padding-bottom: 0;
@@ -32,33 +23,25 @@
 .table {
   border-collapse: separate;
   border-spacing: 0;
-  min-width: 100%;
 
   tr td,
   tr,
   th {
-    padding: 0.42rem 0.5rem !important;
+    padding: 0.875rem !important;
     white-space: nowrap;
   }
 
   td {
-    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 82%, var(--hi-surface));
+    border-bottom: 1px solid color-mix(in srgb, var(--hi-border) 78%, white);
     color: var(--hi-text-light);
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.35;
-    vertical-align: middle;
+    font-weight: 550;
   }
 
   tbody tr {
-    transition: background-color 0.14s ease;
+    transition: background-color 0.15s ease;
 
     &:hover {
-      background-color: var(--hi-app-hover-bg);
-    }
-
-    &:last-child td {
-      border-bottom: none;
+      background-color: color-mix(in srgb, var(--ue-canvas-soft) 78%, white);
     }
   }
 }

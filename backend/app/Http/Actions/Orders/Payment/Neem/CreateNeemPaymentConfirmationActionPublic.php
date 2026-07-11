@@ -3,8 +3,8 @@
 namespace HiEvents\Http\Actions\Orders\Payment\Neem;
 
 use HiEvents\DomainObjects\Enums\PaymentProviders;
-use HiEvents\DomainObjects\Generated\OrderApplicationFeeDomainObjectAbstract;
 use HiEvents\DomainObjects\Generated\OrderDomainObjectAbstract;
+use HiEvents\DomainObjects\Generated\StripePaymentDomainObjectAbstract;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrderItemDomainObject;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
@@ -12,11 +12,13 @@ use HiEvents\DomainObjects\Status\OrderApplicationFeeStatus;
 use HiEvents\DomainObjects\Status\OrderPaymentStatus;
 use HiEvents\DomainObjects\Status\OrderStatus;
 use HiEvents\Events\OrderStatusChangedEvent;
+use HiEvents\Exceptions\Stripe\CreatePaymentIntentFailedException;
 use HiEvents\Http\Actions\BaseAction;
 use HiEvents\Repository\Interfaces\AffiliateRepositoryInterface;
 use HiEvents\Repository\Interfaces\AttendeeRepositoryInterface;
-use HiEvents\Repository\Interfaces\OrderApplicationFeeRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
+use HiEvents\Services\Application\Handlers\Order\DTO\MarkOrderAsPaidDTO;
+use HiEvents\Services\Application\Handlers\Order\MarkOrderAsPaidHandler;
 use HiEvents\Services\Domain\Order\OrderApplicationFeeService;
 use HiEvents\Services\Domain\Product\ProductQuantityUpdateService;
 use HiEvents\Services\Infrastructure\DomainEvents\DomainEventDispatcherService;
@@ -24,19 +26,27 @@ use HiEvents\Services\Infrastructure\DomainEvents\Enums\DomainEventType;
 use HiEvents\Services\Infrastructure\DomainEvents\Events\OrderEvent;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Stripe\PaymentIntent;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class CreateNeemPaymentConfirmationActionPublic extends BaseAction
 {
+    private HttpClientInterface $httpClient;
+    private OrderRepositoryInterface $orderRepository;
+
     public function __construct(
-        private readonly OrderRepositoryInterface $orderRepository,
+        HttpClientInterface $httpClient,
+        OrderRepositoryInterface $orderRepository,
         private readonly OrderApplicationFeeService      $orderApplicationFeeService,
         private readonly ProductQuantityUpdateService    $quantityUpdateService,
         private readonly AffiliateRepositoryInterface    $affiliateRepository,
         private readonly DomainEventDispatcherService    $domainEventDispatcherService,
         private readonly AttendeeRepositoryInterface     $attendeeRepository,
-        private readonly OrderApplicationFeeRepositoryInterface $orderApplicationFeeRepository,
-    ) {
+    )
+    {
+        $this->httpClient = $httpClient;
+        $this->orderRepository = $orderRepository;
     }
 
     public function __invoke(Request $request, int $eventId, string $orderShortId): JsonResponse
@@ -46,11 +56,8 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             $transactionIdEncrypted = $request->input('transactionId');
             $basketIdEncrypted = $request->input('basketId');
 
-            if (!is_string($statusEncrypted) || !is_string($transactionIdEncrypted) || !is_string($basketIdEncrypted)) {
-                return $this->errorResponse("Missing Neem payment confirmation data", Response::HTTP_UNPROCESSABLE_ENTITY);
-            }
-
-            $base64PrivateKey = $this->getRequiredDecryptionKey();
+            // Neem RSA private key (provided Base64 version)
+            $base64PrivateKey = env('NEEM_DECRYPTION_KEY');
 
             $status = $this->decryptNeemValue($statusEncrypted, $base64PrivateKey);
 
@@ -61,31 +68,9 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             $transactionId = $this->decryptNeemValue($transactionIdEncrypted, $base64PrivateKey);
             $basketId = $this->decryptNeemValue($basketIdEncrypted, $base64PrivateKey);
 
-            if ($basketId !== $orderShortId) {
-                return $this->errorResponse("Neem basket does not match this order", Response::HTTP_UNPROCESSABLE_ENTITY);
-            }
-
-            $order = $this->orderRepository->findFirstWhere([
-                OrderDomainObjectAbstract::EVENT_ID => $eventId,
-                OrderDomainObjectAbstract::SHORT_ID => $basketId,
-            ]);
-
+            $order = $this->orderRepository->findByShortId($basketId);
             if(!$order) {
                 return $this->errorResponse("Order Not Found", Response::HTTP_UNPROCESSABLE_ENTITY);
-            }
-
-            if ($this->isCompletedNeemOrder($order)) {
-                return $this->jsonResponse([
-                    'success' => true
-                ]);
-            }
-
-            if ($order->getPaymentStatus() === OrderPaymentStatus::PAYMENT_RECEIVED->name) {
-                return $this->errorResponse("Order has already been paid with another payment provider", Response::HTTP_UNPROCESSABLE_ENTITY);
-            }
-
-            if ($order->getStatus() !== OrderStatus::RESERVED->name || $order->isReservedOrderExpired()) {
-                return $this->errorResponse("Order is expired or not in a valid state", Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             $updatedOrder = $this->updateOrderStatuses($order->getId());
@@ -103,7 +88,7 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
                 ),
             );
 
-            $this->storeApplicationFeePayment($updatedOrder, (int) env('APPLICATION_FEE', 0));
+            $this->storeApplicationFeePayment($updatedOrder, env('APPLICATION_FEE'));
 
             return $this->jsonResponse([
                 'success' => true
@@ -112,17 +97,6 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
         } catch (\Throwable $e) {
             return $this->errorResponse($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
-    }
-
-    private function getRequiredDecryptionKey(): string
-    {
-        $base64PrivateKey = env('NEEM_DECRYPTION_KEY');
-
-        if (!is_string($base64PrivateKey) || trim($base64PrivateKey) === '') {
-            throw new \RuntimeException('NEEM_DECRYPTION_KEY is not configured.');
-        }
-
-        return trim($base64PrivateKey);
     }
 
     private function decryptNeemValue(string $input, string $base64Key): string
@@ -186,14 +160,6 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
 
     private function storeApplicationFeePayment(OrderDomainObject $updatedOrder, $applicationFee): void
     {
-        if ($this->orderApplicationFeeRepository->findFirstWhere([
-            OrderApplicationFeeDomainObjectAbstract::ORDER_ID => $updatedOrder->getId(),
-            OrderApplicationFeeDomainObjectAbstract::PAYMENT_METHOD => PaymentProviders::NEEM->value,
-            OrderApplicationFeeDomainObjectAbstract::STATUS => OrderApplicationFeeStatus::PAID->value,
-        ]) !== null) {
-            return;
-        }
-
         $this->orderApplicationFeeService->createOrderApplicationFee(
             orderId: $updatedOrder->getId(),
             applicationFeeAmountMinorUnit: $applicationFee ?? 0,
@@ -201,13 +167,6 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             paymentMethod: PaymentProviders::NEEM,
             currency: $updatedOrder->getCurrency(),
         );
-    }
-
-    private function isCompletedNeemOrder(OrderDomainObject $order): bool
-    {
-        return $order->getStatus() === OrderStatus::COMPLETED->name
-            && $order->getPaymentStatus() === OrderPaymentStatus::PAYMENT_RECEIVED->name
-            && $order->getPaymentProvider() === PaymentProviders::NEEM->value;
     }
 
     private function updateAttendeeStatuses(OrderDomainObject $updatedOrder): void

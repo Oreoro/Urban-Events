@@ -114,7 +114,7 @@ const SortableQuestion = ({
                         </Tooltip>
                     )}
                     {question.required && (
-                        <Badge size="xs" variant="light">
+                        <Badge size="xs" variant="light" color="red">
                             {t`Required`}
                         </Badge>
                     )}
@@ -127,9 +127,9 @@ const SortableQuestion = ({
                 </Text>
             </div>
 
-            <Menu width={180} position="bottom-end">
+            <Menu shadow="md" width={180} position="bottom-end">
                 <Menu.Target>
-                    <ActionIcon variant="subtle" size="sm">
+                    <ActionIcon variant="subtle" color="gray" size="sm">
                         <IconDotsVertical size={16}/>
                     </ActionIcon>
                 </Menu.Target>
@@ -395,6 +395,7 @@ export const QuestionsTable = ({questions}: QuestionsTableProp) => {
         return (
             <Button
                 variant="subtle"
+                color="gray"
                 leftSection={<IconTableExport size={16}/>}
                 loading={isExporting}
                 onClick={() => startExport()}

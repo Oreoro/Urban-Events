@@ -4,13 +4,12 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--checkout-surface, var(--hi-app-panel-bg));
-  border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
-  padding: 14px;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  background: var(--checkout-accent-soft, rgba(99, 102, 241, 0.1));
+  border: 1px solid var(--checkout-border, rgba(99, 102, 241, 0.2));
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   @include mixins.respond-below(sm) {
     flex-direction: column;
@@ -19,15 +18,14 @@
 }
 
 .iconContainer {
-  width: 34px;
-  height: 34px;
-  background: var(--checkout-surface-strong, var(--hi-shell-bg-strong));
-  border: 1px solid var(--checkout-border, var(--hi-app-panel-border));
-  border-radius: var(--hi-radius-sm);
+  width: 40px;
+  height: 40px;
+  background: var(--checkout-accent-soft, rgba(99, 102, 241, 0.15));
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--checkout-text-primary, var(--hi-text));
+  color: var(--checkout-accent, #4F46E5);
   flex-shrink: 0;
 }
 
@@ -44,11 +42,11 @@
 
 .title {
   font-size: 15px;
-  font-weight: 600;
-  color: var(--checkout-text-primary, var(--hi-text));
+  font-weight: 500;
+  color: var(--checkout-text-primary, #111827);
 }
 
 .subtitle {
   font-size: 14px;
-  color: var(--checkout-text-secondary, var(--hi-text-muted));
+  color: var(--checkout-text-secondary, #6B7280);
 }

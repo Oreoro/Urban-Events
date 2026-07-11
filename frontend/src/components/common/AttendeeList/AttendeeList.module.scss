@@ -14,15 +14,14 @@
   display: flex;
   flex-direction: column;
   padding: 0.875rem;
-  background: var(--hi-app-panel-bg);
-  border: 1px solid var(--hi-app-panel-border);
-  border-radius: var(--hi-radius-md);
-  box-shadow: var(--hi-shadow-sm);
-  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  background: var(--mantine-color-gray-0);
+  border: 1px solid var(--mantine-color-gray-2);
+  border-radius: var(--mantine-radius-sm);
+  transition: all 0.2s ease;
 
   &:hover {
-    background: var(--hi-app-hover-bg);
-    border-color: var(--hi-border-strong);
+    border-color: var(--mantine-color-gray-3);
+    transform: translateY(-1px);
   }
 }
 
@@ -44,20 +43,19 @@
 
 .product {
   margin-top: 0.25rem;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-gray-6);
 }
 
 .actionButton {
   margin-left: auto;
 
   &:hover {
-    background-color: var(--hi-control-bg-hover);
+    background-color: var(--mantine-color-blue-0);
   }
 }
 
 .avatar {
-  background: var(--hi-shell-bg-strong);
-  border: 1px solid var(--hi-app-panel-border);
+  background: var(--hi-color-gray);
   font-weight: 500;
 }
 
@@ -66,7 +64,7 @@
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   padding-left: .4rem;
-  border-top: 1px solid var(--hi-border);
+  border-top: 1px solid var(--mantine-color-gray-2);
 }
 
 .questionAnswer {
@@ -85,7 +83,7 @@
 }
 
 .answer {
-  color: var(--hi-text-light);
+  color: var(--mantine-color-gray-7);
   padding-left: 1.5rem;
   font-size: var(--mantine-font-size-sm);
 }

@@ -2,6 +2,7 @@ import {Button, LoadingOverlay} from "@mantine/core";
 import {GenericModalProps, IdParam, Question, QuestionRequestData, QuestionType} from "../../../types.ts";
 import {useForm} from "@mantine/form";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {notifications} from "@mantine/notifications";
 import {useParams} from "react-router";
 import {questionClient} from "../../../api/question.client.ts";
 import {useGetEvent} from "../../../queries/useGetEvent.ts";
@@ -11,7 +12,6 @@ import {t} from "@lingui/macro";
 import {QuestionForm} from "../../forms/QuestionForm";
 import {GET_QUESTION_QUERY_KEY, useGetQuestion} from "../../../queries/useGetQuestion.ts";
 import {useEffect} from "react";
-import {showError, showSuccess} from "../../../utilites/notifications.tsx";
 
 interface EditQuestionModalProps extends GenericModalProps {
     questionId: IdParam;
@@ -62,7 +62,11 @@ export const EditQuestionModal = ({onClose, questionId}: EditQuestionModalProps)
         mutationFn: (questionData: Question) => questionClient.update(eventId, questionId, questionData),
 
         onSuccess: () => {
-            showSuccess(t`Successfully Updated Question`);
+            notifications.show({
+                message: t`Successfully Created Question`,
+                color: '#0d9488',
+                position: 'top-center',
+            });
             queryClient.invalidateQueries({queryKey: [GET_EVENT_QUESTIONS_QUERY_KEY, eventId]}).then(() => {
                 form.reset();
                 onClose();
@@ -76,7 +80,11 @@ export const EditQuestionModal = ({onClose, questionId}: EditQuestionModalProps)
             if (error?.response?.data?.errors) {
                 form.setErrors(error.response.data.errors);
             }
-            showError(t`Unable to update question. Please check the your details`);
+            notifications.show({
+                message: t`Unable to update question. Please check the your details`,
+                color: 'red',
+                position: 'top-center',
+            });
         }
     });
 

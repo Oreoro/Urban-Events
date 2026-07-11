@@ -1,28 +1,10 @@
 .listItem {
     padding: 12px;
-    border-radius: var(--hi-radius-md);
-    background-color: var(--hi-app-panel-bg);
-    border: 1px solid var(--hi-app-panel-border);
-    box-shadow: var(--hi-shadow-sm);
+    border-radius: 8px;
+    background-color: var(--mantine-color-gray-0);
+    border: 1px solid var(--mantine-color-gray-2);
 
     &:hover {
-        background-color: var(--hi-app-hover-bg);
+        background-color: var(--mantine-color-gray-1);
     }
-}
-
-.statusBadge {
-    border-radius: var(--hi-radius-sm);
-    font-weight: 600;
-}
-
-.statusChecked {
-    border: 1px solid var(--hi-status-success-border) !important;
-    background: var(--hi-status-success-bg) !important;
-    color: var(--hi-status-success-text) !important;
-}
-
-.statusNeutral {
-    border: 1px solid var(--hi-status-neutral-border) !important;
-    background: var(--hi-status-neutral-bg) !important;
-    color: var(--hi-status-neutral-text) !important;
 }
