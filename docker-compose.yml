@@ -15,7 +15,10 @@ services:
       - VITE_STRIPE_PUBLISHABLE_KEY=${VITE_STRIPE_PUBLISHABLE_KEY}
       - VITE_APP_NAME=${VITE_APP_NAME}
       - LOG_CHANNEL=${LOG_CHANNEL}
-      - QUEUE_CONNECTION=${QUEUE_CONNECTION}
+      - CACHE_DRIVER=${CACHE_DRIVER:-file}
+      - CACHE_STORE=${CACHE_STORE:-file}
+      - SESSION_DRIVER=${SESSION_DRIVER:-file}
+      - QUEUE_CONNECTION=${QUEUE_CONNECTION:-sync}
       - APP_KEY=${APP_KEY}
       - APP_CDN_URL=${APP_CDN_URL}
       - APP_FRONTEND_URL=${APP_FRONTEND_URL}
@@ -40,14 +43,14 @@ services:
       - AZURE_STORAGE_URL=${AZURE_STORAGE_URL}
       # This DATABASE_URL should be set in Azure App Service Configuration
       - DATABASE_URL=${DATABASE_URL}
-      # These REDIS variables should also be set in Azure App Service Configuration
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_PORT=${REDIS_PORT}
+      # Redis is optional. Leave these empty when using file cache/session and sync queues.
+      - REDIS_HOST=${REDIS_HOST:-}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - REDIS_PORT=${REDIS_PORT:-6379}
       - STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY}
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
-      - WEBHOOK_QUEUE_NAME=webhook-queue
+      - WEBHOOK_QUEUE_NAME=${WEBHOOK_QUEUE_NAME:-default}
       - APP_NAME=${APP_NAME}
       - APP_ENV=${APP_ENV}
       - APP_DEBUG=${APP_DEBUG}
@@ -64,7 +67,8 @@ services:
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
-      - REDIS_URL=${REDIS_URL}
+      - REDIS_URL=${REDIS_URL:-}
+      - REDIS_SCHEME=${REDIS_SCHEME:-tcp}
       - NEEM_BASE_URL=${NEEM_BASE_URL}
       - NEEM_BASE_TOKEN=${NEEM_BASE_TOKEN}
       - NEEM_PARTNER_ID=${NEEM_PARTNER_ID}

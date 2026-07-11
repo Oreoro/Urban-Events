@@ -190,9 +190,9 @@ const EventLayoutContent = () => {
                         >
                             {event?.status === 'DRAFT'
                                 ? <span>{t`Draft`} <span
-                                    className={classes.statusAction}>{t`- Click to Publish`}</span></span>
+                                    className={classes.statusAction}>{t`Publish`}</span></span>
                                 : <span>{t`Live`} <span
-                                    className={classes.statusAction}>{t`- Click to Unpublish`}</span></span>
+                                    className={classes.statusAction}>{t`Unpublish`}</span></span>
                             }
                         </TopBarButton>
                     )}

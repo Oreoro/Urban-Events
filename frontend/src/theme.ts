@@ -123,14 +123,16 @@ export const getUrbanEventsTheme = () => createTheme({
                 root: {
                     fontWeight: 650,
                     letterSpacing: 0,
-                    minHeight: "2.25rem",
+                    minHeight: "2.375rem",
+                    lineHeight: 1,
+                    paddingInline: "0.875rem",
                     transition: "background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
                 },
                 label: {
-                    whiteSpace: "normal",
-                },
-                section: {
-                    marginInlineEnd: "0.5rem",
+                    minWidth: 0,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
                 },
             },
         },

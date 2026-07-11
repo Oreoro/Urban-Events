@@ -155,6 +155,32 @@ a {
   transform: translateY(0);
 }
 
+.mantine-Button-root {
+  line-height: 1;
+}
+
+.mantine-Button-root[data-size="xs"] {
+  min-height: 1.75rem;
+  padding-inline: 0.625rem;
+}
+
+.mantine-Button-root[data-size="sm"] {
+  min-height: 2.125rem;
+  padding-inline: 0.75rem;
+}
+
+.mantine-Button-root[data-size="md"] {
+  min-height: 2.375rem;
+}
+
+.mantine-Button-section[data-position="left"] {
+  margin-inline-end: 0.45rem;
+}
+
+.mantine-Button-section[data-position="right"] {
+  margin-inline-start: 0.45rem;
+}
+
 .mantine-Input-input:focus,
 .mantine-Input-input:focus-within {
   border-color: var(--hi-secondary-strong);

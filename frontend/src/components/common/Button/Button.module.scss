@@ -2,11 +2,11 @@
 //  max-width: 250px;
 //}
 .button {
-  font-weight: 800;
+  font-weight: 650;
   letter-spacing: 0;
   box-shadow: none;
 }
 
 .button:hover:not(:disabled) {
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: none;
 }

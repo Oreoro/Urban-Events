@@ -3,6 +3,9 @@
 .viewHomepageButton {
   color: var(--hi-text-muted) !important;
   font-weight: 650;
+  min-height: 2.125rem;
+  padding-inline: 10px !important;
+  line-height: 1;
   transition: color 0.2s ease, background-color 0.2s ease;
 
   &:hover {
@@ -77,10 +80,20 @@
   }
 
   .statusAction {
-    margin-left: 4px;
-    font-weight: 400;
-    font-size: 0.85em;
-    opacity: 0.9;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 8px;
+    font-weight: 500;
+    font-size: 0.9em;
+    opacity: 0.82;
+
+    &::before {
+      content: "";
+      width: 1px;
+      height: 12px;
+      background: color-mix(in srgb, currentColor 38%, transparent);
+    }
 
     @include mixins.respond-below(md) {
       display: none;

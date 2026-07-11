@@ -75,7 +75,7 @@ return [
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
             // Made TLS/SSL scheme configurable. Set to null for no encryption.
-            'scheme' => env('REDIS_SCHEME', 'tls'),
+            'scheme' => env('REDIS_SCHEME', 'tcp'),
             'read_write_timeout' => -1,
         ],
 
@@ -86,7 +86,7 @@ return [
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
             // Made TLS/SSL scheme configurable. Set to null for no encryption.
-            'scheme' => env('REDIS_SCHEME', 'tls'),
+            'scheme' => env('REDIS_SCHEME', 'tcp'),
             'read_write_timeout' => -1,
         ],
     ],
