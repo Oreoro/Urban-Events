@@ -32,6 +32,8 @@ export const useConfirmNeemPayment = (
         },
         enabled: Boolean(eventId && orderShortId && status && transactionId && basketId),
         retry: false,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
         staleTime: 0,
         gcTime: 0
     });

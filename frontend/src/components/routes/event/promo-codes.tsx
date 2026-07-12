@@ -39,7 +39,7 @@ export const PromoCodes = () => {
                         pagination={pagination}
                     />
                 )}>
-                    <Button color={'#0d9488'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
+                    <Button color="primary" size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
                         Create
                     </Button>
 

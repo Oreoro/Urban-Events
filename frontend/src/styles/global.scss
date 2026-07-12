@@ -98,15 +98,15 @@
   --hi-spacing-lg: 20px;
   --hi-spacing-xl: 25px;
 
-  --hi-radius-xs: 3px;
-  --hi-radius-sm: 5px;
-  --hi-radius-md: 8px;
-  --hi-radius-lg: 10px;
-  --hi-radius-xl: 14px;
+  --hi-radius-xs: 2px;
+  --hi-radius-sm: 3px;
+  --hi-radius-md: 6px;
+  --hi-radius-lg: 8px;
+  --hi-radius-xl: 10px;
 
-  --hi-shadow-sm: 0 1px 2px color-mix(in srgb, var(--ue-ink) 6%, transparent);
-  --hi-shadow-md: 0 2px 8px color-mix(in srgb, var(--ue-ink) 8%, transparent);
-  --hi-shadow-lg: 0 8px 24px color-mix(in srgb, var(--ue-ink) 10%, transparent);
+  --hi-shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.04);
+  --hi-shadow-md: 0 2px 6px rgba(15, 15, 15, 0.06);
+  --hi-shadow-lg: 0 8px 24px rgba(15, 15, 15, 0.08);
 }
 
 * {
@@ -178,6 +178,14 @@ a {
 
 .mantine-Button-root {
   line-height: 1;
+}
+
+.mantine-Button-root:disabled,
+.mantine-Button-root[data-disabled] {
+  background: var(--notion-gray-100) !important;
+  border-color: var(--notion-gray-200) !important;
+  color: var(--notion-gray-500) !important;
+  opacity: 1;
 }
 
 .mantine-Button-root[data-size="xs"] {

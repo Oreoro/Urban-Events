@@ -5,7 +5,7 @@ import React, {ReactNode} from "react";
 export const showSuccess = (message: ReactNode, icon: ReactNode = <IconCheck/>) => {
     notifications.show({
         message: message,
-        color: '#0d9488', // Changed to teal color
+        color: 'primary',
         icon: icon,
         position: 'top-center',
     })

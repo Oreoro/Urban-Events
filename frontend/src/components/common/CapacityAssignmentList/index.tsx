@@ -56,7 +56,7 @@ export const CapacityAssignmentList = ({capacityAssignments, openCreateModal}: C
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'#0d9488'}
+                            color="primary"
                             onClick={() => openCreateModal()}>{t`Create Capacity Assignment`}
                         </Button>
                     </>

@@ -57,20 +57,46 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             $basketIdEncrypted = $request->input('basketId');
 
             // Neem RSA private key (provided Base64 version)
-            $base64PrivateKey = env('NEEM_DECRYPTION_KEY');
+            $base64PrivateKey = (string) env('NEEM_DECRYPTION_KEY');
 
-            $status = $this->decryptNeemValue($statusEncrypted, $base64PrivateKey);
+            if (!$statusEncrypted || !$transactionIdEncrypted || !$basketIdEncrypted) {
+                return $this->errorResponse(__('Missing Neem payment confirmation details.'), Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
 
-            if($status != 'success') {
+            if ($base64PrivateKey === '') {
+                return $this->errorResponse(__('Neem payments are not configured correctly. Please contact support.'), Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+
+            $status = strtolower(trim($this->decryptNeemValue($statusEncrypted, $base64PrivateKey)));
+
+            if ($status !== 'success') {
                 return $this->errorResponse("Order Payment Failed", Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             $transactionId = $this->decryptNeemValue($transactionIdEncrypted, $base64PrivateKey);
             $basketId = $this->decryptNeemValue($basketIdEncrypted, $base64PrivateKey);
 
-            $order = $this->orderRepository->findByShortId($basketId);
-            if(!$order) {
+            if ($basketId !== $orderShortId) {
+                return $this->errorResponse(__('Neem payment confirmation does not match this order.'), Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+
+            $order = $this->orderRepository->findFirstWhere([
+                'event_id' => $eventId,
+                'short_id' => $basketId,
+            ]);
+
+            if (!$order) {
                 return $this->errorResponse("Order Not Found", Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
+
+            if (
+                $order->getStatus() === OrderStatus::COMPLETED->name
+                && $order->getPaymentStatus() === OrderPaymentStatus::PAYMENT_RECEIVED->name
+                && $order->getPaymentProvider() === PaymentProviders::NEEM->value
+            ) {
+                return $this->jsonResponse([
+                    'success' => true
+                ]);
             }
 
             $updatedOrder = $this->updateOrderStatuses($order->getId());
@@ -118,7 +144,11 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
         $normalized = strtr($input, $replacements);
 
         // Step 2: Base64 decode
-        $decoded = base64_decode($normalized);
+        $decoded = base64_decode($normalized, true);
+
+        if ($decoded === false) {
+            throw new \RuntimeException('Failed to decode Neem value.');
+        }
 
         // Step 3: Load private key
         $pemKey = "-----BEGIN PRIVATE KEY-----\n" . chunk_split($base64Key, 64, "\n") . "-----END PRIVATE KEY-----";

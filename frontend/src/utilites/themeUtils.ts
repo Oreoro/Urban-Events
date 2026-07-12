@@ -98,9 +98,9 @@ export function getContrastColor(backgroundColor: string): string {
 }
 
 const URBAN_EVENTS_THEME = {
-    accent: '#0E7C70',
-    background: '#F6F8FA',
-    darkBackground: '#101828',
+    accent: '#097FE8',
+    background: '#F7F8FA',
+    darkBackground: '#0F172A',
 };
 
 export function getDerivedColors(mode: 'light' | 'dark'): Omit<DerivedThemeColors, 'accentContrast'> {

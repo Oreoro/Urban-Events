@@ -622,7 +622,7 @@ const OpenSourceConnectStatus = ({account}: { account: Account }) => {
             {stripeDetails?.is_connect_setup_complete ? (
                 <>
                     <Group gap="xs" mb="md">
-                        <ThemeIcon size="sm" variant="light" radius="xl" color="#0d9488">
+                        <ThemeIcon size="sm" variant="light" radius="xl" color="primary">
                             <IconCheck size={16}/>
                         </ThemeIcon>
                         <Text size="sm" fw={500}>

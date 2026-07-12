@@ -80,7 +80,7 @@ export const getUrbanEventsTheme = () => createTheme({
             h3: {fontSize: "1.2rem", lineHeight: "1.28"},
         },
     },
-    defaultRadius: "md",
+    defaultRadius: "sm",
     fontSizes: {
         xs: "0.75rem",
         sm: "0.875rem",
@@ -96,18 +96,18 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "1.6",
     },
     radius: {
-        xs: "3px",
-        sm: "4px",
-        md: "6px",
-        lg: "8px",
-        xl: "10px",
+        xs: "2px",
+        sm: "3px",
+        md: "4px",
+        lg: "6px",
+        xl: "8px",
     },
     shadows: {
-        xs: "0 1px 2px rgba(15, 23, 42, 0.05)",
-        sm: "0 1px 2px rgba(15, 23, 42, 0.06)",
-        md: "0 2px 8px rgba(15, 23, 42, 0.08)",
-        lg: "0 8px 24px rgba(15, 23, 42, 0.10)",
-        xl: "0 12px 32px rgba(15, 23, 42, 0.12)",
+        xs: "0 1px 2px rgba(15, 15, 15, 0.04)",
+        sm: "0 2px 6px rgba(15, 15, 15, 0.06)",
+        md: "0 8px 24px rgba(15, 15, 15, 0.08)",
+        lg: "0 16px 48px rgba(15, 15, 15, 0.12)",
+        xl: "0 24px 80px rgba(15, 15, 15, 0.16)",
     },
     components: {
         ActionIcon: {
@@ -117,7 +117,7 @@ export const getUrbanEventsTheme = () => createTheme({
             },
             styles: {
                 root: {
-                    transition: "background-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
+                    transition: "background-color 140ms ease, color 140ms ease, transform 140ms ease, box-shadow 140ms ease",
                 },
             },
         },
@@ -149,7 +149,7 @@ export const getUrbanEventsTheme = () => createTheme({
                     minHeight: "2.375rem",
                     lineHeight: 1,
                     paddingInline: "0.875rem",
-                    transition: "background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease",
+                    transition: "background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease",
                 },
                 label: {
                     minWidth: 0,
@@ -161,7 +161,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Card: {
             defaultProps: {
-                radius: "lg",
+                radius: "md",
                 shadow: "none",
                 withBorder: true,
             },
@@ -173,7 +173,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Checkbox: {
             defaultProps: {
-                radius: "sm",
+                radius: "xs",
                 color: "secondary",
             },
         },
@@ -222,7 +222,7 @@ export const getUrbanEventsTheme = () => createTheme({
         },
         Paper: {
             defaultProps: {
-                radius: "lg",
+                radius: "md",
             },
         },
         SegmentedControl: {

@@ -30,8 +30,35 @@ const DARK_PALETTE = {
     border: 'rgba(248, 250, 252, 0.16)',
 };
 
+const NOTION_BLUE = '#097FE8';
+const NOTION_BLUE_DARK = '#58A9F6';
+
+function isWeakOrWarmAccent(accentColor: string): boolean {
+    const rgb = hexToRgb(accentColor);
+    if (!rgb) {
+        return true;
+    }
+
+    const max = Math.max(rgb.r, rgb.g, rgb.b);
+    const min = Math.min(rgb.r, rgb.g, rgb.b);
+    const saturation = max === 0 ? 0 : (max - min) / max;
+    const luminance = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+    const isWashedOut = luminance > 226 || saturation < 0.08;
+    const isBrownish = rgb.r > rgb.b * 1.18 && rgb.g > rgb.b * 0.72 && rgb.g < rgb.r * 1.04;
+
+    return isWashedOut || isBrownish;
+}
+
+function getCheckoutAccent(accentColor: string, mode: 'light' | 'dark'): string {
+    if (isWeakOrWarmAccent(accentColor)) {
+        return mode === 'dark' ? NOTION_BLUE_DARK : NOTION_BLUE;
+    }
+
+    return accentColor;
+}
+
 /**
- * Creates a color palette that preserves the user's exact accent color.
+ * Creates a color palette from the resolved checkout accent color.
  */
 function createColorPalette(accentColor: string): MantineColorsTuple {
     const rgb = hexToRgb(accentColor);
@@ -70,28 +97,29 @@ function createColorPalette(accentColor: string): MantineColorsTuple {
 }
 
 /**
- * Creates a Mantine theme with the user's accent color.
+ * Creates a Mantine theme with a readable checkout accent color.
  */
 function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): MantineThemeOverride {
-    const primaryColors = createColorPalette(accentColor);
-    const contrastColor = getContrastColor(accentColor);
+    const resolvedAccent = getCheckoutAccent(accentColor, mode);
+    const primaryColors = createColorPalette(resolvedAccent);
+    const contrastColor = getContrastColor(resolvedAccent);
 
     return {
         primaryColor: 'primary',
         colors: {
             primary: primaryColors,
         },
-        fontFamily: "'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
+        fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         headings: {
-            fontFamily: "'Space Grotesk', 'Manrope', 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif",
-            fontWeight: '800',
+            fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontWeight: '700',
         },
         primaryShade: mode === 'dark' ? 6 : 7,
         components: {
             Button: {
                 defaultProps: {
                     color: 'primary',
-                    radius: 'md',
+                    radius: 'sm',
                 },
                 vars: (_theme: MantineTheme, props: ButtonProps) => {
                     if (props.variant === 'filled' || props.variant === undefined) {
@@ -136,26 +164,27 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
 /**
  * Creates CSS variables for checkout theming.
  * Surface, text, and border colors are FIXED based on light/dark mode.
- * Only accent color is customizable.
+ * Accent color is sanitized when event settings are too light or too warm.
  */
 function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark'): CSSVariablesResolver {
     return () => {
         const palette = mode === 'light' ? LIGHT_PALETTE : DARK_PALETTE;
-        const accentContrast = getContrastColor(accentColor);
-        const rgb = hexToRgb(accentColor);
+        const resolvedAccent = getCheckoutAccent(accentColor, mode);
+        const accentContrast = getContrastColor(resolvedAccent);
+        const rgb = hexToRgb(resolvedAccent);
 
         const accentSoft = rgb
             ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${mode === 'light' ? 0.1 : 0.2})`
-            : mode === 'light' ? 'rgba(139, 92, 246, 0.1)' : 'rgba(139, 92, 246, 0.2)';
+            : mode === 'light' ? 'rgba(9, 127, 232, 0.1)' : 'rgba(88, 169, 246, 0.2)';
 
         const accentMuted = rgb
             ? `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${mode === 'light' ? 0.6 : 0.7})`
-            : mode === 'light' ? 'rgba(139, 92, 246, 0.6)' : 'rgba(139, 92, 246, 0.7)';
+            : mode === 'light' ? 'rgba(9, 127, 232, 0.6)' : 'rgba(88, 169, 246, 0.7)';
 
         return {
             variables: {
-                // Accent colors (customizable)
-                '--checkout-accent': accentColor,
+                // Accent colors
+                '--checkout-accent': resolvedAccent,
                 '--checkout-accent-contrast': accentContrast,
                 '--checkout-accent-soft': accentSoft,
                 '--checkout-accent-muted': accentMuted,
