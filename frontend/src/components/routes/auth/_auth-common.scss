@@ -68,7 +68,7 @@
     border: 1.5px solid var(--hi-color-gray-2);
     padding: 0.75rem 1rem;
     font-size: 0.9375rem;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
     background: var(--hi-color-gray);
 
     @include mixins.respond-below(sm) {
@@ -107,7 +107,7 @@
     border-radius: var(--hi-radius-lg);
     font-weight: 600;
     font-size: 0.9375rem;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
     border: none;
 
     @if $margin-top != 0 {
@@ -120,11 +120,11 @@
 
     &:hover:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px oklch(0 0 0 / 0.15);
     }
 
     &:active:not(:disabled) {
-      transform: translateY(0);
+      transform: scale(0.96);
     }
   }
 }

@@ -39,7 +39,7 @@ $transition-fast: 140ms ease;
   font-weight: 650;
   color: var(--checkout-text-secondary, #6B7280);
   letter-spacing: 0;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast, box-shadow $transition-fast;
+  transition: background-color $transition-fast, border-color $transition-fast, box-shadow $transition-fast, color $transition-fast, transform $transition-fast;
 
   &:hover {
     border-color: var(--checkout-accent-muted, rgba(9, 127, 232, 0.6));
@@ -52,6 +52,10 @@ $transition-fast: 140ms ease;
     background: var(--checkout-accent-soft, var(--mantine-primary-color-light));
     color: var(--checkout-accent, var(--mantine-primary-color-filled));
     box-shadow: 0 0 0 1px var(--checkout-accent-soft, rgba(9, 127, 232, 0.1));
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 }
 
@@ -69,7 +73,7 @@ $transition-fast: 140ms ease;
   font-size: 15px;
   letter-spacing: 0;
   box-shadow: none;
-  transition: background-color $transition-fast, box-shadow $transition-fast;
+  transition: background-color $transition-fast, box-shadow $transition-fast, transform $transition-fast;
 
   &:hover:not(:disabled) {
     box-shadow: 0 2px 8px var(--checkout-accent-soft, rgba(9, 127, 232, 0.16));
@@ -78,6 +82,7 @@ $transition-fast: 140ms ease;
 
   &:active:not(:disabled) {
     box-shadow: none;
+    transform: scale(0.96);
   }
 }
 

@@ -171,10 +171,10 @@
     padding: 28px;
     border: 1px solid var(--mantine-color-gray-2);
     border-radius: 12px;
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
     &:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 20px oklch(0 0 0 / 0.06);
       transform: translateY(-2px);
     }
 
@@ -216,7 +216,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 
   &:hover {
     background-color: var(--mantine-color-green-2);

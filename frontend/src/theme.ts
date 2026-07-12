@@ -103,11 +103,11 @@ export const getUrbanEventsTheme = () => createTheme({
         xl: "8px",
     },
     shadows: {
-        xs: "0 1px 2px rgba(15, 15, 15, 0.04)",
-        sm: "0 2px 6px rgba(15, 15, 15, 0.06)",
-        md: "0 8px 24px rgba(15, 15, 15, 0.08)",
-        lg: "0 16px 48px rgba(15, 15, 15, 0.12)",
-        xl: "0 24px 80px rgba(15, 15, 15, 0.16)",
+        xs: "0 1px 2px oklch(0 0 0 / 0.04)",
+        sm: "0 2px 6px oklch(0 0 0 / 0.06)",
+        md: "0 8px 24px oklch(0 0 0 / 0.08)",
+        lg: "0 16px 48px oklch(0 0 0 / 0.12)",
+        xl: "0 24px 80px oklch(0 0 0 / 0.16)",
     },
     components: {
         ActionIcon: {

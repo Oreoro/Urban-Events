@@ -185,7 +185,7 @@
     right: -2px;
     top: 50%;
     transform: translateY(-50%);
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
     z-index: 5;
     flex-shrink: 0;
 

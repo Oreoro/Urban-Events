@@ -34,7 +34,7 @@ $transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
   background-color: var(--checkout-border, #E5E7EB);
   color: var(--checkout-text-secondary, #6B7280);
-  transition: all $transition-fast;
+  transition: background-color $transition-fast, color $transition-fast, transform $transition-fast;
 
   &.active {
     background-color: var(--checkout-accent, var(--mantine-primary-color-filled));

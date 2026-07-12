@@ -8,7 +8,7 @@
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   height: 100vh;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-columns 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     grid-template-areas:
@@ -41,8 +41,8 @@
   .sidebarOpen {
     width: 28px;
     height: 28px;
-    background: var(--ue-plum);
-    color: var(--hi-shell-text);
+    background: var(--hi-primary);
+    color: var(--hi-color-white);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -53,7 +53,7 @@
     transform: translateY(-50%);
     box-shadow: var(--hi-shadow-sm);
     z-index: 5;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
 
     &:hover {
       transform: translateY(-50%) scale(1.05);
