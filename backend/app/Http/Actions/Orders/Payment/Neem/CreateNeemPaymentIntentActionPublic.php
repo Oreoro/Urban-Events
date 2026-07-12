@@ -33,14 +33,23 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
             $neemBaseUrl = rtrim((string) env('NEEM_BASE_URL'), '/');
             $neemBaseToken = (string) env('NEEM_BASE_TOKEN');
             $neemPartnerId = (string) env('NEEM_PARTNER_ID');
+            $neemMobileNumber = $this->normalizeNeemMobileNumber(
+                (string) env('NEEM_PLACEHOLDER_MOBILE_NUMBER', '923001234567')
+            );
 
-            if ($neemBaseUrl === '' || $neemBaseToken === '' || $neemPartnerId === '') {
+            if (
+                $neemBaseUrl === ''
+                || $neemBaseToken === ''
+                || $neemPartnerId === ''
+                || !$this->isValidNeemMobileNumber($neemMobileNumber)
+            ) {
                 $this->logger->error('Neem payment configuration is incomplete', [
                     'event_id' => $eventId,
                     'order_short_id' => $orderShortId,
                     'has_base_url' => $neemBaseUrl !== '',
                     'has_base_token' => $neemBaseToken !== '',
                     'has_partner_id' => $neemPartnerId !== '',
+                    'has_valid_mobile_number' => $this->isValidNeemMobileNumber($neemMobileNumber),
                 ]);
 
                 return $this->errorResponse(
@@ -103,7 +112,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 "Data" => [
                     "PODBill" => [
                         "BasketId" => $orderShortId,
-                        "MobileNumber" => "03114455788",
+                        "MobileNumber" => $neemMobileNumber,
                         "Email" => $order->getEmail(),
                         "FullName" => $order->getFullName(),
                         "InstructedAmount" => [
@@ -185,5 +194,25 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 Response::HTTP_UNPROCESSABLE_ENTITY,
             );
         }
+    }
+
+    private function normalizeNeemMobileNumber(string $mobileNumber): string
+    {
+        $digits = preg_replace('/\D+/', '', $mobileNumber) ?? '';
+
+        if (str_starts_with($digits, '00')) {
+            $digits = substr($digits, 2);
+        }
+
+        if (str_starts_with($digits, '0')) {
+            $digits = '92' . substr($digits, 1);
+        }
+
+        return $digits;
+    }
+
+    private function isValidNeemMobileNumber(string $mobileNumber): bool
+    {
+        return preg_match('/^92\d{10}$/', $mobileNumber) === 1;
     }
 }
