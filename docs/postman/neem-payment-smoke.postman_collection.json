@@ -1,0 +1,298 @@
+{
+  "info": {
+    "_postman_id": "8ec1311e-25ce-44b5-9f33-4a55f8e90f51",
+    "name": "Urban Events - Neem Payment Smoke Tests",
+    "description": "Minimal Neem payment smoke tests for Urban Events. Set collection variables before running. Do not commit real Neem credentials.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Neem OAuth Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP status is 2xx', function () {",
+              "  pm.expect(pm.response.code).to.be.within(200, 299);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "pm.test('access_token is returned', function () {",
+              "  pm.expect(json.access_token, JSON.stringify(json)).to.be.a('string').and.not.empty;",
+              "});",
+              "",
+              "if (json.access_token) {",
+              "  pm.collectionVariables.set('neem_access_token', json.access_token);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic {{neem_base_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{neem_base_url}}/v1/oauth2/token",
+          "host": [
+            "{{neem_base_url}}"
+          ],
+          "path": [
+            "v1",
+            "oauth2",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Neem POD Initiate",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP status is 2xx', function () {",
+              "  pm.expect(pm.response.code).to.be.within(200, 299);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "const podBill = json && json.Data && json.Data.PODBill ? json.Data.PODBill : {};",
+              "",
+              "pm.test('Neem status is N100', function () {",
+              "  pm.expect(podBill.StatusCode, JSON.stringify(json)).to.eql('N100');",
+              "});",
+              "",
+              "pm.test('PaymentUrl is returned', function () {",
+              "  pm.expect(podBill.PaymentUrl, JSON.stringify(json)).to.be.a('string').and.not.empty;",
+              "});",
+              "",
+              "if (podBill.PaymentUrl) {",
+              "  pm.collectionVariables.set('neem_payment_url', podBill.PaymentUrl);",
+              "}",
+              "",
+              "console.log('Neem status:', podBill.StatusCode, podBill.StatusMessage || podBill.Message || podBill.Description);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{neem_access_token}}",
+            "type": "text"
+          },
+          {
+            "key": "X-Neem-Partner-Id",
+            "value": "{{neem_partner_id}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"Data\": {\n    \"PODBill\": {\n      \"BasketId\": \"postman_test_{{$timestamp}}\",\n      \"MobileNumber\": \"{{buyer_mobile_number}}\",\n      \"Email\": \"{{buyer_email}}\",\n      \"FullName\": \"{{buyer_full_name}}\",\n      \"InstructedAmount\": {\n        \"Amount\": \"{{amount}}\",\n        \"Currency\": \"{{currency}}\"\n      },\n      \"Scheme\": \"POD\",\n      \"callBackUrl\": \"{{callback_url}}\"\n    }\n  },\n  \"ExtendedProperties\": []\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{neem_base_url}}/v2/pod/initiate",
+          "host": [
+            "{{neem_base_url}}"
+          ],
+          "path": [
+            "v2",
+            "pod",
+            "initiate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Urban Events Neem Generate Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Urban Events returns success', function () {",
+              "  pm.expect(pm.response.code, pm.response.text()).to.be.within(200, 299);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "pm.test('redirect_url is returned', function () {",
+              "  pm.expect(json.redirect_url, JSON.stringify(json)).to.be.a('string').and.not.empty;",
+              "});",
+              "",
+              "if (json.redirect_url) {",
+              "  pm.collectionVariables.set('urban_events_neem_redirect_url', json.redirect_url);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{app_api_base_url}}/public/events/{{event_id}}/order/{{order_short_id}}/neem/generate_token",
+          "host": [
+            "{{app_api_base_url}}"
+          ],
+          "path": [
+            "public",
+            "events",
+            "{{event_id}}",
+            "order",
+            "{{order_short_id}}",
+            "neem",
+            "generate_token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "app_api_base_url",
+      "value": "https://app.urbanevents.pk/api",
+      "type": "string"
+    },
+    {
+      "key": "event_id",
+      "value": "58",
+      "type": "string"
+    },
+    {
+      "key": "order_short_id",
+      "value": "o_REPLACE_WITH_FRESH_RESERVED_ORDER",
+      "type": "string"
+    },
+    {
+      "key": "neem_base_url",
+      "value": "https://REPLACE_WITH_NEEM_SANDBOX_OR_PRODUCTION_BASE_URL",
+      "type": "string"
+    },
+    {
+      "key": "neem_base_token",
+      "value": "REPLACE_WITH_BASE64_CLIENT_CREDENTIALS",
+      "type": "string"
+    },
+    {
+      "key": "neem_partner_id",
+      "value": "REPLACE_WITH_NEEM_PARTNER_ID",
+      "type": "string"
+    },
+    {
+      "key": "neem_access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "neem_payment_url",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "urban_events_neem_redirect_url",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "buyer_mobile_number",
+      "value": "923001234567",
+      "type": "string"
+    },
+    {
+      "key": "buyer_email",
+      "value": "postman-neem-test@example.com",
+      "type": "string"
+    },
+    {
+      "key": "buyer_full_name",
+      "value": "Postman Neem Test",
+      "type": "string"
+    },
+    {
+      "key": "amount",
+      "value": "5350",
+      "type": "string"
+    },
+    {
+      "key": "currency",
+      "value": "PKR",
+      "type": "string"
+    },
+    {
+      "key": "callback_url",
+      "value": "https://app.urbanevents.pk/checkout/58/o_REPLACE_WITH_FRESH_RESERVED_ORDER/payment_return",
+      "type": "string"
+    }
+  ]
+}
