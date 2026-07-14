@@ -116,7 +116,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                         "Email" => $order->getEmail(),
                         "FullName" => $order->getFullName(),
                         "InstructedAmount" => [
-                            "Amount" => number_format((float) $order->getTotalGross(), 2, '.', ''),
+                            "Amount" => $this->formatNeemAmount((float) $order->getTotalGross()),
                             "Currency" => $order->getCurrency(),
                         ],
                         "Scheme" => "POD",
@@ -194,6 +194,13 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 Response::HTTP_UNPROCESSABLE_ENTITY,
             );
         }
+    }
+
+    private function formatNeemAmount(float $amount): string
+    {
+        $formattedAmount = number_format($amount, 2, '.', '');
+
+        return rtrim(rtrim($formattedAmount, '0'), '.');
     }
 
     private function normalizeNeemMobileNumber(string $mobileNumber): string

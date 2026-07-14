@@ -21,6 +21,15 @@ class CreateNeemPaymentIntentActionPublicTest extends TestCase
         $this->assertSame($isValid, $this->callPrivateMethod($action, 'isValidNeemMobileNumber', [$normalized]));
     }
 
+    #[DataProvider('amountProvider')]
+    public function test_neem_amount_formatting(float $input, string $expected): void
+    {
+        $action = (new ReflectionClass(CreateNeemPaymentIntentActionPublic::class))
+            ->newInstanceWithoutConstructor();
+
+        $this->assertSame($expected, $this->callPrivateMethod($action, 'formatNeemAmount', [$input]));
+    }
+
     public static function mobileNumberProvider(): array
     {
         return [
@@ -31,6 +40,16 @@ class CreateNeemPaymentIntentActionPublicTest extends TestCase
             'empty value' => ['', '', false],
             'too short' => ['0300123', '92300123', false],
             'non-pakistan country code' => ['12025550123', '12025550123', false],
+        ];
+    }
+
+    public static function amountProvider(): array
+    {
+        return [
+            'whole rupee amount' => [5350.00, '5350'],
+            'fractional amount' => [2232.28, '2232.28'],
+            'single trailing decimal' => [100.50, '100.5'],
+            'zero amount' => [0.00, '0'],
         ];
     }
 
