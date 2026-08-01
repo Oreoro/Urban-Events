@@ -34,12 +34,18 @@ through the Urban Events design system rather than adopting upstream branding.
 - Composer production dependency audit reports zero known advisories after
   patching the affected document, HTTP, expression-parser, and spreadsheet
   packages.
+- Azure Blob storage uses the maintained `azure-oss/storage-blob-laravel`
+  provider. The obsolete Matthew Daly, League Azure, and Microsoft Azure SDK
+  adapters have been removed, and package discovery resolves only the maintained
+  provider.
 - Locale extraction and compilation pass.
 - Backend targeted integration tests pass: 48 tests / 68 assertions.
 - The expanded v2 unit regression set passes: 187 tests / 258 assertions (19
   upstream tests are still marked risky because they contain no assertions).
-- Backend unit suite executes: 974 tests / 2,183 assertions; the local
-  `ext-intl` and upstream email-template exceptions are recorded below.
+- The complete backend unit suite passes under PHP 8.5 with `ext-intl`: 974
+  tests / 2,266 assertions, with no failures or errors. Twenty-two upstream
+  tests remain marked risky because they contain no PHPUnit assertions, and one
+  test is skipped.
 - API route audit confirms v2 occurrence, location, announcement, account
   deletion, public occurrence, Stripe, offline, and Neem routes.
 - The production SSR auth shell was visually checked at 1280x720 and 390x844.
@@ -47,22 +53,23 @@ through the Urban Events design system rather than adopting upstream branding.
   no-horizontal-overflow behavior are intact, with no browser console errors.
 - SSR hydration is stable: translated feature labels are resolved after locale
   activation instead of leaking Lingui message IDs into the server markup.
+- The product quantity selector no longer imports the complete Lodash bundle;
+  it uses direct `get` and `debounce` modules and cancels pending updates when
+  unmounted.
 
 Known upstream-alpha debt:
 
 - ESLint still reports upstream-alpha localization, explicit-`any`, dependency,
   and assertion debt. Rules-of-Hooks violations have been eliminated.
-- The full backend unit suite currently reports 13 errors and one related failure
-  when local PHP lacks `ext-intl`; three offline-email rendering expectations
-  also fail unchanged on upstream v2. CI installs `ext-intl` on PHP 8.3-8.5.
-- Three legacy Azure adapter packages are abandoned. They remain temporarily for
-  compatibility while `azure-oss/storage-blob-laravel` is already available;
-  their eventual removal needs a storage migration and regression test.
-- Production bundles warn about two chunks above 500 kB.
+- Twenty-two backend tests rely only on mock expectations and are reported as
+  risky by PHPUnit because they do not contain PHPUnit assertions.
+- The largest production JavaScript entry chunk remains above Vite's 500 kB
+  advisory threshold and should be split after route-level profiling.
 
 The lightweight `node scripts/verify-urban-v2.mjs` check and the frontend CI
 workflow prevent future upstream syncs from silently dropping the Urban name,
-PKR/Karachi defaults, Neem routes/provider UI, brand assets, or occurrence schema.
+PKR/Karachi defaults, Neem routes/provider UI, brand assets, occurrence schema,
+or the maintained Azure storage driver.
 
 These are stabilization items, not reasons to bypass the release gates below.
 
@@ -94,7 +101,8 @@ Production release requires all of the following:
 - A reviewed backup and restore drill.
 - Clean staging migration and occurrence-count reconciliation.
 - Neem sandbox transaction and payment-return confirmation.
-- A deliberate migration plan for the abandoned legacy Azure storage adapters.
+- An Azure Blob read/write/upload smoke test with the production-equivalent
+  connection configuration.
 - A rollback window with the old application image and database snapshot retained.
 
 If a post-migration rollback is needed, restore both the application and the

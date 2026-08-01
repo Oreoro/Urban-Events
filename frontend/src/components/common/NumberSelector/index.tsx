@@ -1,13 +1,14 @@
 import {ActionIcon, NumberInput, NumberInputHandlers, Select, TextInputProps} from "@mantine/core";
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {UseFormReturnType} from "@mantine/form";
 import {IconMinus, IconPlus} from "@tabler/icons-react";
 import classes from './NumberSelector.module.scss';
 import classNames from "classnames";
-import _ from "lodash";
+import debounce from "lodash/debounce";
+import get from "lodash/get";
 
 interface NumberSelectorProps extends TextInputProps {
-    formInstance: UseFormReturnType<any>;
+    formInstance: UseFormReturnType<Record<string, unknown>>;
     fieldName: string,
     min?: number;
     max?: number;
@@ -17,7 +18,8 @@ interface NumberSelectorProps extends TextInputProps {
 export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}: NumberSelectorProps) => {
     const handlers = useRef<NumberInputHandlers>(null);
     // Get initial value from form, defaulting to 0 for consistency with existing behavior
-    const initialValue = _.get(formInstance.values, fieldName) || 0;
+    const initialFormValue = get(formInstance.values, fieldName);
+    const initialValue = typeof initialFormValue === 'number' ? initialFormValue : 0;
     const [value, setValue] = useState<number>(initialValue);
 
     const minValue = min || 0;
@@ -33,8 +35,8 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
     });
 
     // Debounce form updates to prevent rapid state changes
-    const updateForm = useCallback(
-        _.debounce((newValue: number) => {
+    const updateForm = useMemo(
+        () => debounce((newValue: number) => {
             formInstance.setFieldValue(fieldName, newValue);
         }, 10),
         [formInstance, fieldName]
@@ -44,11 +46,13 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
         updateForm(value);
     }, [value, updateForm]);
 
+    useEffect(() => () => updateForm.cancel(), [updateForm]);
+
     useEffect(() => {
         // to handle application promo code after updating the quantity
-        const formValue = _.get(formInstance.values, fieldName);
-        if (formValue !== undefined && formValue !== value) {
-            setValue(formValue);
+        const formValue = get(formInstance.values, fieldName);
+        if (typeof formValue === 'number') {
+            setValue(currentValue => formValue === currentValue ? currentValue : formValue);
         }
     }, [formInstance.values, fieldName]);
 
