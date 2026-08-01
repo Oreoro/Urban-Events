@@ -55,7 +55,7 @@ class CreateNeemPaymentIntentActionPublicTest extends TestCase
 
     private function callPrivateMethod(object $object, string $method, array $args): mixed
     {
-        $reflectionMethod = new ReflectionClass($object)->getMethod($method);
+        $reflectionMethod = (new ReflectionClass($object))->getMethod($method);
 
         return $reflectionMethod->invokeArgs($object, $args);
     }
