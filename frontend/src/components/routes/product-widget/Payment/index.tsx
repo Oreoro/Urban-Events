@@ -27,6 +27,7 @@ const Payment = () => {
     const {data: event, isFetched: isEventFetched} = useGetEventPublic(eventId);
     const {data: order, isFetched: isOrderFetched} = useGetOrderPublic(eventId, orderShortId, ['event']);
     const isLoading = !isOrderFetched;
+    const checkoutEvent = order?.event || event;
     const [isPaymentLoading, setIsPaymentLoading] = useState(false);
     const [activePaymentMethod, setActivePaymentMethod] = useState<'NEEM' | 'STRIPE' | 'OFFLINE' | null>(null);
     const [submitHandler, setSubmitHandler] = useState<(() => Promise<void>) | null>(null);
@@ -98,8 +99,8 @@ const Payment = () => {
     return (
         <>
             <CheckoutContent>
-                {(event && order) && (
-                    <InlineOrderSummary event={event} order={order} defaultExpanded={false}/>
+                {(checkoutEvent && order) && (
+                    <InlineOrderSummary event={checkoutEvent} order={order} defaultExpanded={false}/>
                 )}
                 {isNeemEnabled && (
                     <div style={{display: activePaymentMethod === 'NEEM' ? 'block' : 'none'}}>
@@ -115,7 +116,7 @@ const Payment = () => {
 
                 {isOfflineEnabled && (
                     <div style={{display: activePaymentMethod === 'OFFLINE' ? 'block' : 'none'}}>
-                        <OfflinePaymentMethod event={event as Event}/>
+                        <OfflinePaymentMethod event={checkoutEvent as Event}/>
                     </div>
                 )}
 
