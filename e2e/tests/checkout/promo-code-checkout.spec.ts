@@ -25,7 +25,7 @@ test.describe('promo code checkout', () => {
 
       const productRow = page.locator('.hi-product-row').filter({ hasText: event.productTitle });
       await expect(productRow.getByText('Free')).toBeVisible();
-      await expect(productRow.getByText('$25.00')).toBeVisible();
+      await expect(productRow.getByText('PKR 25.00')).toBeVisible();
 
       await checkout.setQuantityForProduct(event.productTitle, 1);
       await checkout.continueToCheckout();

@@ -22,7 +22,7 @@ test.describe('orders management', () => {
     await expect(drawer.getByText(`${order.buyerFirstName} ${order.buyerLastName}`).first()).toBeVisible();
     await expect(drawer.getByText('Items')).toBeVisible();
     await expect(drawer.getByText('Order Summary')).toBeVisible();
-    await expect(drawer.getByText('$0.00').first()).toBeVisible();
+    await expect(drawer.getByText('PKR 0.00').first()).toBeVisible();
   });
 
   test('an organizer resends the order confirmation email', async ({ authedPage, api, account, publicApi, mailpit }) => {

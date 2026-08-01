@@ -16,7 +16,7 @@ test.describe('product creation', () => {
     await products.submitCreate();
 
     await expect(authedPage.getByRole('heading', { name: title })).toBeVisible();
-    await expect(authedPage.getByText('$30.00', { exact: true })).toBeVisible();
+    await expect(authedPage.getByText('PKR 30.00', { exact: true })).toBeVisible();
   });
 
   test('an organizer creates a donation product and the list flags it as a donation', async ({ authedPage, api, account }) => {
