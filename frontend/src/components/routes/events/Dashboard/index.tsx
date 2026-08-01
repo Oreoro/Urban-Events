@@ -22,7 +22,7 @@ import {Navigate, useNavigate, useParams} from "react-router";
 import {CreateOrganizerModal} from "../../../modals/CreateOrganizerModal";
 import {SwitchOrganizerModal} from "../../../modals/SwitchOrganizerModal";
 import classes from "./Dashboard.module.scss";
-import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
+import {useEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
 import {EventsDashboardStatusButtons} from "../../../common/EventsDashboardStatusButtons";
 import {NoEventsBlankSlate} from "../../../common/NoEventsBlankSlate";
 import {useState} from "react";
@@ -52,7 +52,7 @@ export function Dashboard() {
         data: eventData,
         isFetched: isEventsFetched,
         isFetching: isEventsFetching,
-    } = useGetEvents(getEventQueryFilters(searchParams) as QueryFilters);
+    } = useGetEvents(useEventQueryFilters(searchParams) as QueryFilters);
     const organizersQuery = useGetOrganizers();
     const pagination = eventData?.meta;
     const events = eventData?.data;

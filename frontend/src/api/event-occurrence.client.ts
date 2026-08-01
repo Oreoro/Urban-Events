@@ -56,7 +56,7 @@ export const eventOccurrenceClient = {
         return response.data;
     },
 
-    cancel: async (eventId: IdParam, occurrenceId: IdParam, refundOrders: boolean = false) => {
+    cancel: async (eventId: IdParam, occurrenceId: IdParam, refundOrders = false) => {
         const response = await api.post<GenericDataResponse<EventOccurrence>>(
             `events/${eventId}/occurrences/${occurrenceId}/cancel`,
             {refund_orders: refundOrders}

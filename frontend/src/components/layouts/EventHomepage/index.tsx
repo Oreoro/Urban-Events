@@ -57,6 +57,10 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     const {consentPending, consentGranted, onConsent} = useOrganizerTrackingPixels(
         event?.organizer?.settings?.tracking_pixels
     );
+    const rawThemeSettings = event?.settings?.homepage_theme_settings;
+    const themeSettings = validateThemeSettings(rawThemeSettings);
+    const cssVars = computeThemeVariables(themeSettings);
+    const backgroundType = themeSettings.background_type;
 
     useEffect(() => {
         if (event && consentGranted && hasActivePixels()) {
@@ -103,6 +107,10 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
         };
     }, []);
 
+    useEffect(() => {
+        ensureHomepageFontLoaded(themeSettings.font_family);
+    }, [themeSettings.font_family]);
+
     const scrollToTickets = () => {
         ticketsSectionRef.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
     };
@@ -110,15 +118,6 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     if (!event) {
         return <EventNotAvailable/>;
     }
-
-    const rawThemeSettings = event?.settings?.homepage_theme_settings;
-    const themeSettings = validateThemeSettings(rawThemeSettings);
-    const cssVars = computeThemeVariables(themeSettings);
-    const backgroundType = themeSettings.background_type;
-
-    useEffect(() => {
-        ensureHomepageFontLoaded(themeSettings.font_family);
-    }, [themeSettings.font_family]);
 
     const themeStyles = {
         '--event-bg-color': themeSettings.background,

@@ -51,7 +51,7 @@ export const useFilterQueryParamSync = (): [
     );
 
     const updateSearchParams = useCallback(
-        (updates: Partial<QueryFilters>, replace: boolean = false) => {
+        (updates: Partial<QueryFilters>, replace = false) => {
             const newParams = replace ? new URLSearchParams() : new URLSearchParams(searchParams);
 
             // Clear existing filter fields if replacing

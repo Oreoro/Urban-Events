@@ -72,7 +72,7 @@ export const formatDateForUser = (
     return formatDateWithLocale(date, formatType, tz, userLocaleFromSettings);
 };
 
-export const prettyDate = (date: string, tz: string, showTimezoneOffset: boolean = false, locale?: string): string => {
+export const prettyDate = (date: string, tz: string, showTimezoneOffset = false, locale?: string): string => {
     const formatted = formatDateWithLocale(date, 'shortDateTime', tz, locale);
 
     if (showTimezoneOffset) {

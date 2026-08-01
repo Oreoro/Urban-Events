@@ -9,26 +9,28 @@ import {getConfig} from "../../../utilites/config.ts";
 import {isHiEvents} from "../../../utilites/helpers.ts";
 import {showInfo} from "../../../utilites/notifications.tsx";
 
-const tickerFeatures = [
-    t`Recurring events`,
-    t`Local Neem payments`,
-    t`Custom branding`,
-    t`QR code check-in`,
-    t`Waitlist`,
-    t`Promo codes`,
-    t`Real-time analytics`,
-    t`Email & scheduled messages`,
-    t`Embeddable widget`,
-    t`Affiliate program`,
-    t`Team collaboration`,
-    t`Custom questions`,
-    t`Webhook integrations`,
-    t`Full data ownership`,
-    t`Multiple ticket types`,
-    t`Capacity management`,
-];
-
 const FeaturePanel = () => {
+    // Resolve translated labels during render, after the SSR locale has been
+    // activated. Evaluating `t` at module load time renders message IDs on the
+    // server and translated copy in the browser, causing a hydration mismatch.
+    const tickerFeatures = [
+        t`Recurring events`,
+        t`Local Neem payments`,
+        t`Custom branding`,
+        t`QR code check-in`,
+        t`Waitlist`,
+        t`Promo codes`,
+        t`Real-time analytics`,
+        t`Email & scheduled messages`,
+        t`Embeddable widget`,
+        t`Affiliate program`,
+        t`Team collaboration`,
+        t`Custom questions`,
+        t`Webhook integrations`,
+        t`Full data ownership`,
+        t`Multiple ticket types`,
+        t`Capacity management`,
+    ];
     const tickerLoop = [...tickerFeatures, ...tickerFeatures];
 
     return (

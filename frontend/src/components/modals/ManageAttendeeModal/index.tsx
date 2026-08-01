@@ -84,7 +84,7 @@ export const ManageAttendeeModal = ({onClose, attendeeId}: ManageAttendeeModalPr
         if (!form.values.product_id) {
             return;
         }
-        let productPriceId = event?.product_categories
+        const productPriceId = event?.product_categories
             ?.flatMap(category => category.products)
             .find(product => String(product?.id) === String(form.values.product_id))?.prices?.[0]?.id;
 

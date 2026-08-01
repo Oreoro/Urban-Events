@@ -1,7 +1,16 @@
 import {useGetEvent} from "../../../../queries/useGetEvent.ts";
 import {useGetMe} from "../../../../queries/useGetMe.ts";
 import {t} from "@lingui/macro";
-import {IdParam, LocationType} from "../../../../types.ts";
+import {
+    Attendee,
+    Event,
+    EventLocation,
+    IdParam,
+    LocationType,
+    Product,
+    ProductPriceType,
+    ProductType
+} from "../../../../types.ts";
 import {AttendeeTicket} from "../../../common/AttendeeTicket";
 import {resolveEventLocation} from "../../../../utilites/effectiveLocation.ts";
 import classes from './TicketPreview.module.scss';
@@ -35,23 +44,18 @@ export const TicketPreview = ({settings, eventId, logoUrl}: TicketPreviewProps) 
         );
     }
 
-    const mockProduct = {
+    const mockProduct: Product & {id: number} = {
         id: 1,
         title: t`General Admission`,
         price: 2500,
-        type: "TICKET" as const,
-        sale_start_date: null,
-        sale_end_date: null,
-        max_per_order: null,
-        min_per_order: null,
-        quantity_available: null,
+        type: ProductPriceType.Paid,
+        product_type: ProductType.Ticket,
         is_hidden: false,
-        sort_order: 1,
         description: "",
         is_hidden_without_promo_code: false
     };
 
-    const mockAttendee = {
+    const mockAttendee: Attendee = {
         id: 1,
         public_id: "PREVIEW12345",
         short_id: "P1234",
@@ -59,18 +63,10 @@ export const TicketPreview = ({settings, eventId, logoUrl}: TicketPreviewProps) 
         last_name: user.last_name || "Doe",
         email: user.email || "john.doe@example.com",
         status: "ACTIVE" as const,
-        checked_in_at: null,
         product_id: mockProduct.id,
         product: mockProduct,
         product_price_id: 1,
         order_id: 1,
-        order: {
-            id: 1,
-            short_id: "ORD123",
-            created_at: new Date().toISOString(),
-            total_gross: 2500,
-            currency: event.currency || "USD",
-        }
     };
 
     const fallbackLocationDetails = {
@@ -78,34 +74,35 @@ export const TicketPreview = ({settings, eventId, logoUrl}: TicketPreviewProps) 
         address_line_1: t`123 Sample Street`,
     };
     const resolved = resolveEventLocation(event, null);
-    const resolvedEventLocation = resolved?.type === LocationType.InPerson && resolved.location
+    const resolvedEventLocation: EventLocation = resolved?.type === LocationType.InPerson && resolved.location
         ? resolved
         : {
             id: 0,
             type: LocationType.InPerson,
             location: {name: fallbackLocationDetails.venue_name, structured_address: fallbackLocationDetails},
         };
-    const eventWithDesignSettings = {
+    const eventWithDesignSettings: Event = {
         ...event,
         event_location: resolvedEventLocation,
-        settings: {
+        settings: event.settings ? {
             ...event.settings,
             ticket_design_settings: {
                 accent_color: settings.accent_color,
-                logo_image_id: settings.logo_image_id,
-                footer_text: settings.footer_text,
+                logo_image_id: settings.logo_image_id ?? undefined,
+                footer_text: settings.footer_text ?? undefined,
                 date_display_mode: settings.date_display_mode,
                 enabled: settings.enabled
             },
-        },
+        } : undefined,
         images: logoUrl && settings.logo_image_id ? [
             ...((event.images || []).filter(img => img.type !== 'TICKET_LOGO')),
             {
                 id: settings.logo_image_id,
                 type: 'TICKET_LOGO' as const,
                 url: logoUrl,
-                size_bytes: 0,
-                filename: ''
+                size: 0,
+                file_name: '',
+                mime_type: 'image/*'
             }
         ] : (event.images || []).filter(img => img.type !== 'TICKET_LOGO')
     };

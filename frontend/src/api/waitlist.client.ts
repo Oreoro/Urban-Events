@@ -33,7 +33,7 @@ export const waitlistClient = {
         return response.data;
     },
 
-    offerNext: async (eventId: IdParam, productPriceId: number, quantity: number = 1, eventOccurrenceId?: IdParam | null) => {
+    offerNext: async (eventId: IdParam, productPriceId: number, quantity = 1, eventOccurrenceId?: IdParam | null) => {
         const response = await api.post<GenericDataResponse<WaitlistEntry[]>>(
             `events/${eventId}/waitlist/offer-next`,
             {product_price_id: productPriceId, quantity, event_occurrence_id: eventOccurrenceId},

@@ -21,7 +21,7 @@ import {computeDelta, periodPresetToDateRange, previousPeriodRange} from "../../
 import {useGetOrganizer} from "../../../../queries/useGetOrganizer.ts";
 import {currenciesMap} from "../../../../../data/currencies.ts";
 import {CreateEventModal} from "../../../modals/CreateEventModal";
-import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
+import {useEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
 import {EventCard} from "../../../common/EventCard";
 
 type HeroTab = 'sales' | 'orders' | 'attendees';
@@ -86,7 +86,7 @@ export const OrganizerDashboard = () => {
     });
     const recentOrders = ordersQuery.data?.data;
 
-    const {data: eventsResponse} = useGetEvents(getEventQueryFilters({}) as QueryFilters);
+    const {data: eventsResponse} = useGetEvents(useEventQueryFilters({}) as QueryFilters);
     const recentEvents = eventsResponse?.data?.slice(0, 10);
 
     const isStatsLoading = organizerStatsQuery.isLoading;

@@ -67,6 +67,7 @@ export const OrganizerForm = ({form}: { form: UseFormReturnType<Partial<Organize
 
 export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) => {
     const organizerMutation = useCreateOrganizer();
+    const formErrorHandler = useFormErrorResponseHandler();
     const {data: account, isFetched: accountFetched} = useGetAccount();
     const {data: me, isFetched: meFetched} = useGetMe();
     const form = useForm({
@@ -89,7 +90,7 @@ export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) =
                 }
             },
             onError: (error: any) => {
-                useFormErrorResponseHandler()(form, error);
+                formErrorHandler(form, error);
             }
         });
     }
@@ -129,6 +130,19 @@ export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) =
                     >
                         {organizerMutation.isPending ? t`Creating Organizer...` : t`Continue Setup`}
                     </Button>
+                    {onCancel && (
+                        <Button
+                            type="button"
+                            variant="subtle"
+                            fullWidth
+                            size="md"
+                            onClick={onCancel}
+                            disabled={organizerMutation.isPending}
+                            mt="sm"
+                        >
+                            {t`Cancel`}
+                        </Button>
+                    )}
                 </fieldset>
             </form>
         </LoadingContainer>

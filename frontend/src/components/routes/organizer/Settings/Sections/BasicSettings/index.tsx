@@ -19,6 +19,7 @@ const Settings = () => {
     const {organizerId} = useParams();
     const {data: organizer} = useGetOrganizer(organizerId);
     const organizerMutation = useUpdateOrganizer();
+    const formErrorHandler = useFormErrorResponseHandler();
     const form = useForm({
         initialValues: {
             name: '',
@@ -40,7 +41,7 @@ const Settings = () => {
                 showSuccess(t`Successfully Updated Organizer`);
             },
             onError: (error: any) => {
-                useFormErrorResponseHandler()(form, error);
+                formErrorHandler(form, error);
             }
         });
     }

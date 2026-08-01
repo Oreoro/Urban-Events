@@ -182,7 +182,7 @@ export class SharedValues {
     }
 
     changeValue(difference: number) {
-        let adjustedDifference = Math.min(difference, this.sharedMax - this.currentValue);
+        const adjustedDifference = Math.min(difference, this.sharedMax - this.currentValue);
         this.currentValue += adjustedDifference;
 
         return adjustedDifference;

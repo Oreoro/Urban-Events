@@ -1,5 +1,4 @@
 import express from "express";
-import {installGlobals} from "@remix-run/node";
 import process from "process";
 import compression from "compression";
 import fs from "node:fs/promises";
@@ -12,8 +11,6 @@ import * as nodeUrl from "node:url";
 import "dotenv/config";
 import {sitemapIndexHandler, sitemapEventsHandler, sitemapOrganizersHandler} from "./src/sitemap/proxy.js";
 import {htmlSafeJsonStringify} from "./src/utilites/safeScriptJson.js";
-
-installGlobals();
 
 async function main() {
     const base = process.env.BASE || "/";

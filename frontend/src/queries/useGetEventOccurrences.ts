@@ -11,7 +11,7 @@ interface UseGetEventOccurrencesOptions {
 export const useGetEventOccurrences = (
     eventId: IdParam,
     pagination: QueryFilters,
-    enabled: boolean = true,
+    enabled = true,
     options: UseGetEventOccurrencesOptions = {},
 ) => {
     return useQuery({

@@ -42,6 +42,7 @@ interface OrganizerReportProps<T> {
     defaultEndDate?: Date;
     onDateRangeChange?: (range: [Date | null, Date | null]) => void;
     enableDownload?: boolean;
+    downloadFileName?: string;
     showCustomDatePicker?: boolean;
     showCurrencyFilter?: boolean;
     availableCurrencies?: string[];
@@ -71,6 +72,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                                                                  defaultEndDate = new Date(),
                                                                  onDateRangeChange,
                                                                  enableDownload = true,
+                                                                 downloadFileName,
                                                                  organizer,
                                                                  showCurrencyFilter = true,
                                                                  availableCurrencies = [],
@@ -199,7 +201,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                 selectedCurrency,
                 eventId
             );
-            const filename = `${reportType}_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
+            const filename = downloadFileName || `${reportType}_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
             downloadBinary(blob, filename);
             showSuccess(t`Export successful`);
         } catch {
@@ -329,8 +331,8 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                             leftSection={<IconCalendar stroke={1.5} size={20}/>}
                             type="range"
                             placeholder="Pick dates range"
-                            value={dateRange}
-                            onChange={handleDateRangeChange}
+                            value={dateRange.map((date) => date ? dayjs(date).format('YYYY-MM-DD') : null) as [string | null, string | null]}
+                            onChange={(range) => handleDateRangeChange(range.map((date) => date ? dayjs(date).toDate() : null) as [Date | null, Date | null])}
                             minDate={dayjs().subtract(1, 'year').tz(tz).toDate()}
                             maxDate={dayjs().tz(tz).toDate()}
                             className={classes.datePicker}

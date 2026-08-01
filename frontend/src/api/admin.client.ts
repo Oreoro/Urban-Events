@@ -431,7 +431,7 @@ export const adminClient = {
         return response.data;
     },
 
-    getUpcomingEvents: async (perPage: number = 10) => {
+    getUpcomingEvents: async (perPage = 10) => {
         const response = await api.get<GenericPaginatedResponse<any>>('admin/events/upcoming', {
             params: {
                 per_page: perPage,

@@ -3,6 +3,9 @@
   "private": true,
   "version": "2.0.0-alpha.1",
   "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
   "scripts": {
     "dev:csr": "vite --port 5678 --host 0.0.0.0",
     "build:csr": "vite build",
@@ -37,8 +40,6 @@
     "@mantine/nprogress": "^9.2.2",
     "@mantine/tiptap": "^9.2.2",
     "@react-pdf/renderer": "^4.5.1",
-    "@react-router/node": "^7.1.5",
-    "@remix-run/node": "^2.16.8",
     "@stripe/react-stripe-js": "^2.1.1",
     "@stripe/stripe-js": "^1.54.1",
     "@tabler/icons-react": "^3.35.0",
@@ -52,7 +53,7 @@
     "@tiptap/pm": "^3.3.0",
     "@tiptap/react": "^3.3.0",
     "@tiptap/starter-kit": "^3.3.0",
-    "axios": "^1.4.0",
+    "axios": "^1.19.0",
     "chroma-js": "^3.1.2",
     "classnames": "^2.3.2",
     "collect.js": "^4.36.1",
@@ -61,18 +62,17 @@
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.8",
     "dotenv": "^16.4.7",
-    "express": "^4.19.2",
+    "express": "^4.22.2",
     "invariant": "2.2.4",
-    "lodash": "4.17.21",
+    "lodash": "^4.18.1",
     "qr-scanner": "^1.4.2",
     "query-string": "^8.1.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-fast-compare": "3.2.2",
     "react-helmet-async": "^2.0.4",
     "react-qr-code": "^2.0.12",
-    "react-router": "^7.1.5",
-    "react-router-dom": "^7.1.5",
+    "react-router": "^8.3.0",
     "recharts": "^3",
     "shallowequal": "1.1.0",
     "sirv": "^2.0.4"
@@ -105,6 +105,7 @@
     "vite-plugin-copy": "^0.1.6"
   },
   "resolutions": {
+    "js-yaml": "4.3.1",
     "prosemirror-model": "^1.25.7"
   }
 }

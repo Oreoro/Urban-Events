@@ -6,7 +6,7 @@ export const GET_CHECK_IN_LIST_STATS_PUBLIC_QUERY_KEY = "getCheckInListStatsPubl
 
 export const useGetCheckInListStatsPublic = (
     checkInListShortId: IdParam,
-    enabled: boolean = true,
+    enabled = true,
     eventOccurrenceId?: number | null,
 ) => {
     return useQuery({

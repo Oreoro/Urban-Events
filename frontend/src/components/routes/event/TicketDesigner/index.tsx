@@ -64,7 +64,7 @@ const TicketDesigner = () => {
         if (existingLogo?.id) {
             form.setFieldValue('logo_image_id', existingLogo.id);
         } else {
-            form.setFieldValue('logo_image_id', null);
+            form.setFieldValue('logo_image_id', undefined);
         }
     }, [existingLogo?.id]);
 

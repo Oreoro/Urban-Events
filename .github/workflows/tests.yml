@@ -77,6 +77,10 @@ jobs:
       - name: Install dependencies
         run: cd backend && composer install --prefer-dist --no-progress --no-interaction
 
+      - name: Audit locked production dependencies
+        if: matrix.php-versions == '8.3'
+        run: cd backend && composer audit --locked --no-dev --abandoned=report
+
       - name: Stage .env for testing
         # Laravel auto-loads .env.testing when APP_ENV=testing, but artisan
         # commands run outside that flow read .env directly. Copy .env.testing

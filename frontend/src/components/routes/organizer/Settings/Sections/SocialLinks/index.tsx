@@ -31,6 +31,9 @@ import {
     IconChevronUp,
 } from '@tabler/icons-react';
 import {InputGroup} from "../../../../../common/InputGroup";
+import {OrganizerSettings} from "../../../../../../types.ts";
+
+type SocialMediaHandles = NonNullable<OrganizerSettings['social_media_handles']>;
 
 interface SocialPlatform {
     name: string;
@@ -133,11 +136,13 @@ export const SocialLinks = () => {
 
             // Handle social media handles
             if (organizerSettingsQuery.data.social_media_handles) {
+                const handles = organizerSettingsQuery.data.social_media_handles;
                 socialPlatforms.forEach(platform => {
                     if (platform.field !== 'website_url') {
-                        const handle = platform.field.replace('_handle', '');
-                        if (organizerSettingsQuery.data.social_media_handles[handle]) {
-                            formValues[platform.field] = organizerSettingsQuery.data.social_media_handles[handle];
+                        const handle = platform.field.replace('_handle', '') as keyof SocialMediaHandles;
+                        const value = handles[handle];
+                        if (value) {
+                            formValues[platform.field] = value;
                         }
                     }
                 });

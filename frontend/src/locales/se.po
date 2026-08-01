@@ -75,11 +75,11 @@ msgid "{0} left"
 msgstr "{0} kvar"
 
 #: src/components/layouts/AppLayout/Sidebar/index.tsx:87
-#: src/components/layouts/AuthLayout/index.tsx:153
+#: src/components/layouts/AuthLayout/index.tsx:155
 msgid "{0} logo"
 msgstr "{0} logotyp"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:272
+#: src/components/modals/CreateAttendeeModal/index.tsx:267
 msgid "{0} of {1} seats are taken."
 msgstr ""
 
@@ -189,7 +189,7 @@ msgstr ""
 msgid "{totalOccurrences} sessions across {0} dates ({1, plural, one {# session} other {# sessions}} per day)"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:98
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:99
 msgid "+1 234 567 890"
 msgstr "+1 234 567 890"
 
@@ -289,8 +289,8 @@ msgstr "1 vecka före evenemanget"
 msgid "12 Aug - Lahore"
 msgstr ""
 
-#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:77
-#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:78
+#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:63
+#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:74
 msgid "123 Sample Street"
 msgstr "Exempelgatan 123"
 
@@ -371,7 +371,7 @@ msgstr ""
 msgid "A short description of the event that will be displayed in search engine results and when sharing on social media. By default, the event description will be used"
 msgstr "En kort beskrivning av evenemanget som visas i sökresultat och vid delning på sociala medier. Som standard används evenemangsbeskrivningen."
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:89
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:90
 msgid "A short description of your organizer that will be displayed to your users."
 msgstr "En kort beskrivning av din arrangör som visas för dina användare."
 
@@ -399,7 +399,7 @@ msgstr "En URL krävs när en knappetikett är angiven"
 msgid "Abandoned"
 msgstr "Övergiven"
 
-#: src/components/layouts/EventHomepage/index.tsx:459
+#: src/components/layouts/EventHomepage/index.tsx:458
 msgid "About"
 msgstr "Om"
 
@@ -687,7 +687,7 @@ msgstr "Lägg till fråga"
 msgid "Add Tax or Fee"
 msgstr "Lägg till skatt eller avgift"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:276
+#: src/components/modals/CreateAttendeeModal/index.tsx:271
 msgid "Add this attendee anyway (override capacity)"
 msgstr ""
 
@@ -707,7 +707,7 @@ msgstr "Lägg till prisnivå"
 
 #: src/components/common/AddEventToCalendarButton/index.tsx:15
 #: src/components/common/AddToCalendarCTA/index.tsx:25
-#: src/components/layouts/EventHomepage/index.tsx:362
+#: src/components/layouts/EventHomepage/index.tsx:361
 msgid "Add to Calendar"
 msgstr "Lägg till i kalendern"
 
@@ -722,7 +722,7 @@ msgstr "Lägg till spårningspixlar på dina offentliga evenemangssidor och arra
 msgid "Add Webhook"
 msgstr "Lägg till webhook"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:185
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:190
 msgid "Add your social media handles and website URL. These will be displayed on your public organizer page."
 msgstr "Lägg till dina sociala mediekonton och din webbplats URL. Dessa kommer att visas på din offentliga arrangörssida."
 
@@ -805,7 +805,7 @@ msgstr "Partnern skapades"
 msgid "Affiliate deleted successfully"
 msgstr "Partern raderades"
 
-#: src/components/layouts/AuthLayout/index.tsx:22
+#: src/components/layouts/AuthLayout/index.tsx:26
 msgid "Affiliate program"
 msgstr ""
 
@@ -870,7 +870,7 @@ msgstr "Alla deltagare för detta evenemang"
 msgid "All attendees of this occurrence"
 msgstr ""
 
-#: src/components/common/OrganizerReportTable/index.tsx:291
+#: src/components/common/OrganizerReportTable/index.tsx:293
 msgid "All Currencies"
 msgstr "Alla valutor"
 
@@ -1009,7 +1009,7 @@ msgstr "Belopp"
 msgid "Amount Paid"
 msgstr "Betalt belopp"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:289
+#: src/components/modals/CreateAttendeeModal/index.tsx:284
 msgid "Amount paid ({0})"
 msgstr "Betalt belopp ({0})"
 
@@ -1623,7 +1623,7 @@ msgstr "Väntar på betalning"
 msgid "Awesome Events Ltd."
 msgstr "Awesome Events Ltd."
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:74
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:75
 msgid "Awesome Organizer Ltd."
 msgstr "Awesome Organizer Ltd."
 
@@ -1696,7 +1696,7 @@ msgid "Based on the global sale period above, not per date"
 msgstr ""
 
 #: src/components/routes/organizer/Settings/index.tsx:31
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:63
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:64
 msgid "Basic Information"
 msgstr "Grundläggande information"
 
@@ -1851,6 +1851,7 @@ msgstr ""
 #: src/components/common/QuestionAndAnswerList/index.tsx:149
 #: src/components/common/WaitlistTable/index.tsx:114
 #: src/components/common/WaitlistTable/index.tsx:135
+#: src/components/forms/OrganizerForm/index.tsx:143
 #: src/components/modals/ManageAttendeeModal/index.tsx:184
 #: src/components/modals/ManageOrderModal/index.tsx:209
 #: src/components/modals/PublishEventModal/index.tsx:208
@@ -1967,7 +1968,7 @@ msgstr "Kapacitetstilldelning togs bort"
 msgid "Capacity Assignments"
 msgstr "Kapacitetstilldelningar"
 
-#: src/components/layouts/AuthLayout/index.tsx:28
+#: src/components/layouts/AuthLayout/index.tsx:32
 msgid "Capacity management"
 msgstr ""
 
@@ -2074,8 +2075,8 @@ msgstr "Endast checka in"
 msgid "Check out"
 msgstr ""
 
+#: src/components/layouts/EventHomepage/index.tsx:320
 #: src/components/layouts/EventHomepage/index.tsx:321
-#: src/components/layouts/EventHomepage/index.tsx:322
 msgid "Check out this event: {0}"
 msgstr ""
 
@@ -2658,8 +2659,8 @@ msgid "Connection details are required for online events"
 msgstr "Anslutningsuppgifter krävs för onlineevenemang"
 
 #: src/components/common/WaitlistTable/index.tsx:152
-#: src/components/layouts/EventHomepage/index.tsx:659
-#: src/components/layouts/OrganizerHomepage/index.tsx:269
+#: src/components/layouts/EventHomepage/index.tsx:658
+#: src/components/layouts/OrganizerHomepage/index.tsx:267
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -2691,7 +2692,7 @@ msgstr "Fortsätt"
 msgid "Continue Button Text"
 msgstr "Text på fortsätt-knapp"
 
-#: src/components/forms/OrganizerForm/index.tsx:130
+#: src/components/forms/OrganizerForm/index.tsx:131
 #: src/components/modals/CreateEventModal/index.tsx:312
 #: src/components/routes/welcome/index.tsx:473
 msgid "Continue Setup"
@@ -2701,7 +2702,7 @@ msgstr "Fortsätt konfigurering"
 msgid "Continue to Checkout"
 msgstr "Fortsätt till kassan"
 
-#: src/components/forms/OrganizerForm/index.tsx:128
+#: src/components/forms/OrganizerForm/index.tsx:129
 msgid "Continue to event creation"
 msgstr "Fortsätt till skapande av evenemang"
 
@@ -2962,7 +2963,7 @@ msgstr "Skapa och konfigurera biljetter och produkter till försäljning."
 msgid "Create Announcement"
 msgstr "Skapa meddelande"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:320
+#: src/components/modals/CreateAttendeeModal/index.tsx:315
 msgid "Create Attendee"
 msgstr "Skapa deltagare"
 
@@ -3107,7 +3108,7 @@ msgstr "Skapar {0} datum. Det kan ta en stund."
 msgid "Creating Event..."
 msgstr "Skapar evenemang..."
 
-#: src/components/forms/OrganizerForm/index.tsx:130
+#: src/components/forms/OrganizerForm/index.tsx:131
 msgid "Creating Organizer..."
 msgstr "Skapar organisatör..."
 
@@ -3115,7 +3116,7 @@ msgstr "Skapar organisatör..."
 msgid "Creating your event, please wait"
 msgstr "Skapar ditt evenemang, vänligen vänta"
 
-#: src/components/forms/OrganizerForm/index.tsx:128
+#: src/components/forms/OrganizerForm/index.tsx:129
 msgid "Creating your organizer profile, please wait"
 msgstr "Skapar din organisatörsprofil, vänligen vänta"
 
@@ -3123,7 +3124,7 @@ msgstr "Skapar din organisatörsprofil, vänligen vänta"
 msgid "CTA label is required"
 msgstr "CTA-text är obligatorisk"
 
-#: src/components/common/OrganizerReportTable/index.tsx:306
+#: src/components/common/OrganizerReportTable/index.tsx:308
 #: src/components/forms/OrganizerForm/index.tsx:50
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:73
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:128
@@ -3131,7 +3132,7 @@ msgstr "CTA-text är obligatorisk"
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:51
 #: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:99
 #: src/components/routes/organizer/Reports/TaxSummaryReport/index.tsx:33
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:116
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:117
 msgid "Currency"
 msgstr "Valuta"
 
@@ -3147,7 +3148,7 @@ msgstr ""
 msgid "Currently available for purchase"
 msgstr "För närvarande tillgänglig för köp"
 
-#: src/components/layouts/AuthLayout/index.tsx:15
+#: src/components/layouts/AuthLayout/index.tsx:19
 msgid "Custom branding"
 msgstr ""
 
@@ -3163,7 +3164,7 @@ msgstr "Anpassat datum och tid"
 msgid "Custom Maps URL"
 msgstr "Anpassad Maps-URL"
 
-#: src/components/layouts/AuthLayout/index.tsx:24
+#: src/components/layouts/AuthLayout/index.tsx:28
 msgid "Custom questions"
 msgstr ""
 
@@ -3171,7 +3172,7 @@ msgstr ""
 msgid "Custom Questions"
 msgstr "Anpassade frågor"
 
-#: src/components/common/OrganizerReportTable/index.tsx:61
+#: src/components/common/OrganizerReportTable/index.tsx:62
 #: src/components/common/ReportTable/index.tsx:56
 msgid "Custom Range"
 msgstr "Anpassat intervall"
@@ -3570,7 +3571,7 @@ msgstr "Raderingsbegäranden"
 #: src/components/forms/TaxAndFeeForm/index.tsx:81
 #: src/components/modals/DuplicateEventModal/index.tsx:118
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:98
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:86
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:87
 msgid "Description"
 msgstr "Beskrivning"
 
@@ -3623,7 +3624,7 @@ msgstr "Koppla från"
 msgid "Disconnect Stripe account"
 msgstr "Koppla från Stripe-konto"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:71
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:74
 msgid "Discord"
 msgstr "Discord"
 
@@ -4019,7 +4020,7 @@ msgstr "Giltiga incheckningslistor"
 #: src/components/routes/auth/ForgotPassword/index.tsx:65
 #: src/components/routes/auth/Login/index.tsx:93
 #: src/components/routes/auth/Register/index.tsx:104
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:78
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:79
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditAttendeeModal/index.tsx:68
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditOrderModal/index.tsx:68
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:253
@@ -4031,7 +4032,7 @@ msgstr "E-post"
 msgid "Email & Notification Settings"
 msgstr "E-post- och aviseringsinställningar"
 
-#: src/components/layouts/AuthLayout/index.tsx:20
+#: src/components/layouts/AuthLayout/index.tsx:24
 msgid "Email & scheduled messages"
 msgstr ""
 
@@ -4039,7 +4040,7 @@ msgstr ""
 msgid "Email & Templates"
 msgstr "E-post och mallar"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:223
+#: src/components/modals/CreateAttendeeModal/index.tsx:218
 #: src/components/modals/ManageAttendeeModal/index.tsx:208
 #: src/components/modals/ManageOrderModal/index.tsx:242
 msgid "Email address"
@@ -4132,7 +4133,7 @@ msgstr "Inbäddningsskript"
 msgid "Embed Widget"
 msgstr "Bädda in widget"
 
-#: src/components/layouts/AuthLayout/index.tsx:21
+#: src/components/layouts/AuthLayout/index.tsx:25
 msgid "Embeddable widget"
 msgstr ""
 
@@ -4221,7 +4222,7 @@ msgstr ""
 
 #: src/components/common/LanguageSwitcher/index.tsx:18
 #: src/components/common/LanguageSwitcher/index.tsx:69
-#: src/components/modals/CreateAttendeeModal/index.tsx:236
+#: src/components/modals/CreateAttendeeModal/index.tsx:231
 msgid "English"
 msgstr "Engelska"
 
@@ -4265,7 +4266,7 @@ msgstr "Ange partnerns e-post (valfritt)"
 msgid "Enter affiliate name"
 msgstr "Ange partnernamn"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:294
+#: src/components/modals/CreateAttendeeModal/index.tsx:289
 msgid "Enter an amount excluding taxes and fees."
 msgstr "Ange ett belopp exklusive skatter och avgifter"
 
@@ -4351,7 +4352,7 @@ msgstr "Fel vid inläsning av loggar"
 
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:74
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:137
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:117
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:118
 msgid "EUR"
 msgstr "EUR"
 
@@ -4621,7 +4622,7 @@ msgstr "Exportera"
 msgid "Export Answers"
 msgstr "Exportera svar"
 
-#: src/components/common/OrganizerReportTable/index.tsx:347
+#: src/components/common/OrganizerReportTable/index.tsx:349
 msgid "Export CSV"
 msgstr "Exportera CSV"
 
@@ -4633,7 +4634,7 @@ msgstr "Export misslyckades. Försök igen."
 msgid "Export started. Preparing file..."
 msgstr "Export startad. Förbereder fil..."
 
-#: src/components/common/OrganizerReportTable/index.tsx:204
+#: src/components/common/OrganizerReportTable/index.tsx:206
 msgid "Export successful"
 msgstr "Export lyckades"
 
@@ -4653,7 +4654,7 @@ msgstr "Export klar. Laddar ner fil..."
 msgid "Exporting Orders"
 msgstr "Exporterar ordrar"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:46
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:49
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -4792,7 +4793,7 @@ msgstr "Misslyckades med att exportera deltagare"
 msgid "Failed to export orders"
 msgstr "Misslyckades med att exportera ordrar"
 
-#: src/components/common/OrganizerReportTable/index.tsx:206
+#: src/components/common/OrganizerReportTable/index.tsx:208
 msgid "Failed to export report. Please try again."
 msgstr "Misslyckades med att exportera rapport. Försök igen."
 
@@ -5085,7 +5086,7 @@ msgstr "Första deltagare"
 msgid "First Invoice Number"
 msgstr "Första fakturanummer"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:209
+#: src/components/modals/CreateAttendeeModal/index.tsx:204
 #: src/components/modals/ManageAttendeeModal/index.tsx:202
 #: src/components/modals/ManageOrderModal/index.tsx:229
 #: src/components/routes/product-widget/CollectInformation/index.tsx:464
@@ -5217,11 +5218,11 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:42
+#: src/components/layouts/AuthLayout/index.tsx:44
 msgid "From page to check-in."
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:26
+#: src/components/layouts/AuthLayout/index.tsx:30
 msgid "Full data ownership"
 msgstr ""
 
@@ -5250,11 +5251,11 @@ msgid "General"
 msgstr "Allmänt"
 
 #: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:38
-#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:40
+#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:49
 msgid "General Admission"
 msgstr "Allmän entré"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:64
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:65
 msgid "General information about your organizer"
 msgstr "Allmän information om din arrangör"
 
@@ -5274,7 +5275,7 @@ msgstr "Generera kod"
 msgid "German"
 msgstr "Tyska"
 
-#: src/components/layouts/EventHomepage/index.tsx:494
+#: src/components/layouts/EventHomepage/index.tsx:493
 msgid "Get Directions"
 msgstr "Få vägbeskrivning"
 
@@ -5291,7 +5292,7 @@ msgid "Get started"
 msgstr "Sätt igång"
 
 #: src/components/common/ThemeColorControls/index.tsx:333
-#: src/components/layouts/EventHomepage/index.tsx:695
+#: src/components/layouts/EventHomepage/index.tsx:694
 msgid "Get Tickets"
 msgstr "Köp biljetter"
 
@@ -5299,7 +5300,7 @@ msgstr "Köp biljetter"
 msgid "Get your event ready"
 msgstr "Gör ditt evenemang redo"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:102
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:105
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -5328,7 +5329,7 @@ msgstr "Gå till evenemangssidan"
 msgid "Go to home page"
 msgstr "Gå till startsidan"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:196
+#: src/components/modals/CreateAttendeeModal/index.tsx:191
 msgid "Go to Schedule"
 msgstr ""
 
@@ -5402,7 +5403,7 @@ msgid "Hello {0}, manage your platform from here."
 msgstr "Hej {0}, hantera din plattform härifrån."
 
 #: src/components/forms/OrganizerForm/index.tsx:36
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:81
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:82
 msgid "hello@awesome-events.com"
 msgstr "hello@awesome-events.com"
 
@@ -5613,7 +5614,7 @@ msgstr ""
 msgid "HTML character limit exceeded: {htmlLength}/{maxLength}"
 msgstr "HTML-teckengränsen har överskridits: {htmlLength}/{maxLength}"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:104
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:105
 msgid "https://awesome-events.com"
 msgstr "https://awesome-events.com"
 
@@ -5788,7 +5789,7 @@ msgstr "Infoga bild"
 msgid "Insert Liquid Token"
 msgstr "Infoga Liquid-token"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:53
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:56
 msgid "Instagram"
 msgstr "Instagram"
 
@@ -5937,11 +5938,11 @@ msgstr "Jobb köat för nytt försök"
 msgid "John"
 msgstr "John"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:217
+#: src/components/modals/CreateAttendeeModal/index.tsx:212
 msgid "Johnson"
 msgstr "Johnson"
 
-#: src/components/layouts/EventHomepage/index.tsx:390
+#: src/components/layouts/EventHomepage/index.tsx:389
 msgid "Join from anywhere"
 msgstr "Delta varifrån som helst"
 
@@ -6006,7 +6007,7 @@ msgstr "Etikett"
 msgid "label updates"
 msgstr ""
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:235
+#: src/components/modals/CreateAttendeeModal/index.tsx:230
 #: src/components/modals/ManageAttendeeModal/index.tsx:156
 #: src/components/routes/profile/ManageProfile/index.tsx:197
 msgid "Language"
@@ -6016,12 +6017,12 @@ msgstr "Språk"
 msgid "Last"
 msgstr ""
 
-#: src/components/common/OrganizerReportTable/index.tsx:60
+#: src/components/common/OrganizerReportTable/index.tsx:61
 #: src/components/common/ReportTable/index.tsx:55
 msgid "Last 12 months"
 msgstr "Senaste 12 månaderna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:55
+#: src/components/common/OrganizerReportTable/index.tsx:56
 #: src/components/common/ReportTable/index.tsx:50
 msgid "Last 14 days"
 msgstr "Senaste 14 dagarna"
@@ -6030,34 +6031,34 @@ msgstr "Senaste 14 dagarna"
 msgid "Last 14 Days"
 msgstr "Senaste 14 dagarna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:52
+#: src/components/common/OrganizerReportTable/index.tsx:53
 #: src/components/common/ReportTable/index.tsx:47
 msgid "Last 24 hours"
 msgstr "Senaste 24 timmarna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:56
+#: src/components/common/OrganizerReportTable/index.tsx:57
 #: src/components/common/PeriodSelector/index.tsx:34
 #: src/components/common/ReportTable/index.tsx:51
 msgid "Last 30 days"
 msgstr "Senaste 30 dagarna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:53
+#: src/components/common/OrganizerReportTable/index.tsx:54
 #: src/components/common/ReportTable/index.tsx:48
 msgid "Last 48 hours"
 msgstr "Senaste 48 timmarna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:58
+#: src/components/common/OrganizerReportTable/index.tsx:59
 #: src/components/common/ReportTable/index.tsx:53
 msgid "Last 6 months"
 msgstr "Senaste 6 månaderna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:54
+#: src/components/common/OrganizerReportTable/index.tsx:55
 #: src/components/common/PeriodSelector/index.tsx:32
 #: src/components/common/ReportTable/index.tsx:49
 msgid "Last 7 days"
 msgstr "Senaste 7 dagarna"
 
-#: src/components/common/OrganizerReportTable/index.tsx:57
+#: src/components/common/OrganizerReportTable/index.tsx:58
 #: src/components/common/PeriodSelector/index.tsx:36
 #: src/components/common/ReportTable/index.tsx:52
 msgid "Last 90 days"
@@ -6067,7 +6068,7 @@ msgstr "Senaste 90 dagarna"
 msgid "Last login"
 msgstr "Senaste inloggning"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:216
+#: src/components/modals/CreateAttendeeModal/index.tsx:211
 #: src/components/modals/ManageAttendeeModal/index.tsx:204
 #: src/components/modals/ManageOrderModal/index.tsx:235
 msgid "Last name"
@@ -6157,7 +6158,7 @@ msgstr ""
 msgid "Link Expired or Invalid"
 msgstr "Länken har gått ut eller är ogiltig"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:61
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:64
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
@@ -6190,7 +6191,7 @@ msgstr "Liveevenemang"
 msgid "Loaded dates"
 msgstr ""
 
-#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:33
+#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:42
 msgid "Loading preview..."
 msgstr "Laddar förhandsvisning..."
 
@@ -6208,14 +6209,14 @@ msgstr "Laddar webhook-loggar..."
 msgid "Loading Webhooks"
 msgstr "Laddar webhooks"
 
-#: src/components/common/OrganizerReportTable/index.tsx:265
+#: src/components/common/OrganizerReportTable/index.tsx:267
 #: src/components/common/ReportTable/index.tsx:225
 #: src/components/routes/event/Settings/Sections/DangerZoneSettings/index.tsx:88
 #: src/components/routes/organizer/Settings/Sections/DangerZoneSettings/index.tsx:94
 msgid "Loading..."
 msgstr "Laddar..."
 
-#: src/components/layouts/AuthLayout/index.tsx:14
+#: src/components/layouts/AuthLayout/index.tsx:18
 msgid "Local Neem payments"
 msgstr ""
 
@@ -6224,7 +6225,7 @@ msgstr ""
 #: src/components/common/LocationPicker/index.tsx:173
 #: src/components/common/LocationPicker/index.tsx:221
 #: src/components/common/LocationPicker/index.tsx:294
-#: src/components/layouts/EventHomepage/index.tsx:472
+#: src/components/layouts/EventHomepage/index.tsx:471
 #: src/components/routes/event/OccurrencesTab/OccurrenceEditModal/index.tsx:465
 #: src/components/routes/event/Settings/index.tsx:54
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:150
@@ -6376,7 +6377,7 @@ msgstr ""
 msgid "Manage taxes and fees which can be applied to your products"
 msgstr "Hantera skatter och avgifter som kan tillämpas på dina produkter"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:171
+#: src/components/modals/CreateAttendeeModal/index.tsx:166
 msgid "Manage tickets"
 msgstr "Hantera biljetter"
 
@@ -6404,9 +6405,9 @@ msgstr "Manuellt erbjudande"
 msgid "Manually add an Attendee"
 msgstr "Lägg till deltagare manuellt"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:162
-#: src/components/modals/CreateAttendeeModal/index.tsx:179
-#: src/components/modals/CreateAttendeeModal/index.tsx:204
+#: src/components/modals/CreateAttendeeModal/index.tsx:157
+#: src/components/modals/CreateAttendeeModal/index.tsx:174
+#: src/components/modals/CreateAttendeeModal/index.tsx:199
 msgid "Manually Add Attendee"
 msgstr "Lägg till deltagare manuellt"
 
@@ -6619,7 +6620,7 @@ msgid "Multi line text box"
 msgstr "Flerradigt textfält"
 
 #: src/components/common/EventCard/index.tsx:97
-#: src/components/layouts/EventHomepage/index.tsx:156
+#: src/components/layouts/EventHomepage/index.tsx:155
 #: src/components/layouts/OrganizerHomepage/EventCard/index.tsx:46
 msgid "Multiple locations"
 msgstr ""
@@ -6628,7 +6629,7 @@ msgstr ""
 msgid "Multiple price options. Perfect for early bird products etc."
 msgstr "Flera prisalternativ. Perfekt för till exempel early bird-produkter."
 
-#: src/components/layouts/AuthLayout/index.tsx:27
+#: src/components/layouts/AuthLayout/index.tsx:31
 msgid "Multiple ticket types"
 msgstr ""
 
@@ -6808,7 +6809,7 @@ msgstr "Inga arkiverade evenemang att visa."
 msgid "No attendee questions yet"
 msgstr "Inga deltagarfrågor ännu"
 
-#: src/components/common/AttendeeList/index.tsx:23
+#: src/components/common/AttendeeList/index.tsx:25
 msgid "No attendees found for this order."
 msgstr "Inga deltagare hittades för denna order."
 
@@ -6870,7 +6871,7 @@ msgstr ""
 msgid "No data available"
 msgstr "Ingen data tillgänglig"
 
-#: src/components/common/OrganizerReportTable/index.tsx:272
+#: src/components/common/OrganizerReportTable/index.tsx:274
 msgid "No data found for the selected filters. Try adjusting the date range or currency."
 msgstr "Ingen data hittades för de valda filtren. Prova att justera datumintervall eller valuta."
 
@@ -6969,7 +6970,7 @@ msgstr "Inga meddelanden hittades"
 msgid "No messages to show"
 msgstr "Inga meddelanden att visa"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:183
+#: src/components/modals/CreateAttendeeModal/index.tsx:178
 msgid "No occurrences available"
 msgstr ""
 
@@ -7013,7 +7014,7 @@ msgstr "Inga andra arrangörer tillgängliga"
 msgid "No Paid Orders"
 msgstr "Inga betalda beställningar"
 
-#: src/components/layouts/OrganizerHomepage/index.tsx:310
+#: src/components/layouts/OrganizerHomepage/index.tsx:308
 msgid "No past events"
 msgstr "Inga tidigare evenemang"
 
@@ -7121,7 +7122,7 @@ msgstr "Inga biljetter att sälja"
 msgid "No upcoming dates"
 msgstr ""
 
-#: src/components/layouts/OrganizerHomepage/index.tsx:310
+#: src/components/layouts/OrganizerHomepage/index.tsx:308
 msgid "No upcoming events"
 msgstr "Inga kommande evenemang"
 
@@ -7221,7 +7222,7 @@ msgstr "Nummerprefix"
 
 #: src/components/common/OrderDetails/index.tsx:55
 #: src/components/forms/CheckInListForm/index.tsx:130
-#: src/components/modals/CreateAttendeeModal/index.tsx:253
+#: src/components/modals/CreateAttendeeModal/index.tsx:248
 #: src/components/modals/ManageOrderModal/index.tsx:140
 #: src/components/modals/SendMessageModal/index.tsx:357
 msgid "Occurrence"
@@ -7258,7 +7259,7 @@ msgstr ""
 msgid "October"
 msgstr ""
 
-#: src/components/common/OrganizerReportTable/index.tsx:356
+#: src/components/common/OrganizerReportTable/index.tsx:358
 msgid "of"
 msgstr "av"
 
@@ -7366,7 +7367,7 @@ msgstr ""
 msgid "Online & in-person"
 msgstr ""
 
-#: src/components/layouts/EventHomepage/index.tsx:157
+#: src/components/layouts/EventHomepage/index.tsx:156
 msgid "Online & in-person — see schedule"
 msgstr ""
 
@@ -7375,7 +7376,7 @@ msgstr ""
 msgid "Online event"
 msgstr ""
 
-#: src/components/layouts/EventHomepage/index.tsx:388
+#: src/components/layouts/EventHomepage/index.tsx:387
 #: src/components/layouts/OrganizerHomepage/EventCard/index.tsx:175
 msgid "Online Event"
 msgstr "Onlineevenemang"
@@ -7699,7 +7700,7 @@ msgid "Organization Name"
 msgstr "Organisationsnamn"
 
 #: src/components/common/AdminEventsTable/index.tsx:87
-#: src/components/layouts/EventHomepage/index.tsx:571
+#: src/components/layouts/EventHomepage/index.tsx:570
 #: src/components/modals/EditUserModal/index.tsx:56
 #: src/components/modals/InviteUserModal/index.tsx:47
 #: src/components/routes/account/ManageAccount/sections/Users/index.tsx:99
@@ -7729,7 +7730,7 @@ msgstr "Arrangören har tagits bort"
 msgid "Organizer is required"
 msgstr "Arrangör krävs"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:72
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:73
 msgid "Organizer Name"
 msgstr "Arrangörsnamn"
 
@@ -7814,7 +7815,7 @@ msgstr "Översikt"
 msgid "Padding"
 msgstr "Utfyllnad"
 
-#: src/components/common/OrganizerReportTable/index.tsx:356
+#: src/components/common/OrganizerReportTable/index.tsx:358
 msgid "Page"
 msgstr "Sida"
 
@@ -7838,7 +7839,7 @@ msgstr "Sidvisningar"
 msgid "Page Views"
 msgstr "Sidvisningar"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:304
+#: src/components/modals/CreateAttendeeModal/index.tsx:299
 msgid "paid"
 msgstr "betald"
 
@@ -7904,7 +7905,7 @@ msgstr "Lösenordet har återställts. Logga in med ditt nya lösenord."
 msgid "Passwords are not the same"
 msgstr "Lösenorden är inte samma"
 
-#: src/components/layouts/OrganizerHomepage/index.tsx:302
+#: src/components/layouts/OrganizerHomepage/index.tsx:300
 #: src/components/routes/event/OccurrencesTab/index.tsx:486
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:30
 msgid "Past"
@@ -7914,7 +7915,7 @@ msgstr "Tidigare"
 msgid "Past due"
 msgstr ""
 
-#: src/components/layouts/OrganizerHomepage/index.tsx:289
+#: src/components/layouts/OrganizerHomepage/index.tsx:287
 msgid "Past Events"
 msgstr "Tidigare evenemang"
 
@@ -7926,11 +7927,11 @@ msgstr "Klistra in detta där du vill att widgeten ska visas."
 msgid "Paste URL"
 msgstr "Klistra in URL"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:210
+#: src/components/modals/CreateAttendeeModal/index.tsx:205
 msgid "Patrick"
 msgstr "Patrick"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:224
+#: src/components/modals/CreateAttendeeModal/index.tsx:219
 msgid "patrick@acme.com"
 msgstr "patrick@acme.com"
 
@@ -8118,7 +8119,7 @@ msgstr ""
 msgid "Personal Information"
 msgstr "Personlig information"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:97
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:98
 msgid "Phone"
 msgstr "Telefon"
 
@@ -8134,7 +8135,7 @@ msgstr ""
 msgid "Pick at least one day of the week"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:82
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:85
 msgid "Pinterest"
 msgstr "Pinterest"
 
@@ -8255,7 +8256,7 @@ msgstr "Gå tillbaka till evenemangssidan för att börja om."
 msgid "Please select a date and time"
 msgstr ""
 
-#: src/components/common/OrganizerReportTable/index.tsx:269
+#: src/components/common/OrganizerReportTable/index.tsx:271
 msgid "Please select a date range"
 msgstr "Välj ett datumintervall"
 
@@ -8402,8 +8403,8 @@ msgid "Print to PDF"
 msgstr "Skriv ut till PDF"
 
 #: src/components/common/CookieConsentBanner/index.tsx:51
-#: src/components/layouts/EventHomepage/index.tsx:675
-#: src/components/layouts/OrganizerHomepage/index.tsx:352
+#: src/components/layouts/EventHomepage/index.tsx:674
+#: src/components/layouts/OrganizerHomepage/index.tsx:350
 msgid "Privacy Policy"
 msgstr "Integritetspolicy"
 
@@ -8547,7 +8548,7 @@ msgstr "Användning av kampanjkoder och rabattfördelning"
 msgid "promo codes"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:18
+#: src/components/layouts/AuthLayout/index.tsx:22
 msgid "Promo codes"
 msgstr ""
 
@@ -8636,7 +8637,7 @@ msgstr ""
 msgid "QR Code"
 msgstr "QR-kod"
 
-#: src/components/layouts/AuthLayout/index.tsx:16
+#: src/components/layouts/AuthLayout/index.tsx:20
 msgid "QR code check-in"
 msgstr ""
 
@@ -8719,7 +8720,7 @@ msgstr ""
 msgid "Ready to go live?"
 msgstr "Redo att gå live?"
 
-#: src/components/layouts/AuthLayout/index.tsx:19
+#: src/components/layouts/AuthLayout/index.tsx:23
 msgid "Real-time analytics"
 msgstr ""
 
@@ -8789,7 +8790,7 @@ msgstr ""
 msgid "Recurring"
 msgstr ""
 
-#: src/components/layouts/EventHomepage/index.tsx:352
+#: src/components/layouts/EventHomepage/index.tsx:351
 #: src/components/modals/CreateEventModal/index.tsx:240
 #: src/components/routes/event/Settings/index.tsx:66
 msgid "Recurring Event"
@@ -8799,11 +8800,11 @@ msgstr "Återkommande evenemang"
 msgid "Recurring Event Settings"
 msgstr "Inställningar för återkommande evenemang"
 
-#: src/components/layouts/AuthLayout/index.tsx:13
+#: src/components/layouts/AuthLayout/index.tsx:17
 msgid "Recurring events"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:80
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:83
 msgid "Reddit"
 msgstr "Reddit"
 
@@ -9241,8 +9242,8 @@ msgstr ""
 msgid "Sample ticket price"
 msgstr "Exempel på biljettpris"
 
-#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:76
-#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:77
+#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:62
+#: src/components/routes/event/TicketDesigner/TicketPreview.tsx:73
 msgid "Sample Venue"
 msgstr "Exempelplats"
 
@@ -9268,7 +9269,7 @@ msgstr ""
 #: src/components/routes/event/Settings/Sections/SeoSettings/index.tsx:85
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:80
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:119
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:132
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:133
 #: src/components/routes/organizer/Settings/Sections/EventDefaults/index.tsx:103
 #: src/components/routes/organizer/Settings/Sections/SeoSettings/index.tsx:85
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:262
@@ -9305,7 +9306,7 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Spara inställningar"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:263
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:268
 msgid "Save Social Links"
 msgstr "Spara sociala länkar"
 
@@ -9534,7 +9535,7 @@ msgstr "Sekundär textfärg"
 msgid "Secure Checkout"
 msgstr "Säker kassa"
 
-#: src/components/layouts/EventHomepage/index.tsx:415
+#: src/components/layouts/EventHomepage/index.tsx:414
 msgid "See schedule"
 msgstr ""
 
@@ -9637,7 +9638,7 @@ msgid "Select event types"
 msgstr "Välj evenemangstyper"
 
 #: src/components/common/OccurrenceSelect/index.tsx:106
-#: src/components/modals/CreateAttendeeModal/index.tsx:254
+#: src/components/modals/CreateAttendeeModal/index.tsx:249
 msgid "Select occurrence"
 msgstr ""
 
@@ -9675,7 +9676,7 @@ msgstr "Välj status"
 msgid "Select the messaging tier for this account. This controls message limits and link permissions."
 msgstr "Välj meddelandenivå för detta konto. Detta styr meddelandegränser och länkbehörigheter."
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:241
+#: src/components/modals/CreateAttendeeModal/index.tsx:236
 msgid "Select Ticket"
 msgstr "Välj biljett"
 
@@ -9684,7 +9685,7 @@ msgstr "Välj biljett"
 msgid "Select tickets"
 msgstr "Välj biljetter"
 
-#: src/components/common/OrganizerReportTable/index.tsx:317
+#: src/components/common/OrganizerReportTable/index.tsx:319
 #: src/components/common/ReportTable/index.tsx:286
 msgid "Select time period"
 msgstr "Välj tidsperiod"
@@ -9758,7 +9759,7 @@ msgstr "Skicka meddelande"
 msgid "Send now"
 msgstr "Skicka nu"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:316
+#: src/components/modals/CreateAttendeeModal/index.tsx:311
 msgid "Send order confirmation and ticket email"
 msgstr "Skicka orderbekräftelse och biljettsmejl"
 
@@ -9948,7 +9949,7 @@ msgid "Setup takes just a few minutes — you don't need an existing Stripe acco
 msgstr ""
 
 #: src/components/common/ShareIcon/index.tsx:30
-#: src/components/layouts/EventHomepage/index.tsx:326
+#: src/components/layouts/EventHomepage/index.tsx:325
 #: src/components/layouts/OrganizerLayout/index.tsx:235
 #: src/components/modals/ShareModal/index.tsx:37
 #: src/components/modals/ShareModal/index.tsx:165
@@ -9994,7 +9995,7 @@ msgstr ""
 msgid "Show advanced options"
 msgstr "Visa avancerade alternativ"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:232
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:237
 msgid "Show all platforms ({0} more with values)"
 msgstr "Visa alla plattformar ({0} till med värden)"
 
@@ -10010,7 +10011,7 @@ msgstr "Visa tillgängligt produktantal"
 msgid "Show entire date range"
 msgstr "Visa hela datumintervallet"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:230
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:235
 msgid "Show fewer platforms"
 msgstr "Visa färre plattformar"
 
@@ -10027,7 +10028,7 @@ msgstr "Visa kryssruta för samtycke till marknadsföring som standard"
 msgid "Show more"
 msgstr "Visa mer"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:233
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:238
 msgid "Show more platforms"
 msgstr "Visa fler plattformar"
 
@@ -10067,7 +10068,7 @@ msgstr ""
 msgid "Show tax and fees separately"
 msgstr "Visa moms och avgifter separat"
 
-#: src/components/common/OrganizerReportTable/index.tsx:355
+#: src/components/common/OrganizerReportTable/index.tsx:357
 msgid "Showing {0} of {totalRows} records"
 msgstr "Visar {0} av {totalRows} poster"
 
@@ -10138,7 +10139,7 @@ msgstr "Slovakiska"
 msgid "Smith"
 msgstr "Smith"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:73
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:76
 msgid "Snapchat"
 msgstr "Snapchat"
 
@@ -10150,7 +10151,7 @@ msgstr "Socialt"
 msgid "Social Links"
 msgstr "Sociala länkar"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:184
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:189
 msgid "Social Links & Website"
 msgstr "Sociala länkar och webbplats"
 
@@ -10173,7 +10174,7 @@ msgid "Sold out"
 msgstr "Slutsålt"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:86
-#: src/components/layouts/EventHomepage/index.tsx:178
+#: src/components/layouts/EventHomepage/index.tsx:177
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:212
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:22
 #: src/components/routes/product-widget/OccurrenceSelector/index.tsx:128
@@ -10481,7 +10482,7 @@ msgstr "E-postadressen bekräftades"
 msgid "Successfully confirmed email change"
 msgstr "E-poständringen bekräftades"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:147
+#: src/components/modals/CreateAttendeeModal/index.tsx:142
 msgid "Successfully created attendee"
 msgstr "Deltagaren skapades"
 
@@ -10567,7 +10568,7 @@ msgstr "Övriga inställningar uppdaterades"
 msgid "Successfully updated order"
 msgstr "Ordern uppdaterades"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:40
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:41
 msgid "Successfully Updated Organizer"
 msgstr "Arrangören uppdaterades"
 
@@ -10607,7 +10608,7 @@ msgstr "SEO-inställningarna uppdaterades"
 msgid "Successfully Updated Settings"
 msgstr "Inställningar uppdaterade"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:170
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:175
 msgid "Successfully Updated Social Links"
 msgstr "Sociala länkar uppdaterades"
 
@@ -10754,7 +10755,7 @@ msgstr ""
 msgid "Teal actions on a neutral workspace"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:23
+#: src/components/layouts/AuthLayout/index.tsx:27
 msgid "Team collaboration"
 msgstr ""
 
@@ -10762,7 +10763,7 @@ msgstr ""
 msgid "Tech"
 msgstr "Teknik"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:96
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:99
 msgid "Telegram"
 msgstr "Telegram"
 
@@ -10802,8 +10803,8 @@ msgstr "Mallen togs bort"
 msgid "Template saved successfully"
 msgstr "Mallen sparades"
 
-#: src/components/layouts/EventHomepage/index.tsx:681
-#: src/components/layouts/OrganizerHomepage/index.tsx:359
+#: src/components/layouts/EventHomepage/index.tsx:680
+#: src/components/layouts/OrganizerHomepage/index.tsx:357
 msgid "Terms of Service"
 msgstr "Användarvillkor"
 
@@ -10850,12 +10851,12 @@ msgid "The currency used for this event's ticket prices."
 msgstr "Valutan som används för evenemangets biljettpriser."
 
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:75
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:118
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:119
 msgid "The default currency for your events."
 msgstr "Standardvaluta för dina evenemang."
 
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:84
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:127
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:128
 msgid "The default timezone for your events."
 msgstr "Standardtidszon för dina evenemang."
 
@@ -10884,7 +10885,7 @@ msgstr ""
 msgid "The full order amount will be refunded to the customer's original payment method."
 msgstr "Hela orderbeloppet kommer att återbetalas till kundens ursprungliga betalningsmetod."
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:237
+#: src/components/modals/CreateAttendeeModal/index.tsx:232
 msgid "The language the attendee will receive emails in."
 msgstr "Språket som deltagaren kommer att få e-post på."
 
@@ -10909,7 +10910,7 @@ msgstr "Maximalt antal produkter för {0} är {1}"
 msgid "The organizer you're looking for could not be found. The page may have been moved, deleted, or the URL might be incorrect."
 msgstr "Arrangören du letar efter kunde inte hittas. Sidan kan ha flyttats, tagits bort eller så kan webbadressen vara felaktig."
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:277
+#: src/components/modals/CreateAttendeeModal/index.tsx:272
 msgid "The override is recorded in the order audit log."
 msgstr ""
 
@@ -11118,7 +11119,7 @@ msgstr ""
 msgid "This date is in the past. It will be created but won't be visible to attendees under upcoming dates."
 msgstr ""
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:273
+#: src/components/modals/CreateAttendeeModal/index.tsx:268
 msgid "This date is marked sold out."
 msgstr ""
 
@@ -11134,7 +11135,7 @@ msgstr ""
 msgid "This disconnects {stripeAccountId} from this organizer. Paid ticket sales will stop working until you connect a Stripe account again."
 msgstr "Detta kopplar från {stripeAccountId} från den här arrangören. Försäljning av betalbiljetter slutar fungera tills du ansluter ett Stripe-konto igen."
 
-#: src/components/layouts/EventHomepage/index.tsx:376
+#: src/components/layouts/EventHomepage/index.tsx:375
 msgid "This event has ended"
 msgstr "Det här evenemanget har avslutats"
 
@@ -11178,7 +11179,7 @@ msgstr "Det här är ett onlineevenemang"
 msgid "This is the name of the category that will be displayed on the event page."
 msgstr "Detta är namnet på kategorin som visas på evenemangssidan."
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:73
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:74
 msgid "This is the name of your organizer that will be displayed to your users."
 msgstr "Det här är namnet på din arrangör som kommer att visas för dina användare."
 
@@ -11211,7 +11212,7 @@ msgstr "Det här meddelandet visas endast om ordern slutförs. Ordrar som vänta
 msgid "This name is visible to end users"
 msgstr "Det här namnet är synligt för slutanvändare"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:267
+#: src/components/modals/CreateAttendeeModal/index.tsx:262
 msgid "This occurrence is at capacity"
 msgstr ""
 
@@ -11311,7 +11312,7 @@ msgstr "Den här användaren är inte aktiv eftersom hen inte har accepterat sin
 msgid "This will affect {loadedAffectedCount} date(s)."
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:80
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:81
 msgid "This will be used for notifications and communication with your users."
 msgstr "Detta används för notiser och kommunikation med dina användare."
 
@@ -11352,7 +11353,7 @@ msgstr "biljett"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:281
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:489
 #: src/components/forms/ProductForm/index.tsx:165
-#: src/components/modals/CreateAttendeeModal/index.tsx:242
+#: src/components/modals/CreateAttendeeModal/index.tsx:237
 #: src/components/modals/ManageAttendeeModal/index.tsx:129
 #: src/components/modals/ManageAttendeeModal/index.tsx:253
 msgid "Ticket"
@@ -11403,7 +11404,7 @@ msgstr "Biljett hittades inte"
 msgid "Ticket or Product"
 msgstr "Biljett eller produkt"
 
-#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:99
+#: src/components/routes/event/TicketDesigner/TicketDesignerPrint.tsx:85
 msgid "Ticket Preview for"
 msgstr "Biljettförhandsvisning för"
 
@@ -11444,7 +11445,7 @@ msgstr "Biljetter och produkter"
 msgid "Tickets are automatically offered to waitlisted customers when capacity becomes available."
 msgstr "Biljetter erbjuds automatiskt till kunder på väntelistan när kapacitet blir tillgänglig."
 
-#: src/components/layouts/EventHomepage/index.tsx:185
+#: src/components/layouts/EventHomepage/index.tsx:184
 msgid "Tickets Available"
 msgstr "Tillgängliga biljetter"
 
@@ -11468,7 +11469,7 @@ msgstr "Produkt med nivåer"
 msgid "Tiered products allow you to offer multiple price options for the same product. This is perfect for early bird products, or offering different price options for different groups of people."
 msgstr "Produkter med nivåer låter dig erbjuda flera prisalternativ för samma produkt. Perfekt för early bird-produkter eller för att erbjuda olika priser till olika grupper."
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:70
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:73
 msgid "TikTok"
 msgstr "TikTok"
 
@@ -11497,7 +11498,7 @@ msgstr "Antal gånger använd"
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:119
 #: src/components/routes/auth/AcceptInvitation/index.tsx:120
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:145
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:125
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:126
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:346
 #: src/components/routes/profile/ManageProfile/index.tsx:188
 msgid "Timezone"
@@ -11689,7 +11690,7 @@ msgstr "Stäng av ljudet"
 msgid "Turn sound on"
 msgstr "Slå på ljudet"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:79
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:82
 msgid "Twitch"
 msgstr "Twitch"
 
@@ -11844,7 +11845,7 @@ msgstr "Ej betrodd"
 
 #: src/components/common/EventsDashboardStatusButtons/index.tsx:20
 #: src/components/common/EventStatusBadge/index.tsx:16
-#: src/components/layouts/OrganizerHomepage/index.tsx:296
+#: src/components/layouts/OrganizerHomepage/index.tsx:294
 #: src/components/routes/event/OccurrencesTab/index.tsx:485
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:33
 msgid "Upcoming"
@@ -11854,7 +11855,7 @@ msgstr "Kommande"
 msgid "Upcoming events"
 msgstr ""
 
-#: src/components/layouts/OrganizerHomepage/index.tsx:289
+#: src/components/layouts/OrganizerHomepage/index.tsx:287
 msgid "Upcoming Events"
 msgstr "Kommande evenemang"
 
@@ -12054,7 +12055,7 @@ msgstr "Användare kan ändra sin e-postadress i <0>Profilinställningar</0>"
 
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:83
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:146
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:126
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:127
 #: src/components/routes/profile/ManageProfile/index.tsx:189
 msgid "UTC"
 msgstr "UTC"
@@ -12255,7 +12256,7 @@ msgstr "Visa evenemangsida"
 msgid "View logs"
 msgstr "Visa loggar"
 
-#: src/components/layouts/EventHomepage/index.tsx:535
+#: src/components/layouts/EventHomepage/index.tsx:534
 msgid "View Map"
 msgstr "Visa karta"
 
@@ -12263,7 +12264,7 @@ msgstr "Visa karta"
 msgid "View Message"
 msgstr "Visa meddelande"
 
-#: src/components/layouts/EventHomepage/index.tsx:444
+#: src/components/layouts/EventHomepage/index.tsx:443
 msgid "View on Google Maps"
 msgstr "Visa på Google Maps"
 
@@ -12299,7 +12300,7 @@ msgstr "Visa biljett"
 msgid "View, edit, and export your registered attendees."
 msgstr "Visa, redigera och exportera dina registrerade deltagare."
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:103
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:106
 msgid "Vimeo"
 msgstr "Vimeo"
 
@@ -12315,7 +12316,7 @@ msgstr "VIP-biljett"
 msgid "Visibility"
 msgstr "Synlighet"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:104
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:107
 msgid "VK"
 msgstr "VK"
 
@@ -12334,7 +12335,7 @@ msgstr "Väntar på betalning"
 msgid "Waiting for scan…"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:17
+#: src/components/layouts/AuthLayout/index.tsx:21
 #: src/components/layouts/Event/index.tsx:134
 #: src/components/routes/event/Settings/index.tsx:90
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:55
@@ -12491,7 +12492,7 @@ msgstr "Webhook skapades"
 msgid "Webhook deleted successfully"
 msgstr "Webhook togs bort"
 
-#: src/components/layouts/AuthLayout/index.tsx:25
+#: src/components/layouts/AuthLayout/index.tsx:29
 msgid "Webhook integrations"
 msgstr ""
 
@@ -12525,7 +12526,7 @@ msgstr "Webhooken skickar notiser"
 msgid "Webhooks"
 msgstr "Webhooks"
 
-#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:102
+#: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:103
 msgid "Website"
 msgstr "Webbplats"
 
@@ -12550,7 +12551,7 @@ msgstr ""
 msgid "weeks"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:105
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:108
 msgid "Weibo"
 msgstr "Weibo"
 
@@ -12622,7 +12623,7 @@ msgstr "Vilken typ av fråga är detta?"
 msgid "What unauthenticated staff can see"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:89
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:92
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
@@ -12766,7 +12767,7 @@ msgstr "Förhandsgranskning av widget"
 msgid "Widget Settings"
 msgstr "Widgetinställningar"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:320
+#: src/components/modals/CreateAttendeeModal/index.tsx:315
 msgid "Working"
 msgstr "Arbetar"
 
@@ -12793,7 +12794,7 @@ msgstr "Workshop"
 msgid "Write your message here..."
 msgstr "Skriv ditt meddelande här..."
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:59
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:62
 msgid "X (Twitter)"
 msgstr "X (Twitter)"
 
@@ -12801,7 +12802,7 @@ msgstr "X (Twitter)"
 msgid "year"
 msgstr ""
 
-#: src/components/common/OrganizerReportTable/index.tsx:59
+#: src/components/common/OrganizerReportTable/index.tsx:60
 #: src/components/common/PeriodSelector/index.tsx:38
 #: src/components/common/ReportTable/index.tsx:54
 msgid "Year to date"
@@ -12938,7 +12939,7 @@ msgstr "Du måste godkänna att ta emot meddelanden"
 msgid "You must agree to the terms and conditions"
 msgstr "Du måste godkänna villkoren"
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:163
+#: src/components/modals/CreateAttendeeModal/index.tsx:158
 msgid "You must create a ticket before you can manually add an attendee."
 msgstr "Du måste skapa en biljett innan du kan lägga till en deltagare manuellt."
 
@@ -12950,7 +12951,7 @@ msgstr "Du måste ha minst en prisnivå"
 msgid "You must verify your email address before you can update the organizer status."
 msgstr "Du måste verifiera din e-postadress innan du kan uppdatera arrangörsstatusen."
 
-#: src/components/modals/CreateAttendeeModal/index.tsx:186
+#: src/components/modals/CreateAttendeeModal/index.tsx:181
 msgid "You need to create at least one occurrence before you can add attendees to this recurring event."
 msgstr ""
 
@@ -13074,7 +13075,7 @@ msgstr "Din begäran om att ändra e-postadress till <0>{0}</0> väntar. Kontrol
 msgid "Your event is live!"
 msgstr "Ditt evenemang är live!"
 
-#: src/components/layouts/AuthLayout/index.tsx:41
+#: src/components/layouts/AuthLayout/index.tsx:43
 msgid "Your event, made simple."
 msgstr ""
 
@@ -13191,7 +13192,7 @@ msgstr "Ditt momsregistreringsnummer valideras när du sparar"
 msgid "Your waitlist offer has expired and we were unable to complete your order. Please rejoin the waitlist to be notified when more spots become available."
 msgstr "Ditt väntelista-erbjudande har löpt ut och vi kunde inte slutföra din beställning. Vänligen gå med i väntelistan igen för att bli meddelad när fler platser blir tillgängliga."
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:67
+#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:70
 msgid "YouTube"
 msgstr "YouTube"
 

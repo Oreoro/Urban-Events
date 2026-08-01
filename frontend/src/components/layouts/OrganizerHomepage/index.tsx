@@ -51,6 +51,14 @@ export const OrganizerHomepage = ({
     const {consentPending, onConsent} = useOrganizerTrackingPixels(
         organizer?.settings?.tracking_pixels
     );
+    const rawThemeSettings = organizer?.settings?.homepage_theme_settings;
+    const themeSettings = validateThemeSettings(rawThemeSettings);
+    const cssVars = computeThemeVariables(themeSettings);
+    const backgroundType = themeSettings.background_type;
+
+    useEffect(() => {
+        ensureHomepageFontLoaded(themeSettings.font_family);
+    }, [themeSettings.font_family]);
 
     if (!organizer) {
         return null;
@@ -93,16 +101,6 @@ export const OrganizerHomepage = ({
         .join('');
 
     const events = eventsData?.data || [];
-
-    // Theme settings
-    const rawThemeSettings = organizer?.settings?.homepage_theme_settings;
-    const themeSettings = validateThemeSettings(rawThemeSettings);
-    const cssVars = computeThemeVariables(themeSettings);
-    const backgroundType = themeSettings.background_type;
-
-    useEffect(() => {
-        ensureHomepageFontLoaded(themeSettings.font_family);
-    }, [themeSettings.font_family]);
 
     const themeStyles = {
         '--organizer-bg-color': themeSettings.background,
