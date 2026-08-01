@@ -1,5 +1,7 @@
 <?php
 
+use HiEvents\Helper\EmailHelper;
+
 return [
     'rate_limit_per_second' => env('MAIL_RATE_LIMIT_PER_SECOND', 14),
 
@@ -101,7 +103,9 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@hi.events'),
+        'address' => EmailHelper::resolveFromAddress(
+            env('MAIL_FROM_ADDRESS', EmailHelper::DEFAULT_FROM_ADDRESS)
+        ),
         'name' => env('MAIL_FROM_NAME', 'Urban Events'),
     ],
 

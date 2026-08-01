@@ -4,6 +4,8 @@ namespace HiEvents\Helper;
 
 class EmailHelper
 {
+    public const DEFAULT_FROM_ADDRESS = 'noreply@urbanevents.pk';
+
     private const PLUS_ALIASING_PROVIDERS = [
         'gmail.com',
         'googlemail.com',
@@ -27,5 +29,20 @@ class EmailHelper
         }
 
         return $local.'@'.$domain;
+    }
+
+    public static function resolveFromAddress(mixed $email): string
+    {
+        if (!is_string($email)) {
+            return self::DEFAULT_FROM_ADDRESS;
+        }
+
+        $email = trim($email);
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            return self::DEFAULT_FROM_ADDRESS;
+        }
+
+        return $email;
     }
 }

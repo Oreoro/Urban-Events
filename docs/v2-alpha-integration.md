@@ -81,6 +81,9 @@ In practical terms:
   cancels pending debounced navigation when the hook unmounts.
 - Google, Meta, TikTok, and tag-manager adapters use typed browser globals and
   cleanup paths instead of broad `any` casts and ignored TypeScript errors.
+- Signup mail configuration now validates `MAIL_FROM_ADDRESS` and falls back to
+  `noreply@urbanevents.pk` when the value is missing or malformed. The focused
+  helper and mail-configuration checks pass with 7 tests / 10 assertions.
 - The product quantity selector no longer imports the complete Lodash bundle;
   it uses direct `get` and `debounce` modules and cancels pending updates when
   unmounted.
@@ -113,6 +116,21 @@ PKR/Karachi defaults, Neem routes/provider UI, brand assets, occurrence schema,
 maintained Azure storage driver, or production bundle boundaries.
 
 These are stabilization items, not reasons to bypass the release gates below.
+
+## Post-merge branch audit
+
+A fresh fetch on 2026-08-02 confirms this integration contains the current
+Hi.Events `develop` tip (`f8b7261b`) and `main`. The separate
+`feature/v2-ui-updates` branch has six commits not connected by ancestry, but
+its signup, email-template, table-shadow, mobile layout, filter-bar, and
+order/attendee drawer changes are already code-equivalent in `develop`; no
+duplicate cherry-pick is required.
+
+The Urban Events origin had one additional product fix on
+`codex/fix-signup-mail-from`. Only its mail-address validation and unit tests
+were ported. Its Azure workflow and Docker configuration edits remain excluded
+because deployment configuration requires a separate environment review and
+explicit release approval.
 
 ## Staging migration runbook
 
