@@ -7,7 +7,7 @@ import {NavItem} from "../types";
 import {NavLink} from "react-router";
 import classNames from "classnames";
 import {useMediaQuery} from "@mantine/hooks";
-import {BrandWordmark} from "../../../common/BrandWordmark";
+import {getConfig} from "../../../../utilites/config.ts";
 
 interface SidebarProps {
     sidebarOpen: boolean;
@@ -60,10 +60,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             : ""} ${classes.link}`
                     }
                 >
-                    {item.icon && <item.icon size={18} className={classes.linkIcon} stroke={1.7}/>}
+                    {item.icon && <item.icon size={20} className={classes.linkIcon} stroke={1.5}/>}
                     <span>{item.label}</span>
-                    {item.badge !== undefined &&
-                        <Badge size="xs" radius="xl" className={classes.navBadge}>{item.badge}</Badge>}
+                    {item.badge !== undefined && (
+                        <Badge
+                            size="xs"
+                            radius="xl"
+                            className={item.badgeColor ? classes.navBadgeAlert : classes.navBadge}
+                        >
+                            {item.badge}
+                        </Badge>
+                    )}
                     {item.comingSoon &&
                         <Badge ml={'4px'} size={'xs'} className={classes.comingSoonBadge}>{t`Coming Soon`}</Badge>}
                 </NavLink>
@@ -75,7 +82,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
             <div className={classes.logo}>
                 <NavLink to={`/manage/events`}>
-                    <BrandWordmark tone="light" size="md"/>
+                    <img
+                        src={getConfig("VITE_APP_LOGO_LIGHT", "/logos/urban-events-text-dark.svg")}
+                        alt={t`${getConfig("VITE_APP_NAME", "Urban Events")} logo`}
+                    />
                 </NavLink>
             </div>
             <div className={classes.nav}>

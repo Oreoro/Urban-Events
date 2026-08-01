@@ -37,7 +37,7 @@ const ChatwootWidget = () => {
                 script.defer = true;
                 script.async = true;
                 script.onload = () => {
-                    window.chatwootSDK.run({
+                    window.chatwootSDK?.run({
                         websiteToken: chatwootToken,
                         baseUrl: chatwootUrl
                     });

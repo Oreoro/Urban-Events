@@ -115,6 +115,20 @@
     0 0 0 1px oklch(0 0 0 / 0.08),
     0 1px 2px -1px oklch(0 0 0 / 0.08),
     0 2px 4px oklch(0 0 0 / 0.06);
+
+  // Compatibility tokens consumed by the v2 application shell and workflows.
+  --hi-color-border: var(--hi-border);
+  --hi-color-success: var(--notion-green);
+  --hi-color-success-soft: color-mix(in srgb, var(--notion-green) 10%, transparent);
+  --hi-color-warning: #b76e00;
+  --hi-color-danger: var(--ue-coral-deep);
+  --hi-color-text-muted: var(--hi-text-muted);
+  --hi-color-text-tertiary: var(--notion-gray-500);
+  --hi-accent-brand-soft: color-mix(in srgb, var(--notion-blue) 10%, transparent);
+  --hi-radius-card: var(--hi-radius-lg);
+  --hi-ink: var(--ue-ink);
+  --hi-ink-deep: var(--notion-black);
+  --hi-gradient: linear-gradient(135deg, var(--notion-blue), var(--notion-blue-hover));
 }
 
 * {

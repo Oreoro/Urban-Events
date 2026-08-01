@@ -3,12 +3,15 @@ import {Header} from "../../common/Header";
 import {Container} from "@mantine/core";
 import {GlobalMenu} from "../../common/GlobalMenu";
 import ImpersonationBanner from "../../common/ImpersonationBanner";
-import {AuthGuard} from "../../common/AuthGuard";
+import PendingDeletionBanner from "../../common/PendingDeletionBanner";
+import AnnouncementDisplay from "../../common/AnnouncementDisplay";
 
-const DefaultLayoutContent = () => {
+const DefaultLayout = () => {
     return (
         <>
             <ImpersonationBanner />
+            <PendingDeletionBanner />
+            <AnnouncementDisplay />
             <Header rightContent={<GlobalMenu/>}/>
             <Container>
                 <Outlet/>
@@ -16,11 +19,5 @@ const DefaultLayoutContent = () => {
         </>
     );
 }
-
-const DefaultLayout = () => (
-    <AuthGuard>
-        <DefaultLayoutContent/>
-    </AuthGuard>
-);
 
 export default DefaultLayout;

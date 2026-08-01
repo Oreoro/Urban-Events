@@ -1,5 +1,5 @@
 /* eslint-disable lingui/no-unlocalized-strings */
-import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme} from "@mantine/core";
+import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme, v8CssVariablesResolver} from "@mantine/core";
 import {PropsWithChildren, useMemo} from "react";
 import {getContrastColor, hexToRgb} from "../../../utilites/themeUtils";
 
@@ -167,7 +167,8 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
  * Accent color is sanitized when event settings are too light or too warm.
  */
 function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark'): CSSVariablesResolver {
-    return () => {
+    return (theme) => {
+        const v8 = v8CssVariablesResolver(theme);
         const palette = mode === 'light' ? LIGHT_PALETTE : DARK_PALETTE;
         const resolvedAccent = getCheckoutAccent(accentColor, mode);
         const accentContrast = getContrastColor(resolvedAccent);
@@ -183,6 +184,7 @@ function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark')
 
         return {
             variables: {
+                ...v8.variables,
                 // Accent colors
                 '--checkout-accent': resolvedAccent,
                 '--checkout-accent-contrast': accentContrast,
@@ -202,8 +204,8 @@ function createCSSVariablesResolver(accentColor: string, mode: 'light' | 'dark')
                 '--hi-text': palette.textPrimary,
                 '--mantine-color-text': palette.textPrimary,
             },
-            light: {},
-            dark: {},
+            light: v8.light,
+            dark: v8.dark,
         };
     };
 }

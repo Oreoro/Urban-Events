@@ -67,7 +67,8 @@ export const Products = () => {
                     <Menu.Target>
                         <Button
                             leftSection={<IconPlus/>}
-                            color="primary"
+                            color={'green'}
+                            data-testid="product-create-button"
                             rightSection={
                                 <IconChevronDown stroke={1.5}/>
                             }

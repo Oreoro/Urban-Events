@@ -1,6 +1,6 @@
 @use "../../../../styles/mixins";
 
-$font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-display: var(--hi-font-heading);
 
 .welcomeHeader {
   margin-bottom: 24px;

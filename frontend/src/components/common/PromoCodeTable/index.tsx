@@ -1,5 +1,5 @@
 import {t} from "@lingui/macro";
-import {Event, PromoCode, PromoCodeDiscountType} from "../../../types.ts";
+import {Event, Product, PromoCode, PromoCodeDiscountAppliesTo, PromoCodeDiscountType} from "../../../types.ts";
 import {prettyDate, relativeDate} from "../../../utilites/dates.ts";
 import {Badge, Button, Flex, Group, Menu, Table as MantineTable, Tooltip} from "@mantine/core";
 import {Table, TableHead} from "../Table";
@@ -83,7 +83,15 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                             }
 
                             if (code.discount_type === PromoCodeDiscountType.Fixed) {
-                                return <Currency currency={event.currency} price={code.discount}/>;
+                                return (
+                                    <>
+                                        <Currency currency={event.currency} price={code.discount}/>
+                                        {' '}
+                                        {code.discount_applies_to === PromoCodeDiscountAppliesTo.Order
+                                            ? t`per order`
+                                            : t`per product`}
+                                    </>
+                                );
                             }
 
                             return <>{code.discount}%</>;
@@ -133,8 +141,8 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
 
                                         {Number(code.applicable_product_ids?.length) > 0 && (
                                             <Tooltip label={
-                                                eventProducts?.filter((product) =>
-                                                    code.applicable_product_ids?.map(Number)?.includes(Number(product.id)))
+                                                eventProducts?.filter((product): product is Product =>
+                                                    product !== undefined && code.applicable_product_ids?.map(Number)?.includes(Number(product.id)) === true)
                                                     .map(product => {
                                                         return (
                                                             <>
@@ -160,7 +168,7 @@ export const PromoCodeTable = ({event, promoCodes, openCreateModal}: PromoCodeTa
                                     <Group wrap={'nowrap'} gap={0} justify={'flex-end'}>
                                         <Menu shadow="md" width={200}>
                                             <Menu.Target>
-                                                <Button size={'xs'} variant={'transparent'}><IconDotsVertical/></Button>
+                                                <Button size={'xs'} variant={'transparent'} data-testid="promo-code-actions-button"><IconDotsVertical/></Button>
                                             </Menu.Target>
 
                                             <Menu.Dropdown>

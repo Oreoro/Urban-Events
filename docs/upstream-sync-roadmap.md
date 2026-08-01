@@ -313,3 +313,15 @@ Start Phase 0/1:
    - app shell/layout/global styles,
    - locales last.
 5. Re-run install/build checks and Neem checkout smoke testing.
+
+## v2 Alpha Execution Status
+
+The v2 spike is now implemented on `codex/sync-hievents-v2-alpha`, based on the
+completed stable-main sync. The merge preserves Neem, PKR/Pakistan defaults, and
+the Urban Events design system while adopting the upstream v2 workflow and page
+architecture. See `docs/v2-alpha-integration.md` for the integrated feature list,
+verification record, staging migration procedure, and release gates.
+
+The branch is ready for review and staging preparation. It must not be migrated
+or deployed directly to production because the occurrence backfill includes a
+destructive legacy-date schema transition.

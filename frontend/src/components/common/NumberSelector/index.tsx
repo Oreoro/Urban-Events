@@ -78,9 +78,10 @@ export const NumberSelector = ({formInstance, fieldName, min, max, sharedValues}
         }
     }, [value, minValue, sharedVals]);
 
-    const changeValue = useCallback((newValue: number) => {
+    const changeValue = useCallback((newValue: number | string) => {
         // Ensure newValue is within bounds
-        const clampedValue = Math.max(minValue, Math.min(maxValue, newValue || 0));
+        const numericValue = typeof newValue === 'number' ? newValue : Number(newValue);
+        const clampedValue = Math.max(minValue, Math.min(maxValue, Number.isFinite(numericValue) ? numericValue : 0));
         const difference = clampedValue - value;
         
         if (difference !== 0) {
@@ -187,4 +188,3 @@ export class SharedValues {
         return adjustedDifference;
     }
 }
-
