@@ -2,6 +2,8 @@ import type { Browser, BrowserContextOptions, Page } from '@playwright/test';
 import { BASE_URL, cookieDomain } from '../utils/env';
 
 export function buildStorageState(token: string): BrowserContextOptions['storageState'] {
+  const isSecure = new URL(BASE_URL).protocol === 'https:';
+
   return {
     cookies: [
       {
@@ -11,8 +13,8 @@ export function buildStorageState(token: string): BrowserContextOptions['storage
         path: '/',
         expires: -1,
         httpOnly: true,
-        secure: true,
-        sameSite: 'None',
+        secure: isSecure,
+        sameSite: isSecure ? 'None' : 'Lax',
       },
     ],
     origins: [],
