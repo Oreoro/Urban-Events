@@ -7,6 +7,7 @@ import {HomepageInfoMessage} from "../../../../../common/HomepageInfoMessage";
 import {t} from "@lingui/macro";
 import {eventHomepagePath} from "../../../../../../utilites/urlHelper.ts";
 import {Event} from "../../../../../../types.ts";
+import {isAxiosError} from "axios";
 
 interface NeemPaymentMethodProps {
     enabled: boolean;
@@ -22,6 +23,9 @@ export const NeemPaymentMethod = ({enabled, setSubmitHandler}: NeemPaymentMethod
     } = useCreateNeemPaymentIntent(eventId, orderShortId, false);
     const [isRedirecting, setIsRedirecting] = useState(false);
     const {data: event} = useGetEventPublic(eventId);
+    const paymentErrorMessage = isAxiosError<{message?: string}>(neemPaymentIntentError)
+        ? neemPaymentIntentError.response?.data?.message
+        : undefined;
 
     const handleNeemSubmit = useCallback(async () => {
         const {data} = await createNeemPaymentIntent();
@@ -57,8 +61,7 @@ export const NeemPaymentMethod = ({enabled, setSubmitHandler}: NeemPaymentMethod
             <CheckoutContent>
                 <HomepageInfoMessage
                     status="error"
-                    /* @ts-ignore */
-                    message={neemPaymentIntentError.response?.data?.message || t`Sorry, something has gone wrong. Please restart the checkout process.`}
+                    message={paymentErrorMessage || t`Sorry, something has gone wrong. Please restart the checkout process.`}
                     link={eventHomepagePath(event)}
                     linkText={t`Return to event page`}
                 />

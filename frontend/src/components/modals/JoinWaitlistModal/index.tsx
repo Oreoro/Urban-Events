@@ -60,11 +60,13 @@ export const JoinWaitlistModal = ({onClose, product, event, productPriceId, even
         validateInputOnBlur: true,
     });
 
-    const handleSubmit = ({consent: _, ...values}: Omit<JoinWaitlistRequest, 'product_price_id'> & { consent: boolean }) => {
+    const handleSubmit = ({first_name, last_name, email}: Omit<JoinWaitlistRequest, 'product_price_id'> & { consent: boolean }) => {
         mutation.mutate({
             eventId: event.id,
             data: {
-                ...values,
+                first_name,
+                last_name,
+                email,
                 product_price_id: Number(productPriceId),
                 event_occurrence_id: eventOccurrenceId ? Number(eventOccurrenceId) : undefined,
             },

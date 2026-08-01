@@ -73,8 +73,6 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
     }, [event?.id, consentGranted]);
 
     useEffect(() => {
-        let showTimer: NodeJS.Timeout;
-
         const checkTicketsPosition = () => {
             if (ticketsSectionRef.current) {
                 const rect = ticketsSectionRef.current.getBoundingClientRect();
@@ -85,9 +83,7 @@ const EventHomepage = ({...loaderData}: EventHomepageProps) => {
             }
         };
 
-        showTimer = setTimeout(() => {
-            checkTicketsPosition();
-        }, 500);
+        const showTimer = setTimeout(checkTicketsPosition, 500);
 
         const handleScroll = () => {
             checkTicketsPosition();

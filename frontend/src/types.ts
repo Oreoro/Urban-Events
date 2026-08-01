@@ -1149,7 +1149,7 @@ export enum QueryFilterOperator {
     In = 'in',
 }
 
-export type QueryFilterValue = string | number | boolean;
+export type QueryFilterValue = string | number | boolean | Array<string | number | boolean>;
 
 export type QueryFilterCondition = {
     operator: QueryFilterOperator;
@@ -1167,7 +1167,7 @@ export interface QueryFilters {
     sortBy?: string;
     sortDirection?: string;
     filterFields?: QueryFilterFields;
-    additionalParams?: Record<string, any>;
+    additionalParams?: Record<string, QueryFilterValue | null | undefined>;
 }
 
 export interface GenericModalProps {

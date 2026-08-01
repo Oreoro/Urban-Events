@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import { SupportedLocales } from '../locales.ts';
 
 import 'dayjs/locale/en';

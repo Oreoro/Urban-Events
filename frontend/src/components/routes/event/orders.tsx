@@ -22,18 +22,16 @@ import {useGetEventOccurrences} from "../../../queries/useGetEventOccurrences";
 import {SortSelector} from "../../common/SortSelector";
 import {OccurrenceSelect} from "../../common/OccurrenceSelect";
 
-const orderStatuses = [
-    {label: t`Completed`, value: 'COMPLETED'},
-    {label: t`Cancelled`, value: 'CANCELLED'},
-    {label: t`Awaiting Offline Payment`, value: 'AWAITING_OFFLINE_PAYMENT'},
-];
-
-const refundStatuses = [
-    {label: t`Refunded`, value: 'REFUNDED'},
-    {label: t`Partially Refunded`, value: 'PARTIALLY_REFUNDED'},
-];
-
 export const Orders: React.FC = () => {
+    const orderStatuses = [
+        {label: t`Completed`, value: 'COMPLETED'},
+        {label: t`Cancelled`, value: 'CANCELLED'},
+        {label: t`Awaiting Offline Payment`, value: 'AWAITING_OFFLINE_PAYMENT'},
+    ];
+    const refundStatuses = [
+        {label: t`Refunded`, value: 'REFUNDED'},
+        {label: t`Partially Refunded`, value: 'PARTIALLY_REFUNDED'},
+    ];
     const {eventId} = useParams<{ eventId: string }>();
     const {data: event} = useGetEvent(eventId);
     const isRecurring = event?.type === EventType.RECURRING;

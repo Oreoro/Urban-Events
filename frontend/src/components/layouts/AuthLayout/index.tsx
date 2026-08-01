@@ -50,29 +50,29 @@ const FeaturePanel = () => {
                         <div className={classes.ticketInner}>
                             <div className={classes.ticketMain}>
                                 <div className={classes.ticketTop}>
-                                    <span>Admit One</span>
-                                    <span>№ 000482</span>
+                                    <span>{t`Admit One`}</span>
+                                    <span>{t`№ 000482`}</span>
                                 </div>
-                                <div className={classes.ticketTitle}>Karachi Indie Night</div>
-                                <div className={classes.ticketMeta}>Sat, Aug 16 · 8:00 PM · Karachi</div>
+                                <div className={classes.ticketTitle}>{t`Karachi Indie Night`}</div>
+                                <div className={classes.ticketMeta}>{t`Sat, Aug 16 · 8:00 PM · Karachi`}</div>
                                 <div className={classes.ticketFields}>
                                     <div className={classes.ticketField}>
-                                        <span>Door</span>
+                                        <span>{t`Door`}</span>
                                         <strong>3</strong>
                                     </div>
                                     <div className={classes.ticketField}>
-                                        <span>Seat</span>
-                                        <strong>GA</strong>
+                                        <span>{t`Seat`}</span>
+                                        <strong>{t`GA`}</strong>
                                     </div>
                                     <div className={classes.ticketField}>
-                                        <span>Price</span>
-                                        <strong>PKR 2,500</strong>
+                                        <span>{t`Price`}</span>
+                                        <strong>{t`PKR 2,500`}</strong>
                                     </div>
                                 </div>
                                 <div className={classes.barcode}/>
                             </div>
                             <div className={classes.ticketStub}>
-                                <span className={classes.stubLabel}>Admit One</span>
+                                <span className={classes.stubLabel}>{t`Admit One`}</span>
                                 <svg className={classes.stubQr} viewBox="0 0 25 25">
                                     <path fillRule="evenodd" d="M0 0h7v7H0zm1 1v5h5V1z"/>
                                     <rect x="2" y="2" width="3" height="3"/>
@@ -102,11 +102,11 @@ const FeaturePanel = () => {
                                     <rect x="10" y="22" width="3" height="2"/>
                                     <rect x="16" y="22" width="2" height="2"/>
                                 </svg>
-                                <span className={classes.stubSeat}>GA — PKR 2,500</span>
+                                <span className={classes.stubSeat}>{t`GA — PKR 2,500`}</span>
                             </div>
                         </div>
                     </div>
-                    <div className={classes.stamp}>Sold Out</div>
+                    <div className={classes.stamp}>{t`Sold Out`}</div>
                 </div>
             </div>
 
@@ -136,13 +136,18 @@ const AuthLayout = () => {
 
         if (clickCountRef.current >= 5) {
             clickCountRef.current = 0;
-            showInfo(`HiEvents v${__APP_VERSION__}`);
+            const appVersion = __APP_VERSION__;
+            showInfo(t`Urban Events v${appVersion}`);
         }
     }, []);
 
     if (me.isSuccess) {
         return <Navigate to={'/manage/events'} />
     }
+
+    // Configuration keys and defaults are implementation details, not standalone UI copy.
+    // eslint-disable-next-line lingui/no-unlocalized-strings
+    const appName = getConfig("VITE_APP_NAME", "Urban Events");
 
     return (
         <div className={classes.authLayout}>
@@ -152,7 +157,7 @@ const AuthLayout = () => {
                         <div className={classes.logo} onClick={handleLogoClick} style={{cursor: 'pointer'}}>
                             <img
                                 src={getConfig("VITE_APP_LOGO_DARK", "/logos/urban-events-text-dark.svg")}
-                                alt={t`${getConfig("VITE_APP_NAME", "Urban Events")} logo`}
+                                alt={t`${appName} logo`}
                             />
                         </div>
                         <div className={classes.formArea}>

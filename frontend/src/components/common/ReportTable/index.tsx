@@ -1,5 +1,7 @@
-import {ComboboxItem, Group, Select, Skeleton, Table as MantineTable} from '@mantine/core';
-import {t} from '@lingui/macro';
+import {Group, Select, Skeleton, Table as MantineTable} from '@mantine/core';
+import {msg, t} from '@lingui/macro';
+import type {MessageDescriptor} from '@lingui/core';
+import {useLingui} from '@lingui/react';
 import {DatePickerInput} from "@mantine/dates";
 import {IconArrowDown, IconArrowsSort, IconArrowUp, IconCalendar} from "@tabler/icons-react";
 import React, {useMemo, useState} from "react";
@@ -43,17 +45,17 @@ interface ReportProps<T> {
     showCustomDatePicker?: boolean;
 }
 
-const TIME_PERIODS = [
-    {value: '24h', label: t`Last 24 hours`},
-    {value: '48h', label: t`Last 48 hours`},
-    {value: '7d', label: t`Last 7 days`},
-    {value: '14d', label: t`Last 14 days`},
-    {value: '30d', label: t`Last 30 days`},
-    {value: '90d', label: t`Last 90 days`},
-    {value: '6m', label: t`Last 6 months`},
-    {value: 'ytd', label: t`Year to date`},
-    {value: '12m', label: t`Last 12 months`},
-    {value: 'custom', label: t`Custom Range`}
+const TIME_PERIOD_DEFINITIONS: Array<{value: string; label: MessageDescriptor}> = [
+    {value: '24h', label: msg`Last 24 hours`},
+    {value: '48h', label: msg`Last 48 hours`},
+    {value: '7d', label: msg`Last 7 days`},
+    {value: '14d', label: msg`Last 14 days`},
+    {value: '30d', label: msg`Last 30 days`},
+    {value: '90d', label: msg`Last 90 days`},
+    {value: '6m', label: msg`Last 6 months`},
+    {value: 'ytd', label: msg`Year to date`},
+    {value: '12m', label: msg`Last 12 months`},
+    {value: 'custom', label: msg`Custom Range`}
 ];
 
 const ReportTable = <T extends Record<string, any>>({
@@ -69,6 +71,11 @@ const ReportTable = <T extends Record<string, any>>({
                                                         showCustomDatePicker = false,
                                                         event
                                                     }: ReportProps<T>) => {
+    const {i18n} = useLingui();
+    const timePeriods = TIME_PERIOD_DEFINITIONS.map(period => ({
+        value: period.value,
+        label: i18n._(period.label),
+    }));
     const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
         dayjs(defaultStartDate).tz(event.timezone).toDate(),
         dayjs(defaultEndDate).tz(event.timezone).toDate()
@@ -90,7 +97,7 @@ const ReportTable = <T extends Record<string, any>>({
     const occurrences = occurrencesQuery?.data?.data || [];
 
     const reportQuery = useGetEventReport(eventId, reportType, dateRange[0], dateRange[1], selectedOccurrenceId);
-    const data = (reportQuery.data || []) as T[];
+    const data = useMemo(() => (reportQuery.data || []) as T[], [reportQuery.data]);
 
     const calculateDateRange = (period: string): [Date | null, Date | null] => {
         if (period === 'custom') {
@@ -139,7 +146,7 @@ const ReportTable = <T extends Record<string, any>>({
         return [start.toDate(), end.toDate()];
     };
 
-    const handlePeriodChange = (value: string | null, _: ComboboxItem) => {
+    const handlePeriodChange = (value: string | null) => {
         if (!value) return;
         setSelectedPeriod(value);
         const newRange = calculateDateRange(value);
@@ -284,7 +291,7 @@ const ReportTable = <T extends Record<string, any>>({
                         <Select
                             style={{minWidth: '200px'}}
                             placeholder={t`Select time period`}
-                            data={TIME_PERIODS}
+                            data={timePeriods}
                             value={selectedPeriod}
                             onChange={handlePeriodChange}
                             leftSection={<IconCalendar stroke={1.5} size={20}/>}
@@ -297,7 +304,7 @@ const ReportTable = <T extends Record<string, any>>({
                             style={{minWidth: '305px', marginBottom: '0'}}
                             leftSection={<IconCalendar stroke={1.5} size={20}/>}
                             type="range"
-                            placeholder="Pick dates range"
+                            placeholder={t`Pick dates range`}
                             value={dateRange.map((date) => date ? dayjs(date).format('YYYY-MM-DD') : null) as [string | null, string | null]}
                             onChange={(range) => handleDateRangeChange(range.map((date) => date ? dayjs(date).toDate() : null) as [Date | null, Date | null])}
                             minDate={dayjs().subtract(1, 'year').tz(event.timezone).toDate()}
@@ -325,7 +332,7 @@ const ReportTable = <T extends Record<string, any>>({
                                 style={{cursor: column.sortable ? 'pointer' : 'default', minWidth: '180px'}}
                             >
                                 <Group gap="xs" wrap={'nowrap'}>
-                                    {t`${column.label}`}
+                                    {column.label}
                                     {column.sortable && getSortIcon(column.key)}
                                 </Group>
                             </MantineTable.Th>

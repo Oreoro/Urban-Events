@@ -1,4 +1,6 @@
+/* eslint-disable lingui/no-unlocalized-strings -- Server-only HTTP and diagnostic strings are not user-interface copy. */
 import axios from 'axios';
+import process from 'node:process';
 
 const getBackendUrl = () => {
     const backendUrl = process.env.VITE_API_URL_SERVER;

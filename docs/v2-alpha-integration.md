@@ -13,6 +13,25 @@ Urban Events stable-sync baseline while keeping the Urban Events product layer:
 The upstream v2 page and workflow architecture is retained. It is rendered
 through the Urban Events design system rather than adopting upstream branding.
 
+## v2 UI policy
+
+The v2 merge is a product and workflow upgrade, not a wholesale visual reset.
+Upstream information architecture, recurring-event controls, payment settings,
+reporting, and responsive behavior are retained, while the presentation layer
+continues to use the existing Urban Events Mantine theme and semantic tokens.
+
+In practical terms:
+
+- Urban Events logos, typography, cream canvas, deep green/plum primary,
+  coral, marigold, mint, and sky tokens remain authoritative.
+- New v2 screens use the existing shared cards, inputs, tables, buttons,
+  modals, spacing, and responsive breakpoints.
+- Upstream Hi.Events branding and visual defaults are not allowed to replace
+  the Urban Events shell, auth experience, public pages, or checkout.
+- UI changes in the stabilization branch are limited to compatibility,
+  accessibility, localization, and correctness fixes. A broader redesign must
+  be reviewed separately after staging validates the v2 workflows.
+
 ## Integrated v2 capabilities
 
 - Recurring events and occurrence management.
@@ -53,6 +72,15 @@ through the Urban Events design system rather than adopting upstream branding.
   no-horizontal-overflow behavior are intact, with no browser console errors.
 - SSR hydration is stable: translated feature labels are resolved after locale
   activation instead of leaking Lingui message IDs into the server markup.
+- Locale-dependent option data now resolves at render time for recurrence
+  schedules, report ranges, language names, social links, and Stripe capability
+  and requirement labels. This avoids stale module-load translations during SSR
+  and after locale activation.
+- Filter/query synchronization now validates filter operators, parses pagination
+  values as numbers, preserves unknown parameters under `additionalParams`, and
+  cancels pending debounced navigation when the hook unmounts.
+- Google, Meta, TikTok, and tag-manager adapters use typed browser globals and
+  cleanup paths instead of broad `any` casts and ignored TypeScript errors.
 - The product quantity selector no longer imports the complete Lodash bundle;
   it uses direct `get` and `debounce` modules and cancels pending updates when
   unmounted.
@@ -65,8 +93,16 @@ through the Urban Events design system rather than adopting upstream branding.
 
 Known upstream-alpha debt:
 
-- ESLint still reports upstream-alpha localization, explicit-`any`, dependency,
-  and assertion debt. Rules-of-Hooks violations have been eliminated.
+- ESLint debt was reduced from 1,074 findings (608 errors / 466 warnings) to
+  727 findings (298 errors / 429 warnings). Every remaining error is a Lingui
+  localization-rule finding; there are no remaining non-localization hard
+  errors. The warning backlog is primarily explicit `any`, exhaustive-dependency,
+  and non-null-assertion debt inherited from the alpha line. Rules-of-Hooks
+  violations have been eliminated.
+- Non-English catalogs currently have 751 untranslated source fallbacks (the
+  partially translated Russian catalog has 2,879). Catalog extraction and
+  compilation succeed, but translation completion remains a separate content
+  workstream.
 - Twenty-two backend tests rely only on mock expectations and are reported as
   risky by PHPUnit because they do not contain PHPUnit assertions.
 

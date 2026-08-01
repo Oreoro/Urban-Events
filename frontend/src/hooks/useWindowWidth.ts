@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import debounce from "lodash/debounce";
 
 export const useWindowWidth = () => {
     const initialWidth = typeof window !== 'undefined' ? window?.innerWidth : 0;
@@ -14,21 +15,9 @@ export const useWindowWidth = () => {
 
         return () => {
             window?.removeEventListener('resize', debouncedHandleResize);
+            debouncedHandleResize.cancel();
         };
     }, []);
 
     return width;
-}
-
-
-function debounce(fn: Function, delay: number) {
-    let timerId: NodeJS.Timeout;
-    return function (...args: any[]) {
-        if (timerId) {
-            clearTimeout(timerId);
-        }
-        timerId = setTimeout(() => {
-            fn(...args);
-        }, delay);
-    }
 }

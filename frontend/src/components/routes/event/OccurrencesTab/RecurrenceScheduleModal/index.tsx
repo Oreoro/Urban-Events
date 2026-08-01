@@ -1,4 +1,6 @@
-import {t, plural} from "@lingui/macro";
+import {msg, plural, t} from "@lingui/macro";
+import type {MessageDescriptor} from "@lingui/core";
+import {useLingui} from "@lingui/react";
 import {
     ActionIcon,
     Button,
@@ -41,47 +43,53 @@ import {showSuccess, showError} from "../../../../../utilites/notifications.tsx"
 import {useFormErrorResponseHandler} from "../../../../../hooks/useFormErrorResponseHandler.tsx";
 import {useEffect, useMemo} from "react";
 import classes from './RecurrenceScheduleModal.module.scss';
+import {isAxiosError} from "axios";
 
 const MAX_PREVIEW = 1200;
 
-const DAYS_OF_WEEK = [
-    {value: 'monday', label: t`Mon`},
-    {value: 'tuesday', label: t`Tue`},
-    {value: 'wednesday', label: t`Wed`},
-    {value: 'thursday', label: t`Thu`},
-    {value: 'friday', label: t`Fri`},
-    {value: 'saturday', label: t`Sat`},
-    {value: 'sunday', label: t`Sun`},
+interface LocalizedOptionDefinition {
+    value: string;
+    label: MessageDescriptor;
+}
+
+const DAY_DEFINITIONS: LocalizedOptionDefinition[] = [
+    {value: 'monday', label: msg`Mon`},
+    {value: 'tuesday', label: msg`Tue`},
+    {value: 'wednesday', label: msg`Wed`},
+    {value: 'thursday', label: msg`Thu`},
+    {value: 'friday', label: msg`Fri`},
+    {value: 'saturday', label: msg`Sat`},
+    {value: 'sunday', label: msg`Sun`},
 ];
 
-const FREQUENCIES = [
-    {value: 'daily', label: t`Daily`},
-    {value: 'weekly', label: t`Weekly`},
-    {value: 'monthly', label: t`Monthly`},
-    {value: 'yearly', label: t`Yearly`},
+const FREQUENCY_DEFINITIONS: LocalizedOptionDefinition[] = [
+    {value: 'daily', label: msg`Daily`},
+    {value: 'weekly', label: msg`Weekly`},
+    {value: 'monthly', label: msg`Monthly`},
+    {value: 'yearly', label: msg`Yearly`},
 ];
 
-const WEEK_POSITIONS = [
-    {value: '1', label: t`First`},
-    {value: '2', label: t`Second`},
-    {value: '3', label: t`Third`},
-    {value: '4', label: t`Fourth`},
-    {value: '-1', label: t`Last`},
+const WEEK_POSITION_DEFINITIONS: LocalizedOptionDefinition[] = [
+    {value: '1', label: msg`First`},
+    {value: '2', label: msg`Second`},
+    {value: '3', label: msg`Third`},
+    {value: '4', label: msg`Fourth`},
+    {value: '-1', label: msg`Last`},
 ];
 
-const MONTHS = [
-    {value: '1', label: t`January`},
-    {value: '2', label: t`February`},
-    {value: '3', label: t`March`},
-    {value: '4', label: t`April`},
-    {value: '5', label: t`May`},
-    {value: '6', label: t`June`},
-    {value: '7', label: t`July`},
-    {value: '8', label: t`August`},
-    {value: '9', label: t`September`},
-    {value: '10', label: t`October`},
-    {value: '11', label: t`November`},
-    {value: '12', label: t`December`},
+const MONTH_DEFINITIONS: LocalizedOptionDefinition[] = [
+    {value: '1', label: msg`January`},
+    {value: '2', label: msg`February`},
+    {value: '3', label: msg`March`},
+    {value: '4', label: msg`April`},
+    {value: '5', label: msg`May`},
+    {value: '6', label: msg`June`},
+    {value: '7', label: msg`July`},
+    {value: '8', label: msg`August`},
+    {value: '9', label: msg`September`},
+    {value: '10', label: msg`October`},
+    {value: '11', label: msg`November`},
+    {value: '12', label: msg`December`},
 ];
 
 const DAY_NUMBER_MAP: Record<string, number> = {
@@ -320,11 +328,20 @@ interface RecurrenceScheduleModalProps extends GenericModalProps {
 }
 
 export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: RecurrenceScheduleModalProps) => {
+    const {i18n} = useLingui();
     const {eventId} = useParams();
     const {data: event} = useGetEvent(eventId);
     const generateMutation = useGenerateOccurrences();
     const queryClient = useQueryClient();
     const errorHandler = useFormErrorResponseHandler();
+    const localizeOptions = (definitions: LocalizedOptionDefinition[]) => definitions.map(option => ({
+        value: option.value,
+        label: i18n._(option.label),
+    }));
+    const daysOfWeek = localizeOptions(DAY_DEFINITIONS);
+    const frequencies = localizeOptions(FREQUENCY_DEFINITIONS);
+    const weekPositions = localizeOptions(WEEK_POSITION_DEFINITIONS);
+    const months = localizeOptions(MONTH_DEFINITIONS);
 
     const hasExistingRule = !!event?.recurrence_rule;
 
@@ -536,14 +553,18 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                     showError(t`Failed to create schedule. Please try again.`);
                 }
             },
-            onError: (error: any) => {
-                const errors = error?.response?.data?.errors;
-                if (error?.response?.status === 422 && errors) {
+            onError: (error: unknown) => {
+                const response = isAxiosError<{
+                    errors?: Record<string, string | string[]>;
+                    message?: string;
+                }>(error) ? error.response : undefined;
+                const errors = response?.data?.errors;
+                if (response?.status === 422 && errors) {
                     const firstError = Object.values(errors).flat()[0] as string | undefined;
                     showError(firstError || t`Please check the provided information is correct`);
                     errorHandler(form, error);
                 } else {
-                    showError(error?.response?.data?.message || t`Failed to create schedule`);
+                    showError(response?.data?.message || t`Failed to create schedule`);
                 }
             },
         });
@@ -559,8 +580,10 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
         const remaining = previewDates.length - maxShow;
 
         if (validTimes.length > 1) {
+            const dateCount = previewDates.length;
+            const sessionsPerDay = plural(validTimes.length, {one: "# session", other: "# sessions"});
             return {
-                label: t`${totalOccurrences} sessions across ${previewDates.length} dates (${plural(validTimes.length, {one: "# session", other: "# sessions"})} per day)`,
+                label: t`${totalOccurrences} sessions across ${dateCount} dates (${sessionsPerDay} per day)`,
                 dates: shown,
                 remaining: remaining > 0 ? remaining : 0,
             };
@@ -572,6 +595,7 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
             remaining: remaining > 0 ? remaining : 0,
         };
     }, [previewDates, validTimes.length, totalOccurrences]);
+    const remainingPreviewCount = previewSummary?.remaining ?? 0;
 
     return (
         <Modal opened onClose={onClose} heading={null} size="lg">
@@ -600,7 +624,7 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                     <InputGroup>
                         <Select
                             label={t`Frequency`}
-                            data={FREQUENCIES}
+                            data={frequencies}
                             {...form.getInputProps('frequency')}
                         />
                         <NumberInput
@@ -623,7 +647,7 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                             mt="sm"
                         >
                             <Group mt="xs">
-                                {DAYS_OF_WEEK.map(day => (
+                                {daysOfWeek.map(day => (
                                     <Checkbox
                                         key={day.value}
                                         value={day.value}
@@ -668,12 +692,12 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                                 <InputGroup>
                                     <Select
                                         label={t`Position`}
-                                        data={WEEK_POSITIONS}
+                                        data={weekPositions}
                                         {...form.getInputProps('week_position')}
                                     />
                                     <Select
                                         label={t`Day`}
-                                        data={DAYS_OF_WEEK}
+                                        data={daysOfWeek}
                                         {...form.getInputProps('day_of_week')}
                                     />
                                 </InputGroup>
@@ -685,7 +709,7 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                         <InputGroup>
                             <Select
                                 label={t`Month`}
-                                data={MONTHS}
+                                data={months}
                                 {...form.getInputProps('yearly_month')}
                             />
                             <NumberInput
@@ -860,9 +884,9 @@ export const RecurrenceScheduleModal = ({onClose, onGenerationStarted}: Recurren
                             {previewSummary.dates.map((date, i) => (
                                 <span key={i} className={exceedsLimit ? classes.previewChipWarning : classes.previewChip}>{date}</span>
                             ))}
-                            {previewSummary.remaining > 0 && (
+                            {remainingPreviewCount > 0 && (
                                 <span className={classes.previewMore}>
-                                    {t`and ${previewSummary.remaining} more...`}
+                                    {t`and ${remainingPreviewCount} more...`}
                                 </span>
                             )}
                         </div>

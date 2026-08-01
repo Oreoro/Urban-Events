@@ -251,7 +251,6 @@ export const Messages = () => {
                         />
                     </div>
 
-                    {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
                     <div className={classes.listBody} ref={listBodyRef} onKeyDown={handleKeyDown}>
                         {isLoading && (
                             <div className={classes.loadingState}>

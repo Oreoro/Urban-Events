@@ -12,6 +12,7 @@ import {Elements} from "@stripe/react-stripe-js";
 import StripeCheckoutForm from "../../../../../forms/StripeCheckoutForm";
 import {Event} from "../../../../../../types.ts";
 import {validateThemeSettings} from "../../../../../../utilites/themeUtils.ts";
+import {isAxiosError} from "axios";
 
 interface StripePaymentMethodProps {
     enabled: boolean;
@@ -27,6 +28,9 @@ export const StripePaymentMethod = ({enabled, setSubmitHandler}: StripePaymentMe
     } = useCreateStripePaymentIntent(eventId, orderShortId);
     const [stripePromise, setStripePromise] = useState<Promise<Stripe | null>>();
     const {data: event} = useGetEventPublic(eventId);
+    const paymentErrorMessage = isAxiosError<{message?: string}>(stripePaymentIntentError)
+        ? stripePaymentIntentError.response?.data?.message
+        : undefined;
 
     useEffect(() => {
         if (!stripeData?.client_secret || !stripeData?.public_key) {
@@ -60,8 +64,7 @@ export const StripePaymentMethod = ({enabled, setSubmitHandler}: StripePaymentMe
             <CheckoutContent>
                 <HomepageInfoMessage
                     status="error"
-                    /* @ts-ignore */
-                    message={stripePaymentIntentError.response?.data?.message || t`Something went wrong`}
+                    message={paymentErrorMessage || t`Something went wrong`}
                     subtitle={t`Please restart the checkout process.`}
                     link={eventHomepagePath(event)}
                     linkText={t`Return to Event`}

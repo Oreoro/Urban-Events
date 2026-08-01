@@ -1,4 +1,5 @@
-import {i18n} from "@lingui/core";
+import {i18n, type MessageDescriptor} from "@lingui/core";
+import {msg} from "@lingui/macro";
 
 export type SupportedLocales =
     "en"
@@ -41,28 +42,28 @@ export const localeToFlagEmojiMap: Record<SupportedLocales, string> = {
     el: '🇬🇷',
 };
 
-export const localeToNameMap: Record<SupportedLocales, string> = {
-    en: `English`,
-    de: `German`,
-    fr: `French`,
-    it: `Italian`,
-    nl: `Dutch`,
-    pt: `Portuguese`,
-    es: `Spanish`,
-    "zh-cn": `Chinese`,
-    "zh-hk": `Cantonese`,
-    "pt-br": `Portuguese (Brazil)`,
-    vi: `Vietnamese`,
-    tr: `Turkish`,
-    hu: `Hungarian`,
-    pl: `Polish`,
-    se: `Swedish`,
-    sk: `Slovak`,
-    el: `Greek`,
+export const localeToNameMap: Record<SupportedLocales, MessageDescriptor> = {
+    en: msg`English`,
+    de: msg`German`,
+    fr: msg`French`,
+    it: msg`Italian`,
+    nl: msg`Dutch`,
+    pt: msg`Portuguese`,
+    es: msg`Spanish`,
+    "zh-cn": msg`Chinese (Simplified)`,
+    "zh-hk": msg`Chinese (Traditional)`,
+    "pt-br": msg`Brazilian Portuguese`,
+    vi: msg`Vietnamese`,
+    tr: msg`Turkish`,
+    hu: msg`Hungarian`,
+    pl: msg`Polish`,
+    se: msg`Swedish`,
+    sk: msg`Slovak`,
+    el: msg`Greek`,
 };
 
 export const getLocaleName = (locale: SupportedLocales) => {
-    return localeToNameMap[locale];
+    return i18n._(localeToNameMap[locale]);
 }
 
 export const getClientLocale = () => {
@@ -90,6 +91,7 @@ export async function dynamicActivateLocale(locale: string) {
         i18n.load(locale, module.messages);
         i18n.activate(locale);
     } catch (error) {
+        // eslint-disable-next-line lingui/no-unlocalized-strings
         console.error("Error loading locale:", error);
         // i18n.activate("en");
     }

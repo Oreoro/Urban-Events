@@ -1,5 +1,5 @@
 /* eslint-disable lingui/no-unlocalized-strings */
-import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, CheckboxProps, MantineTheme, v8CssVariablesResolver} from "@mantine/core";
+import {MantineProvider, MantineThemeOverride, CSSVariablesResolver, MantineColorsTuple, ButtonProps, MantineTheme, v8CssVariablesResolver} from "@mantine/core";
 import {PropsWithChildren, useMemo} from "react";
 import {getContrastColor, hexToRgb} from "../../../utilites/themeUtils";
 
@@ -136,7 +136,7 @@ function createCheckoutTheme(accentColor: string, mode: 'light' | 'dark'): Manti
                 defaultProps: {
                     color: 'primary',
                 },
-                vars: (_theme: MantineTheme, _props: CheckboxProps) => ({
+                vars: () => ({
                     root: {
                         '--checkbox-icon-color': contrastColor,
                     },

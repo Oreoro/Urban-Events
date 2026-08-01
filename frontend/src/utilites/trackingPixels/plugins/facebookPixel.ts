@@ -1,9 +1,19 @@
-import {TrackingPixelPlugin, PageViewData, TrackingEventData} from '../types';
+/* eslint-disable lingui/no-unlocalized-strings */
+import {TrackingPixelPlugin, TrackingEventData} from '../types';
+
+interface FacebookPixelQueue {
+    (...args: unknown[]): void;
+    callMethod?: (...args: unknown[]) => void;
+    push: FacebookPixelQueue;
+    loaded: boolean;
+    version: string;
+    queue: unknown[][];
+}
 
 declare global {
     interface Window {
-        fbq?: (...args: any[]) => void;
-        _fbq?: unknown;
+        fbq?: FacebookPixelQueue;
+        _fbq?: FacebookPixelQueue;
     }
 }
 
@@ -19,20 +29,19 @@ export const facebookPixelPlugin: TrackingPixelPlugin = {
     initialize(pixelId: string) {
         if (typeof window === 'undefined' || window.fbq) return;
 
-        const f = window as any;
-        const n = (f.fbq = function (...args: unknown[]) {
-            if (n.callMethod) {
-                n.callMethod(...args);
+        const pixel = function (...args: unknown[]) {
+            if (pixel.callMethod) {
+                pixel.callMethod(...args);
             } else {
-                n.queue.push(args);
+                pixel.queue.push(args);
             }
-        }) as any;
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = true;
-        n.version = '2.0';
-        n.queue = [] as unknown[];
-        n.callMethod = undefined;
+        } as FacebookPixelQueue;
+        pixel.push = pixel;
+        pixel.loaded = true;
+        pixel.version = '2.0';
+        pixel.queue = [];
+        window.fbq = pixel;
+        window._fbq ??= pixel;
 
         const script = document.createElement('script');
         script.async = true;
@@ -43,7 +52,7 @@ export const facebookPixelPlugin: TrackingPixelPlugin = {
         fbq('init', pixelId);
     },
 
-    pageView(_data: PageViewData) {
+    pageView() {
         fbq('track', 'PageView');
     },
 
@@ -64,7 +73,7 @@ export const facebookPixelPlugin: TrackingPixelPlugin = {
 
     cleanup() {
         document.querySelectorAll('script[data-tracking-pixel="facebook"]').forEach(el => el.remove());
-        delete (window as any).fbq;
-        delete (window as any)._fbq;
+        delete window.fbq;
+        delete window._fbq;
     },
 };

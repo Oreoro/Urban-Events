@@ -179,16 +179,14 @@ const CheckIn = () => {
     const playSuccessSound = useCallback(() => {
         if (isSoundOn && scanSuccessAudioRef.current) {
             scanSuccessAudioRef.current.currentTime = 0;
-            scanSuccessAudioRef.current.play().catch(() => {
-            });
+            scanSuccessAudioRef.current.play().catch(() => undefined);
         }
     }, [isSoundOn]);
 
     const playErrorSound = useCallback(() => {
         if (isSoundOn && scanErrorAudioRef.current) {
             scanErrorAudioRef.current.currentTime = 0;
-            scanErrorAudioRef.current.play().catch(() => {
-            });
+            scanErrorAudioRef.current.play().catch(() => undefined);
         }
     }, [isSoundOn]);
 

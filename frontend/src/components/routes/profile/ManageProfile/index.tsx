@@ -14,15 +14,10 @@ import {useCancelEmailChange} from "../../../../mutations/useCancelEmailChange.t
 import {useFormErrorResponseHandler} from "../../../../hooks/useFormErrorResponseHandler.tsx";
 import {t, Trans} from "@lingui/macro";
 import {useResendEmailConfirmation} from "../../../../mutations/useResendEmailConfirmation.ts";
-import {localeToFlagEmojiMap, localeToNameMap, SupportedLocales} from "../../../../locales.ts";
+import {getLocaleName, localeToFlagEmojiMap, localeToNameMap, SupportedLocales} from "../../../../locales.ts";
 import {Fieldset} from "../../../common/Fieldset";
 import {InputGroup} from "../../../common/InputGroup";
 import {getConfig} from "../../../../utilites/config.ts";
-
-const localeSelectData = Object.keys(localeToNameMap).map(locale => ({
-    value: locale,
-    label: `${localeToFlagEmojiMap[locale as SupportedLocales]} ${localeToNameMap[locale as SupportedLocales]}`,
-}));
 
 export const ManageProfile = () => {
     const {data: me, isFetching} = useGetMe();
@@ -30,6 +25,13 @@ export const ManageProfile = () => {
     const cancelEmailChangeMutation = useCancelEmailChange();
     const resendEmailConfirmationMutation = useResendEmailConfirmation();
     const errorHandler = useFormErrorResponseHandler();
+    const localeSelectData = Object.keys(localeToNameMap).map(locale => ({
+        value: locale,
+        label: `${localeToFlagEmojiMap[locale as SupportedLocales]} ${getLocaleName(locale as SupportedLocales)}`,
+    }));
+    // Configuration keys and defaults are implementation details, not standalone UI copy.
+    // eslint-disable-next-line lingui/no-unlocalized-strings
+    const appName = getConfig("VITE_APP_NAME", "Urban Events");
     const [emailConfirmationResent, setEmailConfirmationResent] = useState(false);
     const profileForm = useForm({
         initialValues: {
@@ -207,7 +209,7 @@ export const ManageProfile = () => {
                                     }>
                                         <Checkbox
                                             {...profileForm.getInputProps('marketing_opt_in', {type: 'checkbox'})}
-                                            label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
+                                            label={<Trans>Receive product updates from {appName}.</Trans>}
                                         />
                                     </Fieldset>
 
