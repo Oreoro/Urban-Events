@@ -56,6 +56,12 @@ through the Urban Events design system rather than adopting upstream branding.
 - The product quantity selector no longer imports the complete Lodash bundle;
   it uses direct `get` and `debounce` modules and cancels pending updates when
   unmounted.
+- Production client dependencies are separated into stable React, Router, and
+  data-client chunks. The former 726.87 kB entry is now 302.51 kB; React 19's
+  indivisible client runtime is 544.93 kB (170.52 kB gzip), Router is 96.25 kB,
+  and the data clients are 89.67 kB. CI caps the entry at 350 kB and every
+  production chunk at 550 kB, just above the React runtime rather than masking
+  application growth.
 
 Known upstream-alpha debt:
 
@@ -63,13 +69,12 @@ Known upstream-alpha debt:
   and assertion debt. Rules-of-Hooks violations have been eliminated.
 - Twenty-two backend tests rely only on mock expectations and are reported as
   risky by PHPUnit because they do not contain PHPUnit assertions.
-- The largest production JavaScript entry chunk remains above Vite's 500 kB
-  advisory threshold and should be split after route-level profiling.
 
-The lightweight `node scripts/verify-urban-v2.mjs` check and the frontend CI
-workflow prevent future upstream syncs from silently dropping the Urban name,
+The lightweight `node scripts/verify-urban-v2.mjs` and
+`node scripts/verify-frontend-bundle.mjs` checks plus the frontend CI workflow
+prevent future upstream syncs from silently dropping the Urban name,
 PKR/Karachi defaults, Neem routes/provider UI, brand assets, occurrence schema,
-or the maintained Azure storage driver.
+maintained Azure storage driver, or production bundle boundaries.
 
 These are stabilization items, not reasons to bypass the release gates below.
 

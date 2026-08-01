@@ -19,6 +19,26 @@ function getVersion(): string {
     return "unknown";
 }
 
+function getVendorChunk(moduleId: string): string | undefined {
+    if (!moduleId.includes("node_modules")) {
+        return undefined;
+    }
+
+    if (["/react/", "/react-dom/", "/scheduler/"].some((dependency) => moduleId.includes(dependency))) {
+        return "vendor-react";
+    }
+
+    if (moduleId.includes("/react-router/")) {
+        return "vendor-router";
+    }
+
+    if (["/axios/", "/@tanstack/query-core/", "/@tanstack/react-query/"].some((dependency) => moduleId.includes(dependency))) {
+        return "vendor-data";
+    }
+
+    return undefined;
+}
+
 export default defineConfig({
     optimizeDeps: {
         include: ["react-router"]
@@ -54,5 +74,15 @@ export default defineConfig({
                 api: "modern-compiler",
             }
         }
+    },
+    build: {
+        // React 19's client runtime produces a 545 kB chunk (171 kB gzip), so
+        // keep the warning threshold just above that indivisible vendor code.
+        chunkSizeWarningLimit: 550,
+        rollupOptions: {
+            output: {
+                manualChunks: getVendorChunk,
+            },
+        },
     }
 });

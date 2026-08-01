@@ -93,6 +93,12 @@ await requireText('frontend/src/components/layouts/AuthLayout/index.tsx', [
     'Local Neem payments',
     'PKR 2,500',
 ]);
+await requireText('frontend/vite.config.ts', [
+    'return "vendor-react"',
+    'return "vendor-router"',
+    'return "vendor-data"',
+    'chunkSizeWarningLimit: 550',
+]);
 
 for (const relativePath of [
     'frontend/public/logos/urban-events-icon.svg',
@@ -102,6 +108,7 @@ for (const relativePath of [
     'backend/database/migrations/2026_02_22_000006_backfill_occurrences_and_drop_event_dates.php',
     'backend/app/Http/Actions/Orders/Payment/Neem/CreateNeemPaymentIntentActionPublic.php',
     'backend/app/Http/Actions/Orders/Payment/Neem/CreateNeemPaymentConfirmationActionPublic.php',
+    'scripts/verify-frontend-bundle.mjs',
 ]) {
     await requireFile(relativePath);
 }

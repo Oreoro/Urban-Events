@@ -12,6 +12,7 @@ on:
       - 'backend/app/Http/Actions/Orders/Payment/Neem/**'
       - 'backend/database/migrations/**'
       - 'scripts/verify-urban-v2.mjs'
+      - 'scripts/verify-frontend-bundle.mjs'
       - 'VERSION'
       - '.github/workflows/frontend.yml'
   pull_request:
@@ -24,6 +25,7 @@ on:
       - 'backend/app/Http/Actions/Orders/Payment/Neem/**'
       - 'backend/database/migrations/**'
       - 'scripts/verify-urban-v2.mjs'
+      - 'scripts/verify-frontend-bundle.mjs'
       - 'VERSION'
       - '.github/workflows/frontend.yml'
 
@@ -69,3 +71,7 @@ jobs:
       - name: SSR build
         working-directory: frontend
         run: yarn build
+
+      - name: Verify production bundle budgets
+        working-directory: frontend
+        run: yarn verify:bundle
