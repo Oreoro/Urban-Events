@@ -39,10 +39,10 @@ test.describe('taxes and fees', () => {
 
     const summaryRow = (label: string) =>
       page.locator('[class*="totalsRow"]').filter({ has: page.getByText(label, { exact: true }) });
-    await expect(summaryRow('Subtotal')).toContainText('$25.00');
-    await expect(summaryRow('Fees')).toContainText('$2.50');
-    await expect(summaryRow('Taxes')).toContainText('$2.75');
-    await expect(summaryRow('Total')).toContainText('$30.25');
+    await expect(summaryRow('Subtotal')).toContainText('PKR 25.00');
+    await expect(summaryRow('Fees')).toContainText('PKR 2.50');
+    await expect(summaryRow('Taxes')).toContainText('PKR 2.75');
+    await expect(summaryRow('Total')).toContainText('PKR 30.25');
 
     await checkout.fillOrderDetails(buyer);
     await checkout.fillFirstAttendee(buyer);
@@ -56,6 +56,6 @@ test.describe('taxes and fees', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('Your order is awaiting payment')).toBeVisible();
-    await expect(page.getByText('$30.25 USD')).toBeVisible();
+    await expect(page.getByText(/PKR\s+30\.25/)).toBeVisible();
   });
 });

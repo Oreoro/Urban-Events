@@ -15,8 +15,8 @@ test.describe('recurring occurrences', () => {
       organizer_id: account.organizerId,
       start_date: startDate.toISOString(),
       category: 'MUSIC',
-      currency: 'USD',
-      timezone: 'UTC',
+      currency: 'PKR',
+      timezone: 'Asia/Karachi',
     });
     const targetDay = new Date();
     targetDay.setDate(targetDay.getDate() + 2);

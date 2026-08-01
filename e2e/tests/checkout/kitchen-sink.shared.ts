@@ -44,8 +44,8 @@ async function createRecurringKitchenSinkEvent(
     organizer_id: organizerId,
     start_date: futureStartDate(),
     category: 'MUSIC',
-    currency: 'USD',
-    timezone: 'UTC',
+    currency: 'PKR',
+    timezone: 'Asia/Karachi',
   });
   await api.generateOccurrences(event.id, {
     frequency: 'weekly',

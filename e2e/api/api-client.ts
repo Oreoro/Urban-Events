@@ -115,8 +115,8 @@ export class ApiClient {
         data: {
           name,
           email: opts.email ?? 'organizer@hievents.test',
-          currency: opts.currency ?? 'USD',
-          timezone: opts.timezone ?? 'UTC',
+          currency: opts.currency ?? 'PKR',
+          timezone: opts.timezone ?? 'Asia/Karachi',
         },
       }),
     );

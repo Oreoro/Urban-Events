@@ -57,8 +57,8 @@ export async function createLiveEventWithProduct(api: ApiClient, opts: SeedOptio
     organizer_id: organizerId,
     start_date: futureStartDate(),
     category,
-    currency: 'USD',
-    timezone: 'UTC',
+    currency: 'PKR',
+    timezone: 'Asia/Karachi',
   });
 
   const categories = await api.listProductCategories(event.id);
@@ -106,8 +106,8 @@ export async function createDraftEvent(
     organizer_id: organizerId,
     start_date: futureStartDate(),
     category: 'MUSIC',
-    currency: 'USD',
-    timezone: 'UTC',
+    currency: 'PKR',
+    timezone: 'Asia/Karachi',
   });
   return { eventId: event.id, slug: event.slug, title };
 }
@@ -301,8 +301,8 @@ export async function createRecurringLiveEvent(
     organizer_id: organizerId,
     start_date: futureStartDate(),
     category: 'MUSIC',
-    currency: 'USD',
-    timezone: 'UTC',
+    currency: 'PKR',
+    timezone: 'Asia/Karachi',
   });
 
   await api.generateOccurrences(event.id, {

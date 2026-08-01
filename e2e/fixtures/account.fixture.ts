@@ -28,8 +28,8 @@ export async function bootstrapAccount(anon: APIRequestContext, mailpit: Mailpit
     email,
     password: PASSWORD,
     password_confirmation: PASSWORD,
-    timezone: 'UTC',
-    currency_code: 'USD',
+    timezone: 'Asia/Karachi',
+    currency_code: 'PKR',
     locale: 'en',
   });
 
