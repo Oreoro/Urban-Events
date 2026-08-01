@@ -10,7 +10,7 @@ interface ChooseAccountModalProps {
 
 export const ChooseAccountModal = ({onAccountChosen, accounts}: ChooseAccountModalProps) => {
     return (
-        <Modal heading={t`Choose an account`} withCloseButton={false} onClose={()=>{}} opened>
+        <Modal heading={t`Choose an account`} withCloseButton={false} onClose={() => undefined} opened>
             <p>{t`You have access to multiple accounts. Please choose one to continue.`}</p>
                 {accounts.map(account => (
                     <div key={account.id} className={classes.accountRow} onClick={() => onAccountChosen(account.id)}>

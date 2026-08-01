@@ -34,7 +34,7 @@ export const ShareComponent = ({
                                }: ShareComponentProps) => {
     const [opened, setOpened] = useState(false);
 
-    let shareText = text;
+    const shareText = text;
 
     const shareData = {
         title,

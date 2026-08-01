@@ -7,7 +7,7 @@ interface PaginationProps extends Omit<MantinePaginationProps, 'hideWithOnePage'
 export const Pagination = (props: PaginationProps) => {
     const {marginTop, ...rest} = props;
     return (
-        <Box mt={props.marginTop === undefined ? 20 : props.marginTop}>
+        <Box mt={marginTop === undefined ? 20 : marginTop}>
             <MantinePagination hideWithOnePage {...rest} />
         </Box>
     );

@@ -25,10 +25,6 @@ export const ProductCategoryList: React.FC<ProductCategoryListProps> = ({
         setCategories(initialCategories);
     }, [initialCategories]);
 
-    if (!categories || categories.length === 0 || !event) {
-        return <>no categories or event</>;
-    }
-
     useEffect(() => {
         if (searchTerm) {
             const lowercaseSearch = searchTerm.toLowerCase();
@@ -57,6 +53,10 @@ export const ProductCategoryList: React.FC<ProductCategoryListProps> = ({
             setFilteredCategories(categories);
         }
     }, [searchTerm, categories]);
+
+    if (!categories || categories.length === 0 || !event) {
+        return <>no categories or event</>;
+    }
 
     return (
         <div>

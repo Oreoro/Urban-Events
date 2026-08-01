@@ -51,6 +51,14 @@ export const OrganizerHomepage = ({
     const {consentPending, onConsent} = useOrganizerTrackingPixels(
         organizer?.settings?.tracking_pixels
     );
+    const rawThemeSettings = organizer?.settings?.homepage_theme_settings;
+    const themeSettings = validateThemeSettings(rawThemeSettings);
+    const cssVars = computeThemeVariables(themeSettings);
+    const backgroundType = themeSettings.background_type;
+
+    useEffect(() => {
+        ensureHomepageFontLoaded(themeSettings.font_family);
+    }, [themeSettings.font_family]);
 
     if (!organizer) {
         return null;
@@ -93,16 +101,6 @@ export const OrganizerHomepage = ({
         .join('');
 
     const events = eventsData?.data || [];
-
-    // Theme settings
-    const rawThemeSettings = organizer?.settings?.homepage_theme_settings;
-    const themeSettings = validateThemeSettings(rawThemeSettings);
-    const cssVars = computeThemeVariables(themeSettings);
-    const backgroundType = themeSettings.background_type;
-
-    useEffect(() => {
-        ensureHomepageFontLoaded(themeSettings.font_family);
-    }, [themeSettings.font_family]);
 
     const themeStyles = {
         '--organizer-bg-color': themeSettings.background,
@@ -209,16 +207,16 @@ export const OrganizerHomepage = ({
                                                 <div className={classes.nameSection}>
                                                     <h1>{organizer?.name}</h1>
                                                     <div className={classes.organizerMeta}>
-                                                        {getShortLocationDisplay(organizer?.settings?.location_details) && (
+                                                        {getShortLocationDisplay(organizer?.location?.structured_address) && (
                                                             <div className={classes.metaItem}>
                                                                 <IconMapPin size={15} className={classes.metaIcon}/>
                                                                 <a
-                                                                    href={getGoogleMapsUrl(organizer.settings!.location_details)}
+                                                                    href={getGoogleMapsUrl(organizer.location!.structured_address!)}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                     className={classes.mapLink}
                                                                 >
-                                                                    <span>{getShortLocationDisplay(organizer.settings!.location_details)}</span>
+                                                                    <span>{getShortLocationDisplay(organizer.location!.structured_address!)}</span>
                                                                     <IconExternalLink size={12}/>
                                                                 </a>
                                                             </div>

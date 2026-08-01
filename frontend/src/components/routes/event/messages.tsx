@@ -232,6 +232,7 @@ export const Messages = () => {
                             size="compact-sm"
                             onClick={openSendModal}
                             leftSection={<IconSend size={14}/>}
+                            data-testid="message-compose-button"
                         >
                             {t`Compose`}
                         </Button>
@@ -250,7 +251,6 @@ export const Messages = () => {
                         />
                     </div>
 
-                    {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
                     <div className={classes.listBody} ref={listBodyRef} onKeyDown={handleKeyDown}>
                         {isLoading && (
                             <div className={classes.loadingState}>

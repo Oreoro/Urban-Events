@@ -16,6 +16,8 @@ interface AttendeeListProps {
 }
 
 export const AttendeeList = ({order, products, refetchOrder, questionAnswers = []}: AttendeeListProps) => {
+    const [expandedAttendees, setExpandedAttendees] = useState<IdParam[]>([]);
+
     if (!order.attendees?.length) {
         return (
             <div className={classes.container}>
@@ -25,8 +27,6 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
             </div>
         );
     }
-
-    const [expandedAttendees, setExpandedAttendees] = useState<IdParam[]>([]);
 
     const hasQuestions = (attendeeId: IdParam) => {
         return questionAnswers.some(qa => qa.attendee_id === attendeeId);
@@ -60,7 +60,7 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
                         <div key={attendee.id} className={classes.attendee}>
                             <div className={classes.attendeeInfo}>
                                 <Avatar
-                                    size="md"
+                                    size={32}
                                     radius="xl"
                                     className={classes.avatar}
                                 >
@@ -119,7 +119,7 @@ export const AttendeeList = ({order, products, refetchOrder, questionAnswers = [
                             </div>
 
                             {/* Collapsible answers section */}
-                            <Collapse in={isExpanded(attendee.id)}>
+                            <Collapse expanded={isExpanded(attendee.id)}>
                                 <div className={classes.answersContainer}>
                                     <QuestionList
                                         compact

@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {facebookPixelPlugin} from './plugins/facebookPixel';
 import {googleAnalytics4Plugin} from './plugins/googleAnalytics4';
 import {googleTagManagerPlugin} from './plugins/googleTagManager';
@@ -21,14 +22,14 @@ export function initializeTrackingPixels(pixels: TrackingPixelConfig[]): void {
         if (!pixel.enabled) continue;
         const plugin = pluginRegistry[pixel.provider];
         if (!plugin) {
-            console.warn(`[hi.events] Unknown tracking pixel provider: ${pixel.provider}`);
+            console.warn(`[Urban Events] Unknown tracking pixel provider: ${pixel.provider}`);
             continue;
         }
         try {
             plugin.initialize(pixel.pixel_id);
             activePlugins.push(plugin);
         } catch (error) {
-            console.error(`[hi.events] Failed to initialize ${pixel.provider}:`, error);
+            console.error(`[Urban Events] Failed to initialize ${pixel.provider}:`, error);
         }
     }
 }

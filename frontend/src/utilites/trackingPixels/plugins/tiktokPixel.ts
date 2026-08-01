@@ -1,8 +1,25 @@
-import {TrackingPixelPlugin, PageViewData, TrackingEventData} from '../types';
+/* eslint-disable lingui/no-unlocalized-strings */
+import {TrackingPixelPlugin, TrackingEventData} from '../types';
+
+interface TikTokPixelTarget {
+    [method: string]: unknown;
+    push(command: unknown[]): unknown;
+}
+
+interface TikTokPixelQueue extends TikTokPixelTarget {
+    methods: string[];
+    setAndDefer(target: TikTokPixelTarget, method: string): void;
+    instance(id: string): TikTokPixelTarget;
+    load(id: string): void;
+    page(): void;
+    track(eventName: string, data: Record<string, unknown>): void;
+    _i: Record<string, TikTokPixelTarget>;
+    _t: Record<string, unknown>;
+}
 
 declare global {
     interface Window {
-        ttq?: any;
+        ttq?: TikTokPixelQueue;
         TiktokAnalyticsObject?: string;
     }
 }
@@ -13,9 +30,10 @@ export const tiktokPixelPlugin: TrackingPixelPlugin = {
     initialize(pixelId: string) {
         if (typeof window === 'undefined' || window.ttq) return;
 
-        const ttq = (window.ttq = window.ttq || []) as any;
+        const ttq = window.ttq ?? ([] as unknown as TikTokPixelQueue);
+        window.ttq = ttq;
         ttq.methods = ['page', 'track', 'identify', 'instances', 'debug', 'on', 'off', 'once', 'ready', 'alias', 'group', 'enableCookie', 'disableCookie'];
-        ttq.setAndDefer = function (t: any, e: string) {
+        ttq.setAndDefer = function (t: TikTokPixelTarget, e: string) {
             t[e] = function (...args: unknown[]) {
                 t.push([e, ...args]);
             };
@@ -24,7 +42,8 @@ export const tiktokPixelPlugin: TrackingPixelPlugin = {
             ttq.setAndDefer(ttq, method);
         }
         ttq.instance = function (id: string) {
-            const instance = ttq._i[id] || [];
+            const instance = ttq._i[id] ?? ([] as unknown as TikTokPixelTarget);
+            ttq._i[id] = instance;
             for (const method of ttq.methods) {
                 ttq.setAndDefer(instance, method);
             }
@@ -45,7 +64,7 @@ export const tiktokPixelPlugin: TrackingPixelPlugin = {
         ttq.page();
     },
 
-    pageView(_data: PageViewData) {
+    pageView() {
         window.ttq?.page();
     },
 
@@ -66,7 +85,7 @@ export const tiktokPixelPlugin: TrackingPixelPlugin = {
 
     cleanup() {
         document.querySelectorAll('script[data-tracking-pixel="tiktok"]').forEach(el => el.remove());
-        delete (window as any).ttq;
-        delete (window as any).TiktokAnalyticsObject;
+        delete window.ttq;
+        delete window.TiktokAnalyticsObject;
     },
 };

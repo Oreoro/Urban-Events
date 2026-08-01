@@ -21,8 +21,8 @@ export const useGetOrganizerReport = (
     endDate?: Date | null,
     currency?: string | null,
     eventId?: IdParam | null,
-    page: number = 1,
-    perPage: number = 1000
+    page = 1,
+    perPage = 1000
 ) => {
     return useQuery({
         queryKey: [

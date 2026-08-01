@@ -313,3 +313,38 @@ Start Phase 0/1:
    - app shell/layout/global styles,
    - locales last.
 5. Re-run install/build checks and Neem checkout smoke testing.
+
+## v2 Alpha Execution Status
+
+The v2 spike is now implemented on `codex/sync-hievents-v2-alpha`, based on the
+completed stable-main sync. The merge preserves Neem, PKR/Pakistan defaults, and
+the Urban Events design system while adopting the upstream v2 workflow and page
+architecture. See `docs/v2-alpha-integration.md` for the integrated feature list,
+verification record, staging migration procedure, and release gates.
+
+The branch is ready for review and staging preparation. It must not be migrated
+or deployed directly to production because the occurrence backfill includes a
+destructive legacy-date schema transition.
+
+### v2 UI design status
+
+The v2 interface has been integrated behind the existing Urban Events design
+system. The merge adopts upstream workflow improvements and responsive page
+structure but deliberately does not import a second visual identity. Shared
+Mantine tokens and Urban-specific assets remain the source of truth, including
+the auth shell, organizer workspace, public pages, checkout, and payment return
+states.
+
+Completed UI hardening in the integration branch includes:
+
+- Strict CSR and SSR production builds on the v2 React Router/Mantine stack.
+- Stable locale activation for option lists and SSR-rendered auth content.
+- Responsive auth-shell verification at desktop and mobile widths.
+- Typed tracking-pixel adapters and safer URL-filter synchronization.
+- Stable vendor splitting with automated entry/chunk budgets.
+
+The remaining UI work is refinement rather than a merge blocker: complete the
+inherited localization catalog, reduce legacy hook and `any` warnings, and run
+the staging visual regression matrix against real organizer/event data. Keep
+those changes token-led and screen-scoped so the current Urban Events identity
+does not drift during future Hi.Events syncs.

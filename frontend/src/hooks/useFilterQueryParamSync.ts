@@ -1,14 +1,9 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 import {useSearchParams} from 'react-router';
-import {QueryFilters} from "../types";
+import {QueryFilterOperator, QueryFilters} from "../types";
+import debounce from 'lodash/debounce';
 
-const debounce = (func: Function, delay: number) => {
-    let timerId: ReturnType<typeof setTimeout>;
-    return (...args: any[]) => {
-        if (timerId) clearTimeout(timerId);
-        timerId = setTimeout(() => func(...args), delay);
-    };
-};
+const queryFilterOperators = new Set<string>(Object.values(QueryFilterOperator));
 
 export const useFilterQueryParamSync = (): [
     Partial<QueryFilters>,
@@ -24,34 +19,42 @@ export const useFilterQueryParamSync = (): [
             if (key.startsWith('filterFields[')) {
                 const match = key.match(/^filterFields\[(.+)\]\[(.+)\]$/);
                 if (match) {
-                    const [_, fieldName, operator] = match;
-                    if (!parsedParams.filterFields) {
-                        parsedParams.filterFields = {};
+                    const [, fieldName, operator] = match;
+                    if (queryFilterOperators.has(operator)) {
+                        parsedParams.filterFields ??= {};
+                        parsedParams.filterFields[fieldName] = {
+                            operator: operator as QueryFilterOperator,
+                            value: value.includes(',') ? value.split(',') : value,
+                        };
                     }
-                    // @ts-ignore
-                    parsedParams.filterFields[fieldName] = {
-                        operator,
-                        value: value.includes(',') ? value.split(',') : value
-                    };
                 }
-            } else {
-                // @ts-ignore - Handle non-filterFields params
+            } else if (key === 'pageNumber' || key === 'perPage') {
+                const numericValue = Number(value);
+                if (Number.isFinite(numericValue)) {
+                    parsedParams[key] = numericValue;
+                }
+            } else if (key === 'query' || key === 'sortBy' || key === 'sortDirection') {
                 parsedParams[key] = value;
+            } else {
+                parsedParams.additionalParams ??= {};
+                parsedParams.additionalParams[key] = value;
             }
         });
 
         setQueryParams(parsedParams);
     }, [searchParams]);
 
-    const debouncedSetSearchParams = useCallback(
-        debounce((params: URLSearchParams) => {
+    const debouncedSetSearchParams = useMemo(
+        () => debounce((params: URLSearchParams) => {
             setSearchParams(params);
         }, 300),
         [setSearchParams]
     );
 
+    useEffect(() => () => debouncedSetSearchParams.cancel(), [debouncedSetSearchParams]);
+
     const updateSearchParams = useCallback(
-        (updates: Partial<QueryFilters>, replace: boolean = false) => {
+        (updates: Partial<QueryFilters>, replace = false) => {
             const newParams = replace ? new URLSearchParams() : new URLSearchParams(searchParams);
 
             // Clear existing filter fields if replacing
@@ -67,13 +70,21 @@ export const useFilterQueryParamSync = (): [
             Object.entries(updates).forEach(([key, value]) => {
                 if (key === 'filterFields' && value) {
                     Object.entries(value).forEach(([field, condition]) => {
-                        if (condition) {
-                            const paramKey = `filterFields[${field}][${condition.operator}]`;
-                            if (Array.isArray(condition.value)) {
-                                newParams.set(paramKey, condition.value.join(','));
-                            } else {
-                                newParams.set(paramKey, String(condition.value));
+                        const conditions = Array.isArray(condition) ? condition : [condition];
+                        conditions.forEach((currentCondition) => {
+                            if (currentCondition) {
+                                const paramKey = `filterFields[${field}][${currentCondition.operator}]`;
+                                const paramValue = Array.isArray(currentCondition.value)
+                                    ? currentCondition.value.join(',')
+                                    : String(currentCondition.value);
+                                newParams.set(paramKey, paramValue);
                             }
+                        });
+                    });
+                } else if (key === 'additionalParams' && value) {
+                    Object.entries(value).forEach(([additionalKey, additionalValue]) => {
+                        if (additionalValue !== undefined && additionalValue !== null) {
+                            newParams.set(additionalKey, String(additionalValue));
                         }
                     });
                 } else if (value !== undefined) {

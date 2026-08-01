@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {TrackingPixelPlugin, PageViewData, TrackingEventData} from '../types';
 
 export const googleTagManagerPlugin: TrackingPixelPlugin = {

@@ -11,7 +11,7 @@ import {EventCard} from "../../../common/EventCard";
 import {Pagination} from "../../../common/Pagination";
 import {CreateEventModal} from "../../../modals/CreateEventModal";
 import {useGetEvents} from "../../../../queries/useGetEvents.ts";
-import {getEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
+import {useEventQueryFilters} from "../../../../utilites/eventsPageFiltersHelper.ts";
 import {EventsDashboardStatusButtons} from "../../../common/EventsDashboardStatusButtons";
 import {NoEventsBlankSlate} from "../../../common/NoEventsBlankSlate";
 import {PageBody} from "../../../common/PageBody";
@@ -22,7 +22,7 @@ const Events = () => {
     const [searchParams, setSearchParams] = useFilterQueryParamSync();
     const [createModalOpen, {open: openCreateModal, close: closeCreateModal}] = useDisclosure(false);
     const {data: eventsData, isFetched: isEventsFetched} = useGetEvents(
-        getEventQueryFilters(searchParams) as QueryFilters
+        useEventQueryFilters(searchParams) as QueryFilters
     );
     const pagination = eventsData?.meta;
     const events = eventsData?.data;
@@ -42,26 +42,25 @@ const Events = () => {
             <PageTitle>
                 {t`Events`}
             </PageTitle>
-            <ToolBar searchComponent={() => (
-                <SearchBarWrapper
-                    placeholder={t`Search by event name...`}
-                    setSearchParams={setSearchParams}
-                    searchParams={searchParams}
-                    pagination={pagination}
-                />
-            )}>
-                <>
-                    <Button
-                        color={'secondary'}
-                        rightSection={
-                            <IconCalendarPlus stroke={1.5}/>
-                        }
-                        onClick={openCreateModal}
-                        pr={12}
-                    >
-                        {t`Create Event`}
-                    </Button>
-                </>
+            <ToolBar
+                searchComponent={() => (
+                    <SearchBarWrapper
+                        placeholder={t`Search by event name...`}
+                        setSearchParams={setSearchParams}
+                        searchParams={searchParams}
+                    />
+                )}
+            >
+                <Button
+                    color={'green'}
+                    rightSection={
+                        <IconCalendarPlus stroke={1.5}/>
+                    }
+                    onClick={openCreateModal}
+                    pr={12}
+                >
+                    {t`Create Event`}
+                </Button>
             </ToolBar>
 
             <EventsDashboardStatusButtons

@@ -7,6 +7,12 @@ interface OrganizerDocumentHeadProps {
     organizer: Organizer;
 }
 
+const compactObject = <T extends Record<string, unknown>>(value: T): Partial<T> => (
+    Object.fromEntries(
+        Object.entries(value).filter(([, item]) => item !== undefined && item !== null && item !== ''),
+    ) as Partial<T>
+);
+
 export const OrganizerDocumentHead = ({organizer}: OrganizerDocumentHeadProps) => {
     const organizerSettings = organizer.settings;
     const title = organizerSettings?.seo_title || `${organizer.name} - Events`;
@@ -17,29 +23,19 @@ export const OrganizerDocumentHead = ({organizer}: OrganizerDocumentHeadProps) =
     const image = coverImage || logoImage;
     const url = organizerHomepageUrl(organizer);
 
-    const address = organizerSettings?.location_details ? {
+    const structuredAddress = organizer.location?.structured_address;
+    const address = structuredAddress ? compactObject({
         "@type": "http://schema.org/PostalAddress",
-        streetAddress: organizerSettings.location_details.address_line_1,
-        addressLocality: organizerSettings.location_details.city,
-        addressRegion: organizerSettings.location_details.state_or_region,
-        postalCode: organizerSettings.location_details.zip_or_postal_code,
-        addressCountry: organizerSettings.location_details.country
-    } : undefined;
-
-    // Filter out undefined address properties
-    if (address) {
-        Object.keys(address).forEach(key => {
-            // @ts-ignore
-            if (address[key] === undefined) {
-                // @ts-ignore
-                delete address[key];
-            }
-        });
-    }
+        streetAddress: structuredAddress.address_line_1,
+        addressLocality: structuredAddress.city,
+        addressRegion: structuredAddress.state_or_region,
+        postalCode: structuredAddress.zip_or_postal_code,
+        addressCountry: structuredAddress.country
+    }) : undefined;
 
     const location = address && Object.keys(address).length > 1 ? {
         "@type": "http://schema.org/Place",
-        name: organizerSettings?.location_details?.venue_name,
+        name: organizer.location?.name ?? structuredAddress?.venue_name,
         address
     } : undefined;
 
@@ -69,15 +65,6 @@ export const OrganizerDocumentHead = ({organizer}: OrganizerDocumentHeadProps) =
         location: location,
         sameAs: sameAs.length > 0 ? sameAs : undefined,
     };
-
-    // Remove undefined properties
-    Object.keys(schemaOrgJSONLD).forEach(key => {
-        // @ts-ignore
-        if (schemaOrgJSONLD[key] === undefined) {
-            // @ts-ignore
-            delete schemaOrgJSONLD[key];
-        }
-    });
 
     const allowIndexing = organizerSettings?.allow_search_engine_indexing !== false;
 

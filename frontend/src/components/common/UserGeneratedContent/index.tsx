@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
-interface UserGeneratedContentProps extends React.HTMLAttributes<HTMLDivElement> {
-}
+type UserGeneratedContentProps = React.HTMLAttributes<HTMLDivElement>
 
 export const UserGeneratedContent = (props: UserGeneratedContentProps) => {
     const contentRef = useRef<HTMLDivElement>(null);

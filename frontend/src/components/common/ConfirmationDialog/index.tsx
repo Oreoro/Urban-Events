@@ -6,12 +6,6 @@ interface ConfirmationDiaglogProps {
     onConfirm: () => void;
     buttonLabel: string;
 }
-
-
-export const confirm = () => {
-
-}
-
 export const ConfirmationDialog = ({message, onConfirm, buttonLabel}: ConfirmationDiaglogProps) => {
     const [opened, {close}] = useDisclosure(true);
 

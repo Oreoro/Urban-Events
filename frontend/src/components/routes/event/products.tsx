@@ -29,7 +29,7 @@ export const Products = () => {
     const {eventId} = useParams();
     const {data: event} = useGetEvent(eventId);
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedCategoryId, setSelectedCategoryId] = useState<IdParam>(null);
+    const [selectedCategoryId, setSelectedCategoryId] = useState<IdParam>(undefined);
 
     const productCategoriesQuery = useGetEventProductCategories(eventId);
     const productCategories = productCategoriesQuery?.data?.data;
@@ -67,7 +67,8 @@ export const Products = () => {
                     <Menu.Target>
                         <Button
                             leftSection={<IconPlus/>}
-                            color="primary"
+                            color={'green'}
+                            data-testid="product-create-button"
                             rightSection={
                                 <IconChevronDown stroke={1.5}/>
                             }

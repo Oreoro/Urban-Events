@@ -67,6 +67,7 @@ export const OrganizerForm = ({form}: { form: UseFormReturnType<Partial<Organize
 
 export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) => {
     const organizerMutation = useCreateOrganizer();
+    const formErrorHandler = useFormErrorResponseHandler();
     const {data: account, isFetched: accountFetched} = useGetAccount();
     const {data: me, isFetched: meFetched} = useGetMe();
     const form = useForm({
@@ -89,21 +90,26 @@ export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) =
                 }
             },
             onError: (error: any) => {
-                useFormErrorResponseHandler()(form, error);
+                formErrorHandler(form, error);
             }
         });
     }
 
     useEffect(() => {
-        if (meFetched) {
-            form.setFieldValue('currency', String(account?.currency_code));
+        if (!accountFetched) {
+            return;
         }
-        if (accountFetched) {
-            form.setFieldValue('name', String(account?.name));
-            form.setFieldValue('email', String(me?.email));
-            form.setFieldValue('timezone', String(me?.timezone));
+        form.setFieldValue('currency', account?.currency_code ?? '');
+        form.setFieldValue('name', account?.name ?? '');
+    }, [accountFetched]);
+
+    useEffect(() => {
+        if (!meFetched) {
+            return;
         }
-    }, [accountFetched, meFetched]);
+        form.setFieldValue('email', me?.email ?? '');
+        form.setFieldValue('timezone', me?.timezone ?? Intl.DateTimeFormat().resolvedOptions().timeZone);
+    }, [meFetched]);
 
     return (
         <LoadingContainer>
@@ -124,6 +130,19 @@ export const OrganizerCreateForm = ({onSuccess, onCancel}: OrganizerFormProps) =
                     >
                         {organizerMutation.isPending ? t`Creating Organizer...` : t`Continue Setup`}
                     </Button>
+                    {onCancel && (
+                        <Button
+                            type="button"
+                            variant="subtle"
+                            fullWidth
+                            size="md"
+                            onClick={onCancel}
+                            disabled={organizerMutation.isPending}
+                            mt="sm"
+                        >
+                            {t`Cancel`}
+                        </Button>
+                    )}
                 </fieldset>
             </form>
         </LoadingContainer>

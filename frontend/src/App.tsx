@@ -1,5 +1,5 @@
 import React, {FC, PropsWithChildren, useCallback, useEffect} from "react";
-import {MantineProvider} from "@mantine/core";
+import {MantineProvider, v8CssVariablesResolver} from "@mantine/core";
 import {Notifications} from "@mantine/notifications";
 import {i18n} from "@lingui/core";
 import {I18nProvider} from "@lingui/react";
@@ -28,6 +28,13 @@ import {getUrbanEventsTheme} from "./theme.ts";
 declare global {
     interface Window {
         hievents: Record<string, string>;
+        chatwootSDK?: {
+            run: (options: { websiteToken: string; baseUrl: string }) => void;
+        };
+        $chatwoot?: {
+            setUser: (id: string, attributes: Record<string, unknown>) => void;
+            setCustomAttributes: (attributes: Record<string, unknown>) => void;
+        };
     }
 }
 
@@ -72,7 +79,10 @@ export const App: FC<
                     display: isLoadedOnBrowser ? "none" : "block",
                 }}
             />
-            <MantineProvider theme={getUrbanEventsTheme()}>
+            <MantineProvider
+                cssVariablesResolver={v8CssVariablesResolver}
+                theme={getUrbanEventsTheme()}
+            >
                 <HelmetProvider context={props.helmetContext}>
                     <I18nProvider i18n={i18n}>
                         <DatesProvider settings={{locale: props.locale}}>
@@ -90,7 +100,7 @@ export const App: FC<
                                     </Helmet>
                                     {props.children}
                                 </ModalsProvider>
-                                <Notifications/>
+                                <Notifications pauseResetOnHover="notification"/>
                                 {showGlobalConsentBanner && (
                                     <CookieConsentBanner onConsent={handleGlobalConsent}/>
                                 )}

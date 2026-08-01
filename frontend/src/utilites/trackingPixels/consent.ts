@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 export type ConsentState = 'granted' | 'denied' | 'pending';
 
 const CONSENT_COOKIE = 'hi_tracking_consent';
@@ -32,14 +33,12 @@ export function isConsentPending(): boolean {
 export function initGoogleConsentMode(granted = false): void {
     if (typeof window === 'undefined') return;
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        window.dataLayer!.push(arguments);
+    const dataLayer = window.dataLayer ?? (window.dataLayer = []);
+    function gtag(...args: unknown[]) {
+        dataLayer.push(args);
     }
 
     const state = granted ? 'granted' : 'denied';
-    // @ts-expect-error gtag uses arguments object
     gtag('consent', 'default', {
         ad_storage: state,
         analytics_storage: state,
@@ -52,14 +51,12 @@ export function initGoogleConsentMode(granted = false): void {
 export function updateGoogleConsentMode(granted: boolean): void {
     if (typeof window === 'undefined') return;
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        window.dataLayer!.push(arguments);
+    const dataLayer = window.dataLayer ?? (window.dataLayer = []);
+    function gtag(...args: unknown[]) {
+        dataLayer.push(args);
     }
 
     const state = granted ? 'granted' : 'denied';
-    // @ts-expect-error gtag uses arguments object
     gtag('consent', 'update', {
         ad_storage: state,
         analytics_storage: state,

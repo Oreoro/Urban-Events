@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 import {TrackingPixelPlugin, PageViewData, TrackingEventData} from '../types';
 
 declare global {
@@ -14,12 +15,10 @@ export const googleAnalytics4Plugin: TrackingPixelPlugin = {
         if (typeof window === 'undefined') return;
         if (document.querySelector('script[data-tracking-pixel="ga4"]')) return;
 
-        window.dataLayer = window.dataLayer || [];
+        const dataLayer = window.dataLayer ?? (window.dataLayer = []);
         if (!window.gtag) {
-            window.gtag = function () {
-                // Must use arguments object, not rest params — gtag.js expects this format
-                // eslint-disable-next-line prefer-rest-params
-                window.dataLayer!.push(arguments);
+            window.gtag = (...args: unknown[]) => {
+                dataLayer.push(args);
             };
         }
         window.gtag('js', new Date());
@@ -57,6 +56,6 @@ export const googleAnalytics4Plugin: TrackingPixelPlugin = {
 
     cleanup() {
         document.querySelectorAll('script[data-tracking-pixel="ga4"]').forEach(el => el.remove());
-        delete (window as any).gtag;
+        delete window.gtag;
     },
 };

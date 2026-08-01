@@ -1,7 +1,7 @@
 import {EventStatus, QueryFilterOperator, QueryFilters} from "../types.ts";
 import {useParams} from "react-router";
 
-export const getEventQueryFilters = (searchParams: Partial<QueryFilters>) => {
+export const useEventQueryFilters = (searchParams: Partial<QueryFilters>) => {
     const {eventsState, organizerId} = useParams();
     return getEventQueryFiltersWithParams(searchParams, eventsState, organizerId);
 };
@@ -11,7 +11,7 @@ export const getEventQueryFiltersWithParams = (
     eventsState?: string, 
     organizerId?: string
 ) => {
-    let filter = {};
+    let filter: Partial<QueryFilters> = {};
     if (eventsState === 'upcoming' || !eventsState) {
         filter = {
             additionalParams: {
@@ -21,10 +21,10 @@ export const getEventQueryFiltersWithParams = (
         };
     } else if (eventsState === 'ended') {
         filter = {
-            filterFields: {
-                end_date: {operator: QueryFilterOperator.LessThanOrEquals, value: 'now'},
-                status: {operator: QueryFilterOperator.NotEquals, value: EventStatus.ARCHIVED},
-            }
+            additionalParams: {
+                eventsStatus: 'ended',
+            },
+            filterFields: {}
         };
     } else if (eventsState === 'archived') {
         filter = {

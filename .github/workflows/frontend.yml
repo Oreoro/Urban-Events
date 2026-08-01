@@ -1,0 +1,77 @@
+name: Frontend and Urban Invariants
+
+on:
+  push:
+    branches: [main, develop, 'v[0-9]+.[0-9]+.[0-9]+-*']
+    paths:
+      - 'frontend/**'
+      - 'backend/config/app.php'
+      - 'backend/routes/api.php'
+      - 'backend/app/DomainObjects/Enums/PaymentProviders.php'
+      - 'backend/app/Services/Domain/Event/CreateEventService.php'
+      - 'backend/app/Http/Actions/Orders/Payment/Neem/**'
+      - 'backend/database/migrations/**'
+      - 'scripts/verify-urban-v2.mjs'
+      - 'scripts/verify-frontend-bundle.mjs'
+      - 'VERSION'
+      - '.github/workflows/frontend.yml'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'backend/config/app.php'
+      - 'backend/routes/api.php'
+      - 'backend/app/DomainObjects/Enums/PaymentProviders.php'
+      - 'backend/app/Services/Domain/Event/CreateEventService.php'
+      - 'backend/app/Http/Actions/Orders/Payment/Neem/**'
+      - 'backend/database/migrations/**'
+      - 'scripts/verify-urban-v2.mjs'
+      - 'scripts/verify-frontend-bundle.mjs'
+      - 'VERSION'
+      - '.github/workflows/frontend.yml'
+
+concurrency:
+  group: frontend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: yarn install --frozen-lockfile
+
+      - name: Verify Urban Events invariants
+        run: node scripts/verify-urban-v2.mjs
+
+      - name: Audit production dependencies
+        working-directory: frontend
+        run: yarn audit --groups dependencies --level high
+
+      - name: Compile translations
+        working-directory: frontend
+        run: yarn messages:compile
+
+      - name: Strict CSR build
+        working-directory: frontend
+        run: yarn build-strict:csr
+
+      - name: SSR build
+        working-directory: frontend
+        run: yarn build
+
+      - name: Verify production bundle budgets
+        working-directory: frontend
+        run: yarn verify:bundle

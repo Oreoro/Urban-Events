@@ -1,5 +1,7 @@
-import {Button, ComboboxItem, Group, Select, Skeleton, Table as MantineTable, Text} from '@mantine/core';
-import {t} from '@lingui/macro';
+import {Button, Group, Select, Skeleton, Table as MantineTable, Text} from '@mantine/core';
+import {msg, t} from '@lingui/macro';
+import type {MessageDescriptor} from '@lingui/core';
+import {useLingui} from '@lingui/react';
 import {DatePickerInput} from "@mantine/dates";
 import {IconArrowDown, IconArrowsSort, IconArrowUp, IconCalendar, IconDownload} from "@tabler/icons-react";
 import {useMemo, useState} from "react";
@@ -42,23 +44,24 @@ interface OrganizerReportProps<T> {
     defaultEndDate?: Date;
     onDateRangeChange?: (range: [Date | null, Date | null]) => void;
     enableDownload?: boolean;
+    downloadFileName?: string;
     showCustomDatePicker?: boolean;
     showCurrencyFilter?: boolean;
     availableCurrencies?: string[];
     eventId?: number | null;
 }
 
-const TIME_PERIODS = [
-    {value: '24h', label: t`Last 24 hours`},
-    {value: '48h', label: t`Last 48 hours`},
-    {value: '7d', label: t`Last 7 days`},
-    {value: '14d', label: t`Last 14 days`},
-    {value: '30d', label: t`Last 30 days`},
-    {value: '90d', label: t`Last 90 days`},
-    {value: '6m', label: t`Last 6 months`},
-    {value: 'ytd', label: t`Year to date`},
-    {value: '12m', label: t`Last 12 months`},
-    {value: 'custom', label: t`Custom Range`}
+const TIME_PERIOD_DEFINITIONS: Array<{value: string; label: MessageDescriptor}> = [
+    {value: '24h', label: msg`Last 24 hours`},
+    {value: '48h', label: msg`Last 48 hours`},
+    {value: '7d', label: msg`Last 7 days`},
+    {value: '14d', label: msg`Last 14 days`},
+    {value: '30d', label: msg`Last 30 days`},
+    {value: '90d', label: msg`Last 90 days`},
+    {value: '6m', label: msg`Last 6 months`},
+    {value: 'ytd', label: msg`Year to date`},
+    {value: '12m', label: msg`Last 12 months`},
+    {value: 'custom', label: msg`Custom Range`}
 ];
 
 const ROWS_PER_PAGE = 1000;
@@ -71,11 +74,17 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                                                                  defaultEndDate = new Date(),
                                                                  onDateRangeChange,
                                                                  enableDownload = true,
+                                                                 downloadFileName,
                                                                  organizer,
                                                                  showCurrencyFilter = true,
                                                                  availableCurrencies = [],
                                                                  eventId,
                                                              }: OrganizerReportProps<T>) => {
+    const {i18n} = useLingui();
+    const timePeriods = TIME_PERIOD_DEFINITIONS.map(period => ({
+        value: period.value,
+        label: i18n._(period.label),
+    }));
     const tz = organizer.timezone || 'UTC';
     const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([
         dayjs(defaultStartDate).tz(tz).toDate(),
@@ -101,7 +110,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
     );
 
     const reportData = reportQuery.data;
-    const data = (reportData?.data || []) as T[];
+    const data = useMemo(() => (reportData?.data || []) as T[], [reportData?.data]);
     const pagination = reportData?.pagination;
 
     const calculateDateRange = (period: string): [Date | null, Date | null] => {
@@ -151,7 +160,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
         return [start.toDate(), end.toDate()];
     };
 
-    const handlePeriodChange = (value: string | null, _: ComboboxItem) => {
+    const handlePeriodChange = (value: string | null) => {
         if (!value) return;
         setSelectedPeriod(value);
         const newRange = calculateDateRange(value);
@@ -199,7 +208,8 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                 selectedCurrency,
                 eventId
             );
-            const filename = `${reportType}_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
+            // eslint-disable-next-line lingui/no-unlocalized-strings -- File extension and date format are protocol values.
+            const filename = downloadFileName || `${reportType}_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
             downloadBinary(blob, filename);
             showSuccess(t`Export successful`);
         } catch {
@@ -294,6 +304,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
 
     const totalPages = pagination?.last_page || 1;
     const totalRows = pagination?.total || 0;
+    const visibleRowCount = sortedData.length;
 
     return (
         <>
@@ -315,7 +326,7 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                         <Select
                             style={{minWidth: '200px'}}
                             placeholder={t`Select time period`}
-                            data={TIME_PERIODS}
+                            data={timePeriods}
                             value={selectedPeriod}
                             onChange={handlePeriodChange}
                             leftSection={<IconCalendar stroke={1.5} size={20}/>}
@@ -328,9 +339,9 @@ const OrganizerReportTable = <T extends Record<string, any>>({
                             style={{minWidth: '305px', marginBottom: '0'}}
                             leftSection={<IconCalendar stroke={1.5} size={20}/>}
                             type="range"
-                            placeholder="Pick dates range"
-                            value={dateRange}
-                            onChange={handleDateRangeChange}
+                            placeholder={t`Pick dates range`}
+                            value={dateRange.map((date) => date ? dayjs(date).format('YYYY-MM-DD') : null) as [string | null, string | null]}
+                            onChange={(range) => handleDateRangeChange(range.map((date) => date ? dayjs(date).toDate() : null) as [Date | null, Date | null])}
                             minDate={dayjs().subtract(1, 'year').tz(tz).toDate()}
                             maxDate={dayjs().tz(tz).toDate()}
                             className={classes.datePicker}
@@ -352,8 +363,10 @@ const OrganizerReportTable = <T extends Record<string, any>>({
 
             {totalRows > 0 && (
                 <Text size="sm" c="dimmed" mb="sm">
-                    {t`Showing ${sortedData.length} of ${totalRows} records`}
-                    {totalPages > 1 && ` (${t`Page`} ${currentPage} ${t`of`} ${totalPages})`}
+                    {totalPages > 1
+                        ? t`Showing ${visibleRowCount} of ${totalRows} records (Page ${currentPage} of ${totalPages})`
+                        : t`Showing ${visibleRowCount} of ${totalRows} records`
+                    }
                 </Text>
             )}
 

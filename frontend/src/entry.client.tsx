@@ -1,5 +1,6 @@
-import {hydrateRoot} from "react-dom/client";
-import {createBrowserRouter, matchRoutes, RouterProvider} from "react-router-dom";
+import {createRoot, hydrateRoot} from "react-dom/client";
+import {createBrowserRouter, matchRoutes} from "react-router";
+import {RouterProvider} from "react-router/dom";
 
 import {router} from "./router";
 import {App} from "./App";
@@ -24,7 +25,11 @@ async function initClientApp() {
     if (matches && matches.length > 0) {
         await Promise.all(
             matches.map(async (m) => {
-                const routeModule = await m.route.lazy?.();
+                const lazyRoute = m.route.lazy;
+                if (typeof lazyRoute !== 'function') {
+                    return;
+                }
+                const routeModule = await lazyRoute();
                 Object.assign(m.route, {...routeModule, lazy: undefined});
             })
         );
@@ -32,12 +37,20 @@ async function initClientApp() {
 
     const browserRouter = createBrowserRouter(router);
 
-    hydrateRoot(
-        document.getElementById("app") as HTMLElement,
+    const appElement = document.getElementById("app") as HTMLElement;
+    const app = (
         <App queryClient={queryClient} locale={rawLocale} dehydratedState={dehydratedState}>
             <RouterProvider router={browserRouter}/>
         </App>
     );
+
+    // The CSR template contains an <!--app-html--> placeholder comment, so
+    // hasChildNodes() cannot distinguish it from real server-rendered markup.
+    if (appElement.childElementCount > 0) {
+        hydrateRoot(appElement, app);
+    } else {
+        createRoot(appElement).render(app);
+    }
 }
 
 initClientApp();

@@ -1,10 +1,11 @@
 import {Card} from "../../../common/Card";
 import {useForm, UseFormReturnType} from "@mantine/form";
 import {useGetMe} from "../../../../queries/useGetMe.ts";
-import {Alert, Button, Checkbox, NativeSelect, PasswordInput, Select, Tabs, TextInput} from "@mantine/core";
+import {Button, Checkbox, NativeSelect, PasswordInput, Select, Tabs, TextInput} from "@mantine/core";
 import classes from "./ManageProfile.module.scss";
 import {useEffect, useState} from "react";
-import {IconInfoCircle, IconMail, IconPassword, IconUser, IconWorld} from "@tabler/icons-react";
+import {IconMail, IconPassword, IconUser, IconWorld} from "@tabler/icons-react";
+import {Callout} from "../../../common/Callout";
 import {timezones} from "../../../../../data/timezones.ts";
 import {useUpdateMe} from "../../../../mutations/useUpdateMe.ts";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
@@ -13,15 +14,10 @@ import {useCancelEmailChange} from "../../../../mutations/useCancelEmailChange.t
 import {useFormErrorResponseHandler} from "../../../../hooks/useFormErrorResponseHandler.tsx";
 import {t, Trans} from "@lingui/macro";
 import {useResendEmailConfirmation} from "../../../../mutations/useResendEmailConfirmation.ts";
-import {localeToFlagEmojiMap, localeToNameMap, SupportedLocales} from "../../../../locales.ts";
+import {getLocaleName, localeToFlagEmojiMap, localeToNameMap, SupportedLocales} from "../../../../locales.ts";
 import {Fieldset} from "../../../common/Fieldset";
 import {InputGroup} from "../../../common/InputGroup";
 import {getConfig} from "../../../../utilites/config.ts";
-
-const localeSelectData = Object.keys(localeToNameMap).map(locale => ({
-    value: locale,
-    label: `${localeToFlagEmojiMap[locale as SupportedLocales]} ${localeToNameMap[locale as SupportedLocales]}`,
-}));
 
 export const ManageProfile = () => {
     const {data: me, isFetching} = useGetMe();
@@ -29,6 +25,13 @@ export const ManageProfile = () => {
     const cancelEmailChangeMutation = useCancelEmailChange();
     const resendEmailConfirmationMutation = useResendEmailConfirmation();
     const errorHandler = useFormErrorResponseHandler();
+    const localeSelectData = Object.keys(localeToNameMap).map(locale => ({
+        value: locale,
+        label: `${localeToFlagEmojiMap[locale as SupportedLocales]} ${getLocaleName(locale as SupportedLocales)}`,
+    }));
+    // Configuration keys and defaults are implementation details, not standalone UI copy.
+    // eslint-disable-next-line lingui/no-unlocalized-strings
+    const appName = getConfig("VITE_APP_NAME", "Urban Events");
     const [emailConfirmationResent, setEmailConfirmationResent] = useState(false);
     const profileForm = useForm({
         initialValues: {
@@ -122,8 +125,8 @@ export const ManageProfile = () => {
                     <Tabs.Panel value="profile">
                         <div className={classes.tabWrapper}>
                             {me?.has_pending_email_change && (
-                                <Alert className={classes.emailChangeAlert} variant="light" color="blue"
-                                       title={t`Email change pending`} icon={<IconInfoCircle/>}>
+                                <Callout variant="info" className={classes.emailChangeAlert}
+                                         title={t`Email change pending`}>
                                     <p>
                                         <Trans>Your email request change to <b>{me?.pending_email}</b> is pending.
                                             Please check your email to confirm</Trans>
@@ -136,7 +139,7 @@ export const ManageProfile = () => {
                                             {t`Cancel email change`}
                                         </Button>
                                     </p>
-                                </Alert>
+                                </Callout>
                             )}
                             <form
                                 onSubmit={profileForm.onSubmit((values) => handleProfileFormSubmit(values, profileForm))}>
@@ -155,20 +158,20 @@ export const ManageProfile = () => {
                                         </InputGroup>
                                         <TextInput required {...profileForm.getInputProps('email')} label={t`Email`}/>
                                         {(me && !me.is_email_verified && !emailConfirmationResent) && (
-                                            <Alert variant="light" mt={10}
-                                                   title={t`Email not verified`} icon={<IconInfoCircle/>}>
+                                            <Callout variant="tip" style={{marginTop: 10}}
+                                                     title={t`Email not verified`}>
                                                 <p>{t`Please verify your email address to access all features`}</p>
                                                 <Button size={'xs'} onClick={handleEmailConfirmationResend}>
                                                     {resendEmailConfirmationMutation.isPending ? t`Resending...` : t`Resend email confirmation`}
                                                 </Button>
-                                            </Alert>
+                                            </Callout>
                                         )}
 
                                         {emailConfirmationResent && (
-                                            <Alert variant="light" mt={10} color="green"
-                                                   title={t`Email confirmation resent`} icon={<IconInfoCircle/>}>
-                                                <p>{t`Please check your email to confirm your email address`}</p>
-                                            </Alert>
+                                            <Callout variant="success" style={{marginTop: 10}}
+                                                     title={t`Email confirmation resent`}>
+                                                {t`Please check your email to confirm your email address`}
+                                            </Callout>
                                         )}
                                     </Fieldset>
 
@@ -192,7 +195,7 @@ export const ManageProfile = () => {
                                                 required
                                                 data={localeSelectData}
                                                 value={profileForm.values.locale || ''}
-                                                onChange={(e) => profileForm.setFieldValue('locale', e.target.value)}
+                                                onChange={(e) => profileForm.setFieldValue('locale', e.target.value as SupportedLocales)}
                                                 label={t`Language`}
                                             />
                                         </InputGroup>
@@ -206,7 +209,7 @@ export const ManageProfile = () => {
                                     }>
                                         <Checkbox
                                             {...profileForm.getInputProps('marketing_opt_in', {type: 'checkbox'})}
-                                            label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
+                                            label={<Trans>Receive product updates from {appName}.</Trans>}
                                         />
                                     </Fieldset>
 

@@ -3,19 +3,16 @@
 .eventCard {
   overflow: hidden;
   padding: 0 !important;
-  border-color: var(--hi-border) !important;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   container-type: inline-size;
   min-width: 280px;
 
   &:hover {
-    background: var(--ue-canvas-soft);
-    border-color: var(--hi-border-strong) !important;
-    box-shadow: none;
-    transform: none;
+    border-color: var(--mantine-color-gray-4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
     .title {
-      color: var(--hi-text);
+      color: var(--mantine-color-primary-filled);
     }
   }
 
@@ -56,8 +53,8 @@
 
 .imageContainer {
   position: relative;
-  width: 190px;
-  min-width: 190px;
+  width: 200px;
+  min-width: 200px;
   overflow: hidden;
 
   @include mixins.respond-below(md, true) {
@@ -87,11 +84,13 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: color-mix(in srgb, var(--ue-ink) 8%, transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 100%);
 }
 
 .placeholderOverlay {
-  background: color-mix(in srgb, var(--ue-mint) 28%, transparent);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.15) 100%),
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
 }
 
 .statusBadge {
@@ -101,32 +100,33 @@
   padding: 4px 10px;
   border-radius: var(--hi-radius-sm);
   font-size: 10px;
-  font-weight: 650;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0;
+  letter-spacing: 0.3px;
   display: flex;
   align-items: center;
   gap: 5px;
+  backdrop-filter: blur(4px);
 
   &.status-live {
-    background: var(--ue-teal);
+    background: var(--mantine-color-green-6);
     color: var(--mantine-color-white);
   }
 
   &.status-onsale {
-    background: var(--ue-ink);
+    background: var(--mantine-color-primary-filled);
     color: var(--mantine-color-white);
   }
 
   &.status-draft {
-    background: var(--ue-canvas-soft);
-    color: var(--hi-text-light);
-    border: 1px dashed var(--hi-border-strong);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--mantine-color-gray-7);
+    border: 1px dashed var(--mantine-color-gray-5);
   }
 
   &.status-ended,
   &.status-archived {
-    background: var(--ue-blue-slate);
+    background: rgba(0, 0, 0, 0.6);
     color: var(--mantine-color-white);
   }
 }
@@ -155,28 +155,52 @@
   flex-direction: column;
   align-items: center;
   min-width: 44px;
-  box-shadow: var(--hi-shadow-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .dateDay {
   font-size: 18px;
   font-weight: 700;
-  color: var(--hi-text);
+  color: var(--mantine-color-dark-9);
   line-height: 1;
 }
 
 .dateMonth {
   font-size: 10px;
-  font-weight: 650;
-  color: var(--hi-text-muted);
+  font-weight: 600;
+  color: var(--mantine-color-primary-filled);
   text-transform: uppercase;
-  letter-spacing: 0;
+  letter-spacing: 0.3px;
   margin-top: 2px;
+}
+
+.recurringBadge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: var(--mantine-color-white);
+  border-radius: var(--hi-radius-sm);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  color: var(--mantine-color-primary-filled);
+}
+
+.recurringLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--mantine-color-primary-filled);
+  font-weight: 500;
+  padding-left: 6px;
+  border-left: 1px solid var(--mantine-color-gray-3);
 }
 
 .content {
   flex: 1;
-  padding: 14px 16px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -201,8 +225,8 @@
 .title {
   margin: 0;
   font-size: 15px;
-  font-weight: 650;
-  color: var(--hi-text);
+  font-weight: 600;
+  color: var(--mantine-color-text);
   line-height: 1.3;
   transition: color 0.15s ease;
   display: -webkit-box;
@@ -222,21 +246,25 @@
 }
 
 .eventDate {
-  color: var(--hi-text-light);
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--mantine-color-text);
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .relativeDate {
-  color: var(--hi-text-muted);
-  font-weight: 500;
+  color: var(--mantine-color-dimmed);
+  font-weight: 400;
 }
 
 .separator {
-  color: var(--hi-border-strong);
+  color: var(--mantine-color-gray-4);
 }
 
 .location {
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   @include mixins.ellipsis;
   max-width: 160px;
 }
@@ -250,11 +278,11 @@
 
 .organizer {
   font-size: 12px;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   text-decoration: none;
 
   &:hover {
-    color: var(--hi-text);
+    color: var(--mantine-color-primary-filled);
     text-decoration: underline;
   }
 }
@@ -263,16 +291,16 @@
   font-size: 11px;
   padding: 3px 8px;
   border-radius: 12px;
-  font-weight: 800;
+  font-weight: 500;
 
   &.ticket-available {
-    background: var(--ue-mint);
-    color: var(--ue-forest-deep);
+    background: var(--mantine-color-green-0);
+    color: var(--mantine-color-green-8);
   }
 
   &.ticket-partial {
-    background: color-mix(in srgb, var(--ue-marigold) 18%, white);
-    color: color-mix(in srgb, var(--ue-marigold) 58%, var(--ue-ink));
+    background: var(--mantine-color-yellow-0);
+    color: var(--mantine-color-yellow-8);
   }
 
   &.ticket-sold-out {
@@ -286,7 +314,7 @@
   align-items: center;
   gap: 24px;
   padding: 12px 18px;
-  background: var(--ue-canvas-soft);
+  background: var(--mantine-color-gray-0);
   border-radius: var(--hi-radius-md);
   flex-shrink: 0;
 
@@ -316,8 +344,8 @@
 
 .statValue {
   font-size: 18px;
-  font-weight: 850;
-  color: var(--hi-text);
+  font-weight: 700;
+  color: var(--mantine-color-text);
   line-height: 1;
 
   @include mixins.respond-below(lg, true) {
@@ -327,8 +355,8 @@
 
 .statValueRevenue {
   font-size: 18px;
-  font-weight: 850;
-  color: var(--ue-forest);
+  font-weight: 700;
+  color: var(--mantine-color-green-7);
   line-height: 1;
 
   @include mixins.respond-below(lg, true) {
@@ -338,10 +366,10 @@
 
 .statLabel {
   font-size: 10px;
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
   text-transform: uppercase;
-  letter-spacing: 0;
-  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-weight: 500;
 }
 
 .menuButton {
@@ -355,10 +383,11 @@
 }
 
 .actionButton {
-  color: var(--hi-text-muted);
+  color: var(--mantine-color-dimmed);
 
   @include mixins.respond-below(md, true) {
-    background: var(--hi-surface);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
 
     &:hover {
       background: var(--mantine-color-white);
@@ -366,7 +395,263 @@
   }
 
   &:hover {
-    background: var(--ue-mint);
-    color: var(--ue-forest-deep);
+    background: var(--mantine-color-gray-1);
+    color: var(--mantine-color-text);
   }
+}
+
+.eventCardCompact {
+  border: 0.5px solid var(--hi-color-border);
+  border-radius: var(--hi-radius-card);
+  overflow: hidden;
+  background: var(--hi-color-white);
+  transition: background-color 0.12s ease;
+  container-type: inline-size;
+
+  &:hover {
+    background-color: var(--mantine-color-gray-0);
+
+    .compactTitle {
+      color: var(--mantine-color-primary-7);
+    }
+  }
+
+  &.isDraft {
+    .compactImage {
+      opacity: 0.85;
+    }
+  }
+
+  &.isEnded {
+    .compactImage {
+      filter: grayscale(60%);
+    }
+  }
+}
+
+.cardLinkCompact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: inherit;
+  min-height: 76px;
+
+  @container (max-width: 460px) {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+.compactThumb {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: var(--hi-radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+
+  @container (max-width: 460px) {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+.compactImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.compactDateBadge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+  color: var(--mantine-color-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.compactDateDay {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+
+  @container (max-width: 460px) {
+    font-size: 0.8125rem;
+  }
+}
+
+.compactDateMonth {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+
+  @container (max-width: 460px) {
+    font-size: 0.5625rem;
+  }
+}
+
+.compactContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.compactPrimary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.compactTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hi-text);
+  transition: color 0.12s ease;
+  @include mixins.ellipsis;
+  letter-spacing: -0.005em;
+}
+
+.compactRecurringIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hi-color-text-muted);
+  flex-shrink: 0;
+}
+
+.compactMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--hi-color-text-muted);
+  line-height: 1.3;
+}
+
+.compactMetaItem {
+  white-space: nowrap;
+}
+
+.compactLocation {
+  @include mixins.ellipsis;
+  max-width: 160px;
+}
+
+.compactDot {
+  color: var(--hi-color-border);
+}
+
+.compactStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.compactStatusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.compactStatus-success {
+  color: var(--hi-color-success);
+}
+
+.compactStatus-warning {
+  color: var(--hi-color-warning);
+}
+
+.compactStatus-danger {
+  color: var(--hi-color-danger);
+}
+
+.compactStatus-muted {
+  color: var(--hi-color-text-muted);
+}
+
+.compactTickets {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.compactTickets-available {
+  color: var(--hi-color-success);
+}
+
+.compactTickets-partial {
+  color: var(--hi-color-warning);
+}
+
+.compactTickets-sold-out {
+  color: var(--hi-color-danger);
+}
+
+.compactStats {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+
+  @container (max-width: 460px) {
+    gap: 0;
+  }
+}
+
+.compactStat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 64px;
+
+  @container (max-width: 460px) {
+    min-width: 0;
+
+    &:not(:last-child) {
+      display: none;
+    }
+  }
+}
+
+.compactStatValue {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hi-text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.compactStatLabel {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--hi-color-text-muted);
+  margin-top: 2px;
+
+  @container (max-width: 460px) {
+    display: none;
+  }
+}
+
+.compactMenuButton {
+  flex-shrink: 0;
 }
