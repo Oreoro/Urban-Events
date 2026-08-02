@@ -16,6 +16,8 @@ import {getConfig} from "../../../../utilites/config.ts";
 export const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    // eslint-disable-next-line lingui/no-unlocalized-strings
+    const appName = getConfig("VITE_APP_NAME", "Urban Events");
 
     const form = useForm({
         validateInputOnBlur: true,
@@ -87,12 +89,16 @@ export const Register = () => {
                     <SimpleGrid verticalSpacing={{base: "md", sm: 0}} cols={{base: 1, sm: 2}} mb="md">
                         <TextInput
                             {...form.getInputProps('first_name')}
+                            name="first_name"
+                            autoComplete="given-name"
                             label={t`First Name`}
                             placeholder={t`John`}
                             required
                         />
                         <TextInput
                             {...form.getInputProps('last_name')}
+                            name="last_name"
+                            autoComplete="family-name"
                             label={t`Last Name`}
                             placeholder={t`Smith`}
                         />
@@ -101,6 +107,9 @@ export const Register = () => {
                     <TextInput
                         mb={0}
                         {...form.getInputProps('email')}
+                        type="email"
+                        name="email"
+                        autoComplete="email"
                         label={t`Email`}
                         placeholder={'your@email.com'}
                         required
@@ -109,19 +118,25 @@ export const Register = () => {
                     <SimpleGrid verticalSpacing={{base: "md", sm: 0}} cols={{base: 1, sm: 2}} mt="md" mb="md">
                         <PasswordInput
                             {...form.getInputProps('password')}
+                            name="password"
+                            autoComplete="new-password"
                             label={t`Password`}
                             placeholder={t`Your password`}
                             visibilityToggleButtonProps={{
                                 'aria-label': t`Show or hide password`,
+                                tabIndex: 0,
                             }}
                             required
                         />
                         <PasswordInput
                             {...form.getInputProps('password_confirmation')}
+                            name="password_confirmation"
+                            autoComplete="new-password"
                             label={t`Confirm Password`}
                             placeholder={t`Confirm password`}
                             visibilityToggleButtonProps={{
                                 'aria-label': t`Show or hide password confirmation`,
+                                tabIndex: 0,
                             }}
                             required
                         />
@@ -136,7 +151,7 @@ export const Register = () => {
                     <Checkbox
                         mb="md"
                         {...form.getInputProps('marketing_opt_in', {type: 'checkbox'})}
-                        label={<Trans>Receive product updates from {getConfig("VITE_APP_NAME", "Urban Events")}.</Trans>}
+                        label={<Trans>Receive product updates from {appName}.</Trans>}
                     />
 
                     <Button color="secondary.8" type="submit" fullWidth disabled={mutate.isPending}>

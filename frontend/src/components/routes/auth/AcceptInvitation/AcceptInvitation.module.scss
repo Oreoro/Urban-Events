@@ -1,29 +1,6 @@
 @use "../auth-common" as auth;
 @use "../../../../styles/mixins.scss";
 
-.invitationCard {
-  width: 100%;
-
-  form {
-    fieldset {
-      border: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    @include auth.auth-inputs;
-    @include auth.auth-button;
-
-    :global(.mantine-InputWrapper-root) {
-      margin-bottom: 1rem;
-    }
-
-    :global(.mantine-Checkbox-root) {
-      margin-bottom: 0.75rem;
-    }
-  }
-}
-
 .header {
   @include auth.auth-header;
 }

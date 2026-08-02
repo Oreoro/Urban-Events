@@ -1,4 +1,4 @@
-import {TextInput, TextInputProps} from '@mantine/core';
+import {ActionIcon, TextInput, TextInputProps} from '@mantine/core';
 import {IconSearch, IconX} from '@tabler/icons-react';
 import classes from './SearchBar.module.scss';
 import {useEffect, useState} from "react";
@@ -33,6 +33,7 @@ export const SearchBarWrapper = ({setSearchParams, searchParams, placeholder}: S
                 pageNumber: 1,
             })}
             placeholder={placeholder || t`Search...`}
+            aria-label={placeholder || t`Search`}
         />
     );
 }
@@ -59,12 +60,18 @@ export const SearchBar = ({sortProps, onClear, value, onChange, ...props}: Searc
                         onChange(event);
                     }
                 }}
-                rightSection={<IconX aria-label={t`Clear Search Text`}
-                                     color={'#ddd'}
-                                     style={{cursor: 'pointer'}}
-                                     display={value ? 'block' : 'none'}
-                                     onClick={() => onClear()}
-                />}
+                rightSectionPointerEvents="all"
+                rightSection={value ? (
+                    <ActionIcon
+                        aria-label={t`Clear search text`}
+                        variant="subtle"
+                        color="gray"
+                        size="md"
+                        onClick={onClear}
+                    >
+                        <IconX size="1rem" stroke={1.8}/>
+                    </ActionIcon>
+                ) : null}
             />
 
             {sortProps

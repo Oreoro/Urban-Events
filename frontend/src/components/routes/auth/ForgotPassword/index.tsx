@@ -39,7 +39,7 @@ export const ForgotPassword = () => {
                 <div className={classes.successIcon}>
                     <IconCheck size={24} />
                 </div>
-                <h3>{t`Check your email`}</h3>
+                <h1>{t`Check your email`}</h1>
                 <p>
                     {t`If you have an account with us, you will receive an email with instructions on how to reset your password.`}
                 </p>
@@ -62,6 +62,8 @@ export const ForgotPassword = () => {
                     <TextInput
                         type="email"
                         {...form.getInputProps('email')}
+                        name="email"
+                        autoComplete="email"
                         label={t`Email`}
                         placeholder="you@example.com"
                         required

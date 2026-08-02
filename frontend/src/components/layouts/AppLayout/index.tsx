@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Outlet} from "react-router";
+import React, {useEffect, useRef, useState} from "react";
+import {Outlet, useLocation} from "react-router";
 import classes from './AppLayout.module.scss';
 import {Topbar} from "./Topbar";
 import {Sidebar} from "./Sidebar";
@@ -34,6 +34,9 @@ const SidebarToggleButton: React.FC<SidebarToggleButtonProps> = ({open, onClick}
         <UnstyledButton
             className={open ? classes.sidebarOpen : classes.sidebarClose}
             onClick={onClick}
+            aria-label={label}
+            aria-controls="app-sidebar"
+            aria-expanded={false}
         >
             <Icon size={16}/>
             <VisuallyHidden>{label}</VisuallyHidden>
@@ -55,6 +58,8 @@ const AppLayout: React.FC<AppLayoutProps> = ({
         return window.innerWidth >= 768; // Desktop open, mobile closed
     });
     const [topBarShadow, setTopBarShadow] = useState<boolean>(false);
+    const mainRef = useRef<HTMLElement>(null);
+    const location = useLocation();
 
     useEffect(() => {
         const mainElement = document.getElementById('app-manage-main');
@@ -80,11 +85,29 @@ const AppLayout: React.FC<AppLayoutProps> = ({
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    useEffect(() => {
+        mainRef.current?.focus({preventScroll: true});
+    }, [location.pathname]);
+
+    useEffect(() => {
+        if (!sidebarOpen || window.innerWidth >= 768) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setSidebarOpen(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [sidebarOpen]);
+
     return (
         <>
             <ImpersonationBanner />
             <PendingDeletionBanner />
             <AnnouncementDisplay />
+            <a className={classes.skipLink} href="#app-manage-main">{t`Skip to main content`}</a>
             <div id={`${entityType}-manage-container`}
                  className={`${classes.container} ${sidebarOpen ? classes.open : classes.closed}`}>
                 <Topbar
@@ -97,9 +120,14 @@ const AppLayout: React.FC<AppLayoutProps> = ({
                     actionGroupContent={actionGroupContent}
                 />
 
-            <div className={classes.main} id={'app-manage-main'}>
+            <main
+                ref={mainRef}
+                className={classes.main}
+                id="app-manage-main"
+                tabIndex={-1}
+            >
                 <Outlet/>
-            </div>
+            </main>
 
             <Sidebar
                 sidebarOpen={sidebarOpen}
@@ -112,6 +140,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
                 <div
                     className={`${classes.overlay} ${sidebarOpen ? classes.open : ''}`}
                     onClick={() => setSidebarOpen(false)}
+                    aria-hidden="true"
                 />
             )}
 

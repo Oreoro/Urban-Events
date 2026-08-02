@@ -10,10 +10,11 @@ export const LanguageSwitcher = () => {
     return (
         <>
             <Select
-                leftSection={<IconWorld size={15} color={'#ccc'}/>}
-                width={180}
+                leftSection={<IconWorld size={15} color="var(--hi-text-muted)"/>}
+                w={132}
                 size={'xs'}
                 required
+                aria-label={t`Language`}
                 data={Object.keys(localeToNameMap).map(locale => ({
                     value: locale,
                     label: getLocaleName(locale as SupportedLocales),

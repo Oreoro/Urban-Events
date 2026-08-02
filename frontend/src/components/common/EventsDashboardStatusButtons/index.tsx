@@ -1,6 +1,6 @@
 import {Button, Group} from "@mantine/core";
 import {t} from "@lingui/macro";
-import {useNavigate} from "react-router";
+import {NavLink} from "react-router";
 
 interface EventsDashboardStatusButtonsProps {
     baseUrl: string;
@@ -8,29 +8,28 @@ interface EventsDashboardStatusButtonsProps {
 }
 
 export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashboardStatusButtonsProps) => {
-    const navigate = useNavigate();
+    const statuses = [
+        {value: 'upcoming', label: t`Upcoming`, active: eventsState === 'upcoming' || !eventsState},
+        {value: 'ended', label: t`Ended`, active: eventsState === 'ended'},
+        {value: 'archived', label: t`Archived`, active: eventsState === 'archived'},
+    ];
 
     return (
-        <Group mt={10} mb={15}>
-            <Button
-                size={'compact-sm'}
-                variant={eventsState === 'upcoming' || !eventsState ? 'light' : 'transparent'}
-                onClick={() => navigate(baseUrl + '/upcoming' + window.location.search)}
-            >
-                {t`Upcoming`}
-            </Button>
-            <Button size={'compact-sm'}
-                    variant={eventsState === 'ended' ? 'light' : 'transparent'}
-                    onClick={() => navigate(baseUrl + '/ended' + window.location.search)}
-            >
-                {t`Ended`}
-            </Button>
-            <Button size={'compact-sm'}
-                    variant={eventsState === 'archived' ? 'light' : 'transparent'}
-                    onClick={() => navigate(baseUrl + '/archived' + window.location.search)}
-            >
-                {t`Archived`}
-            </Button>
-        </Group>
+        <nav aria-label={t`Event status`}>
+            <Group mt={10} mb={15} gap={8}>
+                {statuses.map((status) => (
+                    <Button
+                        key={status.value}
+                        component={NavLink}
+                        to={`${baseUrl}/${status.value}${window.location.search}`}
+                        size="compact-sm"
+                        variant={status.active ? 'light' : 'transparent'}
+                        aria-current={status.active ? 'page' : undefined}
+                    >
+                        {status.label}
+                    </Button>
+                ))}
+            </Group>
+        </nav>
     );
 }

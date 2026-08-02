@@ -31,6 +31,7 @@
   background: var(--hi-color-white);
   transition: background-color 0.12s ease;
   container-type: inline-size;
+  position: relative;
 
   &:hover {
     background-color: var(--mantine-color-gray-0);
@@ -138,6 +139,28 @@
   align-items: center;
   gap: 6px;
   min-width: 0;
+}
+
+.compactTitleLink {
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    outline: 2px solid var(--hi-secondary-strong);
+    outline-offset: -2px;
+    border-radius: var(--hi-radius-card);
+  }
 }
 
 .compactTitle {
@@ -278,6 +301,8 @@
 
 .compactMenuButton {
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .eventCard {
@@ -287,6 +312,7 @@
   transition: background-color 0.15s ease, border-color 0.15s ease;
   container-type: inline-size;
   min-width: 280px;
+  position: relative;
 
   &:hover {
     background: var(--ue-canvas-soft);
@@ -331,6 +357,27 @@
     flex-direction: column;
     min-height: auto;
     position: relative;
+  }
+}
+
+.titleLink {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    outline: 2px solid var(--hi-secondary-strong);
+    outline-offset: -2px;
+    border-radius: var(--hi-radius-card);
   }
 }
 
@@ -532,6 +579,8 @@
   font-size: 12px;
   color: var(--hi-text-muted);
   text-decoration: none;
+  position: relative;
+  z-index: 2;
 
   &:hover {
     color: var(--hi-text);
@@ -626,6 +675,8 @@
 
 .menuButton {
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 
   @include mixins.respond-below(md, true) {
     position: absolute;

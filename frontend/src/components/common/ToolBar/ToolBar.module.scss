@@ -7,6 +7,10 @@
 
   button {
     min-height: 40px !important;
+
+    @include mixins.respond-below(sm, true) {
+      min-height: 44px !important;
+    }
   }
 }
 
@@ -147,5 +151,9 @@
 
   button {
     min-height: 40px !important;
+
+    @include mixins.respond-below(sm, true) {
+      min-height: 44px !important;
+    }
   }
 }
