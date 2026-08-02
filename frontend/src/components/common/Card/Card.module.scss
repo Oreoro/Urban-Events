@@ -5,6 +5,10 @@
   margin-bottom: var(--hi-spacing-lg);
   color: var(--hi-text);
 
+  &.noStyle {
+    //
+  }
+
   &.lightGray {
     background-color: var(--checkout-accent-soft, var(--ue-canvas-soft));
     border: 1px solid var(--checkout-border, var(--hi-border));

@@ -1,5 +1,35 @@
 @use "../../../styles/mixins.scss";
 
+.recurringNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--mantine-color-blue-0);
+  border: 1px solid var(--mantine-color-blue-2);
+  border-radius: 12px;
+}
+
+.recurringNoticeIcon {
+  color: var(--mantine-color-blue-5);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.recurringNoticeTitle {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--mantine-color-dark-7);
+}
+
+.recurringNoticeText {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--mantine-color-gray-7);
+  line-height: 1.45;
+}
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -11,7 +41,7 @@
   padding: 2rem;
   z-index: 10;
   animation: fadeIn 0.3s ease-out;
-  
+
   @include mixins.respond-below(md) {
     padding: 0;
     align-items: flex-start;
@@ -44,7 +74,7 @@
   color: var(--ue-icy-aqua);
   opacity: 0.34;
   animation: float 6s ease-in-out infinite;
-  
+
   @include mixins.respond-below(sm) {
     width: 1.5rem;
     height: 1.5rem;
@@ -187,7 +217,7 @@
   margin: 0 0 0.125rem;
   letter-spacing: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  
+
   @include mixins.respond-below(sm) {
     font-size: 1.25rem;
   }
@@ -199,7 +229,7 @@
   margin: 0;
   font-weight: 400;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  
+
   @include mixins.respond-below(sm) {
     font-size: 0.75rem;
   }
@@ -233,6 +263,7 @@
     padding-bottom: 2rem;
   }
 
+  // Ensure consistent spacing between form elements
   form > * + * {
     margin-top: 1.5rem;
 
@@ -253,6 +284,7 @@
 
 // Editor field
 .editorField {
+  // Spacing handled by parent form
 }
 
 // Date time section
@@ -267,36 +299,6 @@
   }
 }
 
-
-.recurringNotice {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--mantine-color-blue-0);
-  border: 1px solid var(--mantine-color-blue-2);
-  border-radius: 12px;
-}
-
-.recurringNoticeIcon {
-  color: var(--mantine-color-blue-5);
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.recurringNoticeTitle {
-  margin: 0 0 0.25rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--mantine-color-dark-7);
-}
-
-.recurringNoticeText {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--mantine-color-gray-7);
-  line-height: 1.45;
-}
 
 // Create button
 .createButton {
@@ -333,7 +335,7 @@
   &:active {
     transform: translateY(-1px);
   }
-  
+
   &:focus-visible {
     outline: 2px solid var(--mantine-color-blue-5);
     outline-offset: 2px;
@@ -348,7 +350,7 @@
   margin-bottom: 2rem;
   border: 2px dashed var(--hi-border-strong);
   animation: slideIn 0.3s ease-out;
-  
+
   @include mixins.respond-below(sm) {
     padding: 1.5rem;
   }

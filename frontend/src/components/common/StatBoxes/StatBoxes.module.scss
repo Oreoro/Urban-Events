@@ -1,0 +1,98 @@
+@use "../../../styles/mixins.scss";
+
+.statistics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  color: var(--hi-text);
+  margin: 1rem 0 1.25rem;
+
+  @include mixins.respond-below(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mixins.respond-below(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statistic {
+  display: flex;
+  align-items: center;
+  padding: 14px 15px !important;
+  margin-bottom: 0 !important;
+  height: 100%;
+  min-height: 96px;
+  border-color: var(--hi-border) !important;
+  box-shadow: none !important;
+
+  .leftPanel {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto auto;
+    min-height: 50px;
+    gap: 2px;
+
+    .number {
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.2;
+      align-self: end;
+      color: var(--hi-text);
+
+      @include mixins.respond-below(md) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .description {
+      font-size: 0.72rem;
+      color: var(--hi-text-muted);
+      font-weight: 600;
+      align-self: start;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+  }
+
+  .rightPanel {
+    margin-left: 0.9rem;
+    align-self: flex-start;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--hi-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--stat-color);
+      background: color-mix(in srgb, var(--stat-color) 12%, white);
+      border: 1px solid color-mix(in srgb, var(--stat-color) 18%, var(--hi-border));
+      box-shadow: none;
+
+      @include mixins.respond-below(md) {
+        width: 30px;
+        height: 30px;
+        border-radius: var(--hi-radius-md);
+      }
+    }
+  }
+
+  @include mixins.respond-below(sm) {
+    padding: 1rem !important;
+
+    .leftPanel {
+      min-height: 55px;
+
+      .number {
+        font-size: 1.25rem;
+      }
+
+      .description {
+        font-size: 0.9125rem;
+      }
+    }
+  }
+}
