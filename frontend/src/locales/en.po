@@ -13542,3 +13542,61 @@ msgstr "Zip or Postal Code"
 #: src/components/routes/product-widget/CollectInformation/index.tsx:582
 msgid "ZIP or Postal Code"
 msgstr "ZIP or Postal Code"
+
+#: src/components/common/EventCard/index.tsx:271
+#: src/components/common/EventCard/index.tsx:389
+msgid "Actions for {eventTitle}"
+msgstr "Actions for {eventTitle}"
+
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:87
+msgid "Application navigation"
+msgstr "Application navigation"
+
+#: src/components/common/SearchBar/index.tsx:66
+msgid "Clear search text"
+msgstr "Clear search text"
+
+#: src/components/layouts/AppLayout/Topbar/index.tsx:38
+msgid "Close navigation"
+msgstr "Close navigation"
+
+#: src/components/common/EventsDashboardStatusButtons/index.tsx:20
+msgid "Event status"
+msgstr "Event status"
+
+#: src/components/routes/event/EventDashboard/index.tsx:206
+msgid "Hi, {firstName}"
+msgstr "Hi, {firstName}"
+
+#: src/components/common/EventCard/index.tsx:208
+#: src/components/common/EventCard/index.tsx:323
+msgid "Manage {eventTitle}"
+msgstr "Manage {eventTitle}"
+
+#: src/components/common/GlobalMenu/index.tsx:104
+msgid "Open account menu"
+msgstr "Open account menu"
+
+#: src/components/layouts/AppLayout/Topbar/index.tsx:38
+msgid "Open navigation"
+msgstr "Open navigation"
+
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:95
+msgid "Primary navigation"
+msgstr "Primary navigation"
+
+#: src/components/layouts/AppLayout/index.tsx:122
+msgid "Skip to main content"
+msgstr "Skip to main content"
+
+#: src/components/layouts/AuthLayout/index.tsx:25
+msgid "Urban Events login"
+msgstr "Urban Events login"
+
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:159
+msgid "We sent a verification link to {userEmail}"
+msgstr "We sent a verification link to {userEmail}"
+
+#: src/components/routes/event/EventDashboard/index.tsx:202
+msgid "Welcome back, {firstName}"
+msgstr "Welcome back, {firstName}"
