@@ -2,6 +2,9 @@
 
 .topBar {
   grid-area: topbar;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background: var(--hi-surface);
   display: flex;
   flex-direction: column;
@@ -13,6 +16,9 @@
   .topBarMain {
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 0 16px;
     height: 46px;
     border-bottom: 1px solid var(--hi-border);
@@ -34,9 +40,13 @@
     position: relative;
     z-index: 5;
     min-height: 40px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     @include mixins.respond-below(md) {
-      padding: 10px 16px;
+      padding: 0 16px;
+      min-height: 44px;
     }
   }
 
@@ -104,6 +114,12 @@
       position: relative;
       @include mixins.ellipsis();
 
+      @include mixins.respond-below(md) {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
+
       &:hover {
         color: var(--hi-text);
       }
@@ -134,6 +150,8 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+    min-width: 0;
+    flex-shrink: 1;
   }
 
   .statusToggleContainer {
@@ -179,7 +197,9 @@
     padding-inline: 5px;
 
     a {
-      display: flex;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
 
     @include mixins.respond-above(md) {

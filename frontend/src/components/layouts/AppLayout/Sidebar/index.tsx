@@ -1,5 +1,5 @@
 import React from "react";
-import {Badge, UnstyledButton, VisuallyHidden} from '@mantine/core';
+import {Badge, FocusTrap, UnstyledButton, VisuallyHidden} from '@mantine/core';
 import {IconChevronLeft} from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import classes from './Sidebar.module.scss';
@@ -80,37 +80,40 @@ export const Sidebar: React.FC<SidebarProps> = ({
     };
 
     return (
-        <aside
-            id="app-sidebar"
-            className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}
-            aria-label={t`Application navigation`}
-            aria-hidden={isMobile && !sidebarOpen}
-        >
-            <div className={classes.logo}>
-                <NavLink to={`/manage/events`}>
-                    <BrandWordmark tone="light" size="md"/>
-                </NavLink>
-            </div>
-            <nav className={classes.nav} aria-label={t`Primary navigation`}>
-                {renderLinks()}
-            </nav>
-            {sidebarFooter && (
-                <div className={classes.sidebarFooter}>
-                    {sidebarFooter}
+        <FocusTrap active={Boolean(isMobile && sidebarOpen)}>
+            <aside
+                id="app-sidebar"
+                className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}
+                aria-label={t`Application navigation`}
+                aria-hidden={isMobile && !sidebarOpen}
+            >
+                <div className={classes.logo}>
+                    <NavLink to={`/manage/events`}>
+                        <BrandWordmark tone="light" size="md"/>
+                    </NavLink>
                 </div>
-            )}
-            {sidebarOpen && (
-                <UnstyledButton
-                    className={classes.sidebarClose}
-                    onClick={() => setSidebarOpen(!sidebarOpen)}
-                    aria-label={t`Close sidebar`}
-                    aria-controls="app-sidebar"
-                    aria-expanded={sidebarOpen}
-                >
-                    <IconChevronLeft size={20}/>
-                    <VisuallyHidden>{t`Close sidebar`}</VisuallyHidden>
-                </UnstyledButton>
-            )}
-        </aside>
+                <nav className={classes.nav} aria-label={t`Primary navigation`}>
+                    {renderLinks()}
+                </nav>
+                {sidebarFooter && (
+                    <div className={classes.sidebarFooter}>
+                        {sidebarFooter}
+                    </div>
+                )}
+                {sidebarOpen && (
+                    <UnstyledButton
+                        className={classes.sidebarClose}
+                        onClick={() => setSidebarOpen(!sidebarOpen)}
+                        aria-label={t`Close sidebar`}
+                        aria-controls="app-sidebar"
+                        aria-expanded={sidebarOpen}
+                        data-autofocus
+                    >
+                        <IconChevronLeft size={20}/>
+                        <VisuallyHidden>{t`Close sidebar`}</VisuallyHidden>
+                    </UnstyledButton>
+                )}
+            </aside>
+        </FocusTrap>
     );
 };

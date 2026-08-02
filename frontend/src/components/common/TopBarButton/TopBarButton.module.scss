@@ -47,7 +47,7 @@
   }
 
   @include mixins.respond-below(sm) {
-    --button-height: 2rem;
+    --button-height: 2.75rem;
     padding: 0 10px;
   }
 }

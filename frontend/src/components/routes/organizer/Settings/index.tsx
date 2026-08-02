@@ -18,6 +18,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Card } from "../../../common/Card";
 import { useLocation, useParams } from "react-router";
 import { useGetAccount } from "../../../../queries/useGetAccount.ts";
+import classes from "./Settings.module.scss";
 
 const Settings = () => {
     const { organizerId } = useParams();
@@ -66,7 +67,7 @@ const Settings = () => {
                 id: 'email-templates',
                 label: t`Email Templates`,
                 icon: IconMail,
-                component: () => <EmailTemplateSettings organizerId={organizerId!} />
+                component: () => <EmailTemplateSettings organizerId={organizerId ?? ''} />
             },
             {
                 id: 'tracking-pixels',
@@ -102,6 +103,7 @@ const Settings = () => {
         return baseSections;
     }, [isSaasMode, organizerId]);
 
+    // eslint-disable-next-line lingui/no-unlocalized-strings
     const isLargeScreen = useMediaQuery('(min-width: 1200px)', true);
     const location = useLocation();
     const targetSectionId = useMemo(() => {
@@ -134,8 +136,8 @@ const Settings = () => {
             <Stack gap="xs">
                 {SECTIONS.map((section) => (
                     <MantineNavLink
-                        style={{ borderRadius: '5px' }}
                         key={section.id}
+                        className={classes.sectionLink}
                         active={activeSection === section.id}
                         label={section.label}
                         color={'color' in section ? section.color as string : undefined}

@@ -4,7 +4,7 @@ import {PageTitle} from "../../../common/PageTitle";
 import {PageBody} from "../../../common/PageBody";
 import {StatBoxes} from "../../../common/StatBoxes";
 import {useGetMe} from "../../../../queries/useGetMe.ts";
-import {t, Trans} from "@lingui/macro";
+import {t} from "@lingui/macro";
 import {AreaChart} from "@mantine/charts";
 import {Card} from "../../../common/Card";
 import classes from "./EventDashboard.module.scss";
@@ -67,6 +67,7 @@ export const EventDashboard = () => {
         enabled: !!event && !!defaultDateRangeRef.current,
     });
     const {data: eventStats} = eventStatsQuery;
+    // eslint-disable-next-line lingui/no-unlocalized-strings
     const isMobile = useMediaQuery('(max-width: 768px)');
     const {data: account, isFetched: accountIsFetched} = useGetAccount();
     const [publishModalOpened, {open: openPublishModal, close: closePublishModal}] = useDisclosure(false);
@@ -191,21 +192,18 @@ export const EventDashboard = () => {
     })();
 
     const shouldShowChecklist = !!(event && accountIsFetched);
+    const firstName = me?.first_name;
 
     return (
         <PageBody>
             {!isNewEvent && (
                 <PageTitle style={{marginBottom: 0}}>
                     {!isMobile && (
-                        <Trans>
-                            Welcome back{me?.first_name && ', ' + me?.first_name} 👋
-                        </Trans>
+                        firstName ? t`Welcome back, ${firstName}` : t`Welcome back`
                     )}
 
                     {isMobile && (
-                        <Trans>
-                            Hi {me?.first_name && me?.first_name} 👋
-                        </Trans>
+                        firstName ? t`Hi, ${firstName}` : t`Welcome back`
                     )}
                 </PageTitle>
             )}

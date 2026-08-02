@@ -1,0 +1,7 @@
+@use "../../../styles/mixins.scss";
+
+.statusButton {
+  @include mixins.respond-below(md) {
+    min-height: 44px !important;
+  }
+}

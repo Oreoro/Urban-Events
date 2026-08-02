@@ -1,0 +1,9 @@
+@use "../../../../styles/mixins.scss";
+
+.sectionLink {
+  border-radius: 5px;
+
+  @include mixins.respond-below(md) {
+    min-height: 44px;
+  }
+}

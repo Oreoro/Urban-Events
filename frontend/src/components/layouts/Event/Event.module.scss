@@ -8,7 +8,7 @@
   margin-right: auto;
 
   @include mixins.respond-below(md) {
-    margin-left: 16px;
+    margin-left: 8px;
   }
 
   .statusAction {
@@ -60,6 +60,10 @@
         display: block;
       }
     }
+  }
+
+  @include mixins.respond-below(sm) {
+    display: none;
   }
 }
 

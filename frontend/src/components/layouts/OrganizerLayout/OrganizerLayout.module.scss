@@ -21,6 +21,10 @@
     }
   }
 
+  @include mixins.respond-below(sm) {
+    display: none;
+  }
+
   .viewHomepageButtonTextDesktop {
     display: inline;
 
@@ -76,7 +80,7 @@
   margin-right: auto;
 
   @include mixins.respond-below(md) {
-    margin-left: 16px;
+    margin-left: 8px;
   }
 
   .statusAction {

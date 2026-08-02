@@ -101,7 +101,7 @@ export const GlobalMenu = () => {
         <>
             <Menu shadow="md" width={220} position="bottom-end" offset={10}>
                 <Menu.Target>
-                    <UnstyledButton className={classes.menuButton}>
+                    <UnstyledButton className={classes.menuButton} aria-label={t`Open account menu`}>
                         <Avatar className={classes.avatar} radius="xl" fw={800}>
                             {me ? getInitials(me.first_name + " " + me.last_name) : ".."}
                         </Avatar>
