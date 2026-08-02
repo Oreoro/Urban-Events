@@ -431,9 +431,10 @@ button,
 
   .mantine-Button-root,
   .mantine-ActionIcon-root,
-  .mantine-PasswordInput-visibilityToggle {
-    min-width: 44px;
-    min-height: 44px;
+  .mantine-PasswordInput-visibilityToggle,
+  .mantine-Menu-item {
+    min-width: 44px !important;
+    min-height: 44px !important;
   }
 }
 

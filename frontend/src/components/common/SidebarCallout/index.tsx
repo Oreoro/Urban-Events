@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, CloseButton} from '@mantine/core';
 import classes from './SidebarCallout.module.scss';
+import {t} from '@lingui/macro';
 
 interface SidebarCalloutProps {
     icon: React.ReactNode;
@@ -56,6 +57,7 @@ export const SidebarCallout: React.FC<SidebarCalloutProps> = ({
                     onClick={handleClose}
                     size="sm"
                     iconSize={16}
+                    aria-label={t`Dismiss this message`}
                 />
             )}
             <div className={classes.calloutIcon}>

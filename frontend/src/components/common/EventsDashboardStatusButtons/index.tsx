@@ -1,6 +1,7 @@
 import {Button, Group} from "@mantine/core";
 import {t} from "@lingui/macro";
 import {NavLink} from "react-router";
+import classes from "./EventsDashboardStatusButtons.module.scss";
 
 interface EventsDashboardStatusButtonsProps {
     baseUrl: string;
@@ -25,6 +26,7 @@ export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashb
                         size="compact-sm"
                         variant={status.active ? 'light' : 'transparent'}
                         aria-current={status.active ? 'page' : undefined}
+                        className={classes.statusButton}
                     >
                         {status.label}
                     </Button>

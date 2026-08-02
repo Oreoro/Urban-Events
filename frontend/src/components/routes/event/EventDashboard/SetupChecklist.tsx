@@ -2,7 +2,6 @@ import {Button} from "@mantine/core";
 import {IconCheck, IconCircle, IconCircleCheck, IconX} from "@tabler/icons-react";
 import {t} from "@lingui/macro";
 import {Account, Event, EventType, Image, Organizer, User} from "../../../../types.ts";
-import {BouncingEmoji} from "../../../common/BouncingEmoji";
 import {useResendEmailConfirmation} from "../../../../mutations/useResendEmailConfirmation.ts";
 import {showError, showSuccess} from "../../../../utilites/notifications.tsx";
 import classes from "./SetupChecklist.module.scss";
@@ -27,6 +26,7 @@ interface SetupChecklistProps {
     showCongratsHeader?: boolean;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const hasEventDetails = (event: Event): boolean => {
     const description = event.description?.trim() ?? '';
 
@@ -84,6 +84,7 @@ export const SetupChecklist = ({
     const isRecurring = event.type === EventType.RECURRING;
     const isSaasMode = !!account?.is_saas_mode_enabled;
     const hasTickets = productCount > 0;
+    const userEmail = me?.email;
 
     const steps: Step[] = [
         {
@@ -154,8 +155,8 @@ export const SetupChecklist = ({
         ...(isSaasMode && me ? [{
             key: 'verify_email',
             title: t`Verify your email`,
-            helperIncomplete: me?.email
-                ? t`We sent a verification link to ${me.email}`
+            helperIncomplete: userEmail
+                ? t`We sent a verification link to ${userEmail}`
                 : t`Verify your email so attendees can receive tickets`,
             helperComplete: t`Email verified`,
             complete: isEmailVerified,
@@ -190,8 +191,8 @@ export const SetupChecklist = ({
 
             {showCongratsHeader && (
                 <div className={classes.congratsHero}>
-                    <div className={classes.congratsEmoji}>
-                        <BouncingEmoji emoji="🎉" size={72}/>
+                    <div className={classes.congratsIcon} aria-hidden="true">
+                        <IconCircleCheck size={44} stroke={1.6}/>
                     </div>
                     <div className={classes.congratsEyebrow}>{t`Event created`}</div>
                     <h2 className={classes.congratsTitle}>{event.title}</h2>

@@ -7,4 +7,10 @@
 }
 
 .toolbar {
+  @media (max-width: 48em) {
+    :global(.mantine-RichTextEditor-control) {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
 }

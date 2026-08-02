@@ -28,8 +28,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   padding: 0;
@@ -48,10 +48,8 @@
 }
 
 .dismissCongrats {
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: 10px;
+  right: 10px;
 }
 
 .congratsHero {
@@ -63,14 +61,17 @@
   }
 }
 
-.congratsEmoji {
-  display: flex;
+.congratsIcon {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  width: 64px;
+  height: 64px;
   margin-bottom: 14px;
-
-  div {
-    margin-bottom: 0 !important;
-  }
+  border-radius: 50%;
+  color: var(--mantine-color-primary-7);
+  background: var(--hi-accent-brand-soft);
+  border: 1px solid color-mix(in srgb, var(--mantine-color-primary-6) 18%, transparent);
 }
 
 .congratsEyebrow {
@@ -270,7 +271,7 @@
   font-size: 0.8125rem !important;
   font-weight: 500 !important;
   height: auto !important;
-  min-height: 0 !important;
+  min-height: 36px !important;
 }
 
 .actionSecondary {
@@ -279,7 +280,7 @@
   font-size: 0.8125rem !important;
   font-weight: 500 !important;
   height: auto !important;
-  min-height: 0 !important;
+  min-height: 36px !important;
   border: 0.5px solid var(--hi-color-border) !important;
   background-color: var(--hi-color-white) !important;
   color: var(--hi-text) !important;
@@ -289,4 +290,15 @@
 .cardCongrats .actionSecondary {
   padding: 7px 14px !important;
   font-size: 0.875rem !important;
+}
+
+@include mixins.respond-below(md) {
+  .actionPrimary,
+  .actionSecondary {
+    min-height: 44px !important;
+  }
+
+  .row {
+    align-items: flex-start;
+  }
 }

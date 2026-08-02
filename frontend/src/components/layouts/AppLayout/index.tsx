@@ -92,14 +92,26 @@ const AppLayout: React.FC<AppLayoutProps> = ({
     useEffect(() => {
         if (!sidebarOpen || window.innerWidth >= 768) return;
 
+        const previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 setSidebarOpen(false);
             }
         };
 
+        const handleViewportResize = () => {
+            document.body.style.overflow = window.innerWidth < 768 ? 'hidden' : previousBodyOverflow;
+        };
+
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
+        window.addEventListener('resize', handleViewportResize);
+        return () => {
+            document.body.style.overflow = previousBodyOverflow;
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('resize', handleViewportResize);
+        };
     }, [sidebarOpen]);
 
     return (

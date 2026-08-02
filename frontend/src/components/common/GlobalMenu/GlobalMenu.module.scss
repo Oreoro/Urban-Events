@@ -15,6 +15,11 @@
     box-shadow: none;
     transform: none;
   }
+
+  @media (max-width: 48em) {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .avatar {
