@@ -16,7 +16,7 @@ test.describe('password management', () => {
     await page.getByRole('button', { name: 'Change password' }).click();
     await expect(page.getByText('Profile updated successfully')).toBeVisible();
 
-    await page.getByRole('button', { name: 'EO', exact: true }).click();
+    await page.getByRole('button', { name: 'Open account menu' }).click();
     await page.getByRole('menuitem', { name: 'Logout' }).click();
     await expect(page).toHaveURL(/\/auth\/login/);
 
