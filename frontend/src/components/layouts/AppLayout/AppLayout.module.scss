@@ -6,32 +6,30 @@
     "topbar"
     "main";
   grid-template-rows: auto 1fr;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: 1fr;
   height: 100vh;
-  height: 100dvh;
-  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-columns 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (min-width: 768px) {
     grid-template-areas:
       "sidebar topbar"
       "sidebar main";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-columns: 244px 1fr;
 
     &.closed {
       grid-template-areas:
         "topbar"
         "main";
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: 1fr;
     }
   }
 
   .main {
     grid-area: main;
-    padding: var(--hi-spacing-lg);
-    padding-bottom: calc(var(--hi-spacing-lg) + 40px);
+    padding: 32px 34px 56px;
     overflow: auto;
-    background-color: var(--hi-color-gray);
+    background: var(--ue-canvas);
 
     @include mixins.scrollbar;
 
@@ -43,8 +41,8 @@
   .sidebarOpen {
     width: 28px;
     height: 28px;
-    background: var(--hi-ink);
-    color: white;
+    background: var(--hi-primary);
+    color: var(--hi-color-white);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -53,13 +51,13 @@
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--hi-shadow-sm);
     z-index: 5;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
 
     &:hover {
       transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--hi-shadow-md);
     }
 
     @media (max-width: 767px) {
@@ -77,7 +75,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: color-mix(in srgb, var(--ue-plum-deep) 68%, transparent);
     z-index: 150;
     display: none;
 

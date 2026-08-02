@@ -89,9 +89,20 @@ await requireText('frontend/src/components/routes/product-widget/Payment/index.t
     '<NeemPaymentMethod',
 ]);
 await requireText('frontend/src/components/layouts/AuthLayout/index.tsx', [
-    '/logos/urban-events-text-dark.svg',
-    'Local Neem payments',
-    'PKR 2,500',
+    'BrandWordmark',
+    'tone="dark"',
+    'size="lg"',
+]);
+await requireText('frontend/src/theme.ts', [
+    'export const notionColors',
+    'blue: "#097FE8"',
+]);
+await requireText('frontend/src/components/layouts/AppLayout/AppLayout.module.scss', [
+    'background: var(--ue-canvas)',
+]);
+await requireText('frontend/src/components/layouts/AppLayout/Sidebar/Sidebar.module.scss', [
+    'background: var(--hi-shell-bg)',
+    'box-shadow: inset -1px 0 0 var(--hi-border)',
 ]);
 await requireText('frontend/vite.config.ts', [
     'return "vendor-react"',

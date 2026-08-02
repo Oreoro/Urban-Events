@@ -1,5 +1,44 @@
 @use "../../../styles/mixins";
 
+.tableHead {
+  white-space: nowrap;
+
+  th {
+    background-color: #f2f0f5;
+    color: var(--hi-secondary-text) !important;
+    padding: 20px !important;
+
+    @include mixins.respond-below(sm) {
+      padding: 14px 12px !important;
+    }
+  }
+}
+
+.table {
+  th {
+    white-space: nowrap;
+  }
+
+  tbody tr {
+
+    td {
+      padding: 20px !important;
+      white-space: nowrap;
+
+      @include mixins.respond-below(sm) {
+        padding: 14px 12px !important;
+      }
+    }
+  }
+
+  position: relative;
+}
+
+.showStartShadow tbody .stickyLeft::after,
+.showEndShadow tbody .stickyRight::before {
+  opacity: 1;
+}
+
 .tableWrapper {
   display: flex;
   flex-direction: column;
@@ -17,13 +56,9 @@
   white-space: nowrap;
 
   th {
-    background-color: #f2f0f5;
+    background-color: var(--hi-surface-soft);
     color: var(--hi-secondary-text) !important;
     padding: 20px !important;
-
-    @include mixins.respond-below(sm) {
-      padding: 14px 12px !important;
-    }
   }
 }
 
@@ -50,10 +85,6 @@
     td {
       padding: 20px !important;
       white-space: nowrap;
-
-      @include mixins.respond-below(sm) {
-        padding: 14px 12px !important;
-      }
     }
   }
 
@@ -69,18 +100,11 @@
   &::after {
     content: '';
     position: absolute;
-    top: -1px;
+    top: 0;
+    right: 0;
     bottom: 0;
-    left: 100%;
-    width: 18px;
-    background: linear-gradient(
-                    to right,
-                    rgba(20, 10, 40, 0.11),
-                    rgba(20, 10, 40, 0.045) 45%,
-                    rgba(20, 10, 40, 0)
-    );
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    width: 1px;
+    background: var(--hi-border);
     pointer-events: none;
   }
 }
@@ -94,28 +118,16 @@
   &::before {
     content: '';
     position: absolute;
-    top: -1px;
+    top: 0;
+    left: 0;
     bottom: 0;
-    right: 100%;
-    width: 18px;
-    background: linear-gradient(
-                    to left,
-                    rgba(20, 10, 40, 0.11),
-                    rgba(20, 10, 40, 0.045) 45%,
-                    rgba(20, 10, 40, 0)
-    );
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    width: 1px;
+    background: var(--hi-border);
     pointer-events: none;
   }
 }
 
-.showStartShadow tbody .stickyLeft::after,
-.showEndShadow tbody .stickyRight::before {
-  opacity: 1;
-}
-
 .tableHead .stickyLeft,
 .tableHead .stickyRight {
-  background-color: #f2f0f5;
+  background-color: var(--hi-surface-soft);
 }

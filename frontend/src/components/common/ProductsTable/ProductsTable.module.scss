@@ -1,6 +1,71 @@
 @use "../../../styles/mixins.scss";
 @use "sass:color";
 
+$card-radius: var(--hi-radius-md, 8px);
+$card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+$card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+$transition-fast: 150ms ease;
+$transition-base: 200ms ease;
+$color-text-primary: #1f2937;
+$color-text-secondary: #6b7280;
+$color-text-muted: #9ca3af;
+$color-border: #e5e7eb;
+$color-border-light: #f3f4f6;
+$color-success: #10b981;
+$color-money: #059669;
+
+// ==========================================
+// Product Card Styles
+// ==========================================
+
+.productCard {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: $card-radius;
+  border: 1px solid $color-border;
+  background-color: #ffffff;
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+  transition:
+          transform $transition-base,
+          box-shadow $transition-base,
+          border-color $transition-base;
+  grid-template-areas: "sort content action";
+  grid-template-columns: 44px 1fr auto;
+
+  &:hover {
+    box-shadow: $card-shadow-hover;
+    border-color: color.adjust($color-border, $lightness: -5%);
+
+    .actionButton {
+      background-color: $color-border-light;
+    }
+  }
+
+  @include mixins.respond-below(lg) {
+    grid-template-areas:
+      "sort content"
+      "sort action";
+    grid-template-columns: 40px 1fr;
+  }
+
+  @include mixins.respond-below(sm) {
+    grid-template-areas:
+      "content"
+      "action";
+    grid-template-columns: 1fr;
+
+    .sortControls {
+      display: none;
+    }
+  }
+
+  &.soldOut {
+    opacity: 0.7;
+  }
+}
+
 // ==========================================
 // Variables & Design Tokens
 // ==========================================
@@ -137,7 +202,7 @@ $color-money: #059669;
 
   &:hover {
     box-shadow: $card-shadow-hover;
-    border-color: color.adjust($color-border, $lightness: -5%);
+    border-color: darken($color-border, 5%);
 
     .actionButton {
       background-color: $color-border-light;
@@ -502,4 +567,10 @@ $color-money: #059669;
 .isDragging {
   opacity: 0.5;
   box-shadow: $card-shadow;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hi-spacing-sm);
 }
