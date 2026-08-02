@@ -1,6 +1,6 @@
 import {Button, Group} from "@mantine/core";
 import {t} from "@lingui/macro";
-import {NavLink} from "react-router";
+import {NavLink, useLocation} from "react-router";
 import classes from "./EventsDashboardStatusButtons.module.scss";
 
 interface EventsDashboardStatusButtonsProps {
@@ -9,6 +9,7 @@ interface EventsDashboardStatusButtonsProps {
 }
 
 export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashboardStatusButtonsProps) => {
+    const {search} = useLocation();
     const statuses = [
         {value: 'upcoming', label: t`Upcoming`, active: eventsState === 'upcoming' || !eventsState},
         {value: 'ended', label: t`Ended`, active: eventsState === 'ended'},
@@ -22,7 +23,7 @@ export const EventsDashboardStatusButtons = ({baseUrl, eventsState}: EventsDashb
                     <Button
                         key={status.value}
                         component={NavLink}
-                        to={`${baseUrl}/${status.value}${window.location.search}`}
+                        to={`${baseUrl}/${status.value}${search}`}
                         size="compact-sm"
                         variant={status.active ? 'light' : 'transparent'}
                         aria-current={status.active ? 'page' : undefined}

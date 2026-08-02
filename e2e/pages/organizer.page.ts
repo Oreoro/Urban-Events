@@ -18,8 +18,8 @@ export class OrganizerPage {
     await this.page.waitForLoadState('networkidle');
   }
 
-  async openCreateOrganizerModal(avatarInitials: string): Promise<void> {
-    await this.page.getByRole('button', { name: avatarInitials, exact: true }).click();
+  async openCreateOrganizerModal(): Promise<void> {
+    await this.page.getByRole('button', { name: 'Open account menu' }).click();
     await this.page.getByRole('menuitem', { name: 'Create Organizer' }).click();
   }
 
