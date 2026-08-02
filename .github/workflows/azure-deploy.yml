@@ -32,16 +32,19 @@ jobs:
       - name: 'Build and Push Docker image'
         env:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           echo "Building and pushing Docker image..."
           # Build the Docker image. The compose service tags it as urban-events:v1.
           docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
-          
-          # Tag the locally built image with the full ACR registry path.
-          docker tag urban-events:v1 ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
-          
-          # Push the newly tagged image to ACR.
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1
+
+          # Keep the v1 alias for backwards compatibility, but deploy an immutable
+          # commit tag so App Service always pulls the image built by this run.
+          docker tag urban-events:v1 "$ACR_LOGIN_SERVER/urban-events:v1"
+          docker tag urban-events:v1 "$ACR_LOGIN_SERVER/urban-events:$IMAGE_TAG"
+
+          docker push "$ACR_LOGIN_SERVER/urban-events:v1"
+          docker push "$ACR_LOGIN_SERVER/urban-events:$IMAGE_TAG"
           echo "✅ Docker image built and pushed."
 
       # Upload application settings to the Azure Web App.
@@ -133,8 +136,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          # This image name MUST match the one pushed in the previous step.
-          images: '${{ secrets.ACR_LOGIN_SERVER }}/urban-events:v1'
+          # The immutable tag forces App Service to pull this run's exact image.
+          images: '${{ secrets.ACR_LOGIN_SERVER }}/urban-events:${{ github.sha }}'
 
       # Log out of Azure as a security best practice.
       - name: 'Log out of Azure'
