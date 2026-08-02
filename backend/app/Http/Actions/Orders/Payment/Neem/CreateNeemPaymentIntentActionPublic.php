@@ -15,14 +15,14 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class CreateNeemPaymentIntentActionPublic extends BaseAction
 {
     private HttpClientInterface $httpClient;
+
     private OrderRepositoryInterface $orderRepository;
 
     public function __construct(
         HttpClientInterface $httpClient,
         OrderRepositoryInterface $orderRepository,
         private readonly LoggerInterface $logger,
-    )
-    {
+    ) {
         $this->httpClient = $httpClient;
         $this->orderRepository = $orderRepository;
     }
@@ -30,18 +30,18 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
     public function __invoke(Request $request, int $eventId, string $orderShortId): JsonResponse
     {
         try {
-            $neemBaseUrl = rtrim((string) env('NEEM_BASE_URL'), '/');
-            $neemBaseToken = (string) env('NEEM_BASE_TOKEN');
-            $neemPartnerId = (string) env('NEEM_PARTNER_ID');
+            $neemBaseUrl = rtrim((string) config('services.neem.base_url'), '/');
+            $neemBaseToken = (string) config('services.neem.base_token');
+            $neemPartnerId = (string) config('services.neem.partner_id');
             $neemMobileNumber = $this->normalizeNeemMobileNumber(
-                (string) env('NEEM_PLACEHOLDER_MOBILE_NUMBER', '923001234567')
+                (string) config('services.neem.placeholder_mobile_number', '923001234567')
             );
 
             if (
                 $neemBaseUrl === ''
                 || $neemBaseToken === ''
                 || $neemPartnerId === ''
-                || !$this->isValidNeemMobileNumber($neemMobileNumber)
+                || ! $this->isValidNeemMobileNumber($neemMobileNumber)
             ) {
                 $this->logger->error('Neem payment configuration is incomplete', [
                     'event_id' => $eventId,
@@ -63,7 +63,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 'short_id' => $orderShortId,
             ]);
 
-            if (!$order) {
+            if (! $order) {
                 return $this->errorResponse(__('Order not found'), Response::HTTP_NOT_FOUND);
             }
 
@@ -74,7 +74,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 );
             }
 
-            if ($order->getPaymentStatus() !== OrderPaymentStatus::AWAITING_PAYMENT->name || !$order->isPaymentRequired()) {
+            if ($order->getPaymentStatus() !== OrderPaymentStatus::AWAITING_PAYMENT->name || ! $order->isPaymentRequired()) {
                 return $this->errorResponse(
                     __('This order is not awaiting payment.'),
                     Response::HTTP_CONFLICT,
@@ -87,12 +87,12 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
                 $frontendUrl = $request->getSchemeAndHttpHost();
             }
 
-            $neemRedirectUrl = $frontendUrl . '/checkout/' . $eventId . '/' . $orderShortId . '/payment_return';
+            $neemRedirectUrl = $frontendUrl.'/checkout/'.$eventId.'/'.$orderShortId.'/payment_return';
 
             // 1. Get OAuth2 token
-            $authResponse = $this->httpClient->request('POST', $neemBaseUrl . '/v1/oauth2/token', [
+            $authResponse = $this->httpClient->request('POST', $neemBaseUrl.'/v1/oauth2/token', [
                 'headers' => [
-                    'Authorization' => 'Basic ' . $neemBaseToken,
+                    'Authorization' => 'Basic '.$neemBaseToken,
                     'Content-Type' => 'application/x-www-form-urlencoded',
                 ],
                 'body' => [
@@ -103,37 +103,37 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
             $authData = $authResponse->toArray();
             $accessToken = $authData['access_token'] ?? null;
 
-            if (!$accessToken) {
-                return $this->errorResponse("Failed to get access token", Response::HTTP_UNPROCESSABLE_ENTITY);
+            if (! $accessToken) {
+                return $this->errorResponse('Failed to get access token', Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             // 2. Prepare request data
             $requestData = [
-                "Data" => [
-                    "PODBill" => [
-                        "BasketId" => $orderShortId,
-                        "MobileNumber" => $neemMobileNumber,
-                        "Email" => $order->getEmail(),
-                        "FullName" => $order->getFullName(),
-                        "InstructedAmount" => [
-                            "Amount" => $this->formatNeemAmount((float) $order->getTotalGross()),
-                            "Currency" => $order->getCurrency(),
+                'Data' => [
+                    'PODBill' => [
+                        'BasketId' => $orderShortId,
+                        'MobileNumber' => $neemMobileNumber,
+                        'Email' => $order->getEmail(),
+                        'FullName' => $order->getFullName(),
+                        'InstructedAmount' => [
+                            'Amount' => $this->formatNeemAmount((float) $order->getTotalGross()),
+                            'Currency' => $order->getCurrency(),
                         ],
-                        "Scheme" => "POD",
-                        "callBackUrl" => $neemRedirectUrl
-                    ]
+                        'Scheme' => 'POD',
+                        'callBackUrl' => $neemRedirectUrl,
+                    ],
                 ],
-                "ExtendedProperties" => []
+                'ExtendedProperties' => [],
             ];
 
             // 3. Make the initiate call
-            $initiateResponse = $this->httpClient->request('POST', $neemBaseUrl . '/v2/pod/initiate', [
+            $initiateResponse = $this->httpClient->request('POST', $neemBaseUrl.'/v2/pod/initiate', [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $accessToken,
+                    'Authorization' => 'Bearer '.$accessToken,
                     'X-Neem-Partner-Id' => $neemPartnerId,
                     'Content-Type' => 'application/json',
                 ],
-                'json' => $requestData
+                'json' => $requestData,
             ]);
 
             $initiateResponse = $initiateResponse->toArray(false);
@@ -180,7 +180,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
             }
 
             return $this->jsonResponse([
-                'redirect_url' => $podBill['PaymentUrl']
+                'redirect_url' => $podBill['PaymentUrl'],
             ]);
         } catch (\Throwable $e) {
             $this->logger->error('Neem payment initiation error', [
@@ -212,7 +212,7 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
         }
 
         if (str_starts_with($digits, '0')) {
-            $digits = '92' . substr($digits, 1);
+            $digits = '92'.substr($digits, 1);
         }
 
         return $digits;

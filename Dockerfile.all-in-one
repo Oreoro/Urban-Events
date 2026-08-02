@@ -32,17 +32,26 @@ COPY ./backend /app/backend
 COPY ./VERSION /app/backend/VERSION
 RUN mkdir -p /app/backend/bootstrap/cache \
     && mkdir -p /app/backend/storage \
-    && chown -R www-data:www-data /app/backend \
-    && find /app/backend -type d -exec chmod 755 {} \; \
-    && find /app/backend -type f -exec chmod 644 {} \; \
-    && chmod -R 755 /app/backend/storage /app/backend/bootstrap/cache \
     && composer install --working-dir=/app/backend \
         --ignore-platform-reqs \
         --no-interaction \
         --no-dev \
         --optimize-autoloader \
         --prefer-dist \
-    && chmod -R 755 /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer
+    && chown -R www-data:www-data \
+        /app/backend/storage \
+        /app/backend/bootstrap/cache \
+        /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer \
+    && find \
+        /app/backend/storage \
+        /app/backend/bootstrap/cache \
+        /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer \
+        -type d -exec chmod 775 {} \; \
+    && find \
+        /app/backend/storage \
+        /app/backend/bootstrap/cache \
+        /app/backend/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer \
+        -type f -exec chmod 664 {} \;
 
 COPY ./docker/all-in-one/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./docker/all-in-one/supervisor/supervisord.conf /etc/supervisord.conf

@@ -32,6 +32,7 @@ return [
     ],
 
     'stripe' => [
+        'enabled' => env('STRIPE_ENABLED', false),
         'secret_key' => env('STRIPE_SECRET_KEY'),
         'public_key' => env('STRIPE_PUBLIC_KEY'),
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
@@ -48,6 +49,15 @@ return [
 
         // Primary platform for new organizers
         'primary_platform' => env('STRIPE_PRIMARY_PLATFORM'),
+    ],
+    'neem' => [
+        'enabled' => env('NEEM_ENABLED', env('NEEM_BASE_TOKEN') !== null),
+        'base_url' => env('NEEM_BASE_URL'),
+        'base_token' => env('NEEM_BASE_TOKEN'),
+        'partner_id' => env('NEEM_PARTNER_ID'),
+        'decryption_key' => env('NEEM_DECRYPTION_KEY'),
+        'placeholder_mobile_number' => env('NEEM_PLACEHOLDER_MOBILE_NUMBER', '923001234567'),
+        'application_fee' => env('APPLICATION_FEE', 0),
     ],
     'open_exchange_rates' => [
         'app_id' => env('OPEN_EXCHANGE_RATES_APP_ID'),

@@ -84,7 +84,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(StripeClientFactory::class);
 
         if (! config('services.stripe.secret_key')) {
-            logger()?->debug('Stripe secret key is not set in the configuration file. Payment processing will not work.');
+            if (config('services.stripe.enabled')) {
+                logger()?->warning('Stripe is enabled, but its secret key is missing. Stripe payments are unavailable.');
+            }
 
             return;
         }
