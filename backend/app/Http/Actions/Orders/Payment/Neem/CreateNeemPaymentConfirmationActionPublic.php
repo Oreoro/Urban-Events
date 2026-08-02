@@ -4,7 +4,6 @@ namespace HiEvents\Http\Actions\Orders\Payment\Neem;
 
 use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\Generated\OrderDomainObjectAbstract;
-use HiEvents\DomainObjects\Generated\StripePaymentDomainObjectAbstract;
 use HiEvents\DomainObjects\OrderDomainObject;
 use HiEvents\DomainObjects\OrderItemDomainObject;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
@@ -12,13 +11,10 @@ use HiEvents\DomainObjects\Status\OrderApplicationFeeStatus;
 use HiEvents\DomainObjects\Status\OrderPaymentStatus;
 use HiEvents\DomainObjects\Status\OrderStatus;
 use HiEvents\Events\OrderStatusChangedEvent;
-use HiEvents\Exceptions\Stripe\CreatePaymentIntentFailedException;
 use HiEvents\Http\Actions\BaseAction;
 use HiEvents\Repository\Interfaces\AffiliateRepositoryInterface;
 use HiEvents\Repository\Interfaces\AttendeeRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
-use HiEvents\Services\Application\Handlers\Order\DTO\MarkOrderAsPaidDTO;
-use HiEvents\Services\Application\Handlers\Order\MarkOrderAsPaidHandler;
 use HiEvents\Services\Domain\Order\OrderApplicationFeeService;
 use HiEvents\Services\Domain\Product\ProductQuantityUpdateService;
 use HiEvents\Services\Infrastructure\DomainEvents\DomainEventDispatcherService;
@@ -26,25 +22,26 @@ use HiEvents\Services\Infrastructure\DomainEvents\Enums\DomainEventType;
 use HiEvents\Services\Infrastructure\DomainEvents\Events\OrderEvent;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Stripe\PaymentIntent;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class CreateNeemPaymentConfirmationActionPublic extends BaseAction
 {
     private HttpClientInterface $httpClient;
+
     private OrderRepositoryInterface $orderRepository;
 
     public function __construct(
         HttpClientInterface $httpClient,
         OrderRepositoryInterface $orderRepository,
-        private readonly OrderApplicationFeeService      $orderApplicationFeeService,
-        private readonly ProductQuantityUpdateService    $quantityUpdateService,
-        private readonly AffiliateRepositoryInterface    $affiliateRepository,
-        private readonly DomainEventDispatcherService    $domainEventDispatcherService,
-        private readonly AttendeeRepositoryInterface     $attendeeRepository,
-    )
-    {
+        private readonly OrderApplicationFeeService $orderApplicationFeeService,
+        private readonly ProductQuantityUpdateService $quantityUpdateService,
+        private readonly AffiliateRepositoryInterface $affiliateRepository,
+        private readonly DomainEventDispatcherService $domainEventDispatcherService,
+        private readonly AttendeeRepositoryInterface $attendeeRepository,
+        private readonly LoggerInterface $logger,
+    ) {
         $this->httpClient = $httpClient;
         $this->orderRepository = $orderRepository;
     }
@@ -57,9 +54,9 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             $basketIdEncrypted = $request->input('basketId');
 
             // Neem RSA private key (provided Base64 version)
-            $base64PrivateKey = (string) env('NEEM_DECRYPTION_KEY');
+            $base64PrivateKey = (string) config('services.neem.decryption_key');
 
-            if (!$statusEncrypted || !$transactionIdEncrypted || !$basketIdEncrypted) {
+            if (! $statusEncrypted || ! $transactionIdEncrypted || ! $basketIdEncrypted) {
                 return $this->errorResponse(__('Missing Neem payment confirmation details.'), Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
@@ -70,7 +67,7 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
             $status = strtolower(trim($this->decryptNeemValue($statusEncrypted, $base64PrivateKey)));
 
             if ($status !== 'success') {
-                return $this->errorResponse("Order Payment Failed", Response::HTTP_UNPROCESSABLE_ENTITY);
+                return $this->errorResponse('Order Payment Failed', Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             $transactionId = $this->decryptNeemValue($transactionIdEncrypted, $base64PrivateKey);
@@ -85,8 +82,8 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
                 'short_id' => $basketId,
             ]);
 
-            if (!$order) {
-                return $this->errorResponse("Order Not Found", Response::HTTP_UNPROCESSABLE_ENTITY);
+            if (! $order) {
+                return $this->errorResponse('Order Not Found', Response::HTTP_UNPROCESSABLE_ENTITY);
             }
 
             if (
@@ -95,7 +92,7 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
                 && $order->getPaymentProvider() === PaymentProviders::NEEM->value
             ) {
                 return $this->jsonResponse([
-                    'success' => true
+                    'success' => true,
                 ]);
             }
 
@@ -114,14 +111,23 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
                 ),
             );
 
-            $this->storeApplicationFeePayment($updatedOrder, env('APPLICATION_FEE'));
+            $this->storeApplicationFeePayment($updatedOrder, config('services.neem.application_fee'));
 
             return $this->jsonResponse([
-                'success' => true
+                'success' => true,
             ]);
 
         } catch (\Throwable $e) {
-            return $this->errorResponse($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
+            $this->logger->error('Neem payment confirmation error', [
+                'event_id' => $eventId,
+                'order_short_id' => $orderShortId,
+                'exception' => $e::class,
+            ]);
+
+            return $this->errorResponse(
+                __('Neem could not confirm this payment. Please contact support.'),
+                Response::HTTP_UNPROCESSABLE_ENTITY,
+            );
         }
     }
 
@@ -151,16 +157,16 @@ class CreateNeemPaymentConfirmationActionPublic extends BaseAction
         }
 
         // Step 3: Load private key
-        $pemKey = "-----BEGIN PRIVATE KEY-----\n" . chunk_split($base64Key, 64, "\n") . "-----END PRIVATE KEY-----";
+        $pemKey = "-----BEGIN PRIVATE KEY-----\n".chunk_split($base64Key, 64, "\n").'-----END PRIVATE KEY-----';
         $privateKey = openssl_pkey_get_private($pemKey);
 
-        if (!$privateKey) {
+        if (! $privateKey) {
             throw new \RuntimeException('Invalid private key.');
         }
 
         // Step 4: Decrypt
         $decrypted = null;
-        if (!openssl_private_decrypt($decoded, $decrypted, $privateKey, OPENSSL_PKCS1_PADDING)) {
+        if (! openssl_private_decrypt($decoded, $decrypted, $privateKey, OPENSSL_PKCS1_PADDING)) {
             throw new \RuntimeException('Failed to decrypt value.');
         }
 

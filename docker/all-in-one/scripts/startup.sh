@@ -1,6 +1,25 @@
 #!/bin/sh
 
+set -eu
+
 cd /app/backend
+
+case "${NEEM_ENABLED:-false}" in
+    1|true|TRUE|yes|YES|on|ON)
+        missing_neem_settings=""
+
+        for setting_name in NEEM_BASE_URL NEEM_BASE_TOKEN NEEM_PARTNER_ID NEEM_DECRYPTION_KEY; do
+            if [ -z "$(printenv "$setting_name" 2>/dev/null || true)" ]; then
+                missing_neem_settings="$missing_neem_settings $setting_name"
+            fi
+        done
+
+        if [ -n "$missing_neem_settings" ]; then
+            echo "ERROR: Neem is enabled, but required settings are missing:$missing_neem_settings"
+            exit 1
+        fi
+        ;;
+esac
 
 if ! php artisan migrate --force; then
     echo "============================================"
@@ -11,20 +30,17 @@ if ! php artisan migrate --force; then
     exit 1
 fi
 
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-php artisan event:clear || true
-php artisan storage:link || true
-
-if [ "$APP_ENV" != "local" ]; then
-    php artisan config:cache
-    php artisan route:cache
-    php artisan event:cache || true
-    php artisan view:cache
+if [ ! -L /app/backend/public/storage ]; then
+    php artisan storage:link || true
 fi
 
-chown -R www-data:www-data /app/backend
+if [ "${APP_ENV:-production}" = "local" ]; then
+    php artisan optimize:clear --no-interaction
+else
+    php artisan optimize --no-interaction
+fi
+
+chown -R www-data:www-data /app/backend/storage /app/backend/bootstrap/cache
 chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache
 
 exec /usr/bin/supervisord -c /etc/supervisord.conf
