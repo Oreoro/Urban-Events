@@ -185,6 +185,7 @@ p,
 button,
 [role="button"] {
   user-select: none;
+  touch-action: manipulation;
 }
 
 ::selection {
@@ -425,6 +426,14 @@ button,
 @media (max-width: 48em) {
   .mantine-Input-input {
     font-size: 16px;
+    min-height: 44px !important;
+  }
+
+  .mantine-Button-root,
+  .mantine-ActionIcon-root,
+  .mantine-PasswordInput-visibilityToggle {
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 

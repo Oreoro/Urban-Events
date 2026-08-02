@@ -9,6 +9,8 @@
   position: relative;
   box-shadow: inset -1px 0 0 var(--hi-border);
   height: 100vh;
+  height: 100dvh;
+  transition: transform 200ms ease, visibility 200ms ease;
 
   &.closed {
       @media (min-width: 768px) {
@@ -96,6 +98,7 @@
       background: none;
       border: none;
       text-align: left;
+      min-height: 40px;
 
       .navBadge {
         background: var(--hi-surface);
@@ -166,23 +169,31 @@
     height: 100dvh;
     z-index: 200;
     transform: translateX(-100%);
+    visibility: hidden;
     top: 0;
     left: 0;
 
     &.open {
       transform: translateX(0);
+      visibility: visible;
+    }
+
+    .nav a,
+    .nav button,
+    .nav .link {
+      min-height: 44px;
     }
   }
 
   .sidebarClose {
-    width: 24px;
-    height: 24px;
+    width: 44px;
+    height: 44px;
     color: var(--hi-shell-muted);
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: -2px;
+    right: -12px;
     top: 50%;
     transform: translateY(-50%);
     transition: color 0.2s ease, transform 0.2s ease;
@@ -195,8 +206,8 @@
     }
 
     @media (max-width: 767px) {
-      right: 16px;
-      top: 28px;
+      right: 10px;
+      top: 12px;
       transform: none;
       
       &:hover {
@@ -220,4 +231,3 @@
     border: 1px solid var(--hi-border);
   }
 }
-

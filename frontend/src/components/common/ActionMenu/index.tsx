@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Menu} from '@mantine/core';
 import {IconDotsVertical} from '@tabler/icons-react';
+import {t} from '@lingui/macro';
 
 export interface MenuItem {
     label: string;
@@ -24,7 +25,7 @@ interface ActionMenuProps {
 }
 
 const DefaultTarget = () => (
-    <Button variant="transparent">
+    <Button variant="transparent" aria-label={t`More actions`}>
         <IconDotsVertical/>
     </Button>
 );

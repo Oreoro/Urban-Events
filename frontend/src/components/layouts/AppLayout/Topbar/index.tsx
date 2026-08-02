@@ -5,6 +5,7 @@ import classes from './Topbar.module.scss';
 import {BreadcrumbItem} from "../types";
 import {GlobalMenu} from "../../../common/GlobalMenu";
 import {BrandWordmark} from "../../../common/BrandWordmark";
+import {t} from "@lingui/macro";
 
 interface TopbarProps {
     sidebarOpen: boolean;
@@ -26,7 +27,7 @@ export const Topbar: React.FC<TopbarProps> = ({
                                                   actionGroupContent = null,
                                               }) => {
     return (
-        <div className={`${classes.topBar} ${topBarShadow ? classes.withShadow : ''}`}>
+        <header className={`${classes.topBar} ${topBarShadow ? classes.withShadow : ''}`}>
             <div className={classes.topBarMain}>
                 <div className={classes.burger}>
                     <Burger
@@ -34,6 +35,8 @@ export const Topbar: React.FC<TopbarProps> = ({
                         opened={sidebarOpen}
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                         size={'sm'}
+                        aria-label={sidebarOpen ? t`Close navigation` : t`Open navigation`}
+                        aria-controls="app-sidebar"
                     />
                 </div>
                 <div className={classes.logo}>
@@ -55,10 +58,18 @@ export const Topbar: React.FC<TopbarProps> = ({
             <div className={classes.breadcrumbsRow}>
                 <div className={classes.breadcrumbs}>
                     <Breadcrumbs separator={<span className={classes.breadcrumbSeparator}>/</span>}>
-                        {breadcrumbItems.map((item, index) => (
-                            <NavLink key={index} to={item.link ?? '#'}>
+                        {breadcrumbItems.map((item, index) => item.link ? (
+                            <NavLink key={index} to={item.link}>
                                 {item.content}
                             </NavLink>
+                        ) : (
+                            <span
+                                key={index}
+                                className={classes.breadcrumbCurrent}
+                                aria-current={index === breadcrumbItems.length - 1 ? 'page' : undefined}
+                            >
+                                {item.content}
+                            </span>
                         ))}
                     </Breadcrumbs>
                 </div>
@@ -68,6 +79,6 @@ export const Topbar: React.FC<TopbarProps> = ({
                     </div>
                 )}
             </div>
-        </div>
+        </header>
     );
 };

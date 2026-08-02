@@ -15,6 +15,9 @@
   }
 
   a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--hi-color-text-muted);
@@ -75,6 +78,7 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.5rem 0;
+  min-height: 44px;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--hi-color-gray-dark);
@@ -133,6 +137,7 @@
     padding: 0.625rem 0.875rem;
     font-size: 0.875rem;
     background: white;
+    min-height: 44px;
 
     @include mixins.respond-below(sm) {
       font-size: 1rem;
@@ -145,7 +150,8 @@
   }
 
   :global(.mantine-Button-root) {
-    height: 38px;
+    height: 44px;
+    min-height: 44px !important;
     border-radius: var(--hi-radius-md);
     font-weight: 600;
     font-size: 0.8125rem;

@@ -61,19 +61,25 @@ export const ResetPassword = () => {
                 <form onSubmit={form.onSubmit(handleSubmit)}>
                     <PasswordInput
                         {...form.getInputProps('password')}
+                        name="password"
+                        autoComplete="new-password"
                         label={t`New Password`}
                         placeholder={t`Enter new password`}
                         visibilityToggleButtonProps={{
                             'aria-label': t`Show or hide new password`,
+                            tabIndex: 0,
                         }}
                         required
                     />
                     <PasswordInput
                         {...form.getInputProps('password_confirmation')}
+                        name="password_confirmation"
+                        autoComplete="new-password"
                         label={t`Confirm Password`}
                         placeholder={t`Confirm new password`}
                         visibilityToggleButtonProps={{
                             'aria-label': t`Show or hide password confirmation`,
+                            tabIndex: 0,
                         }}
                         required
                     />

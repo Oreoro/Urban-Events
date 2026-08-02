@@ -90,21 +90,27 @@ const Login = () => {
             <div className={classes.loginCard}>
                 <form onSubmit={form.onSubmit((values) => loginUser(values))}>
                     <TextInput {...form.getInputProps('email')}
+                               type="email"
+                               name="email"
+                               autoComplete="email"
                                label={t`Email`}
                                placeholder="you@example.com"
                                required
                     />
                     <div className={classes.passwordLabelRow}>
                         <label htmlFor="login-password">{t`Password`}</label>
-                        <NavLink to={`/auth/forgot-password`} tabIndex={-1}>
+                        <NavLink to={`/auth/forgot-password`}>
                             {t`Forgot password?`}
                         </NavLink>
                     </div>
                     <PasswordInput {...form.getInputProps('password')}
                                    id="login-password"
+                                   name="password"
+                                   autoComplete="current-password"
                                    placeholder={t`Your password`}
                                    visibilityToggleButtonProps={{
                                        'aria-label': t`Show or hide password`,
+                                       tabIndex: 0,
                                    }}
                                    required
                     />
@@ -119,6 +125,8 @@ const Login = () => {
                     className={classes.ticketLookupTrigger}
                     onClick={() => setTicketLookupOpen(!ticketLookupOpen)}
                     data-expanded={ticketLookupOpen}
+                    aria-expanded={ticketLookupOpen}
+                    aria-controls="ticket-lookup-panel"
                 >
                     <IconTicket size={18} />
                     <span>{t`Just looking for your tickets?`}</span>
@@ -129,7 +137,7 @@ const Login = () => {
                     />
                 </UnstyledButton>
 
-                <Collapse expanded={ticketLookupOpen}>
+                <Collapse id="ticket-lookup-panel" expanded={ticketLookupOpen}>
                     <div className={classes.ticketLookupContent}>
                         {ticketLookupSuccess ? (
                             <div className={classes.successMessage}>
@@ -150,6 +158,8 @@ const Login = () => {
                                     <TextInput
                                         {...ticketLookupForm.getInputProps('email')}
                                         type="email"
+                                        name="ticket_lookup_email"
+                                        autoComplete="email"
                                         placeholder={t`Enter your email`}
                                         required
                                         className={classes.ticketEmailInput}

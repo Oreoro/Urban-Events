@@ -40,6 +40,7 @@ interface EventCardProps {
 
 export function EventCard({event, compact = false}: EventCardProps) {
     const navigate = useNavigate();
+    const eventTitle = event.title;
     const [isDuplicateModalOpen, duplicateModal] = useDisclosure(false);
     const [eventId, setEventId] = useState<IdParam>();
     const statusToggleMutation = useUpdateEventStatus();
@@ -182,7 +183,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
         return (
             <>
                 <div className={`${classes.eventCardCompact} ${isEnded ? classes.isEnded : ''} ${isDraft ? classes.isDraft : ''}`}>
-                    <NavLink to={`/manage/event/${event.id}/dashboard`} className={classes.cardLinkCompact}>
+                    <div className={classes.cardLinkCompact}>
                         <div className={classes.compactThumb}>
                             <div
                                 className={`${classes.compactImage} ${!coverImage ? classes.placeholderImage : ''}`}
@@ -201,7 +202,13 @@ export function EventCard({event, compact = false}: EventCardProps) {
 
                         <div className={classes.compactContent}>
                             <div className={classes.compactPrimary}>
-                                <span className={classes.compactTitle}>{event.title}</span>
+                                <NavLink
+                                    to={`/manage/event/${event.id}/dashboard`}
+                                    className={classes.compactTitleLink}
+                                    aria-label={t`Manage ${eventTitle}`}
+                                >
+                                    <span className={classes.compactTitle}>{event.title}</span>
+                                </NavLink>
                                 {isRecurring && (
                                     <span className={classes.compactRecurringIcon} aria-label={t`Recurring`}>
                                         <IconRepeat size={12}/>
@@ -253,7 +260,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
                             </div>
                         </div>
 
-                        <div className={classes.compactMenuButton} onClick={(e) => e.preventDefault()}>
+                        <div className={classes.compactMenuButton}>
                             <ActionMenu
                                 itemsGroups={menuItems}
                                 target={
@@ -261,13 +268,14 @@ export function EventCard({event, compact = false}: EventCardProps) {
                                         className={classes.actionButton}
                                         size="sm"
                                         variant="subtle"
+                                        aria-label={t`Actions for ${eventTitle}`}
                                     >
                                         <IconDotsVertical size={16}/>
                                     </ActionIcon>
                                 }
                             />
                         </div>
-                    </NavLink>
+                    </div>
                 </div>
                 {isDuplicateModalOpen && <DuplicateEventModal eventId={eventId} onClose={duplicateModal.close}/>}
             </>
@@ -277,7 +285,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
     return (
         <>
             <Card className={`${classes.eventCard} ${isEnded ? classes.isEnded : ''} ${isDraft ? classes.isDraft : ''}`}>
-                <NavLink to={`/manage/event/${event.id}/dashboard`} className={classes.cardLink}>
+                <div className={classes.cardLink}>
                     <div className={classes.imageContainer}>
                         <div
                             className={`${classes.image} ${!coverImageUrl ? classes.placeholderImage : ''}`}
@@ -309,7 +317,13 @@ export function EventCard({event, compact = false}: EventCardProps) {
 
                     <div className={classes.content}>
                         <div className={classes.contentMain}>
-                            <h3 className={classes.title}>{event.title}</h3>
+                            <NavLink
+                                to={`/manage/event/${event.id}/dashboard`}
+                                className={classes.titleLink}
+                                aria-label={t`Manage ${eventTitle}`}
+                            >
+                                <h3 className={classes.title}>{event.title}</h3>
+                            </NavLink>
                             <div className={classes.meta}>
                                 <span className={classes.eventDate}>
                                     {hasDate ? shortDateTime : t`No date added`}
@@ -329,25 +343,16 @@ export function EventCard({event, compact = false}: EventCardProps) {
                                 )}
                             </div>
                             <div className={classes.footer}>
-                                <span
-                                    role="link"
-                                    tabIndex={0}
-                                    className={classes.organizer}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        navigate(`/manage/organizer/${event?.organizer?.id}`);
-                                    }}
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            navigate(`/manage/organizer/${event?.organizer?.id}`);
-                                        }
-                                    }}
-                                >
-                                    {event?.organizer?.name}
-                                </span>
+                                {event?.organizer?.id ? (
+                                    <NavLink
+                                        className={classes.organizer}
+                                        to={`/manage/organizer/${event.organizer.id}`}
+                                    >
+                                        {event.organizer.name}
+                                    </NavLink>
+                                ) : (
+                                    <span className={classes.organizer}>{event?.organizer?.name}</span>
+                                )}
                                 {ticketAvailability && (
                                     <span className={`${classes.ticketStatus} ${classes[`ticket-${ticketAvailability.status}`]}`}>
                                         {ticketAvailability.text}
@@ -373,7 +378,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
                             </Tooltip>
                         </div>
 
-                        <div className={classes.menuButton} onClick={(e) => e.preventDefault()}>
+                        <div className={classes.menuButton}>
                             <ActionMenu
                                 itemsGroups={menuItems}
                                 target={
@@ -381,6 +386,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
                                         className={classes.actionButton}
                                         size="md"
                                         variant="subtle"
+                                        aria-label={t`Actions for ${eventTitle}`}
                                     >
                                         <IconDotsVertical size={18}/>
                                     </ActionIcon>
@@ -388,7 +394,7 @@ export function EventCard({event, compact = false}: EventCardProps) {
                             />
                         </div>
                     </div>
-                </NavLink>
+                </div>
             </Card>
             {isDuplicateModalOpen && <DuplicateEventModal eventId={eventId} onClose={duplicateModal.close}/>}
         </>

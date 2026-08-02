@@ -22,7 +22,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                                     navItems,
                                                     sidebarFooter,
                                                 }) => {
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    // eslint-disable-next-line lingui/no-unlocalized-strings
+    const isMobile = useMediaQuery('(max-width: 767px)');
 
     const renderLinks = () => {
         return navItems.map((item) => {
@@ -40,7 +41,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }
 
             if (item.loading) {
-                return <a key={item.label} className={classNames(classes.loading, classes.link)}>&nbsp;</a>;
+                return <div key={item.label} className={classNames(classes.loading, classes.link)} aria-hidden="true">&nbsp;</div>;
             }
 
 
@@ -79,15 +80,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
     };
 
     return (
-        <div className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}>
+        <aside
+            id="app-sidebar"
+            className={classNames(`${classes.sidebar} ${sidebarOpen ? classes.open : classes.closed}`)}
+            aria-label={t`Application navigation`}
+            aria-hidden={isMobile && !sidebarOpen}
+        >
             <div className={classes.logo}>
                 <NavLink to={`/manage/events`}>
                     <BrandWordmark tone="light" size="md"/>
                 </NavLink>
             </div>
-            <div className={classes.nav}>
+            <nav className={classes.nav} aria-label={t`Primary navigation`}>
                 {renderLinks()}
-            </div>
+            </nav>
             {sidebarFooter && (
                 <div className={classes.sidebarFooter}>
                     {sidebarFooter}
@@ -96,11 +102,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {sidebarOpen && (
                 <UnstyledButton
                     className={classes.sidebarClose}
-                    onClick={() => setSidebarOpen(!sidebarOpen)}>
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                    aria-label={t`Close sidebar`}
+                    aria-controls="app-sidebar"
+                    aria-expanded={sidebarOpen}
+                >
                     <IconChevronLeft size={20}/>
                     <VisuallyHidden>{t`Close sidebar`}</VisuallyHidden>
                 </UnstyledButton>
             )}
-        </div>
+        </aside>
     );
 };

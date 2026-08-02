@@ -154,9 +154,20 @@
 
   .burger {
     --burger-color: var(--hi-text);
+
+    :global(.mantine-Burger-root) {
+      width: 44px;
+      height: 44px;
+    }
+
     @include mixins.respond-above(md) {
       display: none;
     }
+  }
+
+  .breadcrumbCurrent {
+    color: var(--hi-text);
+    font-weight: 650;
   }
 
   .logo {
