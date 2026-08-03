@@ -24,24 +24,28 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Build and push inside ACR so private registry networking does not depend
-      # on the ephemeral public IP of a GitHub-hosted runner.
-      - name: 'Build and Push Docker image in ACR'
+      # Authenticate to the Azure Container Registry.
+      - name: 'Log in to Azure Container Registry'
+        run: az acr login --name ${{ secrets.ACR_LOGIN_SERVER }}
+
+      # Build and push the Docker image to ACR.
+      - name: 'Build and Push Docker image'
         env:
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          ACR_NAME="${ACR_LOGIN_SERVER%%.*}"
+          echo "Building and pushing Docker image..."
+          # Build the Docker image. The compose service tags it as urban-events:v1.
+          docker compose -f ${{ github.workspace }}/docker/all-in-one/docker-compose.yml build
 
-          echo "Building and pushing Docker image inside ACR..."
-          az acr build \
-            --registry "$ACR_NAME" \
-            --file Dockerfile.all-in-one \
-            --platform linux/amd64 \
-            --image urban-events:v1 \
-            --image "urban-events:$IMAGE_TAG" \
-            .
-          echo "✅ ACR build completed and both image tags were pushed."
+          # Keep the v1 alias for backwards compatibility, but deploy an immutable
+          # commit tag so App Service always pulls the image built by this run.
+          docker tag urban-events:v1 "$ACR_LOGIN_SERVER/urban-events:v1"
+          docker tag urban-events:v1 "$ACR_LOGIN_SERVER/urban-events:$IMAGE_TAG"
+
+          docker push "$ACR_LOGIN_SERVER/urban-events:v1"
+          docker push "$ACR_LOGIN_SERVER/urban-events:$IMAGE_TAG"
+          echo "✅ Docker image built and pushed."
 
       # Upload application settings to the Azure Web App.
       - name: 'Set App Service Settings'
