@@ -68,10 +68,9 @@ function getStartOfNextUtcMonth(timestampMs: number): number {
 
 export class UrbanEventsContainer extends Container<Env> {
     defaultPort = 80;
-    // Nginx binds port 80 before the React SSR server is ready. Waiting for
-    // both ports prevents the first request after scale-to-zero from seeing a
-    // transient 502 while Node is still starting.
-    requiredPorts = [80, 5678];
+    // Use the application's real readiness endpoint instead of treating an
+    // open TCP socket as a completed startup.
+    pingEndpoint = "localhost/healthz";
     sleepAfter = "5m";
     enableInternet = true;
 
@@ -204,19 +203,11 @@ export class UrbanEventsContainer extends Container<Env> {
             );
         }
 
-        await this.startAndWaitForPorts({
-            ports: [80, 5678],
-            startOptions: {
-                envVars: this.getContainerEnvironment(publicOrigin),
-            },
-            cancellationOptions: {
-                instanceGetTimeoutMS: 60_000,
-                portReadyTimeoutMS: 300_000,
-                waitInterval: 500,
-            },
-        });
-
-        return super.fetch(request);
+        // Let the SDK own the complete start-and-proxy lifecycle. Calling
+        // startAndWaitForPorts() and then the base fetch() creates a race if
+        // the instance turns over between those two operations.
+        this.envVars = this.getContainerEnvironment(publicOrigin);
+        return this.containerFetch(request);
     }
 
     override async onStart(): Promise<void> {
@@ -229,6 +220,7 @@ export class UrbanEventsContainer extends Container<Env> {
         console.log(JSON.stringify({
             message: "container stopped",
             month: budget.month,
+            exitCode: params.exitCode,
             reason: params.reason,
             runtimeHours: budget.accruedMs / MILLISECONDS_PER_HOUR,
         }));
