@@ -114,6 +114,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.deploy
         env:
           AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
+          NEEM_APP_SECRETS: ${{ secrets.NEEM_APP_SECRETS }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: |
@@ -123,27 +124,31 @@ jobs:
 
           settings = {}
 
-          for raw_line in os.environ.get("AZURE_APP_SECRETS", "").splitlines():
-              line = raw_line.strip()
+          def merge_env_lines(raw_settings):
+              for raw_line in raw_settings.splitlines():
+                  line = raw_line.strip()
 
-              if not line or line.startswith("#"):
-                  continue
+                  if not line or line.startswith("#"):
+                      continue
 
-              if line.startswith("export "):
-                  line = line[len("export "):].strip()
+                  if line.startswith("export "):
+                      line = line[len("export "):].strip()
 
-              if "=" not in line:
-                  continue
+                  if "=" not in line:
+                      continue
 
-              name, value = line.split("=", 1)
-              name = name.strip()
-              value = value.strip()
+                  name, value = line.split("=", 1)
+                  name = name.strip()
+                  value = value.strip()
 
-              if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
-                  value = value[1:-1]
+                  if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+                      value = value[1:-1]
 
-              if name:
-                  settings[name] = value
+                  if name:
+                      settings[name] = value
+
+          merge_env_lines(os.environ.get("AZURE_APP_SECRETS", ""))
+          merge_env_lines(os.environ.get("NEEM_APP_SECRETS", ""))
 
           settings.update({
               "AWS_ACCESS_KEY_ID": os.environ.get("R2_ACCESS_KEY_ID", ""),
@@ -160,10 +165,6 @@ jobs:
               "APP_KEY",
               "JWT_SECRET",
               "DATABASE_URL",
-              "NEEM_BASE_URL",
-              "NEEM_BASE_TOKEN",
-              "NEEM_PARTNER_ID",
-              "NEEM_DECRYPTION_KEY",
               "AWS_ACCESS_KEY_ID",
               "AWS_SECRET_ACCESS_KEY",
           )
@@ -174,12 +175,30 @@ jobs:
                   "Missing required Cloudflare settings: " + ", ".join(missing)
               )
 
+          neem_keys = (
+              "NEEM_BASE_URL",
+              "NEEM_BASE_TOKEN",
+              "NEEM_PARTNER_ID",
+              "NEEM_DECRYPTION_KEY",
+          )
+          configured_neem_keys = [name for name in neem_keys if settings.get(name)]
+
+          if configured_neem_keys and len(configured_neem_keys) != len(neem_keys):
+              missing_neem_keys = [name for name in neem_keys if not settings.get(name)]
+              raise SystemExit(
+                  "Neem settings are incomplete; missing: " + ", ".join(missing_neem_keys)
+              )
+
+          settings["NEEM_ENABLED"] = "true" if configured_neem_keys else "false"
+          settings["STRIPE_ENABLED"] = "false"
+
           serialized = json.dumps(settings, separators=(",", ":"))
 
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env_file:
               env_file.write(f"APP_SECRETS_JSON={serialized}\n")
 
           print(f"Prepared {len(settings)} application settings for Cloudflare.")
+          print("Neem payments: " + ("enabled" if configured_neem_keys else "disabled"))
           PY
 
       - name: Push image to Cloudflare registry

@@ -21,9 +21,9 @@ Containers have ephemeral disks. Production therefore requires:
 1. An external PostgreSQL `DATABASE_URL`. A scale-to-zero Neon database is suitable for low traffic.
 2. Two R2 buckets (public and private) exposed through the S3-compatible API.
 3. An R2 API token with object read/write access for those buckets.
-4. Existing Neem credentials. Stripe remains disabled.
+4. Existing Neem credentials for paid tickets. Stripe remains disabled. If Neem credentials are not yet available, the container starts with paid checkout disabled instead of accepting an incomplete payment configuration.
 
-The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel, database, mail, and Neem settings. It replaces only the storage values with the new R2 credentials and uploads the merged object as the `APP_SECRETS_JSON` Worker secret without printing it.
+The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel, database, and mail settings. Neem credentials belong in the separate optional `NEEM_APP_SECRETS` secret. It replaces only the storage values with the new R2 credentials and uploads the merged object as the `APP_SECRETS_JSON` Worker secret without printing it. Neem is enabled only when all four required values are present; partial credentials fail the deployment.
 
 The generated Worker secret has this shape:
 
@@ -67,7 +67,8 @@ Copy `.dev.vars.example` to `.dev.vars` only when running `wrangler dev`. Never 
    - Secret `CLOUDFLARE_API_TOKEN` with Workers Scripts and Containers edit access
    - Secret `R2_ACCESS_KEY_ID` scoped to object read/write for `urban-events-public` and `urban-events-private`
    - Secret `R2_SECRET_ACCESS_KEY` from the same scoped R2 token
-   - Existing secret `AZURE_APP_SECRETS` remains the source for the application, PostgreSQL, and Neem settings
+   - Existing secret `AZURE_APP_SECRETS` remains the source for the application and PostgreSQL settings
+   - Optional secret `NEEM_APP_SECRETS` contains the four newline-delimited Neem variables; omit it to deploy with paid checkout disabled
 4. Run the **Cloudflare Container** workflow manually with **deploy** enabled. The workflow validates the Worker, builds one AMD64 image, pushes that commit-tagged image to Cloudflare's managed registry, deploys the Worker with Cloudflare's official Wrangler action, uploads the runtime secret, and smoke-tests `/healthz` plus `/auth/login` using the action's deployment URL.
 5. Wait for `npx wrangler containers list` to report a ready deployment.
 6. Test event creation, uploads, Neem checkout, and QR check-in on the `workers.dev` URL.
