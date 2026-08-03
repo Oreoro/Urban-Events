@@ -116,6 +116,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.deploy
         env:
           AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
+          CLOUDFLARE_APP_OVERRIDES: ${{ secrets.CLOUDFLARE_APP_OVERRIDES }}
           NEEM_APP_SECRETS: ${{ secrets.NEEM_APP_SECRETS }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -151,6 +152,9 @@ jobs:
 
           merge_env_lines(os.environ.get("AZURE_APP_SECRETS", ""))
           merge_env_lines(os.environ.get("NEEM_APP_SECRETS", ""))
+          # Cloudflare-specific values are merged last so retired Azure
+          # infrastructure can be replaced without duplicating every setting.
+          merge_env_lines(os.environ.get("CLOUDFLARE_APP_OVERRIDES", ""))
 
           settings.update({
               "AWS_ACCESS_KEY_ID": os.environ.get("R2_ACCESS_KEY_ID", ""),
