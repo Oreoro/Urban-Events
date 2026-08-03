@@ -198,9 +198,14 @@ jobs:
               os.environ["RUNNER_TEMP"],
               "urban-events-app-secrets.json",
           )
+          serialized_settings = json.dumps(settings, separators=(",", ":"))
 
           with open(secret_file_path, "w", encoding="utf-8") as secret_file:
-              json.dump(settings, secret_file, separators=(",", ":"))
+              json.dump(
+                  {"APP_SECRETS_JSON": serialized_settings},
+                  secret_file,
+                  separators=(",", ":"),
+              )
 
           os.chmod(secret_file_path, 0o600)
 
@@ -225,17 +230,10 @@ jobs:
           accountId: 6ddd824137231b85fd268c2bfa3f0c7f
           workingDirectory: cloudflare
           wranglerVersion: 4.118.0
-          command: deploy --config wrangler.ci.jsonc --containers-rollout=immediate
-
-      - name: Upload runtime settings
-        if: github.event_name == 'workflow_dispatch' && inputs.deploy
-        working-directory: cloudflare
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: >-
-          npx wrangler secret put APP_SECRETS_JSON
-          --config wrangler.ci.jsonc
-          < "$RUNNER_TEMP/urban-events-app-secrets.json"
+          command: >-
+            deploy --config wrangler.ci.jsonc
+            --containers-rollout=immediate
+            --secrets-file ${{ runner.temp }}/urban-events-app-secrets.json
 
       - name: Smoke-test workers.dev
         if: github.event_name == 'workflow_dispatch' && inputs.deploy
