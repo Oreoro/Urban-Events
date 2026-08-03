@@ -99,6 +99,7 @@ jobs:
 
           const source = fs.readFileSync('wrangler.jsonc', 'utf8');
           const imageTag = process.env.IMAGE_TAG;
+          const registryImage = `registry.cloudflare.com/6ddd824137231b85fd268c2bfa3f0c7f/${imageTag}`;
 
           if (!imageTag || !source.includes('"image": "../Dockerfile.all-in-one"')) {
             throw new Error('Unable to prepare the immutable container image reference');
@@ -106,11 +107,12 @@ jobs:
 
           fs.writeFileSync(
             'wrangler.ci.jsonc',
-            source.replace('"image": "../Dockerfile.all-in-one"', `"image": "${imageTag}"`),
+            source.replace('"image": "../Dockerfile.all-in-one"', `"image": "${registryImage}"`),
           );
           NODE
 
       - name: Prepare Cloudflare application settings
+        id: app-settings
         if: github.event_name == 'workflow_dispatch' && inputs.deploy
         env:
           AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
@@ -192,10 +194,15 @@ jobs:
           settings["NEEM_ENABLED"] = "true" if configured_neem_keys else "false"
           settings["STRIPE_ENABLED"] = "false"
 
-          serialized = json.dumps(settings, separators=(",", ":"))
+          secret_file_path = os.path.join(
+              os.environ["RUNNER_TEMP"],
+              "urban-events-app-secrets.json",
+          )
 
-          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env_file:
-              env_file.write(f"APP_SECRETS_JSON={serialized}\n")
+          with open(secret_file_path, "w", encoding="utf-8") as secret_file:
+              json.dump(settings, secret_file, separators=(",", ":"))
+
+          os.chmod(secret_file_path, 0o600)
 
           print(f"Prepared {len(settings)} application settings for Cloudflare.")
           print("Neem payments: " + ("enabled" if configured_neem_keys else "disabled"))
@@ -207,7 +214,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           IMAGE_TAG: urban-events-app:${{ github.sha }}
-        run: npx wrangler containers push "$IMAGE_TAG" --config wrangler.ci.jsonc
+        run: npx wrangler containers push "$IMAGE_TAG" --config wrangler.jsonc
 
       - name: Deploy Worker and container
         id: cloudflare-deploy
@@ -219,10 +226,16 @@ jobs:
           workingDirectory: cloudflare
           wranglerVersion: 4.118.0
           command: deploy --config wrangler.ci.jsonc --containers-rollout=immediate
-          secrets: |
-            APP_SECRETS_JSON
+
+      - name: Upload runtime settings
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        working-directory: cloudflare
         env:
-          APP_SECRETS_JSON: ${{ env.APP_SECRETS_JSON }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: >-
+          npx wrangler secret put APP_SECRETS_JSON
+          --config wrangler.ci.jsonc
+          < "$RUNNER_TEMP/urban-events-app-secrets.json"
 
       - name: Smoke-test workers.dev
         if: github.event_name == 'workflow_dispatch' && inputs.deploy
@@ -234,3 +247,14 @@ jobs:
             "$CLOUDFLARE_WORKER_URL/healthz" >/dev/null
           curl --fail --show-error --silent --retry 3 --retry-all-errors --retry-delay 5 \
             "$CLOUDFLARE_WORKER_URL/auth/login" >/dev/null
+
+      - name: Remove temporary runtime settings
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.deploy
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          secret_file_path = Path(os.environ["RUNNER_TEMP"]) / "urban-events-app-secrets.json"
+          secret_file_path.unlink(missing_ok=True)
+          PY

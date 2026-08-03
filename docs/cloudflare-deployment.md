@@ -23,7 +23,7 @@ Containers have ephemeral disks. Production therefore requires:
 3. An R2 API token with object read/write access for those buckets.
 4. Existing Neem credentials for paid tickets. Stripe remains disabled. If Neem credentials are not yet available, the container starts with paid checkout disabled instead of accepting an incomplete payment configuration.
 
-The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel, database, and mail settings. Neem credentials belong in the separate optional `NEEM_APP_SECRETS` secret. It replaces only the storage values with the new R2 credentials and uploads the merged object as the `APP_SECRETS_JSON` Worker secret without printing it. Neem is enabled only when all four required values are present; partial credentials fail the deployment.
+The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel, database, and mail settings. Neem credentials belong in the separate optional `NEEM_APP_SECRETS` secret. It replaces only the storage values with the new R2 credentials and writes the merged object to a mode-`0600` file on the ephemeral runner. Wrangler uploads that file through standard input as the `APP_SECRETS_JSON` Worker secret; the JSON never enters GitHub's cross-step environment or command output. Neem is enabled only when all four required values are present; partial credentials fail the deployment.
 
 The generated Worker secret has this shape:
 
