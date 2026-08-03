@@ -68,6 +68,14 @@ function getStartOfNextUtcMonth(timestampMs: number): number {
 
 export class UrbanEventsContainer extends Container<Env> {
     defaultPort = 80;
+    // Keep a shell parent around so Cloudflare tracks the complete process
+    // tree while the all-in-one startup script hands off to Supervisor.
+    entrypoint = [
+        "docker-php-serversideup-entrypoint",
+        "/bin/sh",
+        "-c",
+        "/startup.sh > /tmp/urban-events-startup.log 2>&1",
+    ];
     // Use the application's real readiness endpoint instead of treating an
     // open TCP socket as a completed startup.
     pingEndpoint = "localhost/healthz";
@@ -97,6 +105,7 @@ export class UrbanEventsContainer extends Container<Env> {
             ].join(","),
             FILESYSTEM_PUBLIC_DISK: "s3-public",
             FILESYSTEM_PRIVATE_DISK: "s3-private",
+            HOME: "/tmp",
             LOG_CHANNEL: "stderr",
             NEEM_ENABLED: secrets.NEEM_ENABLED === "true" ? "true" : "false",
             QUEUE_CONNECTION: "sync",
