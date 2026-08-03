@@ -1,0 +1,22 @@
+{
+  "name": "urban-events-cloudflare",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "check": "npm run types && npm run typecheck",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "typecheck": "tsc --noEmit",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "0.3.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260801.1",
+    "@types/node": "^26.1.2",
+    "typescript": "7.0.2",
+    "wrangler": "4.118.0"
+  }
+}

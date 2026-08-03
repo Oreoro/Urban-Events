@@ -8,9 +8,20 @@
 **/*.njsproj
 **/*.sln
 **/*.sw?
+**/node_modules
+.git
+.gitignore
 misc
 
 fly.toml
 
 frontend/.env*
 backend/.env*
+cloudflare
+.github
+docs
+e2e
+backend/vendor
+backend/storage/logs
+frontend/dist
+test_results

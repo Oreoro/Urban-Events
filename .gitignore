@@ -21,6 +21,13 @@ prompts/
 /plans/**
 /plans
 
+# Cloudflare Worker local state and secrets
+cloudflare/node_modules/
+cloudflare/.dev.vars
+cloudflare/.env
+cloudflare/.wrangler/
+cloudflare/wrangler.ci.jsonc
+
 .claude/worktrees/
 .claude/scheduled_tasks.lock
 tmp_translate/

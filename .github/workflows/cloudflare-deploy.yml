@@ -1,0 +1,217 @@
+name: Cloudflare Container
+
+on:
+  push:
+    branches: [development]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'cloudflare/**'
+      - 'docker/all-in-one/**'
+      - 'Dockerfile.all-in-one'
+      - '.dockerignore'
+      - 'VERSION'
+      - '.github/workflows/cloudflare-deploy.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'cloudflare/**'
+      - 'docker/all-in-one/**'
+      - 'Dockerfile.all-in-one'
+      - '.dockerignore'
+      - 'VERSION'
+      - '.github/workflows/cloudflare-deploy.yml'
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Push the verified image and deploy it to workers.dev'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-container-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
+
+jobs:
+  build-and-deploy:
+    name: Build AMD64 image and optionally deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+
+      - name: Install Cloudflare dependencies
+        working-directory: cloudflare
+        run: npm ci
+
+      - name: Validate Worker types
+        working-directory: cloudflare
+        run: npm run check
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build production image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Dockerfile.all-in-one
+          platforms: linux/amd64
+          load: true
+          tags: urban-events-app:${{ github.sha }}
+          cache-from: type=gha,scope=cloudflare-all-in-one
+          cache-to: type=gha,scope=cloudflare-all-in-one,mode=max
+
+      - name: Verify Cloudflare image limits
+        env:
+          IMAGE_TAG: urban-events-app:${{ github.sha }}
+        run: |
+          architecture="$(docker image inspect "$IMAGE_TAG" --format '{{.Architecture}}')"
+          size_bytes="$(docker image inspect "$IMAGE_TAG" --format '{{.Size}}')"
+
+          test "$architecture" = "amd64"
+          test "$size_bytes" -le 4294967296
+
+          echo "Verified $IMAGE_TAG: architecture=$architecture size_bytes=$size_bytes"
+
+      - name: Prepare immutable Cloudflare deployment config
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        working-directory: cloudflare
+        env:
+          IMAGE_TAG: urban-events-app:${{ github.sha }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const source = fs.readFileSync('wrangler.jsonc', 'utf8');
+          const imageTag = process.env.IMAGE_TAG;
+
+          if (!imageTag || !source.includes('"image": "../Dockerfile.all-in-one"')) {
+            throw new Error('Unable to prepare the immutable container image reference');
+          }
+
+          fs.writeFileSync(
+            'wrangler.ci.jsonc',
+            source.replace('"image": "../Dockerfile.all-in-one"', `"image": "${imageTag}"`),
+          );
+          NODE
+
+      - name: Prepare Cloudflare application settings
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        env:
+          AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+
+          settings = {}
+
+          for raw_line in os.environ.get("AZURE_APP_SECRETS", "").splitlines():
+              line = raw_line.strip()
+
+              if not line or line.startswith("#"):
+                  continue
+
+              if line.startswith("export "):
+                  line = line[len("export "):].strip()
+
+              if "=" not in line:
+                  continue
+
+              name, value = line.split("=", 1)
+              name = name.strip()
+              value = value.strip()
+
+              if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+                  value = value[1:-1]
+
+              if name:
+                  settings[name] = value
+
+          settings.update({
+              "AWS_ACCESS_KEY_ID": os.environ.get("R2_ACCESS_KEY_ID", ""),
+              "AWS_SECRET_ACCESS_KEY": os.environ.get("R2_SECRET_ACCESS_KEY", ""),
+              "AWS_DEFAULT_REGION": "auto",
+              "AWS_PUBLIC_BUCKET": "urban-events-public",
+              "AWS_PRIVATE_BUCKET": "urban-events-private",
+              "AWS_ENDPOINT": "https://6ddd824137231b85fd268c2bfa3f0c7f.r2.cloudflarestorage.com",
+              "AWS_USE_PATH_STYLE_ENDPOINT": "true",
+              "AWS_URL": "https://pub-1e08d4a4810a4ff1bbffe100276567de.r2.dev",
+          })
+
+          required = (
+              "APP_KEY",
+              "JWT_SECRET",
+              "DATABASE_URL",
+              "NEEM_BASE_URL",
+              "NEEM_BASE_TOKEN",
+              "NEEM_PARTNER_ID",
+              "NEEM_DECRYPTION_KEY",
+              "AWS_ACCESS_KEY_ID",
+              "AWS_SECRET_ACCESS_KEY",
+          )
+          missing = [name for name in required if not settings.get(name)]
+
+          if missing:
+              raise SystemExit(
+                  "Missing required Cloudflare settings: " + ", ".join(missing)
+              )
+
+          serialized = json.dumps(settings, separators=(",", ":"))
+
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env_file:
+              env_file.write(f"APP_SECRETS_JSON={serialized}\n")
+
+          print(f"Prepared {len(settings)} application settings for Cloudflare.")
+          PY
+
+      - name: Push image to Cloudflare registry
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        working-directory: cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          IMAGE_TAG: urban-events-app:${{ github.sha }}
+        run: npx wrangler containers push "$IMAGE_TAG" --config wrangler.ci.jsonc
+
+      - name: Deploy Worker and container
+        id: cloudflare-deploy
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 6ddd824137231b85fd268c2bfa3f0c7f
+          workingDirectory: cloudflare
+          wranglerVersion: 4.118.0
+          command: deploy --config wrangler.ci.jsonc --containers-rollout=immediate
+          secrets: |
+            APP_SECRETS_JSON
+        env:
+          APP_SECRETS_JSON: ${{ env.APP_SECRETS_JSON }}
+
+      - name: Smoke-test workers.dev
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy
+        env:
+          CLOUDFLARE_WORKER_URL: ${{ steps.cloudflare-deploy.outputs.deployment-url }}
+        run: |
+          test -n "$CLOUDFLARE_WORKER_URL"
+          curl --fail --show-error --silent --retry 12 --retry-all-errors --retry-delay 10 \
+            "$CLOUDFLARE_WORKER_URL/healthz" >/dev/null
+          curl --fail --show-error --silent --retry 3 --retry-all-errors --retry-delay 5 \
+            "$CLOUDFLARE_WORKER_URL/auth/login" >/dev/null
