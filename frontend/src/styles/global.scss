@@ -64,19 +64,20 @@
   --hi-primary: var(--mantine-color-primary-6);
   --hi-primary-hover: var(--mantine-color-primary-7);
   --hi-secondary: var(--ue-mint);
-  --hi-secondary-strong: var(--ue-forest);
+  --hi-secondary-strong: var(--ue-forest-deep);
   --hi-secondary-text: var(--ue-ink);
   --hi-surface: var(--ue-surface);
   --hi-surface-raised: var(--ue-surface);
   --hi-surface-soft: var(--ue-canvas-soft);
   --hi-color-gray: var(--ue-canvas);
   --hi-color-gray-2: var(--ue-border);
+  --hi-color-gray-light: var(--notion-gray-100);
   --hi-color-gray-dark: var(--hi-text-muted);
   --hi-border: color-mix(in srgb, var(--ue-border) 88%, white);
   --hi-border-strong: var(--ue-border-strong);
   --hi-color-money-green: var(--ue-forest);
   --hi-color-blue: var(--ue-light-blue);
-  --hi-link-color: var(--hi-primary);
+  --hi-link-color: var(--ue-teal-deep);
   --hi-pink: var(--ue-coral-deep);
   --hi-primary-alt: var(--ue-coral-deep);
   --hi-action-fill: var(--hi-primary);
@@ -118,13 +119,14 @@
 
   // Compatibility tokens consumed by the v2 application shell and workflows.
   --hi-color-border: var(--hi-border);
-  --hi-color-success: var(--notion-green);
+  --hi-color-success: #137a2d;
   --hi-color-success-soft: color-mix(in srgb, var(--notion-green) 10%, transparent);
-  --hi-color-warning: #b76e00;
+  --hi-color-warning: #9c5d00;
   --hi-color-danger: var(--ue-coral-deep);
   --hi-color-text-muted: var(--hi-text-muted);
   --hi-color-text-tertiary: var(--notion-gray-500);
   --hi-accent-brand-soft: color-mix(in srgb, var(--notion-blue) 10%, transparent);
+  --hi-primary-light: var(--hi-accent-brand-soft);
   --hi-radius-card: var(--hi-radius-lg);
   --hi-ink: var(--ue-ink);
   --hi-ink-deep: var(--notion-black);
@@ -282,7 +284,25 @@ button,
 }
 
 .mantine-Input-input::placeholder {
-  color: color-mix(in srgb, var(--hi-text-muted) 68%, white);
+  color: var(--hi-text-muted);
+}
+
+// Keep browser autofill inside the Urban Events palette. Chromium otherwise
+// paints saved credentials with its own blue surface, which clashes with the
+// neutral input treatment and can obscure the configured text color.
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--hi-text);
+  caret-color: var(--hi-text);
+  box-shadow: 0 0 0 1000px var(--hi-surface) inset;
+  transition: background-color 9999s ease-out 0s;
 }
 
 .mantine-Card-root,

@@ -196,7 +196,7 @@ export const NextOccurrenceHero = ({event, eventId}: NextOccurrenceHeroProps) =>
                 </div>
                 {capacity > 0 && (
                     <div className={classes.bar} role="progressbar" aria-valuenow={percent} aria-valuemin={0} aria-valuemax={100}>
-                        <div className={classes.barFill} style={{width: `${percent}%`}}/>
+                        <div className={classes.barFill} style={{transform: `scaleX(${percent / 100})`}}/>
                     </div>
                 )}
             </div>

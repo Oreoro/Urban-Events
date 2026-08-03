@@ -215,7 +215,7 @@ export const SetupChecklist = ({
                     <div className={classes.progressTrack}>
                         <div
                             className={classes.progressFill}
-                            style={{width: `${progressPercent}%`}}
+                            style={{transform: `scaleX(${progressPercent / 100})`}}
                         />
                     </div>
                 </div>

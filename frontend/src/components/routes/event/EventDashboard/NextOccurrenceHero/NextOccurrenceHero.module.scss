@@ -153,9 +153,11 @@
   top: 0;
   left: 0;
   bottom: 0;
+  width: 100%;
   background: var(--mantine-color-violet-6);
   border-radius: 999px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  transition: transform 0.2s ease-out;
 }
 
 .state_imminent .barFill { background: var(--mantine-color-orange-6); }

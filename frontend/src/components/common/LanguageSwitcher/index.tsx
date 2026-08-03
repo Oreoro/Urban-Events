@@ -3,6 +3,7 @@ import {dynamicActivateLocale, getClientLocale, getLocaleName, localeToNameMap, 
 import {t} from "@lingui/macro";
 import {IconWorld} from "@tabler/icons-react";
 import {useLingui} from "@lingui/react";
+import classes from "./LanguageSwitcher.module.scss";
 
 export const LanguageSwitcher = () => {
     useLingui();
@@ -12,7 +13,8 @@ export const LanguageSwitcher = () => {
             <Select
                 leftSection={<IconWorld size={15} color="var(--hi-text-muted)"/>}
                 w={132}
-                size={'xs'}
+                size={'sm'}
+                classNames={{input: classes.input}}
                 required
                 aria-label={t`Language`}
                 data={Object.keys(localeToNameMap).map(locale => ({

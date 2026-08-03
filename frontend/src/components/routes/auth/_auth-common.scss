@@ -73,11 +73,13 @@
     font-size: 0.9375rem;
     transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
     background: var(--hi-color-gray);
+    height: 44px;
     min-height: 44px;
 
     @include mixins.respond-below(sm) {
       padding: 0.625rem 0.875rem;
       font-size: 1rem; // Prevent zoom on iOS
+      height: 48px;
       min-height: 48px;
     }
 
@@ -158,8 +160,7 @@
     }
 
     &:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px oklch(0 0 0 / 0.15);
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--hi-primary) 18%, transparent);
     }
 
     &:active:not(:disabled) {

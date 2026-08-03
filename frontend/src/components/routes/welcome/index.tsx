@@ -36,7 +36,7 @@ export const CreateOrganizer = ({progressInfo}: {
                     <div className={classes.progressContainer}>
                         <div className={classes.progressBar}>
                             <div className={classes.progressFill}
-                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                                 style={{transform: `scaleX(${progressInfo.progressPercentage / 100})`}}></div>
                         </div>
                     </div>
                 )}
@@ -137,7 +137,7 @@ const ConfirmVerificationPin = ({progressInfo}: {
                     <div className={classes.progressContainer}>
                         <div className={classes.progressBar}>
                             <div className={classes.progressFill}
-                                 style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                                 style={{transform: `scaleX(${progressInfo.progressPercentage / 100})`}}></div>
                         </div>
                     </div>
                 )}
@@ -318,7 +318,7 @@ export const CreateEvent = ({progressInfo}: {
                         <div className={classes.progressContainer}>
                             <div className={classes.progressBar}>
                                 <div className={classes.progressFill}
-                                     style={{width: `${progressInfo.progressPercentage}%`}}></div>
+                                     style={{transform: `scaleX(${progressInfo.progressPercentage / 100})`}}></div>
                             </div>
                         </div>
                     )}

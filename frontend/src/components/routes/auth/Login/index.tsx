@@ -160,6 +160,7 @@ const Login = () => {
                                         type="email"
                                         name="ticket_lookup_email"
                                         autoComplete="email"
+                                        aria-label={t`Email address for ticket lookup`}
                                         placeholder={t`Enter your email`}
                                         required
                                         className={classes.ticketEmailInput}
