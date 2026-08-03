@@ -4,6 +4,13 @@ set -eu
 
 cd /app/backend
 
+# Cloudflare Containers gives the process roughly 20 seconds to accept a TCP
+# connection. Database cold starts and first-run migrations can take longer, so
+# open port 80 immediately and let the normal readiness route remain unavailable
+# until the frontend starts under Supervisor.
+mkdir -p /run/nginx
+/usr/sbin/nginx
+
 case "${NEEM_ENABLED:-false}" in
     1|true|TRUE|yes|YES|on|ON)
         missing_neem_settings=""
@@ -42,5 +49,20 @@ fi
 
 chown -R www-data:www-data /app/backend/storage /app/backend/bootstrap/cache
 chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache
+
+# Supervisor owns the long-running Nginx process. Stop the temporary listener
+# first so Supervisor can bind the same port without racing it.
+/usr/sbin/nginx -s quit
+nginx_shutdown_checks=0
+while [ -f /run/nginx/nginx.pid ]; do
+    nginx_shutdown_checks=$((nginx_shutdown_checks + 1))
+
+    if [ "$nginx_shutdown_checks" -ge 50 ]; then
+        echo "ERROR: Temporary Nginx listener did not stop cleanly."
+        exit 1
+    fi
+
+    sleep 0.1
+done
 
 exec /usr/bin/supervisord -c /etc/supervisord.conf
