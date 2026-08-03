@@ -186,7 +186,10 @@ export class UrbanEventsContainer extends Container<Env> {
 
     override async fetch(request: Request): Promise<Response> {
         const nowMs = Date.now();
-        const publicOrigin = new URL(request.url).origin;
+        // Container environment is fixed at process start, so always use the
+        // canonical hostname rather than whichever hostname received the
+        // first cold-start request.
+        const publicOrigin = this.env.APP_ORIGIN;
         const budget = await this.getRuntimeBudget(nowMs);
         const elapsedRuntimeMs = this.getElapsedRuntimeMs(budget, nowMs);
 
