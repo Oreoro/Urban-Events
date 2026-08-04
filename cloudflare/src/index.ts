@@ -84,6 +84,7 @@ export class UrbanEventsContainer extends Container<Env> {
 
     private getContainerEnvironment(publicOrigin: string): ContainerEnvironment {
         const secrets = parseContainerSecrets(this.env.APP_SECRETS_JSON);
+        const stripeEnabled = secrets.STRIPE_ENABLED === "true";
 
         return {
             ...secrets,
@@ -92,6 +93,7 @@ export class UrbanEventsContainer extends Container<Env> {
             APP_DEBUG: "false",
             APP_URL: `${publicOrigin}/api`,
             APP_FRONTEND_URL: publicOrigin,
+            APP_SAAS_MODE_ENABLED: "false",
             APP_CDN_URL: secrets.AWS_URL,
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
@@ -107,15 +109,16 @@ export class UrbanEventsContainer extends Container<Env> {
             FILESYSTEM_PRIVATE_DISK: "s3-private",
             HOME: "/tmp",
             LOG_CHANNEL: "stderr",
-            NEEM_ENABLED: secrets.NEEM_ENABLED === "true" ? "true" : "false",
+            NEEM_ENABLED: "false",
             QUEUE_CONNECTION: "sync",
             SESSION_DRIVER: "cookie",
             SESSION_SECURE_COOKIE: "true",
-            STRIPE_ENABLED: "false",
+            STRIPE_ENABLED: stripeEnabled ? "true" : "false",
+            STRIPE_PLATFORM_MANAGED: stripeEnabled ? "true" : "false",
             VITE_API_URL_CLIENT: `${publicOrigin}/api`,
             VITE_API_URL_SERVER: "http://localhost:80/api",
             VITE_FRONTEND_URL: publicOrigin,
-            VITE_STRIPE_PUBLISHABLE_KEY: "",
+            VITE_STRIPE_PUBLISHABLE_KEY: stripeEnabled ? (secrets.STRIPE_PUBLIC_KEY ?? "") : "",
             WEBHOOK_QUEUE_NAME: "default",
         };
     }

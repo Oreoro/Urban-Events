@@ -6,6 +6,7 @@ use Brick\Math\Exception\MathException;
 use Brick\Math\Exception\NumberFormatException;
 use Brick\Math\Exception\RoundingNecessaryException;
 use Brick\Money\Exception\UnknownCurrencyException;
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventDomainObject;
 use HiEvents\DomainObjects\Generated\StripePaymentDomainObjectAbstract;
 use HiEvents\DomainObjects\OrderItemDomainObject;
@@ -19,6 +20,7 @@ use HiEvents\Exceptions\Stripe\CreatePaymentIntentFailedException;
 use HiEvents\Exceptions\UnauthorizedException;
 use HiEvents\Repository\Eloquent\Value\Relationship;
 use HiEvents\Repository\Interfaces\AccountRepositoryInterface;
+use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrganizerRepositoryInterface;
 use HiEvents\Repository\Interfaces\StripePaymentsRepositoryInterface;
@@ -44,6 +46,7 @@ readonly class CreatePaymentIntentHandler
         private OrganizerRepositoryInterface $organizerRepository,
         private StripeClientFactory $stripeClientFactory,
         private StripeConfigurationService $stripeConfigurationService,
+        private EventSettingsRepositoryInterface $eventSettingsRepository,
     ) {}
 
     /**
@@ -73,6 +76,25 @@ readonly class CreatePaymentIntentHandler
 
         $event = $order->getEvent();
 
+        if (! config('services.stripe.enabled')) {
+            throw new CreatePaymentIntentFailedException(
+                __('Card payments are temporarily unavailable. Please try again later.')
+            );
+        }
+
+        $eventSettings = $this->eventSettingsRepository->findFirstWhere([
+            'event_id' => $order->getEventId(),
+        ]);
+
+        $stripeEnabledForEvent = config('services.stripe.platform_managed')
+            || in_array(PaymentProviders::STRIPE->value, $eventSettings?->getPaymentProviders() ?? [], true);
+
+        if (! $stripeEnabledForEvent) {
+            throw new CreatePaymentIntentFailedException(
+                __('Card payments are not enabled for this event.')
+            );
+        }
+
         $organizer = $this->organizerRepository
             ->loadRelation(OrganizerStripePlatformDomainObject::class)
             ->loadRelation(new Relationship(
@@ -87,13 +109,26 @@ readonly class CreatePaymentIntentHandler
 
         $account = $this->accountRepository->findByEventId($order->getEventId());
 
-        $stripePlatform = $organizer?->getActiveStripePlatform()
-            ?? $this->stripeConfigurationService->getPrimaryPlatform();
+        $isPlatformManaged = config('services.stripe.platform_managed');
+        $stripePlatform = $isPlatformManaged
+            ? $this->stripeConfigurationService->getPrimaryPlatform()
+            : ($organizer?->getActiveStripePlatform()
+                ?? $this->stripeConfigurationService->getPrimaryPlatform());
 
-        $stripeAccountId = $organizer?->getActiveStripeAccountId();
+        // Platform-managed payments are direct charges on the shared Urban Events
+        // account. Never forward an organizer's legacy Connect account to Stripe.
+        $stripeAccountId = $isPlatformManaged
+            ? null
+            : $organizer?->getActiveStripeAccountId();
 
         $stripeClient = $this->stripeClientFactory->createForPlatform($stripePlatform);
         $publicKey = $this->stripeConfigurationService->getPublicKey($stripePlatform);
+
+        if (empty($publicKey)) {
+            throw new CreatePaymentIntentFailedException(
+                __('Card payments are temporarily unavailable. Please try again later.')
+            );
+        }
 
         if ($order->getStripePayment() !== null) {
             return new CreatePaymentIntentResponseDTO(

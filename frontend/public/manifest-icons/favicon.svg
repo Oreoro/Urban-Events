@@ -1,10 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="Urban Events">
-    <rect width="48" height="48" rx="10" fill="#4A5262"/>
-    <text x="24" y="31"
-          font-family="Manrope, system-ui, -apple-system, sans-serif"
-          font-size="18"
-          font-weight="800"
-          fill="#FFF9EA"
-          text-anchor="middle">UE</text>
-    <rect x="12" y="35" width="24" height="3" rx="1.5" fill="#B8F2E6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Urban Events">
+  <rect width="64" height="64" rx="14" fill="#171717"/>
+  <path d="M13 16v18c0 10 6 16 15.25 16S43.5 44 43.5 34V16h-9v17.5c0 5.25-2.125 8-6.25 8S22 38.75 22 33.5V16h-9Z" fill="#FFFFFF"/>
+  <path d="M42.75 48H33l12-32h9.75l-12 32Z" fill="#097FE8"/>
 </svg>

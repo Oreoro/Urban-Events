@@ -1,5 +1,5 @@
 import {t} from "@lingui/macro";
-import {Button, Card as MantineCard, Checkbox, NumberInput, Paper, Stack, Switch, Text, TextInput} from "@mantine/core";
+import {Button, Card as MantineCard, Checkbox, Group, NumberInput, Paper, Stack, Switch, Text, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {useParams} from "react-router";
 import {useEffect} from "react";
@@ -14,11 +14,15 @@ import {Editor} from "../../../../../common/Editor";
 import {LiquidTokenControl} from "../../../../../common/Editor/Controls/LiquidTokenControl";
 import {InputLabelWithHelp} from "../../../../../common/InputLabelWithHelp";
 import {isEmptyHtml} from "../../../../../../utilites/helpers.ts";
+import {useGetAccount} from "../../../../../../queries/useGetAccount.ts";
+import {IconCreditCard} from "@tabler/icons-react";
 
 export const PaymentAndInvoicingSettings = () => {
     const {eventId} = useParams();
     const eventSettingsQuery = useGetEventSettings(eventId);
+    const {data: account} = useGetAccount();
     const updateMutation = useUpdateEventSettings();
+    const isPlatformPaymentManaged = !!account?.is_platform_payment_managed;
     const form = useForm({
         initialValues: {
             require_billing_address: true,
@@ -37,7 +41,9 @@ export const PaymentAndInvoicingSettings = () => {
         },
         transformValues: (values) => ({
             ...values,
-            payment_providers: Array.isArray(values.payment_providers) ? values.payment_providers : [],
+            payment_providers: isPlatformPaymentManaged
+                ? ['STRIPE' as PaymentProvider]
+                : (Array.isArray(values.payment_providers) ? values.payment_providers : []),
             offline_payment_instructions: isEmptyHtml(values.offline_payment_instructions) ? null : values.offline_payment_instructions,
             invoice_notes: isEmptyHtml(values.invoice_notes) ? null : values.invoice_notes,
             invoice_tax_details: isEmptyHtml(values.invoice_tax_details) ? null : values.invoice_tax_details,
@@ -49,7 +55,9 @@ export const PaymentAndInvoicingSettings = () => {
     useEffect(() => {
         if (eventSettingsQuery?.isFetched && eventSettingsQuery?.data) {
             form.setValues({
-                payment_providers: eventSettingsQuery.data.payment_providers || [],
+                payment_providers: isPlatformPaymentManaged
+                    ? ['STRIPE']
+                    : (eventSettingsQuery.data.payment_providers || []),
                 offline_payment_instructions: eventSettingsQuery.data.offline_payment_instructions || "",
                 allow_orders_awaiting_offline_payment_to_check_in: eventSettingsQuery.data.allow_orders_awaiting_offline_payment_to_check_in || false,
                 enable_invoicing: eventSettingsQuery.data.enable_invoicing || false,
@@ -64,7 +72,7 @@ export const PaymentAndInvoicingSettings = () => {
                 invoice_tax_details: eventSettingsQuery.data.invoice_tax_details || "",
             });
         }
-    }, [eventSettingsQuery.isFetched]);
+    }, [eventSettingsQuery.isFetched, isPlatformPaymentManaged]);
 
     const handleSubmit = (values: Partial<EventSettings>) => {
         updateMutation.mutate({
@@ -104,7 +112,19 @@ export const PaymentAndInvoicingSettings = () => {
                     <Stack gap="xl">
                         <Paper withBorder p="md" radius="md">
                             <Text size="lg" fw={500} mb="md">{t`Payment Methods`}</Text>
-                            {paymentOptions.map((option) => (
+                            {isPlatformPaymentManaged ? (
+                                <MantineCard withBorder padding="md" radius="md">
+                                    <Group gap="md" wrap="nowrap" align="flex-start">
+                                        <IconCreditCard size={22} stroke={1.7}/>
+                                        <div>
+                                            <Text fw={600}>{t`Card payments`}</Text>
+                                            <Text size="sm" c="dimmed">
+                                                {t`Payments are handled by Urban Events. No Stripe account or payment setup is required.`}
+                                            </Text>
+                                        </div>
+                                    </Group>
+                                </MantineCard>
+                            ) : paymentOptions.map((option) => (
                                 <Checkbox
                                     key={option.value}
                                     label={option.label}

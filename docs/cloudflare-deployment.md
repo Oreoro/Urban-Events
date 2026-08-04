@@ -21,9 +21,11 @@ Containers have ephemeral disks. Production therefore requires:
 1. An external PostgreSQL `DATABASE_URL`. A scale-to-zero Neon database is suitable for low traffic.
 2. Two R2 buckets (public and private) exposed through the S3-compatible API.
 3. An R2 API token with object read/write access for those buckets.
-4. Existing Neem credentials for paid tickets. Stripe remains disabled. If Neem credentials are not yet available, the container starts with paid checkout disabled instead of accepting an incomplete payment configuration.
+4. One Urban Events Stripe account for all paid tickets. Organizers do not connect their own Stripe accounts. If Stripe credentials are not yet available, the container starts with paid checkout disabled instead of accepting an incomplete payment configuration.
 
-The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel and mail settings. Cloudflare-specific replacements, including the Neon `DATABASE_URL`, belong in `CLOUDFLARE_APP_OVERRIDES` and are merged after the legacy settings. Neem credentials belong in the separate optional `NEEM_APP_SECRETS` secret. The workflow replaces storage values with the new R2 credentials and writes the merged object to a mode-`0600` secrets file on the ephemeral runner. Wrangler consumes that file with `--secrets-file` during the first Worker deployment; the JSON never enters GitHub's cross-step environment or command output. Neem is enabled only when all four required values are present; partial credentials fail the deployment.
+The deployment workflow reuses the existing `AZURE_APP_SECRETS` repository secret for Laravel and mail settings. Cloudflare-specific replacements, including the Neon `DATABASE_URL`, belong in `CLOUDFLARE_APP_OVERRIDES` and are merged after the legacy settings. Stripe credentials belong in the separate `STRIPE_APP_SECRETS` secret. The workflow replaces storage values with the new R2 credentials and writes the merged object to a mode-`0600` secrets file on the ephemeral runner. Wrangler consumes that file with `--secrets-file` during deployment; the JSON never enters GitHub's cross-step environment or command output.
+
+Stripe is enabled only when the publishable key, secret key, and webhook signing secret are all present. Partial Stripe credentials fail the deployment. The Cloudflare deployment always disables Neem; legacy Neem credentials may remain stored during the transition, but they are not exposed as a checkout provider. When Stripe is complete, the workflow enables platform-managed payments and disables Stripe Connect/organizer setup.
 
 The generated Worker secret has this shape:
 
@@ -32,10 +34,11 @@ The generated Worker secret has this shape:
   "APP_KEY": "base64:...",
   "JWT_SECRET": "...",
   "DATABASE_URL": "postgresql://...",
-  "NEEM_BASE_URL": "https://...",
-  "NEEM_BASE_TOKEN": "...",
-  "NEEM_PARTNER_ID": "...",
-  "NEEM_DECRYPTION_KEY": "...",
+  "STRIPE_PUBLIC_KEY": "pk_test_...",
+  "STRIPE_SECRET_KEY": "sk_test_...",
+  "STRIPE_WEBHOOK_SECRET": "whsec_...",
+  "STRIPE_ENABLED": "true",
+  "STRIPE_PLATFORM_MANAGED": "true",
   "AWS_ACCESS_KEY_ID": "...",
   "AWS_SECRET_ACCESS_KEY": "...",
   "AWS_DEFAULT_REGION": "auto",
@@ -69,11 +72,21 @@ Copy `.dev.vars.example` to `.dev.vars` only when running `wrangler dev`. Never 
    - Secret `R2_SECRET_ACCESS_KEY` from the same scoped R2 token
    - Existing secret `AZURE_APP_SECRETS` remains the source for legacy application and mail settings
    - Secret `CLOUDFLARE_APP_OVERRIDES` contains newline-delimited Cloudflare replacements, including the Neon `DATABASE_URL`
-   - Optional secret `NEEM_APP_SECRETS` contains the four newline-delimited Neem variables; omit it to deploy with paid checkout disabled
-4. Run the **Cloudflare Container** workflow manually with **deploy** enabled. The workflow validates the Worker, builds one AMD64 image, pushes that commit-tagged image to Cloudflare's managed registry, deploys the Worker with Cloudflare's official Wrangler action, uploads the runtime secret, and smoke-tests `/healthz` plus `/auth/login` using the action's deployment URL.
-5. Wait for `npx wrangler containers list` to report a ready deployment.
-6. Test event creation, uploads, Neem checkout, and QR check-in on the `workers.dev` URL.
-7. Only after those checks pass, add `app.urbanevents.pk/*` as a Worker route and remove the old Azure origin mapping.
+   - Secret `STRIPE_APP_SECRETS` contains exactly the three newline-delimited Stripe variables shown below. Start with test-mode credentials.
+
+     ```dotenv
+     STRIPE_PUBLIC_KEY=pk_test_...
+     STRIPE_SECRET_KEY=sk_test_...
+     STRIPE_WEBHOOK_SECRET=whsec_...
+     ```
+
+4. In Stripe Workbench, create a test-mode webhook destination for `https://app.urbanevents.pk/api/public/webhooks/stripe`. Subscribe to `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.succeeded`, `charge.updated`, `charge.refunded`, `refund.created`, and `refund.updated`. Put that endpoint's `whsec_...` value in `STRIPE_APP_SECRETS`.
+5. Run the **Cloudflare Container** workflow manually with **deploy** enabled. The workflow validates the Worker, builds one AMD64 image, pushes that commit-tagged image to Cloudflare's managed registry, deploys the Worker with Cloudflare's official Wrangler action, uploads the runtime secret, and smoke-tests `/healthz` plus `/auth/login` using the action's deployment URL.
+6. Wait for `npx wrangler containers list` to report a ready deployment.
+7. In Stripe test mode, test event creation, a successful card payment, a declined card, webhook completion, a refund, uploads, and QR check-in.
+8. Only after the full test-mode flow passes, create the equivalent live-mode webhook destination and replace all three values together with the matching live-mode credentials. Never combine test keys with a live webhook secret.
+
+Because these are direct charges on one Urban Events Stripe account, Urban Events is responsible for customer statements, refunds, disputes, tax/compliance obligations, and settling ticket proceeds with organizers outside Stripe Connect.
 
 Pushes and pull requests run the same Worker validation and production Docker build without deploying. This keeps image construction in GitHub Actions while leaving production release as an explicit, protected action.
 

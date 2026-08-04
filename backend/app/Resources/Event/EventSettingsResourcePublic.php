@@ -2,6 +2,7 @@
 
 namespace HiEvents\Resources\Event;
 
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -61,7 +62,7 @@ class EventSettingsResourcePublic extends JsonResource
             'price_display_mode' => $this->getPriceDisplayMode(),
 
             // Payment settings
-            'payment_providers' => $this->getPaymentProviders(),
+            'payment_providers' => $this->getAvailablePaymentProviders(),
             'offline_payment_instructions' => $this->getOfflinePaymentInstructions(),
             'allow_orders_awaiting_offline_payment_to_check_in' => $this->getAllowOrdersAwaitingOfflinePaymentToCheckIn(),
 
@@ -92,5 +93,27 @@ class EventSettingsResourcePublic extends JsonResource
             'waitlist_auto_process' => $this->getWaitlistAutoProcess(),
             'waitlist_offer_timeout_minutes' => $this->getWaitlistOfferTimeoutMinutes(),
         ];
+    }
+
+    private function getAvailablePaymentProviders(): array
+    {
+        if (config('services.stripe.platform_managed')) {
+            return [PaymentProviders::STRIPE->value];
+        }
+
+        $paymentProviders = $this->getPaymentProviders();
+
+        if (! is_array($paymentProviders)) {
+            return [];
+        }
+
+        return array_values(array_filter(
+            $paymentProviders,
+            static fn (string $provider): bool => match ($provider) {
+                PaymentProviders::STRIPE->value => (bool) config('services.stripe.enabled'),
+                PaymentProviders::NEEM->value => (bool) config('services.neem.enabled'),
+                default => true,
+            },
+        ));
     }
 }

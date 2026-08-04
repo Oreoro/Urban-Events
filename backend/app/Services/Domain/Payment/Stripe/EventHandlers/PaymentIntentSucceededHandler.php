@@ -211,7 +211,7 @@ class PaymentIntentSucceededHandler
             order: $stripePayment->getOrder(),
         );
 
-        $this->cache->put('payment_intent_handled_'.$paymentIntent->id, true, 3600);
+        $this->cache->put('payment_intent_handled_'.$paymentIntent->id, true, now()->addDays(7));
 
         throw new CannotAcceptPaymentException($message);
     }
@@ -289,7 +289,7 @@ class PaymentIntentSucceededHandler
             'currency' => $paymentIntent->currency,
         ]);
 
-        $this->cache->put('payment_intent_handled_'.$paymentIntent->id, true, 3600);
+        $this->cache->put('payment_intent_handled_'.$paymentIntent->id, true, now()->addDays(7));
     }
 
     private function isPaymentIntentAlreadyHandled(PaymentIntent $paymentIntent): bool

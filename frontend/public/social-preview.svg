@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Urban Events</title>
+  <desc id="desc">Publish event pages, sell tickets in PKR, and check in guests.</desc>
+  <rect width="1200" height="630" fill="#F7F8FA"/>
+  <rect width="1200" height="10" fill="#097FE8"/>
+
+  <g transform="translate(72 64)">
+    <rect width="88" height="88" rx="20" fill="#171717"/>
+    <path d="M17.875 22v24.75c0 13.75 8.25 22 20.968 22s20.969-8.25 20.969-22V22H47.437v24.063c0 7.218-2.921 11-8.594 11s-8.593-3.782-8.593-11V22H17.875Z" fill="#FFFFFF"/>
+    <path d="M58.78 66H45.375l16.5-44h13.406L58.781 66Z" fill="#097FE8"/>
+  </g>
+
+  <text x="188" y="101" fill="#171717" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.6">Urban Events</text>
+  <text x="188" y="139" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="1.7">TICKETING FOR PAKISTAN</text>
+
+  <text x="72" y="300" fill="#171717" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="750" letter-spacing="-4">Publish. Sell. Check in.</text>
+  <text x="72" y="389" fill="#097FE8" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="750" letter-spacing="-4">All in one place.</text>
+
+  <text x="76" y="471" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Polished event pages, local PKR checkout, and fast guest entry.</text>
+
+  <rect x="72" y="529" width="280" height="52" rx="12" fill="#171717"/>
+  <text x="212" y="563" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">app.urbanevents.pk</text>
+</svg>

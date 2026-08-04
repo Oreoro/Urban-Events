@@ -73,13 +73,17 @@ class IncomingWebhookHandler
                 $this->logger->debug('Stripe event already handled', [
                     'event_id' => $event->id,
                     'type' => $event->type,
-                    'data' => $event->data->object->toArray(),
+                    'object_id' => $event->data->object->id ?? null,
                 ]);
 
                 return;
             }
 
-            $this->logger->debug('Stripe event received: '.$event->type, $event->data->object->toArray());
+            $this->logger->debug('Stripe event received', [
+                'event_id' => $event->id,
+                'type' => $event->type,
+                'object_id' => $event->data->object->id ?? null,
+            ]);
 
             switch ($event->type) {
                 case Event::PAYMENT_INTENT_SUCCEEDED:
@@ -112,27 +116,27 @@ class IncomingWebhookHandler
         } catch (CannotAcceptPaymentException $exception) {
             $this->logger->error(
                 'Cannot accept payment: '.$exception->getMessage(), [
-                    'payload' => $webhookDTO->payload,
+                    'payload_sha256' => hash('sha256', $webhookDTO->payload),
                 ]
             );
             throw $exception;
         } catch (SignatureVerificationException $exception) {
             $this->logger->error(
                 'Unable to verify Stripe signature: '.$exception->getMessage(), [
-                    'payload' => $webhookDTO->payload,
+                    'payload_sha256' => hash('sha256', $webhookDTO->payload),
                 ]
             );
             throw $exception;
         } catch (UnexpectedValueException $exception) {
             $this->logger->error(
                 'Unexpected value in Stripe payload: '.$exception->getMessage(), [
-                    'payload' => $webhookDTO->payload,
+                    'payload_sha256' => hash('sha256', $webhookDTO->payload),
                 ]
             );
             throw $exception;
         } catch (Throwable $exception) {
             $this->logger->error('Unhandled Stripe error: '.$exception->getMessage(), [
-                'payload' => $webhookDTO->payload,
+                'payload_sha256' => hash('sha256', $webhookDTO->payload),
             ]);
             throw $exception;
         }
@@ -191,6 +195,6 @@ class IncomingWebhookHandler
             'event_id' => $event->id,
             'type' => $event->type,
         ]);
-        $this->cache->put('stripe_event_'.$event->id, true, now()->addMinutes(60));
+        $this->cache->put('stripe_event_'.$event->id, true, now()->addDays(7));
     }
 }

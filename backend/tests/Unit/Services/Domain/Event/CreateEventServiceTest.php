@@ -5,6 +5,7 @@ namespace Tests\Unit\Services\Domain\Event;
 use HiEvents\DomainObjects\Enums\AttendeeDetailsCollectionMethod;
 use HiEvents\DomainObjects\Enums\HomepageBackgroundType;
 use HiEvents\DomainObjects\Enums\ImageType;
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventDomainObject;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\OrganizerDomainObject;
@@ -67,6 +68,11 @@ class CreateEventServiceTest extends TestCase
         $this->occurrenceRepository = Mockery::mock(EventOccurrenceRepositoryInterface::class);
         $this->checkInListRepository = Mockery::mock(CheckInListRepositoryInterface::class);
 
+        $this->config->shouldReceive('get')
+            ->with('services.stripe.platform_managed')
+            ->byDefault()
+            ->andReturn(false);
+
         $this->createEventService = new CreateEventService(
             $this->eventRepository,
             $this->eventSettingsRepository,
@@ -93,6 +99,11 @@ class CreateEventServiceTest extends TestCase
         $eventData = $this->createMockEventDomainObject();
         $eventSettings = $this->createMockEventSettingDomainObject();
         $organizer = $this->createMockOrganizerDomainObject();
+
+        $this->config->shouldReceive('get')
+            ->with('services.stripe.platform_managed')
+            ->once()
+            ->andReturn(true);
 
         $this->databaseManager->shouldReceive('transaction')->once()->andReturnUsing(function ($callback) {
             return $callback();
@@ -192,11 +203,17 @@ class CreateEventServiceTest extends TestCase
 
         $this->purifier->shouldReceive('purify')->andReturn('Test Description');
 
+        $this->config->shouldReceive('get')
+            ->with('services.stripe.platform_managed')
+            ->once()
+            ->andReturn(true);
+
         $this->eventSettingsRepository->shouldReceive('create')
             ->with(Mockery::on(function ($arg) use ($eventData, $organizer) {
                 return $arg['event_id'] === $eventData->getId() &&
                     $arg['homepage_background_type'] === HomepageBackgroundType::COLOR->name &&
-                    $arg['support_email'] === $organizer->getEmail();
+                    $arg['support_email'] === $organizer->getEmail() &&
+                    $arg['payment_providers'] === [PaymentProviders::STRIPE->value];
             }));
 
         $this->eventStatisticsRepository->shouldReceive('create');
@@ -577,9 +594,13 @@ class CreateEventServiceTest extends TestCase
     {
         return Mockery::mock(EventSettingDomainObject::class, function ($mock) {
             $mock->shouldReceive('setEventId');
+            $mock->shouldReceive('setPaymentProviders')
+                ->once()
+                ->with([PaymentProviders::STRIPE->value]);
             $mock->shouldReceive('toArray')->andReturn([
                 'event_id' => 1,
                 'homepage_background_color' => '#ffffff',
+                'payment_providers' => [PaymentProviders::STRIPE->value],
             ]);
         });
     }

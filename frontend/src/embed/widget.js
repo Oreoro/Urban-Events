@@ -3,7 +3,7 @@
     const isScriptLoaded = () => !!window.hiEventWidgetLoaded;
 
     const logError = (e) => {
-        try { console.error('HiEvent widget error:', e); } catch (ignored) { /* noop */ }
+        try { console.error('Urban Events widget error:', e); } catch (ignored) { /* noop */ }
     };
 
     const safe = (fn) => function () {
@@ -21,7 +21,7 @@
         try {
             scriptOrigin = new URL(scriptElement.src).origin;
         } catch (e) {
-            console.error('HiEvent widget error: Invalid script URL');
+            console.error('Urban Events widget error: Invalid script URL');
             return;
         }
 
@@ -251,7 +251,7 @@
                 document.body.style.overflow = 'hidden';
                 document.body.appendChild(host);
             } catch (e) {
-                console.error('HiEvent widget error: failed to open checkout modal');
+                console.error('Urban Events widget error: failed to open checkout modal');
                 inerted.forEach((el) => {
                     try { el.removeAttribute('inert'); } catch (err) { /* noop */ }
                 });
@@ -350,7 +350,7 @@
         widgets.forEach((widget, index) => {
             const eventId = widget.getAttribute('data-hievents-id');
             if (!eventId) {
-                console.error('HiEvent widget error: data-hievents-id is required');
+                console.error('Urban Events widget error: data-hievents-id is required');
                 return;
             }
 
@@ -409,7 +409,7 @@
             try {
                 window.history.replaceState({}, document.title, parentBaseUrl);
             } catch (e) {
-                console.error('HiEvent widget error: Unable to clean return URL');
+                console.error('Urban Events widget error: Unable to clean return URL');
             }
         } else {
             const resume = readResume();

@@ -248,11 +248,11 @@ const Attendees = () => {
                     resultCount={pagination?.total}
                     resultLabel={t`attendees`}
                 >
-                    <Button color={'green'} size={'sm'} data-testid="attendee-create-button" onClick={openCreateModal} rightSection={<IconPlus/>}>
+                    <Button color={'primary'} size={'sm'} data-testid="attendee-create-button" onClick={openCreateModal} rightSection={<IconPlus/>}>
                         {t`Create`}
                     </Button>
 
-                    <Button color={'green'}
+                    <Button color={'primary'}
                             size={'sm'}
                             loading={downloadPending}
                             onClick={() => handleExport(eventId)}

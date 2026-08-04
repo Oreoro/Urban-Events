@@ -33,6 +33,7 @@ return [
 
     'stripe' => [
         'enabled' => env('STRIPE_ENABLED', false),
+        'platform_managed' => env('STRIPE_ENABLED', false) && env('STRIPE_PLATFORM_MANAGED', false),
         'secret_key' => env('STRIPE_SECRET_KEY'),
         'public_key' => env('STRIPE_PUBLIC_KEY'),
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),

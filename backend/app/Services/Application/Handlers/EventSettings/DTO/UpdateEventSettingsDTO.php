@@ -123,7 +123,11 @@ class UpdateEventSettingsDTO extends BaseDTO
             price_display_mode: PriceDisplayMode::INCLUSIVE,
 
             // Payment defaults
-            payment_providers: [PaymentProviders::NEEM->value],
+            payment_providers: [
+                config('services.stripe.platform_managed')
+                    ? PaymentProviders::STRIPE->value
+                    : PaymentProviders::NEEM->value,
+            ],
             offline_payment_instructions: null,
 
             // Invoice defaults

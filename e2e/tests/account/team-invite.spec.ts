@@ -27,7 +27,7 @@ test.describe('team invites', () => {
     await page.getByRole('button', { name: 'Accept Invitation' }).click();
 
     await expect(page).toHaveURL(/\/auth\/login/);
-    await page.getByLabel(/^Email/).fill(inviteeEmail);
+    await page.getByRole('textbox', { name: 'Email', exact: true }).fill(inviteeEmail);
     await page.getByLabel(/^Password/).fill(INVITEE_PASSWORD);
     await page.getByRole('button', { name: 'Log in' }).click();
 
@@ -67,7 +67,7 @@ test.describe('team invites', () => {
 
     await page.goto('/auth/login');
     await page.waitForLoadState('networkidle');
-    await page.getByLabel(/^Email/).fill(memberEmail);
+    await page.getByRole('textbox', { name: 'Email', exact: true }).fill(memberEmail);
     await page.getByLabel(/^Password/).fill(INVITEE_PASSWORD);
     await page.getByRole('button', { name: 'Log in' }).click();
     await expect(page.getByText('Please check your email and password and try again')).toBeVisible();

@@ -57,7 +57,7 @@ const buildActions = (occ: EventOccurrence, actions: OccurrenceMenuActions): Occ
         !!actions.onMessage && {key: 'message', icon: <IconSend size={14}/>, label: t`Message`, onClick: () => actions.onMessage!(id), group: 'primary'},
         !!actions.onCheckIn && !isCancelled && {key: 'checkin', icon: <IconClipboardList size={14}/>, label: t`Check-In`, onClick: () => actions.onCheckIn!(id), group: 'primary'},
         !!actions.onShare && !isCancelled && {key: 'share', icon: <IconShare size={14}/>, label: t`Share`, onClick: () => actions.onShare!(occ), group: 'primary'},
-        isCancelled && !!actions.onReactivate && {key: 'reactivate', icon: <IconPlayerPlay size={14}/>, label: t`Reopen for new sales`, onClick: () => actions.onReactivate!(occ), group: 'primary', color: 'green'},
+        isCancelled && !!actions.onReactivate && {key: 'reactivate', icon: <IconPlayerPlay size={14}/>, label: t`Reopen for new sales`, onClick: () => actions.onReactivate!(occ), group: 'primary', color: 'primary'},
         isActive && {key: 'cancel', icon: <IconX size={14}/>, label: t`Cancel`, onClick: () => actions.onCancel(id), group: 'danger', color: 'red'},
         {key: 'delete', icon: <IconTrash size={14}/>, label: t`Delete`, onClick: () => actions.onDelete(id), group: 'danger', color: 'red'},
     ];
@@ -141,8 +141,8 @@ export const OccurrenceActionBar = ({occurrence, actions, hiddenKeys}: Occurrenc
     const overflowDanger = overflow.filter(a => a.group === 'danger');
 
     const getStyle = (action: OccurrenceAction) => {
-        if (action.color === 'green') {
-            return {style: {...actionButtonStyle, background: 'var(--mantine-color-green-0)', color: 'var(--mantine-color-green-7)'}, hoverBg: 'var(--mantine-color-green-1)', restBg: 'var(--mantine-color-green-0)'};
+        if (action.color === 'primary') {
+            return {style: {...actionButtonStyle, background: 'var(--mantine-color-primary-0)', color: 'var(--mantine-color-primary-7)'}, hoverBg: 'var(--mantine-color-primary-1)', restBg: 'var(--mantine-color-primary-0)'};
         }
         return {style: actionButtonStyle, hoverBg: 'var(--mantine-color-gray-2)', restBg: 'var(--mantine-color-gray-1)'};
     };

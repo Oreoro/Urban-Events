@@ -91,7 +91,7 @@ export const LocationsTable = ({locations, openCreateModal}: LocationsTableProps
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'green'}
+                            color={'primary'}
                             onClick={() => openCreateModal()}>{t`Add Location`}
                         </Button>
                     </>

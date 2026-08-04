@@ -196,6 +196,11 @@ class CreateEventService
     ): void {
         if ($eventSettings !== null) {
             $eventSettings->setEventId($event->getId());
+
+            if ($this->config->get('services.stripe.platform_managed')) {
+                $eventSettings->setPaymentProviders([PaymentProviders::STRIPE->value]);
+            }
+
             $eventSettingsArray = $eventSettings->toArray();
 
             unset($eventSettingsArray['id']);
@@ -240,7 +245,11 @@ class CreateEventService
             'continue_button_text' => __('Continue'),
             'support_email' => $organizer->getEmail(),
 
-            'payment_providers' => [PaymentProviders::NEEM->value],
+            'payment_providers' => [
+                $this->config->get('services.stripe.platform_managed')
+                    ? PaymentProviders::STRIPE->value
+                    : PaymentProviders::NEEM->value,
+            ],
             'offline_payment_instructions' => null,
 
             'enable_invoicing' => false,

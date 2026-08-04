@@ -28,6 +28,23 @@ case "${NEEM_ENABLED:-false}" in
         ;;
 esac
 
+case "${STRIPE_ENABLED:-false}" in
+    1|true|TRUE|yes|YES|on|ON)
+        missing_stripe_settings=""
+
+        for setting_name in STRIPE_PUBLIC_KEY STRIPE_SECRET_KEY STRIPE_WEBHOOK_SECRET; do
+            if [ -z "$(printenv "$setting_name" 2>/dev/null || true)" ]; then
+                missing_stripe_settings="$missing_stripe_settings $setting_name"
+            fi
+        done
+
+        if [ -n "$missing_stripe_settings" ]; then
+            echo "ERROR: Stripe is enabled, but required settings are missing:$missing_stripe_settings"
+            exit 1
+        fi
+        ;;
+esac
+
 if ! php artisan migrate --force; then
     echo "============================================"
     echo "ERROR: Migrations could not complete. Check the error above."

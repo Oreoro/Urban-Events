@@ -122,6 +122,8 @@ export interface Account {
     password?: string;
     is_account_email_confirmed?: boolean;
     is_saas_mode_enabled?: boolean;
+    is_platform_payment_managed?: boolean;
+    platform_payment_provider?: 'STRIPE' | null;
     requires_manual_verification?: boolean;
     deletion_request?: AccountDeletionRequest | null;
 }

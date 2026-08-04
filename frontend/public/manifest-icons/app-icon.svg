@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Urban Events">
+  <rect width="512" height="512" fill="#171717"/>
+  <path d="M104 128v144c0 80 48 128 122 128s122-48 122-128V128h-72v140c0 42-17 64-50 64s-50-22-50-64V128h-72Z" fill="#FFFFFF"/>
+  <path d="M334 376h-68l82-240h68l-82 240Z" fill="#097FE8"/>
+</svg>

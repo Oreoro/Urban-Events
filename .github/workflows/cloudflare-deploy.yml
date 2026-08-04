@@ -118,6 +118,7 @@ jobs:
           AZURE_APP_SECRETS: ${{ secrets.AZURE_APP_SECRETS }}
           CLOUDFLARE_APP_OVERRIDES: ${{ secrets.CLOUDFLARE_APP_OVERRIDES }}
           NEEM_APP_SECRETS: ${{ secrets.NEEM_APP_SECRETS }}
+          STRIPE_APP_SECRETS: ${{ secrets.STRIPE_APP_SECRETS }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: |
@@ -152,6 +153,7 @@ jobs:
 
           merge_env_lines(os.environ.get("AZURE_APP_SECRETS", ""))
           merge_env_lines(os.environ.get("NEEM_APP_SECRETS", ""))
+          merge_env_lines(os.environ.get("STRIPE_APP_SECRETS", ""))
           # Cloudflare-specific values are merged last so retired Azure
           # infrastructure can be replaced without duplicating every setting.
           merge_env_lines(os.environ.get("CLOUDFLARE_APP_OVERRIDES", ""))
@@ -181,22 +183,24 @@ jobs:
                   "Missing required Cloudflare settings: " + ", ".join(missing)
               )
 
-          neem_keys = (
-              "NEEM_BASE_URL",
-              "NEEM_BASE_TOKEN",
-              "NEEM_PARTNER_ID",
-              "NEEM_DECRYPTION_KEY",
+          stripe_keys = (
+              "STRIPE_PUBLIC_KEY",
+              "STRIPE_SECRET_KEY",
+              "STRIPE_WEBHOOK_SECRET",
           )
-          configured_neem_keys = [name for name in neem_keys if settings.get(name)]
+          configured_stripe_keys = [name for name in stripe_keys if settings.get(name)]
 
-          if configured_neem_keys and len(configured_neem_keys) != len(neem_keys):
-              missing_neem_keys = [name for name in neem_keys if not settings.get(name)]
+          if configured_stripe_keys and len(configured_stripe_keys) != len(stripe_keys):
+              missing_stripe_keys = [name for name in stripe_keys if not settings.get(name)]
               raise SystemExit(
-                  "Neem settings are incomplete; missing: " + ", ".join(missing_neem_keys)
+                  "Stripe settings are incomplete; missing: " + ", ".join(missing_stripe_keys)
               )
 
-          settings["NEEM_ENABLED"] = "true" if configured_neem_keys else "false"
-          settings["STRIPE_ENABLED"] = "false"
+          stripe_enabled = len(configured_stripe_keys) == len(stripe_keys)
+          settings["APP_SAAS_MODE_ENABLED"] = "false"
+          settings["NEEM_ENABLED"] = "false"
+          settings["STRIPE_ENABLED"] = "true" if stripe_enabled else "false"
+          settings["STRIPE_PLATFORM_MANAGED"] = "true" if stripe_enabled else "false"
 
           secret_file_path = os.path.join(
               os.environ["RUNNER_TEMP"],
@@ -214,7 +218,8 @@ jobs:
           os.chmod(secret_file_path, 0o600)
 
           print(f"Prepared {len(settings)} application settings for Cloudflare.")
-          print("Neem payments: " + ("enabled" if configured_neem_keys else "disabled"))
+          print("Stripe platform payments: " + ("enabled" if stripe_enabled else "disabled"))
+          print("Neem payments: disabled")
           PY
 
       - name: Push image to Cloudflare registry

@@ -276,7 +276,7 @@ export const CheckInListTable = ({checkInLists, openCreateModal, event}: CheckIn
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'green'}
+                            color={'primary'}
                             onClick={() => openCreateModal()}>{t`Create Check-In List`}
                         </Button>
                     </>

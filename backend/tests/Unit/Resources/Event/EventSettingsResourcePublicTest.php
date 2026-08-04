@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Resources\Event;
 
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\Resources\Event\EventSettingsResourcePublic;
 use Illuminate\Http\Request;
@@ -30,5 +31,37 @@ class EventSettingsResourcePublicTest extends TestCase
         $resource = (new EventSettingsResourcePublic($settings))->toArray(Request::create('/'));
 
         $this->assertFalse($resource['allow_copy_details_to_all_attendees']);
+    }
+
+    public function test_platform_managed_payments_expose_only_stripe(): void
+    {
+        config(['services.stripe.platform_managed' => true]);
+
+        $settings = (new EventSettingDomainObject)
+            ->setPaymentProviders([PaymentProviders::NEEM->value]);
+
+        $resource = (new EventSettingsResourcePublic($settings))->toArray(Request::create('/'));
+
+        $this->assertSame([PaymentProviders::STRIPE->value], $resource['payment_providers']);
+    }
+
+    public function test_disabled_online_payment_providers_are_not_exposed(): void
+    {
+        config([
+            'services.stripe.platform_managed' => false,
+            'services.stripe.enabled' => false,
+            'services.neem.enabled' => false,
+        ]);
+
+        $settings = (new EventSettingDomainObject)
+            ->setPaymentProviders([
+                PaymentProviders::STRIPE->value,
+                PaymentProviders::NEEM->value,
+                PaymentProviders::OFFLINE->value,
+            ]);
+
+        $resource = (new EventSettingsResourcePublic($settings))->toArray(Request::create('/'));
+
+        $this->assertSame([PaymentProviders::OFFLINE->value], $resource['payment_providers']);
     }
 }

@@ -72,6 +72,18 @@ class StripePaymentIntentCreationService
                     vatSettings: $paymentIntentDTO->vatSettings,
                 )
                 : null;
+            $useConnectApplicationFee = $this->config->get('app.saas_mode_enabled')
+                && $paymentIntentDTO->stripeAccountId !== null;
+
+            $requestOptions = array_merge(
+                $this->getStripeAccountData($paymentIntentDTO),
+                [
+                    'idempotency_key' => sprintf(
+                        'order_%d_payment_intent',
+                        $paymentIntentDTO->order->getId(),
+                    ),
+                ],
+            );
 
             $paymentIntent = $stripeClient->paymentIntents->create([
                 'amount' => $paymentIntentDTO->amount->toMinorUnit(),
@@ -82,8 +94,10 @@ class StripePaymentIntentCreationService
                     'enabled' => true,
                 ],
                 ...($paymentIntentDTO->description ? ['description' => $paymentIntentDTO->description] : []),
-                ...($applicationFee && ! $bypassApplicationFees ? ['application_fee_amount' => $applicationFee->grossApplicationFee->toMinorUnit()] : []),
-            ], $this->getStripeAccountData($paymentIntentDTO));
+                ...($applicationFee && ! $bypassApplicationFees && $useConnectApplicationFee
+                    ? ['application_fee_amount' => $applicationFee->grossApplicationFee->toMinorUnit()]
+                    : []),
+            ], $requestOptions);
 
             $this->logger->debug('Stripe payment intent created', [
                 'paymentIntentId' => $paymentIntent->id,
@@ -175,7 +189,16 @@ class StripePaymentIntentCreationService
 
             $stripeCustomer = $stripeClient->customers->create(
                 params: $customerData,
-                opts: $this->getStripeAccountData($paymentIntentDTO)
+                opts: array_merge(
+                    $this->getStripeAccountData($paymentIntentDTO),
+                    [
+                        'idempotency_key' => sprintf(
+                            'account_%d_customer_%s',
+                            $paymentIntentDTO->account->getId(),
+                            hash('sha256', strtolower(trim($order->getEmail()))),
+                        ),
+                    ],
+                ),
             );
 
             return $this->stripeCustomerRepository->create([

@@ -6,7 +6,7 @@ export const GET_INITIATE_STRIPE_SESSION_PUBLIC_QUERY_KEY = 'getStripSessionPubl
 
 export const useCreateStripePaymentIntent = (eventId: IdParam, orderShortId: IdParam) => {
     return useQuery({
-        queryKey: [GET_INITIATE_STRIPE_SESSION_PUBLIC_QUERY_KEY],
+        queryKey: [GET_INITIATE_STRIPE_SESSION_PUBLIC_QUERY_KEY, eventId, orderShortId],
 
         queryFn: async () => {
             const {client_secret, account_id, public_key, stripe_platform} = await orderClientPublic.createStripePaymentIntent(
@@ -17,6 +17,7 @@ export const useCreateStripePaymentIntent = (eventId: IdParam, orderShortId: IdP
         },
 
         retry: false,
+        enabled: eventId !== undefined && orderShortId !== undefined,
         staleTime: 0,
         gcTime: 0
     });

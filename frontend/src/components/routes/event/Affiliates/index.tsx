@@ -87,7 +87,7 @@ const Affiliates = () => {
                 <Button
                     onClick={() => handleExport(eventId)}
                     rightSection={<IconDownload size={14}/>}
-                    color="green"
+                    color="primary"
                     loading={downloadPending}
                     size="sm"
                 >
@@ -95,7 +95,7 @@ const Affiliates = () => {
                 </Button>
                 <Button
                     leftSection={<IconPlus/>}
-                    color={'green'}
+                    color={'primary'}
                     data-testid="affiliate-create-button"
                     onClick={openCreateModal}>{t`Create Affiliate`}
                 </Button>

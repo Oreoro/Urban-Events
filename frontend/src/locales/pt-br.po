@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
-"Project-Id-Version: Hi.Events\n"
+"Project-Id-Version: Urban Events\n"
 "Language: pt-br\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
@@ -13,6 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/routes/auth/AcceptInvitation/index.tsx:180
+#: src/components/routes/auth/Register/index.tsx:154
 #: src/components/routes/profile/ManageProfile/index.tsx:212
 msgid "Receive product updates from {appName}."
 msgstr ""
@@ -40,10 +42,6 @@ msgstr ""
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:584
 msgid "{0, plural, one {# session} other {# sessions}}"
 msgstr ""
-
-#: src/components/common/ReportTable/index.tsx:328
-#~ msgid "{0}"
-#~ msgstr "{0}"
 
 #: src/components/routes/admin/Announcements/index.tsx:287
 msgid "{0} (copy)"
@@ -82,10 +80,6 @@ msgstr "{0} criado com sucesso"
 msgid "{0} left"
 msgstr "{0} restante"
 
-#: src/components/layouts/AppLayout/Sidebar/index.tsx:87
-msgid "{0} logo"
-msgstr "Logo {0}"
-
 #: src/components/modals/CreateAttendeeModal/index.tsx:267
 msgid "{0} of {1} seats are taken."
 msgstr ""
@@ -107,7 +101,6 @@ msgid "{activeCount} enabled"
 msgstr ""
 
 #: src/components/common/CheckIn/CheckInInfoModal.tsx:101
-#: src/components/layouts/AuthLayout/index.tsx:160
 msgid "{appName} logo"
 msgstr ""
 
@@ -115,7 +108,7 @@ msgstr ""
 msgid "{attendeeCount} attendees are registered for this session."
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:130
+#: src/components/common/EventCard/index.tsx:131
 msgid "{availableCount} of {totalCount} available"
 msgstr "{availableCount} de {totalCount} disponíveis"
 
@@ -135,7 +128,7 @@ msgstr "{chipTime}, esgotado"
 msgid "{chipTime}, Sold Out, waitlist available"
 msgstr "{chipTime}, Esgotado, lista de espera disponível"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:210
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:211
 msgid "{completedCount} of {totalCount} steps complete"
 msgstr ""
 
@@ -176,7 +169,7 @@ msgstr "{minutos} minutos e {segundos} segundos"
 msgid "{organizerName}'s first event"
 msgstr "Primeiro evento de {organizerName}"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:95
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:96
 msgid "{productCount} ticket types configured"
 msgstr ""
 
@@ -185,17 +178,13 @@ msgstr ""
 msgid "{slotCount} times available"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:126
+#: src/components/common/EventCard/index.tsx:127
 msgid "{totalCount} ticket types"
 msgstr "{totalCount} tipos de ingresso"
 
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:593
 msgid "{totalOccurrences} dates"
 msgstr ""
-
-#: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:563
-#~ msgid "{totalOccurrences} sessions across {0} dates ({1, plural, one {# session} other {# sessions}} per day)"
-#~ msgstr ""
 
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:586
 msgid "{totalOccurrences} sessions across {dateCount} dates ({sessionsPerDay} per day)"
@@ -280,11 +269,11 @@ msgstr "1 hora antes do evento"
 msgid "1 ticket"
 msgstr "1 ingresso"
 
-#: src/components/common/EventCard/index.tsx:126
+#: src/components/common/EventCard/index.tsx:127
 msgid "1 ticket type"
 msgstr "1 tipo de ingresso"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:94
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:95
 msgid "1 ticket type configured"
 msgstr ""
 
@@ -342,7 +331,7 @@ msgstr "Um input do tipo Dropdown permite apenas uma seleção"
 msgid "A fee, like a booking fee or a service fee"
 msgstr "Uma taxa, como uma taxa de reserva ou uma taxa de serviço"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:199
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:200
 msgid "A few quick steps and you're ready to start selling."
 msgstr ""
 
@@ -440,23 +429,15 @@ msgstr "Cor de Destaque"
 msgid "Accept"
 msgstr "Aceitar"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:92
-#~ msgid "Accept bank transfers, checks, or other offline payment methods"
-#~ msgstr "Aceitar transferências bancárias, cheques ou outros métodos de pagamento offline"
-
 #: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:87
 msgid "Accept card & Wallet Payments with Neem"
 msgstr ""
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:87
-#~ msgid "Accept credit card payments with Stripe"
-#~ msgstr "Aceitar pagamentos com cartão de crédito através do Stripe"
-
-#: src/components/routes/auth/AcceptInvitation/index.tsx:88
+#: src/components/routes/auth/AcceptInvitation/index.tsx:90
 msgid "Accept invitation"
 msgstr "Aceitar convite"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:173
+#: src/components/routes/auth/AcceptInvitation/index.tsx:189
 msgid "Accept Invitation"
 msgstr "Aceitar convite"
 
@@ -546,6 +527,11 @@ msgstr "Ação Necessária: Informações de IVA Necessárias"
 msgid "Actions"
 msgstr "Ações"
 
+#: src/components/common/EventCard/index.tsx:271
+#: src/components/common/EventCard/index.tsx:389
+msgid "Actions for {eventTitle}"
+msgstr ""
+
 #: src/hooks/useAttendeeActions.tsx:104
 msgid "Activate"
 msgstr "Ativar"
@@ -583,7 +569,7 @@ msgstr ""
 msgid "Activity"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:147
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:148
 msgid "Add a cover image and theme to match your brand"
 msgstr ""
 
@@ -591,7 +577,7 @@ msgstr ""
 msgid "Add a date"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:137
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:138
 msgid "Add a description and venue so attendees know what to expect"
 msgstr ""
 
@@ -647,7 +633,7 @@ msgstr "Adicionar datas"
 msgid "Add Dates"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:104
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:105
 msgid "Add dates and times for your recurring event"
 msgstr ""
 
@@ -655,11 +641,11 @@ msgstr ""
 msgid "Add description"
 msgstr "Adicionar descrição"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:140
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:141
 msgid "Add details"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:136
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:137
 msgid "Add event details"
 msgstr ""
 
@@ -712,8 +698,8 @@ msgid "Add this event to your calendar"
 msgstr "Adicione este evento ao seu calendário"
 
 #: src/components/modals/PublishEventModal/index.tsx:93
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:91
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:97
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:92
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:98
 msgid "Add tickets"
 msgstr "Adicionar ingressos"
 
@@ -758,7 +744,7 @@ msgstr "Informações adicionais"
 #: src/components/common/OrderDetails/index.tsx:116
 #: src/components/forms/QuestionForm/index.tsx:130
 #: src/components/modals/ManageOrderModal/index.tsx:163
-#: src/components/routes/organizer/Settings/index.tsx:43
+#: src/components/routes/organizer/Settings/index.tsx:44
 #: src/components/routes/organizer/Settings/Sections/AddressSettings/index.tsx:103
 msgid "Address"
 msgstr "Endereço"
@@ -809,11 +795,6 @@ msgstr "Painel de Administração"
 msgid "Admin users have full access to events and account settings."
 msgstr "Os usuários administradores têm acesso total a eventos e configurações de conta."
 
-#: src/components/layouts/AuthLayout/index.tsx:53
-#: src/components/layouts/AuthLayout/index.tsx:75
-msgid "Admit One"
-msgstr ""
-
 #: src/components/common/AffiliateTable/index.tsx:82
 msgid "Affiliate"
 msgstr "Afiliado"
@@ -829,10 +810,6 @@ msgstr "Afiliado criado com sucesso"
 #: src/components/common/AffiliateTable/index.tsx:39
 msgid "Affiliate deleted successfully"
 msgstr "Afiliado eliminado com sucesso"
-
-#: src/components/layouts/AuthLayout/index.tsx:26
-msgid "Affiliate program"
-msgstr ""
 
 #: src/components/forms/AffiliateForm/index.tsx:23
 msgid "Affiliate sales will be tracked"
@@ -999,7 +976,7 @@ msgstr "Permitir que os mecanismos de pesquisa indexem esse evento"
 msgid "Almost there! We're just waiting for your payment to be processed. This should only take a few seconds."
 msgstr "Quase lá! Estamos apenas aguardando o processamento do seu pagamento. Isso deve levar apenas alguns segundos."
 
-#: src/components/routes/auth/Register/index.tsx:75
+#: src/components/routes/auth/Register/index.tsx:77
 msgid "Already have an account? <0>{0}</0>"
 msgstr "Já tem uma conta? <0>{0}</0>"
 
@@ -1078,10 +1055,6 @@ msgstr "Ocorreu um erro inesperado."
 msgid "An unexpected error occurred. Please try again."
 msgstr "Ocorreu um erro inesperado. Por favor, tente novamente."
 
-#: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:865
-#~ msgid "and {0} more..."
-#~ msgstr ""
-
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:889
 msgid "and {remainingPreviewCount} more..."
 msgstr ""
@@ -1141,6 +1114,10 @@ msgstr "Aparência"
 
 #: src/components/routes/organizer/Payments/CapabilityList.tsx:43
 msgid "Apple Pay"
+msgstr ""
+
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:87
+msgid "Application navigation"
 msgstr ""
 
 #: src/components/routes/product-widget/SelectProducts/index.tsx:712
@@ -1208,7 +1185,7 @@ msgstr ""
 msgid "Archive"
 msgstr "Arquivar"
 
-#: src/components/common/EventCard/index.tsx:154
+#: src/components/common/EventCard/index.tsx:155
 msgid "Archive event"
 msgstr "Arquivar evento"
 
@@ -1230,8 +1207,8 @@ msgstr "Arquive este evento para ocultá-lo do público. Você pode restaurá-lo
 msgid "Archive this organizer. This will also archive all events belonging to this organizer."
 msgstr "Arquive este organizador. Isso também arquivará todos os eventos pertencentes a este organizador."
 
-#: src/components/common/EventCard/index.tsx:79
-#: src/components/common/EventsDashboardStatusButtons/index.tsx:32
+#: src/components/common/EventCard/index.tsx:80
+#: src/components/common/EventsDashboardStatusButtons/index.tsx:16
 msgid "Archived"
 msgstr "Arquivado"
 
@@ -1243,7 +1220,7 @@ msgstr "Organizadores arquivados"
 msgid "Are you sure you want to activate this attendee?"
 msgstr "Tem certeza de que deseja ativar esse participante?"
 
-#: src/components/common/EventCard/index.tsx:59
+#: src/components/common/EventCard/index.tsx:60
 msgid "Are you sure you want to archive this event?"
 msgstr "Você tem certeza de que deseja arquivar este evento?"
 
@@ -1368,7 +1345,7 @@ msgstr "Tem certeza de que deseja reenviar o ingresso para {0}?"
 msgid "Are you sure you want to restore this event?"
 msgstr "Tem certeza que deseja restaurar este evento?"
 
-#: src/components/common/EventCard/index.tsx:60
+#: src/components/common/EventCard/index.tsx:61
 msgid "Are you sure you want to restore this event? It will be restored as a draft event."
 msgstr "Você tem certeza de que deseja restaurar este evento? Ele será restaurado como um evento rascunho."
 
@@ -1523,8 +1500,8 @@ msgstr "O ingresso do participante não está incluído nesta lista"
 msgid "attendees"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:248
-#: src/components/common/EventCard/index.tsx:363
+#: src/components/common/EventCard/index.tsx:255
+#: src/components/common/EventCard/index.tsx:368
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:387
 #: src/components/common/StatBoxes/index.tsx:73
 #: src/components/layouts/Event/index.tsx:131
@@ -1549,11 +1526,11 @@ msgstr ""
 msgid "Attendees Exported"
 msgstr "Participantes exportados"
 
-#: src/components/common/EventCard/index.tsx:360
+#: src/components/common/EventCard/index.tsx:365
 msgid "Attendees registered"
 msgstr "Participantes registrados"
 
-#: src/components/routes/event/EventDashboard/index.tsx:305
+#: src/components/routes/event/EventDashboard/index.tsx:303
 #: src/components/routes/event/OccurrenceDetail/index.tsx:183
 msgid "Attendees Registered"
 msgstr "Participantes Registrados"
@@ -1598,10 +1575,6 @@ msgstr "A oferta automática está ativada"
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:64
 msgid "Auto-Process Waitlist"
 msgstr "Processar lista de espera automaticamente"
-
-#: src/components/common/ThemeColorControls/index.tsx:72
-#~ msgid "Automatically detected based on background color, but can be overridden"
-#~ msgstr "Detectado automaticamente com base na cor de fundo, mas pode ser substituído"
 
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:65
 msgid "Automatically offer tickets to the next person when capacity becomes available. If disabled, you can manually process the waitlist from the Waitlist page."
@@ -1688,8 +1661,8 @@ msgid "Back to event page"
 msgstr "Voltar à página do evento"
 
 #: src/components/routes/auth/ForgotPassword/index.tsx:48
-#: src/components/routes/auth/ForgotPassword/index.tsx:74
-#: src/components/routes/auth/ResetPassword/index.tsx:85
+#: src/components/routes/auth/ForgotPassword/index.tsx:76
+#: src/components/routes/auth/ResetPassword/index.tsx:91
 msgid "Back to login"
 msgstr "Voltar ao login"
 
@@ -1730,7 +1703,7 @@ msgstr ""
 msgid "Bank account"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:128
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:129
 msgid "Bank account connected"
 msgstr ""
 
@@ -1752,7 +1725,7 @@ msgstr ""
 msgid "Based on the global sale period above, not per date"
 msgstr ""
 
-#: src/components/routes/organizer/Settings/index.tsx:31
+#: src/components/routes/organizer/Settings/index.tsx:32
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:64
 msgid "Basic Information"
 msgstr "Informações básicas"
@@ -1900,7 +1873,7 @@ msgstr ""
 msgid "By day of week"
 msgstr ""
 
-#: src/components/routes/auth/Register/index.tsx:147
+#: src/components/routes/auth/Register/index.tsx:162
 msgid "By registering you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
 msgstr "Ao se registrar, você concorda com nossos <0>Termos de Serviço</0> e <1>Política de Privacidade</1>."
 
@@ -2066,10 +2039,6 @@ msgstr "Atribuição de Capacidade excluída com sucesso"
 msgid "Capacity Assignments"
 msgstr "Atribuições de capacidade"
 
-#: src/components/layouts/AuthLayout/index.tsx:32
-msgid "Capacity management"
-msgstr ""
-
 #: src/components/layouts/Event/index.tsx:137
 msgid "Capacity Management"
 msgstr "Gestão de capacidade"
@@ -2203,7 +2172,7 @@ msgstr "Confira este evento!"
 msgid "Check your email"
 msgstr "Verifique o seu email"
 
-#: src/components/routes/auth/Login/index.tsx:136
+#: src/components/routes/auth/Login/index.tsx:144
 #: src/components/routes/my-tickets/index.tsx:191
 msgid "Check your inbox! If tickets are associated with this email, you'll receive a link to view them."
 msgstr "Verifique sua caixa de entrada! Se houver ingressos associados a este e-mail, você receberá um link para visualizá-los."
@@ -2360,10 +2329,6 @@ msgstr ""
 msgid "Choose a different action"
 msgstr ""
 
-#: src/components/common/ThemeFontControl/index.tsx:66
-#~ msgid "Choose a typeface that matches your brand. Fonts are self-hosted via Bunny Fonts."
-#~ msgstr "Escolha uma tipografia que combine com a sua marca. As fontes são auto-hospedadas via Bunny Fonts."
-
 #: src/components/modals/ChooseAccountModal/index.tsx:13
 msgid "Choose an account"
 msgstr "Escolha uma conta"
@@ -2417,9 +2382,9 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
-#: src/components/common/SearchBar/index.tsx:62
-msgid "Clear Search Text"
-msgstr "Limpar texto de pesquisa"
+#: src/components/common/SearchBar/index.tsx:66
+msgid "Clear search text"
+msgstr ""
 
 #: src/components/routes/event/OccurrencesTab/OccurrenceBulkEditModal/index.tsx:497
 msgid "Clearing removes any per-date override. Affected dates will fall back to the event's default location."
@@ -2455,11 +2420,16 @@ msgstr "fechar"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/components/modals/CreateEventModal/index.tsx:122
+#: src/components/modals/CreateEventModal/index.tsx:121
 msgid "Close modal"
 msgstr "Fechar modal"
 
-#: src/components/layouts/AppLayout/Sidebar/index.tsx:104
+#: src/components/layouts/AppLayout/Topbar/index.tsx:38
+msgid "Close navigation"
+msgstr ""
+
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:107
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:113
 msgid "Close sidebar"
 msgstr "Fechar a barra lateral"
 
@@ -2518,10 +2488,6 @@ msgstr "Coletar dados por ingresso"
 msgid "Color"
 msgstr "Cor"
 
-#: src/components/common/ThemeColorControls/index.tsx:70
-#~ msgid "Color Mode"
-#~ msgstr "Modo de Cor"
-
 #: src/components/common/WidgetEditor/index.tsx:19
 msgid "Color must be a valid hex color code. Example: #ffffff"
 msgstr "A cor deve ser um código de cor hexadecimal válido. Exemplo: #ffffff"
@@ -2538,7 +2504,7 @@ msgstr "Colunas"
 msgid "Comedy"
 msgstr "Comédia"
 
-#: src/components/layouts/AppLayout/Sidebar/index.tsx:75
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:76
 msgid "Coming Soon"
 msgstr "Em breve"
 
@@ -2576,7 +2542,7 @@ msgstr "Conclua seu pedido para garantir seus ingressos. Esta oferta é por temp
 msgid "Complete your payment to secure your tickets."
 msgstr "Complete seu pagamento para garantir seus ingressos."
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:89
+#: src/components/routes/auth/AcceptInvitation/index.tsx:91
 msgid "Complete your profile to join the team."
 msgstr "Complete seu perfil para se juntar à equipe."
 
@@ -2593,7 +2559,7 @@ msgstr "Concluído"
 msgid "Completed orders"
 msgstr "Pedidos concluídos"
 
-#: src/components/routes/event/EventDashboard/index.tsx:303
+#: src/components/routes/event/EventDashboard/index.tsx:301
 #: src/components/routes/event/OccurrenceDetail/index.tsx:181
 msgid "Completed Orders"
 msgstr "Pedidos concluídos"
@@ -2677,7 +2643,7 @@ msgstr "Confirmar endereço de e-mail"
 msgid "Confirm Email Change"
 msgstr "Confirmar alteração de e-mail"
 
-#: src/components/routes/auth/ResetPassword/index.tsx:74
+#: src/components/routes/auth/ResetPassword/index.tsx:79
 msgid "Confirm new password"
 msgstr "Confirme a nova senha"
 
@@ -2685,14 +2651,14 @@ msgstr "Confirme a nova senha"
 msgid "Confirm New Password"
 msgstr "Confirmar nova senha"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:138
-#: src/components/routes/auth/Register/index.tsx:122
+#: src/components/routes/auth/AcceptInvitation/index.tsx:153
+#: src/components/routes/auth/Register/index.tsx:136
 msgid "Confirm password"
 msgstr "Confirmar senha"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:137
-#: src/components/routes/auth/Register/index.tsx:121
-#: src/components/routes/auth/ResetPassword/index.tsx:73
+#: src/components/routes/auth/AcceptInvitation/index.tsx:152
+#: src/components/routes/auth/Register/index.tsx:135
+#: src/components/routes/auth/ResetPassword/index.tsx:78
 msgid "Confirm Password"
 msgstr "Confirmar senha"
 
@@ -2750,7 +2716,7 @@ msgstr ""
 msgid "Connect with Stripe"
 msgstr "Conecte-se com o Stripe"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:127
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:128
 msgid "Connect your bank to receive ticket sales straight to your account"
 msgstr ""
 
@@ -2807,7 +2773,7 @@ msgid "Continue Button Text"
 msgstr "Texto do botão Continuar"
 
 #: src/components/forms/OrganizerForm/index.tsx:131
-#: src/components/modals/CreateEventModal/index.tsx:312
+#: src/components/modals/CreateEventModal/index.tsx:311
 #: src/components/routes/welcome/index.tsx:473
 msgid "Continue Setup"
 msgstr "Continuar configuração"
@@ -2987,7 +2953,7 @@ msgstr "Capa"
 msgid "Cover Image"
 msgstr "Imagem de capa"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:148
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:149
 msgid "Cover image added"
 msgstr ""
 
@@ -3032,7 +2998,7 @@ msgstr ""
 msgid "Create a new check-in list for an active session, or contact the organizer if you think this is a mistake."
 msgstr ""
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:129
+#: src/components/routes/auth/AcceptInvitation/index.tsx:141
 msgid "Create a password"
 msgstr "Criar uma senha"
 
@@ -3063,7 +3029,7 @@ msgstr "Criar afiliado"
 msgid "Create an announcement to show a message to your users."
 msgstr "Crie um anúncio para mostrar uma mensagem aos seus usuários."
 
-#: src/components/modals/CreateEventModal/index.tsx:170
+#: src/components/modals/CreateEventModal/index.tsx:169
 msgid "create an organizer"
 msgstr "criar um organizador"
 
@@ -3146,7 +3112,7 @@ msgid "Create new password"
 msgstr "Criar nova senha"
 
 #: src/components/common/GlobalMenu/index.tsx:81
-#: src/components/modals/CreateEventModal/index.tsx:141
+#: src/components/modals/CreateEventModal/index.tsx:140
 #: src/components/modals/CreateOrganizerModal/index.tsx:18
 #: src/components/modals/SwitchOrganizerModal/index.tsx:101
 msgid "Create Organizer"
@@ -3190,7 +3156,7 @@ msgstr "Crie links rastreáveis para recompensar parceiros que promovem seu even
 msgid "Create Webhook"
 msgstr "Criar Webhook"
 
-#: src/components/modals/CreateEventModal/index.tsx:130
+#: src/components/modals/CreateEventModal/index.tsx:129
 msgid "Create Your Event"
 msgstr "Crie seu evento"
 
@@ -3202,7 +3168,7 @@ msgstr "Crie o seu primeiro evento"
 msgid "Create your first event to start selling tickets and managing attendees."
 msgstr "Crie seu primeiro evento para começar a vender ingressos e gerenciar participantes."
 
-#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:13
+#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:12
 #: src/components/layouts/PublicOrganizer/OrganizerNotFound/index.tsx:12
 msgid "Create your own event"
 msgstr "Crie seu próprio evento"
@@ -3262,10 +3228,6 @@ msgstr ""
 msgid "Currently available for purchase"
 msgstr "Atualmente disponível para compra"
 
-#: src/components/layouts/AuthLayout/index.tsx:19
-msgid "Custom branding"
-msgstr ""
-
 #: src/components/common/ThemeColorControls/index.tsx:220
 msgid "Custom Colors"
 msgstr ""
@@ -3277,10 +3239,6 @@ msgstr "Data e hora personalizadas"
 #: src/components/routes/event/Settings/Sections/LocationSettings/index.tsx:186
 msgid "Custom Maps URL"
 msgstr "URL de mapas personalizados"
-
-#: src/components/layouts/AuthLayout/index.tsx:28
-msgid "Custom questions"
-msgstr ""
 
 #: src/components/common/QuestionsTable/index.tsx:433
 msgid "Custom Questions"
@@ -3316,7 +3274,7 @@ msgstr "O cliente receberá um email confirmando o reembolso"
 msgid "Customers"
 msgstr "Clientes"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:150
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:151
 msgid "Customize page"
 msgstr ""
 
@@ -3357,7 +3315,7 @@ msgstr "Personalize o texto exibido no botão continuar"
 msgid "Customize your email template using Liquid templating"
 msgstr "Personalize seu modelo de e-mail usando modelos Liquid"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:146
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:147
 msgid "Customize your event page"
 msgstr "Personalize a página do seu evento"
 
@@ -3405,7 +3363,7 @@ msgstr "Zona de perigo"
 #: src/components/routes/account/ManageAccount/sections/DangerZone/index.tsx:80
 #: src/components/routes/event/OccurrencesTab/OccurrenceEditModal/index.tsx:555
 #: src/components/routes/event/Settings/index.tsx:102
-#: src/components/routes/organizer/Settings/index.tsx:79
+#: src/components/routes/organizer/Settings/index.tsx:80
 msgid "Danger Zone"
 msgstr "Zona de Perigo"
 
@@ -3697,7 +3655,7 @@ msgstr "Solicitações de exclusão"
 msgid "Description"
 msgstr "Descrição"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:138
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:139
 msgid "Description and venue added"
 msgstr ""
 
@@ -3774,10 +3732,11 @@ msgstr ""
 msgid "Dismiss announcement"
 msgstr "Dispensar anúncio"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:186
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:187
 msgid "Dismiss setup checklist"
 msgstr ""
 
+#: src/components/common/SidebarCallout/index.tsx:60
 #: src/components/routes/product-widget/SelectProducts/index.tsx:875
 msgid "Dismiss this message"
 msgstr "Fechar esta mensagem"
@@ -3825,10 +3784,6 @@ msgstr "Doação / Produto com valor voluntário"
 msgid "Done"
 msgstr "Concluído"
 
-#: src/components/layouts/AuthLayout/index.tsx:60
-msgid "Door"
-msgstr ""
-
 #: src/components/common/CheckIn/CheckInDescriptionModal.tsx:20
 msgid "Door staff instructions"
 msgstr ""
@@ -3862,7 +3817,7 @@ msgstr "Baixe relatórios de vendas, participantes e financeiros para todos os p
 msgid "Downloading Invoice"
 msgstr "A baixar fatura"
 
-#: src/components/common/EventCard/index.tsx:85
+#: src/components/common/EventCard/index.tsx:86
 #: src/components/layouts/Event/index.tsx:216
 #: src/components/layouts/OrganizerLayout/index.tsx:213
 #: src/components/routes/admin/Announcements/index.tsx:183
@@ -3896,7 +3851,7 @@ msgstr "Duplicar"
 msgid "Duplicate Date"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:148
+#: src/components/common/EventCard/index.tsx:149
 msgid "Duplicate event"
 msgstr "Duplicar evento"
 
@@ -4142,10 +4097,10 @@ msgstr "Listas de Check-In Elegíveis"
 #: src/components/modals/ManageOrderModal/index.tsx:136
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:107
 #: src/components/routes/admin/Dashboard/index.tsx:401
-#: src/components/routes/auth/AcceptInvitation/index.tsx:113
-#: src/components/routes/auth/ForgotPassword/index.tsx:65
-#: src/components/routes/auth/Login/index.tsx:93
-#: src/components/routes/auth/Register/index.tsx:104
+#: src/components/routes/auth/AcceptInvitation/index.tsx:122
+#: src/components/routes/auth/ForgotPassword/index.tsx:67
+#: src/components/routes/auth/Login/index.tsx:96
+#: src/components/routes/auth/Register/index.tsx:113
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:79
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditAttendeeModal/index.tsx:68
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditOrderModal/index.tsx:68
@@ -4157,10 +4112,6 @@ msgstr "E-mail"
 #: src/components/routes/event/Settings/Sections/EmailSettings/GeneralEmailSettings.tsx:55
 msgid "Email & Notification Settings"
 msgstr "Configurações de e-mail e notificação"
-
-#: src/components/layouts/AuthLayout/index.tsx:24
-msgid "Email & scheduled messages"
-msgstr ""
 
 #: src/components/routes/event/Settings/index.tsx:78
 msgid "Email & Templates"
@@ -4184,6 +4135,10 @@ msgstr "Endereço de e-mail"
 #: src/components/common/OrdersTable/index.tsx:66
 msgid "Email address copied to clipboard"
 msgstr "Endereço de email copiado para a área de transferência"
+
+#: src/components/routes/auth/Login/index.tsx:163
+msgid "Email address for ticket lookup"
+msgstr ""
 
 #: src/components/routes/product-widget/CollectInformation/index.tsx:120
 #: src/components/routes/product-widget/CollectInformation/index.tsx:127
@@ -4231,7 +4186,7 @@ msgid "Email Preview"
 msgstr "Visualização do E-mail"
 
 #: src/components/common/EmailTemplateSettings/EmailTemplateSettingsBase.tsx:349
-#: src/components/routes/organizer/Settings/index.tsx:67
+#: src/components/routes/organizer/Settings/index.tsx:68
 msgid "Email Templates"
 msgstr "Modelos de E-mail"
 
@@ -4239,7 +4194,7 @@ msgstr "Modelos de E-mail"
 msgid "Email Verification Required"
 msgstr "Verificação de e-mail necessária"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:160
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:161
 msgid "Email verified"
 msgstr ""
 
@@ -4259,10 +4214,6 @@ msgstr "Script de incorporação"
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:113
 msgid "Embed Widget"
 msgstr "Widget incorporado"
-
-#: src/components/layouts/AuthLayout/index.tsx:25
-msgid "Embeddable widget"
-msgstr ""
 
 #: src/components/routes/admin/Announcements/index.tsx:409
 msgid "Emoji"
@@ -4313,7 +4264,7 @@ msgstr ""
 msgid "End Date"
 msgstr "Data de término"
 
-#: src/components/modals/CreateEventModal/index.tsx:280
+#: src/components/modals/CreateEventModal/index.tsx:279
 msgid "End Date & Time (optional)"
 msgstr "Data e hora de término (opcional)"
 
@@ -4331,8 +4282,8 @@ msgstr ""
 msgid "End time (optional)"
 msgstr "Hora de fim (opcional)"
 
-#: src/components/common/EventCard/index.tsx:82
-#: src/components/common/EventsDashboardStatusButtons/index.tsx:26
+#: src/components/common/EventCard/index.tsx:83
+#: src/components/common/EventsDashboardStatusButtons/index.tsx:15
 #: src/components/common/EventStatusBadge/index.tsx:14
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:92
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:439
@@ -4347,7 +4298,7 @@ msgstr ""
 msgid "Ends {0}"
 msgstr ""
 
-#: src/components/common/LanguageSwitcher/index.tsx:22
+#: src/components/common/LanguageSwitcher/index.tsx:25
 #: src/components/modals/CreateAttendeeModal/index.tsx:231
 #: src/locales.ts:46
 msgid "English"
@@ -4420,7 +4371,7 @@ msgstr "Digite o primeiro nome"
 msgid "Enter last name"
 msgstr "Digite o sobrenome"
 
-#: src/components/routes/auth/ResetPassword/index.tsx:65
+#: src/components/routes/auth/ResetPassword/index.tsx:67
 msgid "Enter new password"
 msgstr "Digite a nova senha"
 
@@ -4429,7 +4380,7 @@ msgid "Enter unique affiliate code"
 msgstr "Introduza um código de afiliado único"
 
 #: src/components/common/ContactOrganizerModal/index.tsx:80
-#: src/components/routes/auth/Login/index.tsx:153
+#: src/components/routes/auth/Login/index.tsx:164
 #: src/components/routes/my-tickets/index.tsx:209
 msgid "Enter your email"
 msgstr "Digite seu e-mail"
@@ -4512,7 +4463,7 @@ msgstr "Evento arquivado com sucesso"
 msgid "Event card"
 msgstr ""
 
-#: src/components/modals/CreateEventModal/index.tsx:188
+#: src/components/modals/CreateEventModal/index.tsx:187
 msgid "Event Category"
 msgstr "Categoria do evento"
 
@@ -4520,7 +4471,7 @@ msgstr "Categoria do evento"
 msgid "Event Cover Image"
 msgstr "Imagem de capa do evento"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:196
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:197
 msgid "Event created"
 msgstr ""
 
@@ -4543,7 +4494,7 @@ msgid "Event date display"
 msgstr "Exibição da data do evento"
 
 #: src/components/routes/account/ManageAccount/sections/EventDefaultsSettings/index.tsx:5
-#: src/components/routes/organizer/Settings/index.tsx:37
+#: src/components/routes/organizer/Settings/index.tsx:38
 #: src/components/routes/organizer/Settings/Sections/EventDefaults/index.tsx:73
 msgid "Event Defaults"
 msgstr "Padrões de eventos"
@@ -4552,7 +4503,7 @@ msgstr "Padrões de eventos"
 msgid "Event deleted successfully"
 msgstr "Evento excluído com sucesso"
 
-#: src/components/modals/CreateEventModal/index.tsx:200
+#: src/components/modals/CreateEventModal/index.tsx:199
 msgid "Event Description"
 msgstr "Descrição do evento"
 
@@ -4582,7 +4533,7 @@ msgstr "Local do evento e detalhes do local"
 msgid "Event name"
 msgstr "Nome do evento"
 
-#: src/components/modals/CreateEventModal/index.tsx:179
+#: src/components/modals/CreateEventModal/index.tsx:178
 msgid "Event Name"
 msgstr "Nome do evento"
 
@@ -4594,8 +4545,8 @@ msgstr "O nome do evento é obrigatório"
 msgid "Event name should be less than 150 characters"
 msgstr "O nome do evento deve ter menos de 150 caracteres"
 
-#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:9
-#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:11
+#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:8
+#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:10
 msgid "Event Not Available"
 msgstr "Evento não disponível"
 
@@ -4612,14 +4563,18 @@ msgstr "Evento restaurado com sucesso"
 msgid "Event Settings"
 msgstr "Configurações do evento"
 
-#: src/components/common/EventCard/index.tsx:71
+#: src/components/common/EventsDashboardStatusButtons/index.tsx:20
+msgid "Event status"
+msgstr ""
+
+#: src/components/common/EventCard/index.tsx:72
 #: src/components/common/StatusToggle/index.tsx:63
 #: src/components/layouts/Event/index.tsx:194
 #: src/components/modals/PublishEventModal/index.tsx:125
 msgid "Event status update failed. Please try again later"
 msgstr "Falha na atualização do status do evento. Tente novamente mais tarde"
 
-#: src/components/common/EventCard/index.tsx:68
+#: src/components/common/EventCard/index.tsx:69
 #: src/components/common/StatusToggle/index.tsx:55
 #: src/components/layouts/Event/index.tsx:191
 msgid "Event status updated"
@@ -4633,7 +4588,7 @@ msgstr "Título do evento"
 msgid "Event Too New"
 msgstr "Evento muito recente"
 
-#: src/components/routes/event/EventDashboard/index.tsx:264
+#: src/components/routes/event/EventDashboard/index.tsx:262
 msgid "Event totals"
 msgstr ""
 
@@ -5230,8 +5185,8 @@ msgstr "Primeiro nome"
 #: src/components/modals/EditUserModal/index.tsx:72
 #: src/components/modals/InviteUserModal/index.tsx:57
 #: src/components/modals/JoinWaitlistModal/index.tsx:181
-#: src/components/routes/auth/AcceptInvitation/index.tsx:98
-#: src/components/routes/auth/Register/index.tsx:90
+#: src/components/routes/auth/AcceptInvitation/index.tsx:102
+#: src/components/routes/auth/Register/index.tsx:94
 #: src/components/routes/product-widget/CollectInformation/index.tsx:463
 #: src/components/routes/product-widget/CollectInformation/index.tsx:679
 #: src/components/routes/product-widget/OrderSummaryAndProducts/EditAttendeeModal/index.tsx:53
@@ -5246,7 +5201,7 @@ msgstr "Primeiro nome"
 msgid "First name is required"
 msgstr "O primeiro nome é obrigatório"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:31
+#: src/components/routes/auth/AcceptInvitation/index.tsx:33
 msgid "First name must be between 1 and 50 characters"
 msgstr "O primeiro nome deve ter entre 1 e 50 caracteres"
 
@@ -5295,10 +5250,6 @@ msgstr ""
 msgid "Focus Lab"
 msgstr ""
 
-#: src/components/common/ThemeFontControl/index.tsx:65
-#~ msgid "Font Family"
-#~ msgstr "Família da fonte"
-
 #: src/constants/eventCategories.ts:19
 msgid "Food & Drink"
 msgstr "Comida e bebida"
@@ -5307,7 +5258,7 @@ msgstr "Comida e bebida"
 msgid "Footer Text"
 msgstr "Texto do Rodapé"
 
-#: src/components/routes/auth/Login/index.tsx:100
+#: src/components/routes/auth/Login/index.tsx:103
 msgid "Forgot password?"
 msgstr "Esqueceu a senha?"
 
@@ -5354,14 +5305,6 @@ msgstr ""
 msgid "Friday"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:44
-msgid "From page to check-in."
-msgstr ""
-
-#: src/components/layouts/AuthLayout/index.tsx:30
-msgid "Full data ownership"
-msgstr ""
-
 #: src/components/common/PeriodSelector/index.tsx:46
 msgid "Full event"
 msgstr ""
@@ -5380,14 +5323,6 @@ msgstr ""
 
 #: src/components/modals/DuplicateEventModal/index.tsx:59
 msgid "Future dates will be copied with capacity reset to zero"
-msgstr ""
-
-#: src/components/layouts/AuthLayout/index.tsx:65
-msgid "GA"
-msgstr ""
-
-#: src/components/layouts/AuthLayout/index.tsx:105
-msgid "GA — PKR 2,500"
 msgstr ""
 
 #: src/components/forms/ProductForm/index.tsx:171
@@ -5431,7 +5366,7 @@ msgstr ""
 msgid "Get paid with Stripe"
 msgstr ""
 
-#: src/components/routes/auth/Register/index.tsx:73
+#: src/components/routes/auth/Register/index.tsx:75
 msgid "Get started"
 msgstr "Começar"
 
@@ -5440,7 +5375,7 @@ msgstr "Começar"
 msgid "Get Tickets"
 msgstr "Obter Ingressos"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:207
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:208
 msgid "Get your event ready"
 msgstr "Prepare seu evento"
 
@@ -5477,10 +5412,6 @@ msgstr "Ir para a página inicial"
 msgid "Go to Schedule"
 msgstr ""
 
-#: src/components/common/ThemeColorControls/index.tsx:113
-#~ msgid "Good readability"
-#~ msgstr "Boa legibilidade"
-
 #: src/components/common/CalendarOptionsPopover/index.tsx:30
 msgid "Google Calendar"
 msgstr "Google Agenda"
@@ -5510,7 +5441,7 @@ msgstr ""
 msgid "Greek"
 msgstr "Grego"
 
-#: src/components/common/EventCard/index.tsx:366
+#: src/components/common/EventCard/index.tsx:371
 msgid "Gross revenue"
 msgstr "Receita bruta"
 
@@ -5526,7 +5457,7 @@ msgstr "Vendas brutas"
 
 #: src/components/modals/ManageOccurrenceModal/index.tsx:182
 #: src/components/routes/admin/Dashboard/index.tsx:259
-#: src/components/routes/event/EventDashboard/index.tsx:342
+#: src/components/routes/event/EventDashboard/index.tsx:340
 #: src/components/routes/event/OccurrenceDetail/index.tsx:213
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:83
 #: src/components/routes/organizer/Reports/RevenueSummaryReport/index.tsx:30
@@ -5587,22 +5518,14 @@ msgstr "Aqui está o componente React que você pode usar para incorporar o widg
 msgid "Here is your affiliate link"
 msgstr "Aqui está o seu link de afiliado"
 
-#: src/components/routes/event/EventDashboard/index.tsx:206
-msgid "Hi {0} 👋"
-msgstr "Oi {0} 👋"
-
 #: src/components/routes/event/OccurrencesTab/rescheduleMessageTemplate.ts:51
 #: src/components/routes/event/OccurrencesTab/rescheduleMessageTemplate.ts:74
 msgid "Hi,"
 msgstr ""
 
-#: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:75
-#~ msgid "Hi.Events Fee"
-#~ msgstr "Taxa Hi.Events"
-
-#: src/components/routes/organizer/Reports/index.tsx:42
-#~ msgid "Hi.Events platform fees and VAT breakdown by transaction"
-#~ msgstr "Taxas da plataforma Hi.Events e discriminação do IVA por transação"
+#: src/components/routes/event/EventDashboard/index.tsx:206
+msgid "Hi, {firstName}"
+msgstr ""
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:95
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:326
@@ -5798,7 +5721,7 @@ msgstr "Reconheço minhas responsabilidades como controlador de dados"
 msgid "I agree to receive email notifications related to this event"
 msgstr "Concordo em receber notificações por e-mail relacionadas a este evento"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:149
+#: src/components/routes/auth/AcceptInvitation/index.tsx:165
 msgid "I agree to the <0>terms and conditions</0>"
 msgstr "Eu concordo com os <0>termos e condições</0>"
 
@@ -5957,10 +5880,6 @@ msgstr "Inserir Token Liquid"
 msgid "Instagram"
 msgstr "Instagram"
 
-#: src/components/layouts/AuthLayout/index.tsx:14
-#~ msgid "Instant Stripe payouts"
-#~ msgstr ""
-
 #: src/components/layouts/Event/index.tsx:143
 #: src/components/layouts/OrganizerLayout/index.tsx:110
 msgid "Integrations"
@@ -6097,8 +6016,8 @@ msgstr "Nome do trabalho"
 msgid "Job queued for retry"
 msgstr "Trabalho na fila para nova tentativa"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:99
-#: src/components/routes/auth/Register/index.tsx:91
+#: src/components/routes/auth/AcceptInvitation/index.tsx:103
+#: src/components/routes/auth/Register/index.tsx:95
 msgid "John"
 msgstr "João"
 
@@ -6132,7 +6051,7 @@ msgstr ""
 msgid "June"
 msgstr ""
 
-#: src/components/routes/auth/Login/index.tsx:124
+#: src/components/routes/auth/Login/index.tsx:132
 msgid "Just looking for your tickets?"
 msgstr "Apenas procurando seus ingressos?"
 
@@ -6148,10 +6067,6 @@ msgstr ""
 msgid "Kakao Pay"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:56
-msgid "Karachi Indie Night"
-msgstr ""
-
 #: src/components/routes/organizer/Settings/Sections/PayoutsSettings/index.tsx:120
 msgid "Keep connection"
 msgstr "Manter conexão"
@@ -6163,10 +6078,6 @@ msgstr "Seja breve — banners mostram uma única linha. {0}/200"
 #: src/components/routes/product-widget/CollectInformation/index.tsx:600
 msgid "Keep me updated on news and events from {0}"
 msgstr "Manter-me atualizado sobre novidades e eventos de {0}"
-
-#: src/components/layouts/AuthLayout/index.tsx:42
-#~ msgid "Keep the profit."
-#~ msgstr ""
 
 #: src/components/routes/organizer/Payments/CapabilityList.tsx:29
 msgid "Klarna"
@@ -6187,6 +6098,7 @@ msgstr "Rótulo"
 msgid "label updates"
 msgstr ""
 
+#: src/components/common/LanguageSwitcher/index.tsx:19
 #: src/components/modals/CreateAttendeeModal/index.tsx:230
 #: src/components/modals/ManageAttendeeModal/index.tsx:156
 #: src/components/routes/profile/ManageProfile/index.tsx:199
@@ -6263,8 +6175,8 @@ msgstr "Sobrenome"
 #: src/components/modals/EditUserModal/index.tsx:73
 #: src/components/modals/InviteUserModal/index.tsx:58
 #: src/components/modals/JoinWaitlistModal/index.tsx:186
-#: src/components/routes/auth/AcceptInvitation/index.tsx:103
-#: src/components/routes/auth/Register/index.tsx:96
+#: src/components/routes/auth/AcceptInvitation/index.tsx:109
+#: src/components/routes/auth/Register/index.tsx:102
 #: src/components/routes/product-widget/CollectInformation/index.tsx:470
 #: src/components/routes/product-widget/CollectInformation/index.tsx:471
 #: src/components/routes/product-widget/CollectInformation/index.tsx:686
@@ -6363,11 +6275,11 @@ msgstr "Links permitidos"
 msgid "List"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:88
+#: src/components/common/EventCard/index.tsx:89
 #: src/components/common/ThemeColorControls/index.tsx:296
 #: src/components/layouts/Event/index.tsx:218
 #: src/components/layouts/OrganizerLayout/index.tsx:215
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:115
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:116
 msgid "Live"
 msgstr "Ao vivo"
 
@@ -6409,10 +6321,6 @@ msgstr "Carregando webhooks"
 msgid "Loading..."
 msgstr "Carregando..."
 
-#: src/components/layouts/AuthLayout/index.tsx:18
-msgid "Local Neem payments"
-msgstr ""
-
 #: src/components/common/AttendeeTicket/index.tsx:120
 #: src/components/common/AttendeeTicket/index.tsx:127
 #: src/components/common/LocationPicker/index.tsx:173
@@ -6452,12 +6360,12 @@ msgstr "localizações"
 msgid "Locations"
 msgstr "Localizações"
 
-#: src/components/routes/auth/Login/index.tsx:112
-#: src/components/routes/auth/Register/index.tsx:78
+#: src/components/routes/auth/Login/index.tsx:118
+#: src/components/routes/auth/Register/index.tsx:80
 msgid "Log in"
 msgstr "Fazer login"
 
-#: src/components/routes/auth/Login/index.tsx:112
+#: src/components/routes/auth/Login/index.tsx:118
 msgid "Logging in"
 msgstr "Login"
 
@@ -6503,7 +6411,7 @@ msgstr "Escritório principal"
 msgid "Make billing address mandatory during checkout"
 msgstr "Tornar o endereço de cobrança obrigatório durante o checkout"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:114
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:115
 msgid "Make it visible so people can buy tickets"
 msgstr ""
 
@@ -6529,6 +6437,11 @@ msgstr "Gerenciar"
 msgid "Manage {0}"
 msgstr ""
 
+#: src/components/common/EventCard/index.tsx:208
+#: src/components/common/EventCard/index.tsx:323
+msgid "Manage {eventTitle}"
+msgstr ""
+
 #: src/hooks/useAttendeeActions.tsx:75
 msgid "Manage attendee"
 msgstr "Gerenciar participante"
@@ -6537,7 +6450,7 @@ msgstr "Gerenciar participante"
 msgid "Manage dates and times for your recurring event"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:143
+#: src/components/common/EventCard/index.tsx:144
 msgid "Manage event"
 msgstr "Gerenciar evento"
 
@@ -6557,7 +6470,7 @@ msgstr "Gerenciar as configurações de pagamento e faturamento para este evento
 msgid "Manage Profile"
 msgstr "Gerenciar perfil"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:107
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:108
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:114
 msgid "Manage schedule"
 msgstr ""
@@ -6799,6 +6712,7 @@ msgstr ""
 msgid "more"
 msgstr ""
 
+#: src/components/common/ActionMenu/index.tsx:28
 #: src/components/common/EntityActions/index.tsx:98
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:171
 msgid "More actions"
@@ -6820,7 +6734,7 @@ msgstr "Caixa de texto com várias linhas"
 msgid "Multibanco"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:97
+#: src/components/common/EventCard/index.tsx:98
 #: src/components/layouts/EventHomepage/index.tsx:151
 #: src/components/layouts/OrganizerHomepage/EventCard/index.tsx:46
 msgid "Multiple locations"
@@ -6829,10 +6743,6 @@ msgstr ""
 #: src/components/forms/ProductForm/index.tsx:200
 msgid "Multiple price options. Perfect for early bird products etc."
 msgstr "Múltiplas opções de preço. Perfeito para produtos antecipados, etc."
-
-#: src/components/layouts/AuthLayout/index.tsx:31
-msgid "Multiple ticket types"
-msgstr ""
 
 #: src/constants/eventCategories.ts:8
 msgid "Music"
@@ -6948,7 +6858,7 @@ msgstr ""
 msgid "New location"
 msgstr "Nova localização"
 
-#: src/components/routes/auth/ResetPassword/index.tsx:64
+#: src/components/routes/auth/ResetPassword/index.tsx:66
 #: src/components/routes/profile/ManageProfile/index.tsx:235
 msgid "New Password"
 msgstr "Nova senha"
@@ -6984,10 +6894,6 @@ msgstr "Não"
 #: src/components/routes/organizer/Payments/Vat/VatSettingsForm.tsx:200
 msgid "No - I'm an individual or non-VAT registered business"
 msgstr "Não - Sou um indivíduo ou empresa não registrada para IVA"
-
-#: src/components/layouts/AuthLayout/index.tsx:54
-msgid "№ 000482"
-msgstr ""
 
 #: src/components/common/AdminUsersTable/index.tsx:143
 msgid "No accounts"
@@ -7088,8 +6994,8 @@ msgstr "Nenhum dado encontrado para os filtros selecionados. Tente ajustar o per
 msgid "No data to show. Please select a date range"
 msgstr "Nenhum dado para mostrar. Por favor, selecione um intervalo de datas"
 
-#: src/components/common/EventCard/index.tsx:218
-#: src/components/common/EventCard/index.tsx:315
+#: src/components/common/EventCard/index.tsx:225
+#: src/components/common/EventCard/index.tsx:329
 msgid "No date added"
 msgstr ""
 
@@ -7460,17 +7366,13 @@ msgstr ""
 msgid "Occurrences (future only)"
 msgstr ""
 
-#: src/components/modals/CreateEventModal/index.tsx:252
+#: src/components/modals/CreateEventModal/index.tsx:251
 msgid "Occurrences can be configured after creation"
 msgstr ""
 
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:90
 msgid "October"
 msgstr ""
-
-#: src/components/common/OrganizerReportTable/index.tsx:358
-#~ msgid "of"
-#~ msgstr "de"
 
 #: src/components/common/WaitlistTable/index.tsx:135
 #: src/components/modals/OfferWaitlistModal/index.tsx:226
@@ -7521,10 +7423,6 @@ msgstr "O pagamento offline falhou. Por favor, tente novamente ou entre em conta
 msgid "Offline Payment Instructions"
 msgstr "Instruções de Pagamento Offline"
 
-#: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:91
-#~ msgid "Offline Payments"
-#~ msgstr "Pagamentos offline"
-
 #: src/components/routes/event/Settings/Sections/PaymentSettings/index.tsx:140
 msgid "Offline Payments Information"
 msgstr "Informações sobre pagamentos offline"
@@ -7533,7 +7431,7 @@ msgstr "Informações sobre pagamentos offline"
 msgid "Offline Payments Settings"
 msgstr "Configurações de pagamentos offline"
 
-#: src/components/common/EventCard/index.tsx:90
+#: src/components/common/EventCard/index.tsx:91
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:98
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:32
 msgid "On Sale"
@@ -7556,7 +7454,7 @@ msgstr "Assim que você começar a coletar dados, eles aparecerão aqui."
 msgid "Ongoing"
 msgstr "Em andamento"
 
-#: src/components/common/EventCard/index.tsx:100
+#: src/components/common/EventCard/index.tsx:101
 #: src/components/layouts/OrganizerHomepage/EventCard/index.tsx:49
 #: src/components/routes/event/OccurrencesTab/index.tsx:318
 #: src/components/routes/event/OccurrencesTab/OccurrenceEditModal/index.tsx:473
@@ -7571,7 +7469,7 @@ msgstr "Online"
 msgid "Online — provide connection details"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:97
+#: src/components/common/EventCard/index.tsx:98
 #: src/components/layouts/OrganizerHomepage/EventCard/index.tsx:46
 msgid "Online & in-person"
 msgstr ""
@@ -7630,6 +7528,10 @@ msgstr ""
 msgid "Only visible with promo code"
 msgstr "Visível apenas com código promocional"
 
+#: src/components/common/GlobalMenu/index.tsx:104
+msgid "Open account menu"
+msgstr ""
+
 #: src/components/routes/event/EventDashboard/NextOccurrenceHero/index.tsx:217
 msgid "Open check-in"
 msgstr ""
@@ -7639,6 +7541,10 @@ msgstr ""
 #: src/components/modals/CheckInListSuccessModal/index.tsx:66
 msgid "Open Check-In Page"
 msgstr "Abrir Página de Check-In"
+
+#: src/components/layouts/AppLayout/Topbar/index.tsx:38
+msgid "Open navigation"
+msgstr ""
 
 #: src/components/routes/event/EventDashboard/NextOccurrenceHero/index.tsx:217
 msgid "Open occurrence"
@@ -7680,7 +7586,7 @@ msgstr "opções"
 msgid "Options"
 msgstr "Opções"
 
-#: src/components/modals/CreateEventModal/index.tsx:167
+#: src/components/modals/CreateEventModal/index.tsx:166
 msgid "or"
 msgstr "ou"
 
@@ -7952,7 +7858,7 @@ msgstr "Organizador não encontrado"
 msgid "Organizer restored successfully"
 msgstr "Organizador restaurado com sucesso"
 
-#: src/components/routes/organizer/Settings/index.tsx:158
+#: src/components/routes/organizer/Settings/index.tsx:160
 msgid "Organizer Settings"
 msgstr "Configurações do organizador"
 
@@ -8028,10 +7934,6 @@ msgstr ""
 msgid "Padding"
 msgstr "Preenchimento"
 
-#: src/components/common/OrganizerReportTable/index.tsx:358
-#~ msgid "Page"
-#~ msgstr "Página"
-
 #: src/components/forms/StripeCheckoutForm/index.tsx:142
 msgid "Page no longer available"
 msgstr "Página não disponível mais"
@@ -8094,18 +7996,18 @@ msgstr "Passar taxa para o comprador"
 msgid "Pass to Buyer"
 msgstr "Passar para o comprador"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:128
-#: src/components/routes/auth/Login/index.tsx:98
-#: src/components/routes/auth/Register/index.tsx:112
+#: src/components/routes/auth/AcceptInvitation/index.tsx:140
+#: src/components/routes/auth/Login/index.tsx:101
+#: src/components/routes/auth/Register/index.tsx:123
 #: src/components/routes/profile/ManageProfile/index.tsx:122
 msgid "Password"
 msgstr "Senha"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:32
+#: src/components/routes/auth/AcceptInvitation/index.tsx:34
 msgid "Password must be a minimum  of 8 characters"
 msgstr "A senha deve ter um mínimo de 8 caracteres"
 
-#: src/components/routes/auth/Register/index.tsx:35
+#: src/components/routes/auth/Register/index.tsx:37
 msgid "Password must be at least 8 characters"
 msgstr "A senha deve ter pelo menos 8 caracteres"
 
@@ -8113,8 +8015,8 @@ msgstr "A senha deve ter pelo menos 8 caracteres"
 msgid "Password reset successfully. Please login with your new password."
 msgstr "Redefinição de senha bem-sucedida. Faça login com sua nova senha."
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:33
-#: src/components/routes/auth/Register/index.tsx:36
+#: src/components/routes/auth/AcceptInvitation/index.tsx:35
+#: src/components/routes/auth/Register/index.tsx:38
 msgid "Passwords are not the same"
 msgstr "As senhas não são as mesmas"
 
@@ -8240,7 +8142,7 @@ msgstr "Termos de pagamento"
 msgid "Payments not available"
 msgstr "Pagamentos não disponíveis"
 
-#: src/components/routes/organizer/Settings/index.tsx:90
+#: src/components/routes/organizer/Settings/index.tsx:91
 #: src/components/routes/organizer/Settings/Sections/PayoutsSettings/index.tsx:407
 #: src/components/routes/organizer/Settings/Sections/PayoutsSettings/index.tsx:463
 msgid "Payouts"
@@ -8385,10 +8287,6 @@ msgstr "Pinterest"
 msgid "Pix"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:69
-msgid "PKR 2,500"
-msgstr ""
-
 #: src/components/common/WidgetEditor/index.tsx:259
 msgid "Place this in the <head> of your website."
 msgstr "Coloque isto no <head> do seu site."
@@ -8397,10 +8295,6 @@ msgstr "Coloque isto no <head> do seu site."
 #: src/components/modals/ManageOrderModal/index.tsx:125
 msgid "Placed"
 msgstr ""
-
-#: src/components/common/PoweredByFooter/index.tsx:48
-#~ msgid "Planning an event?"
-#~ msgstr "Planejando um evento?"
 
 #: src/components/common/PlatformFeesSettings/index.tsx:57
 #: src/components/common/PlatformFeesSettings/index.tsx:153
@@ -8414,7 +8308,7 @@ msgstr "Taxa da plataforma de {0} deduzida do seu pagamento"
 #: src/components/routes/event/Settings/index.tsx:112
 #: src/components/routes/event/Settings/Sections/PlatformFeesSettings/index.tsx:48
 #: src/components/routes/organizer/Reports/index.tsx:41
-#: src/components/routes/organizer/Settings/index.tsx:96
+#: src/components/routes/organizer/Settings/index.tsx:97
 #: src/components/routes/organizer/Settings/Sections/PlatformFeesSettings/index.tsx:42
 msgid "Platform Fees"
 msgstr "Taxas da plataforma"
@@ -8440,8 +8334,8 @@ msgstr "Verifique se as informações fornecidas estão corretas"
 msgid "Please check your email and password and try again"
 msgstr "Verifique seu e-mail e senha e tente novamente"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:34
-#: src/components/routes/auth/Register/index.tsx:37
+#: src/components/routes/auth/AcceptInvitation/index.tsx:36
+#: src/components/routes/auth/Register/index.tsx:39
 msgid "Please check your email is valid"
 msgstr "Verifique se seu e-mail é válido"
 
@@ -8569,10 +8463,6 @@ msgstr ""
 msgid "Post Checkout message"
 msgstr "Mensagem de pós-cheque"
 
-#: src/components/common/PoweredByFooter/index.tsx:35
-msgid "Powered by"
-msgstr "Desenvolvido por"
-
 #: src/components/routes/event/Settings/Sections/HomepageAndCheckoutSettings/index.tsx:90
 msgid "Pre Checkout message"
 msgstr "Mensagem de pré-checkout"
@@ -8604,7 +8494,6 @@ msgstr "Pré-visualizar página do evento"
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:365
 #: src/components/forms/ProductForm/index.tsx:104
 #: src/components/forms/ProductForm/index.tsx:336
-#: src/components/layouts/AuthLayout/index.tsx:68
 msgid "Price"
 msgstr "Preço"
 
@@ -8631,6 +8520,10 @@ msgstr "Tipo de Preço"
 #: src/components/common/WidgetEditor/index.tsx:187
 msgid "Primary Color"
 msgstr "Cor primária"
+
+#: src/components/layouts/AppLayout/Sidebar/index.tsx:95
+msgid "Primary navigation"
+msgstr ""
 
 #: src/components/common/WidgetEditor/index.tsx:193
 msgid "Primary Text Color"
@@ -8703,7 +8596,7 @@ msgstr "Produto excluído com sucesso"
 msgid "Product Price Type"
 msgstr "Tipo de Preço do Produto"
 
-#: src/components/routes/event/EventDashboard/index.tsx:283
+#: src/components/routes/event/EventDashboard/index.tsx:281
 #: src/components/routes/event/OccurrenceDetail/index.tsx:166
 #: src/components/routes/event/Reports/index.tsx:19
 msgid "Product Sales"
@@ -8751,7 +8644,7 @@ msgstr "Produtos vendidos"
 
 #: src/components/routes/admin/Dashboard/index.tsx:258
 #: src/components/routes/admin/Dashboard/index.tsx:355
-#: src/components/routes/event/EventDashboard/index.tsx:304
+#: src/components/routes/event/EventDashboard/index.tsx:302
 #: src/components/routes/event/OccurrenceDetail/index.tsx:182
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:73
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:68
@@ -8803,10 +8696,6 @@ msgstr "Uso de códigos promocionais e detalhamento de descontos"
 msgid "promo codes"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:22
-msgid "Promo codes"
-msgstr ""
-
 #: src/components/layouts/Event/index.tsx:126
 #: src/components/modals/DuplicateEventModal/index.tsx:52
 #: src/components/routes/event/promo-codes.tsx:34
@@ -8856,7 +8745,7 @@ msgstr ""
 
 #: src/components/common/StatusToggle/index.tsx:97
 #: src/components/layouts/OrganizerLayout/index.tsx:214
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:117
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:118
 msgid "Publish"
 msgstr "Publicar"
 
@@ -8868,7 +8757,7 @@ msgstr "Publicar mesmo assim"
 msgid "Publish Event"
 msgstr "Publicar evento"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:113
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:114
 msgid "Publish your event"
 msgstr ""
 
@@ -8899,10 +8788,6 @@ msgstr ""
 #: src/components/modals/ShareModal/index.tsx:168
 msgid "QR Code"
 msgstr "Código QR"
-
-#: src/components/layouts/AuthLayout/index.tsx:20
-msgid "QR code check-in"
-msgstr ""
 
 #: src/components/modals/OfferWaitlistModal/index.tsx:169
 msgid "Qty"
@@ -8983,18 +8868,9 @@ msgstr ""
 msgid "Ready to go live?"
 msgstr "Pronto para publicar?"
 
-#: src/components/layouts/AuthLayout/index.tsx:23
-msgid "Real-time analytics"
-msgstr ""
-
 #: src/components/routes/account/ManageAccount/sections/DangerZone/index.tsx:171
 msgid "Reason (optional)"
 msgstr "Motivo (opcional)"
-
-#: src/components/routes/auth/AcceptInvitation/index.tsx:164
-#: src/components/routes/auth/Register/index.tsx:139
-msgid "Receive product updates from {0}."
-msgstr "Receber atualizações de produtos do {0}."
 
 #: src/components/routes/admin/Dashboard/index.tsx:389
 msgid "Recent Account Signups"
@@ -9047,13 +8923,13 @@ msgstr "Os destinatários ficam disponíveis após o envio da mensagem"
 msgid "Recommended"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:206
-#: src/components/common/EventCard/index.tsx:319
+#: src/components/common/EventCard/index.tsx:213
+#: src/components/common/EventCard/index.tsx:333
 msgid "Recurring"
 msgstr ""
 
 #: src/components/layouts/EventHomepage/index.tsx:347
-#: src/components/modals/CreateEventModal/index.tsx:240
+#: src/components/modals/CreateEventModal/index.tsx:239
 #: src/components/routes/event/Settings/index.tsx:66
 msgid "Recurring Event"
 msgstr "Evento recorrente"
@@ -9061,10 +8937,6 @@ msgstr "Evento recorrente"
 #: src/components/routes/event/Settings/Sections/RecurringEventSettings/index.tsx:52
 msgid "Recurring Event Settings"
 msgstr "Configurações de evento recorrente"
-
-#: src/components/layouts/AuthLayout/index.tsx:17
-msgid "Recurring events"
-msgstr ""
 
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:91
 msgid "Reddit"
@@ -9152,7 +9024,7 @@ msgstr "Reembolsos"
 msgid "Regional Settings"
 msgstr "Configurações regionais"
 
-#: src/components/routes/auth/Register/index.tsx:143
+#: src/components/routes/auth/Register/index.tsx:158
 msgid "Register"
 msgstr "Registro"
 
@@ -9247,7 +9119,7 @@ msgid "Resend Confirmation Email"
 msgstr "Reenviar e-mail de confirmação"
 
 #: src/components/layouts/Event/index.tsx:296
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:162
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:163
 msgid "Resend email"
 msgstr "Reenviar e-mail"
 
@@ -9297,7 +9169,7 @@ msgid "Reset palette"
 msgstr ""
 
 #: src/components/routes/auth/ForgotPassword/index.tsx:57
-#: src/components/routes/auth/ResetPassword/index.tsx:81
+#: src/components/routes/auth/ResetPassword/index.tsx:87
 msgid "Reset password"
 msgstr "Redefinir senha"
 
@@ -9305,7 +9177,7 @@ msgstr "Redefinir senha"
 msgid "Reset to base price"
 msgstr ""
 
-#: src/components/routes/auth/ResetPassword/index.tsx:81
+#: src/components/routes/auth/ResetPassword/index.tsx:87
 msgid "Resetting..."
 msgstr "Redefinindo..."
 
@@ -9322,7 +9194,7 @@ msgstr "Detalhes da resposta"
 msgid "Restore"
 msgstr "Restaurar"
 
-#: src/components/common/EventCard/index.tsx:154
+#: src/components/common/EventCard/index.tsx:155
 msgid "Restore event"
 msgstr "Restaurar evento"
 
@@ -9391,10 +9263,10 @@ msgid "Reuse a Stripe connection from another organizer in this account."
 msgstr ""
 
 #: src/components/common/AffiliateTable/index.tsx:157
-#: src/components/common/EventCard/index.tsx:252
-#: src/components/common/EventCard/index.tsx:371
+#: src/components/common/EventCard/index.tsx:259
+#: src/components/common/EventCard/index.tsx:376
 #: src/components/routes/admin/Attribution/index.tsx:137
-#: src/components/routes/event/EventDashboard/index.tsx:315
+#: src/components/routes/event/EventDashboard/index.tsx:313
 #: src/components/routes/event/OccurrenceDetail/index.tsx:193
 msgid "Revenue"
 msgstr "Receita"
@@ -9521,10 +9393,6 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:57
-msgid "Sat, Aug 16 · 8:00 PM · Karachi"
-msgstr ""
-
 #: src/components/routes/product-widget/OccurrenceSelector/index.tsx:27
 msgid "Saturday"
 msgstr ""
@@ -9632,7 +9500,7 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:105
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:106
 msgid "Schedule added"
 msgstr ""
 
@@ -9671,6 +9539,7 @@ msgstr "Exclusão agendada"
 msgid "Scheduled time"
 msgstr "Horário agendado"
 
+#: src/components/common/SearchBar/index.tsx:36
 #: src/components/layouts/CheckIn/BottomNav.tsx:16
 msgid "Search"
 msgstr ""
@@ -9793,10 +9662,6 @@ msgstr "Pesquisando..."
 msgid "Seasonal"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:64
-msgid "Seat"
-msgstr ""
-
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:74
 msgid "Second"
 msgstr ""
@@ -9830,7 +9695,7 @@ msgstr "Visto"
 msgid "Select {0}"
 msgstr "Selecionar {0}"
 
-#: src/components/modals/CreateEventModal/index.tsx:189
+#: src/components/modals/CreateEventModal/index.tsx:188
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:88
 msgid "Select a category"
 msgstr "Selecione uma categoria"
@@ -9899,7 +9764,7 @@ msgstr "Selecionar moeda"
 msgid "Select date"
 msgstr ""
 
-#: src/components/modals/CreateEventModal/index.tsx:283
+#: src/components/modals/CreateEventModal/index.tsx:282
 msgid "Select end date and time"
 msgstr "Selecione data e hora de término"
 
@@ -9920,7 +9785,7 @@ msgstr "Selecionar tipos de eventos"
 msgid "Select occurrence"
 msgstr ""
 
-#: src/components/modals/CreateEventModal/index.tsx:159
+#: src/components/modals/CreateEventModal/index.tsx:158
 msgid "Select organizer"
 msgstr "Selecione o organizador"
 
@@ -9938,7 +9803,7 @@ msgstr "Selecione o Nível do Produto"
 msgid "Select products"
 msgstr "Selecione os produtos"
 
-#: src/components/modals/CreateEventModal/index.tsx:263
+#: src/components/modals/CreateEventModal/index.tsx:262
 msgid "Select start date and time"
 msgstr "Selecione data e hora de início"
 
@@ -9969,7 +9834,7 @@ msgid "Select time period"
 msgstr "Selecione o período de tempo"
 
 #: src/components/forms/OrganizerForm/index.tsx:60
-#: src/components/routes/auth/AcceptInvitation/index.tsx:121
+#: src/components/routes/auth/AcceptInvitation/index.tsx:131
 msgid "Select timezone"
 msgstr "Selecionar fuso horário"
 
@@ -9995,10 +9860,6 @@ msgstr ""
 msgid "Selected"
 msgstr "Selecionado"
 
-#: src/components/layouts/AuthLayout/index.tsx:41
-#~ msgid "Sell out your event."
-#~ msgstr ""
-
 #: src/components/routes/event/OccurrencesTab/OccurrenceEditModal/index.tsx:516
 msgid "Selling a physical product? Cap its quantity on the <0>products page</0> instead."
 msgstr ""
@@ -10007,7 +9868,7 @@ msgstr ""
 msgid "Selling fast 🔥"
 msgstr "Vendendo rápido 🔥"
 
-#: src/components/routes/auth/Login/index.tsx:163
+#: src/components/routes/auth/Login/index.tsx:174
 #: src/components/routes/my-tickets/index.tsx:219
 msgid "Send"
 msgstr "Enviar"
@@ -10049,7 +9910,7 @@ msgstr "Envie dados de pedidos e participantes em tempo real para seus sistemas 
 msgid "Send refund notification email"
 msgstr "Enviar email de notificação de reembolso"
 
-#: src/components/routes/auth/ForgotPassword/index.tsx:70
+#: src/components/routes/auth/ForgotPassword/index.tsx:72
 msgid "Send reset link"
 msgstr "Enviar link de redefinição"
 
@@ -10065,7 +9926,7 @@ msgstr ""
 msgid "Send your first message"
 msgstr "Envie sua primeira mensagem"
 
-#: src/components/routes/auth/ForgotPassword/index.tsx:70
+#: src/components/routes/auth/ForgotPassword/index.tsx:72
 msgid "Sending..."
 msgstr "Enviando..."
 
@@ -10091,7 +9952,7 @@ msgid "Sent to each attendee with their ticket details"
 msgstr "Enviado a cada participante com detalhes do ingresso"
 
 #: src/components/routes/event/Settings/index.tsx:72
-#: src/components/routes/organizer/Settings/index.tsx:61
+#: src/components/routes/organizer/Settings/index.tsx:62
 msgid "SEO"
 msgstr "SEO"
 
@@ -10176,11 +10037,11 @@ msgid "Set up check-in lists for different entrances, sessions, or days."
 msgstr "Configure listas de check-in para diferentes entradas, sessões ou dias."
 
 #: src/components/layouts/OrganizerLayout/index.tsx:86
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:126
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:127
 msgid "Set up payouts"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:107
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:108
 msgid "Set up schedule"
 msgstr ""
 
@@ -10189,7 +10050,7 @@ msgstr ""
 msgid "Set Up Schedule"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:92
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:93
 msgid "Set up the tickets you'll sell and their prices"
 msgstr ""
 
@@ -10197,7 +10058,7 @@ msgstr ""
 msgid "Set up your organization"
 msgstr "Configure a sua organização"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:103
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:104
 msgid "Set up your schedule"
 msgstr ""
 
@@ -10277,10 +10138,6 @@ msgstr ""
 msgid "Show advanced options"
 msgstr "Mostrar opções avançadas"
 
-#: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:237
-#~ msgid "Show all platforms ({0} more with values)"
-#~ msgstr "Mostrar todas as plataformas ({0} com valores)"
-
 #: src/components/routes/organizer/Settings/Sections/SocialLinks/index.tsx:257
 msgid "Show all platforms ({populatedSecondaryPlatformCount} more with values)"
 msgstr ""
@@ -10318,19 +10175,19 @@ msgstr "Mostrar mais"
 msgid "Show more platforms"
 msgstr "Mostrar mais plataformas"
 
-#: src/components/routes/auth/ResetPassword/index.tsx:67
+#: src/components/routes/auth/ResetPassword/index.tsx:69
 msgid "Show or hide new password"
 msgstr ""
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:131
-#: src/components/routes/auth/Login/index.tsx:107
-#: src/components/routes/auth/Register/index.tsx:115
+#: src/components/routes/auth/AcceptInvitation/index.tsx:143
+#: src/components/routes/auth/Login/index.tsx:112
+#: src/components/routes/auth/Register/index.tsx:126
 msgid "Show or hide password"
 msgstr ""
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:140
-#: src/components/routes/auth/Register/index.tsx:124
-#: src/components/routes/auth/ResetPassword/index.tsx:76
+#: src/components/routes/auth/AcceptInvitation/index.tsx:155
+#: src/components/routes/auth/Register/index.tsx:138
+#: src/components/routes/auth/ResetPassword/index.tsx:81
 msgid "Show or hide password confirmation"
 msgstr ""
 
@@ -10353,10 +10210,6 @@ msgstr ""
 #: src/components/routes/event/Settings/Sections/MiscSettings/index.tsx:61
 msgid "Show tax and fees separately"
 msgstr "Mostrar impostos e taxas separadamente"
-
-#: src/components/common/OrganizerReportTable/index.tsx:357
-#~ msgid "Showing {0} of {totalRows} records"
-#~ msgstr "Mostrando {0} de {totalRows} registros"
 
 #: src/components/routes/event/OccurrencesTab/index.tsx:624
 msgid "Showing {0}–{1} of {2}"
@@ -10408,7 +10261,7 @@ msgstr "Cadastrado"
 msgid "Simpson"
 msgstr "Simpson"
 
-#: src/components/modals/CreateEventModal/index.tsx:231
+#: src/components/modals/CreateEventModal/index.tsx:230
 msgid "Single Event"
 msgstr ""
 
@@ -10424,12 +10277,16 @@ msgstr ""
 msgid "Skip this step"
 msgstr "Pular esta etapa"
 
+#: src/components/layouts/AppLayout/index.tsx:122
+msgid "Skip to main content"
+msgstr ""
+
 #: src/locales.ts:61
 msgid "Slovak"
 msgstr "Eslovaco"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:104
-#: src/components/routes/auth/Register/index.tsx:97
+#: src/components/routes/auth/AcceptInvitation/index.tsx:110
+#: src/components/routes/auth/Register/index.tsx:103
 msgid "Smith"
 msgstr "Smith"
 
@@ -10441,7 +10298,7 @@ msgstr "Snapchat"
 msgid "Social"
 msgstr "Social"
 
-#: src/components/routes/organizer/Settings/index.tsx:55
+#: src/components/routes/organizer/Settings/index.tsx:56
 msgid "Social Links"
 msgstr "Links sociais"
 
@@ -10463,7 +10320,7 @@ msgstr "Vendido"
 msgid "sold out"
 msgstr ""
 
-#: src/components/common/EventCard/index.tsx:122
+#: src/components/common/EventCard/index.tsx:123
 #: src/components/common/EventDateRange/index.tsx:65
 #: src/components/common/ProductPriceAvailability/index.tsx:20
 #: src/components/common/ProductPriceAvailability/index.tsx:52
@@ -10472,7 +10329,6 @@ msgid "Sold out"
 msgstr "Esgotado"
 
 #: src/components/common/ProductsTable/SortableProduct/index.tsx:86
-#: src/components/layouts/AuthLayout/index.tsx:109
 #: src/components/layouts/EventHomepage/index.tsx:173
 #: src/components/routes/event/OccurrencesTab/OccurrenceMenu.tsx:212
 #: src/components/routes/event/Reports/OccurrenceSummaryReport/index.tsx:22
@@ -10492,7 +10348,7 @@ msgid "Some details are hidden from public access. Log in to view everything."
 msgstr ""
 
 #: src/components/common/ErrorDisplay/index.tsx:15
-#: src/components/routes/auth/AcceptInvitation/index.tsx:49
+#: src/components/routes/auth/AcceptInvitation/index.tsx:51
 #: src/components/routes/product-widget/CollectInformation/index.tsx:415
 #: src/components/routes/product-widget/Payment/PaymentMethods/Stripe/index.tsx:67
 msgid "Something went wrong"
@@ -10597,7 +10453,7 @@ msgstr "Data de início"
 msgid "Start date & time"
 msgstr "Data e hora de início"
 
-#: src/components/modals/CreateEventModal/index.tsx:259
+#: src/components/modals/CreateEventModal/index.tsx:258
 msgid "Start Date & Time"
 msgstr "Data e hora de início"
 
@@ -10930,7 +10786,7 @@ msgstr "Webhook atualizado com sucesso"
 msgid "Summary"
 msgstr "Resumo"
 
-#: src/components/modals/CreateEventModal/index.tsx:180
+#: src/components/modals/CreateEventModal/index.tsx:179
 #: src/components/modals/DuplicateEventModal/index.tsx:113
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:81
 msgid "Summer Music Festival {0}"
@@ -11059,10 +10915,6 @@ msgstr ""
 msgid "Teal actions on a neutral workspace"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:27
-msgid "Team collaboration"
-msgstr ""
-
 #: src/constants/eventCategories.ts:27
 msgid "Tech"
 msgstr "Tecnologia"
@@ -11071,11 +10923,11 @@ msgstr "Tecnologia"
 msgid "Telegram"
 msgstr "Telegram"
 
-#: src/components/modals/CreateEventModal/index.tsx:201
+#: src/components/modals/CreateEventModal/index.tsx:200
 msgid "Tell people what to expect at your event"
 msgstr "Conte às pessoas o que esperar do seu evento"
 
-#: src/components/modals/CreateEventModal/index.tsx:131
+#: src/components/modals/CreateEventModal/index.tsx:130
 msgid "Tell us about your event"
 msgstr "Conte-nos sobre seu evento"
 
@@ -11112,10 +10964,6 @@ msgstr "Modelo salvo com sucesso"
 msgid "Terms of Service"
 msgstr "Termos de serviço"
 
-#: src/components/common/ThemeColorControls/index.tsx:107
-#~ msgid "Text may be hard to read"
-#~ msgstr "O texto pode ser difícil de ler"
-
 #: src/components/routes/event/TicketDesigner/index.tsx:166
 msgid "Thank you for attending!"
 msgstr "Obrigado por participar!"
@@ -11133,10 +10981,6 @@ msgstr "Esse código promocional é inválido"
 #: src/components/routes/event/EventDashboard/NextOccurrenceHero/index.tsx:54
 msgid "That's a wrap"
 msgstr ""
-
-#: src/components/common/ThemeColorControls/index.tsx:62
-#~ msgid "The background color of the page. When using cover image, this is applied as an overlay."
-#~ msgstr "A cor de fundo da página. Ao usar imagem de capa, isso é aplicado como uma sobreposição."
 
 #: src/components/layouts/CheckIn/index.tsx:469
 msgid "The check-in list you are looking for does not exist."
@@ -11176,8 +11020,8 @@ msgstr "O desconto é deduzido uma única vez do total do pedido."
 msgid "The email address has been changed. The attendee will receive a new ticket at the updated email address."
 msgstr "O endereço de e-mail foi alterado. O participante receberá um novo ingresso no endereço de e-mail atualizado."
 
-#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:10
-#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:12
+#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:9
+#: src/components/layouts/EventHomepage/EventNotAvailable/index.tsx:11
 msgid "The event you're looking for is not available at the moment. It may have been removed, expired, or the URL might be incorrect."
 msgstr "O evento que você está procurando não está disponível no momento. Ele pode ter sido removido, expirado ou a URL pode estar incorreta."
 
@@ -11233,10 +11077,6 @@ msgstr "O preço exibido para o cliente incluirá impostos e taxas."
 #: src/components/routes/event/Settings/Sections/MiscSettings/index.tsx:63
 msgid "The price displayed to the customer will not include taxes and fees. They will be shown separately"
 msgstr "O preço exibido para o cliente não inclui impostos e taxas. Eles serão exibidos separadamente"
-
-#: src/components/common/ThemeColorControls/index.tsx:52
-#~ msgid "The primary brand color used for buttons and highlights"
-#~ msgstr "A cor primária da marca usada para botões e destaques"
 
 #: src/components/common/ThemeFontControl/index.tsx:85
 msgid "The quick brown fox jumps over the lazy dog."
@@ -11404,10 +11244,6 @@ msgstr ""
 #: src/components/forms/AffiliateForm/index.tsx:41
 msgid "This code will be used to track sales. Only letters, numbers, hyphens, and underscores allowed."
 msgstr "Este código será usado para rastrear vendas. Apenas são permitidas letras, números, hífenes e underscores."
-
-#: src/components/common/ThemeColorControls/index.tsx:104
-#~ msgid "This color combination may be hard to read for some users"
-#~ msgstr "Esta combinação de cores pode ser difícil de ler para alguns usuários"
 
 #: src/components/routes/event/OccurrenceDetail/index.tsx:63
 #: src/components/routes/event/OccurrencesTab/cancelOccurrenceDialog.tsx:40
@@ -11592,10 +11428,6 @@ msgstr "Este evento recorrente ainda não tem datas, então os participantes nã
 msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your payment dashboard as Urban Events may be missing historical data."
 msgstr ""
 
-#: src/components/routes/organizer/Reports/PlatformFeesReport/index.tsx:113
-#~ msgid "This report is for informational purposes only. Always consult with a tax professional before using this data for accounting or tax purposes. Please cross-reference with your Stripe dashboard as Hi.Events may be missing historical data."
-#~ msgstr "Este relatório é apenas para fins informativos. Sempre consulte um profissional de impostos antes de usar esses dados para fins contábeis ou fiscais. Por favor, verifique com seu painel do Stripe, pois o Hi.Events pode não ter dados históricos."
-
 #: src/components/routes/auth/ResetPassword/index.tsx:28
 msgid "This reset password link is invalid or expired."
 msgstr "Este link de redefinição de senha é inválido ou expirou."
@@ -11679,7 +11511,7 @@ msgstr "Designer de ingressos"
 msgid "Ticket email has been resent to attendee"
 msgstr "O e-mail do ingresso foi reenviado ao participante"
 
-#: src/components/routes/product-widget/PrintProduct/index.tsx:42
+#: src/components/routes/product-widget/PrintProduct/index.tsx:29
 msgid "Ticket for"
 msgstr "Ingresso para"
 
@@ -11753,7 +11585,7 @@ msgstr "Os ingressos são oferecidos automaticamente aos clientes na lista de es
 msgid "Tickets Available"
 msgstr "Ingressos disponíveis"
 
-#: src/components/routes/product-widget/PrintOrder/index.tsx:40
+#: src/components/routes/product-widget/PrintOrder/index.tsx:27
 msgid "Tickets for"
 msgstr "Ingressos para"
 
@@ -11800,7 +11632,7 @@ msgstr "Vezes usado"
 #: src/components/forms/OrganizerForm/index.tsx:59
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:82
 #: src/components/routes/admin/Accounts/AccountDetail/index.tsx:119
-#: src/components/routes/auth/AcceptInvitation/index.tsx:120
+#: src/components/routes/auth/AcceptInvitation/index.tsx:130
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:145
 #: src/components/routes/organizer/Settings/Sections/BasicSettings/index.tsx:126
 #: src/components/routes/product-widget/OrderSummaryAndProducts/index.tsx:346
@@ -11893,7 +11725,7 @@ msgstr "Taxa total"
 msgid "Total fees"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/index.tsx:341
+#: src/components/routes/event/EventDashboard/index.tsx:339
 #: src/components/routes/event/OccurrenceDetail/index.tsx:212
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:97
 msgid "Total Fees"
@@ -11921,7 +11753,7 @@ msgstr "Quantidade total em todas as datas"
 msgid "Total refunded"
 msgstr "Total reembolsado"
 
-#: src/components/routes/event/EventDashboard/index.tsx:344
+#: src/components/routes/event/EventDashboard/index.tsx:342
 #: src/components/routes/event/OccurrenceDetail/index.tsx:215
 msgid "Total Refunded"
 msgstr "Total Reembolsado"
@@ -11930,7 +11762,7 @@ msgstr "Total Reembolsado"
 msgid "Total tax"
 msgstr ""
 
-#: src/components/routes/event/EventDashboard/index.tsx:343
+#: src/components/routes/event/EventDashboard/index.tsx:341
 #: src/components/routes/event/OccurrenceDetail/index.tsx:214
 #: src/components/routes/organizer/Reports/EventsPerformanceReport/index.tsx:91
 msgid "Total Tax"
@@ -11952,7 +11784,7 @@ msgstr ""
 msgid "Track account growth and performance by attribution source"
 msgstr "Acompanhe o crescimento e desempenho da conta por fonte de atribuição"
 
-#: src/components/routes/organizer/Settings/index.tsx:73
+#: src/components/routes/organizer/Settings/index.tsx:74
 #: src/components/routes/organizer/Settings/Sections/TrackingPixelSettings/index.tsx:172
 msgid "Tracking & Analytics"
 msgstr "Rastreamento e análise"
@@ -11969,14 +11801,10 @@ msgstr ""
 msgid "Try adjusting your filters to see more dates."
 msgstr ""
 
-#: src/components/routes/auth/Login/index.tsx:144
+#: src/components/routes/auth/Login/index.tsx:152
 #: src/components/routes/my-tickets/index.tsx:200
 msgid "Try another email"
 msgstr "Tentar outro e-mail"
-
-#: src/components/common/PoweredByFooter/index.tsx:55
-#~ msgid "Try Hi.Events Free"
-#~ msgstr "Experimente Hi.Events Grátis"
 
 #: src/components/routes/event/OccurrencesTab/RecurrenceScheduleModal/index.tsx:57
 msgid "Tue"
@@ -12151,7 +11979,7 @@ msgstr ""
 msgid "Untrusted"
 msgstr "Não confiável"
 
-#: src/components/common/EventsDashboardStatusButtons/index.tsx:20
+#: src/components/common/EventsDashboardStatusButtons/index.tsx:14
 #: src/components/common/EventStatusBadge/index.tsx:16
 #: src/components/layouts/OrganizerHomepage/index.tsx:294
 #: src/components/routes/event/OccurrencesTab/index.tsx:485
@@ -12252,12 +12080,12 @@ msgstr ""
 msgid "Urban Events Fee"
 msgstr ""
 
-#: src/components/routes/organizer/Reports/index.tsx:42
-msgid "Urban Events platform fees and VAT breakdown by transaction"
+#: src/components/layouts/AuthLayout/index.tsx:23
+msgid "Urban Events login"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:140
-msgid "Urban Events v{appVersion}"
+#: src/components/routes/organizer/Reports/index.tsx:42
+msgid "Urban Events platform fees and VAT breakdown by transaction"
 msgstr ""
 
 #: src/components/common/OrganizerWebhookTable/index.tsx:236
@@ -12512,11 +12340,11 @@ msgid "Verify Email"
 msgstr "Verificar email"
 
 #: src/components/layouts/Event/index.tsx:293
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:156
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:157
 msgid "Verify your email"
 msgstr "Verifique seu e-mail"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:159
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:160
 msgid "Verify your email so attendees can receive tickets"
 msgstr ""
 
@@ -12576,7 +12404,7 @@ msgstr ""
 msgid "View Event"
 msgstr "Ver evento"
 
-#: src/components/common/EventCard/index.tsx:138
+#: src/components/common/EventCard/index.tsx:139
 msgid "View event page"
 msgstr "Exibir página do evento"
 
@@ -12668,7 +12496,6 @@ msgstr "Aguardando pagamento"
 msgid "Waiting for scan…"
 msgstr ""
 
-#: src/components/layouts/AuthLayout/index.tsx:21
 #: src/components/layouts/Event/index.tsx:134
 #: src/components/routes/event/Settings/index.tsx:90
 #: src/components/routes/event/Settings/Sections/WaitlistSettings/index.tsx:55
@@ -12766,8 +12593,8 @@ msgstr "Recomendamos dimensões de 2160px por 1080px e um tamanho máximo de arq
 msgid "We recommend dimensions of 400px by 400px, and a maximum file size of 5MB"
 msgstr "Recomendamos dimensões de 400px por 400px e tamanho máximo de 5MB"
 
-#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:158
-msgid "We sent a verification link to {0}"
+#: src/components/routes/event/EventDashboard/SetupChecklist.tsx:159
+msgid "We sent a verification link to {userEmail}"
 msgstr ""
 
 #: src/components/common/CookieConsentBanner/index.tsx:18
@@ -12824,10 +12651,6 @@ msgstr "Webhook criado com sucesso"
 #: src/components/common/WebhookTable/index.tsx:53
 msgid "Webhook deleted successfully"
 msgstr "Webhook excluído com sucesso"
-
-#: src/components/layouts/AuthLayout/index.tsx:29
-msgid "Webhook integrations"
-msgstr ""
 
 #: src/components/modals/OrganizerWebhookLogsModal/index.tsx:137
 #: src/components/modals/WebhookLogsModal/index.tsx:151
@@ -12888,25 +12711,23 @@ msgstr ""
 msgid "Weibo"
 msgstr "Weibo"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:78
+#: src/components/routes/auth/AcceptInvitation/index.tsx:80
 msgid "Welcome aboard! Please login to continue."
 msgstr "Bem-vindo a bordo! Faça login para continuar."
 
 #: src/components/routes/auth/Login/index.tsx:80
+#: src/components/routes/event/EventDashboard/index.tsx:202
+#: src/components/routes/event/EventDashboard/index.tsx:206
 msgid "Welcome back"
 msgstr "Bem-vindo de volta"
 
-#: src/components/routes/event/EventDashboard/index.tsx:200
-msgid "Welcome back{0} 👋"
-msgstr "Bem-vindo de volta{0} 👋"
+#: src/components/routes/event/EventDashboard/index.tsx:202
+msgid "Welcome back, {firstName}"
+msgstr ""
 
 #: src/components/routes/welcome/index.tsx:536
 msgid "Welcome to {0}, {1}"
 msgstr ""
-
-#: src/components/routes/welcome/index.tsx:535
-#~ msgid "Welcome to {0}, {1} 👋"
-#~ msgstr "Bem-vindo ao {0}, {1} 👋"
 
 #: src/components/routes/events/Dashboard/index.tsx:87
 msgid "Welcome to {0}, here's a listing of all your events"
@@ -13080,7 +12901,7 @@ msgstr "Para onde o botão leva"
 msgid "Which tickets should be associated with this check-in list?"
 msgstr "Quais ingressos devem ser associados a esta lista de registro?"
 
-#: src/components/modals/CreateEventModal/index.tsx:156
+#: src/components/modals/CreateEventModal/index.tsx:155
 msgid "Who is organizing this event?"
 msgstr "Quem está organizando esse evento?"
 
@@ -13115,7 +12936,7 @@ msgstr "Trabalho"
 #: src/components/modals/EditPromoCodeModal/index.tsx:85
 #: src/components/modals/EditQuestionModal/index.tsx:101
 #: src/components/modals/JoinWaitlistModal/index.tsx:208
-#: src/components/routes/auth/Register/index.tsx:143
+#: src/components/routes/auth/Register/index.tsx:158
 msgid "Working..."
 msgstr "Trabalhando..."
 
@@ -13232,7 +13053,7 @@ msgstr "Não é possível reembolsar um pedido criado manualmente."
 msgid "You have access to multiple accounts. Please choose one to continue."
 msgstr "Você tem acesso a várias contas. Escolha uma para continuar."
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:59
+#: src/components/routes/auth/AcceptInvitation/index.tsx:61
 msgid "You have already accepted this invitation. Please login to continue."
 msgstr "Você já aceitou este convite. Faça login para continuar."
 
@@ -13268,7 +13089,7 @@ msgstr "Você deve reconhecer suas responsabilidades antes de salvar"
 msgid "You must agree to receive messages"
 msgstr "Você deve concordar em receber mensagens"
 
-#: src/components/routes/auth/AcceptInvitation/index.tsx:35
+#: src/components/routes/auth/AcceptInvitation/index.tsx:37
 msgid "You must agree to the terms and conditions"
 msgstr "Você deve concordar com os termos e condições"
 
@@ -13308,7 +13129,7 @@ msgstr ""
 msgid "You will have to mark an order as paid manually. This can be done on the manage order page."
 msgstr "Você terá que marcar um pedido como pago manualmente. Isso pode ser feito na página de gerenciamento de pedidos."
 
-#: src/components/modals/CreateEventModal/index.tsx:253
+#: src/components/modals/CreateEventModal/index.tsx:252
 msgid "You'll be able to set up dates, schedules, and recurrence rules in the next step."
 msgstr ""
 
@@ -13380,10 +13201,6 @@ msgstr "Os participantes aparecerão aqui assim que se registrarem no evento. Vo
 msgid "Your awesome website"
 msgstr ""
 
-#: src/components/common/WidgetEditor/index.tsx:339
-#~ msgid "Your awesome website 🎉"
-#~ msgstr "Seu site incrível 🎉"
-
 #: src/components/modals/CheckInListSuccessModal/index.tsx:33
 msgid "Your check-in list has been created successfully. Share the link below with your check-in staff."
 msgstr "Sua lista de check-in foi criada com sucesso. Compartilhe o link abaixo com sua equipe de check-in."
@@ -13407,10 +13224,6 @@ msgstr "Sua solicitação de alteração de e-mail para <0>{0}</0> está pendent
 #: src/components/modals/EventLiveCelebrationModal/index.tsx:48
 msgid "Your event is live!"
 msgstr "Seu evento está no ar!"
-
-#: src/components/layouts/AuthLayout/index.tsx:43
-msgid "Your event, made simple."
-msgstr ""
 
 #: src/hooks/useOrderActions.tsx:57
 msgid "Your message has been sent"
@@ -13464,8 +13277,8 @@ msgstr "Seus pedidos aparecerão aqui assim que começarem a chegar."
 msgid "Your organizer address"
 msgstr "Endereço do seu organizador"
 
-#: src/components/routes/auth/Login/index.tsx:105
-#: src/components/routes/auth/Register/index.tsx:113
+#: src/components/routes/auth/Login/index.tsx:110
+#: src/components/routes/auth/Register/index.tsx:124
 msgid "Your password"
 msgstr "Sua senha"
 
@@ -13501,7 +13314,7 @@ msgstr ""
 msgid "Your Stripe account itself isn't affected, and no data is lost — you can reconnect at any time."
 msgstr "Sua conta Stripe não é afetada e nenhum dado é perdido — você pode reconectá-la a qualquer momento."
 
-#: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:47
+#: src/components/routes/product-widget/AttendeeProductAndInformation/index.tsx:34
 msgid "Your ticket for"
 msgstr "Seu ingresso para"
 

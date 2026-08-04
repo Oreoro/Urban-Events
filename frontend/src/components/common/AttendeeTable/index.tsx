@@ -181,7 +181,7 @@ export const AttendeeTable = ({attendees, openCreateModal, compact, occurrenceId
                                                     className={classes.actionIcon}
                                                     size="xs"
                                                     variant="subtle"
-                                                    color="green"
+                                                    color="primary"
                                                     onClick={() => {
                                                         if (info.row.original.notes && info.row.original.notes.length > 100) {
                                                             handleModalClick(info.row.original, viewModalOpen);
@@ -354,7 +354,7 @@ export const AttendeeTable = ({attendees, openCreateModal, compact, occurrenceId
                         <Button
                             size={'xs'}
                             leftSection={<IconPlus/>}
-                            color={'green'}
+                            color={'primary'}
                             onClick={() => openCreateModal()}>{t`Manually add an Attendee`}
                         </Button>
                     )}

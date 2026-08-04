@@ -30,6 +30,13 @@ class CreateNeemPaymentIntentActionPublic extends BaseAction
     public function __invoke(Request $request, int $eventId, string $orderShortId): JsonResponse
     {
         try {
+            if (! config('services.neem.enabled')) {
+                return $this->errorResponse(
+                    __('This payment method is currently unavailable.'),
+                    Response::HTTP_UNPROCESSABLE_ENTITY,
+                );
+            }
+
             $neemBaseUrl = rtrim((string) config('services.neem.base_url'), '/');
             $neemBaseToken = (string) config('services.neem.base_token');
             $neemPartnerId = (string) config('services.neem.partner_id');

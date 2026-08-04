@@ -368,7 +368,7 @@ export const PayoutsSettings = () => {
                                                 <ActionIcon
                                                     size="xs"
                                                     variant="subtle"
-                                                    color={copied ? "green" : "gray"}
+                                                    color={copied ? "primary" : "gray"}
                                                     onClick={copy}
                                                     aria-label={t`Copy account ID`}
                                                 >

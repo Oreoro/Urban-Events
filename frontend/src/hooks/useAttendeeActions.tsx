@@ -105,7 +105,7 @@ export const useAttendeeActions = ({eventId, onManage, onEdit}: UseAttendeeActio
                 icon: <IconTrash size={14}/>,
                 onClick: () => handleCancel(attendee),
                 group: 'danger',
-                color: isCancelled ? 'green' : 'red',
+                color: isCancelled ? 'primary' : 'red',
             },
         ];
 

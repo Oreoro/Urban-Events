@@ -22,6 +22,8 @@ class AccountResource extends JsonResource
 
             'is_account_email_confirmed' => $this->getAccountVerifiedAt() !== null,
             'is_saas_mode_enabled' => config('app.saas_mode_enabled'),
+            'is_platform_payment_managed' => config('services.stripe.platform_managed'),
+            'platform_payment_provider' => config('services.stripe.platform_managed') ? 'STRIPE' : null,
             'requires_manual_verification' => config('app.saas_mode_enabled') && ! $this->getIsManuallyVerified(),
 
             'deletion_request' => $this->getActiveDeletionRequest()

@@ -3,6 +3,7 @@
 namespace HiEvents\Services\Application\Handlers\EventSettings;
 
 use HiEvents\DomainObjects\Enums\CapacityChangeDirection;
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\Events\CapacityChangedEvent;
 use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
@@ -61,7 +62,9 @@ class UpdateEventSettingsHandler
                     'price_display_mode' => $settings->price_display_mode->name,
 
                     // Payment settings
-                    'payment_providers' => $settings->payment_providers,
+                    'payment_providers' => config('services.stripe.platform_managed')
+                        ? [PaymentProviders::STRIPE->value]
+                        : $settings->payment_providers,
                     'offline_payment_instructions' => $this->purifier->purify($settings->offline_payment_instructions),
                     'allow_orders_awaiting_offline_payment_to_check_in' => $settings->allow_orders_awaiting_offline_payment_to_check_in,
 

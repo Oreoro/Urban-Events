@@ -9,6 +9,7 @@ import {useGetEventSettings} from "../../../queries/useGetEventSettings.ts";
 import {useGetOrganizer} from "../../../queries/useGetOrganizer.ts";
 import {useGetEventProductCategories} from "../../../queries/useGetProductCategories.ts";
 import {useGetEventOccurrences} from "../../../queries/useGetEventOccurrences.ts";
+import {useGetAccount} from "../../../queries/useGetAccount.ts";
 import {useUpdateEventStatus} from "../../../mutations/useUpdateEventStatus.ts";
 import {showError} from "../../../utilites/notifications.tsx";
 import classes from './PublishEventModal.module.scss';
@@ -50,6 +51,7 @@ export const PublishEventModal = ({opened, onClose, event, onSuccess}: PublishEv
 
     const {data: eventSettings, isFetched: isSettingsFetched} = useGetEventSettings(eventId);
     const {data: organizer, isFetched: isOrganizerFetched} = useGetOrganizer(organizerId);
+    const {data: account, isFetched: isAccountFetched} = useGetAccount();
     const {data: productCategories, isFetched: isProductsFetched} = useGetEventProductCategories(eventId);
     const occurrencesQuery = useGetEventOccurrences(eventId, {pageNumber: 1, perPage: 1}, isRecurring);
 
@@ -64,12 +66,13 @@ export const PublishEventModal = ({opened, onClose, event, onSuccess}: PublishEv
 
     const checksLoaded = isSettingsFetched
         && isOrganizerFetched
+        && isAccountFetched
         && isProductsFetched
         && (!isRecurring || occurrencesQuery.isFetched);
 
     const checks: PublishCheck[] = [];
 
-    if (hasPaidProducts && isStripeEnabled && !isStripeConnected) {
+    if (hasPaidProducts && isStripeEnabled && account?.is_saas_mode_enabled && !isStripeConnected) {
         checks.push({
             key: 'stripe',
             blocking: true,

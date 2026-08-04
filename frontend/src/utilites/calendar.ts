@@ -92,7 +92,7 @@ export const createICSContent = (event: Event, occurrence?: EventOccurrence): st
         foldICSLine(`DESCRIPTION:${escapeICSText(stripHtml(event.description_preview || ''))}`),
         foldICSLine(`LOCATION:${escapeICSText(getEventLocation(event, occurrence))}`),
         `DTSTAMP:${formatICSDate(new Date().toISOString())}`,
-        `UID:${crypto.randomUUID()}@hi.events`,
+        `UID:${crypto.randomUUID()}@urbanevents.pk`,
         'END:VEVENT',
         'END:VCALENDAR'
     ].join('\r\n');

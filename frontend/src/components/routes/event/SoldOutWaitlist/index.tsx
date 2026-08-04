@@ -127,7 +127,7 @@ export const SoldOutWaitlist = () => {
             >
                 <Button
                     size="sm"
-                    color="green"
+                    color="primary"
                     leftSection={<IconSend size={16}/>}
                     data-testid="waitlist-offer-next-button"
                     onClick={openOfferModal}

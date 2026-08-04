@@ -51,7 +51,7 @@ export default function Locations() {
                 resultCount={pagination?.total}
                 resultLabel={t`locations`}
             >
-                <Button color={'green'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
+                <Button color={'primary'} size={'sm'} onClick={openCreateModal} rightSection={<IconPlus/>}>
                     {t`Add Location`}
                 </Button>
             </ToolBar>

@@ -46,6 +46,10 @@ export const App: FC<
         dehydratedState?: unknown;
     }>
 > = (props) => {
+    const appName = getConfig("VITE_APP_NAME", "Urban Events");
+    const appDescription = "Publish event pages, sell tickets in PKR, and check in guests.";
+    const appUrl = "https://app.urbanevents.pk";
+    const previewImage = `${appUrl}/social-preview.png`;
     const [isLoadedOnBrowser, setIsLoadedOnBrowser] = React.useState(false);
     const showGlobalConsentBanner = getConfig('VITE_COOKIE_CONSENT_ENABLED') === 'true'
         && !isSsr() && isConsentPending();
@@ -92,11 +96,30 @@ export const App: FC<
                                 <ThirdPartyScripts/>
                                 <ModalsProvider>
                                     <Helmet>
-                                        <title>{getConfig("VITE_APP_NAME", "Urban Events")}</title>
+                                        <title>{appName}</title>
+                                        <meta name="description" content={appDescription}/>
+                                        <meta name="application-name" content={appName}/>
+                                        <meta name="theme-color" content="#171717"/>
+                                        <meta property="og:site_name" content={appName}/>
+                                        <meta property="og:title" content={`${appName} — Ticketing for Pakistan`}/>
+                                        <meta property="og:description" content={appDescription}/>
+                                        <meta property="og:type" content="website"/>
+                                        <meta property="og:url" content={appUrl}/>
+                                        <meta property="og:image" content={previewImage}/>
+                                        <meta property="og:image:width" content="1200"/>
+                                        <meta property="og:image:height" content="630"/>
+                                        <meta property="og:image:alt" content="Urban Events — Publish, sell, and check in"/>
+                                        <meta name="twitter:card" content="summary_large_image"/>
+                                        <meta name="twitter:title" content={`${appName} — Ticketing for Pakistan`}/>
+                                        <meta name="twitter:description" content={appDescription}/>
+                                        <meta name="twitter:image" content={previewImage}/>
+                                        <meta name="twitter:image:alt" content="Urban Events — Publish, sell, and check in"/>
                                         <link rel="icon"
                                               type="image/svg+xml"
                                               href={getConfig("VITE_APP_FAVICON", "/manifest-icons/favicon.svg")}
                                         />
+                                        <link rel="apple-touch-icon" sizes="180x180" href="/manifest-icons/apple-touch-icon.png"/>
+                                        <link rel="manifest" href="/site.webmanifest"/>
                                     </Helmet>
                                     {props.children}
                                 </ModalsProvider>

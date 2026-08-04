@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services\Application\Handlers\EventSettings;
 
 use HiEvents\DomainObjects\Enums\CapacityChangeDirection;
+use HiEvents\DomainObjects\Enums\PaymentProviders;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\Events\CapacityChangedEvent;
 use HiEvents\Repository\Interfaces\EventSettingsRepositoryInterface;
@@ -155,9 +156,36 @@ class UpdateEventSettingsHandlerTest extends TestCase
         );
     }
 
+    public function test_platform_managed_payments_cannot_be_overridden_by_event_settings(): void
+    {
+        config(['services.stripe.platform_managed' => true]);
+
+        $existingSettings = (new EventSettingDomainObject)
+            ->setWaitlistAutoProcess(false);
+
+        $this->eventSettingsRepository
+            ->shouldReceive('findFirstWhere')
+            ->with(['event_id' => 1])
+            ->twice()
+            ->andReturn($existingSettings);
+
+        $this->eventSettingsRepository
+            ->shouldReceive('updateWhere')
+            ->once()
+            ->with(
+                Mockery::on(fn (array $attributes) => $attributes['payment_providers'] === [PaymentProviders::STRIPE->value]),
+                ['event_id' => 1],
+            );
+
+        $this->handler->handle($this->createDTO(
+            payment_providers: [PaymentProviders::NEEM->value],
+        ));
+    }
+
     private function createDTO(
         ?bool $waitlist_auto_process = null,
         bool $allow_copy_details_to_all_attendees = true,
+        array $payment_providers = [],
     ): UpdateEventSettingsDTO {
         return UpdateEventSettingsDTO::fromArray([
             'account_id' => 1,
@@ -185,6 +213,7 @@ class UpdateEventSettingsHandlerTest extends TestCase
             'allow_copy_details_to_all_attendees' => $allow_copy_details_to_all_attendees,
             'waitlist_auto_process' => $waitlist_auto_process,
             'waitlist_offer_timeout_minutes' => 60,
+            'payment_providers' => $payment_providers,
         ]);
     }
 }

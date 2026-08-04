@@ -163,7 +163,7 @@ export function Dashboard() {
                     <Menu.Target>
                         <Button
                             leftSection={<IconPlus/>}
-                            color={'green'}
+                            color={'primary'}
                             rightSection={
                                 <IconChevronDown stroke={1.5}/>
                             }

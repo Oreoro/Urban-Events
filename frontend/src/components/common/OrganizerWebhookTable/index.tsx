@@ -219,7 +219,7 @@ export const OrganizerWebhookTable = ({ webhooks, openCreateModal }: OrganizerWe
                             loading={deleteMutation.isPending}
                             size={'xs'}
                             leftSection={<IconPlus />}
-                            color={'green'}
+                            color={'primary'}
                             onClick={() => openCreateModal()}>{t`Add Webhook`}
                         </Button>
                     </>
