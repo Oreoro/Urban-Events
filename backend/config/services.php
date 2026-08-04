@@ -32,8 +32,20 @@ return [
     ],
 
     'stripe' => [
-        'enabled' => env('STRIPE_ENABLED', false),
-        'platform_managed' => env('STRIPE_ENABLED', false) && env('STRIPE_PLATFORM_MANAGED', false),
+        // Urban Events uses one platform Stripe account for every organizer.
+        // Derive readiness from the complete credential set so a stale
+        // runtime flag cannot silently hide card payments after secret
+        // rotation or a container rollout.
+        'enabled' => env('STRIPE_ENABLED', false) || (
+            filled(env('STRIPE_PUBLIC_KEY'))
+            && filled(env('STRIPE_SECRET_KEY'))
+            && filled(env('STRIPE_WEBHOOK_SECRET'))
+        ),
+        'platform_managed' => env('STRIPE_PLATFORM_MANAGED', false) || (
+            filled(env('STRIPE_PUBLIC_KEY'))
+            && filled(env('STRIPE_SECRET_KEY'))
+            && filled(env('STRIPE_WEBHOOK_SECRET'))
+        ),
         'secret_key' => env('STRIPE_SECRET_KEY'),
         'public_key' => env('STRIPE_PUBLIC_KEY'),
         'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),

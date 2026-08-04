@@ -84,7 +84,11 @@ export class UrbanEventsContainer extends Container<Env> {
 
     private getContainerEnvironment(publicOrigin: string): ContainerEnvironment {
         const secrets = parseContainerSecrets(this.env.APP_SECRETS_JSON);
-        const stripeEnabled = secrets.STRIPE_ENABLED === "true";
+        const stripeEnabled = [
+            secrets.STRIPE_PUBLIC_KEY,
+            secrets.STRIPE_SECRET_KEY,
+            secrets.STRIPE_WEBHOOK_SECRET,
+        ].every((value) => typeof value === "string" && value.trim().length > 0);
 
         return {
             ...secrets,
