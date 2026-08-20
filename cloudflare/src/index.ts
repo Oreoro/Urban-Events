@@ -90,6 +90,8 @@ export class UrbanEventsContainer extends Container<Env> {
             secrets.STRIPE_WEBHOOK_SECRET,
         ].every((value) => typeof value === "string" && value.trim().length > 0);
 
+        const hasRedis = typeof secrets.REDIS_URL === "string" && secrets.REDIS_URL.trim().length > 0;
+
         return {
             ...secrets,
             APP_NAME: "Urban Events",
@@ -101,8 +103,17 @@ export class UrbanEventsContainer extends Container<Env> {
             APP_CDN_URL: secrets.AWS_URL,
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
-            CACHE_DRIVER: "file",
-            CACHE_STORE: "file",
+
+            CACHE_DRIVER: hasRedis ? "redis" : "file",
+            CACHE_STORE: hasRedis ? "redis" : "file",
+            QUEUE_CONNECTION: hasRedis ? "redis" : "sync",
+            SESSION_DRIVER: hasRedis ? "redis" : "cookie",
+            SESSION_SECURE_COOKIE: "true",
+
+            ...(hasRedis && {
+                REDIS_CLIENT: "phpredis",
+            }),
+
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
                 "https://urbanevents.pk",
@@ -113,10 +124,9 @@ export class UrbanEventsContainer extends Container<Env> {
             FILESYSTEM_PRIVATE_DISK: "s3-private",
             HOME: "/tmp",
             LOG_CHANNEL: "stderr",
+            LOG_DEPRECATIONS_CHANNEL: "null",
+            LOG_LEVEL: "info",
             NEEM_ENABLED: "false",
-            QUEUE_CONNECTION: "sync",
-            SESSION_DRIVER: "cookie",
-            SESSION_SECURE_COOKIE: "true",
             STRIPE_ENABLED: stripeEnabled ? "true" : "false",
             STRIPE_PLATFORM_MANAGED: stripeEnabled ? "true" : "false",
             VITE_API_URL_CLIENT: `${publicOrigin}/api`,
