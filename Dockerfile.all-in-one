@@ -22,9 +22,9 @@ ENV PHP_OPCACHE_ENABLE=1
 # Switch to root for installing extensions and packages
 USER root
 
-RUN install-php-extensions intl gd
+RUN install-php-extensions intl gd pdo_pgsql pgsql sodium curl mbstring xml zip bcmath redis opcache pcntl tokenizer
 
-RUN apk add --no-cache nodejs yarn nginx supervisor dos2unix
+RUN apk add --no-cache nodejs yarn nginx supervisor dos2unix libpng-dev libjpeg-turbo-dev freetype-dev oniguruma-dev libxml2-dev libpq-dev
 
 COPY --from=node-frontend /app/frontend /app/frontend
 
