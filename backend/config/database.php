@@ -145,7 +145,10 @@ $db = [
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB'),
+            // Upstash free tier rejects SELECT.  Setting database to null
+            // prevents Predis from issuing SELECT on connect.  The URL's
+            // path component (if any) is also ignored.
+            'database' => null,
         ],
 
         'cache' => [
@@ -154,7 +157,7 @@ $db = [
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
             'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB'),
+            'database' => null,
         ],
 
     ],

@@ -93,8 +93,25 @@ export class UrbanEventsContainer extends Container<Env> {
 
         const hasRedis = typeof secrets.REDIS_URL === "string" && secrets.REDIS_URL.trim().length > 0;
 
+        // Strip the database path from REDIS_URL to prevent Predis from
+        // issuing SELECT (Upstash free tier rejects it with NOPERM).
+        let redisUrl = secrets.REDIS_URL ?? "";
+        if (hasRedis) {
+            try {
+                const parsed = new URL(redisUrl);
+                // Remove path like /0 that Predis interprets as database index
+                if (/^\/\d+$/.test(parsed.pathname)) {
+                    parsed.pathname = "/";
+                    redisUrl = parsed.toString();
+                }
+            } catch {
+                // URL parsing failed; pass through as-is
+            }
+        }
+
         return {
             ...secrets,
+            REDIS_URL: redisUrl,
             APP_NAME: "Urban Events",
             APP_ENV: "production",
             APP_DEBUG: "false",
@@ -105,11 +122,12 @@ export class UrbanEventsContainer extends Container<Env> {
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
 
-            CACHE_DRIVER: "file",
-            CACHE_STORE: "file",
-            QUEUE_CONNECTION: "sync",
-            SESSION_DRIVER: "cookie",
+            CACHE_DRIVER: hasRedis ? "redis" : "file",
+            CACHE_STORE: hasRedis ? "redis" : "file",
+            QUEUE_CONNECTION: hasRedis ? "redis" : "sync",
+            SESSION_DRIVER: hasRedis ? "redis" : "cookie",
             SESSION_SECURE_COOKIE: "true",
+            ...(hasRedis ? { REDIS_CLIENT: "predis" } : {}),
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
