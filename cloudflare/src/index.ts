@@ -97,7 +97,7 @@ export class UrbanEventsContainer extends Container<Env> {
             ...secrets,
             APP_NAME: "Urban Events",
             APP_ENV: "production",
-            APP_DEBUG: "true",
+            APP_DEBUG: "false",
             APP_URL: `${publicOrigin}/api`,
             APP_FRONTEND_URL: publicOrigin,
             APP_SAAS_MODE_ENABLED: "false",
@@ -107,13 +107,9 @@ export class UrbanEventsContainer extends Container<Env> {
 
             CACHE_DRIVER: "file",
             CACHE_STORE: "file",
-            QUEUE_CONNECTION: hasRedis ? "redis" : "sync",
-            SESSION_DRIVER: hasRedis ? "redis" : "cookie",
+            QUEUE_CONNECTION: "sync",
+            SESSION_DRIVER: "cookie",
             SESSION_SECURE_COOKIE: "true",
-
-            ...(hasRedis && {
-                REDIS_CLIENT: "phpredis",
-            }),
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
