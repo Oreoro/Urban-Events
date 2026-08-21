@@ -5,6 +5,13 @@ use Pdo\Mysql;
 
 $url = env('DATABASE_URL') ? parse_url(env('DATABASE_URL')) : [];
 
+// Parse query-string parameters from DATABASE_URL so that sslmode,
+// sslrootcert, etc. are available to individual connection configs.
+$dbQueryParams = [];
+if (!empty($url['query'])) {
+    parse_str($url['query'], $dbQueryParams);
+}
+
 $db = [
 
     /*
@@ -78,7 +85,8 @@ $db = [
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => $dbQueryParams['sslmode'] ?? env('DB_SSLMODE', 'prefer'),
+            'sslrootcert' => $dbQueryParams['sslrootcert'] ?? env('DB_SSLROOTCERT'),
         ],
 
         'sqlsrv' => [
