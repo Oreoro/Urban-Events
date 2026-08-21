@@ -25,6 +25,7 @@
         "maatwebsite/excel": "4.x-dev",
         "nette/php-generator": "^4.0",
         "php-open-source-saver/jwt-auth": "^2.1",
+        "predis/predis": "^3.6",
         "sentry/sentry-laravel": "^4.13",
         "spatie/icalendar-generator": "^3.0",
         "spatie/laravel-data": "^4.15",

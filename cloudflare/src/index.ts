@@ -105,11 +105,13 @@ export class UrbanEventsContainer extends Container<Env> {
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
 
-            CACHE_DRIVER: "file",
-            CACHE_STORE: "file",
-            QUEUE_CONNECTION: "sync",
-            SESSION_DRIVER: "cookie",
+            CACHE_DRIVER: "redis",
+            CACHE_STORE: "redis",
+            QUEUE_CONNECTION: "redis",
+            SESSION_DRIVER: "redis",
             SESSION_SECURE_COOKIE: "true",
+            REDIS_CLIENT: "predis",
+            REDIS_DB: "0",
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
