@@ -56,7 +56,7 @@ class CreateAccountHandler
         $passwordHash = $this->hashManager->make($accountData->password);
 
         $user = null;
-        $account = $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData) use (&$user) {
+        $account = $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData, &$user) {
             $account = $this->accountRepository->create([
                 'timezone' => $this->getTimezone($accountData),
                 'currency_code' => $this->getCurrencyCode($accountData),
