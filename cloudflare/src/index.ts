@@ -114,7 +114,7 @@ export class UrbanEventsContainer extends Container<Env> {
             REDIS_URL: redisUrl,
             APP_NAME: "Urban Events",
             APP_ENV: "production",
-            APP_DEBUG: "false",
+            APP_DEBUG: "true",
             APP_URL: `${publicOrigin}/api`,
             APP_FRONTEND_URL: publicOrigin,
             APP_SAAS_MODE_ENABLED: "false",
