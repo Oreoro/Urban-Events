@@ -103,10 +103,22 @@ class CreateAccountHandler
                 ]);
             }
 
-            $this->emailConfirmationService->sendConfirmation($user, $account->getId());
-
             return $account;
         });
+
+        // Send confirmation email outside the transaction so a mail
+        // failure (e.g. missing SMTP credentials) does not roll back
+        // the account that was just created.
+        try {
+            $this->emailConfirmationService->sendConfirmation($user, $account->getId());
+        } catch (Throwable $e) {
+            $this->logger->warning('Failed to send confirmation email', [
+                'user_id' => $user->getId(),
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        return $account;
     }
 
     private function getTimezone(CreateAccountDTO $accountData): ?string

@@ -123,6 +123,7 @@ export class UrbanEventsContainer extends Container<Env> {
             LOG_CHANNEL: "stderr",
             LOG_DEPRECATIONS_CHANNEL: "null",
             LOG_LEVEL: "info",
+            MAIL_MAILER: "log",
             NEEM_ENABLED: "false",
             STRIPE_ENABLED: stripeEnabled ? "true" : "false",
             STRIPE_PLATFORM_MANAGED: stripeEnabled ? "true" : "false",
