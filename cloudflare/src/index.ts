@@ -111,7 +111,6 @@ export class UrbanEventsContainer extends Container<Env> {
             SESSION_DRIVER: "redis",
             SESSION_SECURE_COOKIE: "true",
             REDIS_CLIENT: "predis",
-            REDIS_DB: "0",
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
