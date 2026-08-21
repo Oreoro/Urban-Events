@@ -18,6 +18,11 @@ RUN yarn install --network-timeout 600000 --frozen-lockfile && yarn build
 FROM serversideup/php:8.5-fpm-alpine
 
 ENV PHP_OPCACHE_ENABLE=1
+ENV PHP_OPCACHE_MEMORY_CONSUMPTION=128
+ENV PHP_OPCACHE_MAX_ACCELERATED_FILES=10000
+ENV PHP_OPCACHE_REVALIDATE_FREQ=0
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS=0
+ENV PHP_OPCACHE_CLI_ENABLE=0
 
 # Switch to root for installing extensions and packages
 USER root
