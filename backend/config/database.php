@@ -1,6 +1,5 @@
 <?php
 
-use HiEvents\Redis\UpstashConnectionFactory;
 use Illuminate\Support\Str;
 use Pdo\Mysql;
 
@@ -138,9 +137,6 @@ $db = [
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
             'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-            // When REDIS_URL is set (Upstash), use a custom Factory that
-            // strips the SELECT command, which Upstash free tier rejects.
-            'connections' => env('REDIS_URL') ? new UpstashConnectionFactory() : null,
         ],
 
         'default' => [

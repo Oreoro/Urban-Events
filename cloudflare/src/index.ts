@@ -97,7 +97,7 @@ export class UrbanEventsContainer extends Container<Env> {
             ...secrets,
             APP_NAME: "Urban Events",
             APP_ENV: "production",
-            APP_DEBUG: "true",
+            APP_DEBUG: "false",
             APP_URL: `${publicOrigin}/api`,
             APP_FRONTEND_URL: publicOrigin,
             APP_SAAS_MODE_ENABLED: "false",
@@ -105,12 +105,11 @@ export class UrbanEventsContainer extends Container<Env> {
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
 
-            CACHE_DRIVER: "redis",
-            CACHE_STORE: "redis",
-            QUEUE_CONNECTION: "redis",
-            SESSION_DRIVER: "redis",
+            CACHE_DRIVER: "file",
+            CACHE_STORE: "file",
+            QUEUE_CONNECTION: "sync",
+            SESSION_DRIVER: "cookie",
             SESSION_SECURE_COOKIE: "true",
-            REDIS_CLIENT: "predis",
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,
