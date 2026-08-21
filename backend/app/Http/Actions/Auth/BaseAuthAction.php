@@ -38,9 +38,10 @@ abstract class BaseAuthAction extends BaseAction
         return $response;
     }
 
-    protected function respondWithToken(?string $token, Collection $accounts): JsonResponse
+    protected function respondWithToken(?string $token, Collection $accounts, $preloadedUser = null): JsonResponse
     {
-        $user = $this->getAuthenticatedUser();
+        // Use preloaded user if available to avoid an extra DB query.
+        $user = $preloadedUser ?? $this->getAuthenticatedUser();
 
         return $this->addTokenToResponse(
             response: $this->jsonResponse(new AuthenticatedResponseResource(new AuthenticatedResponseDTO(

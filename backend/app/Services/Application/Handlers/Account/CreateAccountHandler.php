@@ -55,7 +55,8 @@ class CreateAccountHandler
         $isSaasMode = $this->config->get('app.saas_mode_enabled');
         $passwordHash = $this->hashManager->make($accountData->password);
 
-        return $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData) {
+        $user = null;
+        $account = $this->databaseManager->transaction(function () use ($isSaasMode, $passwordHash, $accountData) use (&$user) {
             $account = $this->accountRepository->create([
                 'timezone' => $this->getTimezone($accountData),
                 'currency_code' => $this->getCurrencyCode($accountData),
