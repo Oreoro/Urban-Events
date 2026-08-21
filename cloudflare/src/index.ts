@@ -68,8 +68,9 @@ function getStartOfNextUtcMonth(timestampMs: number): number {
 
 export class UrbanEventsContainer extends Container<Env> {
     defaultPort = 80;
-    // Keep a shell parent around so Cloudflare tracks the complete process
-    // tree while the all-in-one startup script hands off to Supervisor.
+    // The Cloudflare Container SDK requires an explicit entrypoint to
+    // start the container process. Without it, the container has no PID 1
+    // and exits immediately.
     entrypoint = [
         "docker-php-serversideup-entrypoint",
         "/bin/sh",
