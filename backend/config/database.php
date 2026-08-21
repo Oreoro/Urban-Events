@@ -87,9 +87,6 @@ $db = [
             'search_path' => 'public',
             'sslmode' => $dbQueryParams['sslmode'] ?? env('DB_SSLMODE', 'prefer'),
             'sslrootcert' => $dbQueryParams['sslrootcert'] ?? env('DB_SSLROOTCERT'),
-            'options' => extension_loaded('pdo_pgsql') ? [
-                PDO::ATTR_PERSISTENT => true,
-            ] : [],
         ],
 
         'sqlsrv' => [
