@@ -24,6 +24,8 @@ The container image includes `redis-server`, managed by Supervisor on `127.0.0.1
 
 Because only one container instance exists (`max_instances: 1`), localhost Redis cannot split-brain across instances. Container restarts drop in-flight queued jobs; this matches the existing ephemeral-disk tradeoff and keeps webhooks recoverable through their normal retry paths.
 
+The container health check routes `/healthz` to Laravel's Redis-backed `/api/health` endpoint. Readiness therefore proves Nginx, PHP-FPM, Laravel bootstrap, and a live Redis `PING` and cache write before traffic is admitted.
+
 ## External services
 
 Containers have ephemeral disks. Production therefore requires:
@@ -91,7 +93,7 @@ Copy `.dev.vars.example` to `.dev.vars` only when running `wrangler dev`. Never 
      ```
 
 4. In Stripe Workbench, create a test-mode webhook destination for `https://app.urbanevents.pk/api/public/webhooks/stripe`. Subscribe to `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.succeeded`, `charge.updated`, `charge.refunded`, `refund.created`, and `refund.updated`. Put that endpoint's `whsec_...` value in `STRIPE_APP_SECRETS`.
-5. Run the **Cloudflare Container** workflow manually with **deploy** enabled. The workflow validates the Worker, builds one AMD64 image, pushes that commit-tagged image to Cloudflare's managed registry, deploys the Worker with Cloudflare's official Wrangler action, uploads the runtime secret, and smoke-tests `/healthz` plus `/auth/login` using the action's deployment URL.
+5. Run the **Cloudflare Container** workflow manually with **deploy** enabled. The workflow validates the Worker, builds one AMD64 image, pushes that commit-tagged image to Cloudflare's managed registry, deploys the Worker with Cloudflare's official Wrangler action, uploads the runtime secret, and smoke-tests PHP-plus-Redis readiness at `/healthz` plus SSR at `/auth/login` using the action's deployment URL.
 6. Wait for `npx wrangler containers list` to report a ready deployment.
 7. In Stripe test mode, test event creation, a successful card payment, a declined card, webhook completion, a refund, uploads, and QR check-in.
 8. Only after the full test-mode flow passes, create the equivalent live-mode webhook destination and replace all three values together with the matching live-mode credentials. Never combine test keys with a live webhook secret.

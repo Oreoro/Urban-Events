@@ -251,7 +251,9 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_WORKER_URL"
           curl --fail --show-error --silent --retry 12 --retry-all-errors --retry-delay 10 \
-            "$CLOUDFLARE_WORKER_URL/healthz" >/dev/null
+            "$CLOUDFLARE_WORKER_URL/healthz" | grep -Eq '"status":"(ok|healthy)"'
+          test "$(curl --fail --show-error --silent --retry 3 --retry-all-errors --retry-delay 5 \
+            "$CLOUDFLARE_WORKER_URL/healthz" | jq -r '.cache_driver')" = redis
           curl --fail --show-error --silent --retry 3 --retry-all-errors --retry-delay 5 \
             "$CLOUDFLARE_WORKER_URL/auth/login" >/dev/null
 

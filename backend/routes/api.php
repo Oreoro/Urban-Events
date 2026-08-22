@@ -85,6 +85,7 @@ use HiEvents\Http\Actions\CheckInLists\Public\GetCheckInListPublicAction;
 use HiEvents\Http\Actions\CheckInLists\Public\GetCheckInListStatsPublicAction;
 use HiEvents\Http\Actions\CheckInLists\UpdateCheckInListAction;
 use HiEvents\Http\Actions\Common\GetColorThemesAction;
+use HiEvents\Http\Actions\Common\GetRedisHealthAction;
 use HiEvents\Http\Actions\Common\Webhooks\StripeIncomingWebhookAction;
 use HiEvents\Http\Actions\EmailTemplates\CreateEventEmailTemplateAction;
 use HiEvents\Http\Actions\EmailTemplates\CreateOrganizerEmailTemplateAction;
@@ -104,10 +105,10 @@ use HiEvents\Http\Actions\EventOccurrences\CreateEventOccurrenceAction;
 use HiEvents\Http\Actions\EventOccurrences\DeleteEventOccurrenceAction;
 use HiEvents\Http\Actions\EventOccurrences\DeletePriceOverrideAction;
 use HiEvents\Http\Actions\EventOccurrences\GenerateOccurrencesAction;
-use HiEvents\Http\Actions\EventOccurrences\GetOccurrenceGenerationStatusAction;
 use HiEvents\Http\Actions\EventOccurrences\GetEventOccurrenceAction;
 use HiEvents\Http\Actions\EventOccurrences\GetEventOccurrencesAction;
 use HiEvents\Http\Actions\EventOccurrences\GetEventOccurrencesPublicAction;
+use HiEvents\Http\Actions\EventOccurrences\GetOccurrenceGenerationStatusAction;
 use HiEvents\Http\Actions\EventOccurrences\GetPriceOverridesAction;
 use HiEvents\Http\Actions\EventOccurrences\GetProductVisibilityAction;
 use HiEvents\Http\Actions\EventOccurrences\ReactivateOccurrenceAction;
@@ -264,6 +265,8 @@ use Illuminate\Routing\Router;
 
 /** @var Router|Router $router */
 $router = app()->get('router');
+
+$router->get('/health', GetRedisHealthAction::class)->name('health.redis');
 
 $router->prefix('/auth')->group(
     function (Router $router): void {
