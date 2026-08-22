@@ -266,7 +266,9 @@ use Illuminate\Routing\Router;
 /** @var Router|Router $router */
 $router = app()->get('router');
 
-$router->get('/health', GetRedisHealthAction::class)->name('health.redis');
+$router->get('/health', GetRedisHealthAction::class)
+    ->name('health.redis')
+    ->withoutMiddleware(ThrottleRequests::class.':api');
 
 $router->prefix('/auth')->group(
     function (Router $router): void {
