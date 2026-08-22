@@ -21,6 +21,8 @@
     "required": ["APP_SECRETS_JSON"]
   },
   "containers": [
+    // Single-instance all-in-one container; embedded Redis (loopback) backs
+    // Laravel cache and queues. See docker/all-in-one/supervisor/supervisord.conf.
     {
       "class_name": "UrbanEventsContainer",
       "image": "../Dockerfile.all-in-one",

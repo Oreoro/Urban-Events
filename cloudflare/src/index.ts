@@ -103,13 +103,16 @@ export class UrbanEventsContainer extends Container<Env> {
             AWS_DEFAULT_REGION: "auto",
             AWS_USE_PATH_STYLE_ENDPOINT: "true",
 
-            CACHE_DRIVER: "file",
-            CACHE_STORE: "file",
-            QUEUE_CONNECTION: "sync",
+            CACHE_DRIVER: "redis",
+            CACHE_STORE: "redis",
             SESSION_DRIVER: "cookie",
             SESSION_SECURE_COOKIE: "true",
-            // Redis disabled: Upstash free tier rejects EVAL (used by cache rate limiter).
-            // To enable Redis, upgrade to a paid Upstash plan or use a self-hosted Redis.
+            // Redis runs inside the container (supervisor program "redis") on
+            // localhost. Full EVAL support means Laravel's cache rate limiter
+            // works without an external Upstash plan.
+            REDIS_HOST: "127.0.0.1",
+            REDIS_PORT: "6379",
+            QUEUE_CONNECTION: "redis",
 
             CORS_ALLOWED_ORIGINS: [
                 publicOrigin,

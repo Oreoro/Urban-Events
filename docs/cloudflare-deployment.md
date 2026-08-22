@@ -1,6 +1,6 @@
 # Cloudflare deployment
 
-Urban Events can run on Cloudflare Workers + Containers without changing the React/Mantine design system or Laravel APIs. The Worker routes every request to one Laravel/React all-in-one container and wakes it hourly so Laravel's scheduler can run.
+Urban Events can run on Cloudflare Workers + Containers without changing the React/Mantine design system or Laravel APIs. The Worker routes every request to one Laravel/React all-in-one container and wakes it hourly so Laravel's scheduler can run. Redis runs inside that single container on localhost, so Laravel cache and queues use Redis with no external Redis service.
 
 ## Cost guardrails
 
@@ -13,6 +13,16 @@ Urban Events can run on Cloudflare Workers + Containers without changing the Rea
 - Log sampling: 10%; trace sampling: 1%.
 
 The runtime budget deliberately leaves room below the USD 20 operating ceiling for Workers, Durable Objects, logs, and modest egress. Cloudflare billing does not provide a hard account spend cap, so dashboard billing alerts should also be set at USD 10, 15, and 18.
+
+## Embedded Redis
+
+The container image includes `redis-server`, managed by Supervisor on `127.0.0.1:6379` before Nginx, PHP-FPM, and the queue worker start. It runs loopback-only with persistence disabled (the container disk is ephemeral) and a 256 MB memory cap using `volatile-lru`: expiring cache keys can evict under pressure while queue data is protected. Laravel uses:
+
+- `CACHE_DRIVER=redis` / `CACHE_STORE=redis`
+- `QUEUE_CONNECTION=redis`
+- `SESSION_DRIVER=cookie`
+
+Because only one container instance exists (`max_instances: 1`), localhost Redis cannot split-brain across instances. Container restarts drop in-flight queued jobs; this matches the existing ephemeral-disk tradeoff and keeps webhooks recoverable through their normal retry paths.
 
 ## External services
 
