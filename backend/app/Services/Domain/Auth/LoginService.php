@@ -28,7 +28,6 @@ readonly class LoginService
      */
     public function authenticate(string $email, string $password, ?int $requestedAccountId): LoginResponse
     {
-        // Authenticate once — verifies credentials and loads user.
         $token = $this->jwtAuth->attempt([
             'email' => strtolower($email),
             'password' => $password,
@@ -99,7 +98,6 @@ readonly class LoginService
     ): ?string {
         $accountId = $this->getAccountId($accounts, $requestedAccountId);
 
-        // if there's no account, we can't generate a token. The user will be prompted to select an account
         if ($accountId === null) {
             return null;
         }
@@ -110,10 +108,16 @@ readonly class LoginService
             $claims['role'] = $userRole->value;
         }
 
-        // Build the final token with custom claims from the already-authenticated
-        // user.  Using ->token() instead of ->attempt() avoids a redundant DB query
-        // that re-fetches and re-verifies the user credentials.
-        return $this->jwtAuth->claims($claims)->token();
+        $token = $this->jwtAuth->claims($claims)->attempt([
+            'email' => strtolower($email),
+            'password' => $password,
+        ]);
+
+        if (! $token) {
+            throw new UnauthorizedException(__('Username or Password are incorrect'));
+        }
+
+        return $token;
     }
 
     private function validateUserStatus(int $accountId, Collection $userAccounts): void
