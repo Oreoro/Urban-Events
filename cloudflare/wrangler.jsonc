@@ -27,7 +27,13 @@
       "class_name": "UrbanEventsContainer",
       "image": "../Dockerfile.all-in-one",
       "instance_type": "basic",
-      "max_instances": 1
+      "max_instances": 1,
+      "authorized_keys": [
+        {
+          "name": "buffy-ssh",
+          "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXvbThfO8I1dWXDmSf/IMEYRap31FEpNMFdKsOqCSCK cloudchamber@urban-events"
+        }
+      ]
     }
   ],
   "durable_objects": {
