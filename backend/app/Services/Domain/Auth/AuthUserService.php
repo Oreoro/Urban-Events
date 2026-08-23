@@ -15,9 +15,6 @@ use PHPOpenSourceSaver\JWTAuth\Payload;
 readonly class AuthUserService
 {
     public function __construct(
-        /**
-         * @var AuthManager
-         */
         private AuthManager $authManager,
         private AccountUserRepositoryInterface $accountUserRepository,
     ) {}

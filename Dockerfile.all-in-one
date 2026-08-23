@@ -62,6 +62,10 @@ COPY ./docker/all-in-one/php/www.conf /usr/local/etc/php-fpm.d/zz-www.conf
 COPY ./docker/all-in-one/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY ./docker/all-in-one/php/php-custom.ini /usr/local/etc/php/conf.d/custom.ini
 
+# Create OPcache file cache directory and nginx cache directory
+RUN mkdir -p /tmp/opcache /tmp/nginx-fcgi-cache /run/nginx \
+    && chown -R www-data:www-data /tmp/opcache /tmp/nginx-fcgi-cache /run/nginx
+
 # Copy startup script
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
 RUN dos2unix /startup.sh && chmod +x /startup.sh

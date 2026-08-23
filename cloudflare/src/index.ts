@@ -80,7 +80,7 @@ export class UrbanEventsContainer extends Container<Env> {
     // Use the application's real readiness endpoint instead of treating an
     // open TCP socket as a completed startup.
     pingEndpoint = "localhost/healthz";
-    sleepAfter = "15m";
+    sleepAfter = "5m";
     enableInternet = true;
 
     private getContainerEnvironment(publicOrigin: string): ContainerEnvironment {
@@ -128,7 +128,7 @@ export class UrbanEventsContainer extends Container<Env> {
             HOME: "/tmp",
             LOG_CHANNEL: "stderr",
             LOG_DEPRECATIONS_CHANNEL: "null",
-            LOG_LEVEL: "info",
+            LOG_LEVEL: "warning",
             MAIL_MAILER: "log",
             NEEM_ENABLED: "false",
             STRIPE_ENABLED: stripeEnabled ? "true" : "false",
