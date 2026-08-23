@@ -37,14 +37,18 @@ readonly class LoginService
             throw new UnauthorizedException(__('Username or Password are incorrect'));
         }
 
+        // Reuse the user already loaded by attempt() to avoid a redundant
+        // DB round-trip (planet-scale latency is ~1.5s per query).
+        $guardUser = auth()->guard('api')->user();
         /** @var UserDomainObject $user */
-        $user = UserDomainObject::hydrateFromModel($this->jwtAuth->user());
+        $user = UserDomainObject::hydrateFromModel($guardUser ?? $this->jwtAuth->user());
 
         $userAccounts = $this->accountUserRepository
             ->loadRelation(new Relationship(domainObject: AccountDomainObject::class, name: 'account'))
             ->findWhere([
                 'user_id' => $user->getId(),
             ]);
+        $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
 
         $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
 
@@ -59,10 +63,7 @@ readonly class LoginService
         return new LoginResponse(
             accounts: $accounts,
             token: $this->getToken(
-                accounts: $accounts,
-                email: $email,
-                password: $password,
-                requestedAccountId: $requestedAccountId,
+                accountId: $accountId,
                 userRole: $userRole,
             ),
             user: $user,
@@ -90,14 +91,9 @@ readonly class LoginService
     }
 
     private function getToken(
-        Collection $accounts,
-        string $email,
-        string $password,
-        ?int $requestedAccountId,
+        ?int $accountId,
         ?Role $userRole,
     ): ?string {
-        $accountId = $this->getAccountId($accounts, $requestedAccountId);
-
         if ($accountId === null) {
             return null;
         }
@@ -108,14 +104,11 @@ readonly class LoginService
             $claims['role'] = $userRole->value;
         }
 
-        $token = $this->jwtAuth->claims($claims)->attempt([
-            'email' => strtolower($email),
-            'password' => $password,
-        ]);
-
-        if (! $token) {
-            throw new UnauthorizedException(__('Username or Password are incorrect'));
-        }
+        // Generate token from the already-authenticated user instead of
+        // re-authenticating (saves a DB round-trip to PlanetScale).
+        $token = $this->jwtAuth->claims($claims)->fromUser(
+            auth()->guard('api')->user()
+        );
 
         return $token;
     }
