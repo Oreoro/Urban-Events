@@ -50,8 +50,6 @@ readonly class LoginService
             ]);
         $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
 
-        $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
-
         $accountId = $this->getAccountId($accounts, $requestedAccountId);
 
         if ($accountId) {

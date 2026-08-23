@@ -105,7 +105,7 @@ export class UrbanEventsContainer extends Container<Env> {
 
             CACHE_DRIVER: "redis",
             CACHE_STORE: "redis",
-            SESSION_DRIVER: "cookie",
+            SESSION_DRIVER: "redis",
             SESSION_SECURE_COOKIE: "true",
             // Redis runs inside the container (supervisor program "redis") on
             // localhost. Full EVAL support means Laravel's cache rate limiter
@@ -113,6 +113,8 @@ export class UrbanEventsContainer extends Container<Env> {
             REDIS_URL: "redis://127.0.0.1:6379",
             REDIS_HOST: "127.0.0.1",
             REDIS_PORT: "6379",
+            REDIS_DB: "0",
+            REDIS_DB_CACHE: "1",
             QUEUE_CONNECTION: "redis",
 
             CORS_ALLOWED_ORIGINS: [

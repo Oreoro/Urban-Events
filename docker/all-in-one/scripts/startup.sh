@@ -61,11 +61,17 @@ if [ ! -L /app/backend/public/storage ]; then
     php artisan storage:link 2>&1 || true
 fi
 
-# Cache config and routes for performance. Containers start fresh each
-# time, so stale-cache issues do not apply.
+# Clear any stale caches, then re-cache for production performance.
+# This ensures env-var changes (APP_DEBUG, DATABASE_URL, etc.) take effect.
+php artisan config:clear --no-interaction 2>&1 || true
+php artisan route:clear --no-interaction 2>&1 || true
+php artisan view:clear --no-interaction 2>&1 || true
+
+# Cache config, routes, views, and events for maximum performance
 php artisan config:cache --no-interaction 2>&1 || true
 php artisan route:cache --no-interaction 2>&1 || true
 php artisan view:cache --no-interaction 2>&1 || true
+php artisan event:cache --no-interaction 2>&1 || true
 
 chown -R www-data:www-data /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
 chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
