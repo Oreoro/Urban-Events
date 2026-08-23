@@ -95,7 +95,7 @@ export class UrbanEventsContainer extends Container<Env> {
             ...secrets,
             APP_NAME: "Urban Events",
             APP_ENV: "production",
-            APP_DEBUG: "true",
+            APP_DEBUG: "false",
             APP_URL: `${publicOrigin}/api`,
             APP_FRONTEND_URL: publicOrigin,
             APP_SAAS_MODE_ENABLED: "false",
@@ -110,6 +110,7 @@ export class UrbanEventsContainer extends Container<Env> {
             // Redis runs inside the container (supervisor program "redis") on
             // localhost. Full EVAL support means Laravel's cache rate limiter
             // works without an external Upstash plan.
+            REDIS_URL: "redis://127.0.0.1:6379",
             REDIS_HOST: "127.0.0.1",
             REDIS_PORT: "6379",
             QUEUE_CONNECTION: "redis",
