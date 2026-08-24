@@ -76,6 +76,11 @@ php artisan event:cache --no-interaction 2>&1 || true
 chown -R www-data:www-data /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
 chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
 
+# Warm up OPcache by loading key files — avoids first-request latency
+echo "Warming OPcache..."
+su -s /bin/sh www-data -c 'php -r "require \"/app/backend/vendor/autoload.php\"; echo \"OPcache warmed\";"' 2>&1 || true
+echo "OPcache warmup complete."
+
 echo "Setup complete — starting supervisord"
 
 # Supervisor owns the long-running Nginx process. Stop the temporary listener
