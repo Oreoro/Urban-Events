@@ -12,16 +12,11 @@ use HiEvents\Repository\Eloquent\Value\Relationship;
 use HiEvents\Repository\Interfaces\AccountUserRepositoryInterface;
 use HiEvents\Services\Domain\Auth\DTO\LoginResponse;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
 use PHPOpenSourceSaver\JWTAuth\JWTAuth;
 use Psr\Log\LoggerInterface;
 
 readonly class LoginService
 {
-    // Cache account-user lookup for 60s after successful password verification.
-    // Saves a DB round-trip to PlanetScale (~1.5s) on repeat logins.
-    private const ACCOUNT_CACHE_TTL = 60;
-
     public function __construct(
         private JWTAuth $jwtAuth,
         private LoggerInterface $logger,
@@ -33,7 +28,6 @@ readonly class LoginService
      */
     public function authenticate(string $email, string $password, ?int $requestedAccountId): LoginResponse
     {
-        // Step 1: Verify password (always hits DB — cannot be cached).
         $token = $this->jwtAuth->attempt([
             'email' => strtolower($email),
             'password' => $password,
@@ -43,38 +37,16 @@ readonly class LoginService
             throw new UnauthorizedException(__('Username or Password are incorrect'));
         }
 
-        // Password verified. Reuse the user already loaded by attempt().
-        $guardUser = auth()->guard('api')->user();
         /** @var UserDomainObject $user */
-        $user = UserDomainObject::hydrateFromModel($guardUser ?? $this->jwtAuth->user());
+        $user = UserDomainObject::hydrateFromModel($this->jwtAuth->user());
 
-        // Step 2: Load account-user relationships (expensive DB query).
-        // Try Redis cache first — avoids a ~1.5s PlanetScale round-trip.
-        $userId = $user->getId();
-        $cacheKey = "auth:user_accounts:{$userId}";
-        $cachedAccounts = Cache::store('redis')->get($cacheKey);
+        $userAccounts = $this->accountUserRepository
+            ->loadRelation(new Relationship(domainObject: AccountDomainObject::class, name: 'account'))
+            ->findWhere([
+                'user_id' => $user->getId(),
+            ]);
 
-        if ($cachedAccounts !== null) {
-            // Reconstruct from cached arrays.
-            $accounts = collect($cachedAccounts['accounts'] ?? [])
-                ->map(fn ($data) => AccountDomainObject::hydrateFromArray($data));
-            $userAccounts = collect($cachedAccounts['user_accounts'] ?? [])
-                ->map(fn ($data) => AccountUserDomainObject::hydrateFromArray($data));
-        } else {
-            // Cache miss — hit PlanetScale (~1.5s).
-            $userAccounts = $this->accountUserRepository
-                ->loadRelation(new Relationship(domainObject: AccountDomainObject::class, name: 'account'))
-                ->findWhere([
-                    'user_id' => $userId,
-                ]);
-            $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
-
-            // Cache as arrays for 60s.
-            Cache::store('redis')->put($cacheKey, [
-                'accounts' => $accounts->map(fn ($a) => $a->toArray())->values()->all(),
-                'user_accounts' => $userAccounts->map(fn ($au) => $au->toArray())->values()->all(),
-            ], self::ACCOUNT_CACHE_TTL);
-        }
+        $accounts = $userAccounts->map(fn ($accountUser) => $accountUser->getAccount());
 
         $accountId = $this->getAccountId($accounts, $requestedAccountId);
 
