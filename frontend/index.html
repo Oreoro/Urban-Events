@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- Preconnect to font CDN (saves ~100ms DNS+TLS) -->
+      <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+
+      <!-- Non-blocking font load (avoids render-blocking CSS) -->
+      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" media="print" onload="this.media='all'" />
+      <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" /></noscript>
+
       <!-- App identity -->
       <link rel="icon" href="/manifest-icons/favicon.svg" type="image/svg+xml">
       <link rel="icon" type="image/png" sizes="32x32" href="/manifest-icons/favicon-32x32.png">
@@ -22,16 +31,17 @@
       <meta name="theme-color" content="#171717">
       <meta name="msapplication-TileColor" content="#171717">
 
-      <link
-      rel="stylesheet"
-      href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--render-helmet--><title>Urban Events</title><!--/render-helmet-->
     <!--environment-variables-->
     <!--head-snippets-->
+
+    <!-- Critical inline CSS: dark background prevents white flash during SSR hydration -->
+    <style>
+      html, body { margin: 0; padding: 0; background: #171717; }
+      #app { min-height: 100vh; }
+    </style>
   </head>
-  <body >
+  <body>
     <div id="app"><!--app-html--></div>
     <script type="module" src="/src/entry.client.tsx"></script>
     <!--dehydrated-state-->

@@ -217,6 +217,21 @@ Sitemap: ${frontendUrl}/sitemap.xml
                 .replace(/<!--render-helmet-->.*?<!--\/render-helmet-->/s, () => helmetHtml);
 
             res.setHeader("Content-Type", "text/html");
+            // Short cache for HTML (stale-while-revalidate keeps it fast).
+            res.setHeader("Cache-Control", "public, max-age=30, stale-while-revalidate=300");
+            // Add resource hints for critical assets discovered during SSR.
+            if (ssrManifest) {
+                const criticalScripts = Object.values(ssrManifest)
+                    .flat()
+                    .filter((f) => f && (f.endsWith(".js")))
+                    .slice(0, 3);
+                const preloadTags = criticalScripts
+                    .map((f) => `<link rel="modulepreload" href="/assets/${f}" as="script" />`)
+                    .join("\n    ");
+                if (preloadTags) {
+                    html = html.replace("<!--head-snippets-->", () => `${preloadTags}\n    <!--head-snippets-->`);
+                }
+            }
             return res.status(200).end(html);
         } catch (error) {
             if (error instanceof Response) {
