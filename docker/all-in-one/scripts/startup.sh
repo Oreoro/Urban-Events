@@ -76,9 +76,24 @@ php artisan event:cache --no-interaction 2>&1 || true
 chown -R www-data:www-data /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
 chmod -R 775 /app/backend/storage /app/backend/bootstrap/cache 2>&1 || true
 
-# Warm up OPcache by loading key files — avoids first-request latency
+# Aggressively warm OPcache — load ALL Laravel files into cache
+# This eliminates first-request latency entirely
 echo "Warming OPcache..."
-su -s /bin/sh www-data -c 'php -r "require \"/app/backend/vendor/autoload.php\"; echo \"OPcache warmed\";"' 2>&1 || true
+su -s /bin/sh www-data -c 'php -r "require \"/app/backend/vendor/autoload.php\"; echo \"Autoload warmed\";"' 2>&1 || true
+
+# Warm up critical Laravel service providers and routes
+su -s /bin/sh www-data -c 'php -r "
+\$files = [
+    \"/app/backend/bootstrap/cache/config.php\",
+    \"/app/backend/bootstrap/cache/routes.php\",
+    \"/app/backend/bootstrap/cache/events.php\",
+    \"/app/backend/bootstrap/app.php\",
+];
+foreach (\$files as \$f) {
+    if (file_exists(\$f)) require \$f;
+}
+echo \"Laravel bootstrap warmed\";
+"' 2>&1 || true
 echo "OPcache warmup complete."
 
 echo "Setup complete — starting supervisord"

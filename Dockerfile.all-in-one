@@ -65,7 +65,7 @@ COPY ./docker/all-in-one/php/php-custom.ini /usr/local/etc/php/conf.d/custom.ini
 # Create OPcache file cache directory, nginx cache directory, and Redis config
 COPY ./docker/all-in-one/redis/redis.conf /etc/redis/redis.conf
 RUN mkdir -p /tmp/opcache /tmp/nginx-fcgi-cache /run/nginx /etc/redis \
-    && chown -R www-data:www-data /tmp/opcache /tmp/nginx-fcgi-cache /run/nginx
+    && chown -R www-data:www-data /tmp/opcache /tmp/nginx-fcgi-cache /run/nginx /app/backend/bootstrap/cache
 
 # Copy startup script
 COPY ./docker/all-in-one/scripts/startup.sh /startup.sh
