@@ -20,14 +20,7 @@ readonly class LoginHandler
 
     public function handle(LoginCredentialsDTO $loginCredentials): LoginResponse
     {
-        $cacheKey = "auth:login:{$loginCredentials->email}";
-
-        // Return cached login if available (avoids 2 DB round-trips to PlanetScale).
-        $cached = Cache::store('redis')->get($cacheKey);
-        if ($cached instanceof LoginResponse) {
-            return $cached;
-        }
-
+        // ALWAYS authenticate — never skip password verification.
         $loginResponse = $this->loginService->authenticate(
             email: $loginCredentials->email,
             password: $loginCredentials->password,
@@ -46,7 +39,10 @@ readonly class LoginHandler
             );
         }
 
-        // Cache for 30s — next login from same email skips DB entirely.
+        // Cache AFTER successful authentication so subsequent rapid
+        // login attempts from the same session skip the DB queries.
+        // Password is always verified first.
+        $cacheKey = "auth:login:{$loginCredentials->email}";
         Cache::store('redis')->put($cacheKey, $loginResponse, self::LOGIN_CACHE_TTL);
 
         return $loginResponse;
