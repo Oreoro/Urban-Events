@@ -26,7 +26,7 @@
     {
       "class_name": "UrbanEventsContainer",
       "image": "../Dockerfile.all-in-one",
-      "instance_type": "basic",
+      "instance_type": "standard-1",
       "max_instances": 1,
       "authorized_keys": [
         {
