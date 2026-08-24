@@ -11,6 +11,8 @@ use HiEvents\Services\Application\Handlers\Announcement\DTO\GetActiveAnnouncemen
 use HiEvents\Services\Application\Handlers\Announcement\GetActiveAnnouncementsHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class GetActiveAnnouncementsAction extends BaseAction
 {
@@ -30,14 +32,35 @@ class GetActiveAnnouncementsAction extends BaseAction
             return $this->jsonResponse(['data' => []]);
         }
 
+        $userId = $this->getAuthenticatedUser()->getId();
+
+        // Cache announcements for 60s to skip PlanetScale queries.
+        $cacheKey = "account:{$accountId}:announcements:{$userId}:json";
+        try {
+            $cached = Cache::store('redis')->get($cacheKey);
+            if ($cached !== null) {
+                return response()->json($cached, 200);
+            }
+        } catch (\Exception $e) {
+            Log::warning('Announcements cache read failed: ' . $e->getMessage());
+        }
+
         $announcements = $this->handler->handle(new GetActiveAnnouncementsDTO(
-            userId: $this->getAuthenticatedUser()->getId(),
+            userId: $userId,
             accountId: $accountId,
         ));
 
-        return $this->resourceResponse(
+        $response = $this->resourceResponse(
             resource: AnnouncementResource::class,
             data: $announcements,
         );
+
+        try {
+            Cache::store('redis')->put($cacheKey, json_decode($response->getContent(), true), 60);
+        } catch (\Exception $e) {
+            Log::warning('Announcements cache write failed: ' . $e->getMessage());
+        }
+
+        return $response;
     }
 }
