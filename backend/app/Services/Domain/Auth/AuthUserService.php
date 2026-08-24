@@ -7,7 +7,6 @@ use HiEvents\DomainObjects\Interfaces\DomainObjectInterface;
 use HiEvents\DomainObjects\UserDomainObject;
 use HiEvents\Repository\Interfaces\AccountUserRepositoryInterface;
 use Illuminate\Auth\AuthManager;
-use Illuminate\Support\Facades\Cache;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 use PHPOpenSourceSaver\JWTAuth\Payload;
 
@@ -64,7 +63,7 @@ readonly class AuthUserService
 
             if ($accountId) {
                 $accountUser = $this->accountUserRepository->findFirstWhere([
-                    'user_id' => $user->getId(),
+                    'user_id' => $userObj->getId(),
                     'account_id' => $accountId,
                 ]);
                 $userObj->setCurrentAccountUser($accountUser);
