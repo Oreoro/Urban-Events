@@ -1,23 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Urban Events</title>
-  <desc id="desc">Publish event pages, sell tickets in PKR, and check in guests.</desc>
-  <rect width="1200" height="630" fill="#F7F8FA"/>
-  <rect width="1200" height="10" fill="#097FE8"/>
+  <desc id="desc">Discover and manage events near you. Create, promote, and attend experiences that matter.</desc>
 
+  <!-- Dark background -->
+  <rect width="1200" height="630" fill="#0F0F0F"/>
+
+  <!-- Subtle gradient overlay -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#097FE8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)"/>
+
+  <!-- Accent line at top -->
+  <rect width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="120" r="180" fill="#097FE8" opacity="0.06"/>
+  <circle cx="1100" cy="180" r="120" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="150" cy="550" r="100" fill="#097FE8" opacity="0.05"/>
+
+  <!-- Logo -->
   <g transform="translate(72 64)">
-    <rect width="88" height="88" rx="20" fill="#171717"/>
-    <path d="M17.875 22v24.75c0 13.75 8.25 22 20.968 22s20.969-8.25 20.969-22V22H47.437v24.063c0 7.218-2.921 11-8.594 11s-8.593-3.782-8.593-11V22H17.875Z" fill="#FFFFFF"/>
-    <path d="M58.78 66H45.375l16.5-44h13.406L58.781 66Z" fill="#097FE8"/>
+    <rect width="72" height="72" rx="16" fill="#097FE8"/>
+    <path d="M15 18v21c0 11.5 6.9 18.3 17.5 18.3S50 50.5 50 39V18H42.5V38.5c0 6-2.4 9.1-7.2 9.1s-7.2-3.1-7.2-9.1V18H15Z" fill="#FFFFFF"/>
+    <path d="M49 55H37.5l13.8-36.7h11.2L49 55Z" fill="#38bdf8"/>
   </g>
 
-  <text x="188" y="101" fill="#171717" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.6">Urban Events</text>
-  <text x="188" y="139" fill="#64748B" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" letter-spacing="1.7">TICKETING FOR PAKISTAN</text>
+  <!-- App name -->
+  <text x="160" y="97" fill="#FFFFFF" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5">Urban Events</text>
+  <text x="160" y="124" fill="#94a3b8" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" letter-spacing="2">TICKETING FOR PAKISTAN</text>
 
-  <text x="72" y="300" fill="#171717" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="750" letter-spacing="-4">Publish. Sell. Check in.</text>
-  <text x="72" y="389" fill="#097FE8" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="750" letter-spacing="-4">All in one place.</text>
+  <!-- Main headline -->
+  <text x="72" y="300" fill="#FFFFFF" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="72" font-weight="800" letter-spacing="-3">Discover Events.</text>
+  <text x="72" y="390" fill="url(#accent)" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="72" font-weight="800" letter-spacing="-3">Manage Tickets.</text>
 
-  <text x="76" y="471" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500">Polished event pages, local PKR checkout, and fast guest entry.</text>
+  <!-- Subtitle -->
+  <text x="76" y="455" fill="#94a3b8" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="500">Create, promote, and attend experiences that matter.</text>
 
-  <rect x="72" y="529" width="280" height="52" rx="12" fill="#171717"/>
-  <text x="212" y="563" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">app.urbanevents.pk</text>
+  <!-- URL badge -->
+  <rect x="72" y="510" width="260" height="48" rx="10" fill="#097FE8" opacity="0.15"/>
+  <rect x="72" y="510" width="260" height="48" rx="10" fill="none" stroke="#097FE8" stroke-width="1" opacity="0.4"/>
+  <text x="202" y="540" fill="#38bdf8" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="600" text-anchor="middle">app.urbanevents.pk</text>
 </svg>
