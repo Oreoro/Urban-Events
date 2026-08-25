@@ -10,12 +10,15 @@ class SetAccountContext
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
+        // Read account_id directly from JWT payload instead of Auth::check()
+        // which triggers a DB query (~1.5s to PlanetScale).
+        try {
             $accountId = Auth::payload()->get('account_id');
-
             if ($accountId) {
                 User::setCurrentAccountId($accountId);
             }
+        } catch (\Exception) {
+            // No valid token — continue without account context.
         }
 
         return $next($request);

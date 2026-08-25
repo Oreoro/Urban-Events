@@ -162,45 +162,38 @@ abstract class BaseAction extends Controller
 
     protected function getAuthenticatedAccountId(): int
     {
-        if (Auth::check()) {
-            /** @var AuthUserService $service */
-            $service = app(AuthUserService::class);
-            $accountId = $service->getAuthenticatedAccountId();
+        /** @var AuthUserService $service */
+        $service = app(AuthUserService::class);
+        $accountId = $service->getAuthenticatedAccountId();
 
-            if ($accountId === null) {
-                throw new UnauthorizedException(__('No account ID found in token'));
-            }
-
-            return $accountId;
+        if ($accountId === null) {
+            throw new UnauthorizedException(__('No account ID found in token'));
         }
 
-        throw new UnauthorizedException;
+        return $accountId;
     }
 
     protected function getAuthenticatedUserRole(): Role
     {
-        if (Auth::check()) {
-            /** @var AuthUserService $service */
-            $service = app(AuthUserService::class);
-            $role = $service->getAuthenticatedUserRole();
+        /** @var AuthUserService $service */
+        $service = app(AuthUserService::class);
+        $role = $service->getAuthenticatedUserRole();
 
-            if ($role === null) {
-                throw new UnauthorizedException(__('No user role found in token'));
-            }
-
-            return $role;
+        if ($role === null) {
+            throw new UnauthorizedException(__('No user role found in token'));
         }
 
-        throw new UnauthorizedException;
+        return $role;
     }
 
     protected function getAuthenticatedUser(): UserDomainObject|DomainObjectInterface
     {
-        if (Auth::check()) {
-            /** @var AuthUserService $service */
-            $service = app(AuthUserService::class);
+        /** @var AuthUserService $service */
+        $service = app(AuthUserService::class);
+        $user = $service->getUser();
 
-            return $service->getUser();
+        if ($user !== null) {
+            return $user;
         }
 
         throw new UnauthorizedException;

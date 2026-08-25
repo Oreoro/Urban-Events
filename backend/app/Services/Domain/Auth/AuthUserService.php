@@ -14,8 +14,6 @@ use PHPOpenSourceSaver\JWTAuth\Payload;
 
 readonly class AuthUserService
 {
-    // Cache the full user+accountUser data for 120s to skip ALL PlanetScale
-    // queries (~3-4.5s) on repeat authenticated requests.
     private const USER_CACHE_TTL = 120;
 
     public function __construct(
@@ -25,34 +23,22 @@ readonly class AuthUserService
 
     public function getAuthenticatedAccountId(): ?int
     {
-        if (! $this->authManager->check()) {
-            return null;
-        }
-
+        // Read directly from JWT payload — avoids Auth::check() DB query (~1.5s).
         try {
             /** @var Payload $payload */
             $payload = $this->authManager->payload();
-        } catch (JWTException) {
+            return $payload->get('account_id');
+        } catch (\Exception) {
             return null;
         }
-
-        return $payload->get('account_id');
     }
 
     public function getAuthenticatedUserRole(): ?Role
     {
-        if (! $this->authManager->check()) {
-            return null;
-        }
-
+        // Read directly from JWT payload — avoids Auth::check() DB query (~1.5s).
         try {
             /** @var Payload $payload */
             $payload = $this->authManager->payload();
-        } catch (JWTException) {
-            return null;
-        }
-
-        try {
             return Role::from($payload->get('role'));
         } catch (\Exception) {
             return null;
@@ -64,9 +50,9 @@ readonly class AuthUserService
         try {
             /** @var Payload $payload */
             $payload = $this->authManager->payload();
-            $userId = $payload->get('sub');
+            $userId = (int) $payload->get('sub');
             $accountId = $payload->get('account_id');
-        } catch (JWTException) {
+        } catch (\Exception) {
             // Fallback to authManager->user() if payload fails.
             return $this->getUserFromDb();
         }
