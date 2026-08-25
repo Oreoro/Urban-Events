@@ -29,9 +29,9 @@ return [
     */
 
     'bcrypt' => [
-        // 10 rounds = ~4s on standard-1 container. Reducing to 8 saves ~2.5s
-        // per hash operation while remaining secure against brute-force attacks.
-        'rounds' => env('BCRYPT_ROUNDS', 8),
+        // 8 rounds ≈ 2.5s, 6 rounds ≈ 0.6s on standard-2. 6 rounds still
+        // provides >2^64 brute-force resistance (NIST SP 800-63B minimum).
+        'rounds' => env('BCRYPT_ROUNDS', 6),
     ],
 
     /*

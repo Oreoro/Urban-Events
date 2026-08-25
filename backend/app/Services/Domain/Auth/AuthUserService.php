@@ -14,9 +14,9 @@ use PHPOpenSourceSaver\JWTAuth\Payload;
 
 readonly class AuthUserService
 {
-    // Cache authenticated user profile for 60s to avoid 2 DB round-trips
-    // to PlanetScale (~1.5s each) on repeated /api/users/me calls.
-    private const USER_CACHE_TTL = 60;
+    // Cache the full user+accountUser data for 120s to skip ALL PlanetScale
+    // queries (~3-4.5s) on repeat authenticated requests.
+    private const USER_CACHE_TTL = 120;
 
     public function __construct(
         private AuthManager $authManager,
@@ -61,31 +61,77 @@ readonly class AuthUserService
 
     public function getUser(): UserDomainObject|DomainObjectInterface|null
     {
+        try {
+            /** @var Payload $payload */
+            $payload = $this->authManager->payload();
+            $userId = $payload->get('sub');
+            $accountId = $payload->get('account_id');
+        } catch (JWTException) {
+            // Fallback to authManager->user() if payload fails.
+            return $this->getUserFromDb();
+        }
+
+        if (!$userId) {
+            return null;
+        }
+
+        // Try Redis cache FIRST — skip ALL DB queries (~3-4.5s saved).
+        $cacheKey = "auth:user:{$userId}:{$accountId}";
+        try {
+            $cached = Cache::store('redis')->get($cacheKey);
+            if (is_array($cached) && isset($cached['user'], $cached['account_user_id'])) {
+                $userObj = UserDomainObject::hydrateFromArray($cached['user']);
+
+                // Re-fetch accountUser by ID (fast index lookup, also cached).
+                $auCacheKey = "auth:au:{$cached['account_user_id']}";
+                $accountUser = Cache::store('redis')->get($auCacheKey);
+                if ($accountUser === null) {
+                    $accountUser = $this->accountUserRepository->findFirstWhere([
+                        'id' => $cached['account_user_id'],
+                    ]);
+                    if ($accountUser) {
+                        Cache::store('redis')->put($auCacheKey, $accountUser, self::USER_CACHE_TTL);
+                    }
+                }
+                if ($accountUser) {
+                    $userObj->setCurrentAccountUser($accountUser);
+                }
+
+                return $userObj;
+            }
+        } catch (\Exception $e) {
+            Log::warning('Auth cache read failed: ' . $e->getMessage());
+        }
+
+        // Cache miss — load from DB (2-3 queries, ~3-4.5s to PlanetScale).
+        $userObj = $this->getUserFromDb();
+        if ($userObj === null) {
+            return null;
+        }
+
+        $accountUserId = $userObj->getCurrentAccountUser()?->getId();
+
+        // Cache the full user data + account_user ID for 120s.
+        // Strip password hash for security.
+        try {
+            $userArray = $userObj->toArray();
+            unset($userArray['password'], $userArray['remember_token']);
+            Cache::store('redis')->put($cacheKey, [
+                'user' => $userArray,
+                'account_user_id' => $accountUserId,
+            ], self::USER_CACHE_TTL);
+        } catch (\Exception $e) {
+            Log::warning('Auth cache write failed: ' . $e->getMessage());
+        }
+
+        return $userObj;
+    }
+
+    private function getUserFromDb(): ?UserDomainObject
+    {
         if ($user = $this->authManager->user()) {
             $userId = $user->getKey();
             $accountId = $this->getAuthenticatedAccountId();
-            $cacheKey = "auth:user:{$userId}:{$accountId}";
-
-            // Try Redis cache first — saves ~3s of PlanetScale round-trips.
-            try {
-                $cached = Cache::store('redis')->get($cacheKey);
-                if (is_array($cached)) {
-                    $userObj = UserDomainObject::hydrateFromArray($cached['user']);
-                    if (!empty($cached['account_user_id'])) {
-                        $accountUser = $this->accountUserRepository->findFirstWhere([
-                            'id' => $cached['account_user_id'],
-                        ]);
-                        if ($accountUser) {
-                            $userObj->setCurrentAccountUser($accountUser);
-                        }
-                    }
-                    return $userObj;
-                }
-            } catch (\Exception $e) {
-                Log::warning('Auth cache read failed: ' . $e->getMessage());
-            }
-
-            // Cache miss — load from DB (2 queries, ~3s to PlanetScale).
             $userObj = UserDomainObject::hydrateFromModel($user);
 
             if ($accountId) {
@@ -94,20 +140,6 @@ readonly class AuthUserService
                     'account_id' => $accountId,
                 ]);
                 $userObj->setCurrentAccountUser($accountUser);
-
-                // Cache the account_user ID for 60s to skip the DB query next time.
-                // We don't cache the full domain object arrays because hydrateFromArray
-                // is fragile with nested relations. Instead we just cache the lookup key.
-                try {
-                    if ($accountUser) {
-                        Cache::store('redis')->put($cacheKey, [
-                            'user' => $userObj->toArray(),
-                            'account_user_id' => $accountUser->getId(),
-                        ], self::USER_CACHE_TTL);
-                    }
-                } catch (\Exception $e) {
-                    Log::warning('Auth cache write failed: ' . $e->getMessage());
-                }
             }
 
             return $userObj;
