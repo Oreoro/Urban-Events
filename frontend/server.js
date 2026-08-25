@@ -174,8 +174,24 @@ Sitemap: ${frontendUrl}/sitemap.xml
     app.get('/sitemap-events-:page.xml', sitemapEventsHandler);
     app.get('/sitemap-organizers-:page.xml', sitemapOrganizersHandler);
 
+    // Simple in-memory cache for SSR HTML (unauthenticated pages only).
+    const ssrCache = new Map();
+    const SSR_CACHE_TTL_MS = 30_000; // 30 seconds
+
     app.use("*", async (req, res) => {
         const url = req.originalUrl.replace(base, "");
+
+        // Only cache anonymous GET requests (login, register, root).
+        const isAnonymous = !req.cookies?.token;
+        const cacheKey = isAnonymous && req.method === "GET" ? `ssr:${url}` : null;
+        if (cacheKey) {
+            const cached = ssrCache.get(cacheKey);
+            if (cached && Date.now() - cached.time < SSR_CACHE_TTL_MS) {
+                res.setHeader("Content-Type", "text/html");
+                res.setHeader("Cache-Control", "public, max-age=10, stale-while-revalidate=60");
+                return res.status(200).end(cached.html);
+            }
+        }
 
         try {
             let template;
@@ -218,7 +234,21 @@ Sitemap: ${frontendUrl}/sitemap.xml
 
             res.setHeader("Content-Type", "text/html");
             // Short cache for HTML (stale-while-revalidate keeps it fast).
-            res.setHeader("Cache-Control", "public, max-age=30, stale-while-revalidate=300");
+            const cacheControl = isAnonymous
+                ? "public, max-age=30, stale-while-revalidate=300"
+                : "private, no-cache, no-store, must-revalidate";
+            res.setHeader("Cache-Control", cacheControl);
+
+            // Store in SSR cache for anonymous pages.
+            if (cacheKey) {
+                ssrCache.set(cacheKey, { html, time: Date.now() });
+                // Evict stale entries periodically.
+                if (ssrCache.size > 100) {
+                    for (const [k, v] of ssrCache) {
+                        if (Date.now() - v.time > SSR_CACHE_TTL_MS) ssrCache.delete(k);
+                    }
+                }
+            }
             // Add resource hints for critical assets discovered during SSR.
             if (ssrManifest) {
                 const criticalScripts = Object.values(ssrManifest)
